@@ -19,9 +19,11 @@ yarn install
 ```
 ✏ Provide your appId and serverUrl to `<MoralisProvider>` in `src/index.js`:
 ```jsx
-<MoralisProvider appId="xxxxxxxx" serverUrl="xxxxxxxx">
+const APP_ID = "xxxxxxxxxxxxxxxxxxx";
+const SERVER_URL = "https://xxxx.grandmoralis.com:2053/server";
+<MoralisProvider appId={APP_ID} serverUrl="{SERVER_URL}>
   <App />
-</MoralisProvider>,
+</MoralisProvider>
 ```
 🚴‍♂️ Run your App:
 ```sh
