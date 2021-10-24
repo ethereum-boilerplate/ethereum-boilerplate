@@ -6,6 +6,9 @@ This boilerplate is built on [react-moralis](https://github.com/MoralisWeb3/reac
 
 Please check the [official documentation of Moralis](https://docs.moralis.io/#user) for all the functionalities of Moralis.
 
+# ⭐️ `Star us`
+If this boilerplate helps you build Ethereum dapps faster - please star this project, every star makes us very happy!
+
 # 🚀 Quick Start
 
 📄 Clone or fork `ethereum-boilerplate`:
