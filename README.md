@@ -38,7 +38,11 @@ yarn start
 > ⚡ Note that many components may get params like `chain`, `address`, `size` and etc.
 
 ### Address
+
+![address](https://user-images.githubusercontent.com/78314301/138753150-aefb426c-9481-4f41-91a3-d4e4fd424b8f.gif)
+
 📨 `<Address />` : Displays an Ethereum address with [Blockie](https://www.npmjs.com/package/react-blockies) avatar. 
+
 
 **Options**:
 - copyable (optional): display icon for copying. 
@@ -53,6 +57,10 @@ yarn start
 ```
 
 ### AddressInput
+
+![addressInput](https://user-images.githubusercontent.com/78314301/138753917-53007fa1-b053-4723-8c18-aec9ecfe5479.gif)
+
+
 📒 `<AddressInput />` : Input for eth address. Displays [Blockie](https://www.npmjs.com/package/react-blockies) avatar for the entered wallet. Helps to validate addresses. After entering 42 characters (wallet length) freezes inout and calls `setValidatedAddress`
 
 **Options**:
