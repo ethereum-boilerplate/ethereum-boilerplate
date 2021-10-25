@@ -75,12 +75,33 @@ const [address, setAddress] = useState();
 ```
 
 ### Chain
+
+![chain](https://user-images.githubusercontent.com/78314301/138758299-79bee590-5541-4723-b033-b8ee9b6ba693.gif)
+
+
 ### CoinPrice
+
+![coin](https://user-images.githubusercontent.com/78314301/138758957-b685a719-64a7-4e54-b103-7331f50d63ce.gif)
+
 ### Contract
 ### ERC20Balance
+
+![image](https://user-images.githubusercontent.com/78314301/138759637-2ff0feb9-9b6e-4bb6-8c2a-4ccf79123f48.png)
+
 ### ERC20Transfers
+
+![image](https://user-images.githubusercontent.com/78314301/138760390-ba7eca53-5ed0-421d-84fd-c7f5909d79b4.png)
+
 ### DEX 
-### NFTBalance
+
+![dex](https://user-images.githubusercontent.com/78314301/138762869-322becb8-69df-426b-9364-549b3ca89ff9.gif)
+
 ### Wallet
+
+![wallet](https://user-images.githubusercontent.com/78314301/138764170-e5ad1c58-0130-43f7-9b8b-b3e04135f84e.gif)
+
 ### Blockie 
+
 ### NativeBalance
+
+### NFTBalance
