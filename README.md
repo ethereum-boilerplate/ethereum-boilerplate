@@ -8,7 +8,7 @@ There are many components in this boilerplate that do not require an active web3
 
 Please check the [official documentation of Moralis](https://docs.moralis.io/#user) for all the functionalities of Moralis.
 
-![Uploading app.gif…]()
+![app](https://user-images.githubusercontent.com/78314301/138940550-447e470a-4b08-403a-8134-984875f6f639.gif)
 
 # ⭐️ `Star us`
 If this boilerplate helps you build Ethereum dapps faster - please star this project, every star makes us very happy!
