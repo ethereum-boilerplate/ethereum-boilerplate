@@ -4,6 +4,8 @@
 
 This boilerplate is built on [react-moralis](https://github.com/MoralisWeb3/react-moralis) and [Moralis](https://moralis.io/). Also has its own context provider for quick access to `chainId` or `ethAddress`
 
+There are many components in this boilerplate that do not require an active web3 provider, they use Moralis Web3 API. Morales supports the most popular blockchains and their test networks. You can find a list of all available networks in [Moralis Supported Chains](https://docs.moralis.io/moralis-server/web3-sdk/intro#supported-chains)
+
 Please check the [official documentation of Moralis](https://docs.moralis.io/#user) for all the functionalities of Moralis.
 
 ![app](https://user-images.githubusercontent.com/78314301/138844151-c4c5a329-5328-4468-88b2-a96cedc6c0a9.gif)
@@ -76,28 +78,32 @@ const [address, setAddress] = useState();
 <AddressInput autoFocus placeholder="Input your Address" onChange={setReceiver} />
 ```
 
-### Chain
+### Chains
 
-![chain](https://user-images.githubusercontent.com/78314301/138758299-79bee590-5541-4723-b033-b8ee9b6ba693.gif)
+![chains](https://user-images.githubusercontent.com/78314301/138758299-79bee590-5541-4723-b033-b8ee9b6ba693.gif)
 
-📒 `<AddressInput />` : Input for eth address. Displays [Blockie](https://www.npmjs.com/package/react-blockies) avatar for the entered wallet. Helps to validate addresses. After entering 42 characters (wallet length) freezes inout and calls `setValidatedAddress`
+⛓ `<Chains />` : Active network switch. Supports Ethereum, Polygon, BSC and Avalacnhe blockchains. Works only with networks that have already been added to Injected Wallet. You can find a guide on how to programmatically add a new network [here](https://docs.moralis.io/moralis-server/web3/web3#addnetwork)
 
 **Options**:
-- autoFocus (optional): focuses object after rendering the component. 
-- placeholder (optional): text to display before entering address.
-- onChange (required): your setState hook.
+- props (optional): networks to display. Added by default: polygon, eth, bsc and avalanche
 
 ```jsx
-const [address, setAddress] = useState();
-
-<AddressInput autoFocus placeholder="Input your Address" onChange={setReceiver} />
+<Chains polygon eth bsc avalanche />
 ```
 
 ### CoinPrice
 
 ![coin](https://user-images.githubusercontent.com/78314301/138758957-b685a719-64a7-4e54-b103-7331f50d63ce.gif)
 
-### Contract
+⛓ `<CoinPrice />` : Displays the price of the token specified in the settings. Uses Moralis Web3API (does not require an active web3 provider). Easily customizable, you can add other networks
+
+**Options**:
+- props (optional): networks to display. Added by default: polygon, eth, bsc and avalanche. 
+
+```jsx
+<Chains polygon eth bsc avalanche />
+```
+
 ### ERC20Balance
 
 ![image](https://user-images.githubusercontent.com/78314301/138759637-2ff0feb9-9b6e-4bb6-8c2a-4ccf79123f48.png)
@@ -118,4 +124,4 @@ const [address, setAddress] = useState();
 
 ### NativeBalance
 
-### NFTBalance
+### Contract
