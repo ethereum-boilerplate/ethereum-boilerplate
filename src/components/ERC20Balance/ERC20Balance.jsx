@@ -13,7 +13,8 @@ const styles = {
     padding: "20px",
     display: "flex",
     background: "#FFFFFF",
-    boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+    boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.25)",
+    border: "2px solid #e7eaf3",
     borderRadius: "15px",
     marginBottom: "20px",
   },
@@ -31,7 +32,7 @@ function ERC20Balance() {
   const { Moralis } = useMoralis();
 
   return (
-    <Flex maxWidth="1200px">
+    <Flex maxWidth="1200px" margin="0 15px">
       <h1 style={styles.title}>💰Token Balances</h1>
       <div style={styles.card}>
         <table style={styles.table}>

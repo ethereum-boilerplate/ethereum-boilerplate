@@ -29,7 +29,11 @@ function CoinPrice(props) {
   return (
     <div style={styles.coin}>
       <img src={props.image || noLogoCoin} alt="logo" style={{ height: props?.size || "35px" }} />
-      <span style={{ cursor: "pointer" }} onClick={toggleDisplayStyle} title={`Show in ${isUSDMode ? "ETH" : "USD"}`}>
+      <span
+        style={{ cursor: "pointer" }}
+        onClick={toggleDisplayStyle}
+        title={`Show in ${isUSDMode ? "ETH" : "USD"}`}
+      >
         {coinPrice && (isUSDMode ? coinPrice.usdPrice : coinPrice.nativePrice)}
       </span>
     </div>

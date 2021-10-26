@@ -29,11 +29,12 @@ function Chains(props) {
       gap: "5px",
       width: "fit-content",
       background: "#FFFFFF",
-      boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+      boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.25)",
       borderRadius: "10px",
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
+      border: "1px solid #e7eaf3",
     },
   };
 
