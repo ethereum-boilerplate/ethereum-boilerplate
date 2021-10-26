@@ -82,7 +82,7 @@ const [address, setAddress] = useState();
 
 ![chains](https://user-images.githubusercontent.com/78314301/138758299-79bee590-5541-4723-b033-b8ee9b6ba693.gif)
 
-⛓ `<Chains />` : Active network switch. Supports Ethereum, Polygon, BSC and Avalacnhe blockchains. Works only with networks that have already been added to Injected Wallet. You can find a guide on how to programmatically add a new network [here](https://docs.moralis.io/moralis-server/web3/web3#addnetwork)
+⛓ `<Chains />` : Active network switch. Supports Ethereum, Polygon, BSC and Avalacnhe blockchains. Works only with networks that have already been added to Injected Wallet. You can find a guide on how to programmatically add a new network [here](https://docs.moralis.io/moralis-server/web3/web3#addnetwork). Easily customizable, you can add other networks
 
 **Options**:
 - props (optional): networks to display. Added by default: polygon, eth, bsc and avalanche
@@ -95,7 +95,7 @@ const [address, setAddress] = useState();
 
 ![coin](https://user-images.githubusercontent.com/78314301/138758957-b685a719-64a7-4e54-b103-7331f50d63ce.gif)
 
-⛓ `<CoinPrice />` : Displays the price of the token specified in the settings. Uses Moralis Web3API (does not require an active web3 provider). Easily customizable, you can add other networks
+⛓ `<CoinPrice />` : Displays the price of the token specified in the settings. Uses Moralis Web3API (does not require an active web3 provider).
 
 **Options**:
 - props (optional): networks to display. Added by default: polygon, eth, bsc and avalanche. 
