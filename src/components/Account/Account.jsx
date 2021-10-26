@@ -37,7 +37,7 @@ function Account() {
   return (
     <div style={styles.account} onClick={() => logout()}>
       <NativeBalance />
-      <Address avatar />
+      <Address avatar size="5" />
     </div>
   );
 }

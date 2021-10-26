@@ -55,9 +55,9 @@ function Address(props) {
 
   return (
     <div style={styles.address}>
-      <p>{getEllipsisTxt(address, props.size)}</p>
-      {props.copyable && (isClicked ? <Check /> : <Copy />)}
       {props.avatar && <Blockie address={address} size={7} />}
+      <p>{props.size ? getEllipsisTxt(address, props.size) : address}</p>
+      {props.copyable && (isClicked ? <Check /> : <Copy />)}
     </div>
   );
 }

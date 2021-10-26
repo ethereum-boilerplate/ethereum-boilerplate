@@ -10,6 +10,8 @@ function ERC20Transfers() {
   const { ERC20Transfers } = useERC20Transfers();
   const { Moralis } = useMoralis();
 
+  console.log(ERC20Transfers);
+
   return (
     <Flex maxWidth="1200px">
       <h1 style={styles.title}>💸ERC20 Transfers</h1>
@@ -29,10 +31,10 @@ function ERC20Transfers() {
               ? null
               : ERC20Transfers.map((item, key) => (
                   <tr key={key}>
-                    <td>{getEllipsisTxt(item.address, 8)}</td>
-                    <td>{getEllipsisTxt(item.from_address, 8)}</td>
-                    <td>{getEllipsisTxt(item.to_address, 8)}</td>
-                    <td>{Moralis.Units.FromWei(item.value)}</td>
+                    <td>{getEllipsisTxt(item.address, 5)}</td>
+                    <td>{getEllipsisTxt(item.from_address, 5)}</td>
+                    <td>{getEllipsisTxt(item.to_address, 5)}</td>
+                    <td>{parseFloat(Moralis.Units.FromWei(item.value).toFixed(6))}</td>
                     <td>{item.block_number}</td>
                   </tr>
                 ))}

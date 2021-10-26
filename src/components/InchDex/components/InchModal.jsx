@@ -21,7 +21,8 @@ const styles = {
   modalContent: {
     maxWidth: "430px",
     width: "100%",
-    height: "700px",
+    height: "500px",
+    marginTop: "-300px",
     padding: "20px",
     background: "#FFFFFF",
     borderRadius: "20px",

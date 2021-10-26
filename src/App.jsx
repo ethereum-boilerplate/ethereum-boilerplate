@@ -2,7 +2,7 @@ import React from "react";
 import { useMoralis } from "react-moralis";
 import { BrowserRouter as Router, Switch, Route, NavLink, Redirect } from "react-router-dom";
 import Account from "./components/Account";
-import Chain from "./components/Chain";
+import Chains from "./components/Chains";
 import CoinPrice from "./components/CoinPrice";
 import Contract from "./components/Contract/Contract";
 import ERC20Balance from "./components/ERC20Balance";
@@ -47,7 +47,13 @@ const App = () => {
   const { isAuthenticated } = useMoralis();
   return (
     <Router>
-      <Flex container justifyContent="space-between" alignItems="center" margin="15px 0" padding="0 20px">
+      <Flex
+        container
+        justifyContent="space-between"
+        alignItems="center"
+        margin="15px 0"
+        padding="0 20px"
+      >
         <Logo />
         <div style={styles.navBar}>
           <NavLink to="/wallet" style={styles.navLink} activeStyle={styles.navLinkActive}>
@@ -64,10 +70,10 @@ const App = () => {
           </NavLink>
           {/* <NavLink to="/nftBalance" style={styles.navLink} activeStyle={styles.navLink}> 
             NFT Balance
-          </NavLink> */}
+          </NavLink>
           <NavLink to="/contract" style={styles.navLink} activeStyle={styles.navLinkActive}>
             Contract
-          </NavLink>
+          </NavLink> */}
         </div>
         <div style={styles.headerRight}>
           <CoinPrice
@@ -76,7 +82,7 @@ const App = () => {
             image="https://cloudflare-ipfs.com/ipfs/QmXttGpZrECX5qCyXbBQiqgQNytVGeZW5Anewvh2jc4psg/"
             size="40px"
           />
-          <Chain />
+          <Chains />
           <Account />
         </div>
       </Flex>
@@ -86,7 +92,7 @@ const App = () => {
             <Wallet />
           </Route>
           <Route path="/1inch">
-            <InchDex chain="bsc" />
+            <InchDex chain="eth" />
           </Route>
           <Route path="/erc20balance">
             <ERC20Balance />

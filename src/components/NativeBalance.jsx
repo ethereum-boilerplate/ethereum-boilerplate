@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useMoralis, useMoralisWeb3Api } from "react-moralis";
 import { useMoralisDapp } from "../providers/MoralisDappProvider/MoralisDappProvider";
 import { n4 } from "../utils/formatters";
+import { getNativeByChain } from "../utils/getNativeByChain";
 
 function NativeBalance() {
   const { account } = useMoralisWeb3Api();
@@ -16,11 +17,14 @@ function NativeBalance() {
 
   const fetchNativeBalance = async () => {
     const options = { address, chain };
+
+    const native = getNativeByChain(chain);
+
     account
       .getNativeBalance(options)
       .then((result) => {
         const balanceInWei = Moralis.Units.FromWei(result.balance);
-        const balanceFormatted = `${n4.format(balanceInWei)} ETH`;
+        const balanceFormatted = `${n4.format(balanceInWei)} ${native}`;
         setNativeBalance(balanceFormatted);
       })
       .catch((e) => alert(e.message));

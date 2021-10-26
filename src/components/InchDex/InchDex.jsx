@@ -28,14 +28,16 @@ function InchDex({ chain }) {
   const onChangeHandler = (event) => setFromAmount(event.target.value);
 
   useEffect(() => {
-    if (fromToken && toToken && fromAmount) setCurrentTrade({ fromToken, toToken, fromAmount, chain });
+    if (fromToken && toToken && fromAmount)
+      setCurrentTrade({ fromToken, toToken, fromAmount, chain });
   }, [toToken, fromToken, fromAmount, chain]);
 
   useEffect(() => {
     if (currentTrade) getQuote(currentTrade).then((quote) => setQuote(quote));
   }, [currentTrade]);
 
-  if (getChainById(chainId) !== chain) return <>Switch to supported {chain} network or edit InchDex settings </>;
+  if (getChainById(chainId) !== chain)
+    return <>Switch to supported {chain} network or edit InchDex settings </>;
 
   return (
     <div style={styles.card}>
@@ -132,7 +134,13 @@ function InchDex({ chain }) {
                 style={styles.swapboxInput}
                 type="number"
                 placeholder="0.00"
-                value={Moralis.Units.FromWei(quote?.toTokenAmount, quote?.toToken.decimals).toFixed(6) || ""}
+                value={
+                  quote
+                    ? Moralis.Units.FromWei(quote?.toTokenAmount, quote?.toToken.decimals).toFixed(
+                        6
+                      )
+                    : ""
+                }
                 readOnly
               />
               <div
@@ -164,7 +172,11 @@ function InchDex({ chain }) {
           <div>
             Estimated Gas: <span id="gas_estimate">{quote?.estimatedGas}</span>
           </div>
-          <button style={styles.swapButton} onClick={() => trySwap(currentTrade)} disabled={!currentTrade}>
+          <button
+            style={styles.swapButton}
+            onClick={() => trySwap(currentTrade)}
+            disabled={!currentTrade}
+          >
             Swap
           </button>
         </div>

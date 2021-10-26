@@ -75,7 +75,7 @@ function ERC20Balance() {
                     <td>{item.name}</td>
                     <td>{item.symbol}</td>
                     <td>{Moralis.Units.FromWei(item.balance, item.decimals)}</td>
-                    <td>{getEllipsisTxt(item.token_address, 12)}</td>
+                    <td>{getEllipsisTxt(item.token_address, 7)}</td>
                   </tr>
                 ))}
           </tbody>

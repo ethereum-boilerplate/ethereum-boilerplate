@@ -8,7 +8,7 @@ import { useMoralis } from "react-moralis";
  * Use only one chain component with providing img links and chain names
  */
 
-function Chain() {
+function Chains() {
   const { switchNetwork } = useChain();
   const { chainId: chain } = useMoralisDapp();
   const { isWeb3Enabled, enableWeb3, isAuthenticated, isWeb3EnableLoading } = useMoralis();
@@ -19,6 +19,8 @@ function Chain() {
   }, [isAuthenticated, isWeb3Enabled]);
 
   useEffect(() => setChainId(chain), [chain]);
+
+  console.log(chain);
 
   const styles = {
     chains: {
@@ -45,4 +47,4 @@ function Chain() {
   );
 }
 
-export default Chain;
+export default Chains;
