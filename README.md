@@ -106,19 +106,19 @@ const [address, setAddress] = useState();
 
 ### ERC20Balance
 
-![image](https://user-images.githubusercontent.com/78314301/138759637-2ff0feb9-9b6e-4bb6-8c2a-4ccf79123f48.png)
+![image](https://user-images.githubusercontent.com/78314301/138941083-de9849ce-8225-4b0b-84e6-4273edfceb2b.png)
 
 ### ERC20Transfers
 
-![image](https://user-images.githubusercontent.com/78314301/138760390-ba7eca53-5ed0-421d-84fd-c7f5909d79b4.png)
+![image](https://user-images.githubusercontent.com/78314301/138941033-127dca78-1424-41ce-94da-ae1b3b865261.png)
 
 ### DEX 
 
-![dex](https://user-images.githubusercontent.com/78314301/138762869-322becb8-69df-426b-9364-549b3ca89ff9.gif)
+![dex](https://user-images.githubusercontent.com/78314301/138941947-ed8adc04-d0ed-4834-ae52-471f857f460c.gif)
 
 ### Wallet
 
-![wallet](https://user-images.githubusercontent.com/78314301/138764170-e5ad1c58-0130-43f7-9b8b-b3e04135f84e.gif)
+![wallet](https://user-images.githubusercontent.com/78314301/138942356-f72346dc-14c7-43c5-9ae3-802d219f866f.gif)
 
 ### Blockie 
 
