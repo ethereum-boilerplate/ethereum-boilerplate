@@ -41,12 +41,11 @@ yarn start
 
 > ⚡ Note that many components may get params like `chain`, `address`, `size` and etc.
 
-### Address
+### `<Address />`
 
 ![address](https://user-images.githubusercontent.com/78314301/138753150-aefb426c-9481-4f41-91a3-d4e4fd424b8f.gif)
 
 📨 `<Address />` : Displays an Ethereum address with [Blockie](https://www.npmjs.com/package/react-blockies) avatar. 
-
 
 **Options**:
 - copyable (optional): display icon for copying. 
@@ -60,10 +59,10 @@ yarn start
 <Address avatar copyable size="4"  />
 ```
 
-### AddressInput
+
+### `<AddressInput />`
 
 ![addressInput](https://user-images.githubusercontent.com/78314301/138753917-53007fa1-b053-4723-8c18-aec9ecfe5479.gif)
-
 
 📒 `<AddressInput />` : Input for eth address. Displays [Blockie](https://www.npmjs.com/package/react-blockies) avatar for the entered wallet. Helps to validate addresses. After entering 42 characters (wallet length) freezes inout and calls `setValidatedAddress`
 
@@ -78,7 +77,8 @@ const [address, setAddress] = useState();
 <AddressInput autoFocus placeholder="Input your Address" onChange={setReceiver} />
 ```
 
-### Chains
+
+### `<Chains />`
 
 ![chains](https://user-images.githubusercontent.com/78314301/138943009-560c3501-8b83-4643-a6f5-0b8f9ff5ef0a.gif)
 
@@ -91,7 +91,8 @@ const [address, setAddress] = useState();
 <Chains polygon eth bsc avalanche />
 ```
 
-### CoinPrice
+
+### `<CoinPrice />`
 
 ![price](https://user-images.githubusercontent.com/78314301/138944095-ac5aebb0-0e69-4b9e-83ec-2a29d0404cbd.gif)
 
@@ -104,24 +105,31 @@ const [address, setAddress] = useState();
 <Chains polygon eth bsc avalanche />
 ```
 
-### ERC20Balance
+
+### `<ERC20Balance />`
 
 ![image](https://user-images.githubusercontent.com/78314301/138942560-722b03ef-09db-47ce-8b73-7965bae81646.png)
 
-### ERC20Transfers
+
+### `<ERC20Transfers />`
 
 ![image](https://user-images.githubusercontent.com/78314301/138941033-127dca78-1424-41ce-94da-ae1b3b865261.png)
 
-### DEX 
+
+### `<DEX />` 
 
 ![dex](https://user-images.githubusercontent.com/78314301/138941947-ed8adc04-d0ed-4834-ae52-471f857f460c.gif)
 
-### Wallet
+
+### `<Wallet />`
 
 ![wallet](https://user-images.githubusercontent.com/78314301/138942356-f72346dc-14c7-43c5-9ae3-802d219f866f.gif)
 
-### Blockie 
 
-### NativeBalance
+### `<Blockie />` 
 
-### Contract
+
+### `<NativeBalance />`
+
+
+### `<Contract />`
