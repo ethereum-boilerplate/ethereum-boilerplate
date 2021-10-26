@@ -8,7 +8,7 @@ import { useMoralis } from "react-moralis";
  * Use only one chain component with providing img links and chain names
  */
 
-function Chains() {
+function Chains(props) {
   const { switchNetwork } = useChain();
   const { chainId: chain } = useMoralisDapp();
   const { isWeb3Enabled, enableWeb3, isAuthenticated, isWeb3EnableLoading } = useMoralis();
@@ -39,10 +39,18 @@ function Chains() {
 
   return (
     <div className="chains" style={styles.chains}>
-      <Avalanche onClick={() => switchNetwork("0xa86a")} activeChain={chainId === "0xa86a"} />
-      <Polygon onClick={() => switchNetwork("0x89")} activeChain={chainId === "0x89"} />
-      <Binance onClick={() => switchNetwork("0x38")} activeChain={chainId === "0x38"} />
-      <Ethereum onClick={() => switchNetwork("0x1")} activeChain={chainId === "0x1"} />
+      {props?.avalanche && (
+        <Avalanche onClick={() => switchNetwork("0xa86a")} activeChain={chainId === "0xa86a"} />
+      )}
+      {props?.polygon && (
+        <Polygon onClick={() => switchNetwork("0x89")} activeChain={chainId === "0x89"} />
+      )}
+      {props?.bsc && (
+        <Binance onClick={() => switchNetwork("0x38")} activeChain={chainId === "0x38"} />
+      )}
+      {props?.eth && (
+        <Ethereum onClick={() => switchNetwork("0x1")} activeChain={chainId === "0x1"} />
+      )}
     </div>
   );
 }

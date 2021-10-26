@@ -82,7 +82,7 @@ const App = () => {
             image="https://cloudflare-ipfs.com/ipfs/QmXttGpZrECX5qCyXbBQiqgQNytVGeZW5Anewvh2jc4psg/"
             size="40px"
           />
-          <Chains />
+          <Chains polygon eth bsc avalanche />
           <Account />
         </div>
       </Flex>
