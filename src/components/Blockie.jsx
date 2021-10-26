@@ -10,7 +10,7 @@ import { useMoralisDapp } from "../providers/MoralisDappProvider/MoralisDappProv
 
 function Blockie(props) {
   const { walletAddress } = useMoralisDapp();
-  if (!props.address && walletAddress) return null;
+  if (!props.address || !walletAddress) return null;
 
   return (
     <Blockies
