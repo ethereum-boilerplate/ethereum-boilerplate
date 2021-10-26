@@ -6,6 +6,8 @@ This boilerplate is built on [react-moralis](https://github.com/MoralisWeb3/reac
 
 Please check the [official documentation of Moralis](https://docs.moralis.io/#user) for all the functionalities of Moralis.
 
+![app](https://user-images.githubusercontent.com/78314301/138844151-c4c5a329-5328-4468-88b2-a96cedc6c0a9.gif)
+
 # ⭐️ `Star us`
 If this boilerplate helps you build Ethereum dapps faster - please star this project, every star makes us very happy!
 
@@ -78,6 +80,18 @@ const [address, setAddress] = useState();
 
 ![chain](https://user-images.githubusercontent.com/78314301/138758299-79bee590-5541-4723-b033-b8ee9b6ba693.gif)
 
+📒 `<AddressInput />` : Input for eth address. Displays [Blockie](https://www.npmjs.com/package/react-blockies) avatar for the entered wallet. Helps to validate addresses. After entering 42 characters (wallet length) freezes inout and calls `setValidatedAddress`
+
+**Options**:
+- autoFocus (optional): focuses object after rendering the component. 
+- placeholder (optional): text to display before entering address.
+- onChange (required): your setState hook.
+
+```jsx
+const [address, setAddress] = useState();
+
+<AddressInput autoFocus placeholder="Input your Address" onChange={setReceiver} />
+```
 
 ### CoinPrice
 
