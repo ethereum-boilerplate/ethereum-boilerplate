@@ -80,7 +80,7 @@ const [address, setAddress] = useState();
 
 ### Chains
 
-![chains](https://user-images.githubusercontent.com/78314301/138758299-79bee590-5541-4723-b033-b8ee9b6ba693.gif)
+![chains](https://user-images.githubusercontent.com/78314301/138943009-560c3501-8b83-4643-a6f5-0b8f9ff5ef0a.gif)
 
 ⛓ `<Chains />` : Active network switch. Supports Ethereum, Polygon, BSC and Avalacnhe blockchains. Works only with networks that have already been added to Injected Wallet. You can find a guide on how to programmatically add a new network [here](https://docs.moralis.io/moralis-server/web3/web3#addnetwork). Easily customizable, you can add other networks
 
@@ -93,7 +93,7 @@ const [address, setAddress] = useState();
 
 ### CoinPrice
 
-![coin](https://user-images.githubusercontent.com/78314301/138758957-b685a719-64a7-4e54-b103-7331f50d63ce.gif)
+![price](https://user-images.githubusercontent.com/78314301/138944095-ac5aebb0-0e69-4b9e-83ec-2a29d0404cbd.gif)
 
 ⛓ `<CoinPrice />` : Displays the price of the token specified in the settings. Uses Moralis Web3API (does not require an active web3 provider).
 
@@ -106,7 +106,7 @@ const [address, setAddress] = useState();
 
 ### ERC20Balance
 
-![image](https://user-images.githubusercontent.com/78314301/138941083-de9849ce-8225-4b0b-84e6-4273edfceb2b.png)
+![image](https://user-images.githubusercontent.com/78314301/138942560-722b03ef-09db-47ce-8b73-7965bae81646.png)
 
 ### ERC20Transfers
 
