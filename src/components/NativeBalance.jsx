@@ -37,7 +37,7 @@ function NativeBalance() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [address, chain]);
 
-  return <div style={{ textAlign: "center" }}>{nativeBalance}</div>;
+  return <div style={{ textAlign: "center", whiteSpace: "nowrap" }}>{nativeBalance}</div>;
 }
 
 export default NativeBalance;

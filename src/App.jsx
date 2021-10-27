@@ -63,10 +63,10 @@ const App = () => {
             Dex
           </NavLink>
           <NavLink to="/erc20balance" style={styles.navLink} activeStyle={styles.navLinkActive}>
-            Token Balance
+            Balances
           </NavLink>
           <NavLink to="/erc20transfers" style={styles.navLink} activeStyle={styles.navLinkActive}>
-            Token Transfers
+            Transfers
           </NavLink>
           {/* <NavLink to="/nftBalance" style={styles.navLink} activeStyle={styles.navLink}> 
             NFT Balance
@@ -95,7 +95,7 @@ const App = () => {
             <InchDex chain="eth" />
           </Route>
           <Route path="/erc20balance">
-            <ERC20Balance />
+            <ERC20Balance chain="eth" />
           </Route>
           <Route path="/erc20transfers">
             <ERC20Transfers />

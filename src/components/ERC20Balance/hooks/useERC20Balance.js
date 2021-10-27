@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useMoralis, useMoralisWeb3Api } from "react-moralis";
 import { useMoralisDapp } from "../../../providers/MoralisDappProvider/MoralisDappProvider";
-const useERC20Balance = () => {
+const useERC20Balance = (props) => {
   const { account } = useMoralisWeb3Api();
   const { isInitialized } = useMoralis();
   const { walletAddress, chainId } = useMoralisDapp();
@@ -19,7 +19,7 @@ const useERC20Balance = () => {
 
   const fetchERC20Balance = async () => {
     return await account
-      .getTokenBalances({ address: walletAddress, chain: chainId })
+      .getTokenBalances({ address: walletAddress, chain: props?.chain || chainId })
       .then((result) => result)
       .catch((e) => alert(e.message));
   };

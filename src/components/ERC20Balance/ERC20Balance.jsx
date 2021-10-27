@@ -27,8 +27,8 @@ const styles = {
   },
 };
 
-function ERC20Balance() {
-  const { assets } = useERC20Balance();
+function ERC20Balance(props) {
+  const { assets } = useERC20Balance(props);
   const { Moralis } = useMoralis();
 
   return (

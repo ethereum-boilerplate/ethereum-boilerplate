@@ -15,6 +15,7 @@ const styles = {
     fontWeight: "700",
     fontSize: "16px",
     color: "#041836",
+    whiteSpace: "nowrap",
   },
 };
 
