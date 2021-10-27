@@ -64,7 +64,7 @@ yarn start
 
 ![addressInput](https://user-images.githubusercontent.com/78314301/138753917-53007fa1-b053-4723-8c18-aec9ecfe5479.gif)
 
-📒 `<AddressInput />` : Input for eth address. Displays [Blockie](https://www.npmjs.com/package/react-blockies) avatar for the entered wallet. Helps to validate addresses. After entering 42 characters (wallet length) freezes inout and calls `setValidatedAddress`
+📫 `<AddressInput />` : Input for eth address. Displays [Blockie](https://www.npmjs.com/package/react-blockies) avatar for the entered wallet. Helps to validate addresses. After entering 42 characters (wallet length) freezes inout and calls `setValidatedAddress`
 
 **Options**:
 - autoFocus (optional): focuses object after rendering the component. 
@@ -139,10 +139,25 @@ const [address, setAddress] = useState();
 
 ![dex](https://user-images.githubusercontent.com/78314301/138941947-ed8adc04-d0ed-4834-ae52-471f857f460c.gif)
 
+💱 `<InchDex />` : interface for [Moralis 1Inch Plugin](https://moralis.io/plugins/1inch/). This plugin integrates the DeFi / DEX aggregator 1Inch to any project that uses Moralis. There is a 1% transaction fee on each swap.
+
+**Options**:
+- chain (optional): network. Available: Ethereum (“eth”), Binance Smart Chain (“bsc”), Polygon (“polygon”)
+
+```jsx
+<InchDex chain="eth" />
+```
+
 
 ### `<Wallet />`
 
 ![wallet](https://user-images.githubusercontent.com/78314301/138942356-f72346dc-14c7-43c5-9ae3-802d219f866f.gif)
+
+💼 `<Wallet />` : example interface for interacting with your wallet. Uses components from the boilerplate:  `<Blockie />`, `<Address />`, `<NativeBalance />`, `<AddressInput />`. Has the functionality to send tokens
+
+```jsx
+<Wallet />
+```
 
 
 ### `<Blockie />` 
