@@ -5,7 +5,6 @@ import NativeBalance from "../NativeBalance";
 
 const styles = {
   account: {
-    padding: "0 3px 0 10px",
     height: "42px",
     gap: "5px",
     width: "fit-content",
@@ -21,6 +20,7 @@ const styles = {
     backgroundColor: "#041836",
     cursor: "pointer",
   },
+  wrapper: { padding: "0 3px 0 10px" },
 };
 
 function Account() {
@@ -29,13 +29,18 @@ function Account() {
   if (!isAuthenticated) {
     return (
       <div style={styles.account}>
-        <p onClick={() => authenticate({ signingMessage: "Hello World!" })}>Authenticate</p>
+        <p
+          onClick={() => authenticate({ signingMessage: "Hello World!" })}
+          style={{ padding: "0 10px" }}
+        >
+          Authenticate
+        </p>
       </div>
     );
   }
 
   return (
-    <div style={styles.account} onClick={() => logout()}>
+    <div style={{ ...styles.account, ...styles.wrapper }} onClick={() => logout()}>
       <NativeBalance />
       <Address avatar size="5" />
     </div>
