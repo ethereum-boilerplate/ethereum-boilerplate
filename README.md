@@ -96,25 +96,44 @@ const [address, setAddress] = useState();
 
 ![price](https://user-images.githubusercontent.com/78314301/138944095-ac5aebb0-0e69-4b9e-83ec-2a29d0404cbd.gif)
 
-⛓ `<CoinPrice />` : Displays the price of the token specified in the settings. Uses Moralis Web3API (does not require an active web3 provider).
+💵 `<CoinPrice />` : displays the price of the token specified in the settings. Uses Moralis Web3API (does not require an active web3 provider).
 
 **Options**:
-- props (optional): networks to display. Added by default: polygon, eth, bsc and avalanche. 
+- address (required): Token contract address 
+- chain (optional): The network to which the token is deployed. Default: ETH
+- image (optional): local path or link to token logo
+- size (optional): logo size
 
 ```jsx
-<Chains polygon eth bsc avalanche />
+<CoinPrice address="0x1...3" chain="eth" image="https://img.png" size="40px" />
 ```
-
 
 ### `<ERC20Balance />`
 
 ![image](https://user-images.githubusercontent.com/78314301/138942560-722b03ef-09db-47ce-8b73-7965bae81646.png)
+
+💰 `<ERC20Balance />` : displays the ERC20 balance of an address. Uses Moralis Web3API (does not require an active web3 provider).
+
+**Options**:
+- chain (optional): network for displaying balances on. Will use your wallet network if you do not specify `chain` yourself
+
+```jsx
+<ERC20Balance chain="polygon" />
+```
 
 
 ### `<ERC20Transfers />`
 
 ![image](https://user-images.githubusercontent.com/78314301/138941033-127dca78-1424-41ce-94da-ae1b3b865261.png)
 
+💸 `<ERC20Transfers />` : displays the ERC20 transfers of an address. Uses Moralis Web3API (does not require an active web3 provider).
+
+**Options**:
+- chain (optional): network for displaying transfers on. Will use your wallet network if you do not specify `chain` yourself
+
+```jsx
+<ERC20Transfers chain="polygon" />
+```
 
 ### `<DEX />` 
 
