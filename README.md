@@ -24,7 +24,7 @@ git clone https://github.com/ethereum-boilerplate/ethereum-boilerplate.git
 cd ethereum-boilerplate
 yarn install 
 ```
-✏ Provide your appId and serverUrl from [Moralis](https://moralis.io/) to `<MoralisProvider>` in `src/index.js`:
+✏ Provide your appId and serverUrl from [Moralis](https://moralis.io/) ([How to start Moralis Server](https://docs.moralis.io/moralis-server/getting-started/create-a-moralis-server)) to `<MoralisProvider>` in `src/index.js`:
 ```jsx
 <MoralisProvider appId={APP_ID} serverUrl={SERVER_URL}>
   <App />
