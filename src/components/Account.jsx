@@ -1,7 +1,7 @@
 import React from "react";
 import { useMoralis } from "react-moralis";
-import Address from "../Address/Address";
-import NativeBalance from "../NativeBalance";
+import Address from "./Address/Address";
+import NativeBalance from "./NativeBalance";
 
 const styles = {
   account: {

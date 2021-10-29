@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import useChain from "./hooks/useChain";
+import useChain from "../../hooks/useChain";
 import { Avalanche, Polygon, Binance, Ethereum } from "./components";
 import { useMoralisDapp } from "../../providers/MoralisDappProvider/MoralisDappProvider";
 import { useMoralis } from "react-moralis";

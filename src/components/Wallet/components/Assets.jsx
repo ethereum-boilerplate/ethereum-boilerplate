@@ -1,6 +1,6 @@
 import React from "react";
 import { useMoralis } from "react-moralis";
-import useERC20Balance from "../../ERC20Balance/hooks/useERC20Balance";
+import useERC20Balance from "../../../hooks/useERC20Balance";
 
 const styles = {
   content: {

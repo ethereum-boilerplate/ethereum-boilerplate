@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { getEllipsisTxt } from "../../utils/formatters";
-import Blockie from "../Blockie";
+import { getEllipsisTxt } from "../utils/formatters";
+import Blockie from "./Blockie";
 import "./addressinput.css";
 
 const styles = {

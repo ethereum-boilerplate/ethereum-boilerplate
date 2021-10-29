@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useMoralis, useMoralisWeb3Api } from "react-moralis";
-import { useMoralisDapp } from "../../../providers/MoralisDappProvider/MoralisDappProvider";
+import { useMoralisDapp } from "../providers/MoralisDappProvider/MoralisDappProvider";
 const useERC20Balance = (props) => {
   const { account } = useMoralisWeb3Api();
   const { isInitialized } = useMoralis();

@@ -1,9 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useMoralis } from "react-moralis";
-import { useEffect, useState } from "react/cjs/react.development";
 import { getEllipsisTxt } from "../../utils/formatters";
 import { Flex } from "../../uikit/Flex/Flex";
-import useERC20Transfers from "./hooks/useERC20Transfers";
+import useERC20Transfers from "../../hooks/useERC20Transfers";
 import styles from "./styles";
 
 function ERC20Transfers() {

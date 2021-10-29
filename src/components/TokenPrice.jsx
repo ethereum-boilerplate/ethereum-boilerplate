@@ -1,9 +1,8 @@
-import React from "react";
-import { useState } from "react/cjs/react.development";
-import useCoin from "./hooks/useCoin";
+import React, {useState} from "react";
+import useTokenPrice from "../hooks/useTokenPrice";
 
 const styles = {
-  coin: {
+  token: {
     padding: "0 7px",
     height: "42px",
     gap: "5px",
@@ -18,26 +17,25 @@ const styles = {
     whiteSpace: "nowrap",
   },
 };
-
-function CoinPrice(props) {
-  const { coinPrice } = useCoin(props);
+function TokenPrice(props) {
+  const { tokenPrice } = useTokenPrice(props);
   const [isUSDMode, setIsUSDMode] = useState(true);
 
   const toggleDisplayStyle = () => setIsUSDMode(isUSDMode ? false : true);
 
-  const noLogoCoin = "https://etherscan.io/images/main/empty-token.png";
+  const noLogoToken = "https://etherscan.io/images/main/empty-token.png";
 
-  return (
-    <div style={styles.coin}>
-      <img src={props.image || noLogoCoin} alt="logo" style={{ height: props?.size || "35px" }} />
+  return ( 
+    <div style={styles.token}>
+      <img src={props.image || noLogoToken} alt="logo" style={{ height: props?.size || "35px" }} />
       <span
         style={{ cursor: "pointer" }}
         onClick={toggleDisplayStyle}
         title={`Show in ${isUSDMode ? "ETH" : "USD"}`}
       >
-        {coinPrice && (isUSDMode ? coinPrice.usdPrice : coinPrice.nativePrice)}
+        {tokenPrice && (isUSDMode ? tokenPrice.usdPrice : tokenPrice.nativePrice)}
       </span>
     </div>
   );
 }
-export default CoinPrice;
+export default TokenPrice;

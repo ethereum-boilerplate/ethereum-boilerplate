@@ -1,5 +1,5 @@
 import { useMoralisWeb3Api } from "react-moralis";
-import { useMoralisDapp } from "../../../providers/MoralisDappProvider/MoralisDappProvider";
+import { useMoralisDapp } from "../providers/MoralisDappProvider/MoralisDappProvider";
 
 const useNFTBalance = () => {
   const { account } = useMoralisWeb3Api();

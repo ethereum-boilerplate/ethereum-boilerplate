@@ -3,7 +3,7 @@ import { useMoralis } from "react-moralis";
 import { BrowserRouter as Router, Switch, Route, NavLink, Redirect } from "react-router-dom";
 import Account from "./components/Account";
 import Chains from "./components/Chains";
-import CoinPrice from "./components/CoinPrice";
+import TokenPrice from "./components/TokenPrice";
 import Contract from "./components/Contract/Contract";
 import ERC20Balance from "./components/ERC20Balance";
 import ERC20Transfers from "./components/ERC20Transfers";
@@ -44,7 +44,8 @@ const styles = {
   },
 };
 const App = () => {
-  const { isAuthenticated } = useMoralis();
+  const { isAuthenticated, isInitialized } = useMoralis();
+  console.log("isInitialized: ", isInitialized);
   return (
     <Router>
       <Flex
@@ -54,7 +55,7 @@ const App = () => {
         margin="15px 0"
         padding="0 20px"
       >
-        <Logo />
+        <Logo /> 
         <div style={styles.navBar}>
           <NavLink to="/wallet" style={styles.navLink} activeStyle={styles.navLinkActive}>
             Wallet
@@ -68,15 +69,15 @@ const App = () => {
           <NavLink to="/erc20transfers" style={styles.navLink} activeStyle={styles.navLinkActive}>
             Transfers
           </NavLink>
-          {/* <NavLink to="/nftBalance" style={styles.navLink} activeStyle={styles.navLink}> 
+          <NavLink to="/nftBalance" style={styles.navLink} activeStyle={styles.navLink}>
             NFT Balance
           </NavLink>
-          <NavLink to="/contract" style={styles.navLink} activeStyle={styles.navLinkActive}>
+          {/* <NavLink to="/contract" style={styles.navLink} activeStyle={styles.navLinkActive}>
             Contract
           </NavLink> */}
         </div>
         <div style={styles.headerRight}>
-          <CoinPrice
+          <TokenPrice
             address="0x1f9840a85d5af5bf1d1762f925bdaddc4201f984"
             chain="eth"
             image="https://cloudflare-ipfs.com/ipfs/QmXttGpZrECX5qCyXbBQiqgQNytVGeZW5Anewvh2jc4psg/"

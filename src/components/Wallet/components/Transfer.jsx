@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { useMoralis } from "react-moralis";
-import AddressInput from "../../AddressInput/";
+import AddressInput from "../../AddressInput";
 import TokenList from "./TokenList";
 
 const styles = {
