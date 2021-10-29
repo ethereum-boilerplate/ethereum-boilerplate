@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useMoralis } from "react-moralis";
 import { useMoralisDapp } from "providers/MoralisDappProvider/MoralisDappProvider";
 
-const useInch = () => {
+const useInchDex = () => {
   const { Moralis } = useMoralis();
   const { walletAddress } = useMoralisDapp();
 
@@ -69,4 +69,4 @@ const useInch = () => {
   return { getSupportedTokens, getQuote, trySwap, tokenList };
 };
 
-export default useInch;
+export default useInchDex;

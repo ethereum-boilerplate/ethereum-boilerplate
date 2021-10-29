@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useMoralis } from "react-moralis";
-import { useMoralisDapp } from "../../providers/MoralisDappProvider/MoralisDappProvider";
+import { useMoralisDapp } from "providers/MoralisDappProvider/MoralisDappProvider";
 import InchModal from "./components/InchModal";
-import useInch from "./hooks/useInch";
+import useInchDex from "hooks/useInchDex";
 import styles from "./styles";
 
 const chainIds = {
@@ -14,7 +14,7 @@ const chainIds = {
 const getChainById = (id) => chainIds[id];
 
 function InchDex({ chain }) {
-  const { trySwap, getQuote, getSupportedTokens, tokenList } = useInch();
+  const { trySwap, getQuote, getSupportedTokens, tokenList } = useInchDex();
   const { Moralis } = useMoralis();
   const { chainId } = useMoralisDapp();
   const [isFromModalActive, setFromModalActive] = useState(false);

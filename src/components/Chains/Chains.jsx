@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import useChain from "../../hooks/useChain";
+import useChain from "hooks/useChain";
 import { Avalanche, Polygon, Binance, Ethereum } from "./components";
-import { useMoralisDapp } from "../../providers/MoralisDappProvider/MoralisDappProvider";
+import { useMoralisDapp } from "providers/MoralisDappProvider/MoralisDappProvider";
 
 /** TO DO
  * Use only one chain component with providing img links and chain names
