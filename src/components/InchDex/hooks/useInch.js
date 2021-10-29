@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useMoralis } from "react-moralis";
-import { useMoralisDapp } from "../../../providers/MoralisDappProvider/MoralisDappProvider";
+import { useMoralisDapp } from "providers/MoralisDappProvider/MoralisDappProvider";
 
 const useInch = () => {
   const { Moralis } = useMoralis();
@@ -9,7 +9,9 @@ const useInch = () => {
   const [tokenList, setTokenlist] = useState();
 
   const getSupportedTokens = async (chain) =>
-    await Moralis.Plugins.oneInch.getSupportedTokens({ chain }).then((tokens) => setTokenlist(tokens.tokens));
+    await Moralis.Plugins.oneInch
+      .getSupportedTokens({ chain })
+      .then((tokens) => setTokenlist(tokens.tokens));
 
   const getQuote = async (params) =>
     await Moralis.Plugins.oneInch.quote({

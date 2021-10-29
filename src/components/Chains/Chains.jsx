@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import useChain from "../../hooks/useChain";
 import { Avalanche, Polygon, Binance, Ethereum } from "./components";
 import { useMoralisDapp } from "../../providers/MoralisDappProvider/MoralisDappProvider";
-import { useMoralis } from "react-moralis";
 
 /** TO DO
  * Use only one chain component with providing img links and chain names
@@ -11,12 +10,7 @@ import { useMoralis } from "react-moralis";
 function Chains(props) {
   const { switchNetwork } = useChain();
   const { chainId: chain } = useMoralisDapp();
-  const { isWeb3Enabled, enableWeb3, isAuthenticated, isWeb3EnableLoading } = useMoralis();
   const [chainId, setChainId] = useState();
-
-  useEffect(() => {
-    if (isAuthenticated && !isWeb3Enabled && !isWeb3EnableLoading) enableWeb3();
-  }, [isAuthenticated, isWeb3Enabled]);
 
   useEffect(() => setChainId(chain), [chain]);
 

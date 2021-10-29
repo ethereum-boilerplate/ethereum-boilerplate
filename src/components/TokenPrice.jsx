@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import useTokenPrice from "../hooks/useTokenPrice";
+import React, { useState } from "react";
+import useTokenPrice from "hooks/useTokenPrice";
 
 const styles = {
   token: {
@@ -25,7 +25,7 @@ function TokenPrice(props) {
 
   const noLogoToken = "https://etherscan.io/images/main/empty-token.png";
 
-  return ( 
+  return (
     <div style={styles.token}>
       <img src={props.image || noLogoToken} alt="logo" style={{ height: props?.size || "35px" }} />
       <span

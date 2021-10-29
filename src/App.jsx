@@ -1,16 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useMoralis } from "react-moralis";
 import { BrowserRouter as Router, Switch, Route, NavLink, Redirect } from "react-router-dom";
-import Account from "./components/Account";
-import Chains from "./components/Chains";
-import TokenPrice from "./components/TokenPrice";
-import Contract from "./components/Contract/Contract";
-import ERC20Balance from "./components/ERC20Balance";
-import ERC20Transfers from "./components/ERC20Transfers";
-import InchDex from "./components/InchDex";
-import NFTBalance from "./components/NFTBalance";
-import Wallet from "./components/Wallet";
-import { Flex } from "./uikit/Flex/Flex";
+import Account from "components/Account";
+import Chains from "components/Chains";
+import TokenPrice from "components/TokenPrice";
+import Contract from "components/Contract/Contract";
+import ERC20Balance from "components/ERC20Balance";
+import ERC20Transfers from "components/ERC20Transfers";
+import InchDex from "components/InchDex";
+import NFTBalance from "components/NFTBalance";
+import Wallet from "components/Wallet";
+import { Flex } from "uikit/Flex/Flex";
 
 const styles = {
   content: {
@@ -44,8 +44,13 @@ const styles = {
   },
 };
 const App = () => {
-  const { isAuthenticated, isInitialized } = useMoralis();
-  console.log("isInitialized: ", isInitialized);
+  const { isWeb3Enabled, enableWeb3, isAuthenticated, isWeb3EnableLoading } = useMoralis();
+
+  useEffect(() => {
+    if (isAuthenticated && !isWeb3Enabled && !isWeb3EnableLoading) enableWeb3();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isAuthenticated, isWeb3Enabled]);
+
   return (
     <Router>
       <Flex
@@ -55,7 +60,7 @@ const App = () => {
         margin="15px 0"
         padding="0 20px"
       >
-        <Logo /> 
+        <Logo />
         <div style={styles.navBar}>
           <NavLink to="/wallet" style={styles.navLink} activeStyle={styles.navLinkActive}>
             Wallet
