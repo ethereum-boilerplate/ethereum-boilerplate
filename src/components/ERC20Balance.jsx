@@ -1,8 +1,8 @@
 import React from "react";
 import { useMoralis } from "react-moralis";
+import { useERC20Balance } from "../hooks/useERC20Balance";
 import { Flex } from "../uikit/Flex/Flex";
 import { getEllipsisTxt } from "../utils/formatters";
-import useERC20Balance from "../hooks/useERC20Balance";
 
 const styles = {
   title: {

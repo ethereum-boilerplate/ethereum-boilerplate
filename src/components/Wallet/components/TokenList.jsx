@@ -1,6 +1,6 @@
+import { useERC20Balance } from "hooks/useERC20Balance";
 import React from "react";
 import { useMoralis } from "react-moralis";
-import useERC20Balance from "../../../hooks/useERC20Balance";
 
 const styles = {
   content: {
@@ -60,7 +60,9 @@ export default function TokenList({ setToken }) {
           </div>
           <div style={styles.right}>
             <h4 style={styles.text}>{item.symbol}</h4>
-            <h4 style={styles.text}>{parseFloat(Moralis.Units.FromWei(item.balance, item.decimals).toFixed(6))}</h4>
+            <h4 style={styles.text}>
+              {parseFloat(Moralis.Units.FromWei(item.balance, item.decimals).toFixed(6))}
+            </h4>
           </div>
         </div>
       ))}
