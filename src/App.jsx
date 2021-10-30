@@ -112,9 +112,12 @@ const App = () => {
           <Route path="/contract">
             <Contract />
           </Route>
+          <Route path="/nonauthenticated">
+            <>Please connect your wallet!</>
+          </Route>
           {/* <Redirect from="/" to="/wallet" /> */}
         </Switch>
-        {isAuthenticated ? <Redirect to="/wallet" /> : <Redirect to="/home" />}
+        {isAuthenticated ? <Redirect to="/wallet" /> : <Redirect to="/nonauthenticated" />}
       </div>
     </Router>
   );
