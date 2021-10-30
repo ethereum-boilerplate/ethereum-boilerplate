@@ -28,30 +28,22 @@ const styles = {
     color: "#041836",
     marginTop: "100px",
   },
+  header: {
+    position: "fixed",
+    zIndex: 1,
+    width: "100%",
+    background: "#fff",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    fontFamily: "Roboto, sans-serif",
+  },
   headerRight: {
     display: "flex",
     gap: "20px",
     alignItems: "center",
     fontSize: "15px",
     fontWeight: "600",
-  },
-  navLink: {
-    textDecoration: "none",
-    fontWeight: "800",
-    color: "#374f72",
-    fontFamily: "Roboto, sans-serif",
-    fontSize: "18px",
-  },
-  navLinkActive: {
-    textDecoration: "none",
-    fontWeight: "800",
-    color: "#041836",
-    fontFamily: "Roboto, sans-serif",
-    fontSize: "18px",
-  },
-  navBar: {
-    display: "flex",
-    gap: "30px",
   },
 };
 const App = () => {
@@ -65,30 +57,11 @@ const App = () => {
   return (
     <Router>
       <Layout style={{ height: "100vh" }}>
-        {/* <Flex
-        container
-        justifyContent="space-between"
-        alignItems="center"
-        margin="15px 0"
-        padding="0 20px"
-      > */}
-        <Header
-          style={{
-            position: "fixed",
-            zIndex: 1,
-            width: "100%",
-            background: "#fff",
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            fontFamily: "Roboto, sans-serif",
-          }}
-        >
+        <Header style={styles.header}>
           <Logo />
           <Menu
             theme="light"
             mode="horizontal"
-            // defaultSelectedKeys={["2"]}
             style={{
               width: "fit-content",
               fontSize: "17px",
@@ -112,13 +85,7 @@ const App = () => {
             </Menu.Item>
           </Menu>
           <div style={styles.headerRight}>
-            {/* <TokenPrice
-              address="0x1f9840a85d5af5bf1d1762f925bdaddc4201f984"
-              chain="eth"
-              image="https://cloudflare-ipfs.com/ipfs/QmXttGpZrECX5qCyXbBQiqgQNytVGeZW5Anewvh2jc4psg/"
-              size="40px"
-            />
-            <Chains polygon eth bsc avalanche /> */}
+            <Chains />
             <TokenPrice
               address="0x1f9840a85d5af5bf1d1762f925bdaddc4201f984"
               chain="eth"
@@ -128,29 +95,8 @@ const App = () => {
             <NativeBalance />
             <Account />
             <Blockie currentWallet size="7" scale="5" />
-            {/* <Address avatar size="4" /> */}
           </div>
         </Header>
-        {/* <NavLink to="/wallet">Wallet</NavLink> */}
-        {/* <NavLink to="/1inch">Dex</NavLink> */}
-        {/* <NavLink to="/erc20balance">Balances</NavLink>
-          <NavLink to="/erc20transfers">Transfers</NavLink>
-          <NavLink to="/nftBalance">NFT Balance</NavLink> */}
-        {/* <NavLink to="/contract" style={styles.navLink} activeStyle={styles.navLinkActive}>
-            Contract
-          </NavLink> */}
-        {/* </div> */}
-        {/* <div style={styles.headerRight}>
-        <TokenPrice
-          address="0x1f9840a85d5af5bf1d1762f925bdaddc4201f984"
-          chain="eth"
-          image="https://cloudflare-ipfs.com/ipfs/QmXttGpZrECX5qCyXbBQiqgQNytVGeZW5Anewvh2jc4psg/"
-          size="40px"
-        />
-        <Chains polygon eth bsc avalanche />
-        <Account />
-      </div> */}
-        {/* </Flex> */}
         <div style={styles.content}>
           <Switch>
             <Route path="/wallet">
