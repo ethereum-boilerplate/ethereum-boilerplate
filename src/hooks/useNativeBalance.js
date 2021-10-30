@@ -1,39 +1,37 @@
-import { useEffect, useState } from "react";
-import { useMoralis, useMoralisWeb3Api } from "react-moralis";
+import { getNativeByChain } from "utils/getNativeByChain";
 import { useMoralisDapp } from "providers/MoralisDappProvider/MoralisDappProvider";
-import { n4 } from "utils/formatters";
-import { getNativeByChain } from "../utils/getNativeByChain";
+import { useEffect, useMemo, useState } from "react";
+import { useMoralis, useMoralisWeb3Api, useMoralisWeb3ApiCall } from "react-moralis";
 
-const useNativeBalance = (props) => {
+export const useNativeBalance = (options) => {
   const { account } = useMoralisWeb3Api();
-  const { isInitialized, Moralis } = useMoralis();
-  const { walletAddress, chainId } = useMoralisDapp();
+  const { Moralis } = useMoralis();
+  const { chainId, walletAddress } = useMoralisDapp();
+  const [balance, setBalance] = useState({ inWei: 0, formatted: 0 });
 
-  const [nativeBalance, setNativeBalance] = useState();
+  const nativeName = useMemo(() => getNativeByChain(options?.chain || chainId), [options, chainId]);
 
-  const nativeName = getNativeByChain(chainId);
+  const {
+    fetch: getBalance,
+    data,
+    error,
+    isLoading,
+  } = useMoralisWeb3ApiCall(account.getNativeBalance, {
+    chain: chainId,
+    address: walletAddress,
+    ...options,
+  });
 
   useEffect(() => {
-    if (isInitialized) {
-      fetchNativeBalance()
-        .then((result) => {
-          const balanceInWei = Moralis.Units.FromWei(result.balance);
-          const balanceFormatted = `${n4.format(balanceInWei)} ${nativeName}`;
-          setNativeBalance(balanceFormatted);
-        })
-        .catch((e) => alert(e.message));
+    if (data?.balance) {
+      const balances = {
+        inWei: data.balance,
+        formatted: Moralis.Units.FromWei(data.balance),
+      };
+      setBalance(balances);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isInitialized, chainId, walletAddress]);
+  }, [data]);
 
-  const fetchNativeBalance = async () => {
-    return account
-      .getNativeBalance({ address: walletAddress, chain: props?.chain || chainId })
-      .then((result) => result)
-      .catch((e) => alert(e.message));
-  };
-
-  return { fetchNativeBalance, nativeBalance };
+  return { getBalance, balance, nativeName, error, isLoading };
 };
-
-export default useNativeBalance;

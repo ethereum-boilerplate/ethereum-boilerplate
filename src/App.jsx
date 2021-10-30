@@ -113,7 +113,7 @@ const App = () => {
             <Contract />
           </Route>
           <Route path="/nonauthenticated">
-            <>Please connect your wallet!</>
+            <>Please login using the "Authenticate" button</>
           </Route>
           {/* <Redirect from="/" to="/wallet" /> */}
         </Switch>
