@@ -44,7 +44,7 @@ const menuItems = [
   },
 ];
 
-function Chains(props) {
+function Chains() {
   const { switchNetwork } = useChain();
   const { chainId } = useMoralisDapp();
   const [selected, setSelected] = useState({});

@@ -63,25 +63,25 @@ const App = () => {
             theme="light"
             mode="horizontal"
             style={{
-              width: "fit-content",
+              display: "flex",
               fontSize: "17px",
               fontWeight: "500",
             }}
           >
             <Menu.Item key="wallet">
-              <NavLink to="/wallet">Wallet</NavLink>
+              <NavLink to="/wallet">👛 Wallet</NavLink>
             </Menu.Item>
             <Menu.Item key="dex">
-              <NavLink to="/1inch">Dex</NavLink>
+              <NavLink to="/1inch">💱 Dex</NavLink>
             </Menu.Item>
             <Menu.Item key="balances">
-              <NavLink to="/erc20balance">Balances</NavLink>
+              <NavLink to="/erc20balance">💰 Balances</NavLink>
             </Menu.Item>
             <Menu.Item key="transfers">
-              <NavLink to="/erc20transfers">Transfers</NavLink>
+              <NavLink to="/erc20transfers">💸 Transfers</NavLink>
             </Menu.Item>
             <Menu.Item key="nft">
-              <NavLink to="/nftBalance">NFT Balance</NavLink>
+              <NavLink to="/nftBalance">🖼 NFT Balance</NavLink>
             </Menu.Item>
           </Menu>
           <div style={styles.headerRight}>
