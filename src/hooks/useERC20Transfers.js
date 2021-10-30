@@ -11,7 +11,7 @@ const useERC20Transfers = () => {
   useEffect(() => {
     if (isInitialized)
       fetchERC20Transfers()
-        .then((balance) => setERC20Transfers(balance))
+        .then((result) => setERC20Transfers(result))
         .catch((e) => alert(e.message));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isInitialized, chainId, walletAddress]);
