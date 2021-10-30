@@ -7,6 +7,7 @@ import TokenPrice from "components/TokenPrice";
 import Contract from "components/Contract/Contract";
 import ERC20Balance from "components/ERC20Balance";
 import ERC20Transfers from "components/ERC20Transfers";
+import NativeTransactions from "components/NativeTransactions";
 import InchDex from "components/InchDex";
 import NFTBalance from "components/NFTBalance";
 import Wallet from "components/Wallet";
@@ -74,6 +75,9 @@ const App = () => {
           <NavLink to="/erc20transfers" style={styles.navLink} activeStyle={styles.navLinkActive}>
             Transfers
           </NavLink>
+          <NavLink to="/nativeTransactions" style={styles.navLink} activeStyle={styles.navLinkActive}>
+            Native
+          </NavLink>
           {/* <NavLink to="/nftBalance" style={styles.navLink} activeStyle={styles.navLink}>
             NFT Balance
           </NavLink> */}
@@ -111,6 +115,9 @@ const App = () => {
           </Route>
           <Route path="/contract">
             <Contract />
+          </Route>
+          <Route path="/nativeTransactions">
+            <NativeTransactions />
           </Route>
           <Route path="/nonauthenticated">
             <>Please login using the "Authenticate" button</>
