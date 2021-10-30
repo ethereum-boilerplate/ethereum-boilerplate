@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useMoralis, useMoralisWeb3Api } from "react-moralis";
 import { useMoralisDapp } from "providers/MoralisDappProvider/MoralisDappProvider";
 
-const useERC20Transfers = () => {
+export const useERC20Transfers = () => {
   const { account } = useMoralisWeb3Api();
   const { walletAddress, chainId } = useMoralisDapp();
   const { isInitialized } = useMoralis();
@@ -24,5 +24,3 @@ const useERC20Transfers = () => {
   };
   return { fetchERC20Transfers, ERC20Transfers };
 };
-
-export default useERC20Transfers;

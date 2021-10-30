@@ -1,47 +1,76 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useMoralis } from "react-moralis";
 import { getEllipsisTxt } from "../../utils/formatters";
-import { Flex } from "../../uikit/Flex/Flex";
-import useERC20Transfers from "../../hooks/useERC20Transfers";
+import "antd/dist/antd.css";
+import { Skeleton, Table } from "antd";
 import styles from "./styles";
-
+import { useERC20Transfers } from "hooks/useERC20Transfers";
 function ERC20Transfers() {
-  const { ERC20Transfers } = useERC20Transfers();
+  const { ERC20Transfers, chainId } = useERC20Transfers();
   const { Moralis } = useMoralis();
-
   console.log(ERC20Transfers);
+  const columns = [
+    {
+      title: "Token",
+      dataIndex: "address",
+      key: "token",
+      render: (token) => getEllipsisTxt(token, 5),
+    },
+    {
+      title: "From",
+      dataIndex: "from_address",
+      key: "from",
+      render: (from) => getEllipsisTxt(from, 5),
+    },
+    {
+      title: "To",
+      dataIndex: "to_address",
+      key: "to",
+      render: (to) => getEllipsisTxt(to, 5),
+    },
+    {
+      title: "Value",
+      dataIndex: "value",
+      key: "value",
+      render: (value) => parseFloat(Moralis.Units.FromWei(value).toFixed(6)),
+    },
+    {
+      title: "Hash",
+      dataIndex: "transaction_hash",
+      key: "hash",
+      render: (hash) => (
+        <a
+          href={
+            chainId === "0x1"
+              ? `https://etherscan.io/tx/${hash}`
+              : chainId === "0x38"
+              ? `https://bscscan.com/tx/${hash}`
+              : chainId === "0x89"
+              ? `https://polygonscan.com/tx/${hash}`
+              : `https://explorer.avax.network/search?query=${hash}`
+          }
+        >
+          View Transaction
+        </a>
+      ),
+    },
+  ];
 
+  let key = 0;
   return (
-    <Flex maxWidth="1200px" margin="0 15px">
-      <h1 style={styles.title}>💸ERC20 Transfers</h1>
-      <div style={styles.card}>
-        <table style={styles.table}>
-          <thead>
-            <tr>
-              <th>Token</th>
-              <th>From</th>
-              <th>To</th>
-              <th>Value</th>
-              <th>Block Number</th>
-            </tr>
-          </thead>
-          <tbody>
-            {!ERC20Transfers
-              ? null
-              : ERC20Transfers.map((item, key) => (
-                  <tr key={key}>
-                    <td>{getEllipsisTxt(item.address, 5)}</td>
-                    <td>{getEllipsisTxt(item.from_address, 5)}</td>
-                    <td>{getEllipsisTxt(item.to_address, 5)}</td>
-                    <td>{parseFloat(Moralis.Units.FromWei(item.value).toFixed(6))}</td>
-                    <td>{item.block_number}</td>
-                  </tr>
-                ))}
-          </tbody>
-        </table>
-      </div>
-    </Flex>
+    <div>
+      <h1 style={styles.title}>:money_with_wings:ERC20 Transfers</h1>
+      <Skeleton loading={!ERC20Transfers}>
+        <Table
+          dataSource={ERC20Transfers}
+          columns={columns}
+          rowKey={(record) => {
+            key++;
+            return `${record.transaction_hash}-${key}`;
+          }}
+        />
+      </Skeleton>
+    </div>
   );
 }
-
 export default ERC20Transfers;
