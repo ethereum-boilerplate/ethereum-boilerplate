@@ -1,26 +1,40 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useMoralis } from "react-moralis";
-import { useEffect, useState } from "react/cjs/react.development";
-import { Flex } from "../uikit/Flex/Flex";
-import useNFTBalance from "../hooks/useNFTBalance";
+import { Card, Avatar, Row, Col } from "antd";
+import { SettingOutlined } from "@ant-design/icons";
+import { useNFTBalance } from "hooks/useNFTBalance";
+const { Meta } = Card;
 
-function NFTBalance() {
-  const { fetchNFTBalance } = useNFTBalance();
-  const { isInitialized } = useMoralis();
-  const [NFTBalance, setNFTBalance] = useState();
+const styles = {
+  NFTs: {
+    display: "flex",
+    flexWrap: "wrap",
+    webkitBoxPack: "start",
+    justifyContent: "flex-start",
+  },
+};
 
-  useEffect(() => {
-    if (isInitialized)
-      fetchNFTBalance()
-        .then((balance) => setNFTBalance(balance))
-        .catch((e) => alert(e.message));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isInitialized]);
-
+function NFTBalance(props) {
+  const { NFTBalance } = useNFTBalance();
+  console.log(NFTBalance);
+  // display: flex;
+  //   flex-wrap: wrap;
+  //   -webkit-box-pack: start;
+  //   justify-content: flex-start;
   return (
-    <Flex maxWidth="1200px" margin="0 15px">
-      <p>{JSON.stringify(NFTBalance)}</p>
-    </Flex>
+    <>
+      <div style={styles.NFTs}>
+        <Card
+          hoverable
+          style={{ width: 240, border: "2px solid #e7eaf3" }}
+          cover={
+            <img alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />
+          }
+        >
+          <Meta title="Europe Street beat" description="www.instagram.com" />
+        </Card>
+      </div>
+    </>
   );
 }
 

@@ -74,9 +74,9 @@ const App = () => {
           <NavLink to="/erc20transfers" style={styles.navLink} activeStyle={styles.navLinkActive}>
             Transfers
           </NavLink>
-          <NavLink to="/nftBalance" style={styles.navLink} activeStyle={styles.navLink}>
+          {/* <NavLink to="/nftBalance" style={styles.navLink} activeStyle={styles.navLink}>
             NFT Balance
-          </NavLink>
+          </NavLink> */}
           {/* <NavLink to="/contract" style={styles.navLink} activeStyle={styles.navLinkActive}>
             Contract
           </NavLink> */}
