@@ -11,7 +11,7 @@ const styles = {
   },
   tranfer: {
     padding: "20px",
-    boxShadow: "0px 2px 2px rgba(0, 0, 0, 0.25)",
+    borderBottom: "2px solid rgba(0, 0, 0, 0.06)",
   },
   header: {
     textAlign: "center",
@@ -114,7 +114,12 @@ function Transfer() {
         <div style={styles.select}>
           <h3>Amount:</h3>
           <div style={styles.field}>
-            <input style={styles.input} placeholder="0.00" type="number" onChange={(e) => setAmount(e.target.value)} />
+            <input
+              style={styles.input}
+              placeholder="0.00"
+              type="number"
+              onChange={(e) => setAmount(e.target.value)}
+            />
           </div>
         </div>
         <div style={styles.select}>

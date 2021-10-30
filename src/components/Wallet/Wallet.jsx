@@ -1,7 +1,7 @@
 import React from "react";
 import { Flex } from "../../uikit/Flex/Flex";
 import Transfer from "./components/Transfer";
-// import styles from "./styles";
+import { Divider } from "antd";
 import { Switch, Route, NavLink, Redirect } from "react-router-dom";
 import NativeBalance from "../NativeBalance";
 import Address from "../Address/Address";
@@ -25,10 +25,8 @@ const styles = {
     width: "450px",
     background: "#FFFFFF",
     boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.25)",
-    border: "2px solid #e7eaf3", 
-    borderRadius: "15px",
     marginBottom: "20px",
-    display: "flex", 
+    display: "flex",
     alignItems: "center",
     flexDirection: "column",
   },
@@ -36,9 +34,9 @@ const styles = {
     display: "flex",
     justifyContent: "space-around",
     width: "100%",
-    boxShadow: "0px 2px 2px rgba(0, 0, 0, 0.25)",
     marginTop: "20px",
     paddingBottom: "20px",
+    borderBottom: "2px solid rgba(0, 0, 0, 0.06)",
   },
   navLink: {
     textDecoration: "none",
@@ -64,9 +62,6 @@ function Wallet() {
           <NavLink to="/wallet/transfer" style={styles.navLink} activeStyle={styles.activeLink}>
             Transfer
           </NavLink>
-          {/* <NavLink to="/wallet/transactions" style={styles.navLink} activeStyle={styles.activeLink}>
-            Transactions
-          </NavLink> */}
           <NavLink to="/wallet/assets" style={styles.navLink} activeStyle={styles.activeLink}>
             Assets
           </NavLink>
