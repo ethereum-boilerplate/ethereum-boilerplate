@@ -15,19 +15,19 @@ function ERC20Transfers() {
       title: "Token",
       dataIndex: "address",
       key: "address",
-      render: (token) => getEllipsisTxt(token, 5),
+      render: (token) => getEllipsisTxt(token, 8),
     },
     {
       title: "From",
       dataIndex: "from_address",
       key: "from_address",
-      render: (from) => getEllipsisTxt(from, 5),
+      render: (from) => getEllipsisTxt(from, 8),
     },
     {
       title: "To",
       dataIndex: "to_address",
       key: "to_address",
-      render: (to) => getEllipsisTxt(to, 5),
+      render: (to) => getEllipsisTxt(to, 8),
     },
     {
       title: "Value",
@@ -61,7 +61,7 @@ function ERC20Transfers() {
 
   let key = 0;
   return (
-    <div>
+    <div style={{ maxWidth: "1000px", width: "100%", padding: "15px" }}>
       <h1 style={styles.title}>💸ERC20 Transfers</h1>
       <Skeleton loading={!ERC20Transfers}>
         <Table

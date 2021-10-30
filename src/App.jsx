@@ -11,6 +11,10 @@ import InchDex from "components/InchDex";
 import NFTBalance from "components/NFTBalance";
 import Wallet from "components/Wallet";
 import { Flex } from "uikit/Flex/Flex";
+import { Menu, Layout } from "antd";
+import { MailOutlined, AppstoreOutlined, SettingOutlined } from "@ant-design/icons";
+import "antd/dist/antd.css";
+const { Header } = Layout;
 
 const styles = {
   content: {
@@ -53,72 +57,107 @@ const App = () => {
 
   return (
     <Router>
-      <Flex
+      <Layout style={{ height: "100vh" }}>
+        {/* <Flex
         container
         justifyContent="space-between"
         alignItems="center"
         margin="15px 0"
         padding="0 20px"
-      >
-        <Logo />
-        <div style={styles.navBar}>
-          <NavLink to="/wallet" style={styles.navLink} activeStyle={styles.navLinkActive}>
-            Wallet
-          </NavLink>
-          <NavLink to="/1inch" style={styles.navLink} activeStyle={styles.navLinkActive}>
-            Dex
-          </NavLink>
-          <NavLink to="/erc20balance" style={styles.navLink} activeStyle={styles.navLinkActive}>
-            Balances
-          </NavLink>
-          <NavLink to="/erc20transfers" style={styles.navLink} activeStyle={styles.navLinkActive}>
-            Transfers
-          </NavLink>
-          <NavLink to="/nftBalance" style={styles.navLink} activeStyle={styles.navLinkActive}>
-            NFT Balance
-          </NavLink>
-          {/* <NavLink to="/contract" style={styles.navLink} activeStyle={styles.navLinkActive}>
+      > */}
+        <Header
+          style={{
+            position: "fixed",
+            zIndex: 1,
+            width: "100%",
+            background: "#fff",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <Logo />
+          <Menu
+            theme="light"
+            mode="horizontal"
+            defaultSelectedKeys={["2"]}
+            style={{ lineHeight: "64px" }}
+          >
+            <Menu.Item key="wallet">
+              <NavLink to="/wallet">Wallet</NavLink>
+            </Menu.Item>
+            <Menu.Item key="dex">
+              <NavLink to="/1inch">Dex</NavLink>
+            </Menu.Item>
+            <Menu.Item key="balances">
+              <NavLink to="/erc20balance">Balances</NavLink>
+            </Menu.Item>
+            <Menu.Item key="transfers">
+              <NavLink to="/erc20transfers">Transfers</NavLink>
+            </Menu.Item>
+            <Menu.Item key="nft">
+              <NavLink to="/nftBalance">NFT Balance</NavLink>
+            </Menu.Item>
+          </Menu>
+          <div style={styles.headerRight}>
+            <TokenPrice
+              address="0x1f9840a85d5af5bf1d1762f925bdaddc4201f984"
+              chain="eth"
+              image="https://cloudflare-ipfs.com/ipfs/QmXttGpZrECX5qCyXbBQiqgQNytVGeZW5Anewvh2jc4psg/"
+              size="40px"
+            />
+            <Chains polygon eth bsc avalanche />
+            <Account />
+          </div>
+        </Header>
+        {/* <NavLink to="/wallet">Wallet</NavLink> */}
+        {/* <NavLink to="/1inch">Dex</NavLink> */}
+        {/* <NavLink to="/erc20balance">Balances</NavLink>
+          <NavLink to="/erc20transfers">Transfers</NavLink>
+          <NavLink to="/nftBalance">NFT Balance</NavLink> */}
+        {/* <NavLink to="/contract" style={styles.navLink} activeStyle={styles.navLinkActive}>
             Contract
           </NavLink> */}
+        {/* </div> */}
+        {/* <div style={styles.headerRight}>
+        <TokenPrice
+          address="0x1f9840a85d5af5bf1d1762f925bdaddc4201f984"
+          chain="eth"
+          image="https://cloudflare-ipfs.com/ipfs/QmXttGpZrECX5qCyXbBQiqgQNytVGeZW5Anewvh2jc4psg/"
+          size="40px"
+        />
+        <Chains polygon eth bsc avalanche />
+        <Account />
+      </div> */}
+        {/* </Flex> */}
+        <div style={styles.content}>
+          <Switch>
+            <Route path="/wallet">
+              <Wallet />
+            </Route>
+            <Route path="/1inch">
+              <InchDex chain="eth" />
+            </Route>
+            <Route path="/erc20balance">
+              <ERC20Balance chain="eth" />
+            </Route>
+            <Route path="/erc20transfers">
+              <ERC20Transfers />
+            </Route>
+            <Route path="/nftBalance">
+              <NFTBalance />
+            </Route>
+            <Route path="/contract">
+              <Contract />
+            </Route>
+            <Route path="/nonauthenticated">
+              <>Please login using the "Authenticate" button</>
+            </Route>
+            {/* <Redirect from="/" to="/wallet" /> */}
+          </Switch>
+          {isAuthenticated ? <Redirect to="/wallet" /> : <Redirect to="/nonauthenticated" />}
         </div>
-        <div style={styles.headerRight}>
-          <TokenPrice
-            address="0x1f9840a85d5af5bf1d1762f925bdaddc4201f984"
-            chain="eth"
-            image="https://cloudflare-ipfs.com/ipfs/QmXttGpZrECX5qCyXbBQiqgQNytVGeZW5Anewvh2jc4psg/"
-            size="40px"
-          />
-          <Chains polygon eth bsc avalanche />
-          <Account />
-        </div>
-      </Flex>
-      <div style={styles.content}>
-        <Switch>
-          <Route path="/wallet">
-            <Wallet />
-          </Route>
-          <Route path="/1inch">
-            <InchDex chain="eth" />
-          </Route>
-          <Route path="/erc20balance">
-            <ERC20Balance chain="eth" />
-          </Route>
-          <Route path="/erc20transfers">
-            <ERC20Transfers />
-          </Route>
-          <Route path="/nftBalance">
-            <NFTBalance />
-          </Route>
-          <Route path="/contract">
-            <Contract />
-          </Route>
-          <Route path="/nonauthenticated">
-            <>Please login using the "Authenticate" button</>
-          </Route>
-          {/* <Redirect from="/" to="/wallet" /> */}
-        </Switch>
-        {isAuthenticated ? <Redirect to="/wallet" /> : <Redirect to="/nonauthenticated" />}
-      </div>
+      </Layout>
     </Router>
   );
 };
