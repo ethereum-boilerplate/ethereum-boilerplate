@@ -10,10 +10,6 @@ const styles = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    fontFamily: "Roboto, sans-serif",
-    fontWeight: "700",
-    fontSize: "16px",
-    color: "#041836",
     whiteSpace: "nowrap",
   },
 };

@@ -14,6 +14,8 @@ const styles = {
     backgroundColor: "rgba(255, 255, 255, 0.1)",
     borderRadius: "9px",
     alignItems: "center",
+    fontSize: "17px",
+    fontWeight: "500",
   },
 };
 
@@ -55,8 +57,8 @@ function Address(props) {
 
   return (
     <div style={styles.address}>
-      {props.avatar && <Blockie address={address} size={7} />}
       <p>{props.size ? getEllipsisTxt(address, props.size) : address}</p>
+      {props.avatar && <Blockie address={address} size={7} />}
       {props.copyable && (isClicked ? <Check /> : <Copy />)}
     </div>
   );
@@ -70,7 +72,7 @@ const Check = () => (
     height="24"
     viewBox="0 0 24 24"
     strokeWidth="3"
-    stroke="rgb(33, 191, 150)"
+    stroke="#21BF96"
     fill="none"
     strokeLinecap="round"
     strokeLinejoin="round"

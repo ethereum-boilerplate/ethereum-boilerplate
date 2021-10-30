@@ -12,6 +12,7 @@ const styles = {
 function ERC20Balance(props) {
   const { assets } = useERC20Balance(props);
   const { Moralis } = useMoralis();
+
   const columns = [
     {
       title: "",
@@ -51,10 +52,11 @@ function ERC20Balance(props) {
       render: (address) => getEllipsisTxt(address, 5),
     },
   ];
+
   let key = 0;
   return (
     <div>
-      <h1 style={styles.title}>:moneybag:Token Balances</h1>
+      <h1 style={styles.title}>💰Token Balances</h1>
       <Skeleton loading={!assets}>
         <Table
           dataSource={assets}

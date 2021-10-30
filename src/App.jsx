@@ -14,6 +14,10 @@ import { Flex } from "uikit/Flex/Flex";
 import { Menu, Layout } from "antd";
 import { MailOutlined, AppstoreOutlined, SettingOutlined } from "@ant-design/icons";
 import "antd/dist/antd.css";
+import Address from "components/Address/Address";
+import Blockie from "components/Blockie";
+import NativeBalance from "components/NativeBalance";
+import "./style.css";
 const { Header } = Layout;
 
 const styles = {
@@ -26,7 +30,10 @@ const styles = {
   },
   headerRight: {
     display: "flex",
-    gap: "10px",
+    gap: "20px",
+    alignItems: "center",
+    fontSize: "15px",
+    fontWeight: "600",
   },
   navLink: {
     textDecoration: "none",
@@ -74,14 +81,19 @@ const App = () => {
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
+            fontFamily: "Roboto, sans-serif",
           }}
         >
           <Logo />
           <Menu
             theme="light"
             mode="horizontal"
-            defaultSelectedKeys={["2"]}
-            style={{ lineHeight: "64px" }}
+            // defaultSelectedKeys={["2"]}
+            style={{
+              width: "fit-content",
+              fontSize: "17px",
+              fontWeight: "500",
+            }}
           >
             <Menu.Item key="wallet">
               <NavLink to="/wallet">Wallet</NavLink>
@@ -100,14 +112,23 @@ const App = () => {
             </Menu.Item>
           </Menu>
           <div style={styles.headerRight}>
+            {/* <TokenPrice
+              address="0x1f9840a85d5af5bf1d1762f925bdaddc4201f984"
+              chain="eth"
+              image="https://cloudflare-ipfs.com/ipfs/QmXttGpZrECX5qCyXbBQiqgQNytVGeZW5Anewvh2jc4psg/"
+              size="40px"
+            />
+            <Chains polygon eth bsc avalanche /> */}
             <TokenPrice
               address="0x1f9840a85d5af5bf1d1762f925bdaddc4201f984"
               chain="eth"
               image="https://cloudflare-ipfs.com/ipfs/QmXttGpZrECX5qCyXbBQiqgQNytVGeZW5Anewvh2jc4psg/"
               size="40px"
             />
-            <Chains polygon eth bsc avalanche />
+            <NativeBalance />
             <Account />
+            <Blockie currentWallet size="7" scale="5" />
+            {/* <Address avatar size="4" /> */}
           </div>
         </Header>
         {/* <NavLink to="/wallet">Wallet</NavLink> */}
