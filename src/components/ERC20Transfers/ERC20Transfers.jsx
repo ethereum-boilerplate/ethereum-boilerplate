@@ -1,10 +1,10 @@
 import React from "react";
 import { useMoralis } from "react-moralis";
 import { getEllipsisTxt } from "../../utils/formatters";
-import 'antd/dist/antd.css';
-import { Skeleton, Table } from 'antd'
+import "antd/dist/antd.css";
+import { Skeleton, Table } from "antd";
 import styles from "./styles";
-import useERC20Transfers from "hooks/useERC20Transfers";
+import { useERC20Transfers } from "hooks/useERC20Transfers";
 
 function ERC20Transfers() {
   const { ERC20Transfers, chainId } = useERC20Transfers();
@@ -12,57 +12,52 @@ function ERC20Transfers() {
 
   const columns = [
     {
-      title: 'Token',
-      dataIndex: 'address',
-      key: 'address',
-      render: token => (
-        getEllipsisTxt(token, 5)
-      )
+      title: "Token",
+      dataIndex: "address",
+      key: "address",
+      render: (token) => getEllipsisTxt(token, 5),
     },
     {
-      title: 'From',
-      dataIndex: 'from_address',
-      key: 'from_address',
-      render: from => (
-        getEllipsisTxt(from, 5)
-      )
+      title: "From",
+      dataIndex: "from_address",
+      key: "from_address",
+      render: (from) => getEllipsisTxt(from, 5),
     },
     {
-      title: 'To',
-      dataIndex: 'to_address',
-      key: 'to_address',
-      render: to => (
-        getEllipsisTxt(to, 5)
-      )
+      title: "To",
+      dataIndex: "to_address",
+      key: "to_address",
+      render: (to) => getEllipsisTxt(to, 5),
     },
     {
-      title: 'Value',
-      dataIndex: 'value',
-      key: 'value',
-      render: value => (
-        parseFloat(Moralis.Units.FromWei(value).toFixed(6))
-      )
+      title: "Value",
+      dataIndex: "value",
+      key: "value",
+      render: (value) => parseFloat(Moralis.Units.FromWei(value).toFixed(6)),
     },
     {
-      title: 'Hash',
-      dataIndex: 'transaction_hash',
-      key: 'transaction_hash',
-      render: hash => (
-        <a 
+      title: "Hash",
+      dataIndex: "transaction_hash",
+      key: "transaction_hash",
+      render: (hash) => (
+        <a
           href={
-            chainId === "0x1" ? `https://etherscan.io/tx/${hash}` :
-            chainId === "0x38" ? `https://bscscan.com/tx/${hash}` :
-            chainId === "0x89" ? `https://polygonscan.com/tx/${hash}` :
-            `https://explorer.avax.network/search?query=${hash}`
+            chainId === "0x1"
+              ? `https://etherscan.io/tx/${hash}`
+              : chainId === "0x38"
+              ? `https://bscscan.com/tx/${hash}`
+              : chainId === "0x89"
+              ? `https://polygonscan.com/tx/${hash}`
+              : `https://explorer.avax.network/search?query=${hash}`
           }
           target="_blank"
           rel="noreferrer"
         >
           View Transaction
         </a>
-      )
-    }
-  ]
+      ),
+    },
+  ];
 
   let key = 0;
   return (
