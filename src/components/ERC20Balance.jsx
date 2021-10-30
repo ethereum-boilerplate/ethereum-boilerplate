@@ -20,8 +20,8 @@ function ERC20Balance(props) {
       key: "logo",
       render: (logo) => (
         <Image
-          src={logo}
-          alt="https://etherscan.io/images/main/empty-token.png"
+          src={logo || "https://etherscan.io/images/main/empty-token.png"}
+          alt="nologo"
           width="30px"
           height="30px"
         />
