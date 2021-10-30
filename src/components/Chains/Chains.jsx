@@ -21,64 +21,44 @@ const styles = {
   },
 };
 
-function Chains(props) {
-  const { switchNetwork } = useChain();
-  const { chainId: chain } = useMoralisDapp();
-  const [chainId, setChainId] = useState();
-
-  const [selected, setSelected] = useState({
+const menuItems = [
+  {
+    key: "0xa86a",
+    value: "Avalanche",
+    icon: <AvaxLogo />,
+  },
+  {
+    key: "0x38",
+    value: "Binance",
+    icon: <BSCLogo />,
+  },
+  {
+    key: "0x1",
+    value: "Ethereum",
+    icon: <ETHLogo />,
+  },
+  {
     key: "0x89",
     value: "Polygon",
     icon: <PolygonLogo />,
-  });
+  },
+];
 
-  useEffect(() => setChainId(chain), [chain]);
+function Chains(props) {
+  const { switchNetwork } = useChain();
+  const { chainId } = useMoralisDapp();
+  const [selected, setSelected] = useState({});
+
+  useEffect(() => {
+    if (!chainId) return null;
+    const newSelected = menuItems.find((item) => item.key === chainId);
+    setSelected(newSelected);
+  }, [chainId]);
 
   const handleMenuClick = (e) => {
     console.log(e.key);
-    const newSelected = menuItems.find((item) => item.key === e.key);
-    switchNetwork(e.key).then(() => setSelected(newSelected));
+    switchNetwork(e.key);
   };
-
-  // const menu = (
-  //   <Menu onClick={handleMenuClick}>
-  //     <Menu.Item key="Avalanche" icon={<AvaxLogo />}>
-  //       Avalanche
-  //     </Menu.Item>
-  //     <Menu.Item key="Binance" icon={<BSCLogo />}>
-  //       Binance
-  //     </Menu.Item>
-  //     <Menu.Item key="Ethereum" icon={<ETHLogo />}>
-  //       Ethereum
-  //     </Menu.Item>
-  //     <Menu.Item key="Polygon" icon={<PolygonLogo />}>
-  //       Polygon
-  //     </Menu.Item>
-  //   </Menu>
-  // );
-
-  const menuItems = [
-    {
-      key: "0xa86a",
-      value: "Avalanche",
-      icon: <AvaxLogo />,
-    },
-    {
-      key: "0x38",
-      value: "Binance",
-      icon: <BSCLogo />,
-    },
-    {
-      key: "0x1",
-      value: "Ethereum",
-      icon: <ETHLogo />,
-    },
-    {
-      key: "0x89",
-      value: "Polygon",
-      icon: <PolygonLogo />,
-    },
-  ];
 
   const menu = (
     <Menu onClick={handleMenuClick}>
@@ -92,25 +72,13 @@ function Chains(props) {
 
   return (
     <div>
-      {/* {props?.avalanche && (
-        <Avalanche onClick={() => switchNetwork("0xa86a")} activeChain={chainId === "0xa86a"} />
-      )}
-      {props?.polygon && (
-        <Polygon onClick={() => switchNetwork("0x89")} activeChain={chainId === "0x89"} />
-      )}
-      {props?.bsc && (
-        <Binance onClick={() => switchNetwork("0x38")} activeChain={chainId === "0x38"} />
-      )}
-      {props?.eth && (
-        <Ethereum onClick={() => switchNetwork("0x1")} activeChain={chainId === "0x1"} />
-      )} */}
       <Dropdown overlay={menu} trigger={["click"]}>
         <Button
-          key={selected.key}
-          icon={selected.icon}
+          key={selected?.key}
+          icon={selected?.icon}
           style={{ ...styles.button, ...styles.item }}
         >
-          <span style={{ marginLeft: "5px" }}>{selected.value}</span>
+          <span style={{ marginLeft: "5px" }}>{selected?.value}</span>
           <DownOutlined />
         </Button>
       </Dropdown>
