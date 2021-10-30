@@ -5,8 +5,7 @@ const styles = {
     padding: "20px",
     background: "#FFFFFF",
     boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.25)",
-    border: "2px solid #e7eaf3",
-    borderRadius: "15px",
+    borderRadius: "8px",
   },
   header: {
     display: "flex",
@@ -17,7 +16,7 @@ const styles = {
   swapbox: {
     overflow: "auto",
     margin: "10px 0",
-    borderRadius: "12px",
+    borderRadius: "8px",
     padding: "13px",
     fontSize: "14px",
     fontWeight: "600",
@@ -60,7 +59,7 @@ const styles = {
     justifyContent: "center",
     alignItems: "center",
     fontWeight: "600",
-    borderRadius: "13px",
+    borderRadius: "8px",
     outline: "0px",
     height: "44px",
     color: "white",

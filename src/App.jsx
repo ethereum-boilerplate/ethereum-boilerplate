@@ -10,11 +10,8 @@ import ERC20Transfers from "components/ERC20Transfers";
 import InchDex from "components/InchDex";
 import NFTBalance from "components/NFTBalance";
 import Wallet from "components/Wallet";
-import { Flex } from "uikit/Flex/Flex";
 import { Menu, Layout } from "antd";
-import { MailOutlined, AppstoreOutlined, SettingOutlined } from "@ant-design/icons";
 import "antd/dist/antd.css";
-import Address from "components/Address/Address";
 import Blockie from "components/Blockie";
 import NativeBalance from "components/NativeBalance";
 import "./style.css";
@@ -37,6 +34,7 @@ const styles = {
     justifyContent: "space-between",
     alignItems: "center",
     fontFamily: "Roboto, sans-serif",
+    borderBottom: "2px solid rgba(0, 0, 0, 0.06)",
   },
   headerRight: {
     display: "flex",
@@ -56,7 +54,7 @@ const App = () => {
 
   return (
     <Router>
-      <Layout style={{ height: "100vh" }}>
+      <Layout style={{ height: "100vh", background: "#f0f2f500" }}>
         <Header style={styles.header}>
           <Logo />
           <Menu

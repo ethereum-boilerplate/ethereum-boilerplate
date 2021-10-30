@@ -52,7 +52,7 @@ const styles = {
     justifyContent: "center",
     alignItems: "center",
     fontWeight: "600",
-    borderRadius: "13px",
+    borderRadius: "8px",
     outline: "0px",
     height: "46px",
     color: "white",
