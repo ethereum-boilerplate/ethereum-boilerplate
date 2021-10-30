@@ -105,7 +105,7 @@ function Transfer() {
     <div style={styles.card}>
       <div style={styles.tranfer}>
         <div style={styles.header}>
-          <h3>Trasnfer Assets</h3>
+          <h3>Transfer Assets</h3>
         </div>
         <div style={styles.select}>
           <h3>Address:</h3>
