@@ -33,8 +33,7 @@ function ERC20Transfers() {
       title: "Value",
       dataIndex: "value",
       key: "value",
-      // missing second parameter (decimal) in FromWei function
-      render: (value) => parseFloat(Moralis.Units.FromWei(value).toFixed(6)),
+      render: (value, item) => parseFloat(Moralis.Units.FromWei(value, item.decimals).toFixed(6)),
     },
     {
       title: "Hash",
