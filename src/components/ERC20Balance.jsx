@@ -1,4 +1,3 @@
-import React from "react";
 import { useMoralis } from "react-moralis";
 import { useERC20Balance } from "../hooks/useERC20Balance";
 import { Skeleton, Table, Image } from "antd";

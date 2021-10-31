@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import useTokenPrice from "hooks/useTokenPrice";
 
 const styles = {
@@ -17,7 +17,7 @@ function TokenPrice(props) {
   const { tokenPrice } = useTokenPrice(props);
   const [isUSDMode, setIsUSDMode] = useState(true);
 
-  const toggleDisplayStyle = () => setIsUSDMode(isUSDMode ? false : true);
+  const toggleDisplayStyle = () => setIsUSDMode(!isUSDMode);
 
   const noLogoToken = "https://etherscan.io/images/main/empty-token.png";
 

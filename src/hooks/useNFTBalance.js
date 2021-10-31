@@ -21,6 +21,7 @@ export const useNFTBalance = (options) => {
       for (let NFT of NFTs) {
         if (NFT?.metadata) {
           NFT.metadata = JSON.parse(NFT.metadata);
+          // metadata is a string type
           NFT.image = resolveLink(NFT.metadata?.image);
         }
       }
