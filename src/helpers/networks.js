@@ -1,4 +1,9 @@
 export const networkConfigs = {
+  "0x1": { currencySymbol: "ETH" },
+  "0x3": { currencySymbol: "ETH" },
+  "0x4": { currencySymbol: "ETH" },
+  "0x2a": { currencySymbol: "ETH" },
+  "0x5": { currencySymbol: "ETH" },
   "0xa86a": {
     chainId: 43114,
     chainName: "Avalanche Mainnet",
@@ -40,3 +45,5 @@ export const networkConfigs = {
     blockExplorerUrl: "https://rpc-mumbai.matic.today",
   },
 };
+
+export const getNativeByChain = (chain) => networkConfigs[chain]?.currencySymbol || "NATIVE";
