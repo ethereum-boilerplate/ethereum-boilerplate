@@ -53,10 +53,11 @@ function Chains() {
     if (!chainId) return null;
     const newSelected = menuItems.find((item) => item.key === chainId);
     setSelected(newSelected);
+    console.log("current chainId: ", chainId);
   }, [chainId]);
 
   const handleMenuClick = (e) => {
-    console.log(e.key);
+    console.log("switch to: ", e.key);
     switchNetwork(e.key);
   };
 

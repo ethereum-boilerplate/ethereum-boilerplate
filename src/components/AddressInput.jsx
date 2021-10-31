@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getEllipsisTxt } from "../utils/formatters";
+import { getEllipsisTxt } from "../helpers/formatters";
 import Blockie from "./Blockie";
 import "./addressinput.css";
 

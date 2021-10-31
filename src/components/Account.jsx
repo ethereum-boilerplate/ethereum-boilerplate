@@ -1,7 +1,7 @@
 import { useMoralisDapp } from "providers/MoralisDappProvider/MoralisDappProvider";
 import React from "react";
 import { useMoralis } from "react-moralis";
-import { getEllipsisTxt } from "utils/formatters";
+import { getEllipsisTxt } from "helpers/formatters";
 const styles = {
   account: {
     height: "42px",

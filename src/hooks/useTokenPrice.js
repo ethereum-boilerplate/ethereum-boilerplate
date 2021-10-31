@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useMoralis, useMoralisWeb3Api } from "react-moralis";
-import { c2, tokenValueTxt } from "../utils/formatters";
+import { c2, tokenValueTxt } from "../helpers/formatters";
 
 const useTokenPrice = (options) => {
   const { token } = useMoralisWeb3Api();

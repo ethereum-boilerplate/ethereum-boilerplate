@@ -1,4 +1,4 @@
-import { getNativeByChain } from "utils/getNativeByChain";
+import { getNativeByChain } from "helpers/getNativeByChain";
 import { useMoralisDapp } from "providers/MoralisDappProvider/MoralisDappProvider";
 import { useEffect, useMemo, useState } from "react";
 import { useMoralis, useMoralisWeb3Api, useMoralisWeb3ApiCall } from "react-moralis";

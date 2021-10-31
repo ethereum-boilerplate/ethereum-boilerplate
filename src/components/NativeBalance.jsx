@@ -1,6 +1,6 @@
 import { useNativeBalance } from "hooks/useNativeBalance";
 import React from "react";
-import { n4 } from "utils/formatters";
+import { n4 } from "helpers/formatters";
 
 function NativeBalance(props) {
   const { balance, nativeName } = useNativeBalance(props);

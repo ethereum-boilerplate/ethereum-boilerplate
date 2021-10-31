@@ -1,6 +1,6 @@
 import React from "react";
 import { useMoralis } from "react-moralis";
-import { getEllipsisTxt } from "../../utils/formatters";
+import { getEllipsisTxt } from "../../helpers/formatters";
 import "antd/dist/antd.css";
 import { Skeleton, Table } from "antd";
 import styles from "./styles";
