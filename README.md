@@ -8,7 +8,7 @@ There are many components in this boilerplate that do not require an active web3
 
 Please check the [official documentation of Moralis](https://docs.moralis.io/#user) for all the functionalities of Moralis.
 
-![dapp](https://user-images.githubusercontent.com/78314301/139121325-0239399e-bcdc-4ca0-b0ec-a25286774e39.gif)
+![dapp](https://user-images.githubusercontent.com/78314301/139577351-7f58bcf8-8f54-443b-881f-89526d4aaafa.gif)
 
 # ⭐️ `Star us`
 If this boilerplate helps you build Ethereum dapps faster - please star this project, every star makes us very happy!
@@ -141,7 +141,7 @@ const [address, setAddress] = useState();
 
 ### `<ERC20Balance />`
 
-![image](https://user-images.githubusercontent.com/78314301/138942560-722b03ef-09db-47ce-8b73-7965bae81646.png)
+![image](https://user-images.githubusercontent.com/78314301/139561267-7a1be577-ad13-4158-a7ea-aa4e7db358a3.png)
 
 💰 `<ERC20Balance />` : displays the ERC20 balance of an address. Uses Moralis Web3API (does not require an active web3 provider).
 
@@ -155,7 +155,7 @@ const [address, setAddress] = useState();
 
 ### `<ERC20Transfers />`
 
-![image](https://user-images.githubusercontent.com/78314301/138941033-127dca78-1424-41ce-94da-ae1b3b865261.png)
+![image](https://user-images.githubusercontent.com/78314301/139561270-7e0964ec-65f9-4909-b7c1-5706a22cca86.png)
 
 💸 `<ERC20Transfers />` : displays the ERC20 transfers of an address. Uses Moralis Web3API (does not require an active web3 provider).
 
@@ -170,7 +170,7 @@ const [address, setAddress] = useState();
 
 ![dex2](https://user-images.githubusercontent.com/78314301/139118630-9c98dbcf-73bc-4b47-af09-9f81a1181d0b.gif)
 
-💱 `<InchDex />` : interface for [Moralis 1Inch Plugin](https://moralis.io/plugins/1inch/). This plugin integrates the DeFi / DEX aggregator 1Inch to any project that uses Moralis. There is a 1% transaction fee on each swap.
+💱 `<InchDex />` : interface for [Moralis 1Inch Plugin](https://moralis.io/plugins/1inch/). This plugin integrates the DeFi / DEX aggregator 1Inch to any project that uses Moralis.
 
 **Options**:
 - chain (optional): network. Available: Ethereum (“eth”), Binance Smart Chain (“bsc”), Polygon (“polygon”)
