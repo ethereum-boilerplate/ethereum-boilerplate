@@ -70,7 +70,7 @@ const App = () => {
               <NavLink to="/wallet">👛 Wallet</NavLink>
             </Menu.Item>
             <Menu.Item key="dex">
-              <NavLink to="/1inch">💱 Dex</NavLink>
+              <NavLink to="/1inch">🏦 Dex</NavLink>
             </Menu.Item>
             <Menu.Item key="balances">
               <NavLink to="/erc20balance">💰 Balances</NavLink>
