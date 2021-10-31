@@ -1,4 +1,3 @@
-import React from "react";
 import Blockies from "react-blockies";
 import { useMoralisDapp } from "../providers/MoralisDappProvider/MoralisDappProvider";
 

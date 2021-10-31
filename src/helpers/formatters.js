@@ -18,7 +18,7 @@ export const c2 = new Intl.NumberFormat("en-us", {
 
 /**
  * Returns a string of form "abc...xyz"
- * @param {string} str string to strink
+ * @param {string} str string to string
  * @param {number} n number of chars to keep at front/end
  * @returns {string}
  */

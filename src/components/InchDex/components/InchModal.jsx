@@ -64,9 +64,9 @@ function InchModal({ open, onClose, setToken, tokenList }) {
             strokeLinejoin="round"
             onClick={onClose}
           >
-            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-            <line x1={18} y1={6} x2={6} y2={18}></line>
-            <line x1={6} y1={6} x2={18} y2={18}></line>
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <line x1={18} y1={6} x2={6} y2={18}/>
+            <line x1={6} y1={6} x2={18} y2={18}/>
           </svg>
         </div>
         <div style={styles.tokens}>
@@ -81,7 +81,7 @@ function InchModal({ open, onClose, setToken, tokenList }) {
                   }}
                   key={index}
                 >
-                  <img style={styles.logo} src={tokenList[token].logoURI} alt="noLogo"></img>
+                  <img style={styles.logo} src={tokenList[token].logoURI} alt="noLogo"/>
                   <div>
                     <h4>{tokenList[token].name}</h4>
                     <span style={{ fontWeight: "600", fontSize: "15px", lineHeight: "14px" }}>
