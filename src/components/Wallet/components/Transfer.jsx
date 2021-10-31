@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useMoralis } from "react-moralis";
 import AddressInput from "../../AddressInput";
 import TokenList from "./TokenList";
@@ -68,6 +67,7 @@ const styles = {
     padding: "0 10px",
   },
 };
+
 function Transfer() {
   const { Moralis } = useMoralis();
   const [receiver, setReceiver] = useState();
@@ -109,7 +109,11 @@ function Transfer() {
         </div>
         <div style={styles.select}>
           <h3>Address:</h3>
-          <AddressInput autoFocus placeholder="Public address (0x)" onChange={setReceiver} />
+          <AddressInput
+            autoFocus
+            placeholder="Public address (0x)"
+            onChange={setReceiver}
+          />
         </div>
         <div style={styles.select}>
           <h3>Amount:</h3>
@@ -179,7 +183,7 @@ const Loader = () => (
       stroke="white"
       strokeWidth="7"
       r="20"
-      stroke-dasharray="94.24777960769379 33.41592653589793"
+      strokeDasharray="94.24777960769379 33.41592653589793"
     >
       <animateTransform
         attributeName="transform"
@@ -188,7 +192,7 @@ const Loader = () => (
         dur="1s"
         values="0 50 50;360 50 50"
         keyTimes="0;1"
-      ></animateTransform>
+      />
     </circle>
   </svg>
 );

@@ -11,8 +11,12 @@ const useTokenPrice = (options) => {
     if (isInitialized)
       fetchTokenPrice(options)
         .then((price) => {
+          // usdPrice is a number, format() returns a string
           price.usdPrice = c2.format(price.usdPrice);
           const { value, decimals, symbol } = price.nativePrice;
+          // nativePrice is an Object
+          // {value: string, decimals: number, name: string, symbol: string},
+          // tokenValueTxt returns a string
           price.nativePrice = tokenValueTxt(value, decimals, symbol);
           setTokenPrice(price);
         })

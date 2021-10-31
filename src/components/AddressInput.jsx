@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { getEllipsisTxt } from "../helpers/formatters";
 import Blockie from "./Blockie";
 import "./addressinput.css";
@@ -12,7 +12,7 @@ const styles = {
 };
 
 function AddressInput(props) {
-  const [address, setAddress] = useState();
+  const [address, setAddress] = useState("");
   const [validatedAddress, setValidatedAddress] = useState();
 
   // eslint-disable-next-line react-hooks/exhaustive-deps

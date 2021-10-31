@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useMoralis } from "react-moralis";
 import MoralisDappContext from "./context";
 
