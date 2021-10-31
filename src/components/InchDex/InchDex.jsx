@@ -136,7 +136,7 @@ function InchDex({ chain }) {
                 placeholder="0.00"
                 value={
                   quote
-                    ? Moralis.Units.FromWei(quote?.toTokenAmount, quote?.toToken.decimals).toFixed(
+                    ? Moralis.Units.FromWei(quote?.toTokenAmount, quote?.toToken?.decimals).toFixed(
                         6
                       )
                     : ""

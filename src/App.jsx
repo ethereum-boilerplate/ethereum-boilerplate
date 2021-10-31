@@ -104,7 +104,7 @@ const App = () => {
               <InchDex chain="eth" />
             </Route>
             <Route path="/erc20balance">
-              <ERC20Balance chain="eth" />
+              <ERC20Balance />
             </Route>
             <Route path="/erc20transfers">
               <ERC20Transfers />
