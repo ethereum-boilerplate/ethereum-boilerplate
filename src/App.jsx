@@ -68,6 +68,7 @@ const App = () => {
               width: "100%",
               justifyContent: "center",
             }}
+            defaultSelectedKeys={["quickstart"]}
           >
             <Menu.Item key="quickstart">
               <NavLink to="/quickstart">🚀 Quick Start</NavLink>
