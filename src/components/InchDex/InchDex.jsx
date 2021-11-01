@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useMoralis } from "react-moralis";
 import { useMoralisDapp } from "providers/MoralisDappProvider/MoralisDappProvider";
 import InchModal from "./components/InchModal";
@@ -121,10 +121,10 @@ function InchDex({ chain }) {
               strokeLinecap="round"
               strokeLinejoin="round"
             >
-              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-              <line x1={12} y1={5} x2={12} y2={19}></line>
-              <line x1={16} y1={15} x2={12} y2={19}></line>
-              <line x1={8} y1={15} x2={12} y2={19}></line>
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+              <line x1={12} y1={5} x2={12} y2={19}/>
+              <line x1={16} y1={15} x2={12} y2={19}/>
+              <line x1={8} y1={15} x2={12} y2={19}/>
             </svg>
           </div>
           <div style={styles.swapbox}>

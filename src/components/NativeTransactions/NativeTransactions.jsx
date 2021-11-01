@@ -34,6 +34,7 @@ function NativeTransactions() {
       dataIndex: 'value',
       key: 'value',
       render: value => (
+          // missing second argument in FromWei, decimals
         parseFloat(Moralis.Units.FromWei(value).toFixed(6))
       )
     },
