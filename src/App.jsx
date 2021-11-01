@@ -64,6 +64,8 @@ const App = () => {
               display: "flex",
               fontSize: "17px",
               fontWeight: "500",
+              width: "100%",
+              justifyContent: "center",
             }}
           >
             <Menu.Item key="wallet">
