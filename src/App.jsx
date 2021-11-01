@@ -15,6 +15,7 @@ import "antd/dist/antd.css";
 import Blockie from "components/Blockie";
 import NativeBalance from "components/NativeBalance";
 import "./style.css";
+import QuickStart from "components/QuickStart";
 const { Header } = Layout;
 
 const styles = {
@@ -68,6 +69,9 @@ const App = () => {
               justifyContent: "center",
             }}
           >
+            <Menu.Item key="quickstart">
+              <NavLink to="/quickstart">🚀 Quick Start</NavLink>
+            </Menu.Item>
             <Menu.Item key="wallet">
               <NavLink to="/wallet">👛 Wallet</NavLink>
             </Menu.Item>
@@ -99,6 +103,9 @@ const App = () => {
         </Header>
         <div style={styles.content}>
           <Switch>
+            <Route path="/quickstart">
+              <QuickStart />
+            </Route>
             <Route path="/wallet">
               <Wallet />
             </Route>
@@ -122,7 +129,8 @@ const App = () => {
             </Route>
             {/* <Redirect from="/" to="/wallet" /> */}
           </Switch>
-          {isAuthenticated ? <Redirect to="/wallet" /> : <Redirect to="/nonauthenticated" />}
+          <Redirect to="/quickstart" />
+          {/* {isAuthenticated ? <Redirect to="/quickstart" /> : <Redirect to="/nonauthenticated" />} */}
         </div>
       </Layout>
     </Router>
