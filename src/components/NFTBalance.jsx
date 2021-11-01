@@ -75,7 +75,7 @@ function NFTBalance() {
               actions={
                 [
                   <Tooltip title="View On Blockexplorer">
-                    <FileSearchOutlined onClick={() => window.open(`${getExplorer(chainId)}/address/${nft.token_address}`, '_blank')} />
+                    <FileSearchOutlined onClick={() => window.open(`${getExplorer(chainId)}address/${nft.token_address}`, '_blank')} />
                   </Tooltip>,
                   <Tooltip title="Transfer NFT">
                     <SendOutlined onClick={() => handleTransferClick(nft)}/>
