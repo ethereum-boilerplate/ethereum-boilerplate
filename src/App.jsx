@@ -98,7 +98,7 @@ const App = () => {
             />
             <NativeBalance />
             <Account />
-            <Blockie currentWallet size="7" scale="5" />
+            <Blockie currentWallet size={7} scale={5} />
           </div>
         </Header>
         <div style={styles.content}>
