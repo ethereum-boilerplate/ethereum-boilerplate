@@ -105,7 +105,7 @@ yarn start
 ```jsx
 const [address, setAddress] = useState();
 
-<AddressInput autoFocus placeholder="Input your Address" onChange={setReceiver} />
+<AddressInput autoFocus placeholder="Input your Address" onChange={setAddress} />
 ```
 
 
