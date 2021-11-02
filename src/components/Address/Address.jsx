@@ -25,8 +25,8 @@ function Address(props) {
   const [isClicked, setIsClicked] = useState(false);
 
   useEffect(() => {
-    setAddress(walletAddress);
-  }, [walletAddress]);
+    setAddress(props?.address || walletAddress);
+  }, [walletAddress, props]);
 
   if (!address) return null;
 
@@ -57,8 +57,9 @@ function Address(props) {
 
   return (
     <div style={styles.address}>
+      {props.avatar === "left" && <Blockie address={address} size={7} />}
       <p>{props.size ? getEllipsisTxt(address, props.size) : address}</p>
-      {props.avatar && <Blockie address={address} size={7} />}
+      {props.avatar === "right" && <Blockie address={address} size={7} />}
       {props.copyable && (isClicked ? <Check /> : <Copy />)}
     </div>
   );

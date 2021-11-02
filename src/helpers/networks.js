@@ -4,6 +4,12 @@ export const networkConfigs = {
   "0x4": { currencySymbol: "ETH", blockExplorerUrl: "https://kovan.etherscan.io/" },
   "0x2a": { currencySymbol: "ETH", blockExplorerUrl: "https://rinkeby.etherscan.io/" },
   "0x5": { currencySymbol: "ETH", blockExplorerUrl: "https://goerli.etherscan.io/" },
+  "0x539": {
+    chainName: "Local Chain",
+    currencyName: "ETH",
+    currencySymbol: "ETH",
+    rpcUrl: "http://127.0.0.1:7545",
+  },
   "0xa86a": {
     chainId: 43114,
     chainName: "Avalanche Mainnet",

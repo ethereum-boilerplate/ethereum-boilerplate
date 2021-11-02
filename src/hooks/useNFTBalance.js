@@ -27,6 +27,7 @@ export const useNFTBalance = (options) => {
       }
       setNFTBalance(NFTs);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
 
   return { getNFTBalance, NFTBalance, error, isLoading };

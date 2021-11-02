@@ -14,8 +14,7 @@ const styles = {
     fontSize: "17px",
   },
   wrapper: {
-    maxWidth: "1000px",
-    width: "100%",
+    width: "60vw",
     padding: "15px",
   },
 };
@@ -40,14 +39,18 @@ export default function QuickStart(props) {
 
         <Timeline.Item dot="💿" style={styles.text}>
           <Text delete>
-            Install all dependencies: <Text code>yarn install</Text>
+            Install all dependencies: <Text code>npm install</Text>
           </Text>
         </Timeline.Item>
 
         <Timeline.Item dot="🧰" style={styles.text}>
           <Text>
             Sign up for a free account on{" "}
-            <a href="https://admin.moralis.io/register" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://moralis.io?utm_source=boilerplatehosted&utm_medium=todo&utm_campaign=ethereum-boilerplate"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Moralis
             </a>
           </Text>
@@ -67,20 +70,42 @@ export default function QuickStart(props) {
           </Text>
         </Timeline.Item>
 
-        <Timeline.Item dot="💿" style={styles.text}>
+        <Timeline.Item dot="🔏" style={styles.text}>
           <Text>
-            Install{" "}
-            <a href="https://moralis.io/plugins/1inch/" target="_blank" rel="noopener noreferrer">
-              1inch Moralis Plugin
-            </a>{" "}
-            needed for the<Text code>{"<InchDex />"}</Text> component
+            Rename <Text code>.env.example</Text> to <Text code>.env</Text> and provide your{" "}
+            <Text strong>appId</Text> and <Text strong>serverUrl</Text> from{" "}
+            <a
+              href="https://moralis.io?utm_source=boilerplatehosted&utm_medium=todo&utm_campaign=ethereum-boilerplate"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Moralis
+            </a>
+            :
+          </Text>
+          <Text code style={{ display: "block" }}>
+            REACT_APP_MORALIS_APPLICATION_ID = xxxxxxxxxxxx
+          </Text>
+          <Text code style={{ display: "block" }}>
+            REACT_APP_MORALIS_SERVER_URL = https://xxxxxx.grandmoralis.com:2053/server
           </Text>
         </Timeline.Item>
 
-        <Timeline.Item dot="🔏" style={styles.text}>
+        <Timeline.Item dot="🔁" style={styles.text}>
+          <Text>Refresh the page</Text>
+        </Timeline.Item>
+
+        <Timeline.Item dot="💿" style={styles.text}>
           <Text>
-            Provide your <Text strong>appId</Text> and <Text strong>serverUrl</Text> from Moralis to{" "}
-            <Text code>{"<MoralisProvider>"}</Text> in <Text code>src/index.js</Text>
+            Install{" "}
+            <a
+              href="https://moralis.io/plugins/1inch/?utm_source=boilerplatehosted&utm_medium=todo&utm_campaign=ethereum-boilerplate"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              1inch Moralis Plugin
+            </a>{" "}
+            needed for the<Text code>{"<InchDex />"}</Text> component (optional)
           </Text>
         </Timeline.Item>
 
@@ -88,6 +113,47 @@ export default function QuickStart(props) {
           <Text>BUIDL!!!</Text>
         </Timeline.Item>
       </Timeline>
+
+      <h1 style={styles.title}>💣Additional steps to start a local devchain</h1>
+      <Timeline mode="left">
+        <Timeline.Item dot="💿" style={styles.text}>
+          <Text>
+            Install{" "}
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://www.npmjs.com/package/truffle"
+            >
+              Truffle
+            </a>{" "}
+            and{" "}
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://www.npmjs.com/package/ganache-cli"
+            >
+              ganache-cli
+            </a>{" "}
+            <Text code>npm install -g ganache-cli truffle</Text>
+          </Text>
+        </Timeline.Item>
+        <Timeline.Item dot="⚙️" style={styles.text}>
+          <Text>
+            Start you local devchain: <Text code>npm run devchain</Text> on a new terminal
+          </Text>
+        </Timeline.Item>
+        <Timeline.Item dot="📡" style={styles.text}>
+          <Text>
+            Deploy test contract: <Text code>npm run deploy</Text> on a new terminal
+          </Text>
+        </Timeline.Item>
+        <Timeline.Item dot="✅" style={styles.text}>
+          <Text>
+            Open the <Text strong>📄 Contract</Text> tab
+          </Text>
+        </Timeline.Item>
+      </Timeline>
+
       <Timeline mode="left">
         <Timeline.Item dot="⭐️" style={styles.text}>
           <Text>

@@ -1,282 +1,126 @@
-// const ShowUniswapObserveValues = () => {
-// const { data, error, fetch, isFetching, isLoading } = useWeb3ExecuteFunction({
-//   abi: usdcEthPoolAbi,
-//   contractAddress: usdcEthPoolAddress,
-//   functionName: "observe",
-//   params: {
-//     secondsAgos: [0, 10],
-//   },
-// });
+import { Button, Card, Input, Typography, Form, notification } from "antd";
+import { useMemo, useState } from "react";
+import contractInfo from "contracts/contractInfo.json";
+import Address from "components/Address/Address";
+import { useMoralis } from "react-moralis";
 
-//
-//   }
+const { Text } = Typography;
 
-import { useWeb3ExecuteFunction } from "react-moralis";
+export default function Contract() {
+  const { Moralis } = useMoralis();
+  const { contractName, networks, abi } = contractInfo;
+  const [responses, setResponses] = useState({});
+  const contractAddress = networks[1337].address;
 
-const ABI = [
-  { inputs: [], payable: false, stateMutability: "nonpayable", type: "constructor" },
-  {
-    anonymous: false,
-    inputs: [
-      { indexed: true, internalType: "address", name: "owner", type: "address" },
-      { indexed: true, internalType: "address", name: "spender", type: "address" },
-      { indexed: false, internalType: "uint256", name: "value", type: "uint256" },
-    ],
-    name: "Approval",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      { indexed: true, internalType: "address", name: "previousOwner", type: "address" },
-      { indexed: true, internalType: "address", name: "newOwner", type: "address" },
-    ],
-    name: "OwnershipTransferred",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      { indexed: true, internalType: "address", name: "from", type: "address" },
-      { indexed: true, internalType: "address", name: "to", type: "address" },
-      { indexed: false, internalType: "uint256", name: "value", type: "uint256" },
-    ],
-    name: "Transfer",
-    type: "event",
-  },
-  {
-    constant: true,
-    inputs: [],
-    name: "_decimals",
-    outputs: [{ internalType: "uint8", name: "", type: "uint8" }],
-    payable: false,
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    constant: true,
-    inputs: [],
-    name: "_name",
-    outputs: [{ internalType: "string", name: "", type: "string" }],
-    payable: false,
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    constant: true,
-    inputs: [],
-    name: "_symbol",
-    outputs: [{ internalType: "string", name: "", type: "string" }],
-    payable: false,
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    constant: true,
-    inputs: [
-      { internalType: "address", name: "owner", type: "address" },
-      { internalType: "address", name: "spender", type: "address" },
-    ],
-    name: "allowance",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
-    payable: false,
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    constant: false,
-    inputs: [
-      { internalType: "address", name: "spender", type: "address" },
-      { internalType: "uint256", name: "amount", type: "uint256" },
-    ],
-    name: "approve",
-    outputs: [{ internalType: "bool", name: "", type: "bool" }],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    constant: true,
-    inputs: [{ internalType: "address", name: "account", type: "address" }],
-    name: "balanceOf",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
-    payable: false,
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    constant: false,
-    inputs: [{ internalType: "uint256", name: "amount", type: "uint256" }],
-    name: "burn",
-    outputs: [{ internalType: "bool", name: "", type: "bool" }],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    constant: true,
-    inputs: [],
-    name: "decimals",
-    outputs: [{ internalType: "uint8", name: "", type: "uint8" }],
-    payable: false,
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    constant: false,
-    inputs: [
-      { internalType: "address", name: "spender", type: "address" },
-      { internalType: "uint256", name: "subtractedValue", type: "uint256" },
-    ],
-    name: "decreaseAllowance",
-    outputs: [{ internalType: "bool", name: "", type: "bool" }],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    constant: true,
-    inputs: [],
-    name: "getOwner",
-    outputs: [{ internalType: "address", name: "", type: "address" }],
-    payable: false,
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    constant: false,
-    inputs: [
-      { internalType: "address", name: "spender", type: "address" },
-      { internalType: "uint256", name: "addedValue", type: "uint256" },
-    ],
-    name: "increaseAllowance",
-    outputs: [{ internalType: "bool", name: "", type: "bool" }],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    constant: false,
-    inputs: [{ internalType: "uint256", name: "amount", type: "uint256" }],
-    name: "mint",
-    outputs: [{ internalType: "bool", name: "", type: "bool" }],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    constant: true,
-    inputs: [],
-    name: "name",
-    outputs: [{ internalType: "string", name: "", type: "string" }],
-    payable: false,
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    constant: true,
-    inputs: [],
-    name: "owner",
-    outputs: [{ internalType: "address", name: "", type: "address" }],
-    payable: false,
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    constant: false,
-    inputs: [],
-    name: "renounceOwnership",
-    outputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    constant: true,
-    inputs: [],
-    name: "symbol",
-    outputs: [{ internalType: "string", name: "", type: "string" }],
-    payable: false,
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    constant: true,
-    inputs: [],
-    name: "totalSupply",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
-    payable: false,
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    constant: false,
-    inputs: [
-      { internalType: "address", name: "recipient", type: "address" },
-      { internalType: "uint256", name: "amount", type: "uint256" },
-    ],
-    name: "transfer",
-    outputs: [{ internalType: "bool", name: "", type: "bool" }],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    constant: false,
-    inputs: [
-      { internalType: "address", name: "sender", type: "address" },
-      { internalType: "address", name: "recipient", type: "address" },
-      { internalType: "uint256", name: "amount", type: "uint256" },
-    ],
-    name: "transferFrom",
-    outputs: [{ internalType: "bool", name: "", type: "bool" }],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    constant: false,
-    inputs: [{ internalType: "address", name: "newOwner", type: "address" }],
-    name: "transferOwnership",
-    outputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-];
-// const options = {
-//   contractAddress: "",
-//   functionName: "allowance",
-//   abi: ABI,
-//   params: { owner: "0x2...45", spender: "0x3...49" },
-// };
+  const displayedContractFunctions = useMemo(() => {
+    if (!abi) return [];
+    return abi.filter((method) => method["type"] === "function");
+  }, [abi]);
 
-// const allowance = await Moralis.executeFunction(options);
+  const openNotification = ({ message, description }) => {
+    notification.open({
+      placement: "bottomRight",
+      message,
+      description,
+      onClick: () => {
+        console.log("Notification Clicked!");
+      },
+    });
+  };
 
-function Contract() {
-  const { error, fetch, isFetching } = useWeb3ExecuteFunction({
-    abi: ABI,
-    contractAddress: "0xe9e7cea3dedca5984780bafc599bd69add087d56",
-  });
-
-  async function task() {
-    const decimals = await fetch({ params: { functionName: "decimals" } });
-    console.log(decimals); //null
-
-    let symbol;
-    await fetch({ params: { functionName: "symbol" }, onSuccess: (result) => (symbol = result) });
-    console.log(symbol); //works
-  
-}
   return (
-    <div>
-      {error && <>error</>}
-      <button onClick={() => task()} disabled={isFetching}>
-        Fetch data
-      </button>
-      {/* {data && <pre>{JSON.stringify(data, null, 2)}</pre>} */}
+    <div style={{ margin: "auto", width: "40vw" }}>
+      <Card
+        title={
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            Your contract: {contractName}
+            <Address avatar="left" copyable address={contractAddress} size={8} />
+          </div>
+        }
+        size="large"
+        style={{ marginTop: 25, width: "100%" }}
+      >
+        <Form.Provider
+          onFormFinish={async (name, { forms }) => {
+            const params = forms[name].getFieldsValue();
+
+            let isView = false;
+
+            for (let method of abi) {
+              if (method.name !== name) continue;
+              if (method.stateMutability === "view") isView = true;
+            }
+
+            const options = {
+              contractAddress,
+              functionName: name,
+              abi,
+              params,
+            };
+
+            if (!isView) {
+              const tx = await Moralis.executeFunction({ awaitReceipt: false, ...options });
+              tx.on("transactionHash", (hash) => {
+                setResponses({ ...responses, [name]: { result: null, isLoading: true } });
+                openNotification({
+                  message: "🔊 New Transaction",
+                  description: `📃 Tx Hash: ${hash}`,
+                });
+                console.log("🔊 New Transaction", hash);
+              })
+                .on("receipt", (receipt) => {
+                  setResponses({ ...responses, [name]: { result: null, isLoading: false } });
+                  openNotification({
+                    message: "🔊 New Receipt",
+                    description: `📃 Receipt: ${receipt.transactionHash}`,
+                  });
+                  console.log("🔊 New Receipt: ", receipt);
+                })
+                .on("error", (error) => {
+                  console.log(error);
+                });
+            } else {
+              Moralis.executeFunction(options).then((response) =>
+                setResponses({ ...responses, [name]: { result: response, isLoading: false } })
+              );
+            }
+          }}
+        >
+          {displayedContractFunctions &&
+            displayedContractFunctions.map((item, key) => (
+              <Card
+                title={`${key + 1}. ${item?.name}`}
+                size="small"
+                style={{ marginBottom: "20px" }}
+              >
+                <Form layout="vertical" name={`${item.name}`}>
+                  {item.inputs.map((input, key) => (
+                    <Form.Item
+                      label={`${input.name} (${input.type})`}
+                      name={`${input.name}`}
+                      required
+                      style={{ marginBottom: "15px" }}
+                    >
+                      <Input placeholder="input placeholder" />
+                    </Form.Item>
+                  ))}
+                  <Form.Item style={{ marginBottom: "5px" }}>
+                    <Text style={{ display: "block" }}>
+                      {responses[item.name]?.result && JSON.stringify(responses[item.name]?.result)}
+                    </Text>
+                    <Button
+                      type="primary"
+                      htmlType="submit"
+                      loading={responses[item?.name]?.isLoading}
+                    >
+                      {item.stateMutability === "view" ? "Read🔎" : "Transact💸"}
+                    </Button>
+                  </Form.Item>
+                </Form>
+              </Card>
+            ))}
+        </Form.Provider>
+      </Card>
     </div>
   );
 }
-
-export default Contract;

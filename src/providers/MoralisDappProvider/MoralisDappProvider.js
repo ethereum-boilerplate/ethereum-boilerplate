@@ -17,10 +17,18 @@ function MoralisDappProvider({ children }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => setChainId(web3.givenProvider?.chainId));
-  useMemo(() => setWalletAddress(web3.givenProvider?.selectedAddress || user?.get("ethAddress")), [web3, user]);
+  useMemo(
+    () => setWalletAddress(web3.givenProvider?.selectedAddress || user?.get("ethAddress")),
+    [web3, user]
+  );
 
-  return <MoralisDappContext.Provider value={{ walletAddress, chainId }}>{children}</MoralisDappContext.Provider>;
+  return (
+    <MoralisDappContext.Provider value={{ walletAddress, chainId }}>
+      {children}
+    </MoralisDappContext.Provider>
+  );
 }
 
 function useMoralisDapp() {

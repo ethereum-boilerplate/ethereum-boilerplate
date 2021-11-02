@@ -34,6 +34,7 @@ function InchDex({ chain }) {
 
   useEffect(() => {
     if (currentTrade) getQuote(currentTrade).then((quote) => setQuote(quote));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentTrade]);
 
   if (getChainById(chainId) !== chain)

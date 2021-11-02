@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Switch, Route, NavLink, Redirect } from "react
 import Account from "components/Account";
 import Chains from "components/Chains";
 import TokenPrice from "components/TokenPrice";
-import Contract from "components/Contract/Contract";
 import ERC20Balance from "components/ERC20Balance";
 import ERC20Transfers from "components/ERC20Transfers";
 import InchDex from "components/InchDex";
@@ -16,6 +15,7 @@ import Blockie from "components/Blockie";
 import NativeBalance from "components/NativeBalance";
 import "./style.css";
 import QuickStart from "components/QuickStart";
+import Contract from "components/Contract/Contract";
 const { Header } = Layout;
 
 const styles = {
@@ -72,6 +72,9 @@ const App = () => {
           >
             <Menu.Item key="quickstart">
               <NavLink to="/quickstart">🚀 Quick Start</NavLink>
+            </Menu.Item>
+            <Menu.Item key="contract">
+              <NavLink to="/contract">📄 Contract</NavLink>
             </Menu.Item>
             <Menu.Item key="wallet">
               <NavLink to="/wallet">👛 Wallet</NavLink>

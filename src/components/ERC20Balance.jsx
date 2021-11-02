@@ -53,7 +53,7 @@ function ERC20Balance(props) {
   ];
 
   return (
-    <div style={{ maxWidth: "1000px", width: "100%", padding: "15px" }}>
+    <div style={{ width: "65vw", padding: "15px" }}>
       <h1 style={styles.title}>💰Token Balances</h1>
       <Skeleton loading={!assets}>
         <Table
