@@ -18,7 +18,7 @@ function MoralisDappProvider({ children }) {
   }, []);
 
   useEffect(() => setChainId(web3.givenProvider?.chainId));
-  useMemo(() => setWalletAddress(web3.givenProvider?.selectedAddress || user?.get("ethAddress")), [web3, user]);
+  useEffect(() => setWalletAddress(web3.givenProvider?.selectedAddress || user?.get("ethAddress")), [web3, user]);
 
   return <MoralisDappContext.Provider value={{ walletAddress, chainId }}>{children}</MoralisDappContext.Provider>;
 }
