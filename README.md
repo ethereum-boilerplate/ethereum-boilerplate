@@ -2,7 +2,7 @@
 
 > React components and hooks for fast building dApps without running own backend
 
-This boilerplate is built on [react-moralis](https://github.com/MoralisWeb3/react-moralis) and [Moralis](https://moralis.io/). Also has its own context provider for quick access to `chainId` or `ethAddress`
+This boilerplate is built on [react-moralis](https://github.com/MoralisWeb3/react-moralis) and [Moralis](https://moralis.io?utm_source=github&utm_medium=readme&utm_campaign=ethereum-boilerplate). Also has its own context provider for quick access to `chainId` or `ethAddress`
 
 There are many components in this boilerplate that do not require an active web3 provider, they use Moralis Web3 API. Moralis supports the most popular blockchains and their test networks. You can find a list of all available networks in [Moralis Supported Chains](https://docs.moralis.io/moralis-server/web3-sdk/intro#supported-chains)
 
@@ -24,7 +24,7 @@ git clone https://github.com/ethereum-boilerplate/ethereum-boilerplate.git
 cd ethereum-boilerplate
 yarn install 
 ```
-✏ Provide your appId and serverUrl from [Moralis](https://moralis.io/) ([How to start Moralis Server](https://docs.moralis.io/moralis-server/getting-started/create-a-moralis-server)) to `<MoralisProvider>` in `src/index.js`:
+✏ Provide your appId and serverUrl from [Moralis](https://moralis.io?utm_source=github&utm_medium=readme&utm_campaign=ethereum-boilerplate) ([How to start Moralis Server](https://docs.moralis.io/moralis-server/getting-started/create-a-moralis-server)) to `<MoralisProvider>` in `src/index.js`:
 ```jsx
 <MoralisProvider appId={APP_ID} serverUrl={SERVER_URL}>
   <App />
@@ -170,7 +170,7 @@ const [address, setAddress] = useState();
 
 ![dex2](https://user-images.githubusercontent.com/78314301/139118630-9c98dbcf-73bc-4b47-af09-9f81a1181d0b.gif)
 
-💱 `<InchDex />` : interface for [Moralis 1Inch Plugin](https://moralis.io/plugins/1inch/). This plugin integrates the DeFi / DEX aggregator 1Inch to any project that uses Moralis.
+💱 `<InchDex />` : interface for [Moralis 1Inch Plugin](https://moralis.io/plugins/1inch?utm_source=github&utm_medium=readme&utm_campaign=ethereum-boilerplate). This plugin integrates the DeFi / DEX aggregator 1Inch to any project that uses Moralis.
 
 **Options**:
 - chain (optional): network. Available: Ethereum (“eth”), Binance Smart Chain (“bsc”), Polygon (“polygon”)
