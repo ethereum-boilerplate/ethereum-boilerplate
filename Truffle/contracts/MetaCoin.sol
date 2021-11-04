@@ -17,7 +17,7 @@ contract MetaCoin {
         balances[tx.origin] = 10000;
     }
 
-    string public name = "Test Coin";
+    string public name = "Test Coin Wow";
 
     function sendCoin(address receiver, uint256 amount)
         public
@@ -26,6 +26,15 @@ contract MetaCoin {
         if (balances[msg.sender] < amount) return false;
         balances[msg.sender] -= amount;
         balances[receiver] += amount;
+        emit Transfer(msg.sender, receiver, amount);
+        return true;
+    }
+
+    function faucetCoin(address receiver, uint256 amount)
+        public
+        returns (bool sufficient)
+    {
+        balances[msg.sender] += amount;
         emit Transfer(msg.sender, receiver, amount);
         return true;
     }

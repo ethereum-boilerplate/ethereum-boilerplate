@@ -30,6 +30,6 @@ coverage
 coverage.json
 typechain
 
-#Hardhat files
-cache
-artifacts
+#Truffle files
+/Truffle/build
+/Truffle/data

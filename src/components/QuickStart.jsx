@@ -1,5 +1,6 @@
 import { Timeline, Typography } from "antd";
-import React from "react";
+import React, { useMemo } from "react";
+import { useMoralis } from "react-moralis";
 
 const { Text } = Typography;
 
@@ -19,7 +20,14 @@ const styles = {
   },
 };
 
-export default function QuickStart(props) {
+export default function QuickStart({ isServerInfo }) {
+  const { Moralis } = useMoralis();
+
+  const isInchDex = useMemo(
+    () => (Moralis.Plugins?.oneInch ? true : false),
+    [Moralis.Plugins?.oneInch]
+  );
+
   return (
     <div style={styles.wrapper}>
       <h1 style={styles.title}>📝To-Do List</h1>
@@ -44,7 +52,7 @@ export default function QuickStart(props) {
         </Timeline.Item>
 
         <Timeline.Item dot="🧰" style={styles.text}>
-          <Text>
+          <Text delete={isServerInfo}>
             Sign up for a free account on{" "}
             <a
               href="https://moralis.io?utm_source=boilerplatehosted&utm_medium=todo&utm_campaign=ethereum-boilerplate"
@@ -57,7 +65,7 @@ export default function QuickStart(props) {
         </Timeline.Item>
 
         <Timeline.Item dot="💾" style={styles.text}>
-          <Text>
+          <Text delete={isServerInfo}>
             Create a Moralis Server (
             <a
               href="https://docs.moralis.io/moralis-server/getting-started/create-a-moralis-server"
@@ -71,7 +79,7 @@ export default function QuickStart(props) {
         </Timeline.Item>
 
         <Timeline.Item dot="🔏" style={styles.text}>
-          <Text>
+          <Text delete={isServerInfo}>
             Rename <Text code>.env.example</Text> to <Text code>.env</Text> and provide your{" "}
             <Text strong>appId</Text> and <Text strong>serverUrl</Text> from{" "}
             <a
@@ -83,20 +91,22 @@ export default function QuickStart(props) {
             </a>
             :
           </Text>
-          <Text code style={{ display: "block" }}>
+          <Text code delete={isServerInfo} style={{ display: "block" }}>
             REACT_APP_MORALIS_APPLICATION_ID = xxxxxxxxxxxx
           </Text>
-          <Text code style={{ display: "block" }}>
+          <Text code delete={isServerInfo} style={{ display: "block" }}>
             REACT_APP_MORALIS_SERVER_URL = https://xxxxxx.grandmoralis.com:2053/server
           </Text>
         </Timeline.Item>
 
         <Timeline.Item dot="🔁" style={styles.text}>
-          <Text>Refresh the page</Text>
+          <Text delete={isServerInfo}>
+            Stop the app and start it again <Text code>npm run start</Text>
+          </Text>
         </Timeline.Item>
 
         <Timeline.Item dot="💿" style={styles.text}>
-          <Text>
+          <Text delete={isInchDex}>
             Install{" "}
             <a
               href="https://moralis.io/plugins/1inch/?utm_source=boilerplatehosted&utm_medium=todo&utm_campaign=ethereum-boilerplate"

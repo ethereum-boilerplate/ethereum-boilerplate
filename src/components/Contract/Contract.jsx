@@ -2,7 +2,9 @@ import { Button, Card, Input, Typography, Form, notification } from "antd";
 import { useMemo, useState } from "react";
 import contractInfo from "contracts/contractInfo.json";
 import Address from "components/Address/Address";
-import { useMoralis } from "react-moralis";
+import { useMoralis, useMoralisQuery } from "react-moralis";
+import { getEllipsisTxt } from "helpers/formatters";
+import { useEffect } from "react";
 
 const { Text } = Typography;
 
@@ -11,6 +13,13 @@ export default function Contract() {
   const { contractName, networks, abi } = contractInfo;
   const [responses, setResponses] = useState({});
   const contractAddress = networks[1337].address;
+
+  /**Live query */
+  const { data } = useMoralisQuery("Events", (query) => query, [], {
+    live: true,
+  });
+
+  useEffect(() => console.log("New data: ", data), [data]);
 
   const displayedContractFunctions = useMemo(() => {
     if (!abi) return [];
@@ -29,7 +38,7 @@ export default function Contract() {
   };
 
   return (
-    <div style={{ margin: "auto", width: "40vw" }}>
+    <div style={{ margin: "auto", display: "flex", gap: "20px", marginTop: "25", width: "70vw" }}>
       <Card
         title={
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
@@ -38,7 +47,7 @@ export default function Contract() {
           </div>
         }
         size="large"
-        style={{ marginTop: 25, width: "100%" }}
+        style={{ width: "60%" }}
       >
         <Form.Provider
           onFormFinish={async (name, { forms }) => {
@@ -64,15 +73,15 @@ export default function Contract() {
                 setResponses({ ...responses, [name]: { result: null, isLoading: true } });
                 openNotification({
                   message: "🔊 New Transaction",
-                  description: `📃 Tx Hash: ${hash}`,
+                  description: `${hash}`,
                 });
                 console.log("🔊 New Transaction", hash);
               })
                 .on("receipt", (receipt) => {
                   setResponses({ ...responses, [name]: { result: null, isLoading: false } });
                   openNotification({
-                    message: "🔊 New Receipt",
-                    description: `📃 Receipt: ${receipt.transactionHash}`,
+                    message: "📃 New Receipt",
+                    description: `${receipt.transactionHash}`,
                   });
                   console.log("🔊 New Receipt: ", receipt);
                 })
@@ -106,7 +115,8 @@ export default function Contract() {
                   ))}
                   <Form.Item style={{ marginBottom: "5px" }}>
                     <Text style={{ display: "block" }}>
-                      {responses[item.name]?.result && JSON.stringify(responses[item.name]?.result)}
+                      {responses[item.name]?.result &&
+                        `Response: ${JSON.stringify(responses[item.name]?.result)}`}
                     </Text>
                     <Button
                       type="primary"
@@ -120,6 +130,13 @@ export default function Contract() {
               </Card>
             ))}
         </Form.Provider>
+      </Card>
+      <Card title={"Contract Events"} size="large" style={{ width: "40%" }}>
+        {data.map((event, key) => (
+          <Card title={"Transfer event"} size="small" style={{ marginBottom: "20px" }}>
+            {getEllipsisTxt(event.attributes.transaction_hash, 14)}
+          </Card>
+        ))}
       </Card>
     </div>
   );

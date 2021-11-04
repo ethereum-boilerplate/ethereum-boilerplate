@@ -24,8 +24,10 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "devchain": "cd Truffle && ganache-cli -d --db data -i 1337 --port 7545",
-    "deploy": "cd Truffle && truffle migrate --reset --compile-all --network develop && node scripts/contractInfo.js"
+    "devchain": "node Truffle/scripts/devChain.js",
+    "connect": "moralis-admin-cli connect-local-devchain",
+    "watch:events": "moralis-admin-cli add-contract",
+    "deploy": "node Truffle/scripts/deployContract.js"
   },
   "eslintConfig": {
     "extends": [

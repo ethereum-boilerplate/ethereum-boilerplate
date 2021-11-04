@@ -45,7 +45,7 @@ const styles = {
     fontWeight: "600",
   },
 };
-const App = () => {
+const App = ({ isServerInfo }) => {
   const { isWeb3Enabled, enableWeb3, isAuthenticated, isWeb3EnableLoading } = useMoralis();
 
   useEffect(() => {
@@ -89,7 +89,7 @@ const App = () => {
               <NavLink to="/erc20transfers">💸 Transfers</NavLink>
             </Menu.Item>
             <Menu.Item key="nft">
-              <NavLink to="/nftBalance">🖼 NFT Balance</NavLink>
+              <NavLink to="/nftBalance">🖼 NFTs</NavLink>
             </Menu.Item>
           </Menu>
           <div style={styles.headerRight}>
@@ -108,7 +108,7 @@ const App = () => {
         <div style={styles.content}>
           <Switch>
             <Route path="/quickstart">
-              <QuickStart />
+              <QuickStart isServerInfo={isServerInfo} />
             </Route>
             <Route path="/wallet">
               <Wallet />
@@ -131,10 +131,8 @@ const App = () => {
             <Route path="/nonauthenticated">
               <>Please login using the "Authenticate" button</>
             </Route>
-            {/* <Redirect from="/" to="/wallet" /> */}
           </Switch>
           <Redirect to="/quickstart" />
-          {/* {isAuthenticated ? <Redirect to="/quickstart" /> : <Redirect to="/nonauthenticated" />} */}
         </div>
       </Layout>
     </Router>

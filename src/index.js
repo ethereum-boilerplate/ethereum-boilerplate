@@ -10,11 +10,12 @@ const APP_ID = process.env.REACT_APP_MORALIS_APPLICATION_ID;
 const SERVER_URL = process.env.REACT_APP_MORALIS_SERVER_URL;
 
 const Application = () => {
-  if (APP_ID && SERVER_URL)
+  const isServerInfo = APP_ID && SERVER_URL ? true : false;
+  if (isServerInfo)
     return (
       <MoralisProvider appId={APP_ID} serverUrl={SERVER_URL}>
         <MoralisDappProvider>
-          <App />
+          <App isServerInfo />
         </MoralisDappProvider>
       </MoralisProvider>
     );
