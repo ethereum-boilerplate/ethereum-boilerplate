@@ -1,6 +1,7 @@
 import React from "react";
 import { useMoralis } from "react-moralis";
 import { getEllipsisTxt } from "../../helpers/formatters";
+import { getExplorer } from "../../helpers/networks";
 import "antd/dist/antd.css";
 import { Skeleton, Table } from "antd";
 import styles from "./styles";
@@ -42,13 +43,7 @@ function ERC20Transfers() {
       render: (hash) => (
         <a
           href={
-            chainId === "0x1"
-              ? `https://etherscan.io/tx/${hash}`
-              : chainId === "0x38"
-              ? `https://bscscan.com/tx/${hash}`
-              : chainId === "0x89"
-              ? `https://polygonscan.com/tx/${hash}`
-              : `https://explorer.avax.network/search?query=${hash}`
+            `${getExplorer(chainId)}tx/${hash}`
           }
           target="_blank"
           rel="noreferrer"
