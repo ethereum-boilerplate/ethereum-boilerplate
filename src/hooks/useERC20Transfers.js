@@ -22,5 +22,5 @@ export const useERC20Transfers = () => {
       .then((result) => result.result)
       .catch((e) => alert(e.message));
   };
-  return { fetchERC20Transfers, ERC20Transfers };
+  return { fetchERC20Transfers, ERC20Transfers, chainId };
 };
