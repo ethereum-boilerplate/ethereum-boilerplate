@@ -109,11 +109,7 @@ function Transfer() {
         </div>
         <div style={styles.select}>
           <h3>Address:</h3>
-          <AddressInput
-            autoFocus
-            placeholder="Public address (0x)"
-            onChange={setReceiver}
-          />
+          <AddressInput autoFocus onChange={setReceiver} />
         </div>
         <div style={styles.select}>
           <h3>Amount:</h3>
