@@ -36,6 +36,7 @@ const styles = {
     alignItems: "center",
     fontFamily: "Roboto, sans-serif",
     borderBottom: "2px solid rgba(0, 0, 0, 0.06)",
+    padding: "0 10px",
   },
   headerRight: {
     display: "flex",
@@ -55,7 +56,7 @@ const App = ({ isServerInfo }) => {
 
   return (
     <Router>
-      <Layout style={{ height: "100vh", background: "#f0f2f500" }}>
+      <Layout style={{ height: "100%", background: "#f0f2f500" }}>
         <Header style={styles.header}>
           <Logo />
           <Menu
@@ -73,9 +74,6 @@ const App = ({ isServerInfo }) => {
             <Menu.Item key="quickstart">
               <NavLink to="/quickstart">🚀 Quick Start</NavLink>
             </Menu.Item>
-            <Menu.Item key="contract">
-              <NavLink to="/contract">📄 Contract</NavLink>
-            </Menu.Item>
             <Menu.Item key="wallet">
               <NavLink to="/wallet">👛 Wallet</NavLink>
             </Menu.Item>
@@ -91,6 +89,9 @@ const App = ({ isServerInfo }) => {
             <Menu.Item key="nft">
               <NavLink to="/nftBalance">🖼 NFTs</NavLink>
             </Menu.Item>
+            <Menu.Item key="contract">
+              <NavLink to="/contract">📄 Contract</NavLink>
+            </Menu.Item>
           </Menu>
           <div style={styles.headerRight}>
             <Chains />
@@ -102,7 +103,6 @@ const App = ({ isServerInfo }) => {
             />
             <NativeBalance />
             <Account />
-            <Blockie currentWallet size={7} scale={5} />
           </div>
         </Header>
         <div style={styles.content}>
@@ -140,7 +140,7 @@ const App = ({ isServerInfo }) => {
 };
 
 export const Logo = () => (
-  <svg width="50" height="38" viewBox="0 0 50 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg width="60" height="38" viewBox="0 0 50 38" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path
       d="M43.6871 32.3986C43.5973 32.4884 43.53 32.5782 43.4402 32.6905C43.53 32.6007 43.5973 32.5109 43.6871 32.3986Z"
       fill="black"

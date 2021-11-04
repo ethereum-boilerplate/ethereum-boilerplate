@@ -1,16 +1,15 @@
+import { CreditCardOutlined } from "@ant-design/icons";
+import { Button, Input } from "antd";
+import Text from "antd/lib/typography/Text";
 import { useEffect, useState } from "react";
 import { useMoralis } from "react-moralis";
 import AddressInput from "../../AddressInput";
-import TokenList from "./TokenList";
+import TokenSelector from "./TokenSelector";
 
 const styles = {
   card: {
     alignItems: "center",
     width: "100%",
-  },
-  tranfer: {
-    padding: "20px",
-    borderBottom: "2px solid rgba(0, 0, 0, 0.06)",
   },
   header: {
     textAlign: "center",
@@ -32,39 +31,13 @@ const styles = {
     marginTop: "20px",
     display: "flex",
     alignItems: "center",
-    gap: "20px",
   },
-
+  textWrapper: { maxWidth: "80px", width: "100%" },
   row: {
     display: "flex",
-    marginLeft: "25px",
     alignItems: "center",
     gap: "10px",
     flexDirection: "row",
-  },
-  button: {
-    marginTop: "10px",
-    width: "100%",
-    border: "0px",
-    cursor: "pointer",
-    fontSize: "16px",
-    justifyContent: "center",
-    alignItems: "center",
-    fontWeight: "600",
-    borderRadius: "8px",
-    outline: "0px",
-    height: "46px",
-    color: "white",
-    backgroundColor: "#21BF96",
-  },
-  field: {
-    backgroundColor: "aliceblue",
-    borderRadius: "8px",
-    height: "45px",
-    alignItems: "center",
-    display: "flex",
-    width: "100%",
-    padding: "0 10px",
   },
 };
 
@@ -77,9 +50,10 @@ function Transfer() {
   const [isPending, setIsPending] = useState(false);
 
   useEffect(() => {
-    if (token && amount && receiver) setTx({ amount, receiver, token });
+    token && amount && receiver ? setTx({ amount, receiver, token }) : setTx();
   }, [token, amount, receiver]);
 
+  console.log(tx);
   async function transfer() {
     const { amount, receiver, token } = tx;
     const options = {
@@ -108,87 +82,42 @@ function Transfer() {
           <h3>Transfer Assets</h3>
         </div>
         <div style={styles.select}>
-          <h3>Address:</h3>
+          <div style={styles.textWrapper}>
+            <Text strong>Address:</Text>
+          </div>
           <AddressInput autoFocus onChange={setReceiver} />
         </div>
         <div style={styles.select}>
-          <h3>Amount:</h3>
-          <div style={styles.field}>
-            <input
-              style={styles.input}
-              placeholder="0.00"
-              type="number"
-              onChange={(e) => setAmount(e.target.value)}
-            />
+          <div style={styles.textWrapper}>
+            <Text strong>Amount:</Text>
           </div>
+          <Input
+            size="large"
+            prefix={<CreditCardOutlined />}
+            onChange={(e) => {
+              setAmount(`${e.target.value}`);
+            }}
+          />
         </div>
         <div style={styles.select}>
-          <h3>Asset:</h3>
-          {token && (
-            <div className="row" style={styles.row}>
-              {token.logo ? (
-                <img
-                  src={token.logo}
-                  alt={token.symbol}
-                  style={{
-                    maxWidth: "25px",
-                    maxHeight: "25px",
-                    borderRadius: "15px",
-                  }}
-                />
-              ) : (
-                <img
-                  src="https://etherscan.io/images/main/empty-token.png"
-                  alt=""
-                  style={{
-                    maxWidth: "25px",
-                    maxHeight: "25px",
-                    borderRadius: "15px",
-                  }}
-                />
-              )}
-
-              <h4 style={styles.text}>{token.symbol}</h4>
-            </div>
-          )}
+          <div style={styles.textWrapper}>
+            <Text strong>Asset:</Text>
+          </div>
+          <TokenSelector setToken={setToken} />
         </div>
-        <button style={styles.button} disabled={!tx} onClick={() => transfer()}>
-          {isPending ? <Loader /> : "Transfer"}
-        </button>
+        <Button
+          type="primary"
+          size="large"
+          loading={isPending}
+          style={{ width: "100%", marginTop: "25px" }}
+          onClick={() => transfer()}
+          disabled={!tx}
+        >
+          Transfer💸
+        </Button>
       </div>
-      <TokenList setToken={setToken} />
     </div>
   );
 }
 
 export default Transfer;
-
-const Loader = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    style={{ margin: "auto", display: "block", shapeRendering: "auto" }}
-    width="48px"
-    height="48px"
-    viewBox="0 0 100 100"
-    preserveAspectRatio="xMidYMid"
-  >
-    <circle
-      cx="50"
-      cy="50"
-      fill="none"
-      stroke="white"
-      strokeWidth="7"
-      r="20"
-      strokeDasharray="94.24777960769379 33.41592653589793"
-    >
-      <animateTransform
-        attributeName="transform"
-        type="rotate"
-        repeatCount="indefinite"
-        dur="1s"
-        values="0 50 50;360 50 50"
-        keyTimes="0;1"
-      />
-    </circle>
-  </svg>
-);

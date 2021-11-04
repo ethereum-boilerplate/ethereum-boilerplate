@@ -14,8 +14,6 @@ const styles = {
     backgroundColor: "rgba(255, 255, 255, 0.1)",
     borderRadius: "9px",
     alignItems: "center",
-    fontSize: "17px",
-    fontWeight: "500",
   },
 };
 
