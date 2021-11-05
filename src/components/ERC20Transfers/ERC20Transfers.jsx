@@ -1,9 +1,9 @@
 import React from "react";
 import { useMoralis } from "react-moralis";
 import { getEllipsisTxt } from "../../helpers/formatters";
+import { getExplorer } from "../../helpers/networks";
 import "antd/dist/antd.css";
 import { Skeleton, Table } from "antd";
-import styles from "./styles";
 import { useERC20Transfers } from "hooks/useERC20Transfers";
 
 function ERC20Transfers() {
@@ -40,19 +40,7 @@ function ERC20Transfers() {
       dataIndex: "transaction_hash",
       key: "transaction_hash",
       render: (hash) => (
-        <a
-          href={
-            chainId === "0x1"
-              ? `https://etherscan.io/tx/${hash}`
-              : chainId === "0x38"
-              ? `https://bscscan.com/tx/${hash}`
-              : chainId === "0x89"
-              ? `https://polygonscan.com/tx/${hash}`
-              : `https://explorer.avax.network/search?query=${hash}`
-          }
-          target="_blank"
-          rel="noreferrer"
-        >
+        <a href={`${getExplorer(chainId)}tx/${hash}`} target="_blank" rel="noreferrer">
           View Transaction
         </a>
       ),
@@ -62,7 +50,7 @@ function ERC20Transfers() {
   let key = 0;
   return (
     <div style={{ width: "65vw", padding: "15px" }}>
-      <h1 style={styles.title}>💸ERC20 Transfers</h1>
+      <h1>💸ERC20 Transfers</h1>
       <Skeleton loading={!ERC20Transfers}>
         <Table
           dataSource={ERC20Transfers}

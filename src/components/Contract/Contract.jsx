@@ -47,7 +47,12 @@ export default function Contract() {
           </div>
         }
         size="large"
-        style={{ width: "60%" }}
+        style={{
+          width: "60%",
+          boxShadow: "0 0.5rem 1.2rem rgb(189 197 209 / 20%)",
+          border: "1px solid #e7eaf3",
+          borderRadius: "0.5rem",
+        }}
       >
         <Form.Provider
           onFormFinish={async (name, { forms }) => {
@@ -131,7 +136,16 @@ export default function Contract() {
             ))}
         </Form.Provider>
       </Card>
-      <Card title={"Contract Events"} size="large" style={{ width: "40%" }}>
+      <Card
+        title={"Contract Events"}
+        size="large"
+        style={{
+          width: "40%",
+          boxShadow: "0 0.5rem 1.2rem rgb(189 197 209 / 20%)",
+          border: "1px solid #e7eaf3",
+          borderRadius: "0.5rem",
+        }}
+      >
         {data.map((event, key) => (
           <Card title={"Transfer event"} size="small" style={{ marginBottom: "20px" }}>
             {getEllipsisTxt(event.attributes.transaction_hash, 14)}

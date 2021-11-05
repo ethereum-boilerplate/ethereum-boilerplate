@@ -103,7 +103,7 @@ function Chains() {
           <span style={{ marginLeft: "5px" }}>{item.value}</span>
         </Menu.Item>
       ))}
-    </Menu>
+    </Menu> 
   );
 
   return (

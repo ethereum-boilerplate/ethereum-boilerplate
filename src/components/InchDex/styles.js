@@ -4,8 +4,9 @@ const styles = {
     width: "100%",
     padding: "20px",
     background: "#FFFFFF",
-    boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.25)",
-    borderRadius: "8px",
+    boxShadow: "0 0.5rem 1.2rem rgb(189 197 209 / 20%)",
+    border: "1px solid #e7eaf3",
+    borderRadius: "0.5rem",
   },
   header: {
     display: "flex",

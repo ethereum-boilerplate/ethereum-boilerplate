@@ -1,6 +1,7 @@
 import { useMoralisDapp } from "providers/MoralisDappProvider/MoralisDappProvider";
 import { useMoralis } from "react-moralis";
 import { getEllipsisTxt } from "helpers/formatters";
+import Blockie from "./Blockie";
 const styles = {
   account: {
     height: "42px",
@@ -32,7 +33,8 @@ function Account() {
 
   return (
     <div style={styles.account} onClick={() => logout()}>
-      <p style={styles.text}>{getEllipsisTxt(walletAddress, 6)}</p>
+      <p style={{ marginRight: "5px", ...styles.text }}>{getEllipsisTxt(walletAddress, 6)}</p>
+      <Blockie currentWallet scale={3} />
     </div>
   );
 }

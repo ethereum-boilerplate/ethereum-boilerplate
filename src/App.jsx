@@ -11,12 +11,12 @@ import NFTBalance from "components/NFTBalance";
 import Wallet from "components/Wallet";
 import { Menu, Layout } from "antd";
 import "antd/dist/antd.css";
-import Blockie from "components/Blockie";
 import NativeBalance from "components/NativeBalance";
 import "./style.css";
 import QuickStart from "components/QuickStart";
 import Contract from "components/Contract/Contract";
-const { Header } = Layout;
+import Text from "antd/lib/typography/Text";
+const { Header, Footer } = Layout;
 
 const styles = {
   content: {
@@ -24,7 +24,8 @@ const styles = {
     justifyContent: "center",
     fontFamily: "Roboto, sans-serif",
     color: "#041836",
-    marginTop: "100px",
+    marginTop: "130px",
+    padding: "10px",
   },
   header: {
     position: "fixed",
@@ -36,6 +37,8 @@ const styles = {
     alignItems: "center",
     fontFamily: "Roboto, sans-serif",
     borderBottom: "2px solid rgba(0, 0, 0, 0.06)",
+    padding: "0 10px",
+    boxShadow: "0 1px 10px rgb(151 164 175 / 10%)",
   },
   headerRight: {
     display: "flex",
@@ -54,8 +57,8 @@ const App = ({ isServerInfo }) => {
   }, [isAuthenticated, isWeb3Enabled]);
 
   return (
-    <Router>
-      <Layout style={{ height: "100vh", background: "#f0f2f500" }}>
+    <Layout style={{ height: "100vh", overflow: "auto" }}>
+      <Router>
         <Header style={styles.header}>
           <Logo />
           <Menu
@@ -73,9 +76,6 @@ const App = ({ isServerInfo }) => {
             <Menu.Item key="quickstart">
               <NavLink to="/quickstart">🚀 Quick Start</NavLink>
             </Menu.Item>
-            <Menu.Item key="contract">
-              <NavLink to="/contract">📄 Contract</NavLink>
-            </Menu.Item>
             <Menu.Item key="wallet">
               <NavLink to="/wallet">👛 Wallet</NavLink>
             </Menu.Item>
@@ -91,6 +91,9 @@ const App = ({ isServerInfo }) => {
             <Menu.Item key="nft">
               <NavLink to="/nftBalance">🖼 NFTs</NavLink>
             </Menu.Item>
+            <Menu.Item key="contract">
+              <NavLink to="/contract">📄 Contract</NavLink>
+            </Menu.Item>
           </Menu>
           <div style={styles.headerRight}>
             <Chains />
@@ -102,7 +105,6 @@ const App = ({ isServerInfo }) => {
             />
             <NativeBalance />
             <Account />
-            <Blockie currentWallet size={7} scale={5} />
           </div>
         </Header>
         <div style={styles.content}>
@@ -134,13 +136,48 @@ const App = ({ isServerInfo }) => {
           </Switch>
           <Redirect to="/quickstart" />
         </div>
-      </Layout>
-    </Router>
+      </Router>
+      <Footer style={{ textAlign: "center" }}>
+        <Text style={{ display: "block" }}>
+          ⭐️ Please star this{" "}
+          <a
+            href="https://github.com/ethereum-boilerplate/ethereum-boilerplate/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            boilerplate
+          </a>
+          , every star makes us very happy!
+        </Text>
+
+        <Text style={{ display: "block" }}>
+          🙋 You have questions? Ask them on the {""}
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://forum.moralis.io/t/ethereum-boilerplate-questions/3951/29"
+          >
+            Moralis forum
+          </a>
+        </Text>
+
+        <Text style={{ display: "block" }}>
+          📖 Read more about{" "}
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://moralis.io?utm_source=boilerplatehosted&utm_medium=todo&utm_campaign=ethereum-boilerplat"
+          >
+            Moralis
+          </a>
+        </Text>
+      </Footer>
+    </Layout>
   );
 };
 
 export const Logo = () => (
-  <svg width="50" height="38" viewBox="0 0 50 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg width="60" height="38" viewBox="0 0 50 38" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path
       d="M43.6871 32.3986C43.5973 32.4884 43.53 32.5782 43.4402 32.6905C43.53 32.6007 43.5973 32.5109 43.6871 32.3986Z"
       fill="black"

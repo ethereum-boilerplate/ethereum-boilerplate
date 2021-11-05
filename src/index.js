@@ -30,8 +30,8 @@ const Application = () => {
 
 /** Get your free Moralis Account https://moralis.io/ */
 ReactDOM.render(
-  <React.StrictMode>
-    <Application />
-  </React.StrictMode>,
+  // <React.StrictMode>
+  <Application />,
+  // </React.StrictMode>,
   document.getElementById("root")
 );

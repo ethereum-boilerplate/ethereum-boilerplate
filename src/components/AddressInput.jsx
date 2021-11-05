@@ -2,14 +2,16 @@ import { useCallback, useEffect, useState } from "react";
 import { getEllipsisTxt } from "../helpers/formatters";
 import Blockie from "./Blockie";
 import { Input } from "antd";
-import { ContactsOutlined } from "@ant-design/icons";
+import { SearchOutlined } from "@ant-design/icons";
 
 function AddressInput(props) {
   const [address, setAddress] = useState("");
   const [validatedAddress, setValidatedAddress] = useState("");
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => props.onChange(address), [address]);
+  useEffect(() => {
+    if (validatedAddress) props.onChange(address);
+  }, [address]);
 
   const updateAddress = useCallback((address) => {
     if (address.length === 42) setValidatedAddress(getEllipsisTxt(address, 10));
@@ -44,7 +46,7 @@ function AddressInput(props) {
         address ? (
           <Blockie address={address.toLowerCase()} size={8} scale={3} />
         ) : (
-          <ContactsOutlined />
+          <SearchOutlined />
         )
       }
       suffix={validatedAddress && <Cross />}
@@ -54,7 +56,7 @@ function AddressInput(props) {
         updateAddress(e.target.value);
       }}
       disabled={validatedAddress}
-      style={{ border: "1px solid rgb(33, 191, 150)" }}
+      style={validatedAddress ? { border: "1px solid rgb(33, 191, 150)" } : { width: props?.width }}
     />
   );
 }
