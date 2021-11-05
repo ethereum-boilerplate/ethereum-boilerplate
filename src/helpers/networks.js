@@ -32,7 +32,7 @@ export const networkConfigs = {
     currencyName: "BNB",
     currencySymbol: "BNB",
     rpcUrl: "https://data-seed-prebsc-1-s1.binance.org:8545/",
-    blockExplorerUrl: "https://testnet.bscscan.com",
+    blockExplorerUrl: "https://testnet.bscscan.com/",
   },
   "0x89": {
     chainId: 137,
@@ -40,7 +40,7 @@ export const networkConfigs = {
     currencyName: "MATIC",
     currencySymbol: "MATIC",
     rpcUrl: "https://rpc-mainnet.maticvigil.com",
-    blockExplorerUrl: "https://explorer-mainnet.maticvigil.com",
+    blockExplorerUrl: "https://explorer-mainnet.maticvigil.com/",
   },
   "0x13881": {
     chainId: 80001,
@@ -48,7 +48,7 @@ export const networkConfigs = {
     currencyName: "MATIC",
     currencySymbol: "MATIC",
     rpcUrl: "https://rpc-mumbai.matic.today",
-    blockExplorerUrl: "https://rpc-mumbai.matic.today",
+    blockExplorerUrl: "https://rpc-mumbai.matic.today/",
   },
 };
 
