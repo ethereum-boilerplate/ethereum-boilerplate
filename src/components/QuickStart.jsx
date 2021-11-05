@@ -201,47 +201,6 @@ export default function QuickStart({ isServerInfo }) {
           </Timeline>
         </Card>
       </div>
-      {/* <Timeline mode="left">
-        <Timeline.Item dot="⭐️">
-          <Text style={styles.text}>
-            Please star this{" "}
-            <a
-              href="https://github.com/ethereum-boilerplate/ethereum-boilerplate/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              boilerplate
-            </a>
-            , every star makes us very happy!
-          </Text>
-        </Timeline.Item>
-
-        <Timeline.Item dot="📖">
-          <Text style={styles.text}>
-            Read more about{" "}
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://docs.moralis.io/introduction/readme"
-            >
-              Moralis
-            </a>
-          </Text>
-        </Timeline.Item>
-
-        <Timeline.Item dot="🙋">
-          <Text style={styles.text}>
-            You have questions? Ask them on the {""}
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://forum.moralis.io/t/ethereum-boilerplate-questions/3951/29"
-            >
-              Moralis forum
-            </a>
-          </Text>
-        </Timeline.Item>
-      </Timeline> */}
     </div>
   );
 }
