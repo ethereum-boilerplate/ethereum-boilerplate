@@ -37,6 +37,7 @@ const styles = {
     fontFamily: "Roboto, sans-serif",
     borderBottom: "2px solid rgba(0, 0, 0, 0.06)",
     padding: "0 10px",
+    boxShadow: "0 1px 10px rgb(151 164 175 / 10%)",
   },
   headerRight: {
     display: "flex",
@@ -55,8 +56,8 @@ const App = ({ isServerInfo }) => {
   }, [isAuthenticated, isWeb3Enabled]);
 
   return (
-    <Router>
-      <Layout style={{ height: "100%", background: "#f0f2f500" }}>
+    <Layout style={{ height: "100vh", overflow: "auto" }}>
+      <Router>
         <Header style={styles.header}>
           <Logo />
           <Menu
@@ -134,8 +135,8 @@ const App = ({ isServerInfo }) => {
           </Switch>
           <Redirect to="/quickstart" />
         </div>
-      </Layout>
-    </Router>
+      </Router>
+    </Layout>
   );
 };
 
