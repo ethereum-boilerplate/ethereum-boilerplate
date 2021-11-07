@@ -4,6 +4,8 @@ import { useMoralisDapp } from "providers/MoralisDappProvider/MoralisDappProvide
 import InchModal from "./components/InchModal";
 import useInchDex from "hooks/useInchDex";
 import styles from "./styles";
+import { Card } from "antd";
+import Text from "antd/lib/typography/Text";
 
 const chainIds = {
   "0x1": "eth",
@@ -34,17 +36,17 @@ function InchDex({ chain }) {
 
   useEffect(() => {
     if (currentTrade) getQuote(currentTrade).then((quote) => setQuote(quote));
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentTrade]);
 
   if (getChainById(chainId) !== chain)
     return <>Switch to supported {chain} network or edit InchDex settings </>;
 
   return (
-    <div style={styles.card}>
+    <Card style={styles.card}>
       <div>
-        <div style={styles.header}>
-          <h4>Exchange</h4>
+        <div>
+          <Text>Swap</Text>
           {/* <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -122,10 +124,10 @@ function InchDex({ chain }) {
               strokeLinecap="round"
               strokeLinejoin="round"
             >
-              <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-              <line x1={12} y1={5} x2={12} y2={19}/>
-              <line x1={16} y1={15} x2={12} y2={19}/>
-              <line x1={8} y1={15} x2={12} y2={19}/>
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <line x1={12} y1={5} x2={12} y2={19} />
+              <line x1={16} y1={15} x2={12} y2={19} />
+              <line x1={8} y1={15} x2={12} y2={19} />
             </svg>
           </div>
           <div style={styles.swapbox}>
@@ -194,7 +196,7 @@ function InchDex({ chain }) {
         setToken={setToToken}
         tokenList={tokenList}
       />
-    </div>
+    </Card>
   );
 }
 

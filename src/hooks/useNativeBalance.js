@@ -17,7 +17,7 @@ export const useNativeBalance = (options) => {
     error,
     isLoading,
   } = useMoralisWeb3ApiCall(account.getNativeBalance, {
-    chain: "ganache",
+    chain: chainId,
     address: walletAddress,
     ...options,
   });

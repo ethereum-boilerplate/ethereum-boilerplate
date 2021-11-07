@@ -4,7 +4,7 @@ import Text from "antd/lib/typography/Text";
 import { useEffect, useState } from "react";
 import { useMoralis } from "react-moralis";
 import AddressInput from "../../AddressInput";
-import TokenSelector from "./TokenSelector";
+import AssetSelector from "./AssetSelector";
 
 const styles = {
   card: {
@@ -44,23 +44,23 @@ const styles = {
 function Transfer() {
   const { Moralis } = useMoralis();
   const [receiver, setReceiver] = useState();
-  const [token, setToken] = useState();
+  const [asset, setAsset] = useState();
   const [tx, setTx] = useState();
   const [amount, setAmount] = useState();
   const [isPending, setIsPending] = useState(false);
 
   useEffect(() => {
-    token && amount && receiver ? setTx({ amount, receiver, token }) : setTx();
-  }, [token, amount, receiver]);
+    asset && amount && receiver ? setTx({ amount, receiver, asset }) : setTx();
+  }, [asset, amount, receiver]);
 
   console.log(tx);
   async function transfer() {
-    const { amount, receiver, token } = tx;
+    const { amount, receiver, asset } = tx;
     const options = {
       type: "erc20",
-      amount: Moralis.Units.Token(amount, token.decimals),
+      amount: Moralis.Units.Token(amount, asset.decimals),
       receiver,
-      contractAddress: token.token_address,
+      contractAddress: asset.token_address,
     };
     console.log(isPending);
     setIsPending(true);
@@ -103,7 +103,7 @@ function Transfer() {
           <div style={styles.textWrapper}>
             <Text strong>Asset:</Text>
           </div>
-          <TokenSelector setToken={setToken} />
+          <AssetSelector setAsset={setAsset} />
         </div>
         <Button
           type="primary"

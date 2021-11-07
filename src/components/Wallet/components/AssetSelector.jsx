@@ -2,7 +2,7 @@ import { useERC20Balance } from "hooks/useERC20Balance";
 import { useMoralis } from "react-moralis";
 import { Image, Select } from "antd";
 
-export default function TokenSelector({ setToken }) {
+export default function AssetSelector({ setToken }) {
   const { assets } = useERC20Balance();
   const { Moralis } = useMoralis();
 
