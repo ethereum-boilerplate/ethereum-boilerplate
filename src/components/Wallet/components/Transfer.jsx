@@ -53,7 +53,6 @@ function Transfer() {
     asset && amount && receiver ? setTx({ amount, receiver, asset }) : setTx();
   }, [asset, amount, receiver]);
 
-  console.log(tx);
   async function transfer() {
     const { amount, receiver, asset } = tx;
     const options = {
