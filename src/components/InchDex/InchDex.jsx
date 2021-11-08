@@ -160,7 +160,7 @@ function InchDex({ chain }) {
         Price:{" "}
         <Text>{`1 ${toSymbol} = ${pricePerToken} ${fromSymbol} ($${tokenPricesUSD[
           [toToken["address"]]
-        ].toFixed(4)})`}</Text>
+        ].toFixed(6)})`}</Text>
       </Text>
     );
   };

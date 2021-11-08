@@ -1,6 +1,6 @@
 import { useMoralis } from "react-moralis";
 import { useERC20Balance } from "../hooks/useERC20Balance";
-import { Skeleton, Table, Image } from "antd";
+import { Skeleton, Table } from "antd";
 import { getEllipsisTxt } from "../helpers/formatters";
 const styles = {
   title: {
@@ -18,7 +18,7 @@ function ERC20Balance(props) {
       dataIndex: "logo",
       key: "logo",
       render: (logo) => (
-        <Image
+        <img
           src={logo || "https://etherscan.io/images/main/empty-token.png"}
           alt="nologo"
           width="28px"
@@ -42,7 +42,8 @@ function ERC20Balance(props) {
       title: "Balance",
       dataIndex: "balance",
       key: "balance",
-      render: (value, item) => parseFloat(Moralis.Units.FromWei(value, item.decimals).toFixed(6)),
+      render: (value, item) =>
+        parseFloat(Moralis.Units.FromWei(value, item.decimals).toFixed(6)),
     },
     {
       title: "Address",
