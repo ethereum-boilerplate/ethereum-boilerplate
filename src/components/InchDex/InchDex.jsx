@@ -1,11 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useMoralis } from "react-moralis";
 import { useMoralisDapp } from "providers/MoralisDappProvider/MoralisDappProvider";
 import InchModal from "./components/InchModal";
 import useInchDex from "hooks/useInchDex";
-import styles from "./styles";
-import { Card } from "antd";
+import { Button, Card, Image, Input, InputNumber, Modal } from "antd";
 import Text from "antd/lib/typography/Text";
+import { ArrowDownOutlined } from "@ant-design/icons";
+import useTokenPrice from "hooks/useTokenPrice";
+import { tokenValue } from "helpers/formatters";
 
 const chainIds = {
   "0x1": "eth",
@@ -13,11 +15,39 @@ const chainIds = {
   "0x89": "polygon",
 };
 
+const styles = {
+  card: {
+    width: "430px",
+    boxShadow: "0 0.5rem 1.2rem rgb(189 197 209 / 20%)",
+    border: "1px solid #e7eaf3",
+    borderRadius: "1rem",
+    fontSize: "16px",
+    fontWeight: "500",
+  },
+  input: {
+    padding: "0",
+    fontWeight: "500",
+    fontSize: "23px",
+    display: "block",
+    width: "100%",
+  },
+  priceSwap: {
+    display: "flex",
+    justifyContent: "space-between",
+    fontSize: "15px",
+    color: "#434343",
+    marginTop: "8px",
+    padding: "0 10px",
+  },
+};
+
 const getChainById = (id) => chainIds[id];
+
+const nativeAddress = "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
 
 function InchDex({ chain }) {
   const { trySwap, getQuote, getSupportedTokens, tokenList } = useInchDex();
-  const { Moralis } = useMoralis();
+  const { Moralis, isInitialized } = useMoralis();
   const { chainId } = useMoralisDapp();
   const [isFromModalActive, setFromModalActive] = useState(false);
   const [isToModalActive, setToModalActive] = useState(false);
@@ -26,8 +56,79 @@ function InchDex({ chain }) {
   const [fromAmount, setFromAmount] = useState("");
   const [quote, setQuote] = useState();
   const [currentTrade, setCurrentTrade] = useState();
+  const { fetchTokenPrice } = useTokenPrice();
+  const [tokenPricesUSD, setTokenPricesUSD] = useState({});
 
-  const onChangeHandler = (event) => setFromAmount(event.target.value);
+  const fromTokenPriceUsd = useMemo(
+    () =>
+      tokenPricesUSD?.[fromToken?.["address"]]
+        ? tokenPricesUSD[fromToken?.["address"]]
+        : null,
+    [tokenPricesUSD, fromToken]
+  );
+
+  const toTokenPriceUsd = useMemo(
+    () =>
+      tokenPricesUSD?.[toToken?.["address"]]
+        ? tokenPricesUSD[toToken?.["address"]]
+        : null,
+    [tokenPricesUSD, toToken]
+  );
+
+  const fromTokenAmountUsd = useMemo(() => {
+    if (!fromTokenPriceUsd || !fromAmount) return null;
+    return `~$ ${(fromAmount * fromTokenPriceUsd).toFixed(4)}`;
+  }, [fromTokenPriceUsd, fromAmount]);
+
+  const toTokenAmountUsd = useMemo(() => {
+    if (!toTokenPriceUsd || !quote) return null;
+    return `~$ ${(
+      Moralis.Units.FromWei(quote?.toTokenAmount, quote?.toToken?.decimals) *
+      toTokenPriceUsd
+    ).toFixed(4)}`;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [toTokenPriceUsd, quote]);
+
+  // tokenPrices
+  useEffect(() => {
+    if (!isInitialized || !fromToken || !chainId) return null;
+    fetchTokenPrice({ chain: chainId, address: fromToken[["address"]] }).then(
+      (price) =>
+        setTokenPricesUSD({
+          ...tokenPricesUSD,
+          [fromToken["address"]]: price["usdPrice"],
+        })
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [chainId, isInitialized, fromToken]);
+
+  useEffect(() => {
+    if (!isInitialized || !toToken || !chainId) return null;
+    fetchTokenPrice({ chain: chainId, address: toToken[["address"]] }).then(
+      (price) =>
+        setTokenPricesUSD({
+          ...tokenPricesUSD,
+          [toToken["address"]]: price["usdPrice"],
+        })
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [chainId, isInitialized, toToken]);
+
+  useEffect(() => {
+    if (!tokenList) return null;
+    setFromToken(tokenList[nativeAddress]);
+  }, [tokenList]);
+
+  const ButtonContent = useMemo(() => {
+    if (!fromAmount) return "Enter an amount";
+    if (fromAmount && currentTrade) return "Swap";
+    return "Select tokens";
+  }, [fromAmount, currentTrade]);
+
+  useEffect(() => {
+    if (!chain || !isInitialized || tokenList) return null;
+    getSupportedTokens(chain);
+  }, [tokenList, isInitialized, chain]);
 
   useEffect(() => {
     if (fromToken && toToken && fromAmount)
@@ -42,162 +143,248 @@ function InchDex({ chain }) {
   if (getChainById(chainId) !== chain)
     return <>Switch to supported {chain} network or edit InchDex settings </>;
 
+  const PriceSwap = () => {
+    const Quote = quote;
+    if (!Quote || !tokenPricesUSD?.[toToken?.["address"]]) return null;
+    if (Quote?.statusCode === 400) return <>{Quote.message}</>;
+    console.log(Quote);
+    const { fromTokenAmount, toTokenAmount } = Quote;
+    const { symbol: fromSymbol } = fromToken;
+    const { symbol: toSymbol } = toToken;
+    const pricePerToken = parseFloat(
+      tokenValue(fromTokenAmount, fromToken["decimals"]) /
+        tokenValue(toTokenAmount, toToken["decimals"])
+    ).toFixed(6);
+    return (
+      <Text style={styles.priceSwap}>
+        Price:{" "}
+        <Text>{`1 ${toSymbol} = ${pricePerToken} ${fromSymbol} ($${tokenPricesUSD[
+          [toToken["address"]]
+        ].toFixed(4)})`}</Text>
+      </Text>
+    );
+  };
+
   return (
-    <Card style={styles.card}>
-      <div>
-        <div>
-          <Text>Swap</Text>
-          {/* <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            strokeWidth="2"
-            stroke="currentColor"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
+    <>
+      <Card style={styles.card} bodyStyle={{ padding: "18px" }}>
+        <Card
+          style={{ borderRadius: "1rem" }}
+          bodyStyle={{ padding: "0.8rem" }}
+        >
+          <div
+            style={{ marginBottom: "5px", fontSize: "14px", color: "#434343" }}
           >
-            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-            <circle cx="14" cy="6" r="2"></circle>
-            <line x1="4" y1="6" x2="12" y2="6"></line>
-            <line x1="16" y1="6" x2="20" y2="6"></line>
-            <circle cx="8" cy="12" r="2"></circle>
-            <line x1="4" y1="12" x2="6" y2="12"></line>
-            <line x1="10" y1="12" x2="20" y2="12"></line>
-            <circle cx="17" cy="18" r="2"></circle>
-            <line x1="4" y1="18" x2="15" y2="18"></line>
-            <line x1="19" y1="18" x2="20" y2="18"></line>
-          </svg> */}
-        </div>
-        <div>
-          <div style={styles.swapbox}>
-            <div style={styles.swapboxHeader}>From</div>
-            <div style={styles.swapboxSelect}>
-              <input
-                style={styles.swapboxInput}
+            From
+          </div>
+          <div
+            style={{
+              display: "flex",
+              flexFlow: "row nowrap",
+            }}
+          >
+            <div>
+              <InputNumber
+                bordered={false}
                 placeholder="0.00"
-                type="number"
-                onChange={onChangeHandler}
+                style={{ ...styles.input, marginLeft: "-10px" }}
+                // bodyStyle={{ padding: "0" }}
+                onChange={setFromAmount}
                 value={fromAmount}
               />
-              <div
-                style={styles.selectedRow}
-                onClick={() => {
-                  setFromModalActive(true);
-                  getSupportedTokens(chain);
-                }}
-              >
-                <img
-                  className="token_image"
-                  style={styles.selectedToken}
-                  src={fromToken?.logoURI}
-                  alt={fromToken?.symbol}
-                />
-                <span>{fromToken?.symbol}</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  strokeWidth="2"
-                  stroke="currentColor"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                  <polyline points="6 9 12 15 18 9" />
-                </svg>
-              </div>
+              <Text style={{ fontWeight: "600", color: "#434343" }}>
+                {fromTokenAmountUsd}
+              </Text>
             </div>
-          </div>
-          <div style={{ display: "flex", justifyContent: "center" }}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width={24}
-              height={24}
-              viewBox="0 0 24 24"
-              strokeWidth={2}
-              stroke="currentColor"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
+            <Button
+              style={{
+                height: "fit-content",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                borderRadius: "0.6rem",
+                padding: "5px 10px",
+                fontWeight: "500",
+                fontSize: "17px",
+                gap: "7px",
+                border: "none",
+              }}
+              onClick={() => setFromModalActive(true)}
             >
-              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-              <line x1={12} y1={5} x2={12} y2={19} />
-              <line x1={16} y1={15} x2={12} y2={19} />
-              <line x1={8} y1={15} x2={12} y2={19} />
-            </svg>
+              {fromToken ? (
+                <Image
+                  src={
+                    fromToken?.logoURI ||
+                    "https://etherscan.io/images/main/empty-token.png"
+                  }
+                  alt="nologo"
+                  width="30px"
+                  preview={false}
+                  style={{ borderRadius: "15px" }}
+                />
+              ) : (
+                <span>Select a token</span>
+              )}
+              <span>{fromToken?.symbol}</span>
+              <Arrow />
+            </Button>
           </div>
-          <div style={styles.swapbox}>
-            <div style={styles.swapboxHeader}>To</div>
-            <div style={styles.swapboxSelect}>
-              <input
-                style={styles.swapboxInput}
-                type="number"
+        </Card>
+        <div
+          style={{ display: "flex", justifyContent: "center", padding: "10px" }}
+        >
+          <ArrowDownOutlined />
+        </div>
+        <Card
+          style={{ borderRadius: "1rem" }}
+          bodyStyle={{ padding: "0.8rem" }}
+        >
+          <div
+            style={{ marginBottom: "5px", fontSize: "14px", color: "#434343" }}
+          >
+            To
+          </div>
+          <div
+            style={{
+              display: "flex",
+              flexFlow: "row nowrap",
+            }}
+          >
+            <div>
+              <Input
+                bordered={false}
                 placeholder="0.00"
+                style={styles.input}
+                readOnly
                 value={
                   quote
-                    ? Moralis.Units.FromWei(quote?.toTokenAmount, quote?.toToken?.decimals).toFixed(
-                        6
-                      )
+                    ? Moralis.Units.FromWei(
+                        quote?.toTokenAmount,
+                        quote?.toToken?.decimals
+                      ).toFixed(6)
                     : ""
                 }
-                readOnly
               />
-              <div
-                style={styles.selectedRow}
-                onClick={() => {
-                  setToModalActive(true);
-                  getSupportedTokens(chain);
-                }}
-              >
-                <img style={styles.selectedToken} src={toToken?.logoURI} alt={toToken?.symbol} />
-                <span>{toToken?.symbol}</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  strokeWidth="2"
-                  stroke="currentColor"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                  <polyline points="6 9 12 15 18 9" />
-                </svg>
-              </div>
+              <Text style={{ fontWeight: "600", color: "#434343" }}>
+                {toTokenAmountUsd}
+              </Text>
             </div>
+            <Button
+              style={{
+                height: "fit-content",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                borderRadius: "0.6rem",
+                padding: "5px 10px",
+                fontWeight: "500",
+                fontSize: "17px",
+                gap: "7px",
+                border: "none",
+              }}
+              onClick={() => setToModalActive(true)}
+              type={toToken ? "default" : "primary"}
+            >
+              {toToken ? (
+                <Image
+                  src={
+                    toToken?.logoURI ||
+                    "https://etherscan.io/images/main/empty-token.png"
+                  }
+                  alt="nologo"
+                  width="30px"
+                  preview={false}
+                  style={{ borderRadius: "15px" }}
+                />
+              ) : (
+                <span>Select a token</span>
+              )}
+              <span>{toToken?.symbol}</span>
+              <Arrow />
+            </Button>
           </div>
+        </Card>
+        {quote && (
           <div>
-            Estimated Gas: <span id="gas_estimate">{quote?.estimatedGas}</span>
+            <Text
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                fontSize: "15px",
+                color: "#434343",
+                marginTop: "8px",
+                padding: "0 10px",
+              }}
+            >
+              Estimated Gas: <Text>{quote?.estimatedGas}</Text>
+            </Text>
+            <PriceSwap />
           </div>
-          <button
-            style={styles.swapButton}
-            onClick={() => trySwap(currentTrade)}
-            disabled={!currentTrade}
-          >
-            Swap
-          </button>
-        </div>
-      </div>
-      <InchModal
-        open={isFromModalActive}
-        onClose={() => setFromModalActive(false)}
-        setToken={setFromToken}
-        tokenList={tokenList}
-      />
-      <InchModal
-        open={isToModalActive}
-        onClose={() => setToModalActive(false)}
-        setToken={setToToken}
-        tokenList={tokenList}
-      />
-    </Card>
+        )}
+        <Button
+          type="primary"
+          size="large"
+          style={{
+            width: "100%",
+            marginTop: "15px",
+            borderRadius: "0.6rem",
+            height: "50px",
+          }}
+          onClick={() => trySwap(currentTrade)}
+          disabled={!fromAmount || !currentTrade}
+        >
+          {ButtonContent}
+        </Button>
+      </Card>
+      <Modal
+        title="Select a token"
+        visible={isFromModalActive}
+        onCancel={() => setFromModalActive(false)}
+        bodyStyle={{ padding: 0 }}
+        width="450px"
+        footer={null}
+      >
+        <InchModal
+          open={isFromModalActive}
+          onClose={() => setFromModalActive(false)}
+          setToken={setFromToken}
+          tokenList={tokenList}
+        />
+      </Modal>
+      <Modal
+        title="Select a token"
+        visible={isToModalActive}
+        onCancel={() => setToModalActive(false)}
+        bodyStyle={{ padding: 0 }}
+        width="450px"
+        footer={null}
+      >
+        <InchModal
+          open={isToModalActive}
+          onClose={() => setToModalActive(false)}
+          setToken={setToToken}
+          tokenList={tokenList}
+        />
+      </Modal>
+    </>
   );
 }
 
 export default InchDex;
+
+const Arrow = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    strokeWidth="2"
+    stroke="currentColor"
+    fill="none"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+    <polyline points="6 9 12 15 18 9" />
+  </svg>
+);

@@ -1,9 +1,25 @@
 export const networkConfigs = {
-  "0x1": { currencySymbol: "ETH", blockExplorerUrl: "https://etherscan.io/" },
-  "0x3": { currencySymbol: "ETH", blockExplorerUrl: "https://ropsten.etherscan.io/" },
-  "0x4": { currencySymbol: "ETH", blockExplorerUrl: "https://kovan.etherscan.io/" },
-  "0x2a": { currencySymbol: "ETH", blockExplorerUrl: "https://rinkeby.etherscan.io/" },
-  "0x5": { currencySymbol: "ETH", blockExplorerUrl: "https://goerli.etherscan.io/" },
+  "0x1": {
+    currencySymbol: "ETH",
+    blockExplorerUrl: "https://etherscan.io/",
+    wrapped: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+  },
+  "0x3": {
+    currencySymbol: "ETH",
+    blockExplorerUrl: "https://ropsten.etherscan.io/",
+  },
+  "0x4": {
+    currencySymbol: "ETH",
+    blockExplorerUrl: "https://kovan.etherscan.io/",
+  },
+  "0x2a": {
+    currencySymbol: "ETH",
+    blockExplorerUrl: "https://rinkeby.etherscan.io/",
+  },
+  "0x5": {
+    currencySymbol: "ETH",
+    blockExplorerUrl: "https://goerli.etherscan.io/",
+  },
   "0x539": {
     chainName: "Local Chain",
     currencyName: "ETH",
@@ -25,6 +41,7 @@ export const networkConfigs = {
     currencySymbol: "BNB",
     rpcUrl: "https://bsc-dataseed.binance.org/",
     blockExplorerUrl: "https://bscscan.com/",
+    wrapped: "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
   },
   "0x61": {
     chainId: 97,
@@ -39,19 +56,24 @@ export const networkConfigs = {
     chainName: "Polygon Mainnet",
     currencyName: "MATIC",
     currencySymbol: "MATIC",
-    rpcUrl: "https://rpc-mainnet.maticvigil.com",
+    rpcUrl: "https://rpc-mainnet.maticvigil.com/",
     blockExplorerUrl: "https://explorer-mainnet.maticvigil.com/",
+    wrapped: "0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270",
   },
   "0x13881": {
     chainId: 80001,
     chainName: "Mumbai",
     currencyName: "MATIC",
     currencySymbol: "MATIC",
-    rpcUrl: "https://rpc-mumbai.matic.today",
-    blockExplorerUrl: "https://rpc-mumbai.matic.today/",
+    rpcUrl: "https://rpc-mumbai.matic.today/",
+    blockExplorerUrl: "https://mumbai.polygonscan.com/",
   },
 };
 
-export const getNativeByChain = (chain) => networkConfigs[chain]?.currencySymbol || "NATIVE";
+export const getNativeByChain = (chain) =>
+  networkConfigs[chain]?.currencySymbol || "NATIVE";
 
 export const getExplorer = (chain) => networkConfigs[chain]?.blockExplorerUrl;
+
+export const getWrappedNative = (chain) =>
+  networkConfigs[chain]?.wrapped || null;
