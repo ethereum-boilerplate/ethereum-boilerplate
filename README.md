@@ -226,11 +226,7 @@ const ShowUniswapObserveValues = () => {
   return (<div>
     {error && <ErrorMessage error={error} />}
     <button onClick={() => runContractFunction()} disabled={isLoading}>Fetch data</button>
-    {data && <pre>
-      {JSON.stringify(contractResponse),
-        null,
-        2,
-      )}
+    {contractResponse && JSON.stringify(contractResponse)}
     </pre>}
   </div>)
 }
@@ -262,11 +258,7 @@ const ShowUniswapObserveValues = () => {
   return (<div>
     {error && <ErrorMessage error={error} />}
     <button onClick={() => runContractFunction()} disabled={isLoading}>Fetch data</button>
-    {data && <pre>
-      {JSON.stringify(contractResponse),
-        null,
-        2,
-      )}
+    {contractResponse && JSON.stringify(contractResponse)}
     </pre>}
   </div>)
 }
