@@ -73,6 +73,8 @@ export const networkConfigs = {
 export const getNativeByChain = (chain) =>
   networkConfigs[chain]?.currencySymbol || "NATIVE";
 
+export const getChainById = (chain) => networkConfigs[chain]?.chainId || null;
+
 export const getExplorer = (chain) => networkConfigs[chain]?.blockExplorerUrl;
 
 export const getWrappedNative = (chain) =>

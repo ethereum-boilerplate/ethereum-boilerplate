@@ -9,12 +9,6 @@ import { ArrowDownOutlined } from "@ant-design/icons";
 import useTokenPrice from "hooks/useTokenPrice";
 import { tokenValue } from "helpers/formatters";
 
-const chainIds = {
-  "0x1": "eth",
-  "0x38": "bsc",
-  "0x89": "polygon",
-};
-
 const styles = {
   card: {
     width: "430px",
@@ -41,19 +35,23 @@ const styles = {
   },
 };
 
-const getChainById = (id) => chainIds[id];
-
 const nativeAddress = "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
 
+const chainIds = {
+  "0x1": "eth",
+  "0x38": "bsc",
+  "0x89": "polygon",
+};
+
 function InchDex({ chain }) {
-  const { trySwap, getQuote, getSupportedTokens, tokenList } = useInchDex();
+  const { trySwap, getQuote, tokenList } = useInchDex(chain);
   const { Moralis, isInitialized } = useMoralis();
   const { chainId } = useMoralisDapp();
   const [isFromModalActive, setFromModalActive] = useState(false);
   const [isToModalActive, setToModalActive] = useState(false);
   const [fromToken, setFromToken] = useState();
   const [toToken, setToToken] = useState();
-  const [fromAmount, setFromAmount] = useState("");
+  const [fromAmount, setFromAmount] = useState();
   const [quote, setQuote] = useState();
   const [currentTrade, setCurrentTrade] = useState();
   const { fetchTokenPrice } = useTokenPrice();
@@ -119,17 +117,15 @@ function InchDex({ chain }) {
     setFromToken(tokenList[nativeAddress]);
   }, [tokenList]);
 
-  const ButtonContent = useMemo(() => {
-    if (getChainById(chainId) !== chain) return `Switch to ${chain}`;
-    if (!fromAmount) return "Enter an amount";
-    if (fromAmount && currentTrade) return "Swap";
-    return "Select tokens";
-  }, [fromAmount, currentTrade, chainId, chain]);
+  const ButtonState = useMemo(() => {
+    if (chainIds?.[chainId] !== chain)
+      return { isActive: false, text: `Switch to ${chain}` };
+    // if (chainIds[chainId] !== chain)
 
-  useEffect(() => {
-    if (!chain || !isInitialized || tokenList) return null;
-    getSupportedTokens(chain);
-  }, [tokenList, isInitialized, chain]);
+    if (!fromAmount) return { isActive: false, text: "Enter an amount" };
+    if (fromAmount && currentTrade) return { isActive: true, text: "Swap" };
+    return { isActive: false, text: "Select tokens" };
+  }, [fromAmount, currentTrade, chainId, chain]);
 
   useEffect(() => {
     if (fromToken && toToken && fromAmount)
@@ -186,7 +182,6 @@ function InchDex({ chain }) {
                 bordered={false}
                 placeholder="0.00"
                 style={{ ...styles.input, marginLeft: "-10px" }}
-                // bodyStyle={{ padding: "0" }}
                 onChange={setFromAmount}
                 value={fromAmount}
               />
@@ -329,9 +324,9 @@ function InchDex({ chain }) {
             height: "50px",
           }}
           onClick={() => trySwap(currentTrade)}
-          disabled={!fromAmount || !currentTrade}
+          disabled={!ButtonState.isActive}
         >
-          {ButtonContent}
+          {ButtonState.text}
         </Button>
       </Card>
       <Modal
