@@ -56,7 +56,11 @@ function AddressInput(props) {
         updateAddress(e.target.value);
       }}
       disabled={validatedAddress}
-      style={validatedAddress ? { border: "1px solid rgb(33, 191, 150)" } : { width: props?.width }}
+      style={
+        validatedAddress
+          ? { ...props?.style, border: "1px solid rgb(33, 191, 150)" }
+          : { ...props?.style }
+      }
     />
   );
 }

@@ -102,7 +102,7 @@ function Transfer() {
           <div style={styles.textWrapper}>
             <Text strong>Asset:</Text>
           </div>
-          <AssetSelector setAsset={setAsset} />
+          <AssetSelector setAsset={setAsset} style={{ width: "100%" }} />
         </div>
         <Button
           type="primary"
