@@ -3,6 +3,7 @@ export const networkConfigs = {
     currencySymbol: "ETH",
     blockExplorerUrl: "https://etherscan.io/",
     wrapped: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+    openSea: "https://opensea.io/"
   },
   "0x3": {
     currencySymbol: "ETH",
@@ -10,11 +11,12 @@ export const networkConfigs = {
   },
   "0x4": {
     currencySymbol: "ETH",
-    blockExplorerUrl: "https://kovan.etherscan.io/",
+    blockExplorerUrl: "https://rinkeby.etherscan.io/",
+    openSea: "https://testnets.opensea.io/"
   },
   "0x2a": {
     currencySymbol: "ETH",
-    blockExplorerUrl: "https://rinkeby.etherscan.io/",
+    blockExplorerUrl: "https://kovan.etherscan.io/",
   },
   "0x5": {
     currencySymbol: "ETH",
@@ -79,3 +81,6 @@ export const getExplorer = (chain) => networkConfigs[chain]?.blockExplorerUrl;
 
 export const getWrappedNative = (chain) =>
   networkConfigs[chain]?.wrapped || null;
+
+export const getOpenSeaLink = (chain) => 
+  networkConfigs[chain]?.openSea || null;
