@@ -120,10 +120,11 @@ function InchDex({ chain }) {
   }, [tokenList]);
 
   const ButtonContent = useMemo(() => {
+    if (getChainById(chainId) !== chain) return `Switch to ${chain}`;
     if (!fromAmount) return "Enter an amount";
     if (fromAmount && currentTrade) return "Swap";
     return "Select tokens";
-  }, [fromAmount, currentTrade]);
+  }, [fromAmount, currentTrade, chainId, chain]);
 
   useEffect(() => {
     if (!chain || !isInitialized || tokenList) return null;
@@ -139,9 +140,6 @@ function InchDex({ chain }) {
     if (currentTrade) getQuote(currentTrade).then((quote) => setQuote(quote));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentTrade]);
-
-  if (getChainById(chainId) !== chain)
-    return <>Switch to supported {chain} network or edit InchDex settings </>;
 
   const PriceSwap = () => {
     const Quote = quote;
