@@ -216,7 +216,7 @@ const [address, setAddress] = useState();
 const ShowUniswapObserveValues = () => {
   const { runContractFunction, contractResponse, error, isLoading } = useAPIContract({
     abi: usdcEthPoolAbi,
-    contractAddress: usdcEthPoolAddress,
+    address: usdcEthPoolAddress,
     functionName: "observe",
     params: {
       secondsAgos: [0, 10],
