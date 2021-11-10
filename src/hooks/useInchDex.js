@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useMoralis } from "react-moralis";
 import { useMoralisDapp } from "providers/MoralisDappProvider/MoralisDappProvider";
 
-const useInchDex = ({ chain = "eth" }) => {
+const useInchDex = (chain) => {
   const { Moralis } = useMoralis();
   const { walletAddress } = useMoralisDapp();
   const [tokenList, setTokenlist] = useState();
