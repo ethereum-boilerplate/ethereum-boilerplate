@@ -111,7 +111,7 @@ const [address, setAddress] = useState();
 
 ### `<Chains />`
 
-![chains](https://user-images.githubusercontent.com/78314301/138943009-560c3501-8b83-4643-a6f5-0b8f9ff5ef0a.gif)
+![network](https://user-images.githubusercontent.com/78314301/141116531-7c68002b-039b-4fbb-bda3-4a4d431b71f4.gif)
 
 ⛓ `<Chains />` : Active network switch. Supports Ethereum, Polygon, BSC and Avalacnhe blockchains. Works only with networks that have already been added to Injected Wallet. You can find a guide on how to programmatically add a new network [here](https://docs.moralis.io/moralis-server/web3/web3#addnetwork). Easily customizable, you can add other networks
 
