@@ -89,8 +89,8 @@ function InchDex({ chain }) {
 
   // tokenPrices
   useEffect(() => {
-    if (!isInitialized || !fromToken || !chainId) return null;
-    fetchTokenPrice({ chain: chainId, address: fromToken[["address"]] }).then(
+    if (!isInitialized || !fromToken || !chain) return null;
+    fetchTokenPrice({ chain: chain, address: fromToken[["address"]] }).then(
       (price) =>
         setTokenPricesUSD({
           ...tokenPricesUSD,
@@ -98,11 +98,11 @@ function InchDex({ chain }) {
         })
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [chainId, isInitialized, fromToken]);
+  }, [chain, isInitialized, fromToken]);
 
   useEffect(() => {
-    if (!isInitialized || !toToken || !chainId) return null;
-    fetchTokenPrice({ chain: chainId, address: toToken[["address"]] }).then(
+    if (!isInitialized || !toToken || !chain) return null;
+    fetchTokenPrice({ chain: chain, address: toToken[["address"]] }).then(
       (price) =>
         setTokenPricesUSD({
           ...tokenPricesUSD,
@@ -110,7 +110,7 @@ function InchDex({ chain }) {
         })
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [chainId, isInitialized, toToken]);
+  }, [chain, isInitialized, toToken]);
 
   useEffect(() => {
     if (!tokenList) return null;
