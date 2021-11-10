@@ -168,7 +168,7 @@ const [address, setAddress] = useState();
 
 ### `<DEX />` 
 
-![Dex](https://user-images.githubusercontent.com/78314301/140832460-f60fef14-effa-4686-8ae7-a910a1c09055.gif)
+![dex](https://user-images.githubusercontent.com/78314301/141123450-02c2710e-7988-45de-80ad-5fc45d2bccfa.gif)
 
 💱 `<InchDex />` : interface for [Moralis 1Inch Plugin](https://moralis.io/plugins/1inch?utm_source=github&utm_medium=readme&utm_campaign=ethereum-boilerplate). This plugin integrates the DeFi / DEX aggregator 1Inch to any project that uses Moralis.
 
