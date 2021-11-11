@@ -93,7 +93,7 @@ yarn start
 
 ### `<AddressInput />`
 
-![addressInput](https://user-images.githubusercontent.com/78314301/138753917-53007fa1-b053-4723-8c18-aec9ecfe5479.gif)
+![addressInput](https://user-images.githubusercontent.com/78314301/141116003-ad08dbe0-f06f-4718-be54-0c5990103510.gif)
 
 📫 `<AddressInput />` : Input for eth address. Displays [Blockie](https://www.npmjs.com/package/react-blockies) avatar for the entered wallet. Helps to validate addresses. After entering 42 characters (wallet length) freezes inout and calls `setValidatedAddress`
 
@@ -111,7 +111,7 @@ const [address, setAddress] = useState();
 
 ### `<Chains />`
 
-![chains](https://user-images.githubusercontent.com/78314301/138943009-560c3501-8b83-4643-a6f5-0b8f9ff5ef0a.gif)
+![network](https://user-images.githubusercontent.com/78314301/141116531-7c68002b-039b-4fbb-bda3-4a4d431b71f4.gif)
 
 ⛓ `<Chains />` : Active network switch. Supports Ethereum, Polygon, BSC and Avalacnhe blockchains. Works only with networks that have already been added to Injected Wallet. You can find a guide on how to programmatically add a new network [here](https://docs.moralis.io/moralis-server/web3/web3#addnetwork). Easily customizable, you can add other networks
 
@@ -168,7 +168,7 @@ const [address, setAddress] = useState();
 
 ### `<DEX />` 
 
-![Dex](https://user-images.githubusercontent.com/78314301/140832460-f60fef14-effa-4686-8ae7-a910a1c09055.gif)
+![dex](https://user-images.githubusercontent.com/78314301/141123450-02c2710e-7988-45de-80ad-5fc45d2bccfa.gif)
 
 💱 `<InchDex />` : interface for [Moralis 1Inch Plugin](https://moralis.io/plugins/1inch?utm_source=github&utm_medium=readme&utm_campaign=ethereum-boilerplate). This plugin integrates the DeFi / DEX aggregator 1Inch to any project that uses Moralis.
 
@@ -182,7 +182,7 @@ const [address, setAddress] = useState();
 
 ### `<Wallet />`
 
-![wallet](https://user-images.githubusercontent.com/78314301/138942356-f72346dc-14c7-43c5-9ae3-802d219f866f.gif)
+![wallet](https://user-images.githubusercontent.com/78314301/141115062-7152ed11-6167-45fe-a4d9-50e78f051838.gif)
 
 💼 `<Wallet />` : example interface for interacting with your wallet. Uses components from the boilerplate:  `<Blockie />`, `<Address />`, `<NativeBalance />`, `<AddressInput />`. Has the functionality to send tokens
 
