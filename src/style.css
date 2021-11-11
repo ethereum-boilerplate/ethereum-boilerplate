@@ -13,3 +13,8 @@
 .ant-menu-horizontal > .ant-menu-item a:hover {
   color: #21bf96 !important;
 }
+
+.ant-modal-content {
+  overflow: auto;
+  border-radius: 1rem;
+}
