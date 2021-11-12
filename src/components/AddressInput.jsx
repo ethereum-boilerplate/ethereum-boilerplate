@@ -1,10 +1,11 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { getEllipsisTxt } from "../helpers/formatters";
 import Blockie from "./Blockie";
 import { Input } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 
 function AddressInput(props) {
+  const input = useRef(null);
   const [address, setAddress] = useState("");
   const [validatedAddress, setValidatedAddress] = useState("");
 
@@ -29,7 +30,12 @@ function AddressInput(props) {
       fill="none"
       strokeLinecap="round"
       strokeLinejoin="round"
-      onClick={() => setValidatedAddress("")}
+      onClick={() => {
+        setValidatedAddress("");
+        setTimeout(function() {
+          input.current.focus();
+        })
+      }}
       style={{ cursor: "pointer" }}
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -40,6 +46,7 @@ function AddressInput(props) {
 
   return (
     <Input
+      ref={input}
       size="large"
       placeholder={props.placeholder ? props.placeholder : "Public address 0x"}
       prefix={
