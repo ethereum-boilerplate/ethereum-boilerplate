@@ -20,7 +20,7 @@ function Ramper() {
     <iframe
       src={ramper}
       title="ramper"
-      frameborder="no"
+      frameBorder="no"
       allow="accelerometer; autoplay; camera; gyroscope; payment;"
       style={{
         width: "420px",
