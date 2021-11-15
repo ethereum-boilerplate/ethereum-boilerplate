@@ -22,6 +22,7 @@ import "./style.css";
 import QuickStart from "components/QuickStart";
 import Contract from "components/Contract/Contract";
 import Text from "antd/lib/typography/Text";
+import Ramper from "components/Ramper";
 const { Header, Footer } = Layout;
 
 const styles = {
@@ -86,6 +87,9 @@ const App = ({ isServerInfo }) => {
             <Menu.Item key="wallet">
               <NavLink to="/wallet">👛 Wallet</NavLink>
             </Menu.Item>
+            <Menu.Item key="onramp">
+              <NavLink to="/onramp">💵 Fiat</NavLink>
+            </Menu.Item>
             <Menu.Item key="dex">
               <NavLink to="/1inch">🏦 Dex</NavLink>
             </Menu.Item>
@@ -137,6 +141,9 @@ const App = ({ isServerInfo }) => {
             </Route>
             <Route path="/erc20balance">
               <ERC20Balance />
+            </Route>
+            <Route path="/onramp">
+              <Ramper />
             </Route>
             <Route path="/erc20transfers">
               <ERC20Transfers />

@@ -18,8 +18,8 @@ const styles = {
     boxShadow: "0 0.5rem 1.2rem rgb(189 197 209 / 20%)",
     border: "1px solid #e7eaf3",
     borderRadius: "1rem",
-    fontSize: "16px",
     width: "450px",
+    fontSize: "16px",
     fontWeight: "500",
   },
 };

@@ -7,7 +7,6 @@ import "./identicon.css";
 
 const styles = {
   address: {
-    padding: "0 6px",
     height: "36px",
     display: "flex",
     gap: "5px",
@@ -54,7 +53,7 @@ function Address(props) {
   );
 
   return (
-    <div style={styles.address}>
+    <div style={{ ...styles.address, ...props.style }}>
       {props.avatar === "left" && <Blockie address={address} size={7} />}
       <p>{props.size ? getEllipsisTxt(address, props.size) : address}</p>
       {props.avatar === "right" && <Blockie address={address} size={7} />}

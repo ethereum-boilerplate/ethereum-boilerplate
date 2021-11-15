@@ -41,6 +41,7 @@ yarn start
 - [🚀 Quick Start](#-quick-start)
 - [🧭 Table of contents](#-table-of-contents)
 - [🏗 Ethereum Components](#-ethereum-components)
+- - [`<Account />`](#account-)
   - [`<AddressInput />`](#addressinput-)
   - [`<Chains />`](#chains-)
   - [`<CoinPrice />`](#coinprice-)
@@ -71,6 +72,18 @@ yarn start
 🛠 The ready for use react-components are located in `src/components`. They are designed to be used anywhere in your dApp. 
 
 > ⚡ Note that many components may get params like `chain`, `address`, `size` and etc.
+
+
+### `<Account />`
+
+![Account](https://user-images.githubusercontent.com/78314301/141354253-4a040fbc-bf80-4665-af54-98b2f2d8ce7d.gif)
+
+📒 `<Account />` : Easy web3 authentication via MetaMask. 
+
+```jsx
+<Account />
+```
+
 
 ### `<Address />`
 
