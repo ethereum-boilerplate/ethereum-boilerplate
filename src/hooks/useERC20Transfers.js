@@ -12,7 +12,6 @@ export const useERC20Transfers = () => {
     if (isInitialized)
       fetchERC20Transfers()
         .then((result) => setERC20Transfers(result))
-        .catch((e) => alert(e.message));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isInitialized, chainId, walletAddress]);
 
@@ -20,7 +19,6 @@ export const useERC20Transfers = () => {
     return await account
       .getTokenTransfers({ address: walletAddress, chain: chainId })
       .then((result) => result.result)
-      .catch((e) => alert(e.message));
   };
   return { fetchERC20Transfers, ERC20Transfers, chainId };
 };
