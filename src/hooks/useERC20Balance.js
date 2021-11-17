@@ -13,7 +13,6 @@ export const useERC20Balance = (params) => {
     if (isInitialized) {
       fetchERC20Balance()
         .then((balance) => setAssets(balance))
-        .catch((e) => alert(e.message));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isInitialized, chainId, walletAddress]);
@@ -22,7 +21,6 @@ export const useERC20Balance = (params) => {
     return await account
       .getTokenBalances({ address: walletAddress, chain: params?.chain || chainId })
       .then((result) => result)
-      .catch((e) => alert(e.message));
   };
 
   return { fetchERC20Balance, assets };
