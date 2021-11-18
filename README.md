@@ -358,6 +358,20 @@ function NativeBalance() {
 
 ### `useChain()` 
 
+⛓ Hook for fast network switching or getting info about current network. To change the current network, set the target chainId to `switchNetwork` function. If the user does not have the target network in the wallet, it will automatically ask permission to add it to the wallet. 
+
+**Example**:
+```jsx
+function Chains() {
+  const { switchNetwork, chainId, chain, account } = useChain(); 
+  return (
+  <>
+     <button onClick={()=> switchNetwork("0x1")}>Switch to Ethereum</button>
+     <p>Current chainId: {chainId}<p>
+  </>
+  )
+```
+
 ### `useInchDex()` 
 
 ### `useTokenPrice()` 
