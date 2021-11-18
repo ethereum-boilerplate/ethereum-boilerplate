@@ -370,6 +370,7 @@ function Chains() {
      <p>Current chainId: {chainId}<p>
   </>
   )
+}
 ```
 
 ### `useInchDex()` 
