@@ -362,15 +362,16 @@ function NativeBalance() {
 
 **Example**:
 ```jsx
-import { useChain } from "react-moralis"
+import { useChain } from "react-moralis";
+
 function Chains() {
-  const { switchNetwork, chainId, chain, account } = useChain(); 
+  const { switchNetwork, chainId, chain, account } = useChain();
   return (
-  <>
-     <button onClick={()=> switchNetwork("0x1")}>Switch to Ethereum</button>
-     <p>Current chainId: {chainId}<p>
-  </>
-  )
+    <>
+      <button onClick={() => switchNetwork("0x1")}>Switch to Ethereum</button>
+      <p>Current chainId: {chainId}</p>
+    </>
+  );
 }
 ```
 
