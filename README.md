@@ -68,7 +68,10 @@ yarn start
   - [`useIPFS()`](#useipfs)
   - [`useChain()`](#usechain)
   - [`useTokenPrice()`](#usetokenprice)
-  - [`useInchDex()`](#useinchdex)
+  - [`DEX Hooks`](#dexhooks)
+    - [`useOneInchQuote()`](#useoneinchquote)
+    - [`useInchDex()`](#useinchdex)
+  
 
 # 🏗 Ethereum Components
 
@@ -261,6 +264,8 @@ const ShowUniswapObserveValues = () => {
 
 **Example**:
 ```jsx
+import { useWeb3Contract } from "react-moralis"
+
 const ShowUniswapObserveValues = () => {
   const { runContractFunction, contractResponse, error, isRunning, isLoading } = useWeb3Contract({
     abi: usdcEthPoolAbi,
@@ -375,7 +380,26 @@ function Chains() {
 }
 ```
 
-### `useInchDex()` 
+### `DEX Hooks` 
+
+### `useOneInchQuote()` 
+
+⛓ Hook for getting swap quote info.
+
+**Example**:
+```jsx
+import { useOneInchQuote } from "react-moralis";
+
+function Chains() {
+  const { getQuote: fetch, data, isFetching, isLoading, error } = useOneInchQuote();
+  return (
+    <>
+      <button onClick={() => switchNetwork("0x1")}>Switch to Ethereum</button>
+      <p>Current chainId: {chainId}</p>
+    </>
+  );
+}
+```
 
 ### `useTokenPrice()` 
 
