@@ -362,6 +362,7 @@ function NativeBalance() {
 
 **Example**:
 ```jsx
+import { useChain } from "react-moralis"
 function Chains() {
   const { switchNetwork, chainId, chain, account } = useChain(); 
   return (
