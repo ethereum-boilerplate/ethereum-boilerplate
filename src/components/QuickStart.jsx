@@ -25,14 +25,18 @@ const styles = {
 export default function QuickStart({ isServerInfo }) {
   const { Moralis } = useMoralis();
 
-  const isInchDex = useMemo(
-    () => (Moralis.Plugins?.oneInch ? true : false),
-    [Moralis.Plugins?.oneInch]
-  );
+  const isInchDex = useMemo(() => (Moralis.Plugins?.oneInch ? true : false), [Moralis.Plugins?.oneInch]);
 
   return (
     <div style={{ display: "flex", gap: "10px" }}>
-      <Card style={styles.card} title={<h1 style={styles.title}>📝 To-Do List</h1>}>
+      <Card
+        style={styles.card}
+        title={
+          <>
+            📝 <Text strong>To-Do List</Text>
+          </>
+        }
+      >
         <Timeline mode="left" style={styles.timeline}>
           <Timeline.Item dot="📄">
             <Text delete style={styles.text}>
@@ -82,8 +86,8 @@ export default function QuickStart({ isServerInfo }) {
 
           <Timeline.Item dot="🔏">
             <Text delete={isServerInfo} style={styles.text}>
-              Rename <Text code>.env.example</Text> to <Text code>.env</Text> and provide your{" "}
-              <Text strong>appId</Text> and <Text strong>serverUrl</Text> from{" "}
+              Rename <Text code>.env.example</Text> to <Text code>.env</Text> and provide your <Text strong>appId</Text>{" "}
+              and <Text strong>serverUrl</Text> from{" "}
               <a
                 href="https://moralis.io?utm_source=boilerplatehosted&utm_medium=todo&utm_campaign=ethereum-boilerplate"
                 target="_blank"
@@ -129,25 +133,21 @@ export default function QuickStart({ isServerInfo }) {
       <div>
         <Card
           style={styles.card}
-          title={<h1 style={styles.title}>💣 Starting Local Chain (optional)</h1>}
+          title={
+            <>
+              💣 <Text strong>Starting Local Chain (optional)</Text>
+            </>
+          }
         >
           <Timeline mode="left" style={styles.timeline}>
             <Timeline.Item dot="💿">
               <Text style={styles.text}>
                 Install{" "}
-                <a
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href="https://www.npmjs.com/package/truffle"
-                >
+                <a target="_blank" rel="noopener noreferrer" href="https://www.npmjs.com/package/truffle">
                   Truffle
                 </a>{" "}
                 and{" "}
-                <a
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href="https://www.npmjs.com/package/ganache-cli"
-                >
+                <a target="_blank" rel="noopener noreferrer" href="https://www.npmjs.com/package/ganache-cli">
                   ganache-cli
                 </a>{" "}
                 <Text code>npm install -g ganache-cli truffle</Text>
@@ -165,24 +165,24 @@ export default function QuickStart({ isServerInfo }) {
             </Timeline.Item>
             <Timeline.Item dot="✅" style={styles.text}>
               <Text>
-                Open the <Text strong>📄 Contract</Text> tab
+                Open the 📄<Text strong> Contract</Text> tab
               </Text>
             </Timeline.Item>
           </Timeline>
         </Card>
         <Card
           style={{ marginTop: "10px", ...styles.card }}
-          title={<h1 style={styles.title}>📡 Connecting your Local Chain to the Moralis DB</h1>}
+          title={
+            <>
+              📡 <Text strong> Connecting your Local Chain to the Moralis DB</Text>
+            </>
+          }
         >
           <Timeline mode="left" style={styles.timeline}>
             <Timeline.Item dot="💿">
               <Text style={styles.text}>
                 Download{" "}
-                <a
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href="https://github.com/fatedier/frp/releases"
-                >
+                <a target="_blank" rel="noopener noreferrer" href="https://github.com/fatedier/frp/releases">
                   frpc
                 </a>{" "}
                 and provide missing params in the <Text code>.env</Text> file

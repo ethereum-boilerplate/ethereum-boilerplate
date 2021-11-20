@@ -8,7 +8,7 @@ import Text from "antd/lib/typography/Text";
 import { ArrowDownOutlined } from "@ant-design/icons";
 import useTokenPrice from "hooks/useTokenPrice";
 import { tokenValue } from "helpers/formatters";
-import { useOneInchQuote } from "react-moralis";
+// import { useOneInchQuote } from "react-moralis";
 
 const styles = {
   card: {
@@ -45,13 +45,7 @@ const chainIds = {
 };
 
 function InchDex({ chain }) {
-  const { trySwap, tokenList } = useInchDex(chain);
-  const { getQuote, data, isFetching, isLoading, error } = useOneInchQuote(
-    {},
-    {
-      autoFetch: false,
-    }
-  );
+  const { trySwap, tokenList, getQuote } = useInchDex(chain);
 
   const { Moralis, isInitialized } = useMoralis();
   const { chainId } = useMoralisDapp();
