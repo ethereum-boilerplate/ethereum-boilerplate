@@ -24,7 +24,7 @@ export const c2 = new Intl.NumberFormat("en-us", {
  */
 export const getEllipsisTxt = (str, n = 6) => {
   if (str) {
-    return `${str.substr(0, n)}...${str.substr(str.length - n, str.length)}`;
+    return `${str.slice(0, n)}...${str.slice(str.length - n)}`;
   }
   return "";
 };
