@@ -4,8 +4,6 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  NavLink,
-  Redirect,
 } from "react-router-dom";
 import Account from "components/Account";
 import Chains from "components/Chains";
@@ -15,7 +13,7 @@ import ERC20Transfers from "components/ERC20Transfers";
 import InchDex from "components/InchDex";
 import NFTBalance from "components/NFTBalance";
 import Wallet from "components/Wallet";
-import { Menu, Layout, Tabs } from "antd";
+import { Layout, Tabs } from "antd";
 import "antd/dist/antd.css";
 import NativeBalance from "components/NativeBalance";
 import "./style.css";
@@ -23,6 +21,7 @@ import QuickStart from "components/QuickStart";
 import Contract from "components/Contract/Contract";
 import Text from "antd/lib/typography/Text";
 import Ramper from "components/Ramper";
+import MenuItems from "./components/MenuItems";
 const { Header, Footer } = Layout;
 
 const styles = {
@@ -69,43 +68,7 @@ const App = ({ isServerInfo }) => {
       <Router>
         <Header style={styles.header}>
           <Logo />
-          <Menu
-            theme="light"
-            mode="horizontal"
-            style={{
-              display: "flex",
-              fontSize: "17px",
-              fontWeight: "500",
-              width: "100%",
-              justifyContent: "center",
-            }}
-            defaultSelectedKeys={["quickstart"]}
-          >
-            <Menu.Item key="quickstart">
-              <NavLink to="/quickstart">🚀 Quick Start</NavLink>
-            </Menu.Item>
-            <Menu.Item key="wallet">
-              <NavLink to="/wallet">👛 Wallet</NavLink>
-            </Menu.Item>
-            <Menu.Item key="onramp">
-              <NavLink to="/onramp">💵 Fiat</NavLink>
-            </Menu.Item>
-            <Menu.Item key="dex">
-              <NavLink to="/1inch">🏦 Dex</NavLink>
-            </Menu.Item>
-            <Menu.Item key="balances">
-              <NavLink to="/erc20balance">💰 Balances</NavLink>
-            </Menu.Item>
-            <Menu.Item key="transfers">
-              <NavLink to="/erc20transfers">💸 Transfers</NavLink>
-            </Menu.Item>
-            <Menu.Item key="nft">
-              <NavLink to="/nftBalance">🖼 NFTs</NavLink>
-            </Menu.Item>
-            <Menu.Item key="contract">
-              <NavLink to="/contract">📄 Contract</NavLink>
-            </Menu.Item>
-          </Menu>
+          <MenuItems />
           <div style={styles.headerRight}>
             <Chains />
             <TokenPrice
@@ -158,7 +121,6 @@ const App = ({ isServerInfo }) => {
               <>Please login using the "Authenticate" button</>
             </Route>
           </Switch>
-          <Redirect to="/quickstart" />
         </div>
       </Router>
       <Footer style={{ textAlign: "center" }}>
