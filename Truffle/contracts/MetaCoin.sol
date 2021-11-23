@@ -17,7 +17,7 @@ contract MetaCoin {
         balances[tx.origin] = 10000;
     }
 
-    string public name = "Test Coin2222";
+    string public name = "Test Coin Nice";
 
     function sendCoin(address receiver, uint256 amount)
         public

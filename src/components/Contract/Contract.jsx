@@ -5,21 +5,23 @@ import Address from "components/Address/Address";
 import { useMoralis, useMoralisQuery } from "react-moralis";
 import { getEllipsisTxt } from "helpers/formatters";
 import { useEffect } from "react";
+import ContractMethods from "./ContractMethods";
 
 const { Text } = Typography;
 
 export default function Contract() {
   const { Moralis } = useMoralis();
-  const { contractName, networks, abi } = contractInfo;
   const [responses, setResponses] = useState({});
-  const contractAddress = networks[1337].address;
+  const { contractName, networks, abi } = contractInfo;
+
+  const contractAddress = useMemo(() => networks[1337].address, [networks]);
+
+  useEffect(() => console.log("contractInfo", contractInfo), [contractInfo]);
 
   /**Live query */
   const { data } = useMoralisQuery("Events", (query) => query, [], {
     live: true,
   });
-
-  useEffect(() => console.log("New data: ", data), [data]);
 
   const displayedContractFunctions = useMemo(() => {
     if (!abi) return [];
@@ -94,46 +96,14 @@ export default function Contract() {
                   console.log(error);
                 });
             } else {
+              console.log("options", options);
               Moralis.executeFunction(options).then((response) =>
                 setResponses({ ...responses, [name]: { result: response, isLoading: false } })
               );
             }
           }}
         >
-          {displayedContractFunctions &&
-            displayedContractFunctions.map((item, key) => (
-              <Card
-                title={`${key + 1}. ${item?.name}`}
-                size="small"
-                style={{ marginBottom: "20px" }}
-              >
-                <Form layout="vertical" name={`${item.name}`}>
-                  {item.inputs.map((input, key) => (
-                    <Form.Item
-                      label={`${input.name} (${input.type})`}
-                      name={`${input.name}`}
-                      required
-                      style={{ marginBottom: "15px" }}
-                    >
-                      <Input placeholder="input placeholder" />
-                    </Form.Item>
-                  ))}
-                  <Form.Item style={{ marginBottom: "5px" }}>
-                    <Text style={{ display: "block" }}>
-                      {responses[item.name]?.result &&
-                        `Response: ${JSON.stringify(responses[item.name]?.result)}`}
-                    </Text>
-                    <Button
-                      type="primary"
-                      htmlType="submit"
-                      loading={responses[item?.name]?.isLoading}
-                    >
-                      {item.stateMutability === "view" ? "Read🔎" : "Transact💸"}
-                    </Button>
-                  </Form.Item>
-                </Form>
-              </Card>
-            ))}
+          <ContractMethods displayedContractFunctions={displayedContractFunctions} responses={responses} />
         </Form.Provider>
       </Card>
       <Card
