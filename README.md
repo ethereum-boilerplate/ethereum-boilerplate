@@ -62,7 +62,7 @@ yarn start
   - [`useERC20Transfers()`](#useerc20transfers)
   - [`useNativeBalance()`](#usenativebalance)
   - [`useNativeTransactions()`](#usenativetransactions)
-  - [`useNFTBalance()`](#usenftbalance)
+  - [`useNFTBalances()`](#usenftbalances)
   - [`useNFTTransfers()`](#usenfttransfers)
   - [`useNFTTransfers()`](#usenfttransfers)
   - [`useIPFS()`](#useipfs)
@@ -322,24 +322,40 @@ const { fetchERC20Transfers, ERC20Transfers } = useERC20Transfers({ chain : "eth
 
 ### `useNativeBalance()` 
 
-💰 Gets native balance for a current user or specified address. The `nativeName` from `useNativeBalance()` shows name of chain(Example: "BNB", "ETH", ...)
+💰 Gets native balance for a current user or specified address.
 
 **Options**:
 - `chain` (optional): The blockchain to get data from. Valid values are listed on the intro page in the Transactions and Balances section. Default value: current chain.
 - `address` (optional): A user address (i.e. 0x1a2b3x...). If specified, the user attached to the query is ignored and the address will be used instead.
 - `to_block` (optional): The block number on which the balances should be checked
 
-**Returns** (Object) : { inWei: balance in Wei , formatted: balance in Eth style }
-
 **Example**:
 ```jsx
+import { useNativeBalance } from "react-moralis";
+
 function NativeBalance() {
-  const { getBalance, balance, nativeName, error, isLoading } = useNativeBalance({ chain : "eth" });
-  return (
-    <div>{`${balance.formatted} ${nativeName}`}</div>
-  );
+  const { getBalance, data: balance, nativeToken, error, isLoading } = useNativeBalance({ chain : "ropsten" });
+
+  return <div>{balance.formatted}</div>;
 }
 ```
+**Example return of balance** (Object)
+```jsx
+{
+  balance: '996869309795359886',
+  formatted: '0.9969 ROP'
+}
+```
+
+**Example return of nativeToken** (Object)
+```jsx
+{
+  name: 'Ropsten Ether',
+  symbol: 'ROP',
+  decimals: 18
+}
+```
+
 
 ### `useNativeTransactions()` 
 
@@ -355,11 +371,158 @@ function NativeBalance() {
 - `offset` (optional): Offset.
 - `limit` (optional): Limit.
 
-**Returns** (Array) : native transactions
+**Example**
+```jsx
+import { useNativeTransactions } from "react-moralis";
 
-### `useNFTBalance()` 
+const { getNativeTransations, data, chainId, error, isLoading, isFetching } = useNativeTransactions();
+
+const NativeTransactions = () => {
+  return (
+    <div>
+      {error && <>{JSON.stringify(error)}</>}
+      <button onClick={() => getNativeTransations({ params: { chain: "0x1" } })}>Refetch</button>
+      <pre>{JSON.stringify(data, null, 2)}</pre>
+    </div>
+  );
+};
+
+```
+
+**Example return** (Object)
+```json
+{
+  "total": 1,
+  "page": 0,
+  "page_size": 500,
+  "result": [
+    {
+      "hash": "0x057Ec652A4F150f7FF94f089A38008f49a0DF88e",
+      "nonce": "326595425",
+      "transaction_index": "25",
+      "from_address": "0xd4a3BebD824189481FC45363602b83C9c7e9cbDf",
+      "to_address": "0xa71db868318f0a0bae9411347cd4a6fa23d8d4ef",
+      "value": "650000000000000000",
+      "gas": "6721975",
+      "gas_price": "20000000000",
+      "input": "string",
+      "receipt_cumulative_gas_used": "1340925",
+      "receipt_gas_used": "1340925",
+      "receipt_contract_address": "0x1d6a4cf64b52f6c73f201839aded7379ce58059c",
+      "receipt_root": "string",
+      "receipt_status": "1",
+      "block_timestamp": "2021-04-02T10:07:54.000Z",
+      "block_number": "12526958",
+      "block_hash": "0x0372c302e3c52e8f2e15d155e2c545e6d802e479236564af052759253b20fd86"
+    }
+  ]
+}
+```
+
+### `useNFTBalances()` 
+
+🎨 Gets all NFTs from the current user or address. Supports both ERC721 and ERC1155. Returns an object with the number of NFT objects and the array of NFT objects.
+
+**Options**:
+- `chain` (optional): The blockchain to get data from. Valid values are listed on the intro page in the Transactions and Balances section. Default value: current chain (if the chain is not supported it will use the Eth chain).
+- `address` (optional): A user address (i.e. 0x1a2b3x...). If specified, the user attached to the query is ignored and the address will be used instead.
+
+**Example**
+```jsx
+import { useNFTBalances } from "react-moralis";
+
+const { getNFTBalances, data, error, isLoading, isFetching } = useNFTBalances();
+
+const NFTBalances = () => {
+  return (
+    <div>
+      {error && <>{JSON.stringify(error)}</>}
+      <button onClick={() => getNFTBalances({ params: { chain: "0x1" } })}>Refetch NFTBalances</button>
+      <pre>{JSON.stringify(data, null, 2)}</pre>
+    </div>
+  );
+};
+```
+
+**Example return** (Object)
+```json
+{
+  "total": 1,
+  "page": 0,
+  "page_size": 500,
+  "result": [
+    {
+      "token_address": "0x057Ec652A4F150f7FF94f089A38008f49a0DF88e",
+      "token_id": "15",
+      "contract_type": "ERC721",
+      "owner_of": "0x057Ec652A4F150f7FF94f089A38008f49a0DF88e",
+      "block_number": "88256",
+      "block_number_minted": "88256",
+      "token_uri": "string",
+      "metadata": "string",
+      "synced_at": "string",
+      "amount": "1",
+      "name": "CryptoKitties",
+      "symbol": "RARI"
+    }
+  ]
+}
+```
 
 ### `useNFTTransfers()` 
+
+🎨 Gets the NFT transfers. Returns an object with the number of NFT transfers and the array of NFT transfers.
+
+**Options**:
+- `chain` (optional): The blockchain to get data from. Valid values are listed on the intro page in the Transactions and Balances section. Default value: current chain (if the chain is not supported it will use the Eth chain).
+- `address` (optional): A user address (i.e. 0x1a2b3x...). If specified, the user attached to the query is ignored and the address will be used instead.
+- `offset` (optional): Offset.
+- `direction` (optional): The transfer direction. Available values : both, to, from . Default value : both.
+- `format` (optional): he format of the token id. Available values : decimal, hex. Default value : decimal.
+- `limit` (optional): Limit.
+
+**Example**
+```jsx
+import { useNFTTransfers } from "react-moralis";
+
+const { fetch, data, error, isLoading, isFetching } = useNFTTransfers();
+
+const NFTTransfers = () => {
+  return (
+    <div>
+      {error && <>{JSON.stringify(error)}</>}
+      <button onClick={() => fetch({ params: { chain: "0x1" } })}>Refetch</button>
+      <pre>{JSON.stringify(data, null, 2)}</pre>
+    </div>
+  );
+};
+```
+
+**Example return** (Object)
+```json
+{
+  "total": 1,
+  "page": 0,
+  "page_size": 500,
+  "result": [
+    {
+      "token_address": "0x057Ec652A4F150f7FF94f089A38008f49a0DF88e",
+      "token_id": "15",
+      "from_address": "0x057Ec652A4F150f7FF94f089A38008f49a0DF88e",
+      "to_address": "0x057Ec652A4F150f7FF94f089A38008f49a0DF88e",
+      "amount": "1",
+      "contract_type": "ERC721",
+      "block_number": "88256",
+      "block_timestamp": "2021-06-04T16:00:15",
+      "block_hash": "string",
+      "transaction_hash": "0x057Ec652A4F150f7FF94f089A38008f49a0DF88e",
+      "transaction_type": "string",
+      "transaction_index": "string",
+      "log_index": 0
+    }
+  ]
+}
+```
 
 ### `useChain()` 
 
