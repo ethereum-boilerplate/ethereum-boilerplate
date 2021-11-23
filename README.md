@@ -112,9 +112,10 @@ yarn start
 
 ### `<AddressInput />`
 
-![addressInput](https://user-images.githubusercontent.com/78314301/141116003-ad08dbe0-f06f-4718-be54-0c5990103510.gif)
+![input](https://user-images.githubusercontent.com/78314301/143021458-e3510069-c980-453f-8215-7943b4a0239b.gif)
 
-📫 `<AddressInput />` : Input for eth address. Displays [Blockie](https://www.npmjs.com/package/react-blockies) avatar for the entered wallet. Helps to validate addresses. After entering 42 characters (wallet length) freezes inout and calls `setValidatedAddress`
+📫 `<AddressInput />` : Input for eth address. Displays [Blockie](https://www.npmjs.com/package/react-blockies) avatar for the entered wallet. Helps to validate addresses. After entering 42 characters (0x... wallet length) or valid crypto domain freezes inout and calls `setValidatedAddress`. 
+Supported domains: `[".eth", ".crypto", ".coin", ".wallet", ".bitcoin", ".x", ".888", ".nft", ".dao", ".blockchain"]`
 
 **Options**:
 - autoFocus (optional): focuses object after rendering the component. 
