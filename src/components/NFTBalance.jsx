@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useMoralis, useNFTBalances } from "react-moralis";
 import { Card, Image, Tooltip, Modal, Input } from "antd";
-import { useNFTBalance } from "hooks/useNFTBalance";
 import { FileSearchOutlined, SendOutlined, ShoppingCartOutlined } from "@ant-design/icons";
 import { useMoralisDapp } from "providers/MoralisDappProvider/MoralisDappProvider";
 import { getExplorer } from "helpers/networks";
@@ -29,6 +28,8 @@ function NFTBalance() {
   const [amountToSend, setAmount] = useState(null);
   const [nftToSend, setNftToSend] = useState(null);
   const [isPending, setIsPending] = useState(false);
+
+  console.log("NFTBalances", NFTBalances);
 
   async function transfer(nft, amount, receiver) {
     const options = {
