@@ -39,9 +39,6 @@ function MenuItems() {
       <Menu.Item key="/contract">
         <NavLink to="/contract">📄 Contract</NavLink>
       </Menu.Item>
-      <Menu.Item key="/nftmint">
-        <NavLink to="/nftmint">NFT Minter</NavLink>
-      </Menu.Item>
     </Menu>
   );
 }
