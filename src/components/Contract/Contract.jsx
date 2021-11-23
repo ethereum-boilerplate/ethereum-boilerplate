@@ -102,11 +102,7 @@ export default function Contract() {
         >
           {displayedContractFunctions &&
             displayedContractFunctions.map((item, key) => (
-              <Card
-                title={`${key + 1}. ${item?.name}`}
-                size="small"
-                style={{ marginBottom: "20px" }}
-              >
+              <Card title={`${key + 1}. ${item?.name}`} size="small" style={{ marginBottom: "20px" }}>
                 <Form layout="vertical" name={`${item.name}`}>
                   {item.inputs.map((input, key) => (
                     <Form.Item
@@ -120,14 +116,9 @@ export default function Contract() {
                   ))}
                   <Form.Item style={{ marginBottom: "5px" }}>
                     <Text style={{ display: "block" }}>
-                      {responses[item.name]?.result &&
-                        `Response: ${JSON.stringify(responses[item.name]?.result)}`}
+                      {responses[item.name]?.result && `Response: ${JSON.stringify(responses[item.name]?.result)}`}
                     </Text>
-                    <Button
-                      type="primary"
-                      htmlType="submit"
-                      loading={responses[item?.name]?.isLoading}
-                    >
+                    <Button type="primary" htmlType="submit" loading={responses[item?.name]?.isLoading}>
                       {item.stateMutability === "view" ? "Read🔎" : "Transact💸"}
                     </Button>
                   </Form.Item>

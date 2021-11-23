@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import useChain from "hooks/useChain";
-import { useMoralisDapp } from "providers/MoralisDappProvider/MoralisDappProvider";
 import { Menu, Dropdown, Button } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import { AvaxLogo, PolygonLogo, BSCLogo, ETHLogo } from "./Logos";
+import { useChain } from "react-moralis";
 
 const styles = {
   item: {
@@ -80,9 +79,10 @@ const menuItems = [
 ];
 
 function Chains() {
-  const { switchNetwork } = useChain();
-  const { chainId } = useMoralisDapp();
+  const { switchNetwork, chainId, chain } = useChain();
   const [selected, setSelected] = useState({});
+
+  console.log("chain", chain)
 
   useEffect(() => {
     if (!chainId) return null;
@@ -103,17 +103,13 @@ function Chains() {
           <span style={{ marginLeft: "5px" }}>{item.value}</span>
         </Menu.Item>
       ))}
-    </Menu> 
+    </Menu>
   );
 
   return (
     <div>
       <Dropdown overlay={menu} trigger={["click"]}>
-        <Button
-          key={selected?.key}
-          icon={selected?.icon}
-          style={{ ...styles.button, ...styles.item }}
-        >
+        <Button key={selected?.key} icon={selected?.icon} style={{ ...styles.button, ...styles.item }}>
           <span style={{ marginLeft: "5px" }}>{selected?.value}</span>
           <DownOutlined />
         </Button>

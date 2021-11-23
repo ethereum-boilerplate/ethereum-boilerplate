@@ -68,7 +68,10 @@ yarn start
   - [`useIPFS()`](#useipfs)
   - [`useChain()`](#usechain)
   - [`useTokenPrice()`](#usetokenprice)
-  - [`useInchDex()`](#useinchdex)
+  - [`DEX Hooks`](#dexhooks)
+    - [`useOneInchQuote()`](#useoneinchquote)
+    - [`useInchDex()`](#useinchdex)
+  
 
 # 🏗 Ethereum Components
 
@@ -261,6 +264,8 @@ const ShowUniswapObserveValues = () => {
 
 **Example**:
 ```jsx
+import { useWeb3Contract } from "react-moralis"
+
 const ShowUniswapObserveValues = () => {
   const { runContractFunction, contractResponse, error, isRunning, isLoading } = useWeb3Contract({
     abi: usdcEthPoolAbi,
@@ -358,7 +363,43 @@ function NativeBalance() {
 
 ### `useChain()` 
 
-### `useInchDex()` 
+⛓ Hook for fast network switching or getting info about current network. To change the current network, set the target chainId to `switchNetwork` function. If the user does not have the target network in the wallet, it will automatically ask permission to add it to the wallet. 
+
+**Example**:
+```jsx
+import { useChain } from "react-moralis";
+
+function Chains() {
+  const { switchNetwork, chainId, chain, account } = useChain();
+  return (
+    <>
+      <button onClick={() => switchNetwork("0x1")}>Switch to Ethereum</button>
+      <p>Current chainId: {chainId}</p>
+    </>
+  );
+}
+```
+
+### `DEX Hooks` 
+
+### `useOneInchQuote()` 
+
+⛓ Hook for getting swap quote info.
+
+**Example**:
+```jsx
+import { useOneInchQuote } from "react-moralis";
+
+function Chains() {
+  const { getQuote: fetch, data, isFetching, isLoading, error } = useOneInchQuote();
+  return (
+    <>
+      <button onClick={() => switchNetwork("0x1")}>Switch to Ethereum</button>
+      <p>Current chainId: {chainId}</p>
+    </>
+  );
+}
+```
 
 ### `useTokenPrice()` 
 
