@@ -1,6 +1,6 @@
 import React from "react";
-import Web3 from "web3";
 import { Card, Image, Tooltip, Modal, TextArea, Input, Button } from "antd";
+import { useMoralis } from "react-moralis";
 
 const styles = {
   card: {
@@ -13,21 +13,8 @@ const styles = {
   },
 };
 
-const Moralis = require("moralis");
-
 function CreateNFT() {
-  Moralis.initialize(process.env.REACT_APP_MORALIS_APPLICATION_ID);
-  Moralis.serverURL = process.env.REACT_APP_MORALIS_SERVER_URL;
-
-  async function AddLibrary(urlOfTheLibrary) {
-    const script = document.createElement("script");
-    script.src = urlOfTheLibrary;
-    script.async = true;
-    document.body.appendChild(script);
-  }
-  AddLibrary("https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js");
-  AddLibrary("https://unpkg.com/moralis/dist/moralis.js");
-  const web3 = new Web3(window.ethereum);
+  const { Moralis, web3 } = useMoralis();
 
   let nftContractAddress = "0x351bbee7C6E9268A1BF741B098448477E08A0a53"; // Make this variable
 
@@ -36,19 +23,6 @@ function CreateNFT() {
   // BSC Testnet 0x88624DD1c725C6A95E223170fa99ddB22E1C6DDD
 
   // choose value as per dragdrop
-
-  let selectedChain;
-  selectedChain = "MAT";
-
-  if (selectedChain.value === "ETH") {
-    nftContractAddress = "0x0Fb6EF3505b9c52Ed39595433a21aF9B5FCc4431";
-  }
-  if (selectedChain.value === "BSC") {
-    nftContractAddress = "0x88624DD1c725C6A95E223170fa99ddB22E1C6DDD";
-  }
-  if (selectedChain.value === "MAT") {
-    nftContractAddress = "0x351bbee7C6E9268A1BF741B098448477E08A0a53";
-  }
 
   const minting = async () => {
     // Storing the file
@@ -77,7 +51,7 @@ function CreateNFT() {
 
     // minting
     await mintToken(metadataURI).then((result) => {
-      alert("Token minted");
+      alert("Token minting transaction sent successfully !!");
     });
   };
 
@@ -130,11 +104,6 @@ function CreateNFT() {
         This minter currently supports only Polygon Mumbai NFTs.
         <br />
         <br></br>
-        {/* <select name="selectList" id="selectList">
-          <option value="ETH">Ethereum Rinkeby</option> 
-          <option value="MAT">Mumbai Testnet</option>
-          <option value="BSC">Binance Smart Chain Testnet</option>
-        </select> */}
         <Input
           type="text"
           name="metadataName"
