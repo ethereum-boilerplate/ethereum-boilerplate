@@ -544,6 +544,52 @@ function Chains() {
 }
 ```
 
+### `useTokenPrice()` 
+
+💰 Gets the price nominated in the native token and usd for a given token contract address
+
+**Options**:
+- `chain` (optional): The blockchain to get data from. Valid values are listed on the intro page in the Transactions and Balances section. Default value: current chain (if the chain is not supported it will use the Eth chain).
+- `address` (optional): A user address (i.e. 0x1a2b3x...). If specified, the user attached to the query is ignored and the address will be used instead.
+- `exchange` (optional): The factory name or address of the token exchange. Possible exchanges, for different chains are: ETH mainnet: `uniswap-v3`, `sushiswap`, `uniswap-v2`, BSC mainnet: `pancakeswap-v2`, `pancakeswap-v1`. Polygon mainnet: `quickswap`. *If no exchange is specified, all exchanges are checked (in the order as listed above) until a valid pool has been found. Note that this request can take more time. So specifying the exchange will result in faster responses most of the time.*
+- `to_block` (optional): Returns the price for a given blocknumber (historical price-data).
+
+**Example**
+```jsx
+import { useTokenPrice } from "react-moralis";
+
+const TokenPrice = () => {
+  const { fetchTokenPrice, data: formattedData, error, isLoading, isFetching } = useTokenPrice({ address: "0x1f9840...1f984", chain: "eth" });
+
+  return (
+    <div>
+        {error && <>{JSON.stringify(error)}</>}
+        <button onClick={() => fetchTokenPrice({ params: { address: "0x6...361",  chain: "bsc" } })}>Refetch</button>
+        <pre>{JSON.stringify(data, null, 2)}</pre>
+    </div>
+  );
+}
+```
+
+**Example return** (Object)
+```json
+{
+  exchangeAddress: "0x1f98431c8ad98523631ae4a59f267346ea31f984",
+  exchangeName: "Uniswap v3",
+  formattedNative: "0.004695 ETH",
+  formattedUsd: "$20.38",
+  nativePrice: {
+    decimals: 18,
+    name: "Ether",
+    symbol: "ETH",
+    value: "4695118425598734"
+  },
+  usdPrice: 20.37791922835578
+}
+```
+
+### `useIPFS()` 
+
 ### `DEX Hooks` 
 
 ### `useOneInchQuote()` 
@@ -565,6 +611,3 @@ function Chains() {
 }
 ```
 
-### `useTokenPrice()` 
-
-### `useIPFS()` 
