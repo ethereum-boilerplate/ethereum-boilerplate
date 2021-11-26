@@ -1,5 +1,6 @@
 {
   "name": "ethereum-boilerplate",
+  "homepage": "http://ethereum-boilerplate.github.io/ethereum-boilerplate",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -29,7 +30,8 @@
     "devchain": "node Truffle/scripts/devChain.js",
     "connect": "moralis-admin-cli connect-local-devchain",
     "watch:events": "moralis-admin-cli add-contract",
-    "deploy": "node Truffle/scripts/deployContract.js"
+    "deploy": "node Truffle/scripts/deployContract.js",
+    "deploypage": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -48,5 +50,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^3.2.3"
   }
 }

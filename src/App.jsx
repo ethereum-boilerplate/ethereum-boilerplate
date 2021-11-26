@@ -78,54 +78,48 @@ const App = ({ isServerInfo }) => {
         </Header>
 
         <div style={styles.content}>
-          {!isAuthenticated ? (
-            <>Please login using the "Authenticate" button</>
-          ) : (
-            <Skeleton active loading={!isWeb3Enabled}>
-              <Switch>
-                <Route path="/quickstart">
-                  <QuickStart isServerInfo={isServerInfo} />
-                </Route>
-                <Route path="/wallet">
-                  <Wallet />
-                </Route>
-                <Route path="/1inch">
-                  <Tabs defaultActiveKey="1" style={{ alignItems: "center" }}>
-                    <Tabs.TabPane tab={<span>Ethereum</span>} key="1">
-                      <InchDex chain="eth" />
-                    </Tabs.TabPane>
-                    <Tabs.TabPane tab={<span>Binance Smart Chain</span>} key="2">
-                      <InchDex chain="bsc" />
-                    </Tabs.TabPane>
-                    <Tabs.TabPane tab={<span>Polygon</span>} key="3">
-                      <InchDex chain="polygon" />
-                    </Tabs.TabPane>
-                  </Tabs>
-                </Route>
-                <Route path="/erc20balance">
-                  <ERC20Balance />
-                </Route>
-                <Route path="/onramp">
-                  <Ramper />
-                </Route>
-                <Route path="/erc20transfers">
-                  <ERC20Transfers />
-                </Route>
-                <Route path="/nftBalance">
-                  <NFTBalance />
-                </Route>
-                <Route path="/contract">
-                  <Contract />
-                </Route>
-                <Route exact path="/">
-                  <Redirect to="/quickstart" />
-                </Route>
-                <Route path="/nonauthenticated">
-                  <>Please login using the "Authenticate" button</>
-                </Route>
-              </Switch>
-            </Skeleton>
-          )}
+          <Switch>
+            <Route path="/quickstart">
+              <QuickStart isServerInfo={isServerInfo} />
+            </Route>
+            <Route path="/wallet">
+              <Wallet />
+            </Route>
+            <Route path="/1inch">
+              <Tabs defaultActiveKey="1" style={{ alignItems: "center" }}>
+                <Tabs.TabPane tab={<span>Ethereum</span>} key="1">
+                  <InchDex chain="eth" />
+                </Tabs.TabPane>
+                <Tabs.TabPane tab={<span>Binance Smart Chain</span>} key="2">
+                  <InchDex chain="bsc" />
+                </Tabs.TabPane>
+                <Tabs.TabPane tab={<span>Polygon</span>} key="3">
+                  <InchDex chain="polygon" />
+                </Tabs.TabPane>
+              </Tabs>
+            </Route>
+            <Route path="/erc20balance">
+              <ERC20Balance />
+            </Route>
+            <Route path="/onramp">
+              <Ramper />
+            </Route>
+            <Route path="/erc20transfers">
+              <ERC20Transfers />
+            </Route>
+            <Route path="/nftBalance">
+              <NFTBalance />
+            </Route>
+            <Route path="/contract">
+              <Contract />
+            </Route>
+            <Route exact path="/">
+              <Redirect to="/quickstart" />
+            </Route>
+            <Route path="/nonauthenticated">
+              <>Please login using the "Authenticate" button</>
+            </Route>
+          </Switch>
         </div>
       </Router>
       <Footer style={{ textAlign: "center" }}>

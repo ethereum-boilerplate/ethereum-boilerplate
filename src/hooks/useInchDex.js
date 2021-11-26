@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
 import { useMoralis } from "react-moralis";
-import { useMoralisDapp } from "providers/MoralisDappProvider/MoralisDappProvider";
 
 const useInchDex = (chain) => {
-  const { Moralis } = useMoralis();
-  const { walletAddress } = useMoralisDapp();
+  const { Moralis, account } = useMoralis();
   const [tokenList, setTokenlist] = useState();
 
   useEffect(() => {
@@ -28,7 +26,7 @@ const useInchDex = (chain) => {
         .hasAllowance({
           chain, // The blockchain you want to use (eth/bsc/polygon)
           fromTokenAddress: fromToken.address, // The token you want to swap
-          fromAddress: walletAddress, // Your wallet address
+          fromAddress: account, // Your wallet address
           amount,
         })
         .then(async (allowance) => {
@@ -37,7 +35,7 @@ const useInchDex = (chain) => {
             await Moralis.Plugins.oneInch.approve({
               chain, // The blockchain you want to use (eth/bsc/polygon)
               tokenAddress: fromToken.address, // The token you want to swap
-              fromAddress: walletAddress, // Your wallet address
+              fromAddress: account, // Your wallet address
             });
           }
         })
@@ -60,7 +58,7 @@ const useInchDex = (chain) => {
       fromTokenAddress: params.fromToken.address, // The token you want to swap
       toTokenAddress: params.toToken.address, // The token you want to receive
       amount: Moralis.Units.Token(params.fromAmount, params.fromToken.decimals).toString(),
-      fromAddress: walletAddress, // Your wallet address
+      fromAddress: account, // Your wallet address
       slippage: 1,
     });
   }

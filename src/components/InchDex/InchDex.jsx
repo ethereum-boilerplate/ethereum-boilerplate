@@ -1,6 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
 import { useMoralis } from "react-moralis";
-import { useMoralisDapp } from "providers/MoralisDappProvider/MoralisDappProvider";
 import InchModal from "./components/InchModal";
 import useInchDex from "hooks/useInchDex";
 import { Button, Card, Image, Input, InputNumber, Modal } from "antd";
@@ -56,8 +55,7 @@ const IsNative = (address) => address === "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
 function InchDex({ chain }) {
   const { trySwap, tokenList, getQuote } = useInchDex(chain);
 
-  const { Moralis, isInitialized } = useMoralis();
-  const { chainId } = useMoralisDapp();
+  const { Moralis, isInitialized, chainId } = useMoralis();
   const [isFromModalActive, setFromModalActive] = useState(false);
   const [isToModalActive, setToModalActive] = useState(false);
   const [fromToken, setFromToken] = useState();
