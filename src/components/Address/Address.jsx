@@ -4,6 +4,7 @@ import { getEllipsisTxt } from "../../helpers/formatters";
 import Blockie from "../Blockie";
 import "./identicon.css";
 import { useMoralis } from "react-moralis";
+import { Skeleton } from "antd";
 
 const styles = {
   address: {
@@ -25,7 +26,7 @@ function Address(props) {
     setAddress(props?.address || account);
   }, [account, props]);
 
-  if (!address) return null;
+  if (!address) return <Skeleton paragraph={{ rows: 1, width: "100%" }} title={false} active />;
 
   const Copy = () => (
     <svg

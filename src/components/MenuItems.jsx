@@ -27,6 +27,9 @@ function MenuItems() {
       <Menu.Item key="/1inch">
         <NavLink to="/1inch">🏦 Dex</NavLink>
       </Menu.Item>
+      <Menu.Item key="onramp">
+        <NavLink to="/onramp">💵 Fiat</NavLink>
+      </Menu.Item>
       <Menu.Item key="/erc20balance">
         <NavLink to="/erc20balance">💰 Balances</NavLink>
       </Menu.Item>
