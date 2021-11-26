@@ -574,19 +574,19 @@ const TokenPrice = () => {
 **Example return** (Object)
 ```json
 {
-  exchangeAddress: "0x1f98431c8ad98523631ae4a59f267346ea31f984",
-  exchangeName: "Uniswap v3",
-  formattedNative: "0.004695 ETH",
-  formattedUsd: "$20.38",
-  nativePrice: {
-    decimals: 18,
-    name: "Ether",
-    symbol: "ETH",
-    value: "4695118425598734"
+  "exchangeAddress": "0x1f98431c8ad98523631ae4a59f267346ea31f984",
+  "exchangeName": "Uniswap v3",
+  "formattedNative": "0.004695 ETH",
+  "formattedUsd": "$20.38",
+  "nativePrice": {
+    "decimals": 18,
+    "name": "Ether",
+    "symbol": "ETH",
+    "value": "4695118425598734"
   },
-  usdPrice: 20.37791922835578,
-  
+  "usdPrice": 20.37791922835578
 }
+
 ```
 
 ### `useIPFS()` 
