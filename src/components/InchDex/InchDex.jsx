@@ -6,8 +6,9 @@ import useInchDex from "hooks/useInchDex";
 import { Button, Card, Image, Input, InputNumber, Modal } from "antd";
 import Text from "antd/lib/typography/Text";
 import { ArrowDownOutlined } from "@ant-design/icons";
-import useTokenPrice from "hooks/useTokenPrice";
+import { useTokenPrice } from "react-moralis";
 import { tokenValue } from "helpers/formatters";
+import { getWrappedNative } from "helpers/networks";
 // import { useOneInchQuote } from "react-moralis";
 
 const styles = {
@@ -44,6 +45,14 @@ const chainIds = {
   "0x89": "polygon",
 };
 
+const getChainIdByName = (chainName) => {
+  for (let chainId in chainIds) {
+    if (chainIds[chainId] === chainName) return chainId;
+  }
+};
+
+const IsNative = (address) => address === "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
+
 function InchDex({ chain }) {
   const { trySwap, tokenList, getQuote } = useInchDex(chain);
 
@@ -58,7 +67,7 @@ function InchDex({ chain }) {
   const [currentTrade, setCurrentTrade] = useState();
   const { fetchTokenPrice } = useTokenPrice();
   const [tokenPricesUSD, setTokenPricesUSD] = useState({});
-  console.log("fromToken", fromToken);
+
   const fromTokenPriceUsd = useMemo(
     () => (tokenPricesUSD?.[fromToken?.["address"]] ? tokenPricesUSD[fromToken?.["address"]] : null),
     [tokenPricesUSD, fromToken]
@@ -83,23 +92,31 @@ function InchDex({ chain }) {
   // tokenPrices
   useEffect(() => {
     if (!isInitialized || !fromToken || !chain) return null;
-    fetchTokenPrice({ chain: chain, address: fromToken[["address"]] }).then((price) =>
-      setTokenPricesUSD({
-        ...tokenPricesUSD,
-        [fromToken["address"]]: price["usdPrice"],
-      })
-    );
+    const validatedChain = chain ? getChainIdByName(chain) : chainId;
+    const tokenAddress = IsNative(fromToken["address"]) ? getWrappedNative(validatedChain) : fromToken["address"];
+    fetchTokenPrice({
+      params: { chain: validatedChain, address: tokenAddress },
+      onSuccess: (price) =>
+        setTokenPricesUSD({
+          ...tokenPricesUSD,
+          [fromToken["address"]]: price["usdPrice"],
+        }),
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [chain, isInitialized, fromToken]);
 
   useEffect(() => {
     if (!isInitialized || !toToken || !chain) return null;
-    fetchTokenPrice({ chain: chain, address: toToken[["address"]] }).then((price) =>
-      setTokenPricesUSD({
-        ...tokenPricesUSD,
-        [toToken["address"]]: price["usdPrice"],
-      })
-    );
+    const validatedChain = chain ? getChainIdByName(chain) : chainId;
+    const tokenAddress = IsNative(toToken["address"]) ? getWrappedNative(validatedChain) : toToken["address"];
+    fetchTokenPrice({
+      params: { chain: validatedChain, address: tokenAddress },
+      onSuccess: (price) =>
+        setTokenPricesUSD({
+          ...tokenPricesUSD,
+          [toToken["address"]]: price["usdPrice"],
+        }),
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [chain, isInitialized, toToken]);
 
@@ -110,7 +127,6 @@ function InchDex({ chain }) {
 
   const ButtonState = useMemo(() => {
     if (chainIds?.[chainId] !== chain) return { isActive: false, text: `Switch to ${chain}` };
-    // if (chainIds[chainId] !== chain)
 
     if (!fromAmount) return { isActive: false, text: "Enter an amount" };
     if (fromAmount && currentTrade) return { isActive: true, text: "Swap" };

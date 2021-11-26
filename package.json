@@ -18,6 +18,7 @@
     "react-router-dom": "^5.3.0",
     "react-scripts": "4.0.3",
     "web-vitals": "^1.0.1",
+    "web3modal": "^1.9.4",
     "yarn": "^1.22.17"
   },
   "scripts": {
