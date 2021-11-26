@@ -8,7 +8,7 @@ const useInchDex = (chain) => {
   useEffect(() => {
     if (!Moralis?.["Plugins"]?.["oneInch"]) return null;
     Moralis.Plugins.oneInch.getSupportedTokens({ chain }).then((tokens) => setTokenlist(tokens.tokens));
-  }, [Moralis, chain]);
+  }, [Moralis.Plugins, chain]);
 
   const getQuote = async (params) =>
     await Moralis.Plugins.oneInch.quote({
