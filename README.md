@@ -584,7 +584,8 @@ const TokenPrice = () => {
     symbol: "ETH",
     value: "4695118425598734"
   },
-  usdPrice: 20.37791922835578
+  usdPrice: 20.37791922835578,
+  
 }
 ```
 
