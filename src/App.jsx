@@ -116,6 +116,9 @@ const App = ({ isServerInfo }) => {
             <Route exact path="/">
               <Redirect to="/quickstart" />
             </Route>
+            <Route exact path="/ethereum-boilerplate">
+              <Redirect to="/quickstart" />
+            </Route>
             <Route path="/nonauthenticated">
               <>Please login using the "Authenticate" button</>
             </Route>
