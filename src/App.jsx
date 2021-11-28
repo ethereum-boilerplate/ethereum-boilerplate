@@ -79,7 +79,7 @@ const App = ({ isServerInfo }) => {
 
         <div style={styles.content}>
           <Switch>
-            <Route path="/quickstart">
+            <Route exact path="/quickstart">
               <QuickStart isServerInfo={isServerInfo} />
             </Route>
             <Route path="/wallet">
@@ -113,10 +113,10 @@ const App = ({ isServerInfo }) => {
             <Route path="/contract">
               <Contract />
             </Route>
-            <Route exact path="/">
+            <Route path="/">
               <Redirect to="/quickstart" />
             </Route>
-            <Route exact path="/ethereum-boilerplate">
+            <Route path="/ethereum-boilerplate">
               <Redirect to="/quickstart" />
             </Route>
             <Route path="/nonauthenticated">
