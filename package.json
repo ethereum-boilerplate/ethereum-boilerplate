@@ -1,6 +1,6 @@
 {
   "name": "ethereum-boilerplate",
-  "homepage": "http://ethereum-boilerplate.github.io/ethereum-boilerplate",
+  "homepage": "http://ethereum-boilerplate.github.io/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
