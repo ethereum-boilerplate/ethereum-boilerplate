@@ -9,7 +9,7 @@ import ERC20Transfers from "components/ERC20Transfers";
 import InchDex from "components/InchDex";
 import NFTBalance from "components/NFTBalance";
 import Wallet from "components/Wallet";
-import { Layout, Tabs, Skeleton } from "antd";
+import { Layout, Tabs } from "antd";
 import "antd/dist/antd.css";
 import NativeBalance from "components/NativeBalance";
 import "./style.css";

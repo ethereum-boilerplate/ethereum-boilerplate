@@ -88,7 +88,7 @@ export default function Contract() {
                   console.log("🔊 New Receipt: ", receipt);
                 })
                 .on("error", (error) => {
-                  console.log(error);
+                  console.error(error);
                 });
             } else {
               console.log("options", options);

@@ -1,8 +1,7 @@
 {
   "name": "ethereum-boilerplate",
-  "homepage": "http://ethereum-boilerplate.github.io/",
+  "homepage": "http://ethereum-boilerplate.github.io/ethereum-boilerplate",
   "version": "0.1.0",
-  "private": true,
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
     "@testing-library/jest-dom": "^5.11.4",
@@ -19,7 +18,6 @@
     "react-router-dom": "^5.3.0",
     "react-scripts": "4.0.3",
     "web-vitals": "^1.0.1",
-    "web3modal": "^1.9.4",
     "yarn": "^1.22.17"
   },
   "scripts": {
