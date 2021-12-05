@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Menu, Dropdown, Button } from "antd";
 import { DownOutlined } from "@ant-design/icons";
-import { AvaxLogo, PolygonLogo, BSCLogo, ETHLogo } from "./Logos";
+import { AvaxLogo, PolygonLogo, BSCLogo, ETHLogo, FantomLogo } from "./Logos";
 import { useChain } from "react-moralis";
 
 const styles = {
@@ -75,6 +75,11 @@ const menuItems = [
     key: "0xa86a",
     value: "Avalanche",
     icon: <AvaxLogo />,
+  },
+  {
+    key: "0xfa",
+    value: "Fantom Opera",
+    icon: <FantomLogo />,
   },
 ];
 
