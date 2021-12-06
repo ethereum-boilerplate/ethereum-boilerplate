@@ -66,7 +66,6 @@ yarn start
   - [`useNativeTransactions()`](#usenativetransactions)
   - [`useNFTBalances()`](#usenftbalances)
   - [`useNFTTransfers()`](#usenfttransfers)
-  - [`useNFTTransfers()`](#usenfttransfers)
   - [`useIPFS()`](#useipfs)
   - [`useChain()`](#usechain)
   - [`useTokenPrice()`](#usetokenprice)
