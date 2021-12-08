@@ -1,6 +1,5 @@
 import { Card, Timeline, Typography } from "antd";
-import React, { useMemo } from "react";
-import { useMoralis } from "react-moralis";
+import React from "react";
 
 const { Text } = Typography;
 
@@ -23,10 +22,6 @@ const styles = {
 };
 
 export default function QuickStart({ isServerInfo }) {
-  const { Moralis } = useMoralis();
-
-  const isInchDex = useMemo(() => (Moralis.Plugins?.oneInch ? true : false), [Moralis.Plugins?.oneInch]);
-
   return (
     <div style={{ display: "flex", gap: "10px" }}>
       <Card
@@ -112,7 +107,7 @@ export default function QuickStart({ isServerInfo }) {
           </Timeline.Item>
 
           <Timeline.Item dot="💿">
-            <Text delete={isInchDex} style={styles.text}>
+            <Text style={styles.text}>
               Install{" "}
               <a
                 href="https://moralis.io/plugins/1inch/?utm_source=boilerplatehosted&utm_medium=todo&utm_campaign=ethereum-boilerplate"
