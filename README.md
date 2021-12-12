@@ -56,6 +56,7 @@ yarn start
   - [`<Wallet />`](#wallet-)
   - [`<Blockie />`](#blockie-)
   - [`<NativeBalance />`](#nativebalance-)
+  - [`/<NFTBalance />`](#nftbalance)
   - [`<Contract />`](#contract-)
 - [🧰 Ethereum Hooks](#-ethereum-hooks)
   - [`useAPIContract()`](#useapicontract)  
@@ -65,7 +66,6 @@ yarn start
   - [`useNativeBalance()`](#usenativebalance)
   - [`useNativeTransactions()`](#usenativetransactions)
   - [`useNFTBalances()`](#usenftbalances)
-  - [`useNFTTransfers()`](#usenfttransfers)
   - [`useNFTTransfers()`](#usenfttransfers)
   - [`useIPFS()`](#useipfs)
   - [`useChain()`](#usechain)
@@ -217,6 +217,8 @@ const [address, setAddress] = useState();
 
 
 ### `<NativeBalance />`
+
+### `<NFTBalance />`
 
 ### `<Contract />`
 
@@ -733,5 +735,5 @@ const SupportedTokens = () => {
 }
 ```
 
-
+### Where to host your dApp?
 

@@ -1,6 +1,5 @@
 {
   "name": "ethereum-boilerplate",
-  "homepage": "http://ethereum-boilerplate.github.io/ethereum-boilerplate",
   "version": "0.1.0",
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
