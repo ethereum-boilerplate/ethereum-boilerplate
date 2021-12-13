@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useMoralis } from "react-moralis";
-import { useEffect } from "react/cjs/react.development";
 
 function Ramper() {
   const [ramper, setRamper] = useState();
