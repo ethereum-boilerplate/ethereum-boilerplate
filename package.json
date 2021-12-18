@@ -1,6 +1,6 @@
 {
   "name": "ethereum-boilerplate",
-  "homepage" : "https://ethereum-boilerplate.github.io/",
+  "homepage": "https://ethereum-boilerplate.github.io/",
   "version": "0.1.0",
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
@@ -29,7 +29,8 @@
     "connect": "moralis-admin-cli connect-local-devchain",
     "watch:events": "moralis-admin-cli add-contract",
     "deploy": "node Truffle/scripts/deployContract.js",
-    "deploypage": "gh-pages -d build"
+    "deploypage": "gh-pages -d build",
+    "clean": "npx gh-pages-clean"
   },
   "eslintConfig": {
     "extends": [
