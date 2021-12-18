@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   inkscape:version="1.0 (4035a4f, 2020-05-01)"
+   sodipodi:docname="SafePal-SFP-Coin-Icon.svg"
+   id="svg857"
+   version="1.1"
+   viewBox="0 0 256 256"
+   height="256"
+   width="256">
+  <metadata
+     id="metadata863">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>形状结合</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs861">
+    <linearGradient
+       id="linearGradient1452"
+       inkscape:collect="always">
+      <stop
+         id="stop1448"
+         offset="0"
+         style="stop-color:#4a69fe;stop-opacity:1" />
+      <stop
+         id="stop1450"
+         offset="1"
+         style="stop-color:#4d2bd9;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient
+       gradientTransform="translate(-1.0277863,-1.0277863)"
+       gradientUnits="userSpaceOnUse"
+       y2="212.73454"
+       x2="222.68657"
+       y1="43.174702"
+       x1="37.515347"
+       id="linearGradient1454"
+       xlink:href="#linearGradient1452"
+       inkscape:collect="always" />
+  </defs>
+  <sodipodi:namedview
+     inkscape:current-layer="svg857"
+     inkscape:cy="132.84765"
+     inkscape:cx="252.61938"
+     inkscape:zoom="0.5896766"
+     showgrid="false"
+     id="namedview859"
+     inkscape:window-height="480"
+     inkscape:window-width="640"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0"
+     guidetolerance="10"
+     gridtolerance="10"
+     objecttolerance="10"
+     borderopacity="1"
+     bordercolor="#666666"
+     pagecolor="#ffffff" />
+  <!-- Generator: Sketch 61 (89581) - https://sketch.com -->
+  <title
+     id="title849">形状结合</title>
+  <circle
+     r="128"
+     cy="128"
+     cx="128"
+     id="path1432"
+     style="opacity:0.98;fill:url(#linearGradient1454);fill-opacity:1;fillRule:evenodd;strokeWidth:9.005" />
+  <desc
+     id="desc851">Created with Sketch.</desc>
+  <path
+     sodipodi:nodetypes="cssccccsccccccccccccccscccccccccccscccsscccccccccccccccccc"
+     d="m 205.42149,142.0199 v 12.5037 c 0,34.73803 -51.03266,54.73181 -66.67529,60.03411 v 0 L 133.057,216.5 v -21.61062 l 2.77942,-1.03631 c 24.33714,-9.04694 48.89285,-24.71715 48.89285,-39.32947 v 0 -12.5037 z M 128.13331,39.499999 148.98826,45.851406 V 67.90021 l -20.85495,-6.372996 -1.36421,0.417405 v 49.609401 h 22.21916 v 20.43996 H 126.7691 v 84.20351 l -5.79362,-2.13179 c -2.68955,-0.98754 -7.02263,-2.66995 -12.38312,-5.07121 v 0 l -2.51791,-1.13547 V 46.223227 Z m -28.605284,8.79945 v 21.948852 l -28.257289,8.663916 v 32.641413 h 28.257289 v 94.53863 l -6.25834,-3.1793 C 73.794318,193.01283 50.578513,176.3183 50.578513,153.00848 v 0 -10.98842 h 20.692224 v 10.98842 c 0,4.82333 2.541391,9.89054 7.562645,15.10889 v 0 -36.12378 H 50.578513 V 63.222813 Z m 55.741674,-0.522554 50.15179,15.329574 v 68.887511 h -29.44581 v 29.82835 c 0,0 -6.58301,8.52397 -20.68737,15.66142 0,-3.94485 -0.009,-64.5948 -0.0144,-101.544356 z m 20.70598,28.366628 v 35.410497 h 8.75359 V 78.812664 Z"
+     id="形状结合"
+     style="fill:#ffffff;fillRule:evenodd;stroke:none;strokeWidth:4.99763" />
+</svg>
