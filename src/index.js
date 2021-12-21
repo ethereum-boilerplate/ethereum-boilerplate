@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import { MoralisProvider } from "react-moralis";
 import "./index.css";
-import QuickStart from "components/QuickStart";
+import Home from "components/Home";
 
 /** Get your free Moralis Account https://moralis.io/ */
 
@@ -23,7 +23,7 @@ const Application = () => {
   else {
     return (
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <QuickStart />
+        <Home />
       </div>
     );
   }
