@@ -6,7 +6,7 @@ export default function Marketplace() {
     return (
         <>
             <Text strong>
-                Comming soon! 🚀
+                <h1>Comming soon! 🚀</h1>
             </Text>
         </>
     )
