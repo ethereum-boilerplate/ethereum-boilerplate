@@ -74,6 +74,7 @@ const App = ({ isServerInfo }) => {
       <Router>
         <Header style={styles.header}>
           <MoralisLogo />
+          &nbsp;
           <Link to="/" style={styles.homeLink}>MetaGymLand</Link>
           <MenuItems />
           <div style={styles.headerRight}>

@@ -36,6 +36,10 @@
   border-bottom: none;
 }
 
+.ant-typography, .ant-layout, .ant-layout h1 {
+  color: var(--main-text-color);
+}
+
 .ant-menu-item a {
   color: var(--main-text-color) !important;
 }
