@@ -12,20 +12,17 @@ function MenuItems() {
       style={{
         display: "flex",
         fontSize: "17px",
-        fontWeight: "500",
+        fontWeight: "400",
         width: "100%",
-        justifyContent: "center",
+        justifyContent: "left",
       }}
       selectedKeys={[pathname]}
     >
       <Menu.Item key="/avatars">
-        <NavLink to="/avatars">🖼{" "}Your MGL NFTs</NavLink>
+        <NavLink to="/avatars">🖼&nbsp;&nbsp;Your (MGL) NFTs</NavLink>
       </Menu.Item>
       <Menu.Item key="/marketplace">
-        <NavLink to="/marketplace">💹 marketplace</NavLink>
-      </Menu.Item>
-      <Menu.Item key="/contract">
-        <NavLink to="/contract">📄 Contract(to delete)</NavLink>
+        <NavLink to="/marketplace">💹&nbsp;&nbsp;Marketplace</NavLink>
       </Menu.Item>
     </Menu>
   );

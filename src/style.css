@@ -18,3 +18,24 @@
   overflow: auto;
   border-radius: 1rem;
 }
+
+.ant-card-head {
+  border-bottom: none;
+}
+
+:root {
+  --main-bg-color: #012E51;
+  --main-text-color: #FFF;
+}
+
+.ant-layout-header, .ant-menu, .ant-menu-root {
+  background-color: var(--main-bg-color);
+  color: var(--main-text-color);
+  box-shadow: none;
+  border: none;
+  border-bottom: none;
+}
+
+.ant-menu-item a {
+  color: var(--main-text-color) !important;
+}

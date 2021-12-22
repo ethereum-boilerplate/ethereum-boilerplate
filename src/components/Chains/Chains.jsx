@@ -20,6 +20,12 @@ const styles = {
   },
 };
 
+const supportedChains = new Set(
+  [
+    "0x4", // Rinkeby,
+    "0xa869", // Avalanche Testnet
+  ]);
+
 const menuItems = [
   {
     key: "0x1",
@@ -103,11 +109,13 @@ function Chains() {
 
   const menu = (
     <Menu onClick={handleMenuClick}>
-      {menuItems.map((item) => (
-        <Menu.Item key={item.key} icon={item.icon} style={styles.item}>
-          <span style={{ marginLeft: "5px" }}>{item.value}</span>
-        </Menu.Item>
-      ))}
+      {menuItems
+        .filter(item => supportedChains.has(item.key))
+        .map((item) => (
+          <Menu.Item key={item.key} icon={item.icon} style={styles.item}>
+            <span style={{ marginLeft: "5px" }}>{item.value}</span>
+          </Menu.Item>
+        ))}
     </Menu>
   );
 

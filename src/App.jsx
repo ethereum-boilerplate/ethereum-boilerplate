@@ -18,7 +18,8 @@ import { Row, Col } from 'antd';
 import packageJson from '../package.json';
 
 const { Header, Footer } = Layout;
-
+const mainBackgroundCol = "#012E51"
+const brightFontCol = "#fff"
 const styles = {
   homeLink: {
     color: "inherit",
@@ -29,7 +30,6 @@ const styles = {
     display: "flex",
     justifyContent: "center",
     fontFamily: "Roboto, sans-serif",
-    color: "#041836",
     marginTop: "130px",
     padding: "10px",
   },
@@ -37,14 +37,13 @@ const styles = {
     position: "fixed",
     zIndex: 1,
     width: "100%",
-    background: "#fff",
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
     fontFamily: "Roboto, sans-serif",
-    borderBottom: "2px solid rgba(0, 0, 0, 0.06)",
     padding: "0 10px",
-    boxShadow: "0 1px 10px rgb(151 164 175 / 10%)",
+    // borderBottom: "2px solid rgba(0, 0, 0, 0.06)",
+    // boxShadow: "0 1px 10px rgb(151 164 175 / 10%)",
   },
   headerRight: {
     display: "flex",
@@ -54,6 +53,7 @@ const styles = {
     fontWeight: "600",
   },
 };
+
 const App = ({ isServerInfo }) => {
   const { isWeb3Enabled, enableWeb3, isAuthenticated, isWeb3EnableLoading } = useMoralis();
 
@@ -64,7 +64,13 @@ const App = ({ isServerInfo }) => {
   }, [isAuthenticated, isWeb3Enabled]);
 
   return (
-    <Layout style={{ height: "100vh", overflow: "auto" }}>
+    <Layout style={
+      {
+        height: "100vh",
+        overflow: "auto",
+        background: mainBackgroundCol,
+        fontFamily: "Roboto, sans-serif",
+      }}>
       <Router>
         <Header style={styles.header}>
           <MoralisLogo />
@@ -97,13 +103,16 @@ const App = ({ isServerInfo }) => {
           </Switch>
         </div>
       </Router>
-      <Footer style={{ textAlign: "center" }}>
+      <Footer style={{ textAlign: "center", background: mainBackgroundCol, color: brightFontCol }}>
+        <Divider style={{ backgroundColor: brightFontCol }} />
         <Row>
-          <Col span={24}><b>META GYM LAND</b> version: {packageJson.version}</Col>
+          <Col span={100} style={{ color: brightFontCol }}>
+            <b>META GYM LAND</b> version: {packageJson.version}
+          </Col>
         </Row>
         <Row>
           <Col span={24}>
-            <Text>
+            <Text style={{ color: brightFontCol }}>
               Built with {" "}
               <a
                 target="_blank"
@@ -113,8 +122,8 @@ const App = ({ isServerInfo }) => {
                 Moralis
               </a>
             </Text>
-            <Divider type="vertical" />
-            <Text>
+            <Divider type="vertical" style={{ backgroundColor: brightFontCol }} />
+            <Text style={{ color: brightFontCol }}>
               Powered by {" "}
               <a
                 target="_blank"
@@ -124,8 +133,8 @@ const App = ({ isServerInfo }) => {
                 Avalanche
               </a>
             </Text>
-            <Divider type="vertical" />
-            <Text>
+            <Divider type="vertical" style={{ backgroundColor: brightFontCol }} />
+            <Text style={{ color: brightFontCol }}>
               Powered by {" "}
               <a
                 target="_blank"
