@@ -50,7 +50,10 @@ function Account() {
 
   console.log(web3);
 
-  if (!isAuthenticated) {
+  console.log(isAuthenticated, account);
+  
+
+  if (!isAuthenticated || !account) {
     return (
       <>
         <div
