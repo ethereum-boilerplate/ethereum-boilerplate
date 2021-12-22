@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useMoralis } from "react-moralis";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import Account from "components/Account/Account";
 import Chains from "components/Chains";
 import NFTBalance from "components/NFTBalance";
@@ -9,11 +9,14 @@ import "antd/dist/antd.css";
 import NativeBalance from "components/NativeBalance";
 import "./style.css";
 import Home from "components/Home";
+import Marketplace from "components/Marketplace"
 import Contract from "components/Contract/Contract";
 import Text from "antd/lib/typography/Text";
 import MenuItems from "./components/MenuItems";
 import { Link } from "react-router-dom";
 import { Row, Col } from 'antd';
+import packageJson from '../package.json';
+
 const { Header, Footer } = Layout;
 
 const styles = {
@@ -82,6 +85,9 @@ const App = ({ isServerInfo }) => {
             <Route path="/avatars">
               <NFTBalance />
             </Route>
+            <Route path="/marketplace">
+              <Marketplace />
+            </Route>
             <Route path="/contract">
               <Contract />
             </Route>
@@ -93,7 +99,7 @@ const App = ({ isServerInfo }) => {
       </Router>
       <Footer style={{ textAlign: "center" }}>
         <Row>
-          <Col span={24}>META GYM LAND</Col>
+          <Col span={24}><b>META GYM LAND</b> version: {packageJson.version}</Col>
         </Row>
         <Row>
           <Col span={24}>

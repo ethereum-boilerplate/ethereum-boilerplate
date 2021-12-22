@@ -71,7 +71,9 @@ function NFTBalance() {
       <div style={styles.NFTs}>
         <Skeleton loading={!NFTBalances?.result}>
           {NFTBalances?.result &&
-            NFTBalances.result.map((nft, index) => {
+            NFTBalances.result
+            .filter(nft => nft.image)
+            .map((nft, index) => {
               //Verify Metadata
               nft = verifyMetadata(nft);
               return (
