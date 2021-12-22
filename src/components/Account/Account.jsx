@@ -44,10 +44,11 @@ const styles = {
 };
 
 function Account() {
-  const { authenticate, isAuthenticated, logout } = useMoralis();
-  const { account, chainId } = useMoralis();
+  const { authenticate, isAuthenticated, account, chainId, logout, web3 } = useMoralis();
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isAuthModalVisible, setIsAuthModalVisible] = useState(false);
+
+  console.log(web3);
 
   if (!isAuthenticated) {
     return (
@@ -101,6 +102,22 @@ function Account() {
 
   return (
     <>
+      {/* <button
+        onClick={async () => {
+          try {
+            console.log("change")
+            await web3._provider.request({
+              method: "wallet_switchEthereumChain",
+              params: [{ chainId: "0x38" }],
+            });
+            console.log("changed")
+          } catch (e) {
+            console.error(e);
+          }
+        }}
+      >
+        Hi
+      </button> */}
       <div style={styles.account} onClick={() => setIsModalVisible(true)}>
         <p style={{ marginRight: "5px", ...styles.text }}>{getEllipsisTxt(account, 6)}</p>
         <Blockie currentWallet scale={3} />
