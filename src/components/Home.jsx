@@ -33,7 +33,7 @@ export default function Home() {
           Play now
         </Button>
         <Button
-          href="https://moralis.io"
+          href="https://coderdidit.com"
           target="_blank"
         >
           Whitepaper
