@@ -22,7 +22,7 @@ function MenuItems() {
         <NavLink to="/avatars">🖼&nbsp;&nbsp;Your (MGL) NFTs</NavLink>
       </Menu.Item>
       <Menu.Item key="/marketplace">
-        <NavLink to="/marketplace">💹&nbsp;&nbsp;Marketplace</NavLink>
+        <NavLink to="/marketplace">🛒&nbsp;&nbsp;Marketplace</NavLink>
       </Menu.Item>
     </Menu>
   );
