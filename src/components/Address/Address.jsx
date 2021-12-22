@@ -18,13 +18,13 @@ const styles = {
 };
 
 function Address(props) {
-  const { account } = useMoralis();
+  const { account, isAuthenticated } = useMoralis();
   const [address, setAddress] = useState();
   const [isClicked, setIsClicked] = useState(false);
 
   useEffect(() => {
-    setAddress(props?.address || account);
-  }, [account, props]);
+    setAddress(props?.address || (isAuthenticated && account));
+  }, [account, isAuthenticated, props]);
 
   if (!address) return <Skeleton paragraph={{ rows: 1, width: "100%" }} title={false} active />;
 
