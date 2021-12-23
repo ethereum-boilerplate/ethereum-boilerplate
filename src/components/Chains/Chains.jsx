@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Menu, Dropdown, Button } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import { AvaxLogo, PolygonLogo, BSCLogo, ETHLogo } from "./Logos";
-import { useChain } from "react-moralis";
+import { useChain, useMoralis } from "react-moralis";
 
 const styles = {
   item: {
@@ -85,9 +85,10 @@ const menuItems = [
 
 function Chains() {
   const { switchNetwork, chainId, chain } = useChain();
+  const { isAuthenticated } = useMoralis();
   const [selected, setSelected] = useState({});
 
-  console.log("chain", chain)
+  console.log("chain", chain);
 
   useEffect(() => {
     if (!chainId) return null;
@@ -110,6 +111,8 @@ function Chains() {
       ))}
     </Menu>
   );
+
+  if (!chainId || !isAuthenticated) return null;
 
   return (
     <div>

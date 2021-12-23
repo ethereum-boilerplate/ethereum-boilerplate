@@ -29,7 +29,7 @@ function NFTBalance() {
   const [amountToSend, setAmount] = useState(null);
   const [nftToSend, setNftToSend] = useState(null);
   const [isPending, setIsPending] = useState(false);
-  const {verifyMetadata} = useVerifyMetadata();
+  const { verifyMetadata } = useVerifyMetadata();
 
   async function transfer(nft, amount, receiver) {
     const options = {
@@ -66,14 +66,15 @@ function NFTBalance() {
 
   console.log("NFTBalances", NFTBalances);
   return (
-    <>
+    <div style={{ padding: "15px", maxWidth: "1030px", width: "100%" }}>
+      <h1>🖼 NFT Balances</h1>
       <div style={styles.NFTs}>
         <Skeleton loading={!NFTBalances?.result}>
           {NFTBalances?.result &&
             NFTBalances.result.map((nft, index) => {
-              //Verify Metadata      
+              //Verify Metadata
               nft = verifyMetadata(nft);
-              return(
+              return (
                 <Card
                   hoverable
                   actions={[
@@ -120,7 +121,7 @@ function NFTBalance() {
           <Input placeholder="amount to send" onChange={(e) => handleChange(e)} />
         )}
       </Modal>
-    </>
+    </div>
   );
 }
 
