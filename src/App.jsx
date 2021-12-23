@@ -153,7 +153,7 @@ const App = ({ isServerInfo }) => {
                 rel="noopener noreferrer"
                 href="https://coderdidit.com"
               >
-                C{"{0}"}derDidit
+                C{"{o}"}derDidit
               </a>
             </Text>
           </Col>
