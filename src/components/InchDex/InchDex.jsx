@@ -52,7 +52,7 @@ const getChainIdByName = (chainName) => {
 
 const IsNative = (address) => address === "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
 
-function InchDex({ chain }) {
+function InchDex({ chain, customTokens = {} }) {
   const { trySwap, tokenList, getQuote } = useInchDex(chain);
 
   const { Moralis, isInitialized, chainId } = useMoralis();
@@ -65,6 +65,10 @@ function InchDex({ chain }) {
   const [currentTrade, setCurrentTrade] = useState();
   const { fetchTokenPrice } = useTokenPrice();
   const [tokenPricesUSD, setTokenPricesUSD] = useState({});
+
+  const tokens = useMemo(() => {
+    return { ...customTokens, ...tokenList };
+  }, [customTokens, tokenList]);
 
   const fromTokenPriceUsd = useMemo(
     () => (tokenPricesUSD?.[fromToken?.["address"]] ? tokenPricesUSD[fromToken?.["address"]] : null),
@@ -119,9 +123,9 @@ function InchDex({ chain }) {
   }, [chain, isInitialized, toToken]);
 
   useEffect(() => {
-    if (!tokenList) return null;
-    setFromToken(tokenList[nativeAddress]);
-  }, [tokenList]);
+    if (!tokens) return null;
+    setFromToken(tokens[nativeAddress]);
+  }, [tokens]);
 
   const ButtonState = useMemo(() => {
     if (chainIds?.[chainId] !== chain) return { isActive: false, text: `Switch to ${chain}` };
@@ -154,9 +158,7 @@ function InchDex({ chain }) {
     return (
       <Text style={styles.priceSwap}>
         Price:{" "}
-        <Text>{`1 ${toSymbol} = ${pricePerToken} ${fromSymbol} ($${tokenPricesUSD[[toToken["address"]]].toFixed(
-          6
-        )})`}</Text>
+        <Text>{`1 ${toSymbol} = ${pricePerToken} ${fromSymbol} ($${tokenPricesUSD[[toToken["address"]]].toFixed(6)})`}</Text>
       </Text>
     );
   };
@@ -310,7 +312,7 @@ function InchDex({ chain }) {
           open={isFromModalActive}
           onClose={() => setFromModalActive(false)}
           setToken={setFromToken}
-          tokenList={tokenList}
+          tokenList={tokens}
         />
       </Modal>
       <Modal
@@ -321,12 +323,7 @@ function InchDex({ chain }) {
         width="450px"
         footer={null}
       >
-        <InchModal
-          open={isToModalActive}
-          onClose={() => setToModalActive(false)}
-          setToken={setToToken}
-          tokenList={tokenList}
-        />
+        <InchModal open={isToModalActive} onClose={() => setToModalActive(false)} setToken={setToToken} tokenList={tokens} />
       </Modal>
     </>
   );
