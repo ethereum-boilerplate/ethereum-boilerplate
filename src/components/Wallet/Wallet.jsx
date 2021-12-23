@@ -13,6 +13,7 @@ const styles = {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    gap: "5px",
   },
   card: {
     boxShadow: "0 0.5rem 1.2rem rgb(189 197 209 / 20%)",
@@ -30,7 +31,7 @@ function Wallet() {
       style={styles.card}
       title={
         <div style={styles.header}>
-          <Blockie scale={5} avatar currentWallet />
+          <Blockie scale={5} avatar currentWallet style />
           <Address size="6" copyable />
           <NativeBalance />
         </div>

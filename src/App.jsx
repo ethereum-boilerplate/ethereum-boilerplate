@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import { useMoralis } from "react-moralis";
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
-import Account from "components/Account";
+import Account from "components/Account/Account";
 import Chains from "components/Chains";
 import TokenPrice from "components/TokenPrice";
 import ERC20Balance from "components/ERC20Balance";
 import ERC20Transfers from "components/ERC20Transfers";
-import InchDex from "components/InchDex";
+import DEX from "components/DEX";
 import NFTBalance from "components/NFTBalance";
 import Wallet from "components/Wallet";
 import { Layout, Tabs } from "antd";
@@ -54,7 +54,9 @@ const App = ({ isServerInfo }) => {
   const { isWeb3Enabled, enableWeb3, isAuthenticated, isWeb3EnableLoading } = useMoralis();
 
   useEffect(() => {
-    if (isAuthenticated && !isWeb3Enabled && !isWeb3EnableLoading) enableWeb3();
+    const connectorId = window.localStorage.getItem("connectorId");
+    console.log("connectorId", connectorId);
+    if (isAuthenticated && !isWeb3Enabled && !isWeb3EnableLoading) enableWeb3({ provider: connectorId });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAuthenticated, isWeb3Enabled]);
 
@@ -78,62 +80,57 @@ const App = ({ isServerInfo }) => {
         </Header>
 
         <div style={styles.content}>
-          {!isAuthenticated ? (
-            <>Please login using the "Authenticate" button</>
-          ) : (
-            <Switch>
-              <Route path="/quickstart">
-                <QuickStart isServerInfo={isServerInfo} />
-              </Route>
-              <Route path="/wallet">
-                <Wallet />
-              </Route>
-              <Route path="/1inch">
-                <Tabs defaultActiveKey="1" style={{ alignItems: "center" }}>
-                  <Tabs.TabPane tab={<span>Ethereum</span>} key="1">
-                    <InchDex chain="eth" />
-                  </Tabs.TabPane>
-                  <Tabs.TabPane tab={<span>Binance Smart Chain</span>} key="2">
-                    <InchDex chain="bsc" />
-                  </Tabs.TabPane>
-                  <Tabs.TabPane tab={<span>Polygon</span>} key="3">
-                    <InchDex chain="polygon" />
-                  </Tabs.TabPane>
-                </Tabs>
-              </Route>
-              <Route path="/erc20balance">
-                <ERC20Balance />
-              </Route>
-              <Route path="/onramp">
-                <Ramper />
-              </Route>
-              <Route path="/erc20transfers">
-                <ERC20Transfers />
-              </Route>
-              <Route path="/nftBalance">
-                <NFTBalance />
-              </Route>
-              <Route path="/contract">
-                <Contract />
-              </Route>
-              <Route exact path="/">
-                <Redirect to="/quickstart" />
-              </Route>
-              <Route path="/nonauthenticated">
-                <>Please login using the "Authenticate" button</>
-              </Route>
-            </Switch>
-          )}
+          <Switch>
+            <Route exact path="/quickstart">
+              <QuickStart isServerInfo={isServerInfo} />
+            </Route>
+            <Route path="/wallet">
+              <Wallet />
+            </Route>
+            <Route path="/1inch">
+              <Tabs defaultActiveKey="1" style={{ alignItems: "center" }}>
+                <Tabs.TabPane tab={<span>Ethereum</span>} key="1">
+                  <DEX chain="eth" />
+                </Tabs.TabPane>
+                <Tabs.TabPane tab={<span>Binance Smart Chain</span>} key="2">
+                  <DEX chain="bsc" />
+                </Tabs.TabPane>
+                <Tabs.TabPane tab={<span>Polygon</span>} key="3">
+                  <DEX chain="polygon" />
+                </Tabs.TabPane>
+              </Tabs>
+            </Route>
+            <Route path="/erc20balance">
+              <ERC20Balance />
+            </Route>
+            <Route path="/onramp">
+              <Ramper />
+            </Route>
+            <Route path="/erc20transfers">
+              <ERC20Transfers />
+            </Route>
+            <Route path="/nftBalance">
+              <NFTBalance />
+            </Route>
+            <Route path="/contract">
+              <Contract />
+            </Route>
+            <Route path="/">
+              <Redirect to="/quickstart" />
+            </Route>
+            <Route path="/ethereum-boilerplate">
+              <Redirect to="/quickstart" />
+            </Route>
+            <Route path="/nonauthenticated">
+              <>Please login using the "Authenticate" button</>
+            </Route>
+          </Switch>
         </div>
       </Router>
       <Footer style={{ textAlign: "center" }}>
         <Text style={{ display: "block" }}>
           ⭐️ Please star this{" "}
-          <a
-            href="https://github.com/ethereum-boilerplate/ethereum-boilerplate/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href="https://github.com/ethereum-boilerplate/ethereum-boilerplate/" target="_blank" rel="noopener noreferrer">
             boilerplate
           </a>
           , every star makes us very happy!
@@ -141,11 +138,7 @@ const App = ({ isServerInfo }) => {
 
         <Text style={{ display: "block" }}>
           🙋 You have questions? Ask them on the {""}
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://forum.moralis.io/t/ethereum-boilerplate-questions/3951/29"
-          >
+          <a target="_blank" rel="noopener noreferrer" href="https://forum.moralis.io/t/ethereum-boilerplate-questions/3951/29">
             Moralis forum
           </a>
         </Text>

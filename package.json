@@ -1,7 +1,6 @@
 {
   "name": "ethereum-boilerplate",
   "version": "0.1.0",
-  "private": true,
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
     "@testing-library/jest-dom": "^5.11.4",
@@ -28,7 +27,9 @@
     "devchain": "node Truffle/scripts/devChain.js",
     "connect": "moralis-admin-cli connect-local-devchain",
     "watch:events": "moralis-admin-cli add-contract",
-    "deploy": "node Truffle/scripts/deployContract.js"
+    "deploy": "node Truffle/scripts/deployContract.js",
+    "deploypage": "gh-pages -d build",
+    "clean": "npx gh-pages-clean"
   },
   "eslintConfig": {
     "extends": [
@@ -47,5 +48,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^3.2.3"
   }
 }
