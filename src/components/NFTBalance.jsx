@@ -5,6 +5,8 @@ import { FileSearchOutlined, SendOutlined, ShoppingCartOutlined } from "@ant-des
 import { getExplorer } from "helpers/networks";
 import AddressInput from "./AddressInput";
 import { useVerifyMetadata } from "hooks/useVerifyMetadata";
+import Blockie from "./Blockie";
+import { getEllipsisTxt } from "../helpers/formatters";
 
 const { Meta } = Card;
 
@@ -114,7 +116,13 @@ function NFTBalance() {
                     }
                     key={index}
                   >
-                    <Meta title={nft.name} description={nft.token_address} />
+                    <Meta title={nft.name} description={
+                      <>
+                        <p>tokenAddress:</p>
+                        <p>{getEllipsisTxt(nft.token_address, 11)}</p>
+                        <p>tokenId: {nft.token_id}</p>
+                      </>
+                    } />
                   </Card>
                 );
               })}

@@ -21,6 +21,7 @@ export const useVerifyMetadata = () => {
             //Set Image
             const metadata = NFT.metadata
             if (metadata?.image) NFT.image = resolveLink(metadata.image);
+            if (metadata?.name) NFT.name = metadata.name;
             return NFT
         };
         //Get the Metadata
@@ -78,6 +79,8 @@ export const useVerifyMetadata = () => {
         NFT.metadata = metadata;
         //Set Image
         if (metadata?.image) NFT.image = resolveLink(metadata.image);
+        //Set name
+        if (metadata?.name) NFT.name = metadata.name;
         //Set to State
         if (metadata && !results[NFT.token_uri]) setResults({ ...results, [NFT.token_uri]: NFT });
     }//setMetadata()
