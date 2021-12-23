@@ -192,14 +192,14 @@ const [address, setAddress] = useState();
 
 ![dex](https://user-images.githubusercontent.com/78314301/141123450-02c2710e-7988-45de-80ad-5fc45d2bccfa.gif)
 
-💱 `<InchDex />` : interface for [Moralis 1Inch Plugin](https://moralis.io/plugins/1inch?utm_source=github&utm_medium=readme&utm_campaign=ethereum-boilerplate). This plugin integrates the DeFi / DEX aggregator 1Inch to any project that uses Moralis.
+💱 `<DEX />` : interface for [Moralis 1Inch Plugin](https://moralis.io/plugins/1inch?utm_source=github&utm_medium=readme&utm_campaign=ethereum-boilerplate). This plugin integrates the DeFi / DEX aggregator 1Inch to any project that uses Moralis.
 
 **Options**:
 - chain (optional): network. Available: Ethereum (“eth”), Binance Smart Chain (“bsc”), Polygon (“polygon”)
 - customTokens (optional): object with custom tokens. You can see the example below.
 
 ```jsx
-<InchDex chain="eth" />
+<DEX chain="eth" />
 ```
 
 ```jsx
@@ -215,7 +215,7 @@ const customTokens = {
     },
   };
 
-<InchDex chain="eth" customTokens={customTokens} />
+<DEX chain="eth" customTokens={customTokens} />
 ```
 
 
