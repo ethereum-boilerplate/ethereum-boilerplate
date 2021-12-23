@@ -196,9 +196,26 @@ const [address, setAddress] = useState();
 
 **Options**:
 - chain (optional): network. Available: Ethereum (“eth”), Binance Smart Chain (“bsc”), Polygon (“polygon”)
+- customTokens (optional): object with custom tokens. You can see the example below.
 
 ```jsx
 <InchDex chain="eth" />
+```
+
+```jsx
+// Adding custom tokens
+
+const customTokens = {
+    "0x2180F5cC1ddf117640963AE91868948bd3EF6838": {
+      address: "0x2180F5cC1ddf117640963AE91868948bd3EF6838",
+      decimals: 9,
+      logoURI: "https://assets.coingecko.com/coins/images/20985/small/_VoQPDDs_400x400.jpg?1638168643",
+      name: "AscensionArcade",
+      symbol: "AAT",
+    },
+  };
+
+<InchDex chain="eth" customTokens={customTokens} />
 ```
 
 
