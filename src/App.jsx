@@ -145,6 +145,17 @@ const App = ({ isServerInfo }) => {
                 TensorFlowJS
               </a>
             </Text>
+            <Divider type="vertical" style={{ backgroundColor: brightFontCol }} />
+            <Text style={{ color: brightFontCol }}>
+              Coded by {" "}
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://coderdidit.com"
+              >
+                C{"{0}"}derDidit
+              </a>
+            </Text>
           </Col>
         </Row>
       </Footer>
