@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 //import { useEffect } from "react";
 //import { useMoralis } from "react-moralis";
 //import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
