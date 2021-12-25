@@ -123,9 +123,9 @@ function DEX({ chain, customTokens = {} }) {
   }, [chain, isInitialized, toToken]);
 
   useEffect(() => {
-    if (!tokens) return null;
+    if (!tokens || fromToken) return null;
     setFromToken(tokens[nativeAddress]);
-  }, [tokens]);
+  }, [tokens, fromToken]);
 
   const ButtonState = useMemo(() => {
     if (chainIds?.[chainId] !== chain) return { isActive: false, text: `Switch to ${chain}` };
