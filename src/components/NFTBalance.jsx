@@ -5,11 +5,9 @@ import { FileSearchOutlined, ShoppingCartOutlined } from "@ant-design/icons";
 import { getExplorer } from "helpers/networks";
 import { useVerifyMetadata } from "hooks/useVerifyMetadata";
 import { getEllipsisTxt } from "../helpers/formatters";
+import { mainBackgroundCol, brightFontCol } from "GlobalStyles";
 
 const { Meta } = Card;
-
-const mainBackgroundCol = "#012E51"
-const brightFontCol = "#fff"
 
 const styles = {
   NFTs: {

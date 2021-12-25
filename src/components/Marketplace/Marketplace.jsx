@@ -2,7 +2,7 @@ import { Typography } from "antd";
 import React from "react";
 const { Text } = Typography;
 
-export default function Marketplace() {
+function Marketplace() {
     return (
         <>
             <Text strong>
@@ -11,3 +11,5 @@ export default function Marketplace() {
         </>
     )
 }
+
+export default Marketplace;

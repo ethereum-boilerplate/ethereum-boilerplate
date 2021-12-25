@@ -2,10 +2,9 @@ import { Card, Typography } from "antd";
 import React from "react";
 import { Button } from 'antd';
 import { Row, Col } from 'antd';
-const { Text } = Typography;
+import { mainBackgroundCol, brightFontCol } from "GlobalStyles";
 
-const mainBackgroundCol = "#012E51"
-const brightFontCol = "#fff"
+const { Text } = Typography;
 
 const styles = {
   titleText: {

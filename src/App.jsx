@@ -9,17 +9,17 @@ import "antd/dist/antd.css";
 import NativeBalance from "components/NativeBalance";
 import "./style.css";
 import Home from "components/Home";
-import Marketplace from "components/Marketplace"
+import Marketplace from "components/Marketplace";
 import Contract from "components/Contract/Contract";
 import Text from "antd/lib/typography/Text";
 import MenuItems from "./components/MenuItems";
 import { Link } from "react-router-dom";
 import { Row, Col } from 'antd';
 import packageJson from '../package.json';
+import { mainBackgroundCol, brightFontCol } from "GlobalStyles";
 
 const { Header, Footer } = Layout;
-const mainBackgroundCol = "#012E51"
-const brightFontCol = "#fff"
+
 const styles = {
   homeLink: {
     color: "inherit",
