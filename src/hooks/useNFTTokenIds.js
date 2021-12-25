@@ -22,11 +22,14 @@ export const useNFTTokenIds = (addr) => {
         data,
         error,
         isLoading,
+        isFetching,
     } = useMoralisWeb3ApiCall(token.getAllTokenIds, getAllTokenIdsOpts);
+
+    console.log('isLoading, isFetching', isLoading, isFetching);
 
     useEffect(() => {
         async function fetchData() {
-            const res = await getNFTTokenIds()
+            await getNFTTokenIds()
             if (data?.result) {
                 setDataNotFetched(false);
                 const NFTs = data.result;
@@ -70,16 +73,14 @@ export const useNFTTokenIds = (addr) => {
         }
         if (addr !== "explore") {
             console.log('dataNotFetched', dataNotFetched)
+            console.log('isLoading, isFetching', isLoading, isFetching)
             if (dataNotFetched) fetchData();
         }
     }, [data, addr]);
 
     return {
-        getNFTTokenIds,
         NFTTokenIds,
         totalNFTs,
-        fetchSuccess,
-        error,
-        isLoading,
+        fetchSuccess
     };
 };
