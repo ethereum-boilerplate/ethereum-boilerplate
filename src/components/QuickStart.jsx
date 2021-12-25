@@ -126,7 +126,7 @@ export default function QuickStart({ isServerInfo }) {
           </Timeline.Item>
 
           <Timeline.Item dot="🚀">
-            <Text style={styles.text}>BUIDL!!!</Text>
+            <Text style={styles.text}>BUILD!!!</Text>
           </Timeline.Item>
         </Timeline>
       </Card>
