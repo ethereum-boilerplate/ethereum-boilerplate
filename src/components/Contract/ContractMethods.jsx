@@ -3,7 +3,7 @@ import Text from "antd/lib/typography/Text";
 
 const ContractMethods = ({ displayedContractFunctions, responses }) => {
   return displayedContractFunctions.map((item, key) => (
-    <Card title={`${key + 1}. ${item?.name}`} size="small" style={{ marginBottom: "20px" }}>
+    <Card title={`${key + 1}. ${item?.name}`} size="small" style={{ marginBottom: "20px" }} key={key}>
       <Form layout="vertical" name={`${item.name}`}>
         {item.inputs.map((input, key) => (
           <Form.Item

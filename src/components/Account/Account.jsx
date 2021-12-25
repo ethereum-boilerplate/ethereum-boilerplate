@@ -47,12 +47,7 @@ function Account() {
   const { authenticate, isAuthenticated, account, chainId, logout, web3 } = useMoralis();
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isAuthModalVisible, setIsAuthModalVisible] = useState(false);
-
-  console.log(web3);
-
-  console.log(isAuthenticated, account);
   
-
   if (!isAuthenticated || !account) {
     return (
       <>
