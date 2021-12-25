@@ -10,6 +10,8 @@ export const useNFTTokenIds = (addr) => {
     const [NFTTokenIds, setNFTTokenIds] = useState([]);
     const [totalNFTs, setTotalNFTs] = useState();
     const [fetchSuccess, setFetchSuccess] = useState(true);
+    const [dataNotFetched, setDataNotFetched] = useState(true);
+
     const getAllTokenIdsOpts = {
         chain: chainId,
         address: addr,
@@ -21,18 +23,12 @@ export const useNFTTokenIds = (addr) => {
         error,
         isLoading,
     } = useMoralisWeb3ApiCall(token.getAllTokenIds, getAllTokenIdsOpts);
-    console.log('useNFTTokenIds token', token)
-    console.log('useNFTTokenIds data', data)
-    console.log('useNFTTokenIds error', error)
-    console.log('useNFTTokenIds getAllTokenIds opts', getAllTokenIdsOpts)
-
-    console.log('useNFTTokenIds getNFTTokenIds', getNFTTokenIds)
 
     useEffect(() => {
-        console.log('useEffect useNFTTokenIds', data?.result)
         async function fetchData() {
+            const res = await getNFTTokenIds()
             if (data?.result) {
-                console.log('useEffect useNFTTokenIds | retrived data')
+                setDataNotFetched(false);
                 const NFTs = data.result;
                 setTotalNFTs(data.total);
                 setFetchSuccess(true);
@@ -72,8 +68,11 @@ export const useNFTTokenIds = (addr) => {
                 setNFTTokenIds(NFTs);
             }
         }
-        fetchData();
-    }, [data]);
+        if (addr !== "explore") {
+            console.log('dataNotFetched', dataNotFetched)
+            if (dataNotFetched) fetchData();
+        }
+    }, [data, addr]);
 
     return {
         getNFTTokenIds,
