@@ -36,7 +36,7 @@
   border-bottom: none;
 }
 
-.ant-typography, .ant-layout, .ant-layout h1 {
+.ant-typography, .ant-layout, .ant-layout h1, .ant-layout h3 {
   color: var(--main-text-color);
 }
 

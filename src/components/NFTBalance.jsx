@@ -41,19 +41,19 @@ function NFTBalance() {
     }}>
       <h1>🖼 Your Avatars and Wearables</h1>
       <br />
-      <p>
+      <h3>
         If you have your MGL Avatar NFT 🙂
-      </p>
-      <p>
+      </h3>
+      <h3>
         Then you will be albe to 🎮{" "}{" "}Play in MetaGymLand Metaverse
-      </p>
-      <p>
+      </h3>
+      <h3>
         by clicking <b style={{ color: "#1990FF" }}>[play with me]</b> button{" "}🔘
-      </p>
-      <p>
+      </h3>
+      <h3>
         If you don't have your awesome Avatar yet, get one in our
         {" "}<Link to="/marketplace">Marketplace</Link>{" "}🚀
-      </p>
+      </h3>
       {NFTBalances?.result &&
         <Divider style={{ backgroundColor: brightFontCol }} />}
       <div style={styles.NFTs}>
@@ -73,14 +73,9 @@ function NFTBalance() {
                           onClick={() => window.open(`${getExplorer(chainId)}address/${nft.token_address}`, "_blank")}
                         />
                       </Tooltip>,
-                      <Button
-                        onClick={() => alert('will play')}
-                        type="primary"
-                      >play with me
-                      </Button>
-                      // <Tooltip title="Sell On OpenSea">
-                      //   <ShoppingCartOutlined onClick={() => alert("OPENSEA INTEGRATION COMING!")} />
-                      // </Tooltip>,
+                      <Tooltip title="List for Sale">
+                        <ShoppingCartOutlined onClick={() => alert("Smart contract integration")} />
+                      </Tooltip>,
                     ]}
                     style={{ width: 240, border: "2px solid #e7eaf3" }}
                     cover={
@@ -96,10 +91,18 @@ function NFTBalance() {
                   >
                     <Meta title={nft.name} description={
                       <>
-                        <p><b>{getEllipsisTxt(nft.token_address, 7)}</b></p>
-                        <p>id: <b>{nft.token_id}</b></p>
+                        <span><b>{getEllipsisTxt(nft.token_address, 7)}</b></span>
+                        &nbsp;
+                        <span>id: <b>{nft.token_id}</b></span>
                       </>
                     } />
+                    <br />
+                    <Button
+                      onClick={() => alert('will play')}
+                      type="primary"
+                      style={{ marginLeft: "20%" }}
+                    >play with me
+                    </Button>
                   </Card>
                 );
               })}
