@@ -71,6 +71,7 @@ function Marketplace() {
 
   const [visible, setVisibility] = useState(false);
   const [nftToBuy, setNftToBuy] = useState(null);
+  
   const [loading, setLoading] = useState(false);
   const [contractABI, setContractABI] = useState('{"noContractDeployed": true}'); //Smart Contract ABI here
   // marketplace contract address
