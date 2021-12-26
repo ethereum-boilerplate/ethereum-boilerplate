@@ -183,13 +183,12 @@ function Marketplace() {
       <div style={{
         flexBasis: "100%",
         height: "0px",
-        marginLeft: "75%"
+        marginLeft: "70%"
       }}>
         <h3>
-          You can check Your Transactions
-          {" "}
+          You can check Your 🧾&nbsp;Transactions
           <Link to="/your-transactions">
-            <b><u>here</u></b>
+            &nbsp;<b><u>here</u></b>
           </Link>
         </h3>
       </div>
