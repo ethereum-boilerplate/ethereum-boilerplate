@@ -10,6 +10,7 @@ import NativeBalance from "components/NativeBalance";
 import "./style.css";
 import Home from "components/Home";
 import Marketplace from "components/Marketplace";
+import Transactions from "components/Transactions"
 import Contract from "components/Contract/Contract";
 import Text from "antd/lib/typography/Text";
 import MenuItems from "./components/MenuItems";
@@ -28,6 +29,7 @@ const styles = {
   },
   content: {
     display: "flex",
+    flexWrap: "wrap",
     justifyContent: "center",
     fontFamily: "Roboto, sans-serif",
     marginTop: "130px",
@@ -94,6 +96,9 @@ const App = ({ isServerInfo }) => {
             </Route>
             <Route path="/marketplace">
               <Marketplace />
+            </Route>
+            <Route path="/your-transactions">
+              <Transactions />
             </Route>
             <Route path="/contract">
               <Contract />

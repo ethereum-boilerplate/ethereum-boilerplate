@@ -12,6 +12,7 @@ import {
   ShoppingCartOutlined,
 } from "@ant-design/icons";
 import { useWeb3ExecuteFunction } from "react-moralis";
+import { Link } from "react-router-dom";
 // import SearchCollections from "components/SearchCollections";
 
 const { Meta } = Card;
@@ -179,6 +180,19 @@ function Marketplace() {
 
   return (
     <>
+      <div style={{
+        flexBasis: "100%",
+        height: "0px",
+        marginLeft: "75%"
+      }}>
+        <h3>
+          You can check Your Transactions
+          {" "}
+          <Link to="/your-transactions">
+            <b><u>here</u></b>
+          </Link>
+        </h3>
+      </div>
       {/* <div style={{width: "25%"}}>
         <SearchCollections setInputValue={setInputValue} />
       </div>
@@ -186,6 +200,7 @@ function Marketplace() {
       <div>
         {contractABIJson.noContractDeployed && (
           <>
+            <br /><br />
             <Alert
               message="No Smart Contract Details Provided. Please deploy smart contract and provide address + ABI in the MoralisDappProvider.js file"
               type="error"
