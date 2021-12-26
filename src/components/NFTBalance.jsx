@@ -1,11 +1,13 @@
 import React from "react";
 import { useMoralis, useNFTBalances } from "react-moralis";
-import { Card, Image, Tooltip, Skeleton } from "antd";
+import { Button, Card, Image, Tooltip, Skeleton } from "antd";
 import { FileSearchOutlined, ShoppingCartOutlined } from "@ant-design/icons";
 import { getExplorer } from "helpers/networks";
 import { useVerifyMetadata } from "hooks/useVerifyMetadata";
 import { getEllipsisTxt } from "../helpers/formatters";
 import { mainBackgroundCol, brightFontCol } from "GlobalStyles";
+import { Divider } from "antd";
+import { Link } from "react-router-dom";
 
 const { Meta } = Card;
 
@@ -37,8 +39,23 @@ function NFTBalance() {
       background: mainBackgroundCol,
       color: brightFontCol,
     }}>
-      <h1>🖼 NFT Balances</h1>
+      <h1>🖼 Your Avatars and Wearables</h1>
       <br />
+      <p>
+        If you have your MGL Avatar NFT 🙂
+      </p>
+      <p>
+        Then you will be albe to 🎮{" "}{" "}Play in MetaGymLand Metaverse
+      </p>
+      <p>
+        by clicking <b style={{ color: "#1990FF" }}>[play with me]</b> button{" "}🔘
+      </p>
+      <p>
+        If you don't have your awesome Avatar yet, get one in our
+        {" "}<Link to="/marketplace">Marketplace</Link>{" "}🚀
+      </p>
+      {NFTBalances?.result &&
+        <Divider style={{ backgroundColor: brightFontCol }} />}
       <div style={styles.NFTs}>
         <Skeleton loading={!NFTBalances?.result}>
           {NFTBalances?.result &&
@@ -56,9 +73,14 @@ function NFTBalance() {
                           onClick={() => window.open(`${getExplorer(chainId)}address/${nft.token_address}`, "_blank")}
                         />
                       </Tooltip>,
-                      <Tooltip title="Sell On OpenSea">
-                        <ShoppingCartOutlined onClick={() => alert("OPENSEA INTEGRATION COMING!")} />
-                      </Tooltip>,
+                      <Button
+                        onClick={() => alert('will play')}
+                        type="primary"
+                      >play with me
+                      </Button>
+                      // <Tooltip title="Sell On OpenSea">
+                      //   <ShoppingCartOutlined onClick={() => alert("OPENSEA INTEGRATION COMING!")} />
+                      // </Tooltip>,
                     ]}
                     style={{ width: 240, border: "2px solid #e7eaf3" }}
                     cover={
@@ -74,9 +96,8 @@ function NFTBalance() {
                   >
                     <Meta title={nft.name} description={
                       <>
-                        <p>tokenAddress:</p>
-                        <p>{getEllipsisTxt(nft.token_address, 11)}</p>
-                        <p>tokenId: {nft.token_id}</p>
+                        <p><b>{getEllipsisTxt(nft.token_address, 7)}</b></p>
+                        <p>id: <b>{nft.token_id}</b></p>
                       </>
                     } />
                   </Card>

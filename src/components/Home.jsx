@@ -3,6 +3,7 @@ import React from "react";
 import { Button } from 'antd';
 import { Row, Col } from 'antd';
 import { mainBackgroundCol, brightFontCol } from "GlobalStyles";
+import { Link } from "react-router-dom";
 
 const { Text } = Typography;
 
@@ -68,10 +69,12 @@ export default function Home() {
               }}
             >
               <Button
-                onClick={() => alert('will play')}
                 type="primary"
                 style={styles.btn}
-              >Play now</Button>
+              >
+                
+                <Link to="/avatars">Play now</Link>
+              </Button>
               <Button
                 href="https://coderdidit.com"
                 target="_blank"
