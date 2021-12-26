@@ -52,7 +52,9 @@ function NFTBalance() {
       </h3>
       <h3>
         If you don't have your awesome Avatar yet, get one in our
-        {" "}<Link to="/marketplace">Marketplace</Link>{" "}🚀
+        {" "}<Link to="/marketplace">
+          <b><u>Marketplace</u></b>
+        </Link>{" "}🚀
       </h3>
       {NFTBalances?.result &&
         <Divider style={{ backgroundColor: brightFontCol }} />}
