@@ -11,7 +11,6 @@ import {
   FileSearchOutlined,
   ShoppingCartOutlined,
 } from "@ant-design/icons";
-import { useMoralisDapp } from "providers/MoralisDappProvider/MoralisDappProvider";
 import { useWeb3ExecuteFunction } from "react-moralis";
 // import SearchCollections from "components/SearchCollections";
 
@@ -59,7 +58,7 @@ const fallbackImg =
 
 function Marketplace() {
 
-  const { chainId, Moralis } = useMoralis();
+  const { chainId, account, Moralis } = useMoralis();
   const NFTCollections = getCollectionsByChain(chainId);
 
   const [nftAddress, setNftAddress] = useState("explore");
@@ -72,11 +71,10 @@ function Marketplace() {
   const [visible, setVisibility] = useState(false);
   const [nftToBuy, setNftToBuy] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [contractABI, setContractABI] = useState('{"noContractDeployed": true}'); //Smart Contract ABI here
+  // marketplace contract address
+  const marketAddress = ""
   const contractProcessor = useWeb3ExecuteFunction();
-
-  // to delete later
-  const { marketAddress, contractABI, walletAddress } =
-    useMoralisDapp();
 
   const nativeName = getNativeByChain(chainId);
   const contractABIJson = JSON.parse(contractABI);
@@ -163,7 +161,7 @@ function Marketplace() {
     const query = new Moralis.Query(marketList);
     await query.get(id).then((obj) => {
       obj.set("sold", true);
-      obj.set("owner", walletAddress);
+      obj.set("owner", account);
       obj.save();
     });
   }
