@@ -1,36 +1,44 @@
 import { Card, Form, notification } from "antd";
 import { useMemo, useState } from "react";
-import contractInfo from "contracts/contractInfo.json";
 import Address from "components/Address/Address";
 import { useMoralis, useMoralisQuery } from "react-moralis";
 import { getEllipsisTxt } from "helpers/formatters";
 import ContractMethods from "./ContractMethods";
+import ContractResolver from "./ContractResolver";
 
 export default function Contract() {
-  const { Moralis } = useMoralis();
+  const { Moralis, chainId } = useMoralis();
   const [responses, setResponses] = useState({});
-  const { contractName, networks, abi } = contractInfo;
+  const [contract, setContract] = useState({});
 
-  const contractAddress = useMemo(() => networks[1337].address, [networks]);
-
-  /**Live query */
+  /**Moralis Live query for displaying contract's events*/
   const { data } = useMoralisQuery("Events", (query) => query, [], {
     live: true,
   });
 
+  /** Automatically builds write and read components for interacting with contract*/
   const displayedContractFunctions = useMemo(() => {
-    if (!abi) return [];
-    return abi.filter((method) => method["type"] === "function");
-  }, [abi]);
+    if (!contract?.abi) return [];
+    return contract.abi.filter((method) => method["type"] === "function");
+  }, [contract]);
 
+  /** Returns true in case if contract is deployed to active chain in wallet */
+  const isDeployedToActiveChain = useMemo(() => {
+    if (!contract?.networks) return undefined;
+    return [parseInt(chainId, 16)] in contract.networks;
+  }, [contract, chainId]);
+
+  const contractAddress = useMemo(() => {
+    if (!isDeployedToActiveChain) return null;
+    return contract.networks[parseInt(chainId, 16)]?.["address"] || null;
+  }, [chainId, contract, isDeployedToActiveChain]);
+
+  /** Default function for showing notifications*/
   const openNotification = ({ message, description }) => {
     notification.open({
       placement: "bottomRight",
       message,
       description,
-      onClick: () => {
-        console.log("Notification Clicked!");
-      },
     });
   };
 
@@ -39,7 +47,7 @@ export default function Contract() {
       <Card
         title={
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-            Your contract: {contractName}
+            Your contract: {contract?.contractName}
             <Address avatar="left" copyable address={contractAddress} size={8} />
           </div>
         }
@@ -51,55 +59,63 @@ export default function Contract() {
           borderRadius: "0.5rem",
         }}
       >
-        <Form.Provider
-          onFormFinish={async (name, { forms }) => {
-            const params = forms[name].getFieldsValue();
+        <ContractResolver setContract={setContract} contract={contract} />
 
-            let isView = false;
+        {isDeployedToActiveChain === true && (
+          <Form.Provider
+            onFormFinish={async (name, { forms }) => {
+              const params = forms[name].getFieldsValue();
 
-            for (let method of abi) {
-              if (method.name !== name) continue;
-              if (method.stateMutability === "view") isView = true;
-            }
+              let isView = false;
 
-            const options = {
-              contractAddress,
-              functionName: name,
-              abi,
-              params,
-            };
+              for (let method of contract?.abi) {
+                if (method.name !== name) continue;
+                console.log(method);
+                if (method.stateMutability === "view") isView = true;
+              }
 
-            if (!isView) {
-              const tx = await Moralis.executeFunction({ awaitReceipt: false, ...options });
-              tx.on("transactionHash", (hash) => {
-                setResponses({ ...responses, [name]: { result: null, isLoading: true } });
-                openNotification({
-                  message: "🔊 New Transaction",
-                  description: `${hash}`,
-                });
-                console.log("🔊 New Transaction", hash);
-              })
-                .on("receipt", (receipt) => {
-                  setResponses({ ...responses, [name]: { result: null, isLoading: false } });
+              const options = {
+                contractAddress,
+                functionName: name,
+                abi: contract?.abi,
+                params,
+              };
+
+              if (!isView) {
+                const tx = await Moralis.executeFunction({ awaitReceipt: false, ...options });
+                tx.on("transactionHash", (hash) => {
+                  setResponses({ ...responses, [name]: { result: null, isLoading: true } });
                   openNotification({
-                    message: "📃 New Receipt",
-                    description: `${receipt.transactionHash}`,
+                    message: "🔊 New Transaction",
+                    description: `${hash}`,
                   });
-                  console.log("🔊 New Receipt: ", receipt);
+                  console.log("🔊 New Transaction", hash);
                 })
-                .on("error", (error) => {
-                  console.error(error);
-                });
-            } else {
-              console.log("options", options);
-              Moralis.executeFunction(options).then((response) =>
-                setResponses({ ...responses, [name]: { result: response, isLoading: false } })
-              );
-            }
-          }}
-        >
-          <ContractMethods displayedContractFunctions={displayedContractFunctions} responses={responses} />
-        </Form.Provider>
+                  .on("receipt", (receipt) => {
+                    setResponses({ ...responses, [name]: { result: null, isLoading: false } });
+                    openNotification({
+                      message: "📃 New Receipt",
+                      description: `${receipt.transactionHash}`,
+                    });
+                    console.log("🔊 New Receipt: ", receipt);
+                  })
+                  .on("error", (error) => {
+                    console.error(error);
+                  });
+              } else {
+                console.log("options22", options);
+                Moralis.executeFunction(options).then((response) =>
+                  setResponses({ ...responses, [name]: { result: response, isLoading: false } })
+                );
+              }
+            }}
+          >
+            <ContractMethods displayedContractFunctions={displayedContractFunctions} responses={responses} />
+          </Form.Provider>
+        )}
+        {isDeployedToActiveChain === false && (
+          <>{`The contract is not deployed to the active ${chainId} chain. Switch your active chain or try agan later.`}</>
+        )}
       </Card>
       <Card
         title={"Contract Events"}
@@ -112,7 +128,7 @@ export default function Contract() {
         }}
       >
         {data.map((event, key) => (
-          <Card title={"Transfer event"} size="small" style={{ marginBottom: "20px" }}>
+          <Card title={"Transfer event"} size="small" style={{ marginBottom: "20px" }} key={key}>
             {getEllipsisTxt(event.attributes.transaction_hash, 14)}
           </Card>
         ))}
