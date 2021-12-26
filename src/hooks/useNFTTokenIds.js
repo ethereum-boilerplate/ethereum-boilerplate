@@ -1,63 +1,50 @@
-import { useMoralisDapp } from "providers/MoralisDappProvider/MoralisDappProvider";
-import { useEffect, useState } from "react";
+import { useMemo } from "react";
+import { useMoralis } from "react-moralis";
 import { useMoralisWeb3Api, useMoralisWeb3ApiCall } from "react-moralis";
 import { useIPFS } from "./useIPFS";
 
-export const useNFTTokenIds = (addr) => {
+export const useNFTTokenIds = (addr, limit = 3) => {
     const { token } = useMoralisWeb3Api();
-    const { chainId } = useMoralisDapp();
+    const { chainId } = useMoralis();
     const { resolveLink } = useIPFS();
-    const [NFTTokenIds, setNFTTokenIds] = useState([]);
-    const [totalNFTs, setTotalNFTs] = useState();
-    const [fetchSuccess, setFetchSuccess] = useState(true);
-    const [dataFetched, setDataFetched] = useState(false);
-
     const getAllTokenIdsOpts = {
         chain: chainId,
         address: addr,
-        limit: 10,
-    }
+        limit: limit,
+    };
+
     const {
         fetch: getNFTTokenIds,
         data,
         error,
         isLoading,
         isFetching,
-    } = useMoralisWeb3ApiCall(token.getAllTokenIds, getAllTokenIdsOpts);
+    } = useMoralisWeb3ApiCall(
+        token.getAllTokenIds,
+        getAllTokenIdsOpts,
+        { autoFetch: !!token && addr !== "explore" },
+    );
 
-    console.log('dataFetched, isLoading, isFetching, error', dataFetched, isLoading, isFetching, error);
-
-    useEffect(() => {
-        if (addr === "explore") setDataFetched(false)
-    }, [addr]);
-
-    useEffect(() => {
-        async function fetchData() {
-            await getNFTTokenIds();
-            if (data?.result) {
-                setDataFetched(true);
-                const NFTs = data.result;
-                setTotalNFTs(data.total);
-                setFetchSuccess(true);
-                for (const NFT of NFTs) {
-                    if (NFT?.metadata) {
-                        NFT.metadata = JSON.parse(NFT.metadata);
-                        NFT.image = resolveLink(NFT.metadata?.image);
-                    }
+    const NFTTokenIds = useMemo(() => {
+        console.log('fetching tokenIds data')
+        if (!data?.result || !data?.result.length) {
+            return data;
+        }
+        const formattedResult = data.result.map((nft) => {
+            try {
+                if (nft.metadata) {
+                    const metadata = JSON.parse(nft.metadata);
+                    const image = resolveLink(metadata?.image);
+                    return { ...nft, image, metadata };
                 }
-                setNFTTokenIds(NFTs);
+            } catch (error) {
+                return nft;
             }
-        }
-        if (addr !== "explore") {
-            console.log('dataFetched', dataFetched)
-            console.log('isLoading, isFetching, error', isLoading, isFetching, error);
-            if (!dataFetched) fetchData();
-        }
-    }, [data, addr]);
+            return nft;
+        });
 
-    return {
-        NFTTokenIds,
-        totalNFTs,
-        fetchSuccess
-    };
+        return { ...data, result: formattedResult };
+    }, [data]);
+
+    return { getNFTTokenIds, data: NFTTokenIds, error, isLoading, isFetching };
 };

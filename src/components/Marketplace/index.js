@@ -1,1 +1,1 @@
-export { default } from "./NFTTokenIds";
+export { default } from "./Marketplace";

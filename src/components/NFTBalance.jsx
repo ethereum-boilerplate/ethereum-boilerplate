@@ -24,6 +24,7 @@ const styles = {
 
 function NFTBalance() {
   const { data: NFTBalances } = useNFTBalances();
+  console.log('fetching NFTBalances', NFTBalances)
   const { chainId } = useMoralis();
   const { verifyMetadata } = useVerifyMetadata();
 

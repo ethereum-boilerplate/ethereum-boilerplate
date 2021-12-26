@@ -44,7 +44,7 @@ const styles = {
 };
 
 function Account() {
-  const { authenticate, isAuthenticated, account, chainId, logout, web3 } = useMoralis();
+  const { authenticate, isAuthenticated, account, chainId, logout } = useMoralis();
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isAuthModalVisible, setIsAuthModalVisible] = useState(false);
   if (!isAuthenticated || !account) {
