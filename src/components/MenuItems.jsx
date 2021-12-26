@@ -21,7 +21,7 @@ function MenuItems() {
       <Menu.Item key="/avatars">
         <NavLink to="/avatars">🖼&nbsp;&nbsp;Your (MGL) NFTs</NavLink>
       </Menu.Item>
-      <Menu.Item key="/marketplace">
+      <Menu.Item key="/marketplace" id="marketplace-meny-item">
         <NavLink to="/marketplace">🛒&nbsp;&nbsp;Marketplace</NavLink>
       </Menu.Item>
     </Menu>
