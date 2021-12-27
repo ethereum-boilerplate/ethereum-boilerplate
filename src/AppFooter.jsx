@@ -5,7 +5,7 @@ import packageJson from '../package.json';
 import { mainBackgroundCol, brightFontCol } from "GlobalStyles";
 import { MGLLogo, MoralisLogo, AvaxLogo, } from "Logos";
 const { Footer } = Layout;
-const secFooterSpan = 50;
+const secFooterSpan = 2;
 
 export const AppFooter = () => {
     return (
@@ -28,7 +28,7 @@ export const AppFooter = () => {
                 alignItems: "center",
                 textAlign: "center",
                 justifyContent: "center",
-                verticalAlign: "center"
+                verticalAlign: "center",
             }}>
                 <Col span={secFooterSpan}>
                     <Text style={{ color: brightFontCol }}>
@@ -41,9 +41,6 @@ export const AppFooter = () => {
                             <MoralisLogo />
                         </a>
                     </Text>
-                    &nbsp;
-                    <Divider type="vertical" style={{ backgroundColor: brightFontCol }} />
-                    &nbsp;&nbsp;
                 </Col>
                 <Col span={secFooterSpan}>
                     <Text style={{ color: brightFontCol }}>
@@ -53,12 +50,9 @@ export const AppFooter = () => {
                             rel="noopener noreferrer"
                             href="https://www.avax.network"
                         >
-                            <span><AvaxLogo /></span>
+                            <span style={{display: "flex", justifyContent: "center"}}><AvaxLogo /></span>
                         </a>
                     </Text>
-                    &nbsp;
-                    <Divider type="vertical" style={{ backgroundColor: brightFontCol }} />
-                    &nbsp;&nbsp;
                 </Col>
                 <Col span={secFooterSpan}>
                     <Text style={{ color: brightFontCol }}>
@@ -71,9 +65,6 @@ export const AppFooter = () => {
                             TensorFlowJS
                         </a>
                     </Text>
-                    &nbsp;
-                    <Divider type="vertical" style={{ backgroundColor: brightFontCol }} />
-                    &nbsp;&nbsp;
                 </Col>
                 <Col span={secFooterSpan}>
                     <Text style={{ color: brightFontCol }}>
