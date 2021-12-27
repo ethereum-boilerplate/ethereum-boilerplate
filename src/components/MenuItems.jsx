@@ -15,6 +15,7 @@ function MenuItems() {
         fontWeight: "400",
         width: "100%",
         justifyContent: "right",
+        background: "none",
       }}
       selectedKeys={[pathname]}
     >

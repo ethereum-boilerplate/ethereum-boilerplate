@@ -22,7 +22,7 @@ const styles = {
   card: {
     border: "none",
     borderBottom: "none",
-    background: mainBackgroundCol,
+    background: "none",
     color: brightFontCol,
   },
   btn: {

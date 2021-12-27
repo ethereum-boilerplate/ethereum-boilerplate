@@ -30,7 +30,6 @@
 }
 
 .ant-layout-header, .ant-menu, .ant-menu-root {
-  background-color: var(--main-bg-color);
   color: var(--main-text-color);
   box-shadow: none;
   border: none;

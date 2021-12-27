@@ -81,7 +81,7 @@ function NFTBalance() {
       padding: "15px",
       maxWidth: "1030px",
       width: "100%",
-      background: mainBackgroundCol,
+      background: "none",
       color: brightFontCol,
     }}>
       <h1 style={{

@@ -14,7 +14,7 @@ import Transactions from "components/Transactions"
 import Contract from "components/Contract/Contract";
 import MenuItems from "./components/MenuItems";
 import { Link } from "react-router-dom";
-import { mainBackgroundCol, brightFontCol } from "GlobalStyles";
+import { brightFontCol } from "GlobalStyles";
 import { MGLLogo } from "Logos";
 import { AppFooter } from "AppFooter"
 
@@ -35,14 +35,15 @@ const styles = {
     padding: "10px",
   },
   header: {
-    position: "fixed",
-    zIndex: 1,
+    // position: "fixed",
+    // zIndex: 1,
     width: "100%",
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
     fontFamily: "Roboto, sans-serif",
     padding: "0 35px",
+    background: "none",
     // borderBottom: "2px solid rgba(0, 0, 0, 0.06)",
     // boxShadow: "0 1px 10px rgb(151 164 175 / 10%)",
   },
@@ -69,14 +70,15 @@ const App = ({ isServerInfo }) => {
       {
         height: "100vh",
         overflow: "auto",
-        background: mainBackgroundCol,
+        background: "linear-gradient(180deg, #000207 0%, #003963 100%)",
         fontFamily: "Roboto, sans-serif",
       }}>
       <Router>
         <Header style={styles.header}>
           <div style={{
             marginTop: "1rem",
-            display: "flex"
+            display: "flex",
+            background: "none",
           }}>
             <Link to="/" style={styles.homeLink}><MGLLogo /></Link>
           </div>
@@ -84,9 +86,9 @@ const App = ({ isServerInfo }) => {
           <div style={styles.headerRight}>
             <Divider
               type="vertical"
-              style={{ 
+              style={{
                 height: "1.8em",
-                backgroundColor: brightFontCol 
+                backgroundColor: brightFontCol
               }}
             />
             <NativeBalance />

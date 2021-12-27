@@ -12,7 +12,7 @@ const secFooterSpan = 2;
 export const AppFooter = () => {
     return (
         <Footer style={{
-            background: mainBackgroundCol,
+            background: "none",
             color: brightFontCol
         }}>
             <Divider style={{ backgroundColor: brightFontCol }} />
