@@ -8,11 +8,11 @@ export const networkConfigs = {
     currencySymbol: "ETH",
     blockExplorerUrl: "https://ropsten.etherscan.io/",
   },
-  "0x4": {
+  "0x2a": {
     currencySymbol: "ETH",
     blockExplorerUrl: "https://kovan.etherscan.io/",
   },
-  "0x2a": {
+  "0x4": {
     currencySymbol: "ETH",
     blockExplorerUrl: "https://rinkeby.etherscan.io/",
   },

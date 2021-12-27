@@ -69,9 +69,10 @@ function Marketplace() {
   const { data: NFTTokenIds, error: NFTsFetchError } = useNFTTokenIds(nftAddress);
   const totalNFTs = NFTTokenIds?.total
 
+  console.log("NFTTokenIds", NFTTokenIds);
   const [visible, setVisibility] = useState(false);
   const [nftToBuy, setNftToBuy] = useState(null);
-  
+
   const [loading, setLoading] = useState(false);
   const [contractABI, setContractABI] = useState('{"noContractDeployed": true}'); //Smart Contract ABI here
   // marketplace contract address
@@ -307,7 +308,16 @@ function Marketplace() {
                 {getMarketItem(nft) && (
                   <Badge.Ribbon text="Buy Now" color="green"></Badge.Ribbon>
                 )}
-                <Meta title={nft.name} description={`#${nft.token_id}`} />
+                <Meta
+                  title={nft.name}
+                  description={
+                    <>
+                      <p>id:</p>
+                      <p><b>{`${nft.token_id}`}</b></p>
+                      <p>amount: <b>{nft.amount}</b></p>
+                    </>
+                  }
+                />
               </Card>
             ))}
         </div>
