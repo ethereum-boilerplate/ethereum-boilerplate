@@ -64,7 +64,7 @@ export const AppFooter = () => {
                             rel="noopener noreferrer"
                             href="https://www.tensorflow.org/js"
                         >
-                            TensorFlowJS
+                            <TfJSLogo />
                         </a>
                     </Text>
                 </Col>
