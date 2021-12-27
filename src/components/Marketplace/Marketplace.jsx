@@ -186,7 +186,8 @@ function Marketplace() {
       <div style={{
         flexBasis: "100%",
         height: "0px",
-        marginLeft: "70%"
+        marginLeft: "70%",
+        marginBottom: "4rem",
       }}>
         <h3>
           You can check Your 🧾&nbsp;Transactions
