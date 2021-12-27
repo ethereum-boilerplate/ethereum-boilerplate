@@ -13,8 +13,9 @@ contract NFTContract is ERC1155, Ownable {
         ERC1155("https://inzloc1b6zrv.usemoralis.com/{id}.json")
     {
         marketplaceAddress = _marketplaceAddress;
-        _mint(msg.sender, ARTWORK, 1, "");
-        _mint(msg.sender, PHOTO, 2, "");
+        // autmoatically mint tokens to the sender
+        _mint(msg.sender, ARTWORK, 5, "");
+        _mint(msg.sender, PHOTO, 5, "");
     }
 
     function mint(
@@ -43,3 +44,7 @@ contract NFTContract is ERC1155, Ownable {
 // https://ethereum.stackexchange.com/questions/103625/how-to-approve-contract-to-transfer-tokens
 // https://programtheblockchain.com/posts/2018/02/27/writing-a-token-market-contract/
 // https://medium.com/coinmonks/developing-a-marketplace-contract-with-token-payment-d865323ea88c
+
+// last deployment on rinkeby testnet: 0x6d996636c3917d8D0B99Dc1D877Fbf7fC189c8f1
+
+// last deployment on rinkeby testnet: 0x7650D3448F8044d8732528148c2A2d6B1D17BA88

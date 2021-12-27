@@ -2,11 +2,12 @@
 pragma solidity ^0.8.4;
 
 import "github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/Counters.sol";
-import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC1155/ERC1155.sol";
+import "github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC1155/ERC1155.sol";
+import "github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC1155/utils/ERC1155Receiver.sol";
 import "github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/security/ReentrancyGuard.sol";
-import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/Ownable.sol";
+import "github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/Ownable.sol";
 
-contract MarketPlace is ReentrancyGuard, Ownable {
+contract MarketPlace is ERC1155Receiver, ReentrancyGuard, Ownable {
     using Counters for Counters.Counter;
     Counters.Counter private _itemIds;
     Counters.Counter private _itemsSold;
@@ -18,6 +19,26 @@ contract MarketPlace is ReentrancyGuard, Ownable {
 
     constructor() {
         _owner = msg.sender;
+    }
+
+    function onERC1155Received(
+        address, /* operator */
+        address, /* from */
+        uint256, /* id */
+        uint256, /* value */
+        bytes calldata /* data */
+    ) pure external override returns (bytes4) {
+        return this.onERC1155Received.selector;
+    }
+
+    function onERC1155BatchReceived(
+        address, /* operator */
+        address, /* from */
+        uint256[] calldata, /* ids */
+        uint256[] calldata, /* values */
+        bytes calldata /* data */
+    ) pure external override returns (bytes4) {
+        return this.onERC1155BatchReceived.selector;
     }
 
     struct MarketItem {
@@ -178,3 +199,7 @@ contract MarketPlace is ReentrancyGuard, Ownable {
 /// Thanks for inspiration: https://github.com/dabit3/polygon-ethereum-nextjs-marketplace/
 
 // last deployment on rinkeby testnet: 0x38132Af11613795d87343F87d6f43AA0d97fb8a2
+
+// last deployment on rinkeby testnet: 0xee8a8722ab74aaa445e26f9e220d10b92f895522
+
+// last deployment on rinkeby testnet: 0x2e73616de3cfce0be102764c5d0b86117d95c4c4
