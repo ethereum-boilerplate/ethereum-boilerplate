@@ -9,7 +9,7 @@ import ContractResolver from "./ContractResolver";
 export default function Contract() {
   const { Moralis, chainId } = useMoralis();
   const [responses, setResponses] = useState({});
-  const [contract, setContract] = useState({});
+  const [contract, setContract] = useState();
 
   /**Moralis Live query for displaying contract's events*/
   const { data } = useMoralisQuery("Events", (query) => query, [], {

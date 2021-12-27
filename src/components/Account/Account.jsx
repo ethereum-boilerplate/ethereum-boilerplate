@@ -44,7 +44,7 @@ const styles = {
 };
 
 function Account() {
-  const { authenticate, isAuthenticated, account, chainId, logout, web3 } = useMoralis();
+  const { authenticate, isAuthenticated, account, chainId, logout } = useMoralis();
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isAuthModalVisible, setIsAuthModalVisible] = useState(false);
   
@@ -52,8 +52,6 @@ function Account() {
     return (
       <>
         <div
-          style={styles.account}
-          // onClick={() => authenticate({ signingMessage: "Hello World!" })}
           onClick={() => setIsAuthModalVisible(true)}
         >
           <p style={styles.text}>Authenticate</p>

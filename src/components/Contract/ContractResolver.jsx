@@ -3,24 +3,17 @@ import { InboxOutlined } from "@ant-design/icons";
 import { message } from "antd";
 import Dragger from "antd/lib/upload/Dragger";
 import React, { useEffect, useMemo } from "react";
+import contractInfo from "contracts/contractInfo.json";
 
 export default function ContractResolver({ contract, setContract }) {
   useEffect(() => {
     /** Tries to load local contract JSON file or get
      * it from browser localStorage(works only if file was uploaded previosly by drag&drop component) */
-    let localContract;
-    try {
-      localContract = require("contracts/contractInfo.json");
-    } catch {
-      localContract = JSON.parse(window.localStorage.getItem("contract"));
-    }
-
-    if (localContract) {
-      setContract(localContract);
-    } else {
-      message.error("No contract found. Upload it manually or deploy the contract again");
-    }
-  }, []);
+    if (contractInfo?.name) {
+      setContract(contractInfo);
+    } else if (window.localStorage.getItem("contract")) setContract(JSON.parse(window.localStorage.getItem("contract")));
+    else message.error("No contract found. Upload it manually or deploy the contract again");
+  }, [contractInfo]);
 
   // Props for drag and drop uploader
   const uploadProps = useMemo(() => {
