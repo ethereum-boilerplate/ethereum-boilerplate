@@ -48,7 +48,9 @@ function NFTBalance() {
       background: mainBackgroundCol,
       color: brightFontCol,
     }}>
-      <h1>🖼 Your Avatars and Wearables</h1>
+      <h1 style={{
+        fontFamily: "Source Serif Pro, sans-serif",
+      }}>🖼 Your Avatars and Wearables</h1>
       <br />
       <h3>
         If you have your MGL Avatar NFT 🙂
