@@ -1,16 +1,16 @@
-.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item:hover::after,
-.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu:hover::after,
-.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-active::after,
-.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-active::after,
-.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-open::after,
-.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-open::after,
-.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-selected::after,
-.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-selected::after {
+.ant-menu-horizontal:not(.ant-menu-dark)>.ant-menu-item:hover::after,
+.ant-menu-horizontal:not(.ant-menu-dark)>.ant-menu-submenu:hover::after,
+.ant-menu-horizontal:not(.ant-menu-dark)>.ant-menu-item-active::after,
+.ant-menu-horizontal:not(.ant-menu-dark)>.ant-menu-submenu-active::after,
+.ant-menu-horizontal:not(.ant-menu-dark)>.ant-menu-item-open::after,
+.ant-menu-horizontal:not(.ant-menu-dark)>.ant-menu-submenu-open::after,
+.ant-menu-horizontal:not(.ant-menu-dark)>.ant-menu-item-selected::after,
+.ant-menu-horizontal:not(.ant-menu-dark)>.ant-menu-submenu-selected::after {
   border-bottom: 2px solid #21bf96 !important;
 }
 
-.ant-menu-horizontal > .ant-menu-item-selected a,
-.ant-menu-horizontal > .ant-menu-item a:hover {
+.ant-menu-horizontal>.ant-menu-item-selected a,
+.ant-menu-horizontal>.ant-menu-item a:hover {
   color: #21bf96 !important;
 }
 
@@ -26,6 +26,7 @@
 :root {
   --main-bg-color: #012E51;
   --main-text-color: #FFF;
+  --active-color: #F96F0B;
 }
 
 .ant-layout-header, .ant-menu, .ant-menu-root {
@@ -42,4 +43,12 @@
 
 .ant-menu-item a {
   color: var(--main-text-color) !important;
+}
+
+.ant-menu-horizontal>.ant-menu-item-selected a {
+  color: var(--main-text-color) !important;
+}
+
+.ant-menu-horizontal:not(.ant-menu-dark)>.ant-menu-item-selected::after, .ant-menu-item:hover::after {
+  border-bottom: 4px solid var(--active-color) !important;
 }

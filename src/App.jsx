@@ -12,15 +12,13 @@ import Home from "components/Home";
 import Marketplace from "components/Marketplace";
 import Transactions from "components/Transactions"
 import Contract from "components/Contract/Contract";
-import Text from "antd/lib/typography/Text";
 import MenuItems from "./components/MenuItems";
 import { Link } from "react-router-dom";
-import { Row, Col } from 'antd';
-import packageJson from '../package.json';
 import { mainBackgroundCol, brightFontCol } from "GlobalStyles";
 import { MGLLogo } from "Logos";
+import { AppFooter } from "AppFooter"
 
-const { Header, Footer } = Layout;
+const { Header } = Layout;
 
 const styles = {
   homeLink: {
@@ -52,7 +50,7 @@ const styles = {
     display: "flex",
     gap: "20px",
     alignItems: "center",
-    fontSize: "15px",
+    fontSize: "17px",
     fontWeight: "600",
   },
 };
@@ -84,6 +82,13 @@ const App = ({ isServerInfo }) => {
           </div>
           <MenuItems />
           <div style={styles.headerRight}>
+            <Divider
+              type="vertical"
+              style={{ 
+                height: "1.8em",
+                backgroundColor: brightFontCol 
+              }}
+            />
             <NativeBalance />
             <Account />
             <Chains />
@@ -113,61 +118,7 @@ const App = ({ isServerInfo }) => {
           </Switch>
         </div>
       </Router>
-      <Footer style={{ textAlign: "center", background: mainBackgroundCol, color: brightFontCol }}>
-        <Divider style={{ backgroundColor: brightFontCol }} />
-        <Row>
-          <Col span={100} style={{ color: brightFontCol }}>
-            <b>META GYM LAND</b> version: {packageJson.version}
-          </Col>
-        </Row>
-        <Row>
-          <Col span={24}>
-            <Text style={{ color: brightFontCol }}>
-              Built with {" "}
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://moralis.io"
-              >
-                Moralis
-              </a>
-            </Text>
-            <Divider type="vertical" style={{ backgroundColor: brightFontCol }} />
-            <Text style={{ color: brightFontCol }}>
-              Powered by {" "}
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://www.avax.network"
-              >
-                Avalanche
-              </a>
-            </Text>
-            <Divider type="vertical" style={{ backgroundColor: brightFontCol }} />
-            <Text style={{ color: brightFontCol }}>
-              Powered by {" "}
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://www.tensorflow.org/js"
-              >
-                TensorFlowJS
-              </a>
-            </Text>
-            <Divider type="vertical" style={{ backgroundColor: brightFontCol }} />
-            <Text style={{ color: brightFontCol }}>
-              Coded by {" "}
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://coderdidit.com"
-              >
-                C{"{o}"}derDidit
-              </a>
-            </Text>
-          </Col>
-        </Row>
-      </Footer>
+      <AppFooter />
     </Layout>
   );
 };
