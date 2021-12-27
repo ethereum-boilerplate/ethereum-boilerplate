@@ -316,7 +316,7 @@ function Marketplace() {
                     <>
                       <p>id:</p>
                       <p><b>{`${nft.token_id}`}</b></p>
-                      <p>amount: <b>{nft.amount}</b></p>
+                      <p>amount minted: <b>{nft.amount}</b></p>
                     </>
                   }
                 />

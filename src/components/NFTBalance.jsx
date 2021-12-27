@@ -144,7 +144,7 @@ function NFTBalance() {
                           <span><b>{getEllipsisTxt(nft.token_address, 7)}</b></span>
                           &nbsp;
                           <span>id: <b>{nft.token_id}</b></span>
-                          <p>amount: <b>{nft.amount}</b></p>
+                          <p>amount owned: <b>{nft.amount}</b></p>
                         </>
                       } />
                       <br />
