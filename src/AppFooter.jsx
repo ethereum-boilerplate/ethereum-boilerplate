@@ -5,6 +5,8 @@ import packageJson from '../package.json';
 import { mainBackgroundCol, brightFontCol } from "GlobalStyles";
 import { MGLLogo, MoralisLogo, AvaxLogo, CoderDitiLogo, TfJSLogo } from "Logos";
 const { Footer } = Layout;
+
+const topFooterSpan = 2;
 const secFooterSpan = 2;
 
 export const AppFooter = () => {
@@ -14,24 +16,28 @@ export const AppFooter = () => {
             color: brightFontCol
         }}>
             <Divider style={{ backgroundColor: brightFontCol }} />
-            <Row gutter={16} style={{
-                textAlign: "center",
+            <Row style={{
+                textAlign: "right",
             }}>
-                <Col className="gutter-row" span={12} style={{ color: brightFontCol }}>
+                <Col span={topFooterSpan} >
                     <MGLLogo />
                 </Col>
-                <Col className="gutter-row" span={12} style={{ color: brightFontCol }}>
-                    <div>
+                <Col span={topFooterSpan} offset={20} >
+                    <div style={{
+                        marginTop: "0.7rem",
+                    }}>
                         <b>v{packageJson.version}</b>
                     </div>
                 </Col>
             </Row>
-            <Row justify="space-around" style={{
-                alignItems: "center",
-                textAlign: "center",
-                justifyContent: "center",
-                verticalAlign: "center",
-            }}>
+            <Row
+                justify="space-around"
+                style={{
+                    alignItems: "center",
+                    textAlign: "center",
+                    justifyContent: "center",
+                    verticalAlign: "center",
+                }}>
                 <Col span={secFooterSpan}>
                     <Text style={{ color: brightFontCol }}>
                         Built with {" "}
@@ -58,7 +64,7 @@ export const AppFooter = () => {
                 </Col>
                 <Col span={secFooterSpan}>
                     <Text style={{ color: brightFontCol }}>
-                        Powered by {" "}
+                        AI Powered by {" "}
                         <a
                             target="_blank"
                             rel="noopener noreferrer"

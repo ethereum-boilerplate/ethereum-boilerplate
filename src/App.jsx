@@ -42,7 +42,7 @@ const styles = {
     justifyContent: "space-between",
     alignItems: "center",
     fontFamily: "Roboto, sans-serif",
-    padding: "0 10px",
+    padding: "0 35px",
     // borderBottom: "2px solid rgba(0, 0, 0, 0.06)",
     // boxShadow: "0 1px 10px rgb(151 164 175 / 10%)",
   },
