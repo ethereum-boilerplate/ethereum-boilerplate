@@ -15,7 +15,10 @@ export const AppFooter = () => {
             background: "none",
             color: brightFontCol
         }}>
-            <Divider style={{ backgroundColor: brightFontCol }} />
+            <Divider style={{
+                backgroundColor: brightFontCol,
+                margin: "0"
+            }} />
             <Row style={{
                 textAlign: "right",
             }}>
@@ -24,7 +27,7 @@ export const AppFooter = () => {
                 </Col>
                 <Col span={topFooterSpan} offset={20} >
                     <div style={{
-                        marginTop: "0.7rem",
+                        marginTop: "0.9rem",
                     }}>
                         <b>v{packageJson.version}</b>
                     </div>

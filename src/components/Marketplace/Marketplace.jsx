@@ -34,7 +34,6 @@ const styles = {
     alignItems: "center",
     margin: "0 auto",
     width: "600px",
-    //borderRadius: "10px",
     height: "150px",
     marginBottom: "40px",
     paddingBottom: "20px",
@@ -44,12 +43,9 @@ const styles = {
     height: "115px",
     width: "115px",
     borderRadius: "50%",
-    // positon: "relative",
-    // marginTop: "-80px",
     border: "solid 4px white",
   },
   text: {
-    color: "#041836",
     fontSize: "27px",
     fontWeight: "bold",
   },
@@ -237,7 +233,6 @@ function Marketplace() {
                   <div
                     style={{
                       fontSize: "15px",
-                      color: "#9c9c9c",
                       fontWeight: "normal",
                     }}
                   >
