@@ -3,14 +3,20 @@ import Text from "antd/lib/typography/Text";
 import { Row, Col } from 'antd';
 import packageJson from '../package.json';
 import { mainBackgroundCol, brightFontCol } from "GlobalStyles";
-import { MGLLogo } from "Logos";
+import { MGLLogo, MoralisLogo, AvaxLogo, } from "Logos";
 const { Footer } = Layout;
+const secFooterSpan = 50;
 
 export const AppFooter = () => {
     return (
-        <Footer style={{ textAlign: "center", background: mainBackgroundCol, color: brightFontCol }}>
+        <Footer style={{
+            background: mainBackgroundCol,
+            color: brightFontCol
+        }}>
             <Divider style={{ backgroundColor: brightFontCol }} />
-            <Row gutter={16}>
+            <Row gutter={16} style={{
+                textAlign: "center",
+            }}>
                 <Col className="gutter-row" span={12} style={{ color: brightFontCol }}>
                     <MGLLogo />
                 </Col>
@@ -18,8 +24,13 @@ export const AppFooter = () => {
                     <b>v{packageJson.version}</b>
                 </Col>
             </Row>
-            <Row>
-                <Col span={24}>
+            <Row justify="space-around" style={{
+                alignItems: "center",
+                textAlign: "center",
+                justifyContent: "center",
+                verticalAlign: "center"
+            }}>
+                <Col span={secFooterSpan}>
                     <Text style={{ color: brightFontCol }}>
                         Built with {" "}
                         <a
@@ -27,10 +38,14 @@ export const AppFooter = () => {
                             rel="noopener noreferrer"
                             href="https://moralis.io"
                         >
-                            Moralis
+                            <MoralisLogo />
                         </a>
                     </Text>
+                    &nbsp;
                     <Divider type="vertical" style={{ backgroundColor: brightFontCol }} />
+                    &nbsp;&nbsp;
+                </Col>
+                <Col span={secFooterSpan}>
                     <Text style={{ color: brightFontCol }}>
                         Powered by {" "}
                         <a
@@ -38,10 +53,14 @@ export const AppFooter = () => {
                             rel="noopener noreferrer"
                             href="https://www.avax.network"
                         >
-                            Avalanche
+                            <span><AvaxLogo /></span>
                         </a>
                     </Text>
+                    &nbsp;
                     <Divider type="vertical" style={{ backgroundColor: brightFontCol }} />
+                    &nbsp;&nbsp;
+                </Col>
+                <Col span={secFooterSpan}>
                     <Text style={{ color: brightFontCol }}>
                         Powered by {" "}
                         <a
@@ -52,7 +71,11 @@ export const AppFooter = () => {
                             TensorFlowJS
                         </a>
                     </Text>
+                    &nbsp;
                     <Divider type="vertical" style={{ backgroundColor: brightFontCol }} />
+                    &nbsp;&nbsp;
+                </Col>
+                <Col span={secFooterSpan}>
                     <Text style={{ color: brightFontCol }}>
                         Coded by {" "}
                         <a
