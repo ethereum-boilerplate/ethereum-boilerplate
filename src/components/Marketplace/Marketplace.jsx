@@ -4,6 +4,7 @@ import { getCollectionsByChain } from "./collections";
 import {
   useMoralis,
   useMoralisQuery,
+  useWeb3ExecuteFunction
 } from "react-moralis";
 import { Card, Image, Tooltip, Modal, Badge, Alert, Spin } from "antd";
 import { useNFTTokenIds } from "hooks/useNFTTokenIds";
@@ -11,9 +12,8 @@ import {
   FileSearchOutlined,
   ShoppingCartOutlined,
 } from "@ant-design/icons";
-import { useWeb3ExecuteFunction } from "react-moralis";
 import { Link } from "react-router-dom";
-import { mainMarketAddress, deployedABI } from "../../MarketplaceSCMetadata";
+import { mainMarketAddress, deployedABI, createdMarketItemsTable } from "../../MarketplaceSCMetadata";
 // import SearchCollections from "components/SearchCollections";
 
 const { Meta } = Card;
@@ -74,11 +74,14 @@ function Marketplace() {
 
   const [contractABI, setContractABI] = useState(deployedABI); //Smart Contract ABI here
   const [marketAddress, setMarketAddress] = useState(mainMarketAddress)
-  
+
   const contractProcessor = useWeb3ExecuteFunction();
   const nativeName = getNativeByChain(chainId);
   const contractABIJson = JSON.parse(contractABI);
-  const queryMarketItems = useMoralisQuery("MarketItems");
+
+  const listings = new Map();
+
+  const queryMarketItems = useMoralisQuery(createdMarketItemsTable);
   const fetchMarketItems = JSON.parse(
     JSON.stringify(queryMarketItems.data, [
       "objectId",
@@ -122,7 +125,7 @@ function Marketplace() {
       },
       onError: (error) => {
         setLoading(false);
-        failPurchase();
+        failPurchase(error);
       },
     });
   }
@@ -144,20 +147,21 @@ function Marketplace() {
     }, secondsToGo * 1000);
   }
 
-  function failPurchase() {
-    let secondsToGo = 5;
+  function failPurchase(err) {
     const modal = Modal.error({
       title: "Error!",
-      content: `There was a problem when purchasing this NFT`,
+      content: `There was a problem when purchasing this NFT: ${err}`,
     });
-    setTimeout(() => {
-      modal.destroy();
-    }, secondsToGo * 1000);
+    // let secondsToGo = 5;
+    // setTimeout(() => {
+    //   modal.destroy();
+    // }, secondsToGo * 1000);
   }
 
   async function updateSoldMarketItem() {
     const id = getMarketItem(nftToBuy).objectId;
-    const marketList = Moralis.Object.extend("MarketItems");
+    console.log('updateSoldMarketItem id', id);
+    const marketList = Moralis.Object.extend(createdMarketItemsTable);
     const query = new Moralis.Query(marketList);
     await query.get(id).then((obj) => {
       obj.set("sold", true);
@@ -166,6 +170,15 @@ function Marketplace() {
     });
   }
 
+  /**
+   * TODO maybe create mapping here
+   * (token_address, token_id) => amount for sale
+   * 
+   * alternatively that data can be fetched from smart contract
+   * 
+   * but for now just followint the tutorial
+   * 
+  */
   const getMarketItem = (nft) => {
     const result = fetchMarketItems?.find(
       (e) =>
@@ -176,6 +189,24 @@ function Marketplace() {
     );
     return result;
   };
+
+  const getMarketItems = (nft) => {
+    const result = fetchMarketItems?.filter(
+      (e) =>
+        e.nftContract === nft?.token_address &&
+        e.tokenId === nft?.token_id &&
+        e.sold === false &&
+        e.confirmed === true
+    );
+    const key = `${nft?.token_address}:${nft?.token_id}`
+    listings.set(key, result.length);
+    return result.length > 0;
+  };
+
+  const getAmountForSale = (nft) => {
+    const key = `${nft?.token_address}:${nft?.token_id}`
+    return listings.get(key)
+  }
 
   return (
     <>
@@ -218,7 +249,7 @@ function Marketplace() {
                 <div style={{ marginBottom: "10px" }}></div>
               </>
             )}
-            {/* NFTs Collection descritption */}
+            {/* NFTs Collection description */}
             <div style={styles.banner}>
               <Image
                 preview={false}
@@ -302,22 +333,25 @@ function Marketplace() {
                 }
                 key={index}
               >
-                {getMarketItem(nft) && (
-                  <Badge.Ribbon text="Buy Now" color="green"></Badge.Ribbon>
+                {getMarketItems(nft) && (
+                  <>
+                    <Badge.Ribbon text="Buy Now" color="green"></Badge.Ribbon>
+                  </>
                 )}
                 <Meta
                   title={nft.name}
                   description={
                     <>
-                      <p>id:</p>
-                      <p><b>{`${nft.token_id}`}</b></p>
-                      <p>amount minted: <b>{nft.amount}</b></p>
+                      <p>id: <b>{`${nft.token_id}`}</b></p>
+                      <p>total minted: <b>{nft.amount}</b></p>
+                      <p>for sale: <b>{getAmountForSale(nft)}</b></p>
                     </>
                   }
                 />
               </Card>
             ))}
         </div>
+        {/* TODO get the one with lowest price */}
         {getMarketItem(nftToBuy) ? (
           <Modal
             title={`Buy ${nftToBuy?.name} #${nftToBuy?.token_id}`}

@@ -76,7 +76,7 @@ export default function Home() {
                   target="_blank"
                   type="default"
                   style={styles.btn}
-                >Whitepaper</Button>
+                >Litepaper</Button>
               </div>
             </Card>
             <Card

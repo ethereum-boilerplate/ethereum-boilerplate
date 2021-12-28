@@ -27,7 +27,7 @@ contract MarketPlace is ERC1155Receiver, ReentrancyGuard, Ownable {
         uint256, /* id */
         uint256, /* value */
         bytes calldata /* data */
-    ) pure external override returns (bytes4) {
+    ) external pure override returns (bytes4) {
         return this.onERC1155Received.selector;
     }
 
@@ -37,7 +37,7 @@ contract MarketPlace is ERC1155Receiver, ReentrancyGuard, Ownable {
         uint256[] calldata, /* ids */
         uint256[] calldata, /* values */
         bytes calldata /* data */
-    ) pure external override returns (bytes4) {
+    ) external pure override returns (bytes4) {
         return this.onERC1155BatchReceived.selector;
     }
 
@@ -48,6 +48,11 @@ contract MarketPlace is ERC1155Receiver, ReentrancyGuard, Ownable {
         address payable seller;
         address payable owner;
         uint256 price;
+        /**
+         unitPrice
+         amount
+         */
+
         /**
          * for ERC1155
          bool soldOut;
@@ -91,6 +96,7 @@ contract MarketPlace is ERC1155Receiver, ReentrancyGuard, Ownable {
                 nftContract,
                 tokenIds[i],
                 payable(msg.sender),
+                // TODO seller is still the owner, not 0 address
                 payable(address(0)),
                 price,
                 false
@@ -123,6 +129,7 @@ contract MarketPlace is ERC1155Receiver, ReentrancyGuard, Ownable {
             nftContract,
             tokenId,
             payable(msg.sender),
+            // TODO seller is still the owner, not 0 address
             payable(address(0)),
             price,
             false
@@ -141,6 +148,7 @@ contract MarketPlace is ERC1155Receiver, ReentrancyGuard, Ownable {
             nftContract,
             tokenId,
             msg.sender,
+            // TODO seller is still the owner, not 0 address
             address(0),
             price,
             false
@@ -160,7 +168,6 @@ contract MarketPlace is ERC1155Receiver, ReentrancyGuard, Ownable {
             "Please submit the asking price in order to complete the purchase"
         );
         require(sold != true, "This Sale has alredy finnished");
-        emit MarketItemSold(itemId, msg.sender);
 
         idToMarketItem[itemId].seller.transfer(msg.value);
         IERC1155(nftContract).safeTransferFrom(
@@ -175,6 +182,7 @@ contract MarketPlace is ERC1155Receiver, ReentrancyGuard, Ownable {
         _itemsSold.increment();
         // fee
         // payable(owner).transfer(listingPrice);
+        emit MarketItemSold(itemId, msg.sender);
     }
 
     // return unsold items
@@ -185,6 +193,7 @@ contract MarketPlace is ERC1155Receiver, ReentrancyGuard, Ownable {
 
         MarketItem[] memory items = new MarketItem[](unsoldItemCount);
         for (uint256 i = 0; i < itemCount; i++) {
+            // TODO seller is still the owner, not 0 address
             if (idToMarketItem[i + 1].owner == address(0)) {
                 uint256 currentId = i + 1;
                 MarketItem storage currentItem = idToMarketItem[currentId];
