@@ -10,7 +10,7 @@ import NativeBalance from "components/NativeBalance";
 import "./style.css";
 import Home from "components/Home";
 import Marketplace from "components/Marketplace";
-import Transactions from "components/Transactions"
+import UserNFTTransactions from "components/UserNFTTransactions"
 import Contract from "components/Contract/Contract";
 import MenuItems from "./components/MenuItems";
 import { Link } from "react-router-dom";
@@ -109,7 +109,7 @@ const App = ({ isServerInfo }) => {
               <Marketplace />
             </Route>
             <Route path="/your-transactions">
-              <Transactions />
+              <UserNFTTransactions />
             </Route>
             <Route path="/contract">
               <Contract />

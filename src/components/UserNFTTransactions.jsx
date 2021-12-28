@@ -12,7 +12,7 @@ const styles = {
     },
 };
 
-function Transactions() {
+function UserNFTTransactions() {
     const { account } = useMoralis();
     const walletAddress = account
     const queryItemImages = useMoralisQuery("ItemImages");
@@ -165,5 +165,5 @@ function Transactions() {
     );
 }
 
-export default Transactions;
+export default UserNFTTransactions;
 
