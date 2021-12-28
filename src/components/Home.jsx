@@ -8,6 +8,9 @@ import { Link } from "react-router-dom";
 const { Text } = Typography;
 
 const styles = {
+  homeGlobal: {
+    color: brightFontCol,
+  },
   titleText: {
     fontSize: "35px",
     justifyContent: "center",
@@ -35,7 +38,7 @@ const styles = {
 
 export default function Home() {
   return (
-    <>
+    <div style={styles.homeGlobal}>
       <Row>
         <Col span={24}>
           <div style={
@@ -107,10 +110,10 @@ export default function Home() {
         flexBasis: "100%",
         height: "0",
         justifyContent: "center",
-        marginTop: "6rem"
+        marginTop: "6rem",
       }}>
         <Col span={100} style={{
-          textAlign: "center"
+          textAlign: "center",
         }}>
           <h1>Roadmap</h1>
           ...
@@ -131,6 +134,6 @@ export default function Home() {
           ...
         </Col>
       </Row>
-    </>
+    </div>
   );
 }

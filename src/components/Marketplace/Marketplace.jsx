@@ -13,7 +13,9 @@ import {
   ShoppingCartOutlined,
 } from "@ant-design/icons";
 import { Link } from "react-router-dom";
+import { useVerifyMetadata } from "hooks/useVerifyMetadata";
 import { mainMarketAddress, deployedABI, createdMarketItemsTable } from "../../MarketplaceSCMetadata";
+import { NFTCardStyle } from "../../GlobalStyles";
 // import SearchCollections from "components/SearchCollections";
 
 const { Meta } = Card;
@@ -78,7 +80,7 @@ function Marketplace() {
   const contractProcessor = useWeb3ExecuteFunction();
   const nativeName = getNativeByChain(chainId);
   const contractABIJson = JSON.parse(contractABI);
-
+  const { verifyMetadata } = useVerifyMetadata();
   const listings = new Map();
 
   const queryMarketItems = useMoralisQuery(createdMarketItemsTable);
@@ -286,7 +288,7 @@ function Marketplace() {
                   console.log('display nft collection', nft?.addrs)
                   setNftAddress(nft?.addrs)
                 }}
-                style={{ width: 240, border: "2px solid #e7eaf3" }}
+                style={NFTCardStyle}
                 cover={
                   <Image
                     preview={false}
@@ -304,53 +306,70 @@ function Marketplace() {
 
           {/* Collection NFTs view */}
           {nftAddress !== "explore" &&
-            NFTTokenIds?.result.map((nft, index) => (
-              <Card
-                hoverable
-                actions={[
-                  <Tooltip title="View On Blockexplorer">
-                    <FileSearchOutlined
-                      onClick={() =>
-                        window.open(
-                          `${getExplorer(chainId)}address/${nft.token_address}`,
-                          "_blank"
-                        )
+            NFTTokenIds?.result
+              .map((nft, index) => {
+                //Verify Metadata
+                nft = verifyMetadata(nft);
+                return (
+                  <Card
+                    hoverable
+                    actions={[
+                      <Tooltip title="View On Blockexplorer">
+                        <FileSearchOutlined
+                          onClick={() =>
+                            window.open(
+                              `${getExplorer(chainId)}address/${nft.token_address}`,
+                              "_blank"
+                            )
+                          }
+                        />
+                      </Tooltip>,
+                      <Tooltip title="Buy NFT">
+                        <ShoppingCartOutlined onClick={() => handleBuyClick(nft)} />
+                      </Tooltip>,
+                    ]}
+                    style={NFTCardStyle}
+                    cover={
+                      <Image
+                        preview={false}
+                        src={nft.image || "error"}
+                        fallback={fallbackImg}
+                        alt=""
+                        style={{ height: "240px" }}
+                      />
+                    }
+                    key={index}
+                  >
+                    {getMarketItems(nft) && (
+                      <>
+                        <Badge.Ribbon text="Buy Now" color="green"></Badge.Ribbon>
+                      </>
+                    )}
+                    <Meta
+                      title={nft.name}
+                      description={
+                        <>
+                          <p>{`#${nft.token_id}`}</p>
+                          <div style={{
+                            textAlign: "center"
+                          }}>
+                            <h3>
+                              <b style={{ color: "darkblue" }}>Total</b>
+                              &nbsp;<b style={{ color: "cadetblue" }}>/</b>&nbsp;
+                              <b style={{ color: "crimson" }}>For Sale</b>
+                            </h3>
+                            <h1>
+                              <b style={{ color: "darkblue" }}>{nft.amount}</b>
+                              &nbsp;<b style={{ color: "cadetblue" }}>/</b>&nbsp;
+                              <b style={{ color: "crimson" }}>{getAmountForSale(nft)}</b>
+                            </h1>
+                          </div>
+                        </>
                       }
                     />
-                  </Tooltip>,
-                  <Tooltip title="Buy NFT">
-                    <ShoppingCartOutlined onClick={() => handleBuyClick(nft)} />
-                  </Tooltip>,
-                ]}
-                style={{ width: 240, border: "2px solid #e7eaf3" }}
-                cover={
-                  <Image
-                    preview={false}
-                    src={nft.image || "error"}
-                    fallback={fallbackImg}
-                    alt=""
-                    style={{ height: "240px" }}
-                  />
-                }
-                key={index}
-              >
-                {getMarketItems(nft) && (
-                  <>
-                    <Badge.Ribbon text="Buy Now" color="green"></Badge.Ribbon>
-                  </>
-                )}
-                <Meta
-                  title={nft.name}
-                  description={
-                    <>
-                      <p>id: <b>{`${nft.token_id}`}</b></p>
-                      <p>total minted: <b>{nft.amount}</b></p>
-                      <p>for sale: <b>{getAmountForSale(nft)}</b></p>
-                    </>
-                  }
-                />
-              </Card>
-            ))}
+                  </Card>
+                )
+              })}
         </div>
         {/* TODO get the one with lowest price */}
         {getMarketItem(nftToBuy) ? (

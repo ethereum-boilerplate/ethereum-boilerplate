@@ -9,6 +9,8 @@ import { brightFontCol } from "GlobalStyles";
 import { Input, Divider } from "antd";
 import { Link } from "react-router-dom";
 import { mainMarketAddress, deployedABI, listItemFunction } from "../MarketplaceSCMetadata";
+import {NFTCardStyle} from "../GlobalStyles";
+
 
 const { Meta } = Card;
 
@@ -126,7 +128,7 @@ function NFTBalance() {
                           <ShoppingCartOutlined onClick={() => handleListForSaleClick(nft)} />
                         </Tooltip>,
                       ]}
-                      style={{ width: 240, border: "2px solid #e7eaf3" }}
+                      style={NFTCardStyle}
                       cover={
                         <Image
                           preview={false}
@@ -140,10 +142,8 @@ function NFTBalance() {
                     >
                       <Meta title={nft.name} description={
                         <>
-                          <span><b>{getEllipsisTxt(nft.token_address, 7)}</b></span>
-                          &nbsp;
-                          <span>id: <b>{nft.token_id}</b></span>
-                          <p>amount owned: <b>{nft.amount}</b></p>
+                          <span><b>#{nft.token_id}</b></span>
+                          <p>Amount You Own: <b>{nft.amount}</b></p>
                         </>
                       } />
                       <br />
