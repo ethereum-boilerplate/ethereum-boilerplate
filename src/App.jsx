@@ -49,7 +49,7 @@ const styles = {
   },
   headerRight: {
     display: "flex",
-    gap: "20px",
+    gap: "10px",
     alignItems: "center",
     fontSize: "17px",
     fontWeight: "600",
