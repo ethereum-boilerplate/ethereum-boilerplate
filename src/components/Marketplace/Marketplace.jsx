@@ -263,7 +263,7 @@ function Marketplace() {
               />
               <div style={styles.text}>
                 <>
-                  <div>{`${NFTTokenIds?.result[0]?.name}`}</div>
+                  <div>{`${NFTCollections?.find(c => c?.addrs === nftAddress)?.name}`}</div>
                   <div
                     style={{
                       fontSize: "15px",
