@@ -15,6 +15,7 @@ const styles = {
 function UserNFTTransactions() {
     const { account } = useMoralis();
     const walletAddress = account
+    // TODO consider removing fetchItemImages
     const queryItemImages = useMoralisQuery("ItemImages");
     const fetchItemImages = JSON.parse(
         JSON.stringify(queryItemImages.data, [
