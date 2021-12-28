@@ -69,7 +69,7 @@ function Transactions() {
             key: "date",
         },
         {
-            title: "Item",
+            title: "TokenID",
             key: "item",
             render: (text, record) => (
                 <Space size="middle">
@@ -79,7 +79,16 @@ function Transactions() {
             ),
         },
         {
-            title: "Collection",
+            title: "TokenContract",
+            key: "item",
+            render: (text, record) => (
+                <Space size="middle">
+                    <span>{record.collection}</span>
+                </Space>
+            ),
+        },
+        {
+            title: "Collection Name",
             key: "collection",
             render: (text, record) => (
                 <Space size="middle">
