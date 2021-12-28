@@ -191,6 +191,7 @@ function Marketplace() {
   };
 
   const getMarketItems = (nft) => {
+    console.log('getMarketItems fetchMarketItems', fetchMarketItems)
     const result = fetchMarketItems?.filter(
       (e) =>
         e.nftContract === nft?.token_address &&
@@ -217,7 +218,7 @@ function Marketplace() {
         marginBottom: "4rem",
       }}>
         <h3>
-          You can check Your 🧾&nbsp;Transactions
+          You can check Your 🧾&nbsp;&nbsp;Transactions
           <Link to="/your-transactions">
             &nbsp;<b><u>here</u></b>
           </Link>
