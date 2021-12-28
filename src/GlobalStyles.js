@@ -7,3 +7,13 @@ export const NFTCardStyle = {
     borderRadius: "1rem",
     color: "black"
 }
+
+export const NFTsDiv = {
+    display: "flex",
+    flexWrap: "wrap",
+    WebkitBoxPack: "start",
+    justifyContent: "flex-start",
+    margin: "0 auto",
+    maxWidth: "500px",
+    gap: "10px",
+}

@@ -30,7 +30,7 @@
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: inherit;
+  color: inherit !important;
 }
 
 .ant-layout-header, .ant-menu, .ant-menu-root {

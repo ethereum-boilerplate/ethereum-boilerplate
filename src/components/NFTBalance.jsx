@@ -4,28 +4,14 @@ import { Modal, Button, Card, Image, Tooltip, Skeleton } from "antd";
 import { FileSearchOutlined, ShoppingCartOutlined } from "@ant-design/icons";
 import { getExplorer } from "helpers/networks";
 import { useVerifyMetadata } from "hooks/useVerifyMetadata";
-import { getEllipsisTxt } from "../helpers/formatters";
 import { brightFontCol } from "GlobalStyles";
 import { Input, Divider } from "antd";
 import { Link } from "react-router-dom";
 import { mainMarketAddress, deployedABI, listItemFunction } from "../MarketplaceSCMetadata";
-import {NFTCardStyle} from "../GlobalStyles";
+import { NFTCardStyle, NFTsDiv } from "../GlobalStyles";
 
 
 const { Meta } = Card;
-
-const styles = {
-  NFTs: {
-    display: "flex",
-    flexWrap: "wrap",
-    WebkitBoxPack: "start",
-    justifyContent: "flex-start",
-    margin: "0 auto",
-    maxWidth: "1000px",
-    width: "100%",
-    gap: "10px",
-  },
-};
 
 function NFTBalance() {
   const { data: NFTBalances } = useNFTBalances();
@@ -106,7 +92,7 @@ function NFTBalance() {
       </h3>
       {NFTBalances?.result &&
         <Divider style={{ backgroundColor: brightFontCol }} />}
-      <div style={styles.NFTs}>
+      <div style={NFTsDiv}>
         <Skeleton loading={!NFTBalances?.result}>
           {NFTBalances?.result &&
             NFTBalances.result

@@ -4,6 +4,7 @@ import { useMoralis, useMoralisQuery } from "react-moralis";
 import { Table, Tag, Space } from "antd";
 import moment from "moment";
 import { createdMarketItemsTable } from "../MarketplaceSCMetadata";
+import { brightFontCol } from "../GlobalStyles";
 
 const styles = {
     table: {
@@ -15,16 +16,6 @@ const styles = {
 function UserNFTTransactions() {
     const { account } = useMoralis();
     const walletAddress = account
-    // TODO consider removing fetchItemImages
-    const queryItemImages = useMoralisQuery("ItemImages");
-    const fetchItemImages = JSON.parse(
-        JSON.stringify(queryItemImages.data, [
-            "nftContract",
-            "tokenId",
-            "name",
-            "image",
-        ])
-    );
     const queryMarketItems = useMoralisQuery(createdMarketItemsTable);
     const fetchMarketItems = JSON.parse(
         JSON.stringify(queryMarketItems.data, [
@@ -45,24 +36,6 @@ function UserNFTTransactions() {
             a.updatedAt < b.updatedAt ? 1 : b.updatedAt < a.updatedAt ? -1 : 0
         );
 
-    function getImage(addrs, id) {
-        const img = fetchItemImages.find(
-            (element) =>
-                element.nftContract === addrs &&
-                element.tokenId === id
-        );
-        return img?.image;
-    }
-
-    function getName(addrs, id) {
-        const nme = fetchItemImages.find(
-            (element) =>
-                element.nftContract === addrs &&
-                element.tokenId === id
-        );
-        return nme?.name;
-    }
-
     const columns = [
         {
             title: "Date",
@@ -74,7 +47,6 @@ function UserNFTTransactions() {
             key: "item",
             render: (text, record) => (
                 <Space size="middle">
-                    <img src={getImage(record.collection, record.item)} style={{ width: "40px", borderRadius: "4px" }} />
                     <span>#{record.item}</span>
                 </Space>
             ),
@@ -89,11 +61,11 @@ function UserNFTTransactions() {
             ),
         },
         {
-            title: "Collection Name",
-            key: "collection",
+            title: "Amount",
+            key: "item",
             render: (text, record) => (
                 <Space size="middle">
-                    <span>{getName(record.collection, record.item)}</span>
+                    <span>1</span>
                 </Space>
             ),
         },
@@ -154,6 +126,8 @@ function UserNFTTransactions() {
                 height: "0px",
                 marginLeft: "43%",
                 marginBottom: "4rem",
+
+                color: brightFontCol,
             }}>
                 <Text strong>
                     <h3>🧾&nbsp;&nbsp;Your Transactions</h3>
