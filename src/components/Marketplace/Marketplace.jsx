@@ -28,7 +28,7 @@ function Marketplace() {
     <>
       <div style={styles.transactions}>
         <h3>
-          You can check Your 🧾&nbsp;&nbsp;Transactions
+          You can check Your Transactions
           <Link to="/your-transactions">
             &nbsp;<b><u>here</u></b>
           </Link>

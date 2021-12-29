@@ -121,12 +121,13 @@ function UserNFTTransactions() {
     return (
         <>
             <div style={{
-                fontFamily: "Source Serif Pro, sans-serif",
+                fontFamily: "Source Serif Pro",
+                fontSize: "27px",
+                fontWeight: "bold",
                 flexBasis: "100%",
                 height: "0px",
                 marginLeft: "43%",
                 marginBottom: "4rem",
-
                 color: brightFontCol,
             }}>
                 <Text strong>

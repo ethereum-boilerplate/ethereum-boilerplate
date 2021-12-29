@@ -31,6 +31,7 @@ const styles = {
     text: {
         fontSize: "27px",
         fontWeight: "bold",
+        fontFamily: "Source Serif Pro",
     },
 };
 

@@ -15,7 +15,7 @@ const styles = {
     fontSize: "35px",
     justifyContent: "center",
     color: brightFontCol,
-    fontFamily: "Source Serif Pro, sans-serif",
+    fontFamily: "Source Serif Pro",
   },
   text: {
     fontSize: "18px",
@@ -106,7 +106,7 @@ export default function Home() {
         </Col>
       </Row>
       <Row style={{
-        fontFamily: "Source Serif Pro, sans-serif",
+        fontFamily: "Source Serif Pro",
         flexBasis: "100%",
         height: "0",
         justifyContent: "center",
@@ -120,7 +120,7 @@ export default function Home() {
         </Col>
       </Row>
       <Row style={{
-        fontFamily: "Source Serif Pro, sans-serif",
+        fontFamily: "Source Serif Pro",
         flexBasis: "100%",
         height: "0",
         justifyContent: "center",

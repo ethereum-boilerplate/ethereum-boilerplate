@@ -72,8 +72,10 @@ function NFTBalance() {
       color: brightFontCol,
     }}>
       <h1 style={{
-        fontFamily: "Source Serif Pro, sans-serif",
-        textAlign: "center"
+        fontFamily: "Source Serif Pro",
+        textAlign: "center",
+        fontSize: "27px",
+        fontWeight: "bold",
       }}>👤&nbsp;&nbsp;Your Avatars and Wearables</h1>
       <br />
       <h3>
