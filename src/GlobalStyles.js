@@ -6,8 +6,8 @@ export const NFTCardStyle = {
     border: "3px solid #d3d3d3",
     borderRadius: "1rem",
     color: "black",
-    paddingLeft: "1rem",
-    paddingRight: "1rem",
+    paddingLeft: "0.5rem",
+    paddingRight: "0.5rem",
     paddingTop: "1rem",
     paddingBottom: "0",
 }
@@ -19,3 +19,5 @@ export const NFTsDiv = {
     justifyContent: "center",
     gap: "10px",
 }
+
+export const NFTImg = { height: "240px" }
