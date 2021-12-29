@@ -5,7 +5,7 @@ import {
     useMoralisQuery,
     useWeb3ExecuteFunction
 } from "react-moralis";
-import { Card, Image, Tooltip, Modal, Badge, Alert, Spin } from "antd";
+import { Divider, Card, Image, Tooltip, Modal, Badge, Alert, Spin } from "antd";
 import {
     FileSearchOutlined,
     ShoppingCartOutlined,
@@ -13,23 +13,18 @@ import {
 import { useVerifyMetadata } from "hooks/useVerifyMetadata";
 import { useNFTTokenIds } from "hooks/useNFTTokenIds";
 import { mainMarketAddress, deployedABI, createdMarketItemsTable } from "../../MarketplaceSCMetadata";
-import { NFTCardStyle, NFTsDiv, NFTImg } from "../../GlobalStyles";
+import { NFTCardStyle, NFTsDiv, NFTImg, brightFontCol } from "../../GlobalStyles";
 
 const styles = {
     banner: {
         display: "flex",
         justifyContent: "space-evenly",
         alignItems: "center",
-        margin: "0 auto",
-        width: "600px",
-        height: "80px",
-        marginBottom: "40px",
-        paddingBottom: "20px",
-        borderBottom: "solid 1px #e3e3e3",
+        marginBottom: "2rem",
     },
     logo: {
-        height: "70px",
-        width: "70px",
+        height: "100px",
+        width: "100px",
         borderRadius: "50%",
         border: "solid 4px white",
     },
@@ -224,20 +219,10 @@ function NFTCollectionItems({ nftAddress, colName, colImg }) {
                     style={styles.logo}
                 />
                 <div style={styles.text}>
-                    <>
-                        {colName}
-                        <div
-                            style={{
-                                fontSize: "15px",
-                                fontWeight: "normal",
-                            }}
-                        >
-                            {/* Collection Size: {`${totalNFTs}`} */}
-                        </div>
-                    </>
+                    {colName}
                 </div>
             </div>
-
+            <Divider style={{ backgroundColor: brightFontCol }} />
             <div style={NFTsDiv}>
                 {NFTTokenIds?.result
                     .map((nft, index) => {

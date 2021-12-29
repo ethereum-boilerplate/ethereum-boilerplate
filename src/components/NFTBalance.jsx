@@ -65,7 +65,7 @@ function NFTBalance() {
   console.log("NFTBalances", NFTBalances);
   return (
     <div style={{
-      padding: "0 10%",
+      padding: "0 14%",
       // maxWidth: "1030px",
       width: "100%",
       background: "none",
@@ -73,7 +73,8 @@ function NFTBalance() {
     }}>
       <h1 style={{
         fontFamily: "Source Serif Pro, sans-serif",
-      }}>🖼 Your Avatars and Wearables</h1>
+        textAlign: "center"
+      }}>👤&nbsp;&nbsp;Your Avatars and Wearables</h1>
       <br />
       <h3>
         If you have your MGL Avatar NFT 🙂
