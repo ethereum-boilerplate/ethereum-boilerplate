@@ -65,8 +65,8 @@ function NFTBalance() {
   console.log("NFTBalances", NFTBalances);
   return (
     <div style={{
-      padding: "15px",
-      maxWidth: "1030px",
+      padding: "0 10%",
+      // maxWidth: "1030px",
       width: "100%",
       background: "none",
       color: brightFontCol,
