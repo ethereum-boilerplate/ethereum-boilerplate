@@ -333,7 +333,11 @@ function NFTCollectionItems({ nftAddress, colName, colImg }) {
                 {/* modal boxes to be able to buy */}
                 {hasMarketItems(nftToBuy) ? (
                     <Modal
-                        title={`Buy ${nftToBuy?.name} #${nftToBuy?.token_id}`}
+                        title={
+                            <>
+                                Buy <b>{nftToBuy?.name}</b> #{nftToBuy?.token_id}
+                            </>
+                        }
                         visible={visible}
                         onCancel={() => setVisibility(false)}
                         onOk={() => purchase()}
@@ -350,23 +354,30 @@ function NFTCollectionItems({ nftAddress, colName, colImg }) {
                                     color="green"
                                     text={`${getMarketWithLowestPrice(nftToBuy).price / ("1e" + 18)
                                         } ${nativeName}`}
+                                    style={{
+                                        marginRight: "-100px",
+                                    }}
                                 >
-                                    <img
-                                        src={nftToBuy?.image}
-                                        alt=""
-                                        style={{
-                                            width: "250px",
-                                            borderRadius: "10px",
-                                            marginBottom: "15px",
-                                        }}
-                                    />
                                 </Badge.Ribbon>
+                                <img
+                                    src={nftToBuy?.image}
+                                    alt=""
+                                    style={{
+                                        width: "250px",
+                                        borderRadius: "10px",
+                                        marginBottom: "15px",
+                                    }}
+                                />
                             </div>
                         </Spin>
                     </Modal>
                 ) : (
                     <Modal
-                        title={`Buy ${nftToBuy?.name} #${nftToBuy?.token_id}`}
+                        title={
+                            <>
+                                Buy <b>{nftToBuy?.name}</b> #{nftToBuy?.token_id}
+                            </>
+                        }
                         visible={visible}
                         onCancel={() => setVisibility(false)}
                         onOk={() => setVisibility(false)}
