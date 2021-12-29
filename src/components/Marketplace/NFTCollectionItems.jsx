@@ -264,13 +264,22 @@ function NFTCollectionItems({ nftAddress, colName, colImg }) {
                                         <Badge.Ribbon
                                             text="Buy Now"
                                             color="green"
-
+                                            style={{
+                                                paddingRight: "5px",
+                                                paddingLeft: "5px",
+                                                marginRight: "-10px",
+                                            }}
                                         />
                                     </div>
                                 ) : (
                                     <Badge.Ribbon
                                         text="Sold Out"
                                         color="orange"
+                                        style={{
+                                            paddingRight: "5px",
+                                            paddingLeft: "5px",
+                                            marginRight: "-10px",
+                                        }}
                                     />
                                 )}
                                 <Meta
@@ -292,10 +301,11 @@ function NFTCollectionItems({ nftAddress, colName, colImg }) {
                                                     <b style={{ color: "crimson" }}>{getAmountForSale(nft)}</b>
                                                 </h1>
                                                 <div>
-                                                    {hasMarketItems(nft) && (
-                                                        <h3 style={{
+                                                    {hasMarketItems(nft) ? (
+                                                        <h4 style={{
                                                             backgroundColor: "burlywood",
                                                             borderRadius: "1rem",
+                                                            padding: "2px",
                                                         }}>
                                                             Best Price: <b style={{ color: "darkblue" }}>
                                                                 {
@@ -304,7 +314,11 @@ function NFTCollectionItems({ nftAddress, colName, colImg }) {
                                                             </b>
                                                             &nbsp;
                                                             <b style={{ color: "darkblue" }}>{nativeName}</b>
-                                                        </h3>
+                                                        </h4>
+                                                    ) : (
+                                                        <>
+                                                            <br />
+                                                        </>
                                                     )}
                                                 </div>
                                             </div>
