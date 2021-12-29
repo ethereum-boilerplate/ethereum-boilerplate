@@ -9,7 +9,7 @@ import { Input, Divider } from "antd";
 import { Link } from "react-router-dom";
 import { mainMarketAddress, deployedABI, listItemFunction } from "../MarketplaceSCMetadata";
 import { NFTCardStyle, NFTsDiv } from "../GlobalStyles";
-
+import { AllowedNftContracts } from "../MglNftMetadata";
 
 const { Meta } = Card;
 
@@ -96,7 +96,7 @@ function NFTBalance() {
         <Skeleton loading={!NFTBalances?.result}>
           {NFTBalances?.result &&
             NFTBalances.result
-              .filter(nft => nft.image)
+              .filter(nft => nft.image && nft.token_address === AllowedNftContracts.get(chainId))
               .map((nft, index) => {
                 //Verify Metadata
                 nft = verifyMetadata(nft);
