@@ -12,10 +12,12 @@ const styles = {
     fontWeight: "500",
     fontFamily: "Roboto, sans-serif",
     fontSize: "14px",
-    padding: "0 10px",
+    padding: "0 7px",
+    background: "none", 
+    color: "#E7EAF3",
   },
   button: {
-    border: "2px solid rgb(231, 234, 243)",
+    border: "1px solid #E7EAF3",
     borderRadius: "2px",
   },
 };

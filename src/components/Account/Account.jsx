@@ -11,14 +11,14 @@ import { connectors } from "./config";
 const styles = {
   account: {
     height: "42px",
-    padding: "0 15px",
+    padding: "0 10px",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
     width: "fit-content",
     borderRadius: "2px",
-    border: "2px solid rgb(231, 234, 243)",
-    backgroundColor: "rgb(244, 244, 244)",
+    border: "1px solid #E7EAF3",
+    // backgroundColor: "rgb(244, 244, 244)",
     cursor: "pointer",
   },
   text: {
