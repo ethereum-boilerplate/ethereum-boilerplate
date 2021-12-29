@@ -31,7 +31,7 @@ const styles = {
     flexWrap: "wrap",
     justifyContent: "center",
     fontFamily: "Roboto, sans-serif",
-    marginTop: "130px",
+    marginTop: "60px",
     padding: "10px",
   },
   header: {
