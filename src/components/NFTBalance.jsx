@@ -85,7 +85,7 @@ function NFTBalance() {
         Then you will be albe to 🎮{" "}{" "}Play in MetaGymLand Metaverse
       </h3>
       <h3>
-        by clicking <b style={{ color: "#1990FF" }}>[play with me]</b> button{" "}🔘
+        by clicking <b style={{ color: "#1990FF" }}>[Play With Me]</b> button{" "}🔘
       </h3>
       <h3>
         If you don't have your awesome Avatar yet, get one in our
@@ -140,7 +140,7 @@ function NFTBalance() {
                         onClick={() => alert('will play')}
                         type="primary"
                         style={{ marginLeft: "20%" }}
-                      >play with me
+                      >Play With Me
                       </Button>
                     </Card>
                     <Modal

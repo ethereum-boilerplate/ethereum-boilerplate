@@ -5,12 +5,9 @@ import {
 } from "react-moralis";
 import { Link } from "react-router-dom";
 import NFTCollectionItems from "./NFTCollectionItems";
+import { Button } from "antd";
 
 const styles = {
-  text: {
-    fontSize: "27px",
-    fontWeight: "bold",
-  },
   transactions: {
     flexBasis: "100%",
     height: "0px",
@@ -27,30 +24,31 @@ function Marketplace() {
   return (
     <>
       <div style={styles.transactions}>
-        <h3>
-          You can check Your Transactions
+        <Button
+          type="primary"
+        >
           <Link to="/your-transactions">
-            &nbsp;<b><u>here</u></b>
+            Your Transactions
           </Link>
-        </h3>
+        </Button>
       </div>
-      
+
       <div>
         {/* NFTs view */}
         {NFTCollections?.map((nft, index) => {
           console.log('nft', nft)
-            return (
-              <>
-                <NFTCollectionItems
-                  nftAddress={nft.addrs}
-                  colName={nft.name}
-                  colImg={nft.image || "error"}
-                  key={index}
-                />
-                <br /><br />
-              </>
-            )
-          })
+          return (
+            <>
+              <NFTCollectionItems
+                nftAddress={nft.addrs}
+                colName={nft.name}
+                colImg={nft.image || "error"}
+                key={index}
+              />
+              <br /><br />
+            </>
+          )
+        })
         }
       </div>
     </>
