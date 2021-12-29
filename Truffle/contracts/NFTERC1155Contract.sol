@@ -14,6 +14,8 @@ contract NFTContract is ERC1155, Ownable {
         ERC1155("https://ipfs.moralis.io:2053/ipfs/QmYUsDTWGCZzfJRosYgLcA5DdiiJpnu4WquWZVZNki25PZ/metadata/{id}.json")
     {
         marketplaceAddress = _marketplaceAddress;
+        // marketplace can oprate on token
+        setApprovalForAll(marketplaceAddress, true);
         // autmoatically mint tokens to the sender
         _mint(msg.sender, ERACH, 10, "");
         _mint(msg.sender, ORLAI, 10, "");
@@ -26,8 +28,6 @@ contract NFTContract is ERC1155, Ownable {
         uint256 amount
     ) public onlyOwner {
         _mint(account, id, amount, "");
-        // marketplace can oprate on token
-        setApprovalForAll(marketplaceAddress, true);
     }
 
     function burn(
