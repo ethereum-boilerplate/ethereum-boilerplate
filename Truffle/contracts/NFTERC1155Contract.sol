@@ -53,3 +53,4 @@ contract NFTContract is ERC1155, Ownable {
 
 // latest contract deployment on rinkeby 0x7ae9f5b997dacd922e2da3fd79207d01ee6f5300
 
+// latest contract deployment on rinkeby: 0x9ca6cf1671a384eccec958ea4ee27294e176b677

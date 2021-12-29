@@ -5,14 +5,9 @@ export const networkCollections = {
   ],
   "0x4": [ // rinkeby
     {
-      image: MglGif,
-      name: "Moralis Avalanche Hackaton Drop",
-      addrs: "0x7650D3448F8044d8732528148c2A2d6B1D17BA88"
-    },
-    {
-      image: GenericImg,
-      name: "Test MGL",
-      addrs: "0x6d996636c3917d8D0B99Dc1D877Fbf7fC189c8f1"
+      image: "https://ipfs.moralis.io:2053/ipfs/QmVF53rCjFiFSXyJd64NgeGioQG93gegdsymyMWtJLG9Ev/cover.gif",
+      name: "Moralis Avalanche Hackaton 2021 Test Drop",
+      addrs: "0x9ca6cf1671a384eccec958ea4ee27294e176b677"
     },
   ]
 };
