@@ -59,33 +59,37 @@ export default function Home() {
                 </>
               }
             >
-              <Text style={styles.text}>
-                Have fun and get fit!
-              </Text>
-              <div
-                style={{
-                  display: "flex",
-                  // gap: "10px",
-                  justifyContent: "left",
-                  alignItems: "center",
-                  marginTop: "4.5rem",
-                }}
-              >
-                <Button
-                  type="primary"
-                  style={styles.btn}
+              <div style={{
+                marginTop: "-25px",
+              }}>
+                <Text style={styles.text}>
+                  Have fun and get fit!
+                </Text>
+                <div
+                  style={{
+                    display: "flex",
+                    // gap: "10px",
+                    justifyContent: "left",
+                    alignItems: "center",
+                    marginTop: "5rem",
+                  }}
                 >
-                  <Link to="/avatars">
-                    Play now
-                  </Link>
-                </Button>
-                {/* <Button
+                  <Button
+                    type="primary"
+                    style={styles.btn}
+                  >
+                    <Link to="/avatars">
+                      Play now
+                    </Link>
+                  </Button>
+                  {/* <Button
                   href="https://coderdidit.com"
                   target="_blank"
                   type="default"
                   style={styles.btn}
                 >Litepaper
                 </Button> */}
+                </div>
               </div>
             </Card>
             <Card
@@ -97,7 +101,11 @@ export default function Home() {
             // }
             >
               <div style={{
-                boxShadow: "0 0 40px 0px black",
+                // WebkitBoxShadow: "0 0 60px 0 black",
+                // MozBoxShadow: "0 0 60px 0 black",
+                boxShadow: "0 0 70px 0 black",
+                position: "relative",
+                backgroundColor: "rgb(3,21,38)",
               }}>
                 <iframe
                   width="560"

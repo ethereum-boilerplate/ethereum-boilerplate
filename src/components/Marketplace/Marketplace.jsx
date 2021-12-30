@@ -26,9 +26,14 @@ function Marketplace() {
       <div style={styles.transactions}>
         <Button
           type="primary"
+          style={{
+            fontWeight: "500",
+            fontSize: "15px",
+            fontFamily: "Roboto, sans-serif",
+          }}
         >
           <Link to="/your-transactions">
-            Your Transactions
+            Your transactions
           </Link>
         </Button>
       </div>

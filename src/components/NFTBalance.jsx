@@ -139,27 +139,33 @@ function NFTBalance() {
                         </>
                       } />
                       <br />
-                      <Button
-                        onClick={() => {
-                          const avatarUri = nft?.image;
-                          const avatarTokenAddress = nft?.token_address;
-                          const avatarTokenId = nft?.token_id;
-                          setAvatar({
-                            uri: avatarUri,
-                            tokenAddress: avatarTokenAddress,
-                            tokenId: avatarTokenId,
-                          });
-                        }}
-                        type="primary"
-                        style={{
-                          margin: "0 auto",
-                          width: "100%",
-                        }}
-                      >
-                        <Link to='play'>
-                          Play with me
-                        </Link>
-                      </Button>
+                      <div style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                      }}>
+                        <Button
+                          onClick={() => {
+                            const avatarUri = nft?.image;
+                            const avatarTokenAddress = nft?.token_address;
+                            const avatarTokenId = nft?.token_id;
+                            setAvatar({
+                              uri: avatarUri,
+                              tokenAddress: avatarTokenAddress,
+                              tokenId: avatarTokenId,
+                            });
+                          }}
+                          type="primary"
+                          style={{
+                            fontWeight: "500",
+                            fontSize: "15px",
+                            fontFamily: "Roboto, sans-serif",
+                          }}
+                        >
+                          <Link to='play'>
+                            Play with me
+                          </Link>
+                        </Button></div>
                     </Card>
                     <Modal
                       title={`List ${nftToList?.name} #${nftToList?.token_id}`}
