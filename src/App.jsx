@@ -17,6 +17,7 @@ import { Link } from "react-router-dom";
 import { brightFontCol } from "GlobalStyles";
 import { MGLLogo } from "Logos";
 import { AppFooter } from "AppFooter"
+import PlayPage from "components/Play";
 
 const { Header } = Layout;
 
@@ -104,6 +105,9 @@ const App = ({ isServerInfo }) => {
             </Route>
             <Route path="/avatars">
               <NFTBalance />
+            </Route>
+            <Route path="/play">
+              <PlayPage />
             </Route>
             <Route path="/marketplace">
               <Marketplace />

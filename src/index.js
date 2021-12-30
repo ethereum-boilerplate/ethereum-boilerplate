@@ -1,14 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import { MoralisProvider } from "react-moralis";
 import "./index.css";
 import Home from "components/Home";
 
-/** Get your free Moralis Account https://moralis.io/ */
-
+// Moralis vals
 const APP_ID = process.env.REACT_APP_MORALIS_APPLICATION_ID;
 const SERVER_URL = process.env.REACT_APP_MORALIS_SERVER_URL;
+
+// Avatar state
+export const AvatarCtx = React.createContext();
+const AvatarCtxProvider = ({ children }) => {
+  const [avatar, setAvatar] = useState(null);
+  return (
+    <AvatarCtx.Provider value={[avatar, setAvatar]}>
+      {children}
+    </AvatarCtx.Provider>
+  );
+};
 
 const Application = () => {
   const isServerInfo = APP_ID && SERVER_URL ? true : false;
@@ -17,7 +27,9 @@ const Application = () => {
   if (isServerInfo)
     return (
       <MoralisProvider appId={APP_ID} serverUrl={SERVER_URL}>
-        <App isServerInfo />
+        <AvatarCtxProvider >
+          <App isServerInfo />
+        </AvatarCtxProvider>
       </MoralisProvider>
     );
   else {
