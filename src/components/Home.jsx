@@ -2,8 +2,9 @@ import { Card, Typography } from "antd";
 import React from "react";
 import { Button } from 'antd';
 import { Row, Col } from 'antd';
-import { mainBackgroundCol, brightFontCol } from "GlobalStyles";
+import { brightFontCol } from "GlobalStyles";
 import { Link } from "react-router-dom";
+import { BtnPrimary } from "../GlobalStyles";
 
 const { Text } = Typography;
 
@@ -28,12 +29,6 @@ const styles = {
     background: "none",
     color: brightFontCol,
     lineHeight: "1.4",
-  },
-  btn: {
-    fontWeight: "500",
-    fontSize: "15px",
-    fontFamily: "Roboto, sans-serif",
-    width: "7rem",
   }
 };
 
@@ -76,7 +71,7 @@ export default function Home() {
                 >
                   <Button
                     type="primary"
-                    style={styles.btn}
+                    style={BtnPrimary}
                   >
                     <Link to="/avatars">
                       Play now
@@ -86,7 +81,7 @@ export default function Home() {
                   href="https://coderdidit.com"
                   target="_blank"
                   type="default"
-                  style={styles.btn}
+                  style={BtnPrimary}
                 >Litepaper
                 </Button> */}
                 </div>

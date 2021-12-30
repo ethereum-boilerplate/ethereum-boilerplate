@@ -22,6 +22,12 @@ export const NFTsDiv = {
     gap: "10px",
 }
 
-export const NFTImg = { 
+export const NFTImg = {
     height: "200px",
+}
+
+export const BtnPrimary = {
+    fontWeight: "500",
+    fontSize: "15px",
+    fontFamily: "Roboto, sans-serif",
 }

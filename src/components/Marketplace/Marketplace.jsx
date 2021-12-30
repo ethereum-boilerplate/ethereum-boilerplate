@@ -6,6 +6,7 @@ import {
 import { Link } from "react-router-dom";
 import NFTCollectionItems from "./NFTCollectionItems";
 import { Button } from "antd";
+import { BtnPrimary } from "../../GlobalStyles"
 
 const styles = {
   transactions: {
@@ -26,11 +27,7 @@ function Marketplace() {
       <div style={styles.transactions}>
         <Button
           type="primary"
-          style={{
-            fontWeight: "500",
-            fontSize: "15px",
-            fontFamily: "Roboto, sans-serif",
-          }}
+          style={BtnPrimary}
         >
           <Link to="/your-transactions">
             Your transactions

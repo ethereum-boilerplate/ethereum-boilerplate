@@ -8,7 +8,7 @@ import { brightFontCol } from "GlobalStyles";
 import { Input, Divider } from "antd";
 import { Link } from "react-router-dom";
 import { mainMarketAddress, deployedABI, listItemFunction } from "../MarketplaceSCMetadata";
-import { NFTCardStyle, NFTsDiv, NFTImg } from "../GlobalStyles";
+import { NFTCardStyle, NFTsDiv, NFTImg, BtnPrimary } from "../GlobalStyles";
 import { AllowedNftContracts } from "../MglNftMetadata";
 import { AvatarCtx } from "index";
 
@@ -156,11 +156,7 @@ function NFTBalance() {
                             });
                           }}
                           type="primary"
-                          style={{
-                            fontWeight: "500",
-                            fontSize: "15px",
-                            fontFamily: "Roboto, sans-serif",
-                          }}
+                          style={BtnPrimary}
                         >
                           <Link to='play'>
                             Play with me
