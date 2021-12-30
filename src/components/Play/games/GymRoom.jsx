@@ -58,7 +58,9 @@ const GymRoom = ({ avatar }) => {
 
         create() {
             this.player = this.physics.add.image(200, 300, 'avatar');
-            this.player.setScale(0.15);
+            const player = this.player;
+            player.setScale(0.15);
+            player.setCollideWorldBounds(true);
             this.cursors = this.input.keyboard.createCursorKeys();
         }
 
@@ -67,20 +69,21 @@ const GymRoom = ({ avatar }) => {
         }
 
         handlePlayerMoves() {
+            const player = this.player;
             if (this.cursors.up.isDown) {
-                this.player.setVelocity(0, -PlayerSpeed)
+                player.setVelocity(0, -PlayerSpeed);
 
             } else if (this.cursors.down.isDown) {
-                this.player.setVelocity(0, PlayerSpeed)
+                player.setVelocity(0, PlayerSpeed);
 
             } else if (this.cursors.left.isDown) {
-                this.player.setVelocity(-PlayerSpeed, 0)
+                player.setVelocity(-PlayerSpeed, 0);
 
             } else if (this.cursors.right.isDown) {
-                this.player.setVelocity(PlayerSpeed, 0)
+                player.setVelocity(PlayerSpeed, 0);
             } else {
                 // idle
-                this.player.setVelocity(0, 0)
+                player.setVelocity(0, 0);
             }
         }
     }
