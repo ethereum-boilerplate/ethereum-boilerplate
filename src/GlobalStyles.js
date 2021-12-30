@@ -26,8 +26,14 @@ export const NFTImg = {
     height: "200px",
 }
 
+const BtnSidesPadding = "25px";
+
 export const BtnPrimary = {
     fontWeight: "500",
     fontSize: "15px",
     fontFamily: "Roboto, sans-serif",
+    paddingLeft: BtnSidesPadding,
+    paddingRight: BtnSidesPadding,
+    paddingTop: "8px",
+    paddingBottom: "31px",
 }
