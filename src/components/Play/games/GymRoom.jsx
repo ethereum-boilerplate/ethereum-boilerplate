@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import Phaser from "phaser";
 import { IonPhaser } from "@ion-phaser/react";
 import gymFloorImg from "./assets/gym-room/gymfloor.png";
-import { getGameWidth, getGameHeight } from "./helpers";
+import leftShevronSvg from "./assets/icons/chevron_left.svg";
+import { getGameWidth, getGameHeight, getRelative } from "./helpers";
 
 const setWidthAndHeight = () => {
     let width = window.innerWidth;
@@ -46,7 +47,10 @@ const getConfig = (scene) => {
     }
 }
 
-const PlayerSpeed = 100;
+const PLAYER_SPEED = 100;
+const BG_KEY = "gymfloor";
+const PLAYER_KEY = "avatar";
+const LEFT_CHEVRON = 'left_chevron';
 
 const GymRoom = ({ avatar }) => {
     console.log('GymRoom avatar', avatar);
@@ -58,22 +62,21 @@ const GymRoom = ({ avatar }) => {
 
         preload() {
             const selectedAvatar = this.game.registry.values.avatar;
-            console.log('loading game avatar', selectedAvatar);
-            this.load.image('avatar', selectedAvatar.uri);
-            this.load.image('gymfloor', gymFloorImg);
-            console.log('loading background', gymFloorImg);
+            this.load.image(PLAYER_KEY, selectedAvatar.uri);
+            this.load.image(BG_KEY, gymFloorImg);
+            this.load.image(LEFT_CHEVRON, leftShevronSvg);
         }
 
         create() {
-            // background
+            // Add layout
             const width = getGameWidth(this);
             const height = getGameHeight(this);
 
-            console.log('width, height', width, height);
-            this.bg = this.add.image(width / 2, height / 2, 'gymfloor');
-            this.bg.setDisplaySize(width, height);
+            this.add.image(width / 2, height / 2, BG_KEY)
+                .setDisplaySize(width, height);
+            this.createBackButton();
 
-            this.player = this.physics.add.image(200, 300, 'avatar');
+            this.player = this.physics.add.image(200, 300, PLAYER_KEY);
             const player = this.player;
             player.setScale(0.15);
             player.setCollideWorldBounds(true);
@@ -82,6 +85,18 @@ const GymRoom = ({ avatar }) => {
             this.cursors = this.input.keyboard.createCursorKeys();
         }
 
+        createBackButton = () => {
+            this.add
+                .image(getRelative(54, this), getRelative(54, this), LEFT_CHEVRON)
+                .setOrigin(0)
+                .setInteractive({ useHandCursor: true })
+                .setDisplaySize(getRelative(94, this), getRelative(94, this))
+                .on("pointerdown", () => {
+                    this.back?.play();
+                    window.history.back();
+                });
+        };
+
         update(time, delta) {
             this.handlePlayerMoves();
         }
@@ -89,16 +104,16 @@ const GymRoom = ({ avatar }) => {
         handlePlayerMoves() {
             const player = this.player;
             if (this.cursors.up.isDown) {
-                player.setVelocity(0, -PlayerSpeed);
+                player.setVelocity(0, -PLAYER_SPEED);
 
             } else if (this.cursors.down.isDown) {
-                player.setVelocity(0, PlayerSpeed);
+                player.setVelocity(0, PLAYER_SPEED);
 
             } else if (this.cursors.left.isDown) {
-                player.setVelocity(-PlayerSpeed, 0);
+                player.setVelocity(-PLAYER_SPEED, 0);
 
             } else if (this.cursors.right.isDown) {
-                player.setVelocity(PlayerSpeed, 0);
+                player.setVelocity(PLAYER_SPEED, 0);
             } else {
                 // idle
                 player.setVelocity(0, 0);
