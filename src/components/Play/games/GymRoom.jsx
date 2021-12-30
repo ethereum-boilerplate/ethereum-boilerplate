@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Phaser from "phaser";
 import { IonPhaser } from "@ion-phaser/react";
+import gymFloorImg from "./assets/gym-room/gymfloor.png";
+import { getGameWidth, getGameHeight } from "./helpers";
 
-const getConfig = (scene) => {
+const setWidthAndHeight = () => {
     let width = window.innerWidth;
     let height = width / 1.778;
 
@@ -10,7 +12,11 @@ const getConfig = (scene) => {
         height = window.innerHeight;
         width = height * 1.778;
     }
+    return [width, height];
+}
 
+const getConfig = (scene) => {
+    const [width, height] = setWidthAndHeight();
     const Scenes = [scene];
 
     return {
@@ -54,13 +60,25 @@ const GymRoom = ({ avatar }) => {
             const selectedAvatar = this.game.registry.values.avatar;
             console.log('loading game avatar', selectedAvatar);
             this.load.image('avatar', selectedAvatar.uri);
+            this.load.image('gymfloor', gymFloorImg);
+            console.log('loading background', gymFloorImg);
         }
 
         create() {
+            // background
+            const width = getGameWidth(this);
+            const height = getGameHeight(this);
+
+            console.log('width, height', width, height);
+            this.bg = this.add.image(width / 2, height / 2, 'gymfloor');
+            this.bg.setDisplaySize(width, height);
+
             this.player = this.physics.add.image(200, 300, 'avatar');
             const player = this.player;
             player.setScale(0.15);
             player.setCollideWorldBounds(true);
+
+            // cursors
             this.cursors = this.input.keyboard.createCursorKeys();
         }
 
