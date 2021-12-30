@@ -27,6 +27,7 @@ const styles = {
     borderBottom: "none",
     background: "none",
     color: brightFontCol,
+    lineHeight: "1.4",
   },
   btn: {
     fontWeight: "500",
@@ -44,7 +45,7 @@ export default function Home() {
           <div style={
             {
               display: "flex",
-              gap: "10px"
+              gap: "10rem",
             }
           }>
             <Card
@@ -64,7 +65,9 @@ export default function Home() {
               <div
                 style={{
                   display: "flex",
-                  gap: "10px",
+                  // gap: "10px",
+                  justifyContent: "left",
+                  alignItems: "center",
                   marginTop: "4.5rem",
                 }}
               >
@@ -72,14 +75,17 @@ export default function Home() {
                   type="primary"
                   style={styles.btn}
                 >
-                  <Link to="/avatars">Play now</Link>
+                  <Link to="/avatars">
+                    Play now
+                  </Link>
                 </Button>
-                <Button
+                {/* <Button
                   href="https://coderdidit.com"
                   target="_blank"
                   type="default"
                   style={styles.btn}
-                >Litepaper</Button>
+                >Litepaper
+                </Button> */}
               </div>
             </Card>
             <Card
@@ -90,7 +96,9 @@ export default function Home() {
             //   </Text>
             // }
             >
-              <div>
+              <div style={{
+                boxShadow: "0 0 40px 0px black",
+              }}>
                 <iframe
                   width="560"
                   height="315"
