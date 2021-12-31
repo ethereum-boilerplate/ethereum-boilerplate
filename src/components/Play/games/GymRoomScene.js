@@ -2,7 +2,7 @@ import Phaser from "phaser";
 import { getGameWidth, getGameHeight, getRelative } from "./helpers";
 import { Player } from "./objects";
 import { PLAYER_KEY, PLAYER_SCALE, GYM_ROOM_SCENE } from "./shared";
-import { LEFT_CHEVRON, BG } from "./assets";
+import { LEFT_CHEVRON, BG, CLICK } from "./assets";
 
 const SceneConfig = {
     active: false,
@@ -20,13 +20,6 @@ export class GymRoomScene extends Phaser.Scene {
         console.log('selectedAvatar', this.selectedAvatar);
     };
 
-    // preload() {
-    //     const selectedAvatar = this.game.registry.values.avatar;
-    //     this.load.image(PLAYER_KEY, selectedAvatar.uri);
-    //     this.load.image(BG_KEY, gymFloorImg);
-    //     this.load.image(LEFT_CHEVRON, leftShevronSvg);
-    // }
-
     create() {
         // Add layout
         const width = getGameWidth(this);
@@ -34,6 +27,7 @@ export class GymRoomScene extends Phaser.Scene {
 
         this.add.image(width / 2, height / 2, BG)
             .setDisplaySize(width, height);
+        this.back = this.sound.add(CLICK, { loop: false });
         this.createBackButton();
 
         // Add a player sprite that can be moved around.
