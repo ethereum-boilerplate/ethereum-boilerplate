@@ -1,6 +1,6 @@
 import Phaser from "phaser";
 import { assets } from "./assets";
-import { GYM_ROOM_SCENE } from "./shared";
+import { GYM_ROOM_SCENE, PLAYER_KEY } from "./shared";
 import { getGameWidth, getGameHeight } from "./helpers";
 
 const sceneConfig = {
@@ -37,16 +37,14 @@ export class BootScene extends Phaser.Scene {
             "filecomplete",
             key => {
                 // As the spritesheet is the last asset to load in, we can attempt to start the game
-                if (key === "PLAYER") {
+                if (key === PLAYER_KEY) {
                     this.assetsLoaded = true;
                     this.loadingText?.setText(`Loading Player Avatar...`);
                     this.startGame();
                 }
-                // keeping for reference
-                // if (this.loadIndex === assets.length && this.selectedAvatar) {
-                //     this.loadInGotchiSpritesheet(this.gotchi);
-                // } 
-                else {
+                if (this.loadIndex === assets.length && this.selectedAvatar) {
+                    this.load.image(PLAYER_KEY, this.selectedAvatar.uri);
+                } else {
                     this.loadNextFile(this.loadIndex);
                 }
             },
@@ -101,6 +99,9 @@ export class BootScene extends Phaser.Scene {
      */
     loadNextFile = (index) => {
         const file = assets[index];
+        console.log('assets', assets)
+        console.log('file', file)
+        console.log('index', index)
         this.loadIndex++;
 
         if (this.loadingText && this.progressBar && this.progressBarContainer) {

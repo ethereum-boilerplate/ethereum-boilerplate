@@ -34,9 +34,9 @@ const getConfig = (mainScene) => {
             height,
         },
         scene: Scenes,
-        audio: {
-            noAudio: true
-        },
+        // audio: {
+        //     noAudio: true
+        // },
         render: {
             pixelArt: true
         },
