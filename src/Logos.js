@@ -1,4 +1,4 @@
-export const MGLLogo = ({ width = "149", height = "auto" }) => (
+export const MGLLogo = ({ width = "149", height = "53" }) => (
     <>
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -23,7 +23,7 @@ export const MGLLogo = ({ width = "149", height = "auto" }) => (
 
 // footer logos
 
-export const MoralisLogo = ({ width = "100", height = "auto" }) => (
+export const MoralisLogo = ({ width = "85", height = "25" }) => (
     <>
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -56,7 +56,7 @@ export const MoralisLogo = ({ width = "100", height = "auto" }) => (
     </>
 );
 
-export const AvaxLogo = ({ width = "100", height = "auto" }) => (
+export const AvaxLogo = ({ width = "100", height = "30" }) => (
     <>
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -95,7 +95,7 @@ export const AvaxLogo = ({ width = "100", height = "auto" }) => (
 );
 
 
-export const TfJSLogo = ({ width = "100", height = "auto" }) => (
+export const TfJSLogo = ({ width = "100", height = "30" }) => (
     <>
         <svg
             width={width}
@@ -164,7 +164,7 @@ export const TfJSLogo = ({ width = "100", height = "auto" }) => (
     </>
 );
 
-export const CoderDitiLogo = ({ width = "120", height = "auto" }) => (
+export const CoderDitiLogo = ({ width = "100", height = "30" }) => (
     <>
         <svg
             xmlns="http://www.w3.org/2000/svg"
