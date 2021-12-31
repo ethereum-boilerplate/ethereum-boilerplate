@@ -12,8 +12,8 @@ import Webcam from "react-webcam";
 const { Text } = Typography;
 const { Option } = Select;
 const videoConstraints = {
-    width: 320,
-    height: 240,
+    // width: 320,
+    // height: 240,
     // facingMode: "user"
 };
 
@@ -33,7 +33,7 @@ const styles = {
     },
     btnDiv: {
         display: "flex",
-        marginTop: "-2rem",
+        marginTop: "0",
     },
     sideDiv: {
         padding: "2rem",
@@ -56,6 +56,7 @@ const PlaySetupPage = () => {
     return (<>
         <Card style={{
             ...styles.card,
+            ...styles.noPadNoMarg
         }}>
             <h1 style={{
                 fontFamily: "Source Serif Pro",
@@ -81,6 +82,8 @@ const PlaySetupPage = () => {
         </Card>
         <Card style={{
             ...styles.card,
+            ...styles.noPadNoMarg,
+            width: "25%",
         }}>
             <div style={{
                 display: "flex",
@@ -92,7 +95,8 @@ const PlaySetupPage = () => {
                     videoConstraints={videoConstraints}
                     style={{
                         objectFit: "cover",
-                        borderRadius: "1rem"
+                        borderRadius: "1rem",
+                        width: "80%"
                     }}
                 />
             </div>
