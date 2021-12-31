@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useReducer } from "react";
 import { getNativeByChain, getExplorer } from "../../helpers/networks"
 import {
     useMoralis,
@@ -14,6 +14,7 @@ import { useVerifyMetadata } from "hooks/useVerifyMetadata";
 import { useNFTTokenIds } from "hooks/useNFTTokenIds";
 import { mainMarketAddress, deployedABI, createdMarketItemsTable } from "../../MarketplaceSCMetadata";
 import { NFTCardStyle, NFTsDiv, NFTImg, brightFontCol, NFTImgWrapperStyle } from "../../GlobalStyles";
+import { AllowedNftContracts } from "../../MglNftMetadata";
 
 const styles = {
     banner: {
@@ -58,7 +59,16 @@ function NFTCollectionItems({ nftAddress, colName, colImg }) {
     const { verifyMetadata } = useVerifyMetadata();
     const listings = new Map();
 
-    const queryMarketItems = useMoralisQuery(createdMarketItemsTable);
+    // eslint-disable-next-line no-unused-vars
+    const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
+
+    const queryMarketItems = useMoralisQuery(
+        createdMarketItemsTable, query => {
+            // get not sold items
+            return query
+                .equalTo("sold", false)
+                .equalTo("nftContract", AllowedNftContracts.get(chainId));
+        });
     const fetchMarketItems = JSON.parse(
         JSON.stringify(queryMarketItems.data, [
             "objectId",
@@ -93,11 +103,12 @@ function NFTCollectionItems({ nftAddress, colName, colImg }) {
 
         await contractProcessor.fetch({
             params: ops,
-            onSuccess: () => {
+            onSuccess: async () => {
                 console.log("success");
                 setLoading(false);
                 setVisibility(false);
-                updateSoldMarketItem(tokenDetails);
+                await updateSoldMarketItem(tokenDetails);
+                forceUpdate();
                 succPurchase();
             },
             onError: (error) => {
@@ -232,6 +243,7 @@ function NFTCollectionItems({ nftAddress, colName, colImg }) {
                         nft = verifyMetadata(nft);
                         return (
                             <Card
+                                key={index}
                                 hoverable
                                 actions={[
                                     <Tooltip title="View On Blockexplorer">
@@ -262,7 +274,6 @@ function NFTCollectionItems({ nftAddress, colName, colImg }) {
                                         }}
                                     />
                                 }
-                                key={index}
                             >
                                 {hasMarketItems(nft) ? (
                                     <div onClick={() => handleBuyClick(nft)}>

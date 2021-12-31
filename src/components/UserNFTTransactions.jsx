@@ -17,7 +17,10 @@ const styles = {
 function UserNFTTransactions() {
     const { account } = useMoralis();
     const walletAddress = account
-    const queryMarketItems = useMoralisQuery(createdMarketItemsTable);
+    const queryMarketItems = useMoralisQuery(
+        createdMarketItemsTable, query => {
+            return query.limit(20);
+        });
     const fetchMarketItems = JSON.parse(
         JSON.stringify(queryMarketItems.data, [
             "updatedAt",

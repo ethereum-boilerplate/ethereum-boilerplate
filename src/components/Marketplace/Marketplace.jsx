@@ -35,18 +35,16 @@ function Marketplace() {
         {NFTCollections?.map((nft, index) => {
           console.log('nft', nft)
           return (
-            <>
-              <NFTCollectionItems
-                nftAddress={nft.addrs}
-                colName={nft.name}
-                colImg={nft.image || "error"}
-                key={index}
-              />
-              <br /><br />
-            </>
+            <NFTCollectionItems
+              key={index}
+              nftAddress={nft.addrs}
+              colName={nft.name}
+              colImg={nft.image || "error"}
+            />
           )
         })
         }
+        <br />
       </div>
     </>
   );
