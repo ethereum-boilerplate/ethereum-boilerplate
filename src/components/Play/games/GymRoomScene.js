@@ -1,14 +1,13 @@
 import Phaser from "phaser";
-import gymFloorImg from "./assets/gym-room/gymfloor.png";
-import leftShevronSvg from "./assets/icons/chevron_left.svg";
 import { getGameWidth, getGameHeight, getRelative } from "./helpers";
 import { Player } from "./objects";
-import { BG_KEY, PLAYER_KEY, LEFT_CHEVRON, PLAYER_SCALE } from "./shared";
+import { PLAYER_KEY, PLAYER_SCALE, GYM_ROOM_SCENE } from "./shared";
+import { LEFT_CHEVRON, BG, CLICK } from "./assets";
 
 const SceneConfig = {
     active: false,
     visible: false,
-    key: "gym-main-room",
+    key: GYM_ROOM_SCENE,
 };
 
 export class GymRoomScene extends Phaser.Scene {
@@ -16,20 +15,20 @@ export class GymRoomScene extends Phaser.Scene {
         super(SceneConfig);
     }
 
-    preload() {
-        const selectedAvatar = this.game.registry.values.avatar;
-        this.load.image(PLAYER_KEY, selectedAvatar.uri);
-        this.load.image(BG_KEY, gymFloorImg);
-        this.load.image(LEFT_CHEVRON, leftShevronSvg);
-    }
+    init = (data) => {
+        this.selectedAvatar = data.selectedAvatar;
+        console.log('selectedAvatar', this.selectedAvatar);
+    };
 
     create() {
         // Add layout
         const width = getGameWidth(this);
         const height = getGameHeight(this);
 
-        this.add.image(width / 2, height / 2, BG_KEY)
+        this.add.image(width / 2, height / 2, BG)
             .setDisplaySize(width, height);
+        // uncomment if you want to have sound on exit
+        // this.back = this.sound.add(CLICK, { loop: false });
         this.createBackButton();
 
         // Add a player sprite that can be moved around.
@@ -59,4 +58,3 @@ export class GymRoomScene extends Phaser.Scene {
         this.player?.update();
     }
 }
-
