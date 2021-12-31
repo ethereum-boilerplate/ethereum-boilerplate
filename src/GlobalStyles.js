@@ -1,7 +1,7 @@
 export const mainBackgroundCol = "#012E51"
 export const brightFontCol = "#fff"
 
-const NFTCardStyleSidesPadding = "1rem";
+const NFTCardStyleSidesPadding = "0.2rem";
 
 export const NFTCardStyle = {
     width: 240,
@@ -10,8 +10,17 @@ export const NFTCardStyle = {
     color: "black",
     paddingLeft: NFTCardStyleSidesPadding,
     paddingRight: NFTCardStyleSidesPadding,
-    paddingTop: "1.8rem",
+    paddingTop: NFTCardStyleSidesPadding,
     paddingBottom: "0",
+}
+
+const NFTImgWrapperPadding = "1rem";
+export const NFTImgWrapperStyle = {
+    paddingLeft: NFTImgWrapperPadding,
+    paddingRight: NFTImgWrapperPadding,
+    paddingTop: NFTImgWrapperPadding,
+    paddingBottom: NFTImgWrapperPadding,
+    borderRadius: "0.8rem 0.8rem 0 0",
 }
 
 export const NFTsDiv = {

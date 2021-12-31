@@ -13,7 +13,7 @@ import {
 import { useVerifyMetadata } from "hooks/useVerifyMetadata";
 import { useNFTTokenIds } from "hooks/useNFTTokenIds";
 import { mainMarketAddress, deployedABI, createdMarketItemsTable } from "../../MarketplaceSCMetadata";
-import { NFTCardStyle, NFTsDiv, NFTImg, brightFontCol } from "../../GlobalStyles";
+import { NFTCardStyle, NFTsDiv, NFTImg, brightFontCol, NFTImgWrapperStyle } from "../../GlobalStyles";
 
 const styles = {
     banner: {
@@ -256,6 +256,10 @@ function NFTCollectionItems({ nftAddress, colName, colImg }) {
                                         fallback={fallbackImg}
                                         alt=""
                                         style={NFTImg}
+                                        wrapperStyle={{
+                                            backgroundColor: "#" + nft?.background_color,
+                                            ...NFTImgWrapperStyle
+                                        }}
                                     />
                                 }
                                 key={index}
