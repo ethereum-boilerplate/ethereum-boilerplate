@@ -1,4 +1,4 @@
-export const MGLLogo = ({width="149", height="53"}) => (
+export const MGLLogo = ({ width = "149", height = "auto" }) => (
     <>
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -23,12 +23,12 @@ export const MGLLogo = ({width="149", height="53"}) => (
 
 // footer logos
 
-export const MoralisLogo = () => (
+export const MoralisLogo = ({ width = "100", height = "auto" }) => (
     <>
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="100"
-            height="23"
+            width={width}
+            height={height}
             fill="none"
             viewBox="0 0 241 45"
         >
@@ -56,12 +56,12 @@ export const MoralisLogo = () => (
     </>
 );
 
-export const AvaxLogo = () => (
+export const AvaxLogo = ({ width = "100", height = "auto" }) => (
     <>
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="100"
-            height="30"
+            width={width}
+            height={height}
             fill="none"
             viewBox="0 0 398 103"
         >
@@ -95,10 +95,11 @@ export const AvaxLogo = () => (
 );
 
 
-export const TfJSLogo = () => (
+export const TfJSLogo = ({ width = "100", height = "auto" }) => (
     <>
         <svg
-            width="100" height="23"
+            width={width}
+            height={height}
             xmlns="http://www.w3.org/2000/svg"
             xmlnsXlink="http://www.w3.org/1999/xlink"
             viewBox="0 0 286 64"
@@ -163,12 +164,12 @@ export const TfJSLogo = () => (
     </>
 );
 
-export const CoderDitiLogo = () => (
+export const CoderDitiLogo = ({ width = "120", height = "auto" }) => (
     <>
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="120"
-            height="22"
+            width={width}
+            height={height}
             fill="none"
             viewBox="0 0 920 110"
         >

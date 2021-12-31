@@ -2,7 +2,7 @@ import { Layout, Divider } from "antd";
 import Text from "antd/lib/typography/Text";
 import { Row, Col } from 'antd';
 import packageJson from '../package.json';
-import { mainBackgroundCol, brightFontCol } from "GlobalStyles";
+import { brightFontCol } from "GlobalStyles";
 import { MGLLogo, MoralisLogo, AvaxLogo, CoderDitiLogo, TfJSLogo } from "Logos";
 const { Footer } = Layout;
 
