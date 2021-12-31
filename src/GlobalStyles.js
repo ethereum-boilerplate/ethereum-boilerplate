@@ -51,3 +51,9 @@ export const TopBtnDiv = {
     flexBasis: "100%",
     height: "0px",
 }
+
+export const HeaderRightBordersStyle = {
+    border: "1px solid #E7EAF3",
+    borderRadius: "2px",
+    background: "none",
+}

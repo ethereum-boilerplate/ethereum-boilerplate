@@ -3,6 +3,7 @@ import { Menu, Dropdown, Button } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import { AvaxLogo, PolygonLogo, BSCLogo, ETHLogo } from "./Logos";
 import { useChain, useMoralis } from "react-moralis";
+import { HeaderRightBordersStyle } from "../../GlobalStyles";
 
 const styles = {
   item: {
@@ -13,13 +14,10 @@ const styles = {
     fontFamily: "Roboto, sans-serif",
     fontSize: "14px",
     padding: "0 7px",
-    background: "none", 
+    background: "none",
     color: "#E7EAF3",
   },
-  button: {
-    border: "1px solid #E7EAF3",
-    borderRadius: "2px",
-  },
+  button: HeaderRightBordersStyle,
 };
 
 const supportedChains = new Set(
@@ -114,7 +112,10 @@ function Chains() {
   };
 
   const menu = (
-    <Menu onClick={handleMenuClick}>
+    <Menu
+      onClick={handleMenuClick}
+      style={HeaderRightBordersStyle}
+    >
       {menuItems
         .filter(item => supportedChains.has(item.key))
         .map((item) => (

@@ -93,7 +93,7 @@ function NFTBalance() {
         textAlign: "center",
         fontSize: "27px",
         fontWeight: "bold",
-      }}>Your avatars <ContactsOutlined /> andwearables <SkinOutlined /></h1>
+      }}>Your avatars and wearables <SkinOutlined /><ContactsOutlined /></h1>
       <br />
       <h3>
         If you have your MGL Avatar NFT 🙂

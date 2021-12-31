@@ -8,6 +8,8 @@ import { SelectOutlined } from "@ant-design/icons";
 import { getExplorer } from "helpers/networks";
 import Text from "antd/lib/typography/Text";
 import { connectors } from "./config";
+import { HeaderRightBordersStyle } from "../../GlobalStyles";
+
 const styles = {
   account: {
     height: "42px",
@@ -16,10 +18,8 @@ const styles = {
     justifyContent: "center",
     alignItems: "center",
     width: "fit-content",
-    borderRadius: "2px",
-    border: "1px solid #E7EAF3",
-    // backgroundColor: "rgb(244, 244, 244)",
     cursor: "pointer",
+    ...HeaderRightBordersStyle,
   },
   text: {
     color: "#21BF96",
