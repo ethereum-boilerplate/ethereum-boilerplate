@@ -6,7 +6,7 @@ import {
 import { Link } from "react-router-dom";
 import NFTCollectionItems from "./NFTCollectionItems";
 import { Button } from "antd";
-import { BtnPrimary, TopBtnDiv } from "../../GlobalStyles";
+import { BtnPrimary, BreakFlexDiv } from "../../GlobalStyles";
 
 function Marketplace() {
 
@@ -16,7 +16,7 @@ function Marketplace() {
   return (
     <>
       <div style={{
-        ...TopBtnDiv,
+        ...BreakFlexDiv,
         marginLeft: "70%",
         marginBottom: "3rem",
       }}>

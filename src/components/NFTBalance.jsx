@@ -180,7 +180,7 @@ function NFTBalance() {
                         type="primary"
                         style={BtnPrimary}
                       >
-                        <Link to='play'>
+                        <Link to='/play-setup'>
                           Play with me
                         </Link>
                       </Button>
