@@ -1,4 +1,4 @@
-export const mainBackgroundCol = "#012E51"
+export const mainBackground = "linear-gradient(180deg, #000207 0%, #003963 100%)"
 export const brightFontCol = "#fff"
 
 const NFTCardStyleSidesPadding = "0.2rem";

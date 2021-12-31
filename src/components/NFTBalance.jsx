@@ -11,7 +11,7 @@ import { mainMarketAddress, deployedABI, listItemFunction } from "../Marketplace
 import { NFTCardStyle, NFTsDiv, NFTImg, BtnPrimary, NFTImgWrapperStyle } from "../GlobalStyles";
 import { AllowedNftContracts } from "../MglNftMetadata";
 import { AvatarCtx } from "index";
-import { ContactsOutlined, SkinOutlined } from "@ant-design/icons";
+import { SkinOutlined } from "@ant-design/icons";
 
 const { Meta } = Card;
 
@@ -93,7 +93,7 @@ function NFTBalance() {
         textAlign: "center",
         fontSize: "27px",
         fontWeight: "bold",
-      }}>Your avatars and wearables <SkinOutlined /><ContactsOutlined /></h1>
+      }}>Your avatars and wearables <SkinOutlined /></h1>
       <br />
       <h3>
         If you have your MGL Avatar NFT 🙂

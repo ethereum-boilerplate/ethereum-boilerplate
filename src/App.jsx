@@ -16,8 +16,9 @@ import MenuItems from "./components/MenuItems";
 import { Link } from "react-router-dom";
 import { brightFontCol } from "GlobalStyles";
 import { MGLLogo } from "Logos";
-import { AppFooter } from "AppFooter"
+import { AppFooter } from "AppFooter";
 import PlayPage from "components/Play";
+import { mainBackground } from "GlobalStyles";
 
 const { Header } = Layout;
 
@@ -71,7 +72,7 @@ const App = ({ isServerInfo }) => {
       {
         height: "100vh",
         overflow: "auto",
-        background: "linear-gradient(180deg, #000207 0%, #003963 100%)",
+        background: mainBackground,
         fontFamily: "Roboto, sans-serif",
       }}>
       <Router>
