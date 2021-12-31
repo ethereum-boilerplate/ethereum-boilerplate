@@ -38,7 +38,7 @@ export class GymRoomScene extends Phaser.Scene {
             y: height / 2,
             key: PLAYER_KEY,
         });
-        this.player.setScale(PLAYER_SCALE);
+        this.player.setScale(PLAYER_SCALE); 
     }
 
     createBackButton = () => {

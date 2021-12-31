@@ -4,6 +4,9 @@ import { IonPhaser } from "@ion-phaser/react";
 import { GymRoomScene } from "./GymRoomScene";
 import { BootScene } from "./BootScene";
 
+const menuHeight = 60;
+const contentMargin = 40;
+
 const setWidthAndHeight = () => {
     let width = window.innerWidth;
     let height = width / 1.778;
@@ -12,7 +15,7 @@ const setWidthAndHeight = () => {
         height = window.innerHeight;
         width = height * 1.778;
     }
-    return [width, height];
+    return [width, height - (menuHeight + contentMargin / 2)];
 }
 
 const getConfig = (mainScene) => {
@@ -74,7 +77,14 @@ const GymRoom = ({ avatar }) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    return <IonPhaser initialize={initialised} game={config} id="phaser-app" />;
+    return <IonPhaser
+        initialize={initialised}
+        game={config}
+        id="phaser-app"
+        style={{
+            marginTop: "-40px",
+        }}
+    />;
 };
 
 export default GymRoom;
