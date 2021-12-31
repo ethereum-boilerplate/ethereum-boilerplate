@@ -49,8 +49,8 @@ function NFTCollectionItems({ nftAddress, colName, colImg }) {
     const [nftToBuy, setNftToBuy] = useState(null);
     const [loading, setLoading] = useState(false);
 
-    const [contractABI, setContractABI] = useState(deployedABI); //Smart Contract ABI here
-    const [marketAddress, setMarketAddress] = useState(mainMarketAddress)
+    const contractABI = deployedABI;
+    const marketAddress = mainMarketAddress;
 
     const contractProcessor = useWeb3ExecuteFunction();
     const nativeName = getNativeByChain(chainId);
@@ -125,7 +125,8 @@ function NFTCollectionItems({ nftAddress, colName, colImg }) {
     }
 
     function failPurchase(err) {
-        const modal = Modal.error({
+        // const modal = 
+        Modal.error({
             title: "Error!",
             content: `There was a problem when purchasing this NFT: ${err}`,
         });
@@ -152,7 +153,7 @@ function NFTCollectionItems({ nftAddress, colName, colImg }) {
     const getMarketWithLowestPrice = (nft) => {
         const items = getMarketItems(nft);
         console.log('getMarketWithLowestPrice', items)
-        if (items.length == 1) return items[0];
+        if (items.length === 1) return items[0];
         if (items.length > 1) {
             return items.sort((a, b) => a.price - b.price)[0]
         }

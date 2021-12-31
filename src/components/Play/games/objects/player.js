@@ -41,6 +41,8 @@ export class Player extends Phaser.GameObjects.Image {
                 velocity.x += 1;
                 // this.anims.play('right', true);
                 break;
+            default:
+            // do nothing
         }
 
         // Vertical movement
@@ -53,6 +55,8 @@ export class Player extends Phaser.GameObjects.Image {
                 velocity.y -= 1;
                 // this.anims.play('up', true);
                 break;
+            default:
+            // do nothing
         }
 
         // We normalize the velocity so that the player is always moving at the same speed, regardless of direction.

@@ -6,16 +6,7 @@ import {
 import { Link } from "react-router-dom";
 import NFTCollectionItems from "./NFTCollectionItems";
 import { Button } from "antd";
-import { BtnPrimary } from "../../GlobalStyles"
-
-const styles = {
-  transactions: {
-    flexBasis: "100%",
-    height: "0px",
-    marginLeft: "70%",
-    marginBottom: "3rem",
-  }
-};
+import { BtnPrimary, TopBtnDiv } from "../../GlobalStyles";
 
 function Marketplace() {
 
@@ -24,7 +15,11 @@ function Marketplace() {
 
   return (
     <>
-      <div style={styles.transactions}>
+      <div style={{
+        ...TopBtnDiv,
+        marginLeft: "70%",
+        marginBottom: "3rem",
+      }}>
         <Button
           type="primary"
           style={BtnPrimary}

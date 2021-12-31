@@ -2,7 +2,7 @@ import Phaser from "phaser";
 import { getGameWidth, getGameHeight, getRelative } from "./helpers";
 import { Player } from "./objects";
 import { PLAYER_KEY, PLAYER_SCALE, GYM_ROOM_SCENE } from "./shared";
-import { LEFT_CHEVRON, BG, CLICK } from "./assets";
+import { LEFT_CHEVRON, BG } from "./assets";
 
 const SceneConfig = {
     active: false,

@@ -10,7 +10,9 @@ export default function ContractResolver({ contract, setContract }) {
      * it from browser localStorage(works only if file was uploaded previosly by drag&drop component) */
     let localContract;
     try {
-      localContract = require("contracts/contractInfo.json");
+      localContract = {};
+      // commenting to avoid warrning
+      // require("contracts/contractInfo.json");
     } catch {
       localContract = JSON.parse(window.localStorage.getItem("contract"));
     }

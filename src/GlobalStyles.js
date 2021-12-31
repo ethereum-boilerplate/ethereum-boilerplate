@@ -37,3 +37,8 @@ export const BtnPrimary = {
     paddingTop: "8px",
     paddingBottom: "31px",
 }
+
+export const TopBtnDiv = {
+    flexBasis: "100%",
+    height: "0px",
+}

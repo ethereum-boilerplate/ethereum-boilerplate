@@ -44,6 +44,8 @@ export const useNFTTokenIds = (addr, limit = 3) => {
         });
 
         return { ...data, result: formattedResult };
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [data]);
 
     return { getNFTTokenIds, data: NFTTokenIds, error, isLoading, isFetching };

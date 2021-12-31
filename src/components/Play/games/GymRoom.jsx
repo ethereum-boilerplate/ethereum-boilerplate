@@ -70,6 +70,8 @@ const GymRoom = ({ avatar }) => {
 
     useEffect(() => {
         startGame();
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return <IonPhaser initialize={initialised} game={config} id="phaser-app" />;
