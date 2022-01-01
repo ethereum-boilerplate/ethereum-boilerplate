@@ -40,8 +40,9 @@ const styles = {
 
 const PlaySetupPage = () => {
     const [avatar] = useContext(AvatarCtx);
-    const webcamId = useContext(WebcamCtx);
+    const [webcamId, setWebcamId] = useContext(WebcamCtx);
     const webcamRef = React.useRef(null);
+    console.log('webcamId', webcamId);
 
     if (!avatar) {
         return <Redirect to="/avatars" />;
@@ -99,11 +100,21 @@ const PlaySetupPage = () => {
                     }}
                 />
             </div>
+            
+            <div style={{
+                ...BreakFlexDiv,
+                textAlign: "center",
+                justifyContent: "start",
+                paddingTop: "1rem",
+            }}>
+                <p>Please select your webcam&nbsp;📷</p>
+            </div>
+            
             <div style={{
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                paddingTop: "3rem",
+                paddingTop: "2rem",
                 paddingBottom: "1rem",
             }}>
                 <SelectWebcam webcamRef={webcamRef} />
@@ -151,6 +162,7 @@ const PlaySetupPage = () => {
                     }}
                 >
                     <Button
+                        disabled={webcamId === null}
                         style={{
                             ...BtnPrimary,
                             backgroundColor: "#20BF96",

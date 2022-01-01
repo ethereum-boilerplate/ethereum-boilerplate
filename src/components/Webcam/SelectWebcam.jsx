@@ -34,6 +34,7 @@ const SelectWebcam = ({ webcamRef }) => {
                 fontSize: "1.2rem",
             }} />&nbsp;&nbsp;
             <Select
+                defaultValue={webcamId}
                 style={{
                     width: "60%",
                     borderRadius: "1rem",
