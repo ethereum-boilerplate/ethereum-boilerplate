@@ -98,9 +98,9 @@ export default function Home() {
               <div style={{
                 // WebkitBoxShadow: "0 0 60px 0 black",
                 // MozBoxShadow: "0 0 60px 0 black",
-                boxShadow: "0 0 70px 0 black",
+                boxShadow: "0 0 70px 5px #020811",
                 position: "relative",
-                backgroundColor: "rgb(3,21,38)",
+                backgroundColor: "#020811",
               }}>
                 <iframe
                   width="560"

@@ -3,10 +3,17 @@ import Phaser from "phaser";
 import { IonPhaser } from "@ion-phaser/react";
 import { GymRoomScene } from "./GymRoomScene";
 import { BootScene } from "./BootScene";
+import Webcam from "react-webcam";
 
 const menuHeight = 60;
 // keeping for reference
 const contentMargin = 40;
+
+const videoConstraints = {
+    // width: 320,
+    // height: 240,
+    // facingMode: "user"
+};
 
 const setWidthAndHeight = () => {
     let width = window.innerWidth;
@@ -86,7 +93,25 @@ const GymRoom = ({ avatar }) => {
         style={{
             marginTop: "-40px",
         }}
-    />;
+    >
+        <div style={{
+                position: "absolute",
+                top: "1%",
+                left: "45%",
+            }}>
+                <Webcam
+                    audio={false}
+                    videoConstraints={videoConstraints}
+                    mirrored={true}
+                    style={{
+                        objectFit: "cover",
+                        borderRadius: "1rem",
+                        width: "35%",
+                        boxShadow: "0 0 10px 2px #202020",
+                    }}
+                />
+            </div>
+    </IonPhaser>;
 };
 
 export default GymRoom;

@@ -83,6 +83,7 @@ const PlaySetupPage = () => {
         <Card style={{
             ...styles.card,
             ...styles.noPadNoMarg,
+            // styled with 2 width props 25%, 80% due to overall styling
             width: "25%",
         }}>
             <div style={{
@@ -93,10 +94,12 @@ const PlaySetupPage = () => {
                 <Webcam
                     audio={false}
                     videoConstraints={videoConstraints}
+                    mirrored={true}
                     style={{
                         objectFit: "cover",
                         borderRadius: "1rem",
-                        width: "80%"
+                        width: "80%",
+                        boxShadow: "0 0 10px 2px #202020",
                     }}
                 />
             </div>
@@ -122,7 +125,7 @@ const PlaySetupPage = () => {
                 ...BreakFlexDiv,
                 textAlign: "center",
             }}>
-                <p>Having trouble with your video?</p>
+                <p><u>Having trouble with your video?</u></p>
             </div>
         </Card>
 
