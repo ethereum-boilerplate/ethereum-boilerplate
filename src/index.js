@@ -9,7 +9,7 @@ import Home from "components/Home";
 const APP_ID = process.env.REACT_APP_MORALIS_APPLICATION_ID;
 const SERVER_URL = process.env.REACT_APP_MORALIS_SERVER_URL;
 
-// Avatar state
+// Avatar global state
 export const AvatarCtx = React.createContext();
 const AvatarCtxProvider = ({ children }) => {
   const [avatar, setAvatar] = useState(null);
@@ -17,6 +17,17 @@ const AvatarCtxProvider = ({ children }) => {
     <AvatarCtx.Provider value={[avatar, setAvatar]}>
       {children}
     </AvatarCtx.Provider>
+  );
+};
+
+// Webcam global state
+export const WebcamCtx = React.createContext();
+const WebcamCtxProvider = ({ children }) => {
+  const [webcamId, setWebcamId] = useState(null);
+  return (
+    <WebcamCtx.Provider value={[webcamId, setWebcamId]}>
+      {children}
+    </WebcamCtx.Provider>
   );
 };
 
@@ -28,7 +39,9 @@ const Application = () => {
     return (
       <MoralisProvider appId={APP_ID} serverUrl={SERVER_URL}>
         <AvatarCtxProvider >
-          <App isServerInfo />
+          <WebcamCtxProvider >
+            <App isServerInfo />
+          </WebcamCtxProvider>
         </AvatarCtxProvider>
       </MoralisProvider>
     );

@@ -1,21 +1,14 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import { AvatarCtx } from "index";
 import { Redirect } from "react-router";
-import { Select, Image, Card, Button, Typography } from "antd";
+import { Image, Card, Button } from "antd";
 import { RightOutlined, LeftOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { BtnPrimary } from "../../GlobalStyles";
 import { NFTsDiv, NFTImg, BreakFlexDiv, brightFontCol } from "../../GlobalStyles";
-import { VideoCameraFilled } from "@ant-design/icons";
 import Webcam from "react-webcam";
-
-const { Text } = Typography;
-const { Option } = Select;
-const videoConstraints = {
-    // width: 320,
-    // height: 240,
-    // facingMode: "user"
-};
+import SelectWebcam from "components/Webcam/SelectWebcam";
+import { WebcamCtx } from "index";
 
 const styles = {
     titleText: {
@@ -47,12 +40,13 @@ const styles = {
 
 const PlaySetupPage = () => {
     const [avatar] = useContext(AvatarCtx);
+    const webcamId = useContext(WebcamCtx);
+    const webcamRef = React.useRef(null);
+
     if (!avatar) {
         return <Redirect to="/avatars" />;
     }
-    const handleChange = () => {
 
-    }
     return (<>
         <Card style={{
             ...styles.card,
@@ -93,8 +87,10 @@ const PlaySetupPage = () => {
             }}>
                 <Webcam
                     audio={false}
-                    videoConstraints={videoConstraints}
+                    videoConstraints={{ deviceId: webcamId }}
                     mirrored={true}
+                    className={"webcam"}
+                    ref={webcamRef}
                     style={{
                         objectFit: "cover",
                         borderRadius: "1rem",
@@ -107,25 +103,18 @@ const PlaySetupPage = () => {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                paddingTop: "2rem",
+                paddingTop: "3rem",
                 paddingBottom: "1rem",
             }}>
-                <VideoCameraFilled style={{
-                    fontSize: "1.2rem",
-                }} />&nbsp;&nbsp;
-                <Select defaultValue="lucy" style={{
-                    width: 240,
-                }}
-                    onChange={handleChange}>
-                    <Option value="jack">Jack</Option>
-                    <Option value="lucy">Lucy</Option>
-                </Select>
+                <SelectWebcam webcamRef={webcamRef} />
             </div>
             <div style={{
                 ...BreakFlexDiv,
                 textAlign: "center",
             }}>
-                <p><u>Having trouble with your video?</u></p>
+                <p style={{
+                    opacity: "0.5",
+                }}><u>Having trouble with your video?</u></p>
             </div>
         </Card>
 

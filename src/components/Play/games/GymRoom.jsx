@@ -1,19 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Phaser from "phaser";
 import { IonPhaser } from "@ion-phaser/react";
 import { GymRoomScene } from "./GymRoomScene";
 import { BootScene } from "./BootScene";
 import Webcam from "react-webcam";
+import { WebcamCtx } from "index";
+
 
 const menuHeight = 60;
 // keeping for reference
 const contentMargin = 40;
-
-const videoConstraints = {
-    // width: 320,
-    // height: 240,
-    // facingMode: "user"
-};
 
 const setWidthAndHeight = () => {
     let width = window.innerWidth;
@@ -63,6 +59,7 @@ const GymRoom = ({ avatar }) => {
     // run game
     const [initialised, setInitialised] = useState(true);
     const [config, setConfig] = useState();
+    const deviceId = useContext(WebcamCtx);
 
     const startGame = () => {
         setConfig({
@@ -101,8 +98,9 @@ const GymRoom = ({ avatar }) => {
             }}>
                 <Webcam
                     audio={false}
-                    videoConstraints={videoConstraints}
+                    videoConstraints={{ deviceId: deviceId }}
                     mirrored={true}
+                    className={"webcam"}
                     style={{
                         objectFit: "cover",
                         borderRadius: "1rem",
