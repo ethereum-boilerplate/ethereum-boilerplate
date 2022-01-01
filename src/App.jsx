@@ -35,7 +35,6 @@ const styles = {
     justifyContent: "center",
     fontFamily: "Roboto, sans-serif",
     marginTop: "40px",
-    padding: "10px",
   },
   header: {
     // position: "fixed",

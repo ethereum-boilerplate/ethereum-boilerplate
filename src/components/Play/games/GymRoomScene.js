@@ -43,10 +43,10 @@ export class GymRoomScene extends Phaser.Scene {
 
     createBackButton = () => {
         this.add
-            .image(getRelative(54, this), getRelative(54, this), LEFT_CHEVRON)
+            .image(getRelative(10, this), getRelative(24, this), LEFT_CHEVRON)
             .setOrigin(0)
             .setInteractive({ useHandCursor: true })
-            .setDisplaySize(getRelative(94, this), getRelative(94, this))
+            .setDisplaySize(getRelative(54, this), getRelative(54, this))
             .on("pointerdown", () => {
                 this.back?.play();
                 window.history.back();

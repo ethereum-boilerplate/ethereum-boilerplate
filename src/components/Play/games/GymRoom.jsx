@@ -5,6 +5,7 @@ import { GymRoomScene } from "./GymRoomScene";
 import { BootScene } from "./BootScene";
 
 const menuHeight = 60;
+// keeping for reference
 const contentMargin = 40;
 
 const setWidthAndHeight = () => {
@@ -13,9 +14,10 @@ const setWidthAndHeight = () => {
 
     if (height > window.innerHeight) {
         height = window.innerHeight;
-        width = height * 1.778;
+        // keeping for reference
+        // width = height * 1.778;
     }
-    return [width, height - (menuHeight + contentMargin / 2)];
+    return [width, height - menuHeight];
 }
 
 const getConfig = (mainScene) => {
