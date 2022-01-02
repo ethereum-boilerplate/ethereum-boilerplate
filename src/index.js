@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import { MoralisProvider } from "react-moralis";
@@ -24,8 +24,14 @@ const AvatarCtxProvider = ({ children }) => {
 export const WebcamCtx = React.createContext();
 const WebcamCtxProvider = ({ children }) => {
   const [webcamId, setWebcamId] = useState(null);
+  const webcamRef = useRef(null);
+
   return (
-    <WebcamCtx.Provider value={[webcamId, setWebcamId]}>
+    <WebcamCtx.Provider value={{
+      webcamId,
+      setWebcamId,
+      webcamRef,
+    }}>
       {children}
     </WebcamCtx.Provider>
   );

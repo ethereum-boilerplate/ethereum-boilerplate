@@ -119,7 +119,6 @@ export default function Home() {
       <Row style={{
         fontFamily: "Source Serif Pro",
         flexBasis: "100%",
-        height: "0",
         justifyContent: "center",
         marginTop: "6rem",
       }}>
@@ -133,7 +132,6 @@ export default function Home() {
       <Row style={{
         fontFamily: "Source Serif Pro",
         flexBasis: "100%",
-        height: "0",
         justifyContent: "center",
         marginTop: "12rem",
         marginBottom: "10rem"

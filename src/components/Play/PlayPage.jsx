@@ -8,7 +8,7 @@ const PlayPage = () => {
     if (!avatar) {
         return <Redirect to="/avatars" />;
     }
-    return (<GymRoom avatar={avatar} />);
+    return (<><GymRoom avatar={avatar} /></>);
 }
 
 export default PlayPage;

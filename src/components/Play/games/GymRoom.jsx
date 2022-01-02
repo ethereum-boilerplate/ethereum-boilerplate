@@ -3,9 +3,8 @@ import Phaser from "phaser";
 import { IonPhaser } from "@ion-phaser/react";
 import { GymRoomScene } from "./GymRoomScene";
 import { BootScene } from "./BootScene";
-import Webcam from "react-webcam";
 import { WebcamCtx } from "index";
-
+import PoseDetWebcam from "components/Webcam/PoseDetWebcam";
 
 const menuHeight = 60;
 // keeping for reference
@@ -49,7 +48,7 @@ const getConfig = (mainScene) => {
             pixelArt: true
         },
         fps: {
-            target: 30,
+            target: 60,
         },
     }
 }
@@ -59,7 +58,10 @@ const GymRoom = ({ avatar }) => {
     // run game
     const [initialised, setInitialised] = useState(true);
     const [config, setConfig] = useState();
-    const deviceId = useContext(WebcamCtx);
+    const { webcamId, webcamRef } = useContext(WebcamCtx);
+
+    console.log('GymRoom webcamRef', webcamRef);
+    console.log('GymRoom webcamId', webcamId);
 
     const startGame = () => {
         setConfig({
@@ -83,7 +85,7 @@ const GymRoom = ({ avatar }) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    return <IonPhaser
+    return (<IonPhaser
         initialize={initialised}
         game={config}
         id="phaser-app"
@@ -91,25 +93,15 @@ const GymRoom = ({ avatar }) => {
             marginTop: "-40px",
         }}
     >
-        <div style={{
-                position: "absolute",
+        <PoseDetWebcam
+            styleProps={{
+                width: "13%",
                 top: "1%",
                 left: "45%",
-            }}>
-                <Webcam
-                    audio={false}
-                    videoConstraints={{ deviceId: deviceId }}
-                    mirrored={true}
-                    className={"webcam"}
-                    style={{
-                        objectFit: "cover",
-                        borderRadius: "1rem",
-                        width: "35%",
-                        boxShadow: "0 0 10px 2px #202020",
-                    }}
-                />
-            </div>
-    </IonPhaser>;
+                boxShadow: "0 0 10px 2px #202020",
+            }}
+        />
+    </IonPhaser>);
 };
 
 export default GymRoom;

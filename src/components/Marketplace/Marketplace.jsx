@@ -14,11 +14,11 @@ function Marketplace() {
   const NFTCollections = getCollectionsByChain(chainId);
 
   return (
-    <>
+    <div>
       <div style={{
         ...BreakFlexDiv,
-        marginLeft: "70%",
-        marginBottom: "3rem",
+        marginLeft: "100%",
+        marginBottom: "1.8rem",
       }}>
         <Button
           type="primary"
@@ -30,7 +30,10 @@ function Marketplace() {
         </Button>
       </div>
 
-      <div>
+      <div style={{
+        padding: "0",
+        margin: "0",
+      }}>
         {/* NFTs view */}
         {NFTCollections?.map((nft, index) => {
           console.log('nft', nft)
@@ -46,7 +49,7 @@ function Marketplace() {
         }
         <br />
       </div>
-    </>
+    </div>
   );
 }
 
