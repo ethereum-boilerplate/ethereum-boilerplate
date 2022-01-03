@@ -94,10 +94,12 @@ const GymRoom = ({ avatar }) => {
         }}
     >
         <PoseDetWebcam
-            styleProps={{
+            sizeProps={{
                 width: "13%",
                 top: "1%",
                 left: "45%",
+            }}
+            styleProps={{
                 boxShadow: "0 0 10px 2px #202020",
             }}
         />

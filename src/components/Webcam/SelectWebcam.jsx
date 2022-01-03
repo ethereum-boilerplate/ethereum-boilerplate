@@ -6,7 +6,7 @@ import { WebcamCtx } from "index";
 const { Option } = Select;
 
 const SelectWebcam = ({ width = "auto" }) => {
-    const {webcamId, setWebcamId} = useContext(WebcamCtx);
+    const { webcamId, setWebcamId } = useContext(WebcamCtx);
     const [videoDevices, setVideoDevices] = useState([]);
 
     const handleDevices = useCallback(

@@ -46,10 +46,12 @@ const PlaySetupPage = () => {
             padding: "1rem 1rem",
         }}>
             <PoseDetWebcam
-                styleProps={{
+                sizeProps={{
                     width: "20%",
                     top: "12%",
                     left: "50%",
+                }}
+                styleProps={{
                     boxShadow: "0 0 10px 2px #202020",
                 }}
             />

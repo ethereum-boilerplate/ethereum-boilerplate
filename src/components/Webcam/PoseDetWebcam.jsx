@@ -1,35 +1,63 @@
 import React, { useContext, useRef, useEffect } from "react";
-import { WebcamCtx } from "index";
+import { WebcamCtx, PoseDetectorCtx } from "index";
 import Webcam from "react-webcam";
+import { drawPose } from "./pose-drawing";
 
-const PoseDetWebcam = ({ styleProps }) => {
-    const { webcamId, setWebcamId, webcamRef } = useContext(WebcamCtx);
+const PoseDetWebcam = ({ sizeProps, styleProps }) => {
+    const { webcamId, setWebcamId } = useContext(WebcamCtx);
+    const { poseDetector } = useContext(PoseDetectorCtx);
     const canvasRef = useRef(null);
+    const webcamRef = useRef(null);
 
+    console.log('poseDetector PoseDetWebcam', poseDetector);
+    console.log('PoseDetWebcam webcamRef', webcamRef);
+    console.log('PoseDetWebcam webcamId', webcamId);
+
+    useEffect(async () => {
+        poseDetector.onResults(onResults);
+        startPredictions()
+    }, []);
+
+    let then = Date.now();
+    const fps = 15;
+    const interval = 1000 / fps;
+    let noCamError = true;
+    let camErrCnt = 0;
     const startPredictions = async () => {
         requestAnimationFrame(() => {
             startPredictions();
         })
-        detectPose();
+        if (webCamAndCanvasAreInit()) {
+            const videoElement = webcamRef.current.video;
+            const now = Date.now();
+            const delta = now - then;
+            if (delta > interval) {
+                then = now - (delta % interval);
+                try {
+                    if (noCamError) await poseDetector
+                        .send({ image: videoElement });
+                } catch (error) {
+                    poseDetector.reset();
+                    noCamError = false;
+                    camErrCnt += 1;
+                    const wait = 1000 * camErrCnt
+                    console.error(
+                        `error catched, resetting the AI 
+                        and waiting for ${wait / 1000} seconds`,
+                        error);
+                    setTimeout(() => {
+                        noCamError = true
+                    }, wait)
+                }
+            }
+        }
     };
 
-    console.log('PoseDetWebcam webcamRef', webcamRef);
-    console.log('PoseDetWebcam webcamId', webcamId);
-
-    const detectPose = async () => {
+    // HERE: handle game logic events driven by poses
+    const onResults = (results) => {
         if (webCamAndCanvasAreInit()) {
             doPredictionsCanvasSetup();
-            // Get Video Properties
-            const video = webcamRef.current.video;
-            // Draw mesh
-            const ctx = canvasRef.current.getContext("2d");
-            // testing
-            ctx.fillStyle = '#04AA6D';
-            ctx.strokeStyle = '#04AA6D';
-            ctx.beginPath();
-            ctx.arc(50, 50, 20, 0, 2 * Math.PI);
-            ctx.stroke();
-            ctx.fill();
+            drawPose(canvasRef, results);
         }
     };
 
@@ -37,8 +65,10 @@ const PoseDetWebcam = ({ styleProps }) => {
         return webcamRef &&
             webcamRef.current &&
             webcamRef.current.video.readyState === 4 &&
+            (webcamRef.current.video.webkitDecodedFrameCount
+                || webcamRef.current.video.mozDecodedFrames) &&
             canvasRef &&
-            canvasRef.current
+            canvasRef.current;
     };
 
     const doPredictionsCanvasSetup = () => {
@@ -54,10 +84,6 @@ const PoseDetWebcam = ({ styleProps }) => {
         canvasRef.current.height = videoHeight;
     };
 
-    useEffect(() => {
-        startPredictions();
-    }, []);
-
     const getVideoConstraints = () => {
         if (webcamId) {
             return { deviceId: webcamId }
@@ -72,6 +98,7 @@ const PoseDetWebcam = ({ styleProps }) => {
                 videoConstraints={getVideoConstraints()}
                 mirrored={true}
                 className={"webcam"}
+                id={"webcam"}
                 ref={webcamRef}
                 muted={true}
                 style={{
@@ -81,6 +108,7 @@ const PoseDetWebcam = ({ styleProps }) => {
                     height: "auto",
                     zindex: 9,
                     // params
+                    ...sizeProps,
                     ...styleProps,
                 }}
             />
@@ -94,7 +122,7 @@ const PoseDetWebcam = ({ styleProps }) => {
                     height: "auto",
                     zindex: 8,
                     // params
-                    ...styleProps,
+                    ...sizeProps,
                 }}
             />
         </>
