@@ -5,6 +5,7 @@ import packageJson from '../package.json';
 import { brightFontCol } from "GlobalStyles";
 import {
     MGLLogo,
+    MGLSmallLogo,
     MoralisLogo,
     AvaxLogo,
     CoderDitiLogo,
@@ -13,7 +14,6 @@ import {
 } from "Logos";
 const { Footer } = Layout;
 
-const topFooterSpan = 2;
 const secFooterSpan = 4;
 
 export const AppFooter = ({ style }) => {
@@ -37,9 +37,13 @@ export const AppFooter = ({ style }) => {
                 <Col span={secFooterSpan} style={{
                     textAlign: "left",
                 }}>
-                    <MGLLogo width={"149"} height={"53"} />
+                    <MGLSmallLogo
+                        width={"25"}
+                        height={"25"}
+                        viewBox={"0 0 16 16"}
+                    />
                 </Col>
-                
+
                 <Col span={secFooterSpan}>
                     <Text style={{ color: brightFontCol }}>
                         Built with {" "}<br />
@@ -97,7 +101,7 @@ export const AppFooter = ({ style }) => {
                         </a>
                     </Text>
                 </Col>
-                <Col span={secFooterSpan} 
+                <Col span={secFooterSpan}
                 // offset={20} 
                 >
                     <div style={{

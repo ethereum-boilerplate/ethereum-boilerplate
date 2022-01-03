@@ -1,10 +1,10 @@
-export const MGLLogo = ({ width = "149", height = "53" }) => (
+export const MGLLogo = ({ width = "139", height = "43", viewBox = "0 0 139 43" }) => (
     <svg
         xmlns="http://www.w3.org/2000/svg"
         width={width}
         height={height}
         fill="none"
-        viewBox="0 0 139 43"
+        viewBox={viewBox}
     >
         <path
             fill="#fff"
@@ -19,15 +19,37 @@ export const MGLLogo = ({ width = "149", height = "53" }) => (
     </svg>
 );
 
-// footer logos
-
-export const MoralisLogo = ({ width = "78", height = "25" }) => (
+export const MGLSmallLogo = ({ width = "16", height = "16", viewBox = "0 0 16 16" }) => (
     <svg
         xmlns="http://www.w3.org/2000/svg"
         width={width}
         height={height}
         fill="none"
-        viewBox="0 0 241 45"
+        viewBox={viewBox}
+    >
+        <path
+            fill="#fff"
+            d="M4.666 1.29l.178.792V9H3.176V1.29h1.49zm6.453-.083c.31 0 .602.064.875.191.274.119.51.292.711.52.21.228.37.501.479.82.118.31.177.647.177 1.012V9h-1.64V4.803c0-.31-.005-.602-.014-.875 0-.283-.027-.533-.082-.752a1.002 1.002 0 00-.273-.506c-.119-.128-.306-.191-.561-.191-.064 0-.2.013-.41.04-.21.028-.451.105-.725.233v-1.08c.246-.146.497-.26.752-.342.255-.082.492-.123.711-.123zM8.754 2.26c.11.164.187.342.232.533.055.182.087.374.096.574.018.2.023.41.014.63V9H7.44V4.803v-.875c0-.283-.027-.533-.082-.752a1.002 1.002 0 00-.273-.506c-.128-.128-.315-.191-.56-.191-.11 0-.274.022-.493.068-.21.036-.42.105-.629.205v-1.08c.22-.128.451-.233.698-.315.255-.082.505-.123.752-.123.419 0 .77.087 1.052.26.292.173.574.429.848.766z"
+        ></path>
+        <path
+            stroke="#F96F0B"
+            strokeLinecap="round"
+            strokeWidth="4"
+            d="M4 13h8"
+        ></path>
+    </svg>
+);
+
+
+// footer logos
+
+export const MoralisLogo = ({ width = "78", height = "25", viewBox = "0 0 241 45" }) => (
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={width}
+        height={height}
+        fill="none"
+        viewBox={viewBox}
     >
         <path
             fill="#fff"
@@ -52,13 +74,13 @@ export const MoralisLogo = ({ width = "78", height = "25" }) => (
     </svg>
 );
 
-export const AvaxLogo = ({ width = "110", height = "30" }) => (
+export const AvaxLogo = ({ width = "110", height = "30", viewBox = "0 0 398 103" }) => (
     <svg
         xmlns="http://www.w3.org/2000/svg"
         width={width}
         height={height}
         fill="none"
-        viewBox="0 0 398 103"
+        viewBox={viewBox}
     >
         <g clipPath="url(#clip0606)">
             <path
@@ -89,13 +111,13 @@ export const AvaxLogo = ({ width = "110", height = "30" }) => (
 );
 
 
-export const TfJSLogo = ({ width = "88", height = "25", textFill = "#425066" }) => (
+export const TfJSLogo = ({ width = "88", height = "25", textFill = "#425066", viewBox = "0 0 286 64" }) => (
     <svg
         width={width}
         height={height}
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
-        viewBox="0 0 286 64"
+        viewBox={viewBox}
     >
         <defs>
             <path
@@ -156,13 +178,12 @@ export const TfJSLogo = ({ width = "88", height = "25", textFill = "#425066" }) 
     </svg>
 );
 
-export const MediaPipeLogo = ({ width = "95", height = "25", textFill = "#263238" }) => (
+export const MediaPipeLogo = ({ width = "95", height = "25", textFill = "#263238", viewBox = "0 0 496 120" }) => (
     <svg
         xmlns="http://www.w3.org/2000/svg"
         width={width}
         height={height}
-        viewBox="0 0 496 120"
-    >
+        viewBox={viewBox}    >
         <g fill="none" fillRule="evenodd" stroke="none" strokeWidth="1">
             <g fill="#0097A7">
                 <circle cx="72" cy="24" r="8"></circle>
@@ -183,13 +204,13 @@ export const MediaPipeLogo = ({ width = "95", height = "25", textFill = "#263238
     </svg>
 );
 
-export const CoderDitiLogo = ({ width = "100", height = "30" }) => (
+export const CoderDitiLogo = ({ width = "100", height = "30", viewBox = "0 0 920 110" }) => (
     <svg
         xmlns="http://www.w3.org/2000/svg"
         width={width}
         height={height}
         fill="none"
-        viewBox="0 0 920 110"
+        viewBox={viewBox}
     >
         <path
             fill="#fff"
