@@ -29,12 +29,14 @@ export const AppFooter = () => {
             <Row style={{
                 textAlign: "right",
             }}>
-                <Col span={topFooterSpan} >
-                    <MGLLogo />
+                <Col span={topFooterSpan} style={{
+                    marginTop: "-0.3rem",
+                }}>
+                    <MGLLogo width={"149"} height={"53"} />
                 </Col>
                 <Col span={topFooterSpan} offset={20} >
                     <div style={{
-                        marginTop: "0.9rem",
+                        marginTop: "0.7rem",
                     }}>
                         <b>v{packageJson.version}</b>
                     </div>
@@ -47,6 +49,7 @@ export const AppFooter = () => {
                     textAlign: "center",
                     justifyContent: "center",
                     verticalAlign: "center",
+                    marginTop: "-2.8rem"
                 }}>
                 <Col span={secFooterSpan}>
                     <Text style={{ color: brightFontCol }}>
@@ -72,7 +75,9 @@ export const AppFooter = () => {
                         </a>
                     </Text>
                 </Col>
-                <Col span={secFooterSpan}>
+                <Col span={{
+                    ...secFooterSpan,
+                }}>
                     <Text style={{ color: brightFontCol }}>
                         AI Powered by<div>
                             <a

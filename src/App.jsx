@@ -58,6 +58,14 @@ const styles = {
     fontSize: "17px",
     fontWeight: "500",
   },
+  footer : {
+    width: "100%",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    fontFamily: "Roboto, sans-serif",
+    height: "60px",
+  },
 };
 
 const App = ({ isServerInfo }) => {
@@ -130,7 +138,7 @@ const App = ({ isServerInfo }) => {
           </Switch>
         </div>
       </Router>
-      <AppFooter />
+      <AppFooter style={styles.footer} />
     </Layout>
   );
 };
