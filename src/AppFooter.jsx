@@ -23,37 +23,23 @@ export const AppFooter = ({ style }) => {
         }}>
             <Divider style={{
                 backgroundColor: brightFontCol,
-                margin: "0"
+                margin: "0.5rem 0"
             }} />
+
             <Row
                 justify="space-between"
-                align="stretch"
-            >
-                <Col span={topFooterSpan} style={{
-                    marginTop: "-0.3rem",
-                }}>
-                    <MGLLogo width={"149"} height={"53"} />
-                </Col>
-                <Col span={topFooterSpan} offset={20} >
-                    <div style={{
-                        marginTop: "0.7rem",
-                        textAlign: "right",
-                    }}>
-                        <b>v{packageJson.version}</b>
-                    </div>
-                </Col>
-            </Row>
-            <Row
-                justify="center"
                 align="stretch"
                 style={{
                     alignItems: "center",
                     textAlign: "center",
-                    // justifyContent: "center",
-                    // verticalAlign: "center",
-                    marginTop: "-2.8rem"
                 }}
             >
+                <Col span={secFooterSpan} style={{
+                    textAlign: "left",
+                }}>
+                    <MGLLogo width={"149"} height={"53"} />
+                </Col>
+                
                 <Col span={secFooterSpan}>
                     <Text style={{ color: brightFontCol }}>
                         Built with {" "}<br />
@@ -110,6 +96,15 @@ export const AppFooter = ({ style }) => {
                             <CoderDitiLogo />
                         </a>
                     </Text>
+                </Col>
+                <Col span={secFooterSpan} 
+                // offset={20} 
+                >
+                    <div style={{
+                        textAlign: "right",
+                    }}>
+                        <b>v{packageJson.version}</b>
+                    </div>
                 </Col>
             </Row>
         </Footer>
