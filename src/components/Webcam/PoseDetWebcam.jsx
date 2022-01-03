@@ -92,24 +92,30 @@ const PoseDetWebcam = ({ sizeProps, styleProps }) => {
     }
 
     return (
-        <>
+        <div style={{
+            display: "grid",
+            gridTemplateRows: "1fr",
+            gridTemplateColumns: "1fr",
+            gridTemplateAreas: "overlap",
+        }}>
             <Webcam
                 audio={false}
                 videoConstraints={getVideoConstraints()}
                 mirrored={true}
                 className={"webcam"}
-                id={"webcam"}
                 ref={webcamRef}
                 muted={true}
                 style={{
                     objectFit: "cover",
                     borderRadius: "1rem",
-                    position: "absolute",
-                    height: "auto",
-                    zindex: 9,
+                    zIndex: 8,
                     // params
                     ...sizeProps,
                     ...styleProps,
+                    // grid props
+                    gridArea: "overlap",
+                    alignSelf: "center",
+                    justifySelf: "center",
                 }}
             />
             <canvas
@@ -118,14 +124,16 @@ const PoseDetWebcam = ({ sizeProps, styleProps }) => {
                 style={{
                     objectFit: "cover",
                     borderRadius: "1rem",
-                    position: "absolute",
-                    height: "auto",
-                    zindex: 8,
+                    zIndex: 9,
                     // params
                     ...sizeProps,
+                    // grid props
+                    gridArea: "overlap",
+                    alignSelf: "center",
+                    justifySelf: "center",
                 }}
             />
-        </>
+        </div>
     );
 }
 

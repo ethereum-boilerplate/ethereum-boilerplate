@@ -22,7 +22,10 @@ const styles = {
         background: "none",
         color: brightFontCol,
         lineHeight: "1.4",
-        padding: "1rem",
+        justifyContent: "center",
+        width: "45%",
+        margin: "0",
+        padding: "0",
     },
     btnDiv: {
         display: "flex",
@@ -43,21 +46,12 @@ const PlaySetupPage = () => {
             boxShadow: "0 0 20px 2px #020811",
             backgroundColor: "#042946",
             borderRadius: "1rem",
-            padding: "1rem 1rem",
+            padding: "3rem 0 3rem 0",
+            marginTop: "1.5rem",
         }}>
-            <PoseDetWebcam
-                sizeProps={{
-                    width: "20%",
-                    top: "12%",
-                    left: "50%",
-                }}
-                styleProps={{
-                    boxShadow: "0 0 10px 2px #202020",
-                }}
-            />
             <div style={{
                 display: "flex",
-                justifyContent: "space-evenly",
+                justifyContent: "center",
             }}>
                 <Card style={{
                     ...styles.card
@@ -69,13 +63,14 @@ const PlaySetupPage = () => {
                         <b>Welcome!</b>
                     </h1>
                     <div style={{
-                        padding: "2rem 2rem",
+                        padding: "1rem 0",
                         textAlign: "center",
                         margin: "1.5rem 0",
                         border: "3px solid #d3d3d3",
                         borderRadius: "1rem",
                         backgroundColor: "#FFF",
-                        paddingBottom: "1rem"
+                        paddingBottom: "1rem",
+                        width: "82%",
                     }}>
                         <Image
                             preview={false}
@@ -100,16 +95,21 @@ const PlaySetupPage = () => {
                 <Card style={{
                     ...styles.card
                 }}>
-                    <div style={{
-                        ...BreakFlexDiv,
-                        paddingTop: "15rem",
-                    }}></div>
+                    <PoseDetWebcam
+                        sizeProps={{
+                            width: "92%",
+                            height: "auto",
+                            margin: "0",
+                        }}
+                        styleProps={{
+                            boxShadow: "0 0 10px 2px #202020",
+                        }}
+                    />
 
                     <div style={{
-                        padding: "2rem 2rem",
+                        padding: "2rem 0",
                         textAlign: "center",
                         margin: "1.5rem 0",
-                        paddingTop: "4rem",
                     }}>
                         <p style={{
                             textAlign: "center",
