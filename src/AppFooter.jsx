@@ -3,7 +3,14 @@ import Text from "antd/lib/typography/Text";
 import { Row, Col } from 'antd';
 import packageJson from '../package.json';
 import { brightFontCol } from "GlobalStyles";
-import { MGLLogo, MoralisLogo, AvaxLogo, CoderDitiLogo, TfJSLogo } from "Logos";
+import {
+    MGLLogo,
+    MoralisLogo,
+    AvaxLogo,
+    CoderDitiLogo,
+    TfJSLogo,
+    MediaPipeLogo
+} from "Logos";
 const { Footer } = Layout;
 
 const topFooterSpan = 2;
@@ -67,14 +74,21 @@ export const AppFooter = () => {
                 </Col>
                 <Col span={secFooterSpan}>
                     <Text style={{ color: brightFontCol }}>
-                        AI Powered by {" "}
-                        <a
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            href="https://www.tensorflow.org/js"
-                        >
-                            <TfJSLogo />
-                        </a>
+                        AI Powered by<div>
+                            <a
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                href="https://www.tensorflow.org/js"
+                            >
+                                <TfJSLogo textFill={"#FFF"} />
+                            </a>
+                            <a
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                href="https://mediapipe.dev"
+                            >
+                                <MediaPipeLogo textFill={"#FFF"} />
+                            </a></div>
                     </Text>
                 </Col>
                 <Col span={secFooterSpan}>
