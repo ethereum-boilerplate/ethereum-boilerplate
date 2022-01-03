@@ -3519,6 +3519,11 @@ bignumber.js@^9.0.0:
   resolved "https://registry.yarnpkg.com/bignumber.js/-/bignumber.js-9.0.1.tgz#8d7ba124c882bfd8e43260c67475518d0689e4e5"
   integrity sha512-IdZR9mh6ahOBv/hYGiXyVuyCetmGJhtYkqLBpTStdhEGjegpPlUawydyaF3pbIOFynJTpllEs+NP+CS9jKFLjA==
 
+bignumber.js@^9.0.2:
+  version "9.0.2"
+  resolved "https://registry.yarnpkg.com/bignumber.js/-/bignumber.js-9.0.2.tgz#71c6c6bed38de64e24a65ebe16cfcf23ae693673"
+  integrity sha512-GAcQvbpsM0pUb0zw1EI0KhQEZ+lRwR5fYaAp3vPOYuP7aDvGy6cVN6XHLauvF8SOga2y0dcLcjt3iQDTSEliyw==
+
 binary-extensions@^1.0.0:
   version "1.13.1"
   resolved "https://registry.yarnpkg.com/binary-extensions/-/binary-extensions-1.13.1.tgz#598afe54755b2868a5330d2aff9d4ebb53209b65"
@@ -9269,15 +9274,16 @@ moment@^2.24.0, moment@^2.25.3:
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.1.tgz#b2be769fa31940be9eeea6469c075e35006fa3d3"
   integrity sha512-kHmoybcPV8Sqy59DwNDY3Jefr64lK/by/da0ViFcuA4DH0vQg5Q6Ze5VimxkfQNSC+Mls/Kx53s7TjP1RhFEDQ==
 
-moralis@^0.0.178:
-  version "0.0.178"
-  resolved "https://registry.yarnpkg.com/moralis/-/moralis-0.0.178.tgz#9354d3159d5426f4c74dd9a264abe1b5637b0bfc"
-  integrity sha512-DpeILfgiQLh8/dPuu9CCZLU3wc5zKrHUjGyJVKsqDUrXhrITQWWryr7pQ4BTEppWmz7/mlEUT6+sogkUzMhFRw==
+moralis@^0.0.181:
+  version "0.0.181"
+  resolved "https://registry.yarnpkg.com/moralis/-/moralis-0.0.181.tgz#e496690a5d5182619037a5f845240dbf55de529a"
+  integrity sha512-h+kS7xblfHhqRZ5KEVuNYLXgzeSLQOobvzOHOOwTHSPIoUbQ3xeALz+mHZmCavNuSdam2yTWizIItLNDViO9ew==
   dependencies:
     "@babel/runtime" "^7.16.5"
     "@babel/runtime-corejs3" "^7.16.5"
     "@metamask/detect-provider" "^1.2.0"
     axios "^0.24.0"
+    bignumber.js "^9.0.2"
     lint-staged "^12.1.2"
     react-native-crypto-js "1.0.0"
     uuid "^8.3.2"
