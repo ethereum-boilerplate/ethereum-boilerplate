@@ -28,9 +28,7 @@ export const AppFooter = ({ style }) => {
             <Row
                 justify="space-between"
                 align="stretch"
-                style={{
-                    textAlign: "right",
-                }}>
+            >
                 <Col span={topFooterSpan} style={{
                     marginTop: "-0.3rem",
                 }}>
@@ -39,6 +37,7 @@ export const AppFooter = ({ style }) => {
                 <Col span={topFooterSpan} offset={20} >
                     <div style={{
                         marginTop: "0.7rem",
+                        textAlign: "right",
                     }}>
                         <b>v{packageJson.version}</b>
                     </div>
