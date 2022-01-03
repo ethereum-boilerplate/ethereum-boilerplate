@@ -58,13 +58,11 @@ const styles = {
     fontSize: "17px",
     fontWeight: "500",
   },
-  footer : {
+  footer: {
     width: "100%",
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    fontFamily: "Roboto, sans-serif",
-    height: "60px",
+    padding: "0 35px",
+    background: "none",
+    color: brightFontCol,
   },
 };
 

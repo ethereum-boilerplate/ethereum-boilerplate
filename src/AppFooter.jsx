@@ -14,21 +14,23 @@ import {
 const { Footer } = Layout;
 
 const topFooterSpan = 2;
-const secFooterSpan = 2;
+const secFooterSpan = 4;
 
-export const AppFooter = () => {
+export const AppFooter = ({ style }) => {
     return (
         <Footer style={{
-            background: "none",
-            color: brightFontCol
+            ...style
         }}>
             <Divider style={{
                 backgroundColor: brightFontCol,
                 margin: "0"
             }} />
-            <Row style={{
-                textAlign: "right",
-            }}>
+            <Row
+                justify="space-between"
+                align="stretch"
+                style={{
+                    textAlign: "right",
+                }}>
                 <Col span={topFooterSpan} style={{
                     marginTop: "-0.3rem",
                 }}>
@@ -43,17 +45,19 @@ export const AppFooter = () => {
                 </Col>
             </Row>
             <Row
-                justify="space-around"
+                justify="center"
+                align="stretch"
                 style={{
                     alignItems: "center",
                     textAlign: "center",
-                    justifyContent: "center",
-                    verticalAlign: "center",
+                    // justifyContent: "center",
+                    // verticalAlign: "center",
                     marginTop: "-2.8rem"
-                }}>
+                }}
+            >
                 <Col span={secFooterSpan}>
                     <Text style={{ color: brightFontCol }}>
-                        Built with {" "}
+                        Built with {" "}<br />
                         <a
                             target="_blank"
                             rel="noopener noreferrer"
@@ -65,7 +69,7 @@ export const AppFooter = () => {
                 </Col>
                 <Col span={secFooterSpan}>
                     <Text style={{ color: brightFontCol }}>
-                        Powered by {" "}
+                        Powered by {" "}<br />
                         <a
                             target="_blank"
                             rel="noopener noreferrer"
@@ -86,7 +90,7 @@ export const AppFooter = () => {
                                 href="https://www.tensorflow.org/js"
                             >
                                 <TfJSLogo textFill={"#FFF"} />
-                            </a>
+                            </a>&nbsp;&nbsp;
                             <a
                                 target="_blank"
                                 rel="noopener noreferrer"
@@ -98,7 +102,7 @@ export const AppFooter = () => {
                 </Col>
                 <Col span={secFooterSpan}>
                     <Text style={{ color: brightFontCol }}>
-                        Coded by {" "}
+                        Coded by {" "}<br />
                         <a
                             target="_blank"
                             rel="noopener noreferrer"

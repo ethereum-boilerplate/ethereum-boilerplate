@@ -21,7 +21,7 @@ export const MGLLogo = ({ width = "149", height = "53" }) => (
 
 // footer logos
 
-export const MoralisLogo = ({ width = "85", height = "25" }) => (
+export const MoralisLogo = ({ width = "78", height = "25" }) => (
     <svg
         xmlns="http://www.w3.org/2000/svg"
         width={width}
@@ -52,7 +52,7 @@ export const MoralisLogo = ({ width = "85", height = "25" }) => (
     </svg>
 );
 
-export const AvaxLogo = ({ width = "100", height = "30" }) => (
+export const AvaxLogo = ({ width = "110", height = "30" }) => (
     <svg
         xmlns="http://www.w3.org/2000/svg"
         width={width}
@@ -89,7 +89,7 @@ export const AvaxLogo = ({ width = "100", height = "30" }) => (
 );
 
 
-export const TfJSLogo = ({ width = "90", height = "25", textFill = "#425066" }) => (
+export const TfJSLogo = ({ width = "88", height = "25", textFill = "#425066" }) => (
     <svg
         width={width}
         height={height}
@@ -156,7 +156,7 @@ export const TfJSLogo = ({ width = "90", height = "25", textFill = "#425066" }) 
     </svg>
 );
 
-export const MediaPipeLogo = ({ width = "90", height = "25", textFill = "#263238" }) => (
+export const MediaPipeLogo = ({ width = "95", height = "25", textFill = "#263238" }) => (
     <svg
         xmlns="http://www.w3.org/2000/svg"
         width={width}
