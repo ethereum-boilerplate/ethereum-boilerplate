@@ -40,7 +40,7 @@ const PoseDetWebcam = ({ sizeProps, styleProps }) => {
                     poseDetector.reset();
                     noCamError = false;
                     camErrCnt += 1;
-                    const wait = 1000 * camErrCnt
+                    const wait = 300 * camErrCnt
                     console.error(
                         `error catched, resetting the AI 
                         and waiting for ${wait / 1000} seconds`,
