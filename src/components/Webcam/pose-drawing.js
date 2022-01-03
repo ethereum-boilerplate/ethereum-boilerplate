@@ -6,6 +6,7 @@ import {
 
 const IDLE_POSE_LANDMARKS_COLOR = "#FF0000";
 const IDLE_POSE_LINES_COLOR = "#00FF00";
+const VisibilityMin = 0.65;
 
 export const drawPose = (canvasRef, results) => {
     // Get Canvas
@@ -32,7 +33,11 @@ export const drawPose = (canvasRef, results) => {
     canvasCtx.globalCompositeOperation = 'source-over';
     if (results.poseLandmarks) {
         drawConnectors(canvasCtx, results.poseLandmarks, POSE_CONNECTIONS,
-            { color: IDLE_POSE_LINES_COLOR, lineWidth: 4, visibilityMin: 0.5 });
+            {
+                color: IDLE_POSE_LINES_COLOR,
+                lineWidth: 4,
+                visibilityMin: VisibilityMin,
+            });
 
         // left
         drawLandmarks(canvasCtx, Object.values(POSE_LANDMARKS_LEFT)
@@ -40,7 +45,7 @@ export const drawPose = (canvasRef, results) => {
             {
                 color: IDLE_POSE_LANDMARKS_COLOR,
                 lineWidth: 4,
-                visibilityMin: 0.5
+                visibilityMin: VisibilityMin,
             });
         // right
         drawLandmarks(canvasCtx, Object.values(POSE_LANDMARKS_RIGHT)
@@ -48,7 +53,7 @@ export const drawPose = (canvasRef, results) => {
             {
                 color: 'rgb(0,217,231)',
                 lineWidth: 4,
-                visibilityMin: 0.5
+                visibilityMin: VisibilityMin,
             });
         // neutral
         drawLandmarks(canvasCtx, Object.values(POSE_LANDMARKS_NEUTRAL)
@@ -56,7 +61,7 @@ export const drawPose = (canvasRef, results) => {
             {
                 color: 'white', fillColor: 'rgb(0,217,231)',
                 lineWidth: 4,
-                visibilityMin: 0.5
+                visibilityMin: VisibilityMin,
             });
 
         const le = {
@@ -70,7 +75,7 @@ export const drawPose = (canvasRef, results) => {
             {
                 color: 'white', fillColor: 'black',
                 lineWidth: 4,
-                visibilityMin: 0.5
+                visibilityMin: VisibilityMin,
             });
 
         const re = {
@@ -83,7 +88,7 @@ export const drawPose = (canvasRef, results) => {
             {
                 color: 'white', fillColor: 'black',
                 lineWidth: 4,
-                visibilityMin: 0.5
+                visibilityMin: VisibilityMin,
             });
     }
     canvasCtx.restore();

@@ -10,14 +10,21 @@ const SelectWebcam = ({ width = "auto" }) => {
     const [videoDevices, setVideoDevices] = useState([]);
 
     const handleDevices = useCallback(
-        mediaDevices =>
-            setVideoDevices(mediaDevices.filter(({ kind }) => kind === "videoinput")),
+        mediaDevices => {
+            const videoDevices = mediaDevices
+                .filter(({ kind }) => kind === "videoinput");
+            setVideoDevices(videoDevices);
+        },
         [setVideoDevices]
     );
 
     useEffect(
         () => {
-            navigator.mediaDevices.enumerateDevices().then(handleDevices);
+            navigator.mediaDevices.getUserMedia({ video: true, audio: false })
+                .then(s => {
+                    navigator.mediaDevices.enumerateDevices()
+                        .then(handleDevices);
+                });
         },
         [handleDevices]
     );
@@ -26,13 +33,14 @@ const SelectWebcam = ({ width = "auto" }) => {
         console.log('selecteDeviceId', selecteDeviceId);
         setWebcamId(selecteDeviceId);
     };
+
     return videoDevices.length > 0 && (
         <>
             <VideoCameraFilled style={{
                 fontSize: "1.2rem",
             }} />&nbsp;&nbsp;
             <Select
-                defaultValue={webcamId}
+                value={webcamId}
                 style={{
                     width: width,
                     borderRadius: "1rem",

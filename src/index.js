@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import { MoralisProvider } from "react-moralis";
@@ -47,19 +47,21 @@ const PoseDetectorCtxProvider = ({ children }) => {
       return path;
     }
   });
+  const ConfidenceScore = 0.65;
   poseDetector.setOptions({
     modelComplexity: 0,
     smoothLandmarks: true,
     selfieMode: true,
     //   enableSegmentation: true,
     // smoothSegmentation: true,
-    minDetectionConfidence: 0.5,
-    minTrackingConfidence: 0.5
+    minDetectionConfidence: ConfidenceScore,
+    minTrackingConfidence: ConfidenceScore,
   });
 
   useEffect(() => {
     console.log('poseDetector loaded', poseDetector);
     poseDetector.initialize();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (

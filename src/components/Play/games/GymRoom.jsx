@@ -7,8 +7,6 @@ import { WebcamCtx } from "index";
 import PoseDetWebcam from "components/Webcam/PoseDetWebcam";
 
 const menuHeight = 60;
-// keeping for reference
-const contentMargin = 40;
 
 const setWidthAndHeight = () => {
     let width = window.innerWidth;

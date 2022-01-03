@@ -13,9 +13,31 @@ const PoseDetWebcam = ({ sizeProps, styleProps }) => {
     console.log('PoseDetWebcam webcamRef', webcamRef);
     console.log('PoseDetWebcam webcamId', webcamId);
 
-    useEffect(async () => {
+    useEffect(() => {
         poseDetector.onResults(onResults);
-        startPredictions()
+        startPredictions();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    const getDeviceId = () => {
+        return webcamRef?.current?.stream?.getVideoTracks()?.[0]?.getSettings()?.deviceId;
+    }
+
+    useEffect(() => {
+        const checkCurWebcamId = setInterval(() => {
+            if (!webcamId) {
+                const deviceId = getDeviceId();
+                console.log(
+                    'webcamId is empty', webcamId);
+                console.log('inferring current webcamId', deviceId);
+                if (deviceId) {
+                    setWebcamId(deviceId);
+                    console.log('clear checkCurWebcamId', checkCurWebcamId);
+                    clearInterval(checkCurWebcamId);
+                }
+            }
+        }, 1000);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     let then = Date.now();
@@ -40,7 +62,7 @@ const PoseDetWebcam = ({ sizeProps, styleProps }) => {
                     poseDetector.reset();
                     noCamError = false;
                     camErrCnt += 1;
-                    const wait = 300 * camErrCnt
+                    const wait = 500 * camErrCnt
                     console.error(
                         `error catched, resetting the AI 
                         and waiting for ${wait / 1000} seconds`,
@@ -65,8 +87,6 @@ const PoseDetWebcam = ({ sizeProps, styleProps }) => {
         return webcamRef &&
             webcamRef.current &&
             webcamRef.current.video.readyState === 4 &&
-            (webcamRef.current.video.webkitDecodedFrameCount
-                || webcamRef.current.video.mozDecodedFrames) &&
             canvasRef &&
             canvasRef.current;
     };
@@ -85,7 +105,10 @@ const PoseDetWebcam = ({ sizeProps, styleProps }) => {
     };
 
     const getVideoConstraints = () => {
-        if (webcamId) {
+        // if it is the same device do not force re-render
+        if (webcamId && webcamId === getDeviceId()) {
+            return {}
+        } else if (webcamId) {
             return { deviceId: webcamId }
         }
         return {}

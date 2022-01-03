@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext } from "react";
 import { AvatarCtx } from "index";
 import { Redirect } from "react-router";
 import { Image, Card, Button } from "antd";

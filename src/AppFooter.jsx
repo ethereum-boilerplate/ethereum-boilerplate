@@ -4,7 +4,6 @@ import { Row, Col } from 'antd';
 import packageJson from '../package.json';
 import { brightFontCol } from "GlobalStyles";
 import {
-    MGLLogo,
     MGLSmallLogo,
     MoralisLogo,
     AvaxLogo,
