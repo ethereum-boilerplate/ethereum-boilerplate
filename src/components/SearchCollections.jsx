@@ -2,10 +2,14 @@ import { Select } from 'antd'
 import { useMoralisDapp } from 'providers/MoralisDappProvider/MoralisDappProvider'
 import { getCollectionsByChain } from 'helpers/collections'
 
-function SearchCollections() {
+function SearchCollections({setInputValue}) {
     const { Option } = Select;
     const { chainId } = useMoralisDapp();
     const NFTCollections = getCollectionsByChain(chainId);
+
+    function onChange(value) {
+        setInputValue(value)
+    }
 
     return(
         <>
@@ -14,12 +18,11 @@ function SearchCollections() {
             style={{width: "1080px", marginLeft: "20px"}}
             placeholder="Find a Collection"
             optionFilterProp="Children"
+            onChange={onChange}
         >
         {NFTCollections && NFTCollections.map((collection, i) =>
-        <Option value={collection.addrs} key={i}>Collection Name</Option>
+        <Option value={collection.addrs} key={i}>{collection.name}</Option>
         )}
-
-
         </Select>
         </>
     )

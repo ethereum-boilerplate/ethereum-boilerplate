@@ -53,7 +53,7 @@ const App = ({ isServerInfo }) => {
   const { isWeb3Enabled, enableWeb3, isAuthenticated, isWeb3EnableLoading } =
     useMoralis();
 
-  const [inputValue, setInputValue] = useState("0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D");
+  const [inputValue, setInputValue] = useState("market");
 
   useEffect(() => {
     if (isAuthenticated && !isWeb3Enabled && !isWeb3EnableLoading) enableWeb3();
@@ -65,7 +65,7 @@ const App = ({ isServerInfo }) => {
       <Router>
         <Header style={styles.header}>
           <Logo />
-          <SearchCollections />
+          <SearchCollections setInputValue={setInputValue}/>
           <Menu
             theme="light"
             mode="horizontal"
@@ -97,7 +97,7 @@ const App = ({ isServerInfo }) => {
         <div style={styles.content}>
           <Switch>
           <Route path="/market">
-              <NFTTokenIds inputValue={inputValue}/>
+              <NFTTokenIds inputValue={inputValue} setInputValue={setInputValue} />
             </Route>
             <Route path="/nftBalance">
               <NFTBalance />
