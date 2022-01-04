@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useMoralis } from "react-moralis";
 import { Card, Image, Tooltip, Modal, Input } from "antd";
-import { useNFTBalance } from "hooks/useNFTBalance";
+import { useNFTTokenIds } from "hooks/useNFTTokenIds";
 import { FileSearchOutlined, SendOutlined, ShoppingCartOutlined } from "@ant-design/icons";
 import { useMoralisDapp } from "providers/MoralisDappProvider/MoralisDappProvider";
 import { getExplorer } from "helpers/networks";
@@ -20,8 +20,8 @@ const styles = {
   },
 };
 
-function NFTBalance() {
-  const { NFTBalance } = useNFTBalance();
+function NFTTokenIds({ inputValue, setInputValue }) {
+  const { NFTTokenIds } = useNFTTokenIds(inputValue);
   const { chainId } = useMoralisDapp();
   const { Moralis } = useMoralis();
   const [visible, setVisibility] = useState(false);
@@ -63,12 +63,12 @@ function NFTBalance() {
     setAmount(e.target.value);
   };
 
-  console.log(NFTBalance);
+  console.log(NFTTokenIds);
   return (
     <>
       <div style={styles.NFTs}>
-        {NFTBalance &&
-          NFTBalance.map((nft, index) => (
+        {NFTTokenIds &&
+          NFTTokenIds.map((nft, index) => (
             <Card
               hoverable
               actions={[
@@ -116,4 +116,4 @@ function NFTBalance() {
   );
 }
 
-export default NFTBalance;
+export default NFTTokenIds;
