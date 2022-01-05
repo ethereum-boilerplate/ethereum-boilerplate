@@ -20,8 +20,8 @@ const SceneConfig = {
     key: GYM_ROOM_SCENE,
 };
 
-const mapScale = 1.2;
-const tileMapSizing = 16;
+const mapScale = 0.58;
+const tileMapSizing = 36;
 
 export class GymRoomScene extends Phaser.Scene {
     constructor() {
@@ -44,22 +44,22 @@ export class GymRoomScene extends Phaser.Scene {
 
         // map
         const map = this.make.tilemap({
-            key: GYM_ROOM_DANGEON_MAP,
+            key: GYM_ROOM_MAP,
             tileWidth: tileMapSizing,
             tileHeight: tileMapSizing,
         })
 
         const tileset_main = map.addTilesetImage(
-            GYM_ROOM_DANGEON_TILES, // ? filename ?? name of the tileset in json file
-            GYM_ROOM_DANGEON_TILES, // key
+            'gym_room_sqrs', // ? filename ?? name of the tileset in json file
+            GYM_ROOM_TILES, // key
             tileMapSizing,
             tileMapSizing
         );
         const groundLayer = map
-            .createLayer('floor', tileset_main, (width / 4), 0);
+            .createLayer('floor', tileset_main, (width / 5), height * 0.05);
 
         const wallsLayer = map
-            .createLayer('walls', tileset_main, (width / 4), 0);
+            .createLayer('walls', tileset_main, (width / 5), height * 0.05);
         groundLayer.setScale(mapScale);
 
         // collide with all walls
