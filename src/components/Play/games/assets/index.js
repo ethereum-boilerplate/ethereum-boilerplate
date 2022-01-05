@@ -15,7 +15,7 @@ export const GYM_ROOM_DANGEON_TILES = 'dangeon';
 export const assets = [
   {
     key: BG,
-    src: 'assets/images/gym_floor.png',
+    src: 'assets/images/concrete.jpeg',
     type: 'IMAGE',
   },
   {
