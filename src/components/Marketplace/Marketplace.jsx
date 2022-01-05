@@ -9,26 +9,28 @@ import { Button } from "antd";
 import { BtnPrimary, BreakFlexDiv } from "../../GlobalStyles";
 
 function Marketplace() {
-
+  const { isAuthenticated } = useMoralis();
   const { chainId } = useMoralis();
   const NFTCollections = getCollectionsByChain(chainId);
 
   return (
     <div>
-      <div style={{
-        ...BreakFlexDiv,
-        marginLeft: "100%",
-        marginBottom: "1.8rem",
-      }}>
-        <Button
-          type="primary"
-          style={BtnPrimary}
-        >
-          <Link to="/your-transactions">
-            Your transactions
-          </Link>
-        </Button>
-      </div>
+      {isAuthenticated && (
+        <div style={{
+          ...BreakFlexDiv,
+          marginLeft: "100%",
+          marginBottom: "1.8rem",
+        }}>
+          <Button
+            type="primary"
+            style={BtnPrimary}
+          >
+            <Link to="/your-transactions">
+              Your transactions
+            </Link>
+          </Button>
+        </div>
+      )}
 
       <div style={{
         padding: "0",
