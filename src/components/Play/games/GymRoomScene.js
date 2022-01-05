@@ -20,7 +20,8 @@ const SceneConfig = {
     key: GYM_ROOM_SCENE,
 };
 
-const mapScale = 1.2
+const mapScale = 1.2;
+const tileMapSizing = 16;
 
 export class GymRoomScene extends Phaser.Scene {
     constructor() {
@@ -42,9 +43,18 @@ export class GymRoomScene extends Phaser.Scene {
             .setDisplaySize(width, height);
 
         // map
-        const map = this.make.tilemap({ key: GYM_ROOM_DANGEON_MAP })
+        const map = this.make.tilemap({
+            key: GYM_ROOM_DANGEON_MAP,
+            tileWidth: tileMapSizing,
+            tileHeight: tileMapSizing,
+        })
 
-        const tileset_main = map.addTilesetImage('dangeon', GYM_ROOM_DANGEON_TILES, 16, 16)
+        const tileset_main = map.addTilesetImage(
+            GYM_ROOM_DANGEON_TILES, // ? filename ?? name of the tileset in json file
+            GYM_ROOM_DANGEON_TILES, // key
+            tileMapSizing,
+            tileMapSizing
+        );
         const groundLayer = map
             .createLayer('floor', tileset_main, (width / 4), 0);
 
