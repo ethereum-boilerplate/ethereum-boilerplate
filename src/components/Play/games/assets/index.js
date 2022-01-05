@@ -1,6 +1,6 @@
 export const BG = 'gym_floor';
 export const FULLSCREEN = 'fullscreen';
-export const LEFT_CHEVRON = 'left_chevron';
+export const BACK_ARROW = 'back_arrow';
 export const CLICK = 'click';
 export const GYM_ROOM_MAP = 'gym_room';
 export const GYM_ROOM_TILES = 'gym_room_tiles';
@@ -15,13 +15,13 @@ export const GYM_ROOM_DANGEON_TILES = 'dangeon';
 export const assets = [
   {
     key: BG,
-    src: 'assets/images/gym_floor.png',
+    src: 'assets/images/concrete.jpeg',
     type: 'IMAGE',
   },
   {
-    key: LEFT_CHEVRON,
-    src: 'assets/icons/chevron_left.svg',
-    type: 'SVG',
+    key: BACK_ARROW,
+    src: 'assets/icons/back_arrow.png',
+    type: 'IMAGE',
   },
   {
     key: GYM_ROOM_MAP,
@@ -43,14 +43,14 @@ export const assets = [
     src: 'assets/tilemap_tiles/dangeon.png',
     type: 'TILEMAP_TILES',
   },
-  // {
-  //   key: GYM_ROOM_MAT_SKY,
-  //   src: 'assets/tilemap_tiles/mat_sky.png',
-  //   type: 'TILEMAP_TILES',
-  // },
-  // {
-  //   key: GYM_ROOM_MAT_SPACE,
-  //   src: 'assets/tilemap_tiles/mat_space.png',
-  //   type: 'TILEMAP_TILES',
-  // },
+  {
+    key: GYM_ROOM_MAT_SKY,
+    src: 'assets/tilemap_tiles/mat_sky.png',
+    type: 'TILEMAP_TILES',
+  },
+  {
+    key: GYM_ROOM_MAT_SPACE,
+    src: 'assets/tilemap_tiles/mat_space.png',
+    type: 'TILEMAP_TILES',
+  },
 ];

@@ -3,7 +3,7 @@ import { getGameWidth, getGameHeight, getRelative } from "./helpers";
 import { Player } from "./objects";
 import { PLAYER_KEY, PLAYER_SCALE, GYM_ROOM_SCENE } from "./shared";
 import {
-    LEFT_CHEVRON,
+    BACK_ARROW,
     BG,
     GYM_ROOM_MAP,
     GYM_ROOM_TILES,
@@ -20,7 +20,8 @@ const SceneConfig = {
     key: GYM_ROOM_SCENE,
 };
 
-const mapScale = 1.2
+const mapScale = 0.6;
+const tileMapSizing = 36;
 
 export class GymRoomScene extends Phaser.Scene {
     constructor() {
@@ -42,19 +43,64 @@ export class GymRoomScene extends Phaser.Scene {
             .setDisplaySize(width, height);
 
         // map
-        const map = this.make.tilemap({ key: GYM_ROOM_DANGEON_MAP })
+        const map = this.make.tilemap({
+            key: GYM_ROOM_MAP,
+            tileWidth: tileMapSizing,
+            tileHeight: tileMapSizing,
+        })
 
-        const tileset_main = map.addTilesetImage('dangeon', GYM_ROOM_DANGEON_TILES, 16, 16)
+        const tileset_main = map.addTilesetImage(
+            'gym_room_sqrs', // ? filename ?? name of the tileset in json file
+            GYM_ROOM_TILES, // key
+            tileMapSizing,
+            tileMapSizing
+        );
         const groundLayer = map
-            .createLayer('floor', tileset_main, (width / 4), 0);
+            .createLayer('floor', tileset_main, 
+            (width / 5), height * 0.02
+            );
 
         const wallsLayer = map
-            .createLayer('walls', tileset_main, (width / 4), 0);
+            .createLayer('walls', tileset_main, 
+            (width / 5), height * 0.02
+            );
         groundLayer.setScale(mapScale);
 
         // collide with all walls
         wallsLayer.setScale(mapScale);
         wallsLayer.setCollisionByExclusion([-1]);
+
+        const mat_sky = map.addTilesetImage(
+            'mat_sky', // ? filename ?? name of the tileset in json file
+            GYM_ROOM_MAT_SKY, // key
+            tileMapSizing,
+            tileMapSizing
+        );
+
+        const mat_space = map.addTilesetImage(
+            'mat_space', // ? filename ?? name of the tileset in json file
+            GYM_ROOM_MAT_SPACE, // key
+            tileMapSizing,
+            tileMapSizing
+        );
+
+        const itemsLayer = map
+            .createLayer('items', [tileset_main, mat_sky, mat_space],
+                (width / 5), (height * 0.02)
+                );
+        itemsLayer.setScale(mapScale);
+        // TODO check later
+        // itemsLayer.forEachTile(t => {
+        //     let spriteShadow = t
+        //     let scaleY = t
+        //     spriteShadow.y = spriteShadow.y + (spriteShadow.height * (1 - scaleY)) / 2;
+        //     spriteShadow.scaleY = scaleY;
+        //     spriteShadow.tint = 0x000000;
+        //     spriteShadow.alpha = 0.5;
+        //     spriteShadow.setPipeline("skewQuad");
+        //     spriteShadow.pipeline.set1f("inHorizontalSkew", 0.2);
+        // })
+        // itemsLayer.setCollisionByExclusion([-1]);
 
         // back btn   
         // uncomment if you want to have sound on exit
@@ -69,6 +115,7 @@ export class GymRoomScene extends Phaser.Scene {
             key: PLAYER_KEY,
         });
         this.player.setScale(PLAYER_SCALE);
+        // this.cameras.main.startFollow(this.player);
 
         // colliders
         this.physics.add.collider(this.player, wallsLayer);
@@ -76,7 +123,7 @@ export class GymRoomScene extends Phaser.Scene {
 
     createBackButton = () => {
         this.add
-            .image(getRelative(10, this), getRelative(24, this), LEFT_CHEVRON)
+            .image(getRelative(10, this), getRelative(24, this), BACK_ARROW)
             .setOrigin(0)
             .setInteractive({ useHandCursor: true })
             .setDisplaySize(getRelative(54, this), getRelative(54, this))
