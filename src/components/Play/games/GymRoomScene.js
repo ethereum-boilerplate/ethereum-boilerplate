@@ -20,7 +20,7 @@ const SceneConfig = {
     key: GYM_ROOM_SCENE,
 };
 
-const mapScale = 0.58;
+const mapScale = 0.6;
 const tileMapSizing = 36;
 
 export class GymRoomScene extends Phaser.Scene {
@@ -56,10 +56,14 @@ export class GymRoomScene extends Phaser.Scene {
             tileMapSizing
         );
         const groundLayer = map
-            .createLayer('floor', tileset_main, (width / 5), height * 0.05);
+            .createLayer('floor', tileset_main, 
+            (width / 5), height * 0.02
+            );
 
         const wallsLayer = map
-            .createLayer('walls', tileset_main, (width / 5), height * 0.05);
+            .createLayer('walls', tileset_main, 
+            (width / 5), height * 0.02
+            );
         groundLayer.setScale(mapScale);
 
         // collide with all walls
@@ -82,9 +86,10 @@ export class GymRoomScene extends Phaser.Scene {
 
         const itemsLayer = map
             .createLayer('items', [tileset_main, mat_sky, mat_space],
-                (width / 5), height * 0.05);
+                (width / 5), (height * 0.02)
+                );
         itemsLayer.setScale(mapScale);
-        itemsLayer.setCollisionByExclusion([-1]);
+        // itemsLayer.setCollisionByExclusion([-1]);
 
         // back btn   
         // uncomment if you want to have sound on exit
@@ -99,10 +104,10 @@ export class GymRoomScene extends Phaser.Scene {
             key: PLAYER_KEY,
         });
         this.player.setScale(PLAYER_SCALE);
+        // this.cameras.main.startFollow(this.player);
 
         // colliders
         this.physics.add.collider(this.player, wallsLayer);
-        this.physics.add.collider(this.player, itemsLayer);
     }
 
     createBackButton = () => {
