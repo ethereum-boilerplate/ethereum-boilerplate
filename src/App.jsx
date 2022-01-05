@@ -18,6 +18,7 @@ import { brightFontCol } from "GlobalStyles";
 import { MGLLogo } from "Logos";
 import { AppFooter } from "AppFooter";
 import PlayPage from "components/Play";
+import GymRoomSandbox from "components/Play/games/GymRoomSandbox";
 import PlaySetupPage from "components/Play/PlaySetupPage";
 import { mainBackground } from "GlobalStyles";
 
@@ -117,6 +118,9 @@ const App = ({ isServerInfo }) => {
             </Route>
             <Route path="/play">
               <PlayPage />
+            </Route>
+            <Route path="/sandbox-play">
+              <GymRoomSandbox />
             </Route>
             <Route path="/play-setup">
               <PlaySetupPage />

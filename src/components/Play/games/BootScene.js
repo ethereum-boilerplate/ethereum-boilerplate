@@ -131,6 +131,7 @@ export class BootScene extends Phaser.Scene {
                 this.load.image(file.key, file.src);
                 break;
             case "TILEMAP_MAP":
+                console.log('TILEMAP_MAP', file.key, file.src);
                 this.load.tilemapTiledJSON(file.key, file.src);
                 break;
             default:
