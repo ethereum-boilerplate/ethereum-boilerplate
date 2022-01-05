@@ -3,7 +3,7 @@ import { getGameWidth, getGameHeight, getRelative } from "./helpers";
 import { Player } from "./objects";
 import { PLAYER_KEY, PLAYER_SCALE, GYM_ROOM_SCENE } from "./shared";
 import {
-    LEFT_CHEVRON,
+    BACK_ARROW,
     BG,
     GYM_ROOM_MAP,
     GYM_ROOM_TILES,
@@ -89,6 +89,17 @@ export class GymRoomScene extends Phaser.Scene {
                 (width / 5), (height * 0.02)
                 );
         itemsLayer.setScale(mapScale);
+        // TODO check later
+        // itemsLayer.forEachTile(t => {
+        //     let spriteShadow = t
+        //     let scaleY = t
+        //     spriteShadow.y = spriteShadow.y + (spriteShadow.height * (1 - scaleY)) / 2;
+        //     spriteShadow.scaleY = scaleY;
+        //     spriteShadow.tint = 0x000000;
+        //     spriteShadow.alpha = 0.5;
+        //     spriteShadow.setPipeline("skewQuad");
+        //     spriteShadow.pipeline.set1f("inHorizontalSkew", 0.2);
+        // })
         // itemsLayer.setCollisionByExclusion([-1]);
 
         // back btn   
@@ -112,7 +123,7 @@ export class GymRoomScene extends Phaser.Scene {
 
     createBackButton = () => {
         this.add
-            .image(getRelative(10, this), getRelative(24, this), LEFT_CHEVRON)
+            .image(getRelative(10, this), getRelative(24, this), BACK_ARROW)
             .setOrigin(0)
             .setInteractive({ useHandCursor: true })
             .setDisplaySize(getRelative(54, this), getRelative(54, this))

@@ -1,6 +1,6 @@
 export const BG = 'gym_floor';
 export const FULLSCREEN = 'fullscreen';
-export const LEFT_CHEVRON = 'left_chevron';
+export const BACK_ARROW = 'back_arrow';
 export const CLICK = 'click';
 export const GYM_ROOM_MAP = 'gym_room';
 export const GYM_ROOM_TILES = 'gym_room_tiles';
@@ -19,9 +19,9 @@ export const assets = [
     type: 'IMAGE',
   },
   {
-    key: LEFT_CHEVRON,
-    src: 'assets/icons/chevron_left.svg',
-    type: 'SVG',
+    key: BACK_ARROW,
+    src: 'assets/icons/back_arrow.png',
+    type: 'IMAGE',
   },
   {
     key: GYM_ROOM_MAP,
