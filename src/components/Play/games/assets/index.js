@@ -43,14 +43,14 @@ export const assets = [
     src: 'assets/tilemap_tiles/dangeon.png',
     type: 'TILEMAP_TILES',
   },
-  // {
-  //   key: GYM_ROOM_MAT_SKY,
-  //   src: 'assets/tilemap_tiles/mat_sky.png',
-  //   type: 'TILEMAP_TILES',
-  // },
-  // {
-  //   key: GYM_ROOM_MAT_SPACE,
-  //   src: 'assets/tilemap_tiles/mat_space.png',
-  //   type: 'TILEMAP_TILES',
-  // },
+  {
+    key: GYM_ROOM_MAT_SKY,
+    src: 'assets/tilemap_tiles/mat_sky.png',
+    type: 'TILEMAP_TILES',
+  },
+  {
+    key: GYM_ROOM_MAT_SPACE,
+    src: 'assets/tilemap_tiles/mat_space.png',
+    type: 'TILEMAP_TILES',
+  },
 ];

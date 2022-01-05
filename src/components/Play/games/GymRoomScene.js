@@ -66,6 +66,26 @@ export class GymRoomScene extends Phaser.Scene {
         wallsLayer.setScale(mapScale);
         wallsLayer.setCollisionByExclusion([-1]);
 
+        const mat_sky = map.addTilesetImage(
+            'mat_sky', // ? filename ?? name of the tileset in json file
+            GYM_ROOM_MAT_SKY, // key
+            tileMapSizing,
+            tileMapSizing
+        );
+
+        const mat_space = map.addTilesetImage(
+            'mat_space', // ? filename ?? name of the tileset in json file
+            GYM_ROOM_MAT_SPACE, // key
+            tileMapSizing,
+            tileMapSizing
+        );
+
+        const itemsLayer = map
+            .createLayer('items', [tileset_main, mat_sky, mat_space],
+                (width / 5), height * 0.05);
+        itemsLayer.setScale(mapScale);
+        itemsLayer.setCollisionByExclusion([-1]);
+
         // back btn   
         // uncomment if you want to have sound on exit
         // this.back = this.sound.add(CLICK, { loop: false });
@@ -82,6 +102,7 @@ export class GymRoomScene extends Phaser.Scene {
 
         // colliders
         this.physics.add.collider(this.player, wallsLayer);
+        this.physics.add.collider(this.player, itemsLayer);
     }
 
     createBackButton = () => {
