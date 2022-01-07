@@ -6052,6 +6052,11 @@ eventemitter3@4.0.7, eventemitter3@^4.0.0, eventemitter3@^4.0.7:
   resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-4.0.7.tgz#2de9b68f6528d5644ef5c59526a1b4a07306169f"
   integrity sha512-8guHBZCwKnFhYdHr2ysuRWErTwhoN2X8XELRlrRwpmfeY2jjuUN4taQMsULKUVo1K4DvZl+0pgfyoysHxvmvEw==
 
+eventemitter3@^3.1.2:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-3.1.2.tgz#2d3d48f9c346698fce83a85d7d664e98535df6e7"
+  integrity sha512-tvtQIeLVHjDkJYnzf2dgVMxfuSGJeM/7UCG17TT4EumTfNtF+0nebF/4zWOIkCreAbtNqhGEboB6BWrwqNaw4Q==
+
 events@^3.0.0:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/events/-/events-3.3.0.tgz#31a95ad0a924e2d2c419a813aeb2c4e878ea7400"
@@ -9946,6 +9951,11 @@ pako@~1.0.5:
   resolved "https://registry.yarnpkg.com/pako/-/pako-1.0.11.tgz#6c9599d340d54dfd3946380252a35705a6b992bf"
   integrity sha512-4hLB8Py4zZce5s4yd9XzopqwVv/yGNhV1Bl8NTmCq1763HeK2+EwVTv+leGeL13Dnh2wfbqowVPXCIO0z4taYw==
 
+papaparse@^5.3.1:
+  version "5.3.1"
+  resolved "https://registry.yarnpkg.com/papaparse/-/papaparse-5.3.1.tgz#770b7a9124d821d4b2132132b7bd7dce7194b5b1"
+  integrity sha512-Dbt2yjLJrCwH2sRqKFFJaN5XgIASO9YOFeFP8rIBRG2Ain8mqk5r1M6DkfvqEVozVcz3r3HaUGw253hA1nLIcA==
+
 parallel-transform@^1.1.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/parallel-transform/-/parallel-transform-1.2.0.tgz#9049ca37d6cb2182c3b1d2c720be94d14a5814fc"
@@ -10112,6 +10122,15 @@ performance-now@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/performance-now/-/performance-now-2.1.0.tgz#6309f4e0e5fa913ec1c69307ae364b4b377c9e7b"
   integrity sha1-Ywn04OX6kT7BxpMHrjZLSzd8nns=
+
+phaser3-rex-plugins@^1.1.65:
+  version "1.1.65"
+  resolved "https://registry.yarnpkg.com/phaser3-rex-plugins/-/phaser3-rex-plugins-1.1.65.tgz#2db5c6c370f698c9f90b63332d12033a22973433"
+  integrity sha512-shMAKA+pGAzm5uo3SNppFfquSO4sjZF+qs3ZFniJpJDS1yPriUUoZKz9RkfzzjDEJ6kuEOCd50fTKeDAjoApRg==
+  dependencies:
+    eventemitter3 "^3.1.2"
+    papaparse "^5.3.1"
+    webfontloader "^1.6.28"
 
 phaser@^3.55.2:
   version "3.55.2"
@@ -14273,6 +14292,11 @@ web3@^1.6.1:
     web3-net "1.6.1"
     web3-shh "1.6.1"
     web3-utils "1.6.1"
+
+webfontloader@^1.6.28:
+  version "1.6.28"
+  resolved "https://registry.yarnpkg.com/webfontloader/-/webfontloader-1.6.28.tgz#db786129253cb6e8eae54c2fb05f870af6675bae"
+  integrity sha1-23hhKSU8tujq5UwvsF+HCvZnW64=
 
 webidl-conversions@^3.0.0:
   version "3.0.1"

@@ -2,7 +2,12 @@ import React, { useState, useEffect } from "react";
 import Phaser from "phaser";
 import { IonPhaser } from "@ion-phaser/react";
 import { GymRoomScene } from "./GymRoomScene";
+import { SpaceStretchScene } from "./SpaceStretchScene";
+import { FlyFitScene } from "./FlyFitScene";
+import { CosmicCardioScene } from "./CosmicCardioScene";
+
 import { BootScene } from "./BootScene";
+import UIPlugin from 'phaser3-rex-plugins/templates/ui/ui-plugin.js';
 
 const menuHeight = 60;
 
@@ -20,7 +25,8 @@ const setWidthAndHeight = () => {
 
 const getConfig = (mainScene) => {
     const [width, height] = setWidthAndHeight();
-    const Scenes = [BootScene, mainScene];
+    const Scenes = [BootScene, mainScene,
+        SpaceStretchScene, FlyFitScene, CosmicCardioScene];
 
     return {
         type: Phaser.AUTO,
@@ -35,6 +41,13 @@ const getConfig = (mainScene) => {
             mode: Phaser.Scale.NONE,
             width,
             height,
+        },
+        plugins: {
+            scene: [{
+                key: 'rexUI',
+                plugin: UIPlugin,
+                mapping: 'rexUI'
+            }]
         },
         scene: Scenes,
         // audio: {

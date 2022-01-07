@@ -10,6 +10,9 @@ export const GYM_ROOM_MAT_SPACE = 'gym_room_mat_space';
 export const GYM_ROOM_DANGEON_MAP = 'gym_land_dangeon';
 export const GYM_ROOM_DANGEON_TILES = 'dangeon';
 
+export const CONCRETE_BG = 'concrete';
+
+
 
 // Save all in game assets in the public folder
 export const assets = [
@@ -53,4 +56,9 @@ export const assets = [
     src: 'assets/tilemap_tiles/mat_space.png',
     type: 'TILEMAP_TILES',
   },
+  // {
+  //   key: CONCRETE_BG,
+  //   src: 'assets/tilemap_tiles/concrete.jpeg',
+  //   type: 'TILEMAP_TILES',
+  // },
 ];

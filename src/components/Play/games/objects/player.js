@@ -1,11 +1,13 @@
 import Phaser from "phaser";
 
-export class Player extends Phaser.GameObjects.Image {
+export class Player extends Phaser.GameObjects.Sprite {
     cursorKeys;
     speed = 200;
 
     constructor({ scene, x, y, key }) {
         super(scene, x, y, key);
+
+        // this.add.co
 
         // sprite
         this.setOrigin(0, 0);
@@ -20,7 +22,7 @@ export class Player extends Phaser.GameObjects.Image {
 
         // physics
         this.scene.physics.world.enable(this);
-        this.body.setCollideWorldBounds(true);
+        // this.body.setCollideWorldBounds(true);
 
         // input
         this.cursorKeys = scene.input.keyboard.createCursorKeys();
