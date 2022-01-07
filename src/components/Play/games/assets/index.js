@@ -16,11 +16,11 @@ export const CONCRETE_BG = 'concrete';
 
 // Save all in game assets in the public folder
 export const assets = [
-  {
-    key: BG,
-    src: 'assets/images/concrete.jpeg',
-    type: 'IMAGE',
-  },
+  // {
+  //   key: BG,
+  //   src: 'assets/images/concrete.jpeg',
+  //   type: 'IMAGE',
+  // },
   {
     key: BACK_ARROW,
     src: 'assets/icons/back_arrow.png',

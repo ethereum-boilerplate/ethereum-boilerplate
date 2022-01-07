@@ -32,6 +32,7 @@ const tileMapSizing = 36;
 const set = new Set();
 
 let sceneToGoOnXclick = null;
+const miniGames = ['space_stretch', 'fly_fit', 'cosmic_cardio'];
 
 export class GymRoomScene extends Phaser.Scene {
     constructor() {
@@ -215,13 +216,18 @@ export class GymRoomScene extends Phaser.Scene {
                 // and enable on exit on outer edge collider
                 if (!set.has(object.name)) {
                     sceneToGoOnXclick = object.name;
-                    hintTextBox.start(`clik X to play ${object.name} 🚀`, 50);
-                    // setTimeout(() => {
-                    //     if (hintTextBox) {
-                    //         hintTextBox.start("🤖", 50);
-                    //     }
-                    // }, 5000);
+                    hintTextBox.start(`🤖 press X to play ${object.name} 🚀`, 50);
+                    setTimeout(() => {
+                        if (hintTextBox) {
+                            hintTextBox.start("🤖", 50);
+                        }
+                    }, 5000);
                     set.add(object.name);
+                } else {
+                    // clear others
+                    miniGames
+                        .filter(i => i !== object.name)
+                        .forEach(i => set.delete(i))
                 }
             }, null, this);
         })
