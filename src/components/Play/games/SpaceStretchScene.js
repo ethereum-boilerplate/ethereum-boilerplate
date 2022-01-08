@@ -75,7 +75,7 @@ export class SpaceStretchScene extends Phaser.Scene {
             width * 0.05, height * 0.015,
             "SCORE: 0", textStyle);
         this.add.text(
-            width * 0.05, height * 0.035,
+            width * 0.05, height * 0.04,
             "press ESC to go back", {
             fontSize: '17px',
             fill: '#FFBE59',
