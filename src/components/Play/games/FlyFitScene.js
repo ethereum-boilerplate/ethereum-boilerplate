@@ -60,7 +60,6 @@ export class FlyFitScene extends Phaser.Scene {
         // this.createBackButton();
 
         // hint
-        // hint
         const hintTextBox = createTextBox(this,
             (width / 2) + width / 4, height * 0.025,
             { wrapWidth: 280 })

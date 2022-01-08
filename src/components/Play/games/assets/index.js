@@ -1,4 +1,3 @@
-export const BG = 'gym_floor';
 export const FULLSCREEN = 'fullscreen';
 export const BACK_ARROW = 'back_arrow';
 export const CLICK = 'click';
@@ -9,18 +8,16 @@ export const GYM_ROOM_MAT_SPACE = 'gym_room_mat_space';
 
 export const GYM_ROOM_DANGEON_MAP = 'gym_land_dangeon';
 export const GYM_ROOM_DANGEON_TILES = 'dangeon';
-
-export const CONCRETE_BG = 'concrete';
-
+export const ASTEROIDS = 'asteroids';
 
 
 // Save all in game assets in the public folder
 export const assets = [
-  // {
-  //   key: BG,
-  //   src: 'assets/images/concrete.jpeg',
-  //   type: 'IMAGE',
-  // },
+  {
+    key: ASTEROIDS,
+    src: `assets/images/${ASTEROIDS}.png`,
+    type: 'IMAGE',
+  },
   {
     key: BACK_ARROW,
     src: 'assets/icons/back_arrow.png',
@@ -56,9 +53,4 @@ export const assets = [
     src: 'assets/tilemap_tiles/mat_space.png',
     type: 'TILEMAP_TILES',
   },
-  // {
-  //   key: CONCRETE_BG,
-  //   src: 'assets/tilemap_tiles/concrete.jpeg',
-  //   type: 'TILEMAP_TILES',
-  // },
 ];
