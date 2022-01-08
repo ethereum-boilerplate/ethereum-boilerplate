@@ -74,6 +74,13 @@ export class SpaceStretchScene extends Phaser.Scene {
         this.scoreBoard = this.add.text(
             width * 0.05, height * 0.015,
             "SCORE: 0", textStyle);
+        this.add.text(
+            width * 0.05, height * 0.035,
+            "press ESC to go back", {
+            fontSize: '17px',
+            fill: '#FFBE59',
+            fontFamily: 'Orbitron'
+        });
 
         const asteroidGroupProps = {
             immovable: true,
