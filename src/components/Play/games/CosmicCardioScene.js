@@ -38,23 +38,33 @@ export class CosmicCardioScene extends Phaser.Scene {
         const width = getGameWidth(this);
         const height = getGameHeight(this);
 
-        // text
-        const textStyle = {
-            font: 'bold 32px Orbitron',
-            fill: '#FA34F3',
-            backgroundColor: '#251F54',
-            padding: 30,
-            align: 'center',
-        }
+        // Add the scoreboard
+        this.scoreBoard = this.add.text(
+            width * 0.05, height * 0.015,
+            "SCORE: 0", {
+            fill: '#000',
+            font: '900 20px Orbitron',
+        });
+        this.add.text(
+            width * 0.05, height * 0.04,
+            "press ESC to go back", {
+            fill: '#000',
+            font: '900 17px Orbitron',
+        });
         const infoText = this.add.text(
             width / 2,
             (height / 2) - height * .2,
-            `Welcome to ${COSMIC_CARDIO_SCENE}
-            \n press ESC to go back`,
-            textStyle
+            `Comming Soon`,
+            {
+                font: 'bold 32px Orbitron',
+                fill: '#FFF',
+                backgroundColor: '#003861',
+                padding: 30,
+                align: 'center',
+            }
         )
         infoText.setOrigin(0.5)
-        infoText.setShadow(3, 3, 'rgba(0,0,0,0.2)', 2);
+        // infoText.setShadow(3, 3, 'rgba(0,0,0,0.2)', 2);
 
         // back
         // this.createBackButton();
@@ -78,17 +88,6 @@ export class CosmicCardioScene extends Phaser.Scene {
         this.player.setScale(PLAYER_SCALE);
         this.player.setDepth(1);
     }
-
-    createBackButton = () => {
-        this.add
-            .image(getRelative(10, this), getRelative(24, this), BACK_ARROW)
-            .setOrigin(0)
-            .setInteractive({ useHandCursor: true })
-            .setDisplaySize(getRelative(54, this), getRelative(54, this))
-            .on("pointerdown", () => {
-                this.scene.start(GYM_ROOM_SCENE);
-            });
-    };
 
     update(time, delta) {
         // Every frame, we update the player
