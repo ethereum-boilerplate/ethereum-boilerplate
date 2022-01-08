@@ -3,10 +3,11 @@ import {
     POSE_CONNECTIONS, POSE_LANDMARKS_LEFT,
     POSE_LANDMARKS_RIGHT, POSE_LANDMARKS_NEUTRAL
 } from '@mediapipe/pose';
+import { ConfidenceScore } from "../../AIConfig";
 
 const IDLE_POSE_LANDMARKS_COLOR = "#FF0000";
 const IDLE_POSE_LINES_COLOR = "#00FF00";
-const VisibilityMin = 0.65;
+const VisibilityMin = ConfidenceScore;
 
 export const drawPose = (canvasRef, results) => {
     // Get Canvas

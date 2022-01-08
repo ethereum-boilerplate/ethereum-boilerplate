@@ -6,6 +6,7 @@ import "./index.css";
 import Home from "components/Home";
 import { Pose } from '@mediapipe/pose';
 import * as mpPose from '@mediapipe/pose';
+import { ConfidenceScore } from "./AIConfig";
 
 // Moralis vals
 const APP_ID = process.env.REACT_APP_MORALIS_APPLICATION_ID;
@@ -47,9 +48,8 @@ const PoseDetectorCtxProvider = ({ children }) => {
       return path;
     }
   });
-  const ConfidenceScore = 0.65;
   poseDetector.setOptions({
-    modelComplexity: 0,
+    modelComplexity: 1,
     smoothLandmarks: true,
     selfieMode: true,
     //   enableSegmentation: true,
