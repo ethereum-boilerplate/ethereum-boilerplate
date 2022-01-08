@@ -4,15 +4,15 @@ import { Player } from "./objects";
 import { PLAYER_KEY, PLAYER_SCALE, GYM_ROOM_SCENE } from "./shared";
 import {
     BACK_ARROW,
-    BG,
+    // BG,
     GYM_ROOM_MAP,
     GYM_ROOM_TILES,
     GYM_ROOM_MAT_SKY,
     GYM_ROOM_MAT_SPACE,
-    CONCRETE_BG,
+    // CONCRETE_BG,
 
-    GYM_ROOM_DANGEON_MAP,
-    GYM_ROOM_DANGEON_TILES,
+    // GYM_ROOM_DANGEON_MAP,
+    // GYM_ROOM_DANGEON_TILES,
 } from "./assets";
 import { createTextBox } from "./utils/text";
 import { TextBox } from 'phaser3-rex-plugins/templates/ui/ui-components';
@@ -33,6 +33,7 @@ const set = new Set();
 
 let sceneToGoOnXclick = null;
 const miniGames = ['space_stretch', 'fly_fit', 'cosmic_cardio'];
+let roboTextTimeout;
 
 export class GymRoomScene extends Phaser.Scene {
     constructor() {
@@ -51,6 +52,7 @@ export class GymRoomScene extends Phaser.Scene {
             const code = event.keyCode;
             if (sceneToGoOnXclick && code == Phaser.Input.Keyboard.KeyCodes.X) {
                 this.scene.start(sceneToGoOnXclick);
+                if (roboTextTimeout) clearTimeout(roboTextTimeout);
             }
         }, this);
 
@@ -170,12 +172,8 @@ export class GymRoomScene extends Phaser.Scene {
 
         // text
         const hintTextBox = createTextBox(this,
-            // (width / 2) - width * 0.1, height - 100,
             (width / 2) + width / 4, height * 0.025,
-            {
-                wrapWidth: 280,
-                // fixedWidth: 300,
-            }
+            { wrapWidth: 280 }
         )
 
         hintTextBox.setDepth(1);
@@ -187,7 +185,6 @@ export class GymRoomScene extends Phaser.Scene {
                 \nand do some stretches 💪
                 `, 50);
         }, 1000);
-
         hintTextBox.setScrollFactor(0, 0);
 
         const scriptLayer = map.getObjectLayer('script')
@@ -210,18 +207,15 @@ export class GymRoomScene extends Phaser.Scene {
             // );
             this.physics.world.enable(tmp, 1);
             this.physics.add.overlap(this.player, tmp, (avatar, other) => {
-                console.log('overlap', avatar, other);
+                // console.log('overlap', avatar, other);
                 // other.body.dis
                 // check if it was triggered already, or disable collider on enter
                 // and enable on exit on outer edge collider
                 if (!set.has(object.name)) {
                     sceneToGoOnXclick = object.name;
                     hintTextBox.start(`🤖 press X to play ${object.name} 🚀`, 50);
-                    setTimeout(() => {
-                        if (hintTextBox) {
-                            hintTextBox.start("🤖", 50);
-                        }
-                    }, 5000);
+                    roboTextTimeout = setTimeout(() => hintTextBox.start("🤖", 50),
+                        5000);
                     set.add(object.name);
                 } else {
                     // clear others

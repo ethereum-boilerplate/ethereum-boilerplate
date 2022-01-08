@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { useMoralis, useNFTBalances, useWeb3ExecuteFunction } from "react-moralis";
 import { Modal, Button, Card, Image, Tooltip, Skeleton } from "antd";
-import { FileSearchOutlined, ShoppingCartOutlined } from "@ant-design/icons";
+import { FileSearchOutlined, ShoppingCartOutlined, SkinFilled } from "@ant-design/icons";
 import { getExplorer } from "helpers/networks";
 import { useVerifyMetadata } from "hooks/useVerifyMetadata";
 import { brightFontCol } from "GlobalStyles";
@@ -11,7 +11,6 @@ import { mainMarketAddress, deployedABI, listItemFunction } from "../Marketplace
 import { NFTCardStyle, NFTsDiv, NFTImg, BtnPrimary, NFTImgWrapperStyle } from "../GlobalStyles";
 import { AllowedNftContracts } from "../MglNftMetadata";
 import { AvatarCtx } from "index";
-import { SkinOutlined } from "@ant-design/icons";
 
 const { Meta } = Card;
 
@@ -93,7 +92,7 @@ function NFTBalance() {
         textAlign: "center",
         fontSize: "27px",
         fontWeight: "bold",
-      }}>Your avatars and wearables <SkinOutlined /></h1>
+      }}>Your avatars and wearables <SkinFilled /></h1>
       <br />
       <h3>
         If you have your MGL Avatar NFT 🙂
