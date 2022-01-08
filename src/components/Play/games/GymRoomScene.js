@@ -10,6 +10,11 @@ import {
 } from "./assets";
 import { createTextBox } from "./utils/text";
 import { debugCollisonBounds } from "./utils/collision_debugger";
+import {
+  setMainRoomPlayerExitPos,
+  getMainRoomPlayerExitPos,
+  playerHasExitPos
+} from "./Globals";
 
 const debugCollisons = false;
 
@@ -55,6 +60,10 @@ export class GymRoomScene extends Phaser.Scene {
         const code = event.keyCode
         if (sceneToGoOnXclick && code == Phaser.Input.Keyboard.KeyCodes.X) {
           roboTextTimeouts.forEach(t => clearTimeout(t));
+          setMainRoomPlayerExitPos(
+            this.player.x,
+            this.player.y,
+          )
           this.scene.start(sceneToGoOnXclick);
         }
       },
@@ -116,12 +125,19 @@ export class GymRoomScene extends Phaser.Scene {
       height * 0.02
     );
     itemsLayer.setScale(mapScale);
-
-    const playerObjLayer = map.getObjectLayer('player');
+    const resolvePlayerXY = () => {
+      if (playerHasExitPos()) {
+        return getMainRoomPlayerExitPos()
+      }
+      const playerObjLayer = map.getObjectLayer('player');
+      return {
+        x: playerObjLayer.objects[0].x * mapScale,
+        y: playerObjLayer.objects[0].y * mapScale,
+      }
+    }
     this.player = new Player({
       scene: this,
-      x: playerObjLayer.objects[0].x * mapScale,
-      y: playerObjLayer.objects[0].y * mapScale,
+      ...resolvePlayerXY(),
       key: PLAYER_KEY
     });
     this.player.setScale(PLAYER_SCALE);
@@ -140,19 +156,22 @@ export class GymRoomScene extends Phaser.Scene {
     );
 
     hintTextBox.setDepth(1);
+    hintTextBox.setScrollFactor(0, 0);
     hintTextBox.start('🤖', 50);
-    roboTextTimeouts.push(
-      setTimeout(() => {
-        hintTextBox.start(
-          `🤖 Welcome 👋,
+
+    if (!playerHasExitPos()) {
+      roboTextTimeouts.push(
+        setTimeout(() => {
+          hintTextBox.start(
+            `🤖 Welcome 👋,
                 \ngo to the MetaGym
                 \nand do some stretches 💪
                 `,
-          30
-        )
-      }, 1000)
-    );
-    hintTextBox.setScrollFactor(0, 0);
+            30
+          )
+        }, 1000)
+      );
+    }
 
     const scriptLayer = map.getObjectLayer('script');
     console.log('scriptLayer.objects', scriptLayer.objects);

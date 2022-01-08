@@ -1,6 +1,6 @@
 {
   "name": "meta-gym-land",
-  "version": "0.0.1.3.59",
+  "version": "0.0.1.3.60",
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
     "@ion-phaser/react": "^1.3.0",

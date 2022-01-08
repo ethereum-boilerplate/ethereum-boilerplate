@@ -94,7 +94,7 @@ export class SpaceStretchScene extends Phaser.Scene {
         roboTextTimeouts.push(setTimeout(() => {
             hintTextBox.start(`🤖 Land 🚀 on asteroids 🪨\nand crush them 💥`, 50);
             roboTextTimeouts.push(setTimeout(() => hintTextBox.start("🤖", 50), 5000));
-        }, 1500));
+        }, 500));
 
         // Add the scoreboard in
         this.scoreBoard = this.add.text(
