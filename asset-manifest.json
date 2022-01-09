@@ -1,28 +1,30 @@
 {
   "files": {
-    "main.css": "/ethereum-boilerplate/static/css/main.8ed4dda1.chunk.css",
-    "main.js": "/ethereum-boilerplate/static/js/main.90bf86ef.chunk.js",
-    "main.js.map": "/ethereum-boilerplate/static/js/main.90bf86ef.chunk.js.map",
-    "runtime-main.js": "/ethereum-boilerplate/static/js/runtime-main.57c875bf.js",
-    "runtime-main.js.map": "/ethereum-boilerplate/static/js/runtime-main.57c875bf.js.map",
-    "static/css/2.a95be28f.chunk.css": "/ethereum-boilerplate/static/css/2.a95be28f.chunk.css",
-    "static/js/2.66620382.chunk.js": "/ethereum-boilerplate/static/js/2.66620382.chunk.js",
-    "static/js/2.66620382.chunk.js.map": "/ethereum-boilerplate/static/js/2.66620382.chunk.js.map",
-    "index.html": "/ethereum-boilerplate/index.html",
-    "static/css/2.a95be28f.chunk.css.map": "/ethereum-boilerplate/static/css/2.a95be28f.chunk.css.map",
-    "static/css/main.8ed4dda1.chunk.css.map": "/ethereum-boilerplate/static/css/main.8ed4dda1.chunk.css.map",
-    "static/js/2.66620382.chunk.js.LICENSE.txt": "/ethereum-boilerplate/static/js/2.66620382.chunk.js.LICENSE.txt",
-    "static/media/Coin98.1e4e4073.png": "/ethereum-boilerplate/static/media/Coin98.1e4e4073.png",
-    "static/media/MathWallet.c8223809.svg": "/ethereum-boilerplate/static/media/MathWallet.c8223809.svg",
-    "static/media/SafePal.482d45d2.svg": "/ethereum-boilerplate/static/media/SafePal.482d45d2.svg",
-    "static/media/TokenPocket.977e38ab.svg": "/ethereum-boilerplate/static/media/TokenPocket.977e38ab.svg",
-    "static/media/wallet-connect.488dc369.svg": "/ethereum-boilerplate/static/media/wallet-connect.488dc369.svg"
+    "main.css": "/static/css/main.8ed4dda1.chunk.css",
+    "main.js": "/static/js/main.0842988e.chunk.js",
+    "main.js.map": "/static/js/main.0842988e.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.206ceba0.js",
+    "runtime-main.js.map": "/static/js/runtime-main.206ceba0.js.map",
+    "static/css/2.14d445f6.chunk.css": "/static/css/2.14d445f6.chunk.css",
+    "static/js/2.a69fdcb9.chunk.js": "/static/js/2.a69fdcb9.chunk.js",
+    "static/js/2.a69fdcb9.chunk.js.map": "/static/js/2.a69fdcb9.chunk.js.map",
+    "index.html": "/index.html",
+    "service-worker.js": "/service-worker.js",
+    "service-worker.js.map": "/service-worker.js.map",
+    "static/css/2.14d445f6.chunk.css.map": "/static/css/2.14d445f6.chunk.css.map",
+    "static/css/main.8ed4dda1.chunk.css.map": "/static/css/main.8ed4dda1.chunk.css.map",
+    "static/js/2.a69fdcb9.chunk.js.LICENSE.txt": "/static/js/2.a69fdcb9.chunk.js.LICENSE.txt",
+    "static/media/Coin98.1e4e4073.png": "/static/media/Coin98.1e4e4073.png",
+    "static/media/MathWallet.c8223809.svg": "/static/media/MathWallet.c8223809.svg",
+    "static/media/SafePal.482d45d2.svg": "/static/media/SafePal.482d45d2.svg",
+    "static/media/TokenPocket.977e38ab.svg": "/static/media/TokenPocket.977e38ab.svg",
+    "static/media/wallet-connect.488dc369.svg": "/static/media/wallet-connect.488dc369.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.57c875bf.js",
-    "static/css/2.a95be28f.chunk.css",
-    "static/js/2.66620382.chunk.js",
+    "static/js/runtime-main.206ceba0.js",
+    "static/css/2.14d445f6.chunk.css",
+    "static/js/2.a69fdcb9.chunk.js",
     "static/css/main.8ed4dda1.chunk.css",
-    "static/js/main.90bf86ef.chunk.js"
+    "static/js/main.0842988e.chunk.js"
   ]
 }
