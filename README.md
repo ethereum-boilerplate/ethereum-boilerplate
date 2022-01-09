@@ -56,7 +56,7 @@ yarn start
   - [`<Wallet />`](#wallet-)
   - [`<Blockie />`](#blockie-)
   - [`<NativeBalance />`](#nativebalance-)
-  - [`/<NFTBalance />`](#nftbalance)
+  - [`<NFTBalance />`](#nftbalance)
   - [`<Contract />`](#contract-)
 - [🧰 Ethereum Hooks](#-ethereum-hooks)
   - [`useAPIContract()`](#useapicontract)  
