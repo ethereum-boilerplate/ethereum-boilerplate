@@ -122,7 +122,7 @@ export default function Home() {
       </Row>
       <Row style={{
         flexBasis: "100%",
-        marginTop: "4rem",
+        marginTop: "2rem",
         marginBottom: "2rem"
       }}>
         <Col span={100} >
@@ -163,7 +163,7 @@ export default function Home() {
       }}></Divider>
       <Row style={{
         flexBasis: "100%",
-        marginTop: "3rem",
+        marginTop: "2rem",
         marginBottom: "3rem"
       }}>
 
