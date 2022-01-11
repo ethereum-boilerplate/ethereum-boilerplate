@@ -153,7 +153,11 @@ export default function Home() {
             }}>Or you can skip steps 1 and 2 for now&nbsp;&nbsp;
               <SmileFilled style={{ color: "#FFBE59" }} />&nbsp;&nbsp;
               By clicking&nbsp;&nbsp;&nbsp;
-              <Button style={BtnPrimary}>Try with Demo Avatar</Button>
+              <Button style={BtnPrimary}>
+                <Link to="/demo-avatar">
+                  Try with Demo Avatar
+                </Link>
+              </Button>
             </div>
           </div>
         </Col>

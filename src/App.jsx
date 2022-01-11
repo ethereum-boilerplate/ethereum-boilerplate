@@ -4,6 +4,7 @@ import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import Account from "components/Account/Account";
 import Chains from "components/Chains";
 import NFTBalance from "components/NFTBalance";
+import DemoAvatar from "components/DemoAvatar";
 import { Layout, Divider } from "antd";
 import "antd/dist/antd.css";
 import NativeBalance from "components/NativeBalance";
@@ -115,6 +116,9 @@ const App = ({ isServerInfo }) => {
             </Route>
             <Route path="/avatars">
               <NFTBalance />
+            </Route>
+            <Route path="/demo-avatar">
+              <DemoAvatar />
             </Route>
             <Route path="/play">
               <PlayPage />
