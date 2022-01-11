@@ -9,3 +9,5 @@ export const DemoNFTContracts = new Map([
         "0x4bD789C6D44F2e2f9963a5eb26D3b34D2eE42307",
     ]
 ]);
+
+export const DefaultChainID = "0x4"; // rinkeby

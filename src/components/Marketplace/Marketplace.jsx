@@ -7,11 +7,12 @@ import { Link } from "react-router-dom";
 import NFTCollectionItems from "./NFTCollectionItems";
 import { Button } from "antd";
 import { BtnPrimary, BreakFlexDiv } from "../../GlobalStyles";
+import { DefaultChainID } from "../../MglNftMetadata";
 
 function Marketplace() {
   const { isAuthenticated } = useMoralis();
   const { chainId } = useMoralis();
-  const NFTCollections = getCollectionsByChain(chainId);
+  const NFTCollections = getCollectionsByChain(chainId) || getCollectionsByChain(DefaultChainID); // defaults to rinkeby
 
   return (
     <div>

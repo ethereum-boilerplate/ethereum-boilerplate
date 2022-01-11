@@ -15,6 +15,8 @@ import { useNFTTokenIds } from "hooks/useNFTTokenIds";
 import { mainMarketAddress, deployedABI, createdMarketItemsTable } from "../../MarketplaceSCMetadata";
 import { NFTCardStyle, NFTsDiv, NFTImg, brightFontCol, NFTImgWrapperStyle } from "../../GlobalStyles";
 import { AllowedNftContracts } from "../../MglNftMetadata";
+import { DefaultChainID } from "../../MglNftMetadata";
+
 
 const styles = {
     banner: {
@@ -42,8 +44,9 @@ const fallbackImg =
 
 function NFTCollectionItems({ nftAddress, colName, colImg }) {
 
-    const { chainId, account, Moralis } = useMoralis();
-    const { data: NFTTokenIds, error: NFTsFetchError } = useNFTTokenIds(nftAddress);
+    const { chainIdSelected, account, Moralis } = useMoralis();
+    const chainId = chainIdSelected || DefaultChainID;
+    const { data: NFTTokenIds, error: NFTsFetchError } = useNFTTokenIds(nftAddress, 3, chainId);
     console.log("NFTTokenIds", NFTTokenIds);
 
     const [visible, setVisibility] = useState(false);
@@ -139,7 +142,9 @@ function NFTCollectionItems({ nftAddress, colName, colImg }) {
         // const modal = 
         Modal.error({
             title: "Error!",
-            content: `There was a problem when purchasing this NFT: ${err}`,
+            content: `There was a problem when purchasing this NFT\n
+            Make sure to connect your wallet,\n
+            and choose correct blockchain`,
         });
         // let secondsToGo = 5;
         // setTimeout(() => {
@@ -195,6 +200,8 @@ function NFTCollectionItems({ nftAddress, colName, colImg }) {
         const key = `${nft?.token_address}:${nft?.token_id}`
         return listings.get(key)
     }
+
+    console.log('Mrktplace NFTsFetchError', NFTsFetchError);
 
     return (
         <>

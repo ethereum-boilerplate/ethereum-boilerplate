@@ -3,16 +3,16 @@ import { useMoralis } from "react-moralis";
 import { useMoralisWeb3Api, useMoralisWeb3ApiCall } from "react-moralis";
 import { useIPFS } from "./useIPFS";
 
-export const useNFTTokenIds = (addr, limit = 3) => {
+export const useNFTTokenIds = (addr, limit = 3, forceToChainId) => {
     const { token } = useMoralisWeb3Api();
     const { chainId } = useMoralis();
     const { resolveLink } = useIPFS();
     const getAllTokenIdsOpts = {
-        chain: chainId,
+        chain: forceToChainId || chainId,
         address: addr,
         limit: limit,
     };
-
+    console.log('getAllTokenIdsOpts', getAllTokenIdsOpts);
     const {
         fetch: getNFTTokenIds,
         data,
