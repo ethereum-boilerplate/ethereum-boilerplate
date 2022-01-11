@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { useMoralis } from "react-moralis";
 import { Button, Card, Image, Tooltip, Alert, Badge } from "antd";
-import { FileSearchOutlined, SkinFilled } from "@ant-design/icons";
+import { FileSearchOutlined, SmileFilled } from "@ant-design/icons";
 import { getExplorer } from "helpers/networks";
 import { Link } from "react-router-dom";
 import { NFTCardStyle, NFTsDiv, NFTImg, BtnPrimary, NFTImgWrapperStyle } from "../GlobalStyles";
@@ -35,13 +35,14 @@ function DemoAvatar() {
                     textAlign: "center",
                     fontSize: "27px",
                     fontWeight: "bold",
-                }}>I am a Demo Avatar <SkinFilled /></h1>
+                }}>I am a Demo NFT Avatar <SmileFilled style={{ color: "#FFBE59" }} />
+                </h1>
                 <br />
                 <h3>
                     You can try me first before having your own NFT avatar
                 </h3>
                 <h3>
-                    But But I will disappear soon&nbsp;&nbsp;😱
+                    But I will disappear soon&nbsp;&nbsp;😱
                 </h3>
                 <h3>
                     If you don't have your awesome Avatar yet, get one in our
