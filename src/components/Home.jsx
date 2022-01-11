@@ -67,7 +67,7 @@ export default function Home() {
                 <div
                   style={{
                     display: "flex",
-                    // gap: "10px",
+                    gap: "1rem",
                     justifyContent: "left",
                     alignItems: "center",
                     marginTop: "5rem",
@@ -75,10 +75,19 @@ export default function Home() {
                 >
                   <Button
                     type="primary"
-                    style={BtnPrimary}
+                    style={{
+                      ...BtnPrimary,
+                    }}
                   >
                     <Link to="/avatars">
                       Play now
+                    </Link>
+                  </Button>
+                  <Button style={{
+                    ...BtnPrimary,
+                  }}>
+                    <Link to="/demo-avatar">
+                      Try with Demo Avatar
                     </Link>
                   </Button>
                   {/* <Button

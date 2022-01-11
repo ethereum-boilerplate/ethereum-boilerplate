@@ -19,10 +19,13 @@ const styles = {
     alignItems: "center",
     width: "fit-content",
     cursor: "pointer",
+    fontFamily: "Roboto, sans-serif",
+    fontSize: "14px",
     ...HeaderRightBordersStyle,
   },
   text: {
     color: "#21BF96",
+    width: "6rem",
   },
   connector: {
     alignItems: "center",
@@ -56,7 +59,7 @@ function Account() {
           // onClick={() => authenticate({ signingMessage: "Hello World!" })}
           onClick={() => setIsAuthModalVisible(true)}
         >
-          <p style={styles.text}>Authenticate</p>
+          <p style={styles.text}>Connect Wallet</p>
         </div>
         <Modal
           visible={isAuthModalVisible}
