@@ -52,7 +52,7 @@ export const drawPose = (canvasRef, results) => {
     // Draw Pose mesh
     canvasCtx.globalCompositeOperation = 'source-over';
     if (results.poseLandmarks) {
-        const CurPose = gstate.getPose()
+        const CurPose = gstate.getPose();
         // console.log('results', results);
         const nose = results.poseLandmarks[0];
 
