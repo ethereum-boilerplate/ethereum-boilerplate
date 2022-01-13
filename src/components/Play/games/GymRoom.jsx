@@ -142,13 +142,12 @@ const GymRoom = ({ avatar, useWebcam = true }) => {
             position: "fixed",
             top: "1%",
             left: "45%",
-            width: "220px",
-            height: "auto",
         }} >
             <PoseDetWebcam
                 sizeProps={{
-                    width: "100%",
+                    width: "220px",
                     height: "auto",
+                    borderRadius: "14px",
                 }}
                 styleProps={{
                     boxShadow: "0 0 10px 2px #202020",

@@ -8,13 +8,28 @@ import * as gstate from "../gpose/state";
 import * as gpose from "../gpose/pose";
 
 
-const IDLE_POSE_LANDMARKS_COLOR = "#FF0000";
+// const IDLE_POSE_LANDMARKS_COLOR = "#FF0000";
 const IDLE_POSE_LINES_COLOR = "#00FF00";
 const VisibilityMin = ConfidenceScore;
 const ACTIVE_COLOR = "#F96F0A";
 const ACTIVE_LINE_WIDTH = 8;
 const IDLE_CONN_LINE_WIDTH = 4;
 const LANDMARKS_STYLE = { color: 'black', fillColor: 'white', }
+const NOSE_LINE_WIDTH_IDLE = 3;
+
+const roundedRect = (ctx, x, y, width, height) => {
+    const radius = 35
+    ctx.beginPath();
+    ctx.lineWidth = ACTIVE_LINE_WIDTH;
+    ctx.strokeStyle = "#2450F7";
+    ctx.lineJoin = "round";
+    ctx.moveTo(x, y + radius);
+    ctx.arcTo(x, y + height, x + radius, y + height, radius);
+    ctx.arcTo(x + width, y + height, x + width, y + height - radius, radius);
+    ctx.arcTo(x + width, y, x + width - radius, y, radius);
+    ctx.arcTo(x, y, x, y + radius, radius);
+    ctx.stroke();
+}
 
 const drawLine = (p1, p2, color, ctx, width, height, lineWidth) => {
     ctx.fillStyle = color;
@@ -41,41 +56,16 @@ export const drawPose = (canvasRef, results) => {
     // Only overwrite missing pixels.
     canvasCtx.globalCompositeOperation = 'destination-atop';
 
-    // Draw testing circle
-    // canvasCtx.fillStyle = '#04AA6D';
-    // canvasCtx.strokeStyle = '#04AA6D';
-    // canvasCtx.beginPath();
-    // canvasCtx.arc(50, 50, 20, 0, 2 * Math.PI);
-    // canvasCtx.stroke();
-    // canvasCtx.fill();
-
     // Draw Pose mesh
     canvasCtx.globalCompositeOperation = 'source-over';
     if (results.poseLandmarks) {
-        const CurPose = gstate.getPose();
-        // console.log('results', results);
         const nose = results.poseLandmarks[0];
-
-        if (gstate.isNonIdle()) {
-            canvasCtx.beginPath(); 
-            // canvasCtx.fillStyle = ACTIVE_COLOR;
-            canvasCtx.strokeStyle = ACTIVE_COLOR;
-            canvasCtx.lineWidth = ACTIVE_LINE_WIDTH * 2;
-            canvasCtx.strokeRect(0, 0, canvasRef.current.width, canvasRef.current.height);
-        }
-
-        // this is in selfie mode
-        // so left is right
-        // right is left
-        const n2rEndColor = CurPose === gpose.HTL ? ACTIVE_COLOR : "#1990FF";
-        const n2rlineWidth = CurPose === gpose.HTL ? ACTIVE_LINE_WIDTH : 3;
-        drawLine(nose, { x: 0, y: nose.y }, n2rEndColor, canvasCtx,
-            width, height, n2rlineWidth);
+        drawLine(nose, { x: 0, y: nose.y }, "#1990FF", canvasCtx,
+            width, height, NOSE_LINE_WIDTH_IDLE);
         // path from nose to left end
-        const n2lEndColor = CurPose === gpose.HTR ? ACTIVE_COLOR : "#20BF96";
-        const n2llineWidth = CurPose === gpose.HTR ? ACTIVE_LINE_WIDTH : 3;
-        drawLine(nose, { x: canvasRef?.current.width, y: nose.y }, n2lEndColor, canvasCtx,
-            width, height, n2llineWidth);
+        drawLine(nose, { x: canvasRef?.current.width, y: nose.y },
+            "#20BF96", canvasCtx,
+            width, height, NOSE_LINE_WIDTH_IDLE);
 
         // connectors
         drawConnectors(canvasCtx, results.poseLandmarks, POSE_CONNECTIONS,
@@ -84,35 +74,6 @@ export const drawPose = (canvasRef, results) => {
                 lineWidth: IDLE_CONN_LINE_WIDTH,
                 visibilityMin: VisibilityMin,
             });
-
-
-        // active connectors left
-        if (CurPose === gpose.LA_UP || CurPose === gpose.BA_UP) {
-            drawConnectors(canvasCtx, Object.values({
-                LEFT_SHOULDER: 12,
-                LEFT_ELBOW: 14,
-                LEFT_WRIST: 16,
-            }).map(index => results.poseLandmarks[index]), POSE_CONNECTIONS,
-                {
-                    color: ACTIVE_COLOR,
-                    lineWidth: ACTIVE_LINE_WIDTH,
-                    visibilityMin: VisibilityMin,
-                });
-        }
-
-        // active connectors right
-        if (CurPose === gpose.RA_UP || CurPose === gpose.BA_UP) {
-            drawConnectors(canvasCtx, Object.values({
-                LEFT_SHOULDER: 11,
-                LEFT_ELBOW: 13,
-                LEFT_WRIST: 15,
-            }).map(index => results.poseLandmarks[index]), POSE_CONNECTIONS,
-                {
-                    color: ACTIVE_COLOR,
-                    lineWidth: ACTIVE_LINE_WIDTH,
-                    visibilityMin: VisibilityMin,
-                });
-        }
 
         // landmarks
         // left
@@ -167,6 +128,55 @@ export const drawPose = (canvasRef, results) => {
                 lineWidth: mainEyeLineWidth,
                 visibilityMin: VisibilityMin,
             });
+
+        // active state
+        const CurPose = gstate.getPose();
+        if (gstate.isNonIdle()) {
+            roundedRect(canvasCtx,
+                0 + (ACTIVE_LINE_WIDTH / 2),
+                0 + (ACTIVE_LINE_WIDTH / 2),
+                canvasRef.current.width - ACTIVE_LINE_WIDTH,
+                canvasRef.current.height - ACTIVE_LINE_WIDTH,
+            );
+        }
+        // active connectors left
+        if (CurPose === gpose.LA_UP || CurPose === gpose.BA_UP) {
+            drawConnectors(canvasCtx, Object.values({
+                LEFT_SHOULDER: 12,
+                LEFT_ELBOW: 14,
+                LEFT_WRIST: 16,
+            }).map(index => results.poseLandmarks[index]), POSE_CONNECTIONS,
+                {
+                    color: ACTIVE_COLOR,
+                    lineWidth: ACTIVE_LINE_WIDTH,
+                    visibilityMin: VisibilityMin,
+                });
+        }
+
+        // active connectors right
+        if (CurPose === gpose.RA_UP || CurPose === gpose.BA_UP) {
+            drawConnectors(canvasCtx, Object.values({
+                LEFT_SHOULDER: 11,
+                LEFT_ELBOW: 13,
+                LEFT_WRIST: 15,
+            }).map(index => results.poseLandmarks[index]), POSE_CONNECTIONS,
+                {
+                    color: ACTIVE_COLOR,
+                    lineWidth: ACTIVE_LINE_WIDTH,
+                    visibilityMin: VisibilityMin,
+                });
+        }
+        // this is in selfie mode
+        // so left is right
+        // right is left
+        if (CurPose === gpose.HTL) {
+            drawLine(nose, { x: 0, y: nose.y }, ACTIVE_COLOR, canvasCtx,
+                width, height, ACTIVE_LINE_WIDTH);
+        }
+        if (CurPose === gpose.HTR) {
+            drawLine(nose, { x: canvasRef?.current.width, y: nose.y }, ACTIVE_COLOR,
+                canvasCtx, width, height, ACTIVE_LINE_WIDTH);
+        }
     }
     canvasCtx.restore();
 };
