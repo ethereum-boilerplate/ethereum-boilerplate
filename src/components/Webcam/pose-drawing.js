@@ -42,12 +42,12 @@ export const drawPose = (canvasRef, results) => {
     canvasCtx.globalCompositeOperation = 'destination-atop';
 
     // Draw testing circle
-    canvasCtx.fillStyle = '#04AA6D';
-    canvasCtx.strokeStyle = '#04AA6D';
-    canvasCtx.beginPath();
-    canvasCtx.arc(50, 50, 20, 0, 2 * Math.PI);
-    canvasCtx.stroke();
-    canvasCtx.fill();
+    // canvasCtx.fillStyle = '#04AA6D';
+    // canvasCtx.strokeStyle = '#04AA6D';
+    // canvasCtx.beginPath();
+    // canvasCtx.arc(50, 50, 20, 0, 2 * Math.PI);
+    // canvasCtx.stroke();
+    // canvasCtx.fill();
 
     // Draw Pose mesh
     canvasCtx.globalCompositeOperation = 'source-over';
@@ -55,6 +55,14 @@ export const drawPose = (canvasRef, results) => {
         const CurPose = gstate.getPose();
         // console.log('results', results);
         const nose = results.poseLandmarks[0];
+
+        if (gstate.isNonIdle()) {
+            canvasCtx.beginPath(); 
+            // canvasCtx.fillStyle = ACTIVE_COLOR;
+            canvasCtx.strokeStyle = ACTIVE_COLOR;
+            canvasCtx.lineWidth = ACTIVE_LINE_WIDTH * 2;
+            canvasCtx.strokeRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+        }
 
         // this is in selfie mode
         // so left is right

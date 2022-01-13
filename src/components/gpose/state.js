@@ -10,8 +10,8 @@ const getPose = () => {
     return _currentPose;
 };
 
-const isInGPose = () => {
+const isNonIdle = () => {
     return _currentPose != IDLE;
 };
 
-export { getPose, isInGPose, setPose };
+export { getPose, isNonIdle, setPose };
