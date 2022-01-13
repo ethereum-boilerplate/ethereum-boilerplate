@@ -15,13 +15,14 @@ const ACTIVE_COLOR = "#F96F0A";
 const ACTIVE_LINE_WIDTH = 8;
 const IDLE_CONN_LINE_WIDTH = 4;
 const LANDMARKS_STYLE = { color: 'black', fillColor: 'white', }
-const borderRadius = 25;
 const NOSE_LINE_WIDTH_IDLE = 3;
 
-const roundedRect = (ctx, x, y, width, height, radius) => {
+const roundedRect = (ctx, x, y, width, height) => {
+    const radius = 35
     ctx.beginPath();
-    ctx.lineWidth = ACTIVE_LINE_WIDTH * 1.1;
+    ctx.lineWidth = ACTIVE_LINE_WIDTH;
     ctx.strokeStyle = ACTIVE_COLOR;
+    ctx.lineJoin = "round";
     ctx.moveTo(x, y + radius);
     ctx.arcTo(x, y + height, x + radius, y + height, radius);
     ctx.arcTo(x + width, y + height, x + width, y + height - radius, radius);
@@ -136,7 +137,6 @@ export const drawPose = (canvasRef, results) => {
                 0 + (ACTIVE_LINE_WIDTH / 2),
                 canvasRef.current.width - ACTIVE_LINE_WIDTH,
                 canvasRef.current.height - ACTIVE_LINE_WIDTH,
-                borderRadius
             );
         }
         // active connectors left

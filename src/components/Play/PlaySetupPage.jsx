@@ -103,6 +103,7 @@ const PlaySetupPage = () => {
                         }}
                         styleProps={{
                             boxShadow: "0 0 10px 2px #202020",
+                            borderRadius: "25px",
                         }}
                     />
 

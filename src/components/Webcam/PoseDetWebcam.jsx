@@ -136,7 +136,6 @@ const PoseDetWebcam = ({ sizeProps, styleProps }) => {
                 muted={true}
                 style={{
                     objectFit: "cover",
-                    borderRadius: "1rem",
                     zIndex: 8,
                     // params
                     ...sizeProps,
@@ -152,7 +151,6 @@ const PoseDetWebcam = ({ sizeProps, styleProps }) => {
                 className={"webcam-canvas"}
                 style={{
                     objectFit: "cover",
-                    borderRadius: "1rem",
                     zIndex: 9,
                     // params
                     ...sizeProps,
