@@ -8,13 +8,26 @@ import * as gstate from "../gpose/state";
 import * as gpose from "../gpose/pose";
 
 
-const IDLE_POSE_LANDMARKS_COLOR = "#FF0000";
+// const IDLE_POSE_LANDMARKS_COLOR = "#FF0000";
 const IDLE_POSE_LINES_COLOR = "#00FF00";
 const VisibilityMin = ConfidenceScore;
 const ACTIVE_COLOR = "#F96F0A";
 const ACTIVE_LINE_WIDTH = 8;
 const IDLE_CONN_LINE_WIDTH = 4;
 const LANDMARKS_STYLE = { color: 'black', fillColor: 'white', }
+const borderRadius = 25;
+
+const roundedRect = (ctx, x, y, width, height, radius) => {
+    ctx.beginPath();
+    ctx.lineWidth = ACTIVE_LINE_WIDTH;
+    ctx.strokeStyle = ACTIVE_COLOR;
+    ctx.moveTo(x, y + radius);
+    ctx.arcTo(x, y + height, x + radius, y + height, radius);
+    ctx.arcTo(x + width, y + height, x + width, y + height - radius, radius);
+    ctx.arcTo(x + width, y, x + width - radius, y, radius);
+    ctx.arcTo(x, y, x, y + radius, radius);
+    ctx.stroke();
+}
 
 const drawLine = (p1, p2, color, ctx, width, height, lineWidth) => {
     ctx.fillStyle = color;
@@ -41,15 +54,8 @@ export const drawPose = (canvasRef, results) => {
     // Only overwrite missing pixels.
     canvasCtx.globalCompositeOperation = 'destination-atop';
 
-    // Draw testing circle
-    // canvasCtx.fillStyle = '#04AA6D';
-    // canvasCtx.strokeStyle = '#04AA6D';
-    // canvasCtx.beginPath();
-    // canvasCtx.arc(50, 50, 20, 0, 2 * Math.PI);
-    // canvasCtx.stroke();
-    // canvasCtx.fill();
-
     // Draw Pose mesh
+    
     canvasCtx.globalCompositeOperation = 'source-over';
     if (results.poseLandmarks) {
         const CurPose = gstate.getPose();
@@ -57,11 +63,13 @@ export const drawPose = (canvasRef, results) => {
         const nose = results.poseLandmarks[0];
 
         if (gstate.isNonIdle()) {
-            canvasCtx.beginPath(); 
-            // canvasCtx.fillStyle = ACTIVE_COLOR;
-            canvasCtx.strokeStyle = ACTIVE_COLOR;
-            canvasCtx.lineWidth = ACTIVE_LINE_WIDTH * 2;
-            canvasCtx.strokeRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+            roundedRect(canvasCtx,
+                0 + (ACTIVE_LINE_WIDTH / 2),
+                0 + (ACTIVE_LINE_WIDTH / 2),
+                canvasRef.current.width - ACTIVE_LINE_WIDTH,
+                canvasRef.current.height - ACTIVE_LINE_WIDTH,
+                borderRadius
+            );
         }
 
         // this is in selfie mode
