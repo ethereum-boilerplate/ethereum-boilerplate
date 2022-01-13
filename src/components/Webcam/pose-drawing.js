@@ -4,15 +4,22 @@ import {
     POSE_LANDMARKS_RIGHT, POSE_LANDMARKS_NEUTRAL
 } from '@mediapipe/pose';
 import { ConfidenceScore } from "../../AIConfig";
+import * as gstate from "../gpose/state";
+import * as gpose from "../gpose/pose";
+
 
 const IDLE_POSE_LANDMARKS_COLOR = "#FF0000";
 const IDLE_POSE_LINES_COLOR = "#00FF00";
 const VisibilityMin = ConfidenceScore;
+const ACTIVE_COLOR = "#F96F0A";
+const ACTIVE_LINE_WIDTH = 8;
+const IDLE_CONN_LINE_WIDTH = 4;
+const LANDMARKS_STYLE = { color: 'black', fillColor: 'white', }
 
-const drawLine = (p1, p2, color, ctx, width, height) => {
+const drawLine = (p1, p2, color, ctx, width, height, lineWidth) => {
     ctx.fillStyle = color;
     ctx.strokeStyle = color;
-    ctx.lineWidth = 3;
+    ctx.lineWidth = lineWidth;
     ctx.beginPath();
     ctx.moveTo(p1.x * width, p1.y * height)
     ctx.lineTo(p2.x, p2.y * height);
@@ -45,25 +52,66 @@ export const drawPose = (canvasRef, results) => {
     // Draw Pose mesh
     canvasCtx.globalCompositeOperation = 'source-over';
     if (results.poseLandmarks) {
+        const CurPose = gstate.getPose()
         // console.log('results', results);
         const nose = results.poseLandmarks[0];
 
-        drawLine(nose, { x: 0, y: nose.y }, "#1990FF", canvasCtx, width, height);
-        // path from nose to left end   
-        drawLine(nose, { x: canvasRef?.current.width, y: nose.y }, "#20BF96", canvasCtx, width, height);
+        // this is in selfie mode
+        // so left is right
+        // right is left
+        const n2rEndColor = CurPose === gpose.HTL ? ACTIVE_COLOR : "#1990FF";
+        const n2rlineWidth = CurPose === gpose.HTL ? ACTIVE_LINE_WIDTH : 3;
+        drawLine(nose, { x: 0, y: nose.y }, n2rEndColor, canvasCtx,
+            width, height, n2rlineWidth);
+        // path from nose to left end
+        const n2lEndColor = CurPose === gpose.HTR ? ACTIVE_COLOR : "#20BF96";
+        const n2llineWidth = CurPose === gpose.HTR ? ACTIVE_LINE_WIDTH : 3;
+        drawLine(nose, { x: canvasRef?.current.width, y: nose.y }, n2lEndColor, canvasCtx,
+            width, height, n2llineWidth);
 
+        // connectors
         drawConnectors(canvasCtx, results.poseLandmarks, POSE_CONNECTIONS,
             {
                 color: IDLE_POSE_LINES_COLOR,
-                lineWidth: 4,
+                lineWidth: IDLE_CONN_LINE_WIDTH,
                 visibilityMin: VisibilityMin,
             });
 
+
+        // active connectors left
+        if (CurPose === gpose.LA_UP || CurPose === gpose.BA_UP) {
+            drawConnectors(canvasCtx, Object.values({
+                LEFT_SHOULDER: 12,
+                LEFT_ELBOW: 14,
+                LEFT_WRIST: 16,
+            }).map(index => results.poseLandmarks[index]), POSE_CONNECTIONS,
+                {
+                    color: ACTIVE_COLOR,
+                    lineWidth: ACTIVE_LINE_WIDTH,
+                    visibilityMin: VisibilityMin,
+                });
+        }
+
+        // active connectors right
+        if (CurPose === gpose.RA_UP || CurPose === gpose.BA_UP) {
+            drawConnectors(canvasCtx, Object.values({
+                LEFT_SHOULDER: 11,
+                LEFT_ELBOW: 13,
+                LEFT_WRIST: 15,
+            }).map(index => results.poseLandmarks[index]), POSE_CONNECTIONS,
+                {
+                    color: ACTIVE_COLOR,
+                    lineWidth: ACTIVE_LINE_WIDTH,
+                    visibilityMin: VisibilityMin,
+                });
+        }
+
+        // landmarks
         // left
         drawLandmarks(canvasCtx, Object.values(POSE_LANDMARKS_LEFT)
             .map(index => results.poseLandmarks[index]),
             {
-                color: 'black', fillColor: 'white',
+                ...LANDMARKS_STYLE,
                 lineWidth: 1,
                 visibilityMin: VisibilityMin,
             });
@@ -71,7 +119,7 @@ export const drawPose = (canvasRef, results) => {
         drawLandmarks(canvasCtx, Object.values(POSE_LANDMARKS_RIGHT)
             .map(index => results.poseLandmarks[index]),
             {
-                color: 'black', fillColor: 'white',
+                ...LANDMARKS_STYLE,
                 lineWidth: 1,
                 visibilityMin: VisibilityMin,
             });
@@ -79,7 +127,7 @@ export const drawPose = (canvasRef, results) => {
         drawLandmarks(canvasCtx, Object.values(POSE_LANDMARKS_NEUTRAL)
             .map(index => results.poseLandmarks[index]),
             {
-                color: 'black', fillColor: 'white',
+                ...LANDMARKS_STYLE,
                 lineWidth: 1,
                 visibilityMin: VisibilityMin,
             });
@@ -89,12 +137,13 @@ export const drawPose = (canvasRef, results) => {
             LEFT_EYE: 2,
             // LEFT_EYE_OUTER: 3
         }
-
+        const mainEyeColor = "#2450F7";
+        const mainEyeLineWidth = 12;
         drawLandmarks(canvasCtx, Object.values(le)
             .map(index => results.poseLandmarks[index]),
             {
-                color: '#2450F7', fillColor: '#2450F7',
-                lineWidth: 20,
+                color: mainEyeColor, fillColor: mainEyeColor,
+                lineWidth: mainEyeLineWidth,
                 visibilityMin: VisibilityMin,
             });
 
@@ -103,12 +152,11 @@ export const drawPose = (canvasRef, results) => {
             RIGHT_EYE: 5,
             // RIGHT_EYE_OUTER: 6
         }
-
         drawLandmarks(canvasCtx, Object.values(re)
             .map(index => results.poseLandmarks[index]),
             {
-                color: '#2450F7', fillColor: '#2450F7',
-                lineWidth: 20,
+                color: mainEyeColor, fillColor: mainEyeColor,
+                lineWidth: mainEyeLineWidth,
                 visibilityMin: VisibilityMin,
             });
     }
