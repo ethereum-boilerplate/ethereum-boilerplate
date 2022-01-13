@@ -147,7 +147,7 @@ const GymRoom = ({ avatar, useWebcam = true }) => {
                 sizeProps={{
                     width: "220px",
                     height: "auto",
-                    borderRadius: "15px",
+                    borderRadius: "14px",
                 }}
                 styleProps={{
                     boxShadow: "0 0 10px 2px #202020",

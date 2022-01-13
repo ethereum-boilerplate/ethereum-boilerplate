@@ -21,7 +21,7 @@ const roundedRect = (ctx, x, y, width, height) => {
     const radius = 35
     ctx.beginPath();
     ctx.lineWidth = ACTIVE_LINE_WIDTH;
-    ctx.strokeStyle = ACTIVE_COLOR;
+    ctx.strokeStyle = "#2450F7";
     ctx.lineJoin = "round";
     ctx.moveTo(x, y + radius);
     ctx.arcTo(x, y + height, x + radius, y + height, radius);
