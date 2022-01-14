@@ -9,7 +9,7 @@ import { DemoNFTContracts } from "../MglNftMetadata";
 import { AvatarCtx } from "index";
 import { useNFTTokenIds } from "hooks/useNFTTokenIds";
 import { useVerifyMetadata } from "hooks/useVerifyMetadata";
-import { DefaultChainID } from "../MglNftMetadata";
+import { MainChainID } from "../MglNftMetadata";
 import { chainIdToNameAndLogo } from "../components/Chains/Chains";
 import {
     highlightTextColor,
@@ -25,7 +25,7 @@ function DemoAvatar() {
     // eslint-disable-next-line no-unused-vars
     const [avatar, setAvatar] = useContext(AvatarCtx);
     const { chainIdSelected } = useMoralis();
-    const chainId = chainIdSelected || DefaultChainID;
+    const chainId = chainIdSelected || MainChainID;
     // const chainId = "0xa869"; // Avalanche Fuji Testnet
     const chainName = chainIdToNameAndLogo.get(chainId)[0];
     const chainLogo = chainIdToNameAndLogo.get(chainId)[1];

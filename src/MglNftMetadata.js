@@ -10,4 +10,4 @@ export const DemoNFTContracts = new Map([
     ]
 ]);
 
-export const DefaultChainID = "0xa869"; // AVAX fuji testnet
+export const MainChainID = "0xa869"; // AVAX fuji testnet

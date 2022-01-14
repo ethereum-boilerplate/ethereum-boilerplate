@@ -23,7 +23,7 @@ import {
     descriptionStyle
 } from "../../GlobalStyles";
 import { AllowedNftContracts } from "../../MglNftMetadata";
-import { DefaultChainID } from "../../MglNftMetadata";
+import { MainChainID } from "../../MglNftMetadata";
 import { chainIdToNameAndLogo } from "../Chains/Chains";
 
 
@@ -53,7 +53,7 @@ const fallbackImg =
 function NFTCollectionItems({ nftAddress, colName, colImg }) {
 
     const { chainIdSelected, account, Moralis } = useMoralis();
-    const chainId = chainIdSelected || DefaultChainID;
+    const chainId = chainIdSelected || MainChainID;
     const { data: NFTTokenIds, error: NFTsFetchError } = useNFTTokenIds(nftAddress, 3, chainId);
     console.log("NFTTokenIds", NFTTokenIds);
 
