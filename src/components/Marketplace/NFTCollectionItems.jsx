@@ -5,7 +5,10 @@ import {
     useMoralisQuery,
     useWeb3ExecuteFunction
 } from "react-moralis";
-import { Divider, Card, Image, Tooltip, Modal, Badge, Alert, Spin } from "antd";
+import {
+    Divider, Card, Image,
+    Tooltip, Modal, Badge, Alert, Spin
+} from "antd";
 import {
     FileSearchOutlined,
     ShoppingCartOutlined,
@@ -52,9 +55,10 @@ const fallbackImg =
 
 function NFTCollectionItems({ nftAddress, colName, colImg }) {
 
-    const { chainIdSelected, account, Moralis } = useMoralis();
-    const chainId = chainIdSelected || MainChainID;
-    const { data: NFTTokenIds, error: NFTsFetchError } = useNFTTokenIds(nftAddress, 3, chainId);
+    const { chainId, isAuthenticated, account, Moralis } = useMoralis();
+    const userChainId = chainId;
+    const marketPlaceChainId = MainChainID;
+    const { data: NFTTokenIds, error: NFTsFetchError } = useNFTTokenIds(nftAddress, 3, marketPlaceChainId);
     console.log("NFTTokenIds", NFTTokenIds);
 
     const [visible, setVisibility] = useState(false);
@@ -63,11 +67,11 @@ function NFTCollectionItems({ nftAddress, colName, colImg }) {
 
     const contractABI = deployedABI;
     const marketAddress = mainMarketAddress;
-    const chainName = chainIdToNameAndLogo.get(chainId)[0];
-    const chainLogo = chainIdToNameAndLogo.get(chainId)[1];
+    const chainName = chainIdToNameAndLogo.get(marketPlaceChainId)[0];
+    const chainLogo = chainIdToNameAndLogo.get(marketPlaceChainId)[1];
 
     const contractProcessor = useWeb3ExecuteFunction();
-    const nativeName = getNativeByChain(chainId);
+    const nativeName = getNativeByChain(marketPlaceChainId);
     const contractABIJson = JSON.parse(contractABI);
     const { verifyMetadata } = useVerifyMetadata();
     const listings = new Map();
@@ -80,7 +84,7 @@ function NFTCollectionItems({ nftAddress, colName, colImg }) {
             // get not sold items
             return query
                 .equalTo("sold", false)
-                .equalTo("nftContract", AllowedNftContracts.get(chainId).toLowerCase());
+                .equalTo("nftContract", AllowedNftContracts.get(marketPlaceChainId)?.toLowerCase());
         });
     const fetchMarketItems = JSON.parse(
         JSON.stringify(queryMarketItems.data, [
@@ -132,6 +136,20 @@ function NFTCollectionItems({ nftAddress, colName, colImg }) {
     }
 
     const handleBuyClick = (nft) => {
+        if (!isAuthenticated) {
+            alert(`
+            You need to connect your wallet\n
+            to be able to buy NFTs
+            `);
+            return;
+        } else if (userChainId !== MainChainID) {
+            alert(`
+            Please switch to\n
+            Avalanche Fuji Testnet Network\n
+            to be able to buy NFTs
+            `);
+            return;
+        }
         setNftToBuy(nft);
         console.log(nft.image);
         setVisibility(true);
@@ -270,7 +288,7 @@ function NFTCollectionItems({ nftAddress, colName, colImg }) {
                                         <FileSearchOutlined
                                             onClick={() =>
                                                 window.open(
-                                                    `${getExplorer(chainId)}address/${nft.token_address}`,
+                                                    `${getExplorer(marketPlaceChainId)}address/${nft.token_address}`,
                                                     "_blank"
                                                 )
                                             }

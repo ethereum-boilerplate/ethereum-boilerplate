@@ -22,9 +22,9 @@ export const c2 = new Intl.NumberFormat("en-us", {
  * @param {number} n number of chars to keep at front/end
  * @returns {string}
  */
-export const getEllipsisTxt = (str, n = 6) => {
+export const getEllipsisTxt = (str, ln = 6, rn = 6) => {
   if (str) {
-    return `${str.slice(0, n)}...${str.slice(str.length - n)}`;
+    return `${str.slice(0, ln)}...${str.slice(str.length - rn)}`;
   }
   return "";
 };

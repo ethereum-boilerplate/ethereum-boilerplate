@@ -120,7 +120,7 @@ function Account() {
         Hi
       </button> */}
       <div style={styles.account} onClick={() => setIsModalVisible(true)}>
-        <p style={{ marginRight: "5px", ...styles.text }}>{getEllipsisTxt(account, 6)}</p>
+        <p style={{ marginRight: "1px", ...styles.text }}>{getEllipsisTxt(account, 5, 5)}</p>
         <Blockie currentWallet scale={3} />
       </div>
       <Modal

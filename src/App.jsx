@@ -22,6 +22,8 @@ import PlayPage from "components/Play";
 import GymRoomSandbox from "components/Play/games/GymRoomSandbox";
 import PlaySetupPage from "components/Play/PlaySetupPage";
 import { mainBackground } from "GlobalStyles";
+import { ConnectWalletWarn, UseCorrectNetworkWarn } from "./components/Warrnings";
+import { MainChainID } from "MglNftMetadata";
 
 const { Header } = Layout;
 
@@ -69,7 +71,7 @@ const styles = {
 };
 
 const App = ({ isServerInfo }) => {
-  const { isWeb3Enabled, enableWeb3, isAuthenticated, isWeb3EnableLoading } = useMoralis();
+  const { isWeb3Enabled, enableWeb3, isAuthenticated, isWeb3EnableLoading, chainId } = useMoralis();
 
   useEffect(() => {
     const connectorId = window.localStorage.getItem("connectorId");
@@ -115,7 +117,15 @@ const App = ({ isServerInfo }) => {
               <Home />
             </Route>
             <Route path="/avatars">
-              <NFTBalance />
+              {(() => {
+                if (isAuthenticated && chainId === MainChainID) {
+                  return <NFTBalance />
+                } else if (isAuthenticated && chainId !== MainChainID) {
+                  return <UseCorrectNetworkWarn />
+                } else {
+                  return <ConnectWalletWarn />
+                }
+              })()}
             </Route>
             <Route path="/demo-avatar">
               <DemoAvatar />
