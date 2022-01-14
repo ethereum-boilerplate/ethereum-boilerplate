@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { useMoralis } from "react-moralis";
 import { Button, Card, Image, Tooltip, Alert, Badge } from "antd";
 import { FileSearchOutlined, SmileFilled } from "@ant-design/icons";
 import { getExplorer } from "helpers/networks";
@@ -24,9 +23,7 @@ const fallbackImg =
 function DemoAvatar() {
     // eslint-disable-next-line no-unused-vars
     const [avatar, setAvatar] = useContext(AvatarCtx);
-    const { chainIdSelected } = useMoralis();
-    const chainId = chainIdSelected || MainChainID;
-    // const chainId = "0xa869"; // Avalanche Fuji Testnet
+    const chainId = MainChainID;
     const chainName = chainIdToNameAndLogo.get(chainId)[0];
     const chainLogo = chainIdToNameAndLogo.get(chainId)[1];
     const demoNFTContract = DemoNFTContracts.get(chainId);
