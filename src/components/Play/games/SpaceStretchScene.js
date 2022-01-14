@@ -9,6 +9,9 @@ import { createTextBox } from "./utils/text";
 import {
     ASTEROIDS,
 } from "./assets";
+import * as gstate from "../../gpose/state";
+import * as gpose from "../../gpose/pose";
+
 
 const SceneConfig = {
     active: false,
@@ -29,6 +32,7 @@ const scoreBoardTextStyle = {
     font: '900 20px Orbitron',
 }
 const roboTextTimeouts = [];
+const playerSpeed = 100;
 
 export class SpaceStretchScene extends Phaser.Scene {
     constructor() {
@@ -169,7 +173,44 @@ export class SpaceStretchScene extends Phaser.Scene {
     }
 
     update(time, delta) {
-        // Every frame, we update the player
-        this.player?.update();
+        const now = Date.now()
+        const timeDiff = (now - this.lastMovetime) / 1000
+        const player = this.player;
+        player.body.setVelocityX(0);
+        player.body.setVelocityY(0);
+
+        const isIdle = !gstate.isNonIdle();
+        if (!isIdle) {
+            // reset
+            this.landingAcceleration = 2;
+        }
+        // deffer gravity from in move state
+        if (timeDiff > 0.8) {
+            if (isIdle) {
+                player.body.setAllowGravity(true)
+                player.body.setVelocityY(playerSpeed)
+            }
+        }
+        // if not in move for longer start accelerating gravity
+        if (timeDiff > 3) {
+            if (isIdle) {
+                player.body.setVelocityY(playerSpeed + this.landingAcceleration)
+                this.landingAcceleration += 1.2
+            }
+        }
+        const curPose = gstate.getPose();
+        if (this.cursorKeys?.left.isDown || curPose === gpose.HTL) {
+            player.body.setVelocityX((playerSpeed * 0.8) * -1);
+            player.body.setAllowGravity(false)
+            this.lastMovetime = now
+        } else if (this.cursorKeys?.right.isDown || curPose === gpose.HTR) {
+            player.body.setVelocityX(playerSpeed * 0.8);
+            player.body.setAllowGravity(false)
+            this.lastMovetime = now
+        } else if (this.cursorKeys?.up.isDown || curPose === gpose.BA_UP) {
+            player.body.setVelocityY((playerSpeed) * -1);
+            player.body.setAllowGravity(false)
+            this.lastMovetime = now
+        }
     }
 }

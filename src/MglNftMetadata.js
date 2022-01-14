@@ -6,7 +6,7 @@ export const AllowedNftContracts = new Map([
 
 export const DemoNFTContracts = new Map([
     ["0x4",  // rinkeby
-        "0x4bD789C6D44F2e2f9963a5eb26D3b34D2eE42307",
+        "0xCB14609cCcE601fC24A7b39F39E0609b0B62acE4",
     ]
 ]);
 
