@@ -19,8 +19,7 @@ function Marketplace() {
       {isAuthenticated && (
         <div style={{
           ...BreakFlexDiv,
-          marginLeft: "100%",
-          marginBottom: "1.8rem",
+          marginLeft: "95%",
         }}>
           <Button
             type="primary"

@@ -2,7 +2,11 @@ import { Card, Typography, Divider } from "antd";
 import React from "react";
 import { Button } from 'antd';
 import { Row, Col } from 'antd';
-import { brightFontCol } from "GlobalStyles";
+import {
+  brightFontCol,
+  pageTitleStyle,
+  descriptionStyle
+} from "GlobalStyles";
 import { Link } from "react-router-dom";
 import { BtnPrimary } from "../GlobalStyles";
 import {
@@ -17,15 +21,10 @@ const styles = {
     color: brightFontCol,
   },
   titleText: {
-    fontSize: "35px",
-    justifyContent: "center",
-    color: brightFontCol,
-    fontFamily: "Source Serif Pro",
+    ...pageTitleStyle,
   },
   text: {
-    fontSize: "18px",
-    justifyContent: "center",
-    color: brightFontCol,
+    ...descriptionStyle,
   },
   card: {
     border: "none",
@@ -127,7 +126,7 @@ export default function Home() {
             padding: "1rem",
           }}>How it works?</h1>
           <div style={{
-            fontSize: "18px",
+            ...descriptionStyle,
           }}>
             <ol style={{
               listStyle: "none",
@@ -170,7 +169,7 @@ export default function Home() {
           textAlign: "center"
         }}>
           <div style={{
-            fontSize: "18px",
+            ...descriptionStyle,
           }}>
             Want to be notified about our progress and future plans?&nbsp;&nbsp;&nbsp;
             <Button type="primary" style={BtnPrimary}>Sing Up to MetaGymLand Newsletter</Button>

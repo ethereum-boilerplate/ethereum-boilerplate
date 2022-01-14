@@ -13,7 +13,15 @@ import {
 import { useVerifyMetadata } from "hooks/useVerifyMetadata";
 import { useNFTTokenIds } from "hooks/useNFTTokenIds";
 import { mainMarketAddress, deployedABI, createdMarketItemsTable } from "../../MarketplaceSCMetadata";
-import { NFTCardStyle, NFTsDiv, NFTImg, brightFontCol, NFTImgWrapperStyle } from "../../GlobalStyles";
+import {
+    NFTCardStyle,
+    NFTsDiv,
+    NFTImg,
+    brightFontCol,
+    NFTImgWrapperStyle,
+    pageTitleStyle,
+    descriptionStyle
+} from "../../GlobalStyles";
 import { AllowedNftContracts } from "../../MglNftMetadata";
 import { DefaultChainID } from "../../MglNftMetadata";
 import { chainIdToNameAndLogo } from "../Chains/Chains";
@@ -22,15 +30,14 @@ import { chainIdToNameAndLogo } from "../Chains/Chains";
 const styles = {
     banner: {
         display: "flex",
-        justifyContent: "space-evenly",
         alignItems: "center",
-        marginBottom: "2rem",
     },
     logo: {
         height: "100px",
         width: "100px",
         borderRadius: "50%",
         border: "solid 4px white",
+        margin: "0 1rem",
     },
     text: {
         fontSize: "27px",
@@ -233,7 +240,10 @@ function NFTCollectionItems({ nftAddress, colName, colImg }) {
                 </>
             )}
             {/* NFT token description */}
-            <div style={styles.banner}>
+            <div style={{
+                ...styles.banner,
+                ...pageTitleStyle,
+            }}>
                 <Image
                     preview={false}
                     src={colImg}
@@ -360,7 +370,7 @@ function NFTCollectionItems({ nftAddress, colName, colImg }) {
                 <div style={{
                     display: "flex",
                     alignItems: "center",
-                    fontSize: "18px",
+                    ...descriptionStyle,
                 }}>
                     NFTs collection on&nbsp;
                     <span style={{

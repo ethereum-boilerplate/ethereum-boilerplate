@@ -1,5 +1,6 @@
 export const mainBackground = "linear-gradient(180deg, #000207 0%, #003963 100%)"
 export const brightFontCol = "#fff"
+export const highlightTextColor = "aqua";
 
 const NFTCardStyleSidesPadding = "0.2rem";
 
@@ -57,4 +58,16 @@ export const HeaderRightBordersStyle = {
     border: "1px solid #E7EAF3",
     borderRadius: "2px",
     background: "none",
+}
+
+export const descriptionStyle = {
+    fontWeight: "400",
+    fontSize: "18px",
+    lineHeight: "28px",
+}
+
+export const pageTitleStyle = {
+    fontFamily: "Source Serif Pro",
+    fontSize: "35px",
+    fontWeight: "bold",
 }

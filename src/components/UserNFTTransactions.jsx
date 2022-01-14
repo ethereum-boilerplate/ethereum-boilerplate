@@ -4,8 +4,14 @@ import { useMoralis, useMoralisQuery } from "react-moralis";
 import { Button, Table, Tag, Space } from "antd";
 import moment from "moment";
 import { createdMarketItemsTable } from "../MarketplaceSCMetadata";
-import { brightFontCol, BreakFlexDiv, BtnPrimary } from "../GlobalStyles";
+import {
+    brightFontCol,
+    BreakFlexDiv,
+    BtnPrimary,
+    pageTitleStyle,
+} from "../GlobalStyles";
 import { DatabaseOutlined, LeftOutlined } from "@ant-design/icons";
+
 
 const styles = {
     table: {
@@ -137,9 +143,7 @@ function UserNFTTransactions() {
                 </Button>
             </div>
             <div style={{
-                fontFamily: "Source Serif Pro",
-                fontSize: "27px",
-                fontWeight: "bold",
+                ...pageTitleStyle,
                 flexBasis: "100%",
                 marginBottom: "1.5rem",
                 color: brightFontCol,
