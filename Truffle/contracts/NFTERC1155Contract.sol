@@ -11,7 +11,7 @@ contract NFTContract is ERC1155, Ownable {
     address marketplaceAddress;
 
     constructor(address _marketplaceAddress)
-        ERC1155("https://ipfs.moralis.io:2053/ipfs/QmYUsDTWGCZzfJRosYgLcA5DdiiJpnu4WquWZVZNki25PZ/metadata/{id}.json")
+        ERC1155("https://ipfs.moralis.io:2053/ipfs/QmaNBJYhe1e9CjQVrmEFT1nt6RuwcyTdX8SitxWEhZN3vd/metadata/{id}.json")
     {
         marketplaceAddress = _marketplaceAddress;
         // marketplace can oprate on token
@@ -54,3 +54,7 @@ contract NFTContract is ERC1155, Ownable {
 // latest contract deployment on rinkeby 0x7ae9f5b997dacd922e2da3fd79207d01ee6f5300
 
 // latest contract deployment on rinkeby: 0x9ca6cf1671a384eccec958ea4ee27294e176b677
+
+// last deployment on Avalanche Fuji Testnet: 0x6C1836D8FCA899dA178851437C0d4179bD8B3678
+
+// last deployment on Avalanche Fuji Testnet: 0x1904b52B2768E4DD72bf300202B4194E05dd0AFa

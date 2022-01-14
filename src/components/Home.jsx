@@ -90,27 +90,13 @@ export default function Home() {
                       Try with Demo Avatar
                     </Link>
                   </Button>
-                  {/* <Button
-                  href="https://coderdidit.com"
-                  target="_blank"
-                  type="default"
-                  style={BtnPrimary}
-                >Litepaper
-                </Button> */}
                 </div>
               </div>
             </Card>
             <Card
               style={styles.card}
-            // title={
-            //   <Text style={styles.text}>
-            //     Example of Gamifying Stretches:
-            //   </Text>
-            // }
             >
               <div style={{
-                // WebkitBoxShadow: "0 0 60px 0 black",
-                // MozBoxShadow: "0 0 60px 0 black",
                 boxShadow: "0 0 70px 5px #020811",
                 position: "relative",
                 backgroundColor: "#020811",

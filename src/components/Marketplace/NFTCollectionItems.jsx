@@ -16,6 +16,7 @@ import { mainMarketAddress, deployedABI, createdMarketItemsTable } from "../../M
 import { NFTCardStyle, NFTsDiv, NFTImg, brightFontCol, NFTImgWrapperStyle } from "../../GlobalStyles";
 import { AllowedNftContracts } from "../../MglNftMetadata";
 import { DefaultChainID } from "../../MglNftMetadata";
+import { chainIdToNameAndLogo } from "../Chains/Chains";
 
 
 const styles = {
@@ -55,6 +56,8 @@ function NFTCollectionItems({ nftAddress, colName, colImg }) {
 
     const contractABI = deployedABI;
     const marketAddress = mainMarketAddress;
+    const chainName = chainIdToNameAndLogo.get(chainId)[0];
+    const chainLogo = chainIdToNameAndLogo.get(chainId)[1];
 
     const contractProcessor = useWeb3ExecuteFunction();
     const nativeName = getNativeByChain(chainId);
@@ -70,7 +73,7 @@ function NFTCollectionItems({ nftAddress, colName, colImg }) {
             // get not sold items
             return query
                 .equalTo("sold", false)
-                .equalTo("nftContract", AllowedNftContracts.get(chainId));
+                .equalTo("nftContract", AllowedNftContracts.get(chainId).toLowerCase());
         });
     const fetchMarketItems = JSON.parse(
         JSON.stringify(queryMarketItems.data, [
@@ -201,7 +204,7 @@ function NFTCollectionItems({ nftAddress, colName, colImg }) {
         return listings.get(key)
     }
 
-    console.log('Mrktplace NFTsFetchError', NFTsFetchError);
+    console.log('Marketplace NFTsFetchError', NFTsFetchError);
 
     return (
         <>
@@ -351,7 +354,20 @@ function NFTCollectionItems({ nftAddress, colName, colImg }) {
                             </Card>
                         )
                     })}
-
+                <div style={{
+                    flexBasis: "100%",
+                }}></div>
+                <div style={{
+                    display: "flex",
+                    alignItems: "center",
+                    fontSize: "18px",
+                }}>
+                    NFTs collection on&nbsp;
+                    <span style={{
+                    }}>{chainName}</span>
+                    &nbsp;
+                    {chainLogo}
+                </div>
                 {/* TODO get the one with lowest price */}
                 {/* modal boxes to be able to buy */}
                 {hasMarketItems(nftToBuy) ? (

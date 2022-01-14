@@ -34,6 +34,14 @@ export const networkConfigs = {
     rpcUrl: "https://api.avax.network/ext/bc/C/rpc",
     blockExplorerUrl: "https://cchain.explorer.avax.network/",
   },
+  "0xa869": {
+    chainId: 43113,
+    chainName: "Avalanche Fuji Testnet",
+    currencyName: "AVAX",
+    currencySymbol: "AVAX",
+    rpcUrl: "https://api.avax-test.network/ext/bc/C/rpc",
+    blockExplorerUrl: "https://testnet.snowtrace.io/",
+  },
   "0x38": {
     chainId: 56,
     chainName: "Smart Chain",

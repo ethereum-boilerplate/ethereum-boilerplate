@@ -215,3 +215,4 @@ contract MarketPlace is ERC1155Receiver, ReentrancyGuard, Ownable {
 
 // last deployment on rinkeby testnet: 0x2e73616de3cfce0be102764c5d0b86117d95c4c4
 
+// last deployment on Avalanche Fuji Testnet: 0xe577B81994f23ba777a4057753Ad8adcF3d38E84
