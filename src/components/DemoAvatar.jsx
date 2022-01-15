@@ -55,9 +55,7 @@ function DemoAvatar() {
                             )
                         }
                     >
-                        <Link to="/marketplace">
-                            {demoNFTContract}
-                        </Link>
+                        {demoNFTContract}
                     </Button>
                     <div style={{
                         display: "flex",

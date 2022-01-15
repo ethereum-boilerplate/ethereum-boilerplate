@@ -148,9 +148,9 @@ const PlaySetupPage = () => {
             }}>
                 <Button
                     disabled={webcamId === null}
+                    className="join-mgl-btn"
                     style={{
                         ...BtnPrimary,
-                        backgroundColor: "#20BF96",
                     }}
                 >
                     <Link to='/play'>

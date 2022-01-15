@@ -58,3 +58,13 @@ h1, h2, h3, h4, h5, h6 {
 .ant-menu-horizontal:not(.ant-menu-dark)>.ant-menu-submenu-selected::after {
   border-bottom: 4px solid var(--active-color) !important;
 }
+
+.join-mgl-btn {
+  background-color: #20BF96;
+}
+
+.join-mgl-btn:hover {
+  color: #474646;
+  background-color: #20BF96;
+  box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.1);
+}
