@@ -221,8 +221,8 @@
   </object>
  </objectgroup>
  <objectgroup id="7" name="script">
-  <object id="1" name="space_stretch" x="579.479" y="615.545" width="212.62" height="66.8724"/>
-  <object id="2" name="fly_fit" x="1697.45" y="507.52" width="205.761" height="63.4431"/>
-  <object id="3" name="cosmic_cardio" x="1227.63" y="1117.95" width="205.761" height="65.1578"/>
+  <object id="1" name="space_stretch" x="575.83" y="611.752" width="216.269" height="72.3494"/>
+  <object id="2" name="fly_fit" x="1691.9" y="503.936" width="216.078" height="71.9001"/>
+  <object id="3" name="cosmic_cardio" x="1223.93" y="1115.58" width="216.034" height="72.5133"/>
  </objectgroup>
 </map>

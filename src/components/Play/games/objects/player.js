@@ -2,7 +2,7 @@ import Phaser from "phaser";
 import * as gstate from "../../../gpose/state";
 import * as gpose from "../../../gpose/pose";
 
-export class Player extends Phaser.GameObjects.Sprite {
+export class Player extends Phaser.Physics.Arcade.Sprite {
     cursorKeys;
     speed = 90;
 
@@ -13,7 +13,6 @@ export class Player extends Phaser.GameObjects.Sprite {
 
         // sprite
         this.setOrigin(0, 0);
-
         // TODO Add animations
         // this.anims.create({
         //     key: 'idle',

@@ -75,37 +75,37 @@
          "name":"script",
          "objects":[
                 {
-                 "height":66.8724,
+                 "height":72.3494365523856,
                  "id":1,
                  "name":"space_stretch",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":212.62,
-                 "x":579.479,
-                 "y":615.545
+                 "width":216.26878760739,
+                 "x":575.83021239261,
+                 "y":611.751848898592
                 }, 
                 {
-                 "height":63.4431,
+                 "height":71.9000706830679,
                  "id":2,
                  "name":"fly_fit",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":205.761,
-                 "x":1697.45,
-                 "y":507.52
+                 "width":216.078067544365,
+                 "x":1691.89774993977,
+                 "y":503.936331379989
                 }, 
                 {
-                 "height":65.1578,
+                 "height":72.5133004692136,
                  "id":3,
                  "name":"cosmic_cardio",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":205.761,
-                 "x":1227.63,
-                 "y":1117.95
+                 "width":216.034091521136,
+                 "x":1223.93089829887,
+                 "y":1115.58029423891
                 }],
          "opacity":1,
          "type":"objectgroup",

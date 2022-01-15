@@ -27,7 +27,6 @@ const SceneConfig = {
 const mapScale = 0.6;
 const tileMapSizing = 36;
 
-const miniGamesOverlaps = new Set();
 const miniGamesMapping = new Map([
   ['space_stretch', 'Space Stretch'],
   ['fly_fit', 'Fly Fit'],
@@ -142,7 +141,15 @@ export class GymRoomScene extends Phaser.Scene {
     });
     this.player.setScale(PLAYER_SCALE);
     this.player.setDepth(1);
+    // adjust collision box
+    this.player.body.setSize(
+      this.player.width * 0.5,
+      this.player.height * 0.3);
+    this.player.body.setOffset(
+      this.player.width * 0.25, this.player.height * 0.6
+    )
     this.cameras.main.startFollow(this.player);
+    const player = this.player;
 
     // colliders
     this.physics.add.collider(this.player, wallsLayer);
@@ -173,43 +180,49 @@ export class GymRoomScene extends Phaser.Scene {
       );
     }
 
+    const trainingMats = []
     const scriptLayer = map.getObjectLayer('script');
-    console.log('scriptLayer.objects', scriptLayer.objects);
     scriptLayer.objects.forEach(object => {
       const x = object.x * mapScale + width / 5
       const y = object.y * mapScale + height * 0.02
-      let tmp = this.add
-        .rectangle(x, y, object.width * mapScale, object.height * mapScale)
-        .setOrigin(0)
-      tmp.properties = [{ name: object.name }]
-      this.physics.world.enable(tmp, 1)
-      this.physics.add.overlap(
-        this.player,
-        tmp,
-        (avatar, other) => {
-          if (!miniGamesOverlaps.has(object.name)) {
-            roboTextTimeouts.forEach(t => clearTimeout(t))
-            sceneToGoOnXclick = object.name
-            hintTextBox.start(
-              `🤖 press X to play ${miniGamesMapping.get(object.name)} 🚀`,
-              50
-            )
-            roboTextTimeouts.push(
-              setTimeout(() => hintTextBox.start('🤖', 50), 5000)
-            )
-            miniGamesOverlaps.add(object.name)
-          } else {
-            // clear others
-            miniGames
-              .filter(i => i !== object.name)
-              .forEach(i => miniGamesOverlaps.delete(i))
-          }
-        },
-        null,
-        this
+      const objWidth = object.width * mapScale;
+      const objHeight = object.height * mapScale;
+      let trainingMatRect = this.add
+        .rectangle(x, y, objWidth, objHeight,
+      ).setName(object.name).setOrigin(0);
+      this.physics.world.enable(
+        trainingMatRect, Phaser.Physics.Arcade.STATIC_BODY
       );
+      trainingMats.push(trainingMatRect);
     });
 
+    const playerMatHandelOverlap = (player, matRectangle) => {
+      const objName = matRectangle.name;
+      if (player.body.touching.none && player.collidingTrainingMat != matRectangle) {
+        player.collidingTrainingMat = matRectangle;
+        matRectangle.setFillStyle(0x33dd33, 0.3);
+        roboTextTimeouts.forEach(t => clearTimeout(t))
+        sceneToGoOnXclick = objName
+        hintTextBox.start(
+          `🤖 press X to play ${miniGamesMapping.get(objName)} 🚀`,
+          50
+        );
+      }
+    }
+
+    this.physics.add.overlap(this.player, trainingMats,
+      playerMatHandelOverlap,
+      null, this);
+    this.player.on("overlapend", function () {
+      if (player.collidingTrainingMat) {
+        const mat = player.collidingTrainingMat;
+        mat.setFillStyle(null, 0);
+        player.collidingTrainingMat = null;
+        roboTextTimeouts.push(
+          setTimeout(() => hintTextBox.start('🤖', 50), 1000)
+        );
+      }
+    });
     // debugging
     if (debugCollisons) {
       debugCollisonBounds(wallsLayer, this)
@@ -217,6 +230,12 @@ export class GymRoomScene extends Phaser.Scene {
   }
 
   update(time, delta) {
+    // overlapend event
+    const touching = !this.player.body.touching.none;
+    const wasTouching = !this.player.body.wasTouching.none;
+    // if (touching && !wasTouching) block.emit("overlapstart");
+    if (!touching && wasTouching) this.player.emit("overlapend");
+
     // Every frame, we update the player
     this.player?.update()
   }
