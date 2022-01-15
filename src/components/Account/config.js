@@ -5,6 +5,8 @@ import MathWallet from "./WalletIcons/MathWallet.svg";
 import TokenPocket from "./WalletIcons/TokenPocket.svg";
 import SafePal from "./WalletIcons/SafePal.svg";
 import TrustWallet from "./WalletIcons/TrustWallet.png";
+import Web3 from "web3";
+import WalletConnectProvider from "@walletconnect/web3-provider";
 
 export const connectors = [
   {

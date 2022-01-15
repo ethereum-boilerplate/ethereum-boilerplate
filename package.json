@@ -1,55 +1,42 @@
 {
-  "name": "ethereum-boilerplate",
-  "version": "0.1.0",
-  "dependencies": {
-    "@ant-design/icons": "^4.7.0",
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
-    "@walletconnect/web3-provider": "^1.6.6",
-    "antd": "^4.16.13",
-    "moralis": "^0.0.176",
-    "react": "^17.0.2",
-    "react-blockies": "^1.4.1",
-    "react-dom": "^17.0.2",
-    "react-moralis": "^0.3.11",
-    "react-router": "^5.2.1",
-    "react-router-dom": "^5.3.0",
-    "react-scripts": "4.0.3",
-    "web-vitals": "^1.0.1",
-    "yarn": "^1.22.17"
+  "private": true,
+  "name": "web3-react",
+  "engines": {
+    "node": "^14 || ^16"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "devchain": "node Truffle/scripts/devChain.js",
-    "connect": "moralis-admin-cli connect-local-devchain",
-    "watch:events": "moralis-admin-cli add-contract",
-    "deploy": "node Truffle/scripts/deployContract.js",
-    "deploypage": "gh-pages -d build",
-    "clean": "npx gh-pages-clean"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "bootstrap": "lerna bootstrap",
+    "clean": "lerna clean --yes",
+    "lint": "yarn run eslint . --ext .ts,.tsx",
+    "test": "jest",
+    "build": "lerna run build",
+    "prestart": "yarn build",
+    "start": "lerna run start --parallel",
+    "prepack": "yarn build"
   },
   "devDependencies": {
-    "gh-pages": "^3.2.3"
+    "@testing-library/react-hooks": "^7.0.2",
+    "@tsconfig/recommended": "^1.0.1",
+    "@types/jest": "^27.0.2",
+    "@types/node": "^16.9.0",
+    "@types/react": "^17.0.21",
+    "@typescript-eslint/eslint-plugin": "^5.7.0",
+    "@typescript-eslint/parser": "^5.7.0",
+    "@walletconnect/ethereum-provider": "^1.7.1",
+    "eslint": "^8.4.1",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "eth-provider": "^0.9.4",
+    "jest": "^27.2.4",
+    "lerna": "^2.2.0",
+    "magic-sdk": "^6.1.0",
+    "prettier": "2.3.2",
+    "react": "^17.0.2",
+    "react-test-renderer": "^17.0.2",
+    "ts-jest": "^27.0.5",
+    "typescript": "^4.5.4",
+    "walletlink": "^2.4.1"
+  },
+  "dependencies": {
+    "@walletconnect/web3-provider": "^1.7.1"
   }
 }

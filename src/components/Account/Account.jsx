@@ -47,57 +47,13 @@ function Account() {
   const { authenticate, isAuthenticated, account, chainId, logout } = useMoralis();
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isAuthModalVisible, setIsAuthModalVisible] = useState(false);
-  
-  if (!isAuthenticated || !account) {
-    return (
-      <>
-        <div
-          onClick={() => setIsAuthModalVisible(true)}
-        >
-          <p style={styles.text}>Authenticate</p>
-        </div>
-        <Modal
-          visible={isAuthModalVisible}
-          footer={null}
-          onCancel={() => setIsAuthModalVisible(false)}
-          bodyStyle={{
-            padding: "15px",
-            fontSize: "17px",
-            fontWeight: "500",
-          }}
-          style={{ fontSize: "16px", fontWeight: "500" }}
-          width="340px"
-        >
-          <div style={{ padding: "10px", display: "flex", justifyContent: "center", fontWeight: "700", fontSize: "20px" }}>
-            Connect Wallet
-          </div>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
-            {connectors.map(({ title, icon, connectorId }, key) => (
-              <div
-                style={styles.connector}
-                key={key}
-                onClick={async () => {
-                  try {
-                    await authenticate({ provider: connectorId });
-                    window.localStorage.setItem("connectorId", connectorId);
-                    setIsAuthModalVisible(false);
-                  } catch (e) {
-                    console.error(e);
-                  }
-                }}
-              >
-                <img src={icon} alt={title} style={styles.icon} />
-                <Text style={{ fontSize: "14px" }}>{title}</Text>
-              </div>
-            ))}
-          </div>
-        </Modal>
-      </>
-    );
-  }
+  const [provider] = new WalletConnectProvider({
+    projectId: "f896cde0faa9c5684266c56efda856a9",
+    const [web3] = new Web3(provider);
+    const [txHash] = await web3.eth.sendTransaction(tx);
 
-  return (
-    <>
+    await provider.enable()
+
       {/* <button
         onClick={async () => {
           try {
@@ -114,10 +70,7 @@ function Account() {
       >
         Hi
       </button> */}
-      <div style={styles.account} onClick={() => setIsModalVisible(true)}>
-        <p style={{ marginRight: "5px", ...styles.text }}>{getEllipsisTxt(account, 6)}</p>
-        <Blockie currentWallet scale={3} />
-      </div>
+      
       <Modal
         visible={isModalVisible}
         footer={null}
@@ -137,15 +90,8 @@ function Account() {
             borderRadius: "1rem",
           }}
           bodyStyle={{ padding: "15px" }}
-        >
-          <Address avatar="left" size={6} copyable style={{ fontSize: "20px" }} />
-          <div style={{ marginTop: "10px", padding: "0 10px" }}>
-            <a href={`${getExplorer(chainId)}/address/${account}`} target="_blank" rel="noreferrer">
-              <SelectOutlined style={{ marginRight: "5px" }} />
-              View on Explorer
-            </a>
-          </div>
-        </Card>
+      
+        
         <Button
           size="large"
           type="primary"
