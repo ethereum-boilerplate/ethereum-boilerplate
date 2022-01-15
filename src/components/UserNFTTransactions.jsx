@@ -1,16 +1,14 @@
 import React from "react";
-import Text from "antd/lib/typography/Text";
 import { useMoralis, useMoralisQuery } from "react-moralis";
 import { Button, Table, Tag, Space } from "antd";
 import moment from "moment";
 import { createdMarketItemsTable } from "../MarketplaceSCMetadata";
 import {
-    brightFontCol,
     BreakFlexDiv,
     BtnPrimary,
     pageTitleStyle,
 } from "../GlobalStyles";
-import { DatabaseOutlined, LeftOutlined } from "@ant-design/icons";
+import { DatabaseFilled, LeftOutlined } from "@ant-design/icons";
 
 
 const styles = {
@@ -144,14 +142,10 @@ function UserNFTTransactions() {
             </div>
             <div style={{
                 ...pageTitleStyle,
-                flexBasis: "100%",
                 marginBottom: "1.5rem",
-                color: brightFontCol,
                 textAlign: "center"
             }}>
-                <Text strong>
-                    <h3><DatabaseOutlined /> Your recent transactions</h3>
-                </Text>
+                <div>Your recent transactions <DatabaseFilled /></div>
             </div>
             <div style={styles.table}>
                 <Table columns={columns} dataSource={data} />

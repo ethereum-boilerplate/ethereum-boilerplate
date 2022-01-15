@@ -42,11 +42,6 @@ const styles = {
         border: "solid 4px white",
         margin: "0 1rem",
     },
-    text: {
-        fontSize: "27px",
-        fontWeight: "bold",
-        fontFamily: "Source Serif Pro",
-    },
 };
 
 const { Meta } = Card;
@@ -269,7 +264,7 @@ function NFTCollectionItems({ nftAddress, colName, colImg }) {
                     alt=""
                     style={styles.logo}
                 />
-                <div style={styles.text}>
+                <div>
                     {colName}
                 </div>
             </div>

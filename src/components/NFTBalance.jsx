@@ -99,8 +99,8 @@ function NFTBalance() {
       background: "none",
       color: brightFontCol,
     }}>
-      <h1 style={pageTitleStyle}>
-        Your avatars and wearables <SkinFilled /></h1>
+      <div style={pageTitleStyle}>
+        Your Avatars and Wearables <SkinFilled /></div>
       {
         !isLoading && (
           filteredNFTBalances
@@ -113,7 +113,7 @@ function NFTBalance() {
                 <p>Click&nbsp;
                   <span style={{ color: highlightTextColor }}>Play with me</span>
                   &nbsp;
-                  button on selected avatar and start your&nbsp;
+                  button on selected Avatar and start your&nbsp;
                   <span style={{ color: highlightTextColor }}>MetaGymLand Metaverse</span>
                   &nbsp;
                   adventure.</p>

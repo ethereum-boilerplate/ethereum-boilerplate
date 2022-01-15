@@ -68,6 +68,6 @@ export const descriptionStyle = {
 
 export const pageTitleStyle = {
     fontFamily: "Source Serif Pro",
-    fontSize: "35px",
+    fontSize: "40px",
     fontWeight: "bold",
 }

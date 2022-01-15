@@ -38,10 +38,10 @@ function DemoAvatar() {
                 marginTop: "1rem",
                 marginBottom: "2rem",
             }}>
-                <h1 style={{
+                <div style={{
                     ...pageTitleStyle,
                 }}>I am a Demo NFT Avatar <SmileFilled style={{ color: "#FFBE59" }} />
-                </h1>
+                </div>
                 <div style={{
                     ...descriptionStyle,
                     padding: "1rem 0",
