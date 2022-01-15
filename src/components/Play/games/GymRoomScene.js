@@ -204,7 +204,7 @@ export class GymRoomScene extends Phaser.Scene {
         roboTextTimeouts.forEach(t => clearTimeout(t))
         sceneToGoOnXclick = objName
         hintTextBox.start(
-          `🤖 press X to play ${miniGamesMapping.get(objName)} 🚀`,
+          `🤖 press X to play\n${miniGamesMapping.get(objName)} 🚀`,
           50
         );
       }
