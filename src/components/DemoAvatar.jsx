@@ -68,10 +68,10 @@ function DemoAvatar() {
                         {chainLogo}
                     </div>
                     <p>
-                        You can try me first before having your own NFT avatar, but I will disappear soon&nbsp;&nbsp;😱
+                        You can try me first before buying your own NFT Avatar, but I will disappear soon&nbsp;&nbsp;😱
                     </p>
                     <p>
-                        If you don't have your awesome Avatar yet, get one in our
+                        If you dont have your awesome Avatar yet, get one in our
                         {" "}<Link to="/marketplace">
                             <b><u>Marketplace</u></b>
                         </Link>{" "}🚀
