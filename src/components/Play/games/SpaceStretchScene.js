@@ -51,12 +51,20 @@ export class SpaceStretchScene extends Phaser.Scene {
     }
 
     draw() {
-        this.graphics.clear();
         this.shapes.forEach((shape, i) => {
             this.graphics
                 .fillStyle(this.color(i), 0.5)
                 .fillCircleShape(shape);
         }, this);
+    }
+
+    drawGround(width, height) {
+        const groundHeight = height * 0.02;
+        const rect = new Phaser.Geom.Rectangle(0, height - groundHeight, width, groundHeight);
+        this.graphics
+            .fillStyle(0xB8ABB2, 1)
+            .fillRectShape(rect);
+        return rect;
     }
 
     create() {
@@ -66,6 +74,8 @@ export class SpaceStretchScene extends Phaser.Scene {
         // background
         this.cameras.main.backgroundColor.setTo(31, 31, 30);
         this.graphics = this.add.graphics();
+        this.graphics.clear();
+        const ground = this.drawGround(width, height);
         this.shapes = new Array(15).fill(null).map(
             () => new Phaser.Geom.Circle(
                 Phaser.Math.Between(0, width),
@@ -97,7 +107,7 @@ export class SpaceStretchScene extends Phaser.Scene {
         hintTextBox.start("🤖", 50);
         roboTextTimeouts.push(setTimeout(() => {
             hintTextBox.start(`🤖 Land 🚀 on asteroids 🪨\nand crush them 💥`, 50);
-            roboTextTimeouts.push(setTimeout(() => hintTextBox.start("🤖", 50), 5000));
+            roboTextTimeouts.push(setTimeout(() => hintTextBox.start("🤖", 50), 60000));
         }, 500));
 
         // Add the scoreboard in
@@ -158,6 +168,8 @@ export class SpaceStretchScene extends Phaser.Scene {
         this.player.setDepth(1);
         this.player.body.setCollideWorldBounds(true);
 
+        // this.physics.add.collider(this.player, ground);
+
         const onCollide = (avatar, asteroids) => {
             if (avatar.body.onFloor()) {
                 this.score += 1
@@ -199,15 +211,15 @@ export class SpaceStretchScene extends Phaser.Scene {
             }
         }
         const curPose = gstate.getPose();
-        if (this.cursorKeys?.left.isDown || curPose === gpose.HTL) {
+        if (player.cursorKeys?.left.isDown || curPose === gpose.HTL) {
             player.body.setVelocityX((playerSpeed * 0.8) * -1);
             player.body.setAllowGravity(false)
             this.lastMovetime = now
-        } else if (this.cursorKeys?.right.isDown || curPose === gpose.HTR) {
+        } else if (player.cursorKeys?.right.isDown || curPose === gpose.HTR) {
             player.body.setVelocityX(playerSpeed * 0.8);
             player.body.setAllowGravity(false)
             this.lastMovetime = now
-        } else if (this.cursorKeys?.up.isDown || curPose === gpose.BA_UP) {
+        } else if (player.cursorKeys?.up.isDown || curPose === gpose.BA_UP) {
             player.body.setVelocityY((playerSpeed) * -1);
             player.body.setAllowGravity(false)
             this.lastMovetime = now

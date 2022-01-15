@@ -172,8 +172,7 @@ export class GymRoomScene extends Phaser.Scene {
           hintTextBox.start(
             `🤖 Welcome 👋,
                 \ngo to the MetaGym
-                \nand do some stretches 💪
-                `,
+                \nand do some stretches 💪`,
             30
           )
         }, 1000)
