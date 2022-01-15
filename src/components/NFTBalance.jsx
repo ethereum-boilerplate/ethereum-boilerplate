@@ -236,11 +236,16 @@ function NFTBalance() {
                 marginTop: "1rem",
               }}>
                 <p>It looks like you have no avatars. Dont worry!</p>
-                Simply get one of the awesome avatars from&nbsp;
-                <Link style={{
-                  color: highlightTextColor,
-                  fontWeight: "700",
-                }} to="/marketplace">Marketplace</Link>&nbsp;
+                Simply get one of the awesome avatars from
+                &nbsp;&nbsp;
+                <Button
+                  style={BtnPrimary}
+                >
+                  <Link to="/marketplace">
+                    Marketplace{" "}🚀
+                  </Link>
+                </Button>
+                &nbsp;&nbsp;
                 and start your&nbsp;
                 <span style={{ color: highlightTextColor }}>MetaGymLand Metaverse</span>
                 &nbsp;

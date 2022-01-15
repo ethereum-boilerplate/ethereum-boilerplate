@@ -46,21 +46,24 @@ function DemoAvatar() {
                     ...descriptionStyle,
                     padding: "1rem 0",
                 }}>
-                    <span style={{
-                        color: highlightTextColor,
-                        cursor: "pointer",
-                    }}
+                    <Button
+                        style={BtnPrimary}
                         onClick={() =>
                             window.open(
                                 `${getExplorer(chainId)}address/${demoNFTContract}`,
                                 "_blank"
                             )
                         }
-                    >{demoNFTContract}</span>
+                    >
+                        <Link to="/marketplace">
+                            {demoNFTContract}
+                        </Link>
+                    </Button>
                     <div style={{
                         display: "flex",
                         alignItems: "center",
                         marginBottom: "1rem",
+                        marginTop: "0.5rem",
                     }}>
                         ON&nbsp;
                         {chainName}
@@ -70,11 +73,17 @@ function DemoAvatar() {
                     <p>
                         You can try me first before buying your own NFT Avatar, but I will disappear soon&nbsp;&nbsp;😱
                     </p>
+
                     <p>
-                        If you dont have your awesome Avatar yet, get one in our
-                        {" "}<Link to="/marketplace">
-                            <b><u>Marketplace</u></b>
-                        </Link>{" "}🚀
+                        If you dont have your awesome Avatar yet, get one in our&nbsp;&nbsp;
+                        <Button
+                            type="primary"
+                            style={BtnPrimary}
+                        >
+                            <Link to="/marketplace">
+                                Marketplace{" "}🚀
+                            </Link>
+                        </Button>
                     </p>
                 </div>
             </div>
