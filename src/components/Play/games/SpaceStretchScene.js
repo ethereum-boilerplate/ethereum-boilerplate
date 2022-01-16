@@ -80,11 +80,17 @@ export class SpaceStretchScene extends Phaser.Scene {
         const width = getGameWidth(this);
         const height = getGameHeight(this);
         // background
-        this.cameras.main.backgroundColor.setTo(31, 31, 30);
+        // this.game.graphics
+        // this.cameras.main.backgroundColor = "linear-gradient(180deg, #000207 0%, #003963 100%)";
         this.graphics = this.add.graphics();
         this.graphics.clear();
+        const rect = new Phaser.Geom.Rectangle(0, 0, width, height);
+        this.graphics.fillGradientStyle(0x023246, 0x1E0338, 0x300240, 0x370232, 1)
+            // .fillStyle(0xB8ABB2, 1)
+            .fillRectShape(rect);
+
         const ground = this.drawGround(width, height);
-        this.shapes = new Array(15).fill(null).map(
+        this.shapes = new Array(45).fill(null).map(
             () => new Phaser.Geom.Circle(
                 Phaser.Math.Between(0, width),
                 Phaser.Math.Between(0, height),
@@ -110,6 +116,8 @@ export class SpaceStretchScene extends Phaser.Scene {
         const hintTextBox = createTextBox(this,
             (width / 2) + width / 4, height * 0.025,
             { wrapWidth: 280 },
+            mainBgColorNum,
+            highlightTextColorNum
         );
         hintTextBox.setDepth(1);
         hintTextBox.setScrollFactor(0, 0);
@@ -156,7 +164,7 @@ export class SpaceStretchScene extends Phaser.Scene {
                         x = Phaser.Math.Between(worldWidth / 1.3, worldWidth - xOffset)
                     }
                     const asteroidTile = asteroids.create(x, asteroidYPos, ASTEROIDS)
-                    asteroidTile.setScale(asteroidScale)
+                    asteroidTile.setScale(asteroidScale);
                     asteroidYPos += step
                     this.placedAsteroidPlatforms += 1
                 }
@@ -182,7 +190,7 @@ export class SpaceStretchScene extends Phaser.Scene {
         const onCollide = (avatar, asteroids) => {
             if (avatar.body.onFloor()) {
                 this.score += 1
-                asteroids.setTint("0x33dd33")
+                asteroids.setTint("0x4f4f4f")
                 asteroids.setImmovable(false)
                 asteroids.setVelocityY(600)
                 this.scoreBoard.setText(`🪨🪨🪨  ${this.score}`)
