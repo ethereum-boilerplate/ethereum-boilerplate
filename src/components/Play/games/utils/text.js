@@ -7,7 +7,7 @@ const COLOR_DARK = 0x260e04;
 
 const GetValue = Phaser.Utils.Objects.GetValue;
 
-export const createTextBox = function (scene, x, y, config) {
+export const createTextBox = function (scene, x, y, config, bg = COLOR_PRIMARY, stroke = COLOR_LIGHT) {
     var wrapWidth = GetValue(config, 'wrapWidth', 0);
     var fixedWidth = GetValue(config, 'fixedWidth', 0);
     var fixedHeight = GetValue(config, 'fixedHeight', 0);
@@ -16,7 +16,7 @@ export const createTextBox = function (scene, x, y, config) {
     const tBoxCfg = {
         x: x,
         y: y,
-        background: getRoundRectangle(scene),
+        background: getRoundRectangle(scene, bg, stroke),
         text: getBBcodeText(scene, wrapWidth, fixedWidth, fixedHeight),
         // draggable: true,
         space: {
@@ -34,9 +34,9 @@ export const createTextBox = function (scene, x, y, config) {
     return textBox;
 }
 
-const getRoundRectangle = function (scene) {
-    const rect = new RoundRectangle(scene, 0, 0, 2, 2, 20, COLOR_PRIMARY);
-    rect.setStrokeStyle(4, COLOR_LIGHT);
+const getRoundRectangle = function (scene, bg, stroke) {
+    const rect = new RoundRectangle(scene, 0, 0, 2, 2, 20, bg);
+    rect.setStrokeStyle(4, stroke);
     scene.add.existing(rect);
     return rect;
 };

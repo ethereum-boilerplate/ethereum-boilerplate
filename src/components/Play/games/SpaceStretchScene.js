@@ -11,6 +11,12 @@ import {
 } from "./assets";
 import * as gstate from "../../gpose/state";
 import * as gpose from "../../gpose/pose";
+import {
+    highlightTextColorNum,
+    mainBgColorNum,
+    highlightTextColor,
+} from "../../../GlobalStyles";
+import party from "party-js";
 
 
 const SceneConfig = {
@@ -28,11 +34,12 @@ const SceneConfig = {
 const asteroidScale = 1;
 const maxAsteroidPlatformsCnt = 7;
 const scoreBoardTextStyle = {
-    fill: '#fff',
+    fill: highlightTextColor,
     font: '900 20px Orbitron',
 }
 const roboTextTimeouts = [];
 const playerSpeed = 100;
+
 
 export class SpaceStretchScene extends Phaser.Scene {
     constructor() {
@@ -68,6 +75,7 @@ export class SpaceStretchScene extends Phaser.Scene {
     }
 
     create() {
+        this.won = false;
         // basic props
         const width = getGameWidth(this);
         const height = getGameHeight(this);
@@ -101,7 +109,8 @@ export class SpaceStretchScene extends Phaser.Scene {
         // hint
         const hintTextBox = createTextBox(this,
             (width / 2) + width / 4, height * 0.025,
-            { wrapWidth: 280 })
+            { wrapWidth: 280 },
+        );
         hintTextBox.setDepth(1);
         hintTextBox.setScrollFactor(0, 0);
         hintTextBox.start("🤖", 50);
@@ -113,7 +122,7 @@ export class SpaceStretchScene extends Phaser.Scene {
         // Add the scoreboard in
         this.scoreBoard = this.add.text(
             width * 0.05, height * 0.015,
-            "SCORE: 0", scoreBoardTextStyle);
+            "🪨🪨🪨  0", scoreBoardTextStyle);
         this.add.text(
             width * 0.05, height * 0.04,
             "press ESC to go back", {
@@ -176,7 +185,7 @@ export class SpaceStretchScene extends Phaser.Scene {
                 asteroids.setTint("0x33dd33")
                 asteroids.setImmovable(false)
                 asteroids.setVelocityY(600)
-                this.scoreBoard.setText(`SCORE: ${this.score}`)
+                this.scoreBoard.setText(`🪨🪨🪨  ${this.score}`)
                 this.scoreBoard.setStyle(scoreBoardTextStyle)
             }
         }
@@ -184,7 +193,52 @@ export class SpaceStretchScene extends Phaser.Scene {
         this.physics.add.collider(this.player, asteroids, onCollide, null, this);
     }
 
+    youWonMsg() {
+        const canvasParent = document.querySelector('#phaser-app canvas');
+        if (canvasParent) party.confetti(canvasParent);
+        // setInterval(() => {
+        //     party.confetti(canvasParent);
+        // }, 1000);
+
+        const width = getGameWidth(this);
+        const height = getGameHeight(this);
+
+        const msg = "All 🪨🪨🪨 are crushed 🎉\n" +
+            "\n\n" +
+            "Press X to 🎮 restart\n" +
+            "Press ESC to exit";
+
+        const youWonText = createTextBox(this,
+            width / 2,
+            (height / 2) - height * .2,
+            { wrapWidth: 280 },
+            mainBgColorNum,
+            highlightTextColorNum
+        )
+        youWonText.setOrigin(0.5).setDepth(1).setScrollFactor(0, 0);
+        youWonText.start(msg, 50);
+
+        this.input.on("pointerdown", () => this.scene.start(SPACE_STRETCH_SCENE));
+
+        this.input.keyboard.on(
+            'keydown',
+            event => {
+                const code = event.keyCode
+                if (code == Phaser.Input.Keyboard.KeyCodes.X) {
+                    this.scene.start(SPACE_STRETCH_SCENE);
+                }
+            },
+            this
+        );
+    }
+
     update(time, delta) {
+        if (!this.won && this.score == this.placedAsteroidPlatforms) {
+            this.won = true;
+            this.youWonMsg();
+            return
+        }
+
         const now = Date.now()
         const timeDiff = (now - this.lastMovetime) / 1000
         const player = this.player;
