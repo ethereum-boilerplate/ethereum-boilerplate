@@ -46,7 +46,7 @@ export const AppFooter = ({ style }) => {
 
                 <Col span={secFooterSpan}>
                     <Text style={{ color: brightFontCol }}>
-                        Built with {" "}<br />
+                        <div>Built with</div>
                         <a
                             target="_blank"
                             rel="noopener noreferrer"
@@ -58,7 +58,7 @@ export const AppFooter = ({ style }) => {
                 </Col>
                 <Col span={secFooterSpan}>
                     <Text style={{ color: brightFontCol }}>
-                        Powered by {" "}<br />
+                        <div>Powered by</div>
                         <a
                             target="_blank"
                             rel="noopener noreferrer"
@@ -91,7 +91,7 @@ export const AppFooter = ({ style }) => {
                 </Col>
                 <Col span={secFooterSpan}>
                     <Text style={{ color: brightFontCol }}>
-                        Game Engine<br />
+                        <div>Game Engine</div>
                         <a
                             target="_blank"
                             rel="noopener noreferrer"
@@ -106,7 +106,7 @@ export const AppFooter = ({ style }) => {
                 </Col>
                 <Col span={secFooterSpan}>
                     <Text style={{ color: brightFontCol }}>
-                        Coded by {" "}<br />
+                        <div>Coded by</div>
                         <a
                             target="_blank"
                             rel="noopener noreferrer"
