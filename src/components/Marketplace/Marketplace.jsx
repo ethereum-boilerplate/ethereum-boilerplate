@@ -11,8 +11,7 @@ import { MainChainID } from "../../MglNftMetadata";
 
 function Marketplace() {
   const { isAuthenticated } = useMoralis();
-  const { chainId } = useMoralis();
-  const NFTCollections = getCollectionsByChain(chainId) || getCollectionsByChain(MainChainID); // defaults to rinkeby
+  const NFTCollections = getCollectionsByChain(MainChainID);
 
   return (
     <div>

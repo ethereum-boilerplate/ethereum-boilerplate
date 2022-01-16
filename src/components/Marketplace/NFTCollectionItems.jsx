@@ -28,6 +28,7 @@ import {
 import { AllowedNftContracts } from "../../MglNftMetadata";
 import { MainChainID } from "../../MglNftMetadata";
 import { chainIdToNameAndLogo } from "../Chains/Chains";
+import Loader from "../Loader";
 
 
 const styles = {
@@ -53,7 +54,7 @@ function NFTCollectionItems({ nftAddress, colName, colImg }) {
     const { chainId, isAuthenticated, account, Moralis } = useMoralis();
     const userChainId = chainId;
     const marketPlaceChainId = MainChainID;
-    const { data: NFTTokenIds, error: NFTsFetchError } = useNFTTokenIds(nftAddress, 3, marketPlaceChainId);
+    const { data: NFTTokenIds, error: NFTsFetchError, isLoading } = useNFTTokenIds(nftAddress, 3, marketPlaceChainId);
     console.log("NFTTokenIds", NFTTokenIds);
 
     const [visible, setVisibility] = useState(false);
@@ -226,243 +227,248 @@ function NFTCollectionItems({ nftAddress, colName, colImg }) {
 
     console.log('Marketplace NFTsFetchError', NFTsFetchError);
 
-    return (
-        <>
-            {/* Smart Contract Alert */}
-            {contractABIJson.noContractDeployed && (
-                <>
-                    <br /><br />
-                    <Alert
-                        message="No Smart Contract Details Provided. Please deploy smart contract and provide address + ABI in the MoralisDappProvider.js file"
-                        type="error"
+    if (isLoading) {
+        return (<Loader />);
+    } else {
+
+        return (
+            <>
+                {/* Smart Contract Alert */}
+                {contractABIJson.noContractDeployed && (
+                    <>
+                        <br /><br />
+                        <Alert
+                            message="No Smart Contract Details Provided. Please deploy smart contract and provide address + ABI in the MoralisDappProvider.js file"
+                            type="error"
+                        />
+                        <div style={{ marginBottom: "10px" }}></div>
+                    </>
+                )}
+                {(
+                    <>
+                        {NFTsFetchError && (
+                            <>
+                                <Alert
+                                    message="Unable to fetch all NFT metadata... We are searching for a solution, please try again later!"
+                                    type="warning"
+                                />
+                                <div style={{ marginBottom: "10px" }}></div>
+                            </>
+                        )}
+                    </>
+                )}
+                {/* NFT token description */}
+                <div style={{
+                    ...styles.banner,
+                    ...pageTitleStyle,
+                }}>
+                    <Image
+                        preview={false}
+                        src={colImg}
+                        fallback={fallbackImg}
+                        alt=""
+                        style={styles.logo}
                     />
-                    <div style={{ marginBottom: "10px" }}></div>
-                </>
-            )}
-            {(
-                <>
-                    {NFTsFetchError && (
-                        <>
-                            <Alert
-                                message="Unable to fetch all NFT metadata... We are searching for a solution, please try again later!"
-                                type="warning"
-                            />
-                            <div style={{ marginBottom: "10px" }}></div>
-                        </>
-                    )}
-                </>
-            )}
-            {/* NFT token description */}
-            <div style={{
-                ...styles.banner,
-                ...pageTitleStyle,
-            }}>
-                <Image
-                    preview={false}
-                    src={colImg}
-                    fallback={fallbackImg}
-                    alt=""
-                    style={styles.logo}
-                />
-                <div>
-                    {colName}
+                    <div>
+                        {colName}
+                    </div>
                 </div>
-            </div>
-            <Divider style={{ backgroundColor: brightFontCol }} />
-            <div style={NFTsDiv}>
-                {NFTTokenIds?.result
-                    .map((nft, index) => {
-                        //Verify Metadata
-                        nft = verifyMetadata(nft);
-                        return (
-                            <Card
-                                key={index}
-                                hoverable
-                                actions={[
-                                    <Tooltip title="View On Blockexplorer">
-                                        <FileSearchOutlined
-                                            onClick={() =>
-                                                window.open(
-                                                    `${getExplorer(marketPlaceChainId)}address/${nft.token_address}`,
-                                                    "_blank"
-                                                )
-                                            }
+                <Divider style={{ backgroundColor: brightFontCol }} />
+                <div style={NFTsDiv}>
+                    {NFTTokenIds?.result
+                        .map((nft, index) => {
+                            //Verify Metadata
+                            nft = verifyMetadata(nft);
+                            return (
+                                <Card
+                                    key={index}
+                                    hoverable
+                                    actions={[
+                                        <Tooltip title="View On Blockexplorer">
+                                            <FileSearchOutlined
+                                                onClick={() =>
+                                                    window.open(
+                                                        `${getExplorer(marketPlaceChainId)}address/${nft.token_address}`,
+                                                        "_blank"
+                                                    )
+                                                }
+                                            />
+                                        </Tooltip>,
+                                        <Tooltip title="Buy NFT">
+                                            <ShoppingCartOutlined onClick={() => handleBuyClick(nft)} />
+                                        </Tooltip>,
+                                    ]}
+                                    style={NFTCardStyle}
+                                    cover={
+                                        <Image
+                                            preview={false}
+                                            src={nft.image || "error"}
+                                            fallback={fallbackImg}
+                                            alt=""
+                                            style={NFTImg}
+                                            wrapperStyle={{
+                                                backgroundColor: "#" + nft?.background_color,
+                                                ...NFTImgWrapperStyle
+                                            }}
                                         />
-                                    </Tooltip>,
-                                    <Tooltip title="Buy NFT">
-                                        <ShoppingCartOutlined onClick={() => handleBuyClick(nft)} />
-                                    </Tooltip>,
-                                ]}
-                                style={NFTCardStyle}
-                                cover={
-                                    <Image
-                                        preview={false}
-                                        src={nft.image || "error"}
-                                        fallback={fallbackImg}
-                                        alt=""
-                                        style={NFTImg}
-                                        wrapperStyle={{
-                                            backgroundColor: "#" + nft?.background_color,
-                                            ...NFTImgWrapperStyle
-                                        }}
-                                    />
-                                }
-                            >
-                                {hasMarketItems(nft) ? (
-                                    <div onClick={() => handleBuyClick(nft)}>
+                                    }
+                                >
+                                    {hasMarketItems(nft) ? (
+                                        <div onClick={() => handleBuyClick(nft)}>
+                                            <Badge.Ribbon
+                                                text="Buy Now"
+                                                color="green"
+                                                style={{
+                                                    paddingRight: "5px",
+                                                    paddingLeft: "5px",
+                                                    marginRight: "-10px",
+                                                }}
+                                            />
+                                        </div>
+                                    ) : (
                                         <Badge.Ribbon
-                                            text="Buy Now"
-                                            color="green"
+                                            text="Sold Out"
+                                            color="orange"
                                             style={{
                                                 paddingRight: "5px",
                                                 paddingLeft: "5px",
                                                 marginRight: "-10px",
                                             }}
                                         />
-                                    </div>
-                                ) : (
+                                    )}
+                                    <Meta
+                                        title={nft.name}
+                                        description={
+                                            <>
+                                                <p>{`#${nft.token_id}`}</p>
+                                                <div style={{
+                                                    textAlign: "center"
+                                                }}>
+                                                    <h3>
+                                                        <b style={{ color: "darkblue" }}>Total</b>
+                                                        &nbsp;<b style={{ color: "cadetblue" }}>/</b>&nbsp;
+                                                        <b style={{ color: "crimson" }}>For Sale</b>
+                                                    </h3>
+                                                    <h1>
+                                                        <b style={{ color: "darkblue" }}>{nft.amount}</b>
+                                                        &nbsp;<b style={{ color: "cadetblue" }}>/</b>&nbsp;
+                                                        <b style={{ color: "crimson" }}>{getAmountForSale(nft)}</b>
+                                                    </h1>
+                                                    <div>
+                                                        {hasMarketItems(nft) ? (
+                                                            <h4 style={{
+                                                                backgroundColor: "burlywood",
+                                                                borderRadius: "1rem",
+                                                                padding: "2px",
+                                                            }}>
+                                                                Best Price: <b style={{ color: "darkblue" }}>
+                                                                    {
+                                                                        getMarketWithLowestPrice(nft).price / ("1e" + 18)
+                                                                    }
+                                                                </b>
+                                                                &nbsp;
+                                                                <b style={{ color: "darkblue" }}>{nativeName}</b>
+                                                            </h4>
+                                                        ) : (
+                                                            <>
+                                                                <br />
+                                                            </>
+                                                        )}
+                                                    </div>
+                                                </div>
+                                            </>
+                                        }
+                                    />
+                                </Card>
+                            )
+                        })}
+                    <div style={{
+                        flexBasis: "100%",
+                    }}></div>
+                    <div style={{
+                        display: "flex",
+                        alignItems: "center",
+                        ...descriptionStyle,
+                    }}>
+                        NFTs collection on&nbsp;
+                        <span style={{
+                        }}>{chainName}</span>
+                        &nbsp;
+                        {chainLogo}
+                    </div>
+                    {/* TODO get the one with lowest price */}
+                    {/* modal boxes to be able to buy */}
+                    {hasMarketItems(nftToBuy) ? (
+                        <Modal
+                            title={
+                                <>
+                                    Buy <b>{nftToBuy?.name}</b> #{nftToBuy?.token_id}
+                                </>
+                            }
+                            visible={visible}
+                            onCancel={() => setVisibility(false)}
+                            onOk={() => purchase()}
+                            okText="Buy"
+                        >
+                            <Spin spinning={loading}>
+                                <div
+                                    style={{
+                                        width: "250px",
+                                        margin: "auto",
+                                    }}
+                                >
                                     <Badge.Ribbon
-                                        text="Sold Out"
-                                        color="orange"
+                                        color="green"
+                                        text={`${getMarketWithLowestPrice(nftToBuy).price / ("1e" + 18)
+                                            } ${nativeName}`}
                                         style={{
-                                            paddingRight: "5px",
-                                            paddingLeft: "5px",
-                                            marginRight: "-10px",
+                                            marginRight: "-100px",
+                                        }}
+                                    >
+                                    </Badge.Ribbon>
+                                    <img
+                                        src={nftToBuy?.image}
+                                        alt=""
+                                        style={{
+                                            width: "250px",
+                                            borderRadius: "10px",
+                                            marginBottom: "15px",
                                         }}
                                     />
-                                )}
-                                <Meta
-                                    title={nft.name}
-                                    description={
-                                        <>
-                                            <p>{`#${nft.token_id}`}</p>
-                                            <div style={{
-                                                textAlign: "center"
-                                            }}>
-                                                <h3>
-                                                    <b style={{ color: "darkblue" }}>Total</b>
-                                                    &nbsp;<b style={{ color: "cadetblue" }}>/</b>&nbsp;
-                                                    <b style={{ color: "crimson" }}>For Sale</b>
-                                                </h3>
-                                                <h1>
-                                                    <b style={{ color: "darkblue" }}>{nft.amount}</b>
-                                                    &nbsp;<b style={{ color: "cadetblue" }}>/</b>&nbsp;
-                                                    <b style={{ color: "crimson" }}>{getAmountForSale(nft)}</b>
-                                                </h1>
-                                                <div>
-                                                    {hasMarketItems(nft) ? (
-                                                        <h4 style={{
-                                                            backgroundColor: "burlywood",
-                                                            borderRadius: "1rem",
-                                                            padding: "2px",
-                                                        }}>
-                                                            Best Price: <b style={{ color: "darkblue" }}>
-                                                                {
-                                                                    getMarketWithLowestPrice(nft).price / ("1e" + 18)
-                                                                }
-                                                            </b>
-                                                            &nbsp;
-                                                            <b style={{ color: "darkblue" }}>{nativeName}</b>
-                                                        </h4>
-                                                    ) : (
-                                                        <>
-                                                            <br />
-                                                        </>
-                                                    )}
-                                                </div>
-                                            </div>
-                                        </>
-                                    }
-                                />
-                            </Card>
-                        )
-                    })}
-                <div style={{
-                    flexBasis: "100%",
-                }}></div>
-                <div style={{
-                    display: "flex",
-                    alignItems: "center",
-                    ...descriptionStyle,
-                }}>
-                    NFTs collection on&nbsp;
-                    <span style={{
-                    }}>{chainName}</span>
-                    &nbsp;
-                    {chainLogo}
-                </div>
-                {/* TODO get the one with lowest price */}
-                {/* modal boxes to be able to buy */}
-                {hasMarketItems(nftToBuy) ? (
-                    <Modal
-                        title={
-                            <>
-                                Buy <b>{nftToBuy?.name}</b> #{nftToBuy?.token_id}
-                            </>
-                        }
-                        visible={visible}
-                        onCancel={() => setVisibility(false)}
-                        onOk={() => purchase()}
-                        okText="Buy"
-                    >
-                        <Spin spinning={loading}>
-                            <div
+                                </div>
+                            </Spin>
+                        </Modal>
+                    ) : (
+                        <Modal
+                            title={
+                                <>
+                                    Buy <b>{nftToBuy?.name}</b> #{nftToBuy?.token_id}
+                                </>
+                            }
+                            visible={visible}
+                            onCancel={() => setVisibility(false)}
+                            onOk={() => setVisibility(false)}
+                        >
+                            <img
+                                src={nftToBuy?.image}
+                                alt=""
                                 style={{
                                     width: "250px",
                                     margin: "auto",
+                                    borderRadius: "10px",
+                                    marginBottom: "15px",
                                 }}
-                            >
-                                <Badge.Ribbon
-                                    color="green"
-                                    text={`${getMarketWithLowestPrice(nftToBuy).price / ("1e" + 18)
-                                        } ${nativeName}`}
-                                    style={{
-                                        marginRight: "-100px",
-                                    }}
-                                >
-                                </Badge.Ribbon>
-                                <img
-                                    src={nftToBuy?.image}
-                                    alt=""
-                                    style={{
-                                        width: "250px",
-                                        borderRadius: "10px",
-                                        marginBottom: "15px",
-                                    }}
-                                />
-                            </div>
-                        </Spin>
-                    </Modal>
-                ) : (
-                    <Modal
-                        title={
-                            <>
-                                Buy <b>{nftToBuy?.name}</b> #{nftToBuy?.token_id}
-                            </>
-                        }
-                        visible={visible}
-                        onCancel={() => setVisibility(false)}
-                        onOk={() => setVisibility(false)}
-                    >
-                        <img
-                            src={nftToBuy?.image}
-                            alt=""
-                            style={{
-                                width: "250px",
-                                margin: "auto",
-                                borderRadius: "10px",
-                                marginBottom: "15px",
-                            }}
-                        />
-                        <Alert
-                            message="This NFT is currently not for sale"
-                            type="warning"
-                        />
-                    </Modal>
-                )}
-            </div>
-        </>
-    )
+                            />
+                            <Alert
+                                message="This NFT is currently not for sale"
+                                type="warning"
+                            />
+                        </Modal>
+                    )}
+                </div>
+            </>
+        );
+    }
 }
 
 export default NFTCollectionItems;
