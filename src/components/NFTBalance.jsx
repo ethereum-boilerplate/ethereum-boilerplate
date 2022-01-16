@@ -264,6 +264,12 @@ function NFTBalance() {
               >
                 <Link to="/marketplace">Browse avatars</Link>
               </Button>
+              <div style={{
+                ...descriptionStyle,
+                marginTop: "2rem",
+              }}>
+                If this is not right? <b>Refresh the page</b>
+              </div>
             </>
           )
         }
