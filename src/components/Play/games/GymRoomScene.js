@@ -28,9 +28,9 @@ const mapScale = 0.6;
 const tileMapSizing = 36;
 
 const miniGamesMapping = new Map([
-  ['space_stretch', 'Space Stretch'],
-  ['fly_fit', 'Fly Fit'],
-  ['cosmic_cardio', 'Cosmic Cardio']
+  ['space_stretch', 'Space Mat'],
+  ['fly_fit', 'Sky Mat'],
+  ['cosmic_cardio', 'Cardio Mat']
 ]);
 
 let sceneToGoOnXclick = null;
@@ -203,7 +203,7 @@ export class GymRoomScene extends Phaser.Scene {
         roboTextTimeouts.forEach(t => clearTimeout(t))
         sceneToGoOnXclick = objName
         hintTextBox.start(
-          `🤖 press X to play\n${miniGamesMapping.get(objName)} 🚀`,
+          `🤖 press X to train on\n${miniGamesMapping.get(objName)} 🚀`,
           50
         );
       }

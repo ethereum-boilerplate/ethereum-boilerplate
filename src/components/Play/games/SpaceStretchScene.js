@@ -123,14 +123,14 @@ export class SpaceStretchScene extends Phaser.Scene {
         hintTextBox.setScrollFactor(0, 0);
         hintTextBox.start("🤖", 50);
         roboTextTimeouts.push(setTimeout(() => {
-            hintTextBox.start(`🤖 Land 🚀 on asteroids 🪨\nand crush them 💥`, 50);
+            hintTextBox.start(`🤖 Land 🚀 on asteroids\nand crush them 💥`, 50);
             roboTextTimeouts.push(setTimeout(() => hintTextBox.start("🤖", 50), 60000));
         }, 500));
 
         // Add the scoreboard in
         this.scoreBoard = this.add.text(
             width * 0.05, height * 0.015,
-            "🪨🪨🪨  0", scoreBoardTextStyle);
+            "SCORE: 0", scoreBoardTextStyle);
         this.add.text(
             width * 0.05, height * 0.04,
             "press ESC to go back", {
@@ -193,7 +193,7 @@ export class SpaceStretchScene extends Phaser.Scene {
                 asteroids.setTint("0x4f4f4f")
                 asteroids.setImmovable(false)
                 asteroids.setVelocityY(600)
-                this.scoreBoard.setText(`🪨🪨🪨  ${this.score}`)
+                this.scoreBoard.setText(`SCORE: ${this.score}`)
                 this.scoreBoard.setStyle(scoreBoardTextStyle)
             }
         }
@@ -211,7 +211,7 @@ export class SpaceStretchScene extends Phaser.Scene {
         const width = getGameWidth(this);
         const height = getGameHeight(this);
 
-        const msg = "All 🪨🪨🪨 are crushed 🎉\n" +
+        const msg = "All asteroids are crushed 🎉\n" +
             "\n\n" +
             "Press X to 🎮 restart\n" +
             "Press ESC to exit";
