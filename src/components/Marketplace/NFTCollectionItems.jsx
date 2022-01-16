@@ -22,7 +22,7 @@ import {
     NFTImg,
     brightFontCol,
     NFTImgWrapperStyle,
-    pageTitleStyle,
+    pageTitleMidStyle,
     descriptionStyle
 } from "../../GlobalStyles";
 import { AllowedNftContracts } from "../../MglNftMetadata";
@@ -260,7 +260,7 @@ function NFTCollectionItems({ nftAddress, colName, colImg }) {
                 {/* NFT token description */}
                 <div style={{
                     ...styles.banner,
-                    ...pageTitleStyle,
+                    ...pageTitleMidStyle,
                 }}>
                     <Image
                         preview={false}

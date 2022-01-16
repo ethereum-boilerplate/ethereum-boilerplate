@@ -6,7 +6,7 @@ import { createdMarketItemsTable } from "../MarketplaceSCMetadata";
 import {
     BreakFlexDiv,
     BtnPrimary,
-    pageTitleStyle,
+    pageTitleMidStyle,
 } from "../GlobalStyles";
 import { DatabaseFilled, LeftOutlined } from "@ant-design/icons";
 import Loader from "./Loader";
@@ -145,7 +145,7 @@ function UserNFTTransactions() {
                     </Button>
                 </div>
                 <div style={{
-                    ...pageTitleStyle,
+                    ...pageTitleMidStyle,
                     marginBottom: "1.5rem",
                     textAlign: "center"
                 }}>
