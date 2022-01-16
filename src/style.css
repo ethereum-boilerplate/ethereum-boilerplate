@@ -68,3 +68,8 @@ h1, h2, h3, h4, h5, h6 {
   background-color: #20BF96;
   box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.1);
 }
+
+.demo-video:hover {
+  filter: brightness(135%);
+  cursor: pointer;
+}

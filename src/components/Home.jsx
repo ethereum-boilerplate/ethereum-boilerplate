@@ -1,6 +1,6 @@
 import { Card, Typography, Divider } from "antd";
 import React from "react";
-import { Button } from 'antd';
+import { Button, Image } from 'antd';
 import { Row, Col } from 'antd';
 import {
   brightFontCol,
@@ -13,6 +13,7 @@ import {
   SmileFilled, VideoCameraFilled,
   WalletFilled, SkinFilled
 } from "@ant-design/icons";
+import mglVideoDemoImg from "./assets/mgl_video_demo.svg";
 
 const { Text } = Typography;
 
@@ -93,22 +94,34 @@ export default function Home() {
               </div>
             </Card>
             <Card
-              style={styles.card}
+              style={{
+                ...styles.card,
+                padding: "0px",
+                margin: "0px"
+              }}
             >
               <div style={{
-                boxShadow: "0 0 70px 5px #020811",
-                position: "relative",
-                backgroundColor: "#020811",
+                marginLeft: "-4rem",
               }}>
-                <iframe
-                  width="560"
-                  height="315"
-                  src="https://www.youtube.com/embed/y-SmsMRFeEc"
-                  title="YouTube video player"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen>
-                </iframe>
+                <Image
+                  preview={false}
+                  src={mglVideoDemoImg}
+                  alt=""
+                  className="demo-video"
+                  style={{
+                    width: "720px",
+                    height: "auto",
+                    padding: "0px",
+                    margin: "0px",
+                    // imageRendering: "pixelated",
+                  }}
+                  onClick={() =>
+                    window.open(
+                      `https://www.youtube.com/watch?v=y-SmsMRFeEc`,
+                      "_blank"
+                    )
+                  }
+                />
               </div>
             </Card>
           </div>
@@ -116,7 +129,7 @@ export default function Home() {
       </Row>
       <Row style={{
         flexBasis: "100%",
-        marginTop: "2rem",
+        marginTop: "-4rem",
         marginBottom: "2rem"
       }}>
         <Col span={100} >
