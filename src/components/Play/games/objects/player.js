@@ -51,11 +51,11 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
 
         // Vertical movement
         switch (true) {
-            case this.cursorKeys?.down.isDown || curPose === gpose.RA_UP:
+            case this.cursorKeys?.down.isDown || curPose === gpose.LA_UP:
                 velocity.y += 1;
                 // this.anims.play('idle', false);
                 break;
-            case this.cursorKeys?.up.isDown || curPose === gpose.LA_UP
+            case this.cursorKeys?.up.isDown || curPose === gpose.RA_UP
                 || curPose === gpose.BA_UP:
                 velocity.y -= 1;
                 // this.anims.play('up', true);
