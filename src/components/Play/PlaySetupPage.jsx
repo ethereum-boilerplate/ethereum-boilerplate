@@ -9,7 +9,6 @@ import { NFTImg, BreakFlexDiv, brightFontCol } from "../../GlobalStyles";
 import SelectWebcam from "components/Webcam/SelectWebcam";
 import { WebcamCtx } from "index";
 import PoseDetWebcam from "components/Webcam/PoseDetWebcam";
-import Loader from "../Loader";
 
 const styles = {
     titleText: {
@@ -42,24 +41,8 @@ const PlaySetupPage = () => {
         return <Redirect to="/avatars" />;
     }
 
-    const webCamAndCanvasAreInit = () => {
-        const webcam = document.getElementById("pose-det-webcam");
-        const webcamCanvas = document.getElementById("pose-det-webcam-canvas");
-        return webcam &&
-            webcam.readyState === 4 &&
-            webcamCanvas;
-    };
-
     return (
         <div>
-            {!webCamAndCanvasAreInit() &&
-                <Loader
-                    style={{
-                        display: "flex",
-                        justifyContent: "center",
-                        marginBottom: "-1.5rem",
-                    }}
-                />}
             <div style={{
                 boxShadow: "0 0 20px 2px #020811",
                 backgroundColor: "#042946",
@@ -165,7 +148,7 @@ const PlaySetupPage = () => {
                     paddingBottom: "1rem",
                 }}>
                     <Button
-                        disabled={!webCamAndCanvasAreInit() && webcamId == null}
+                        disabled={webcamId == null}
                         className="join-mgl-btn"
                         style={{
                             ...BtnPrimary,
