@@ -11,7 +11,7 @@ const mapMediaPipeResults = (results) => {
     // poseLandmarks has 33 landmarks
     const { poseLandmarks } = results
     // const poseLandmarks = results.poseLandmarks;
-    console.log('poseLandmarks', poseLandmarks, results);
+    // console.log('poseLandmarks', poseLandmarks, results);
     const posLandXY = poseLandmarks.map(pl => {
         return {
             x: pl.x,
@@ -69,10 +69,10 @@ const resToGPose = (results) => {
     const lEVissible = leftEye.score > scoreThreshold
     const REVissible = rightEye.score > scoreThreshold
 
-    console.log('leftElbow.y', leftElbow.y);
-    console.log('rightElbow.y', rightElbow.y);
-    console.log('noseToLeftEyeYdistance', noseToLeftEyeYdistance);
-    console.log('noseToRightEyeYdistance', noseToRightEyeYdistance);
+    // console.log('leftElbow.y', leftElbow.y);
+    // console.log('rightElbow.y', rightElbow.y);
+    // console.log('noseToLeftEyeYdistance', noseToLeftEyeYdistance);
+    // console.log('noseToRightEyeYdistance', noseToRightEyeYdistance);
 
     if (noseVissible && lEVissible
         && noseToLeftEyeYdistance < e2nYDistanceActivation) {

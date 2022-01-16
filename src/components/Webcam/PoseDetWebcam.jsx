@@ -84,7 +84,7 @@ const PoseDetWebcam = ({ sizeProps, styleProps }) => {
             const { poseLandmarks } = results
             if (poseLandmarks) {
                 const curPose = updateGPoseState(results);
-                console.log('curPose', curPose);
+                // console.log('curPose', curPose);
             }
         }
     };
@@ -131,7 +131,7 @@ const PoseDetWebcam = ({ sizeProps, styleProps }) => {
                 audio={false}
                 videoConstraints={getVideoConstraints()}
                 mirrored={true}
-                className={"webcam"}
+                id={"pose-det-webcam"}
                 ref={webcamRef}
                 muted={true}
                 style={{
@@ -148,7 +148,7 @@ const PoseDetWebcam = ({ sizeProps, styleProps }) => {
             />
             <canvas
                 ref={canvasRef}
-                className={"webcam-canvas"}
+                id={"pose-det-webcam-canvas"}
                 style={{
                     objectFit: "cover",
                     zIndex: 9,

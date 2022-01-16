@@ -12,6 +12,7 @@ import "./style.css";
 import Home from "components/Home";
 import Marketplace from "components/Marketplace";
 import UserNFTTransactions from "components/UserNFTTransactions"
+import LoaderTest from "components/LoaderTest";
 import Contract from "components/Contract/Contract";
 import MenuItems from "./components/MenuItems";
 import { Link } from "react-router-dom";
@@ -136,6 +137,9 @@ const App = ({ isServerInfo }) => {
             </Route>
             <Route path="/sandbox-play">
               <GymRoomSandbox />
+            </Route>
+            <Route path="/loader">
+              <LoaderTest />
             </Route>
             <Route path="/play-setup">
               <PlaySetupPage />
