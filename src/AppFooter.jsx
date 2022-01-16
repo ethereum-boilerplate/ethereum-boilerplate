@@ -9,11 +9,12 @@ import {
     AvaxLogo,
     CoderDitiLogo,
     TfJSLogo,
-    MediaPipeLogo
+    MediaPipeLogo,
+    PhaserLogo,
 } from "Logos";
 const { Footer } = Layout;
 
-const secFooterSpan = 4;
+const secFooterSpan = 2;
 
 export const AppFooter = ({ style }) => {
     return (
@@ -90,18 +91,32 @@ export const AppFooter = ({ style }) => {
                 </Col>
                 <Col span={secFooterSpan}>
                     <Text style={{ color: brightFontCol }}>
-                        Coded by {" "}<br />
+                        Game Engine<br />
                         <a
                             target="_blank"
                             rel="noopener noreferrer"
                             href="https://coderdidit.com"
+                        >
+                            <PhaserLogo
+                                width={"60"}
+                                height={"25"}
+                            />
+                        </a>
+                    </Text>
+                </Col>
+                <Col span={secFooterSpan}>
+                    <Text style={{ color: brightFontCol }}>
+                        Coded by {" "}<br />
+                        <a
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            href="https://phaser.io"
                         >
                             <CoderDitiLogo />
                         </a>
                     </Text>
                 </Col>
                 <Col span={secFooterSpan}
-                // offset={20} 
                 >
                     <div style={{
                         textAlign: "right",
