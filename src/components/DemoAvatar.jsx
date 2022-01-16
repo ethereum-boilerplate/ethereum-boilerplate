@@ -12,7 +12,8 @@ import { MainChainID } from "../MglNftMetadata";
 import { chainIdToNameAndLogo } from "../components/Chains/Chains";
 import {
     pageTitleStyle,
-    descriptionStyle
+    descriptionStyle,
+    highlightTextColor
 } from "GlobalStyles";
 import Loader from "./Loader";
 
@@ -73,7 +74,9 @@ function DemoAvatar() {
                             {chainLogo}
                         </div>
                         <p>
-                            You can try me first before buying your own NFT Avatar, but I will disappear soon&nbsp;&nbsp;😱
+                            You can try me first before buying your own NFT Avatar,&nbsp;
+                            <span style={{ color: highlightTextColor }}>but I will disappear soon</span>
+                            &nbsp;&nbsp;😱
                         </p>
 
                         <p>
