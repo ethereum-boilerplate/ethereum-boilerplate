@@ -274,9 +274,11 @@ function DEX({ chain, customTokens = {} }) {
                 readOnly
                 value={
                   quote
-                    ? Moralis?.Units?.FromWei(
-                        quote?.toTokenAmount,
-                        quote?.toToken?.decimals
+                    ? parseFloat(
+                        Moralis?.Units?.FromWei(
+                          quote?.toTokenAmount,
+                          quote?.toToken?.decimals
+                        )
                       ).toFixed(6)
                     : ""
                 }
