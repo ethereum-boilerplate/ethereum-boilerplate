@@ -117,7 +117,7 @@ export default function Home() {
                   }}
                   onClick={() =>
                     window.open(
-                      `https://www.youtube.com/watch?v=y-SmsMRFeEc`,
+                      `https://www.youtube.com/watch?v=Bv7i0m6Szzc`,
                       "_blank"
                     )
                   }
