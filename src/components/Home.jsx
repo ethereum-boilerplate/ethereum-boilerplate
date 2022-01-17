@@ -185,7 +185,17 @@ export default function Home() {
             ...descriptionStyle,
           }}>
             Want to be notified about our progress and future plans?&nbsp;&nbsp;&nbsp;
-            <Button type="primary" style={BtnPrimary}>Sing Up to MetaGymLand Newsletter</Button>
+            <Button type="primary"
+              style={BtnPrimary}
+              onClick={() =>
+                window.open(
+                  `https://coderdidit.ck.page/666d446d94`,
+                  "_blank"
+                )
+              }
+            >
+              Sing Up to Newsletter
+            </Button>
           </div>
         </Col>
       </Row>
