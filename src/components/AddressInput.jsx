@@ -35,12 +35,12 @@ function AddressInput(props) {
             });
         };
         if (value.endsWith(".eth")) {
-          processPromise(web3.eth.ens.getAddress(value));
+          processPromise(web3?.eth?.ens?.getAddress(value));
         } else {
           processPromise(
             resolveDomain({
               domain: value,
-            }).then((r) => r.address)
+            }).then((r) => r?.address)
           );
         }
       } else if (value.length === 42) {
@@ -51,7 +51,7 @@ function AddressInput(props) {
         setIsDomain(false);
       }
     },
-    [resolveDomain, web3.eth.ens]
+    [resolveDomain, web3?.eth?.ens]
   );
 
   const Cross = () => (
@@ -87,27 +87,48 @@ function AddressInput(props) {
       placeholder={props.placeholder ? props.placeholder : "Public address"}
       prefix={
         isDomain || address.length === 42 ? (
-          <Blockie address={(isDomain ? validatedAddress : address).toLowerCase()} size={8} scale={3} />
+          <Blockie
+            address={(isDomain ? validatedAddress : address).toLowerCase()}
+            size={8}
+            scale={3}
+          />
         ) : (
           <SearchOutlined />
         )
       }
       suffix={validatedAddress && <Cross />}
       autoFocus={props.autoFocus}
-      value={isDomain ? `${address} (${getEllipsisTxt(validatedAddress)})` : validatedAddress || address}
+      value={
+        isDomain
+          ? `${address} (${getEllipsisTxt(validatedAddress)})`
+          : validatedAddress || address
+      }
       onChange={(e) => {
         updateAddress(e.target.value);
       }}
       disabled={validatedAddress}
-      style={validatedAddress ? { ...props?.style, border: "1px solid rgb(33, 191, 150)" } : { ...props?.style }}
+      style={
+        validatedAddress
+          ? { ...props?.style, border: "1px solid rgb(33, 191, 150)" }
+          : { ...props?.style }
+      }
     />
   );
 }
 
 function isSupportedDomain(domain) {
-  return [".eth", ".crypto", ".coin", ".wallet", ".bitcoin", ".x", ".888", ".nft", ".dao", ".blockchain"].some((tld) =>
-    domain.endsWith(tld)
-  );
+  return [
+    ".eth",
+    ".crypto",
+    ".coin",
+    ".wallet",
+    ".bitcoin",
+    ".x",
+    ".888",
+    ".nft",
+    ".dao",
+    ".blockchain",
+  ].some((tld) => domain.endsWith(tld));
 }
 
 export default AddressInput;
