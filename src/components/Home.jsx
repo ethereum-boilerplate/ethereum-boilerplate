@@ -110,7 +110,7 @@ export default function Home() {
                   className="demo-video"
                   style={{
                     width: "720px",
-                    height: "auto",
+                    minHeight: "392px",
                     padding: "0px",
                     margin: "0px",
                     // imageRendering: "pixelated",
