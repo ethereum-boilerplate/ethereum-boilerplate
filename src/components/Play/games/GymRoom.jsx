@@ -29,8 +29,13 @@ const setWidthAndHeight = () => {
 
 const getConfig = (mainScene) => {
     const [width, height] = setWidthAndHeight();
-    const Scenes = [BootScene, mainScene,
-        SpaceStretchScene, FlyFitScene, CosmicCardioScene];
+    const Scenes = [
+        BootScene,
+        mainScene,
+        SpaceStretchScene,
+        FlyFitScene,
+        CosmicCardioScene
+    ];
 
     return {
         type: Phaser.AUTO,

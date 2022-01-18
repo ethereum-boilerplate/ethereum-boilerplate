@@ -86,7 +86,6 @@ export class SpaceStretchScene extends Phaser.Scene {
         this.graphics.clear();
         const rect = new Phaser.Geom.Rectangle(0, 0, width, height);
         this.graphics.fillGradientStyle(0x023246, 0x1E0338, 0x300240, 0x370232, 1)
-            // .fillStyle(0xB8ABB2, 1)
             .fillRectShape(rect);
 
         const ground = this.drawGround(width, height);
