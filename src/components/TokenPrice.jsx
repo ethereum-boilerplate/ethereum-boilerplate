@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useTokenPrice } from "react-moralis";
+import useTokenPrice from "hooks/useTokenPrice";
 
 const styles = {
   token: {
@@ -14,8 +14,7 @@ const styles = {
   },
 };
 function TokenPrice(props) {
-  const { data: formattedData } = useTokenPrice(props);
-
+  const { tokenPrice } = useTokenPrice(props);
   const [isUSDMode, setIsUSDMode] = useState(true);
 
   const toggleDisplayStyle = () => setIsUSDMode(!isUSDMode);
@@ -25,8 +24,12 @@ function TokenPrice(props) {
   return (
     <div style={styles.token}>
       <img src={props.image || noLogoToken} alt="logo" style={{ height: props?.size || "35px" }} />
-      <span style={{ cursor: "pointer" }} onClick={toggleDisplayStyle} title={`Show in ${isUSDMode ? "ETH" : "USD"}`}>
-        {formattedData && (isUSDMode ? formattedData.formattedUsd : formattedData.formattedNative)}
+      <span
+        style={{ cursor: "pointer" }}
+        onClick={toggleDisplayStyle}
+        title={`Show in ${isUSDMode ? "ETH" : "USD"}`}
+      >
+        {tokenPrice && (isUSDMode ? tokenPrice.usdPrice : tokenPrice.nativePrice)}
       </span>
     </div>
   );

@@ -11,7 +11,6 @@ module.exports = {
       port: 7545,
       chainId: 1337,
       network_id: 1337,
-      deploymentPollingInterval: 10,
     },
   },
   //
