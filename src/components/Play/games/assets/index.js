@@ -9,6 +9,7 @@ export const GYM_ROOM_MAT_SPACE = 'gym_room_mat_space';
 export const GYM_ROOM_DANGEON_MAP = 'gym_land_dangeon';
 export const GYM_ROOM_DANGEON_TILES = 'dangeon';
 export const ASTEROIDS = 'asteroids';
+export const AIRPLANE = 'airplane';
 export const BTC = 'bitcoin';
 
 
@@ -17,6 +18,11 @@ export const assets = [
   {
     key: ASTEROIDS,
     src: `assets/images/${ASTEROIDS}.png`,
+    type: 'IMAGE',
+  },
+  {
+    key: AIRPLANE,
+    src: `assets/images/${AIRPLANE}.png`,
     type: 'IMAGE',
   },
   {
