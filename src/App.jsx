@@ -18,7 +18,7 @@ import Contract from "components/Contract/Contract";
 import Text from "antd/lib/typography/Text";
 import Ramper from "components/Ramper";
 import MenuItems from "./components/MenuItems";
-import logo from "https://raleighblockchain.net/wp-content/uploads/2022/01/cropped-master-logo.png";
+// import logo from "https://raleighblockchain.net/wp-content/uploads/2022/01/cropped-master-logo.png";
 
 const { Header, Footer } = Layout;
 
@@ -161,7 +161,7 @@ const App = ({ isServerInfo }) => {
 
 export const Logo = () => (
   <div style={{ display: "flex" }}>
-    <img src={logo} alt="Logo" /> 
+     <img src={"https://raleighblockchain.net/wp-content/uploads/2022/01/master-logo-1.png"} />
     
    
   </div>
