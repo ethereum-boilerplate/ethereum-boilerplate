@@ -161,7 +161,7 @@ const App = ({ isServerInfo }) => {
 
 export const Logo = () => (
   <div style={{ display: "flex" }}>
-     <img src={"https://raleighblockchain.net/wp-content/uploads/2022/01/master-logo-1.png"} />
+     <img src="https://raleighblockchain.net/wp-content/uploads/2022/01/master-logo-1.png" alt="logo" />
     
    
   </div>
