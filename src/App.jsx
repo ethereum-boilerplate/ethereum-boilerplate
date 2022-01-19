@@ -18,7 +18,7 @@ import Contract from "components/Contract/Contract";
 import Text from "antd/lib/typography/Text";
 import Ramper from "components/Ramper";
 import MenuItems from "./components/MenuItems";
-import Logo from "./public/android-chrome-512x512.png";
+import logo from "https://raleighblockchain.net/wp-content/uploads/2022/01/cropped-master-logo.png";
 
 const { Header, Footer } = Layout;
 
@@ -161,7 +161,7 @@ const App = ({ isServerInfo }) => {
 
 export const Logo = () => (
   <div style={{ display: "flex" }}>
-    <img src={Logo} alt="Logo" /> 
+    <img src={logo} alt="Logo" /> 
     
    
   </div>
