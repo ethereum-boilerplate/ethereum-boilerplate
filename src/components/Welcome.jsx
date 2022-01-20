@@ -65,14 +65,14 @@ export default function Welcome({ isServerInfo }) {
             <Timeline.Item dot="💿">
               <Text style={styles.text}>
               Plan UI/UX for NFT Marketplace for users to :   
-                 <a target="_blank" rel="noopener noreferrer"  href="#">
+                 <a target="_blank" rel="noopener noreferrer"  href="https://1ncblockchain.com">
                  Inspect,
                 </a>{" "}
-                <a target="_blank" rel="noopener noreferrer" href="#">
+                <a target="_blank" rel="noopener noreferrer" href="https://1ncblockchain.com">
                   Develop
                 </a>{" "}
                 and{" "}
-                <a target="_blank" rel="noopener noreferrer" href="#">
+                <a target="_blank" rel="noopener noreferrer" href="https://1ncblockchain.com">
                   Mint
                 </a>{" "}
       
