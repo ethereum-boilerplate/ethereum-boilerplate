@@ -18,3 +18,21 @@
   overflow: auto;
   border-radius: 1rem;
 }
+
+.center{
+  text-align: center;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  width: 100%;
+}
+
+.center-image{
+  display:flex;
+  justify-content:center; /* horizontally center */
+  align-items:center;    /* vertically center */
+  /* height:;
+  width:300px; */
+  /* background:orange; */
+}

@@ -18,6 +18,7 @@ import Contract from "components/Contract/Contract";
 import Text from "antd/lib/typography/Text";
 import Ramper from "components/Ramper";
 import MenuItems from "./components/MenuItems";
+import Welcome from "components/Welcome";
 // import logo from "https://raleighblockchain.net/wp-content/uploads/2022/01/cropped-master-logo.png";
 
 const { Header, Footer } = Layout;
@@ -82,8 +83,8 @@ const App = ({ isServerInfo }) => {
 
         <div style={styles.content}>
           <Switch>
-            <Route exact path="/quickstart">
-              <QuickStart isServerInfo={isServerInfo} />
+            <Route exact path="/welcome">
+              <Welcome isServerInfo={isServerInfo} />
             </Route>
             <Route path="/wallet">
               <Wallet />
@@ -117,10 +118,10 @@ const App = ({ isServerInfo }) => {
               <Contract />
             </Route>
             <Route path="/">
-              <Redirect to="/quickstart" />
+              <Redirect to="/welcome" />
             </Route>
             <Route path="/ethereum-boilerplate">
-              <Redirect to="/quickstart" />
+              <Redirect to="/welcome" />
             </Route>
             <Route path="/nonauthenticated">
               <>Please login using the "Authenticate" button</>
@@ -130,18 +131,19 @@ const App = ({ isServerInfo }) => {
       </Router>
       <Footer style={{ textAlign: "center" }}>
         <Text style={{ display: "block" }}>
-          ⭐️ Please star this{" "}
-          <a href="https://github.com/ethereum-boilerplate/ethereum-boilerplate/" target="_blank" rel="noopener noreferrer">
-            boilerplate
+          🐦 Thank you for supporting this{" "}
+          <a href="https://southarmzglobal.com/portfolio/1-nc-blockchain/" target="_blank" rel="noopener noreferrer">
+            project
           </a>
-          , every star makes us very happy!
+          , we are constantly innovating for you.!
         </Text>
 
         <Text style={{ display: "block" }}>
-          🙋 You have questions? Ask them on the {""}
+          🙋 You have questions? Submit a ticket at the {""}
           <a target="_blank" rel="noopener noreferrer" href="https://forum.moralis.io/t/ethereum-boilerplate-questions/3951/29">
-            Moralis forum
+            help desk
           </a>
+          
         </Text>
 
         <Text style={{ display: "block" }}>
@@ -151,7 +153,7 @@ const App = ({ isServerInfo }) => {
             rel="noopener noreferrer"
             href="https://moralis.io?utm_source=boilerplatehosted&utm_medium=todo&utm_campaign=ethereum-boilerplat"
           >
-            Moralis
+            1NCBLOCKCHAIN
           </a>
         </Text>
       </Footer>
