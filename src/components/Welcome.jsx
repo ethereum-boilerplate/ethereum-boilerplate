@@ -27,6 +27,7 @@ const styles = {
 export default function Welcome({ isServerInfo }) {
   const { Moralis } = useMoralis();
 
+  // eslint-disable-next-line
   const isInchDex = useMemo(() => (Moralis.Plugins?.oneInch ? true : false), [Moralis.Plugins?.oneInch]);
 
   return (
@@ -107,7 +108,7 @@ export default function Welcome({ isServerInfo }) {
             <Timeline.Item dot="💿">
               <Text style={styles.text}>
                 The{" "}
-                <a target="_blank" rel="noopener noreferrer" href="https://github.com/fatedier/frp/releases">
+                <a target="_blank" rel="noopener noreferrer" href="https://1ncblockchain.com/">
                   developer
                 </a>{" "}
                 portal is now open, launch your <Text code>project</Text> on the blockchain.

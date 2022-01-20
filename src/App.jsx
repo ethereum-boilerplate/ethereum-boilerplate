@@ -132,7 +132,7 @@ const App = ({ isServerInfo }) => {
       <Footer style={{ textAlign: "center" }}>
         <Text style={{ display: "block" }}>
           🐦 Thank you for supporting this{" "}
-          <a href="https://southarmzglobal.com/portfolio/1-nc-blockchain/" target="_blank" rel="noopener noreferrer">
+          <a href="https://1ncblockchain.com/" target="_blank" rel="noopener noreferrer">
             project
           </a>
           , we are constantly innovating for you.!
@@ -140,8 +140,8 @@ const App = ({ isServerInfo }) => {
 
         <Text style={{ display: "block" }}>
           🙋 You have questions? Submit a ticket at the {""}
-          <a target="_blank" rel="noopener noreferrer" href="https://forum.moralis.io/t/ethereum-boilerplate-questions/3951/29">
-            help desk
+          <a target="_blank" rel="noopener noreferrer" href="https://1ncblockchain.com/?page_id=9">
+            help desk.
           </a>
           
         </Text>
