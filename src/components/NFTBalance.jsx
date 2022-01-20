@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { useMoralis, useNFTBalances } from "react-moralis";
 import { Card, Image, Tooltip, Modal, Input, Skeleton } from "antd";
-import { FileSearchOutlined, SendOutlined, ShoppingCartOutlined } from "@ant-design/icons";
+import {
+  FileSearchOutlined,
+  SendOutlined,
+  ShoppingCartOutlined,
+} from "@ant-design/icons";
 import { getExplorer } from "helpers/networks";
 import AddressInput from "./AddressInput";
 import { useVerifyMetadata } from "hooks/useVerifyMetadata";
@@ -32,27 +36,28 @@ function NFTBalance() {
   const { verifyMetadata } = useVerifyMetadata();
 
   async function transfer(nft, amount, receiver) {
+    console.log(nft, amount, receiver);
     const options = {
-      type: nft.contract_type,
-      tokenId: nft.token_id,
-      receiver: receiver,
-      contractAddress: nft.token_address,
+      type: nft?.contract_type?.toLowerCase(),
+      tokenId: nft?.token_id,
+      receiver,
+      contractAddress: nft?.token_address,
     };
 
     if (options.type === "erc1155") {
-      options.amount = amount;
+      options.amount = amount ?? nft.amount;
     }
 
     setIsPending(true);
-    await Moralis.transfer(options)
-      .then((tx) => {
-        console.log(tx);
-        setIsPending(false);
-      })
-      .catch((e) => {
-        alert(e.message);
-        setIsPending(false);
-      });
+
+    try {
+      const tx = await Moralis.transfer(options);
+      console.log(tx);
+      setIsPending(false);
+    } catch (e) {
+      alert(e.message);
+      setIsPending(false);
+    }
   }
 
   const handleTransferClick = (nft) => {
@@ -80,14 +85,23 @@ function NFTBalance() {
                   actions={[
                     <Tooltip title="View On Blockexplorer">
                       <FileSearchOutlined
-                        onClick={() => window.open(`${getExplorer(chainId)}address/${nft.token_address}`, "_blank")}
+                        onClick={() =>
+                          window.open(
+                            `${getExplorer(chainId)}address/${
+                              nft.token_address
+                            }`,
+                            "_blank"
+                          )
+                        }
                       />
                     </Tooltip>,
                     <Tooltip title="Transfer NFT">
                       <SendOutlined onClick={() => handleTransferClick(nft)} />
                     </Tooltip>,
                     <Tooltip title="Sell On OpenSea">
-                      <ShoppingCartOutlined onClick={() => alert("OPENSEA INTEGRATION COMING!")} />
+                      <ShoppingCartOutlined
+                        onClick={() => alert("OPENSEA INTEGRATION COMING!")}
+                      />
                     </Tooltip>,
                   ]}
                   style={{ width: 240, border: "2px solid #e7eaf3" }}
@@ -118,7 +132,10 @@ function NFTBalance() {
       >
         <AddressInput autoFocus placeholder="Receiver" onChange={setReceiver} />
         {nftToSend && nftToSend.contract_type === "erc1155" && (
-          <Input placeholder="amount to send" onChange={(e) => handleChange(e)} />
+          <Input
+            placeholder="amount to send"
+            onChange={(e) => handleChange(e)}
+          />
         )}
       </Modal>
     </div>
