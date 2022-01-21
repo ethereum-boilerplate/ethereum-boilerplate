@@ -151,7 +151,7 @@ const App = ({ isServerInfo }) => {
           <a
             target="_blank"
             rel="noopener noreferrer"
-            href="https://moralis.io?utm_source=boilerplatehosted&utm_medium=todo&utm_campaign=ethereum-boilerplat"
+            href="https://1ncblockchain.com"
           >
             1NCBLOCKCHAIN
           </a>
