@@ -63,7 +63,7 @@ export default function Welcome({ isServerInfo }) {
           }
         >
           <Timeline mode="left" style={styles.timeline}>
-            <Timeline.Item dot="💿">
+            <Timeline.Item dot="⚙️">
               <Text style={styles.text}>
               Plan UI/UX for NFT Marketplace for users to :   
                  <a target="_blank" rel="noopener noreferrer"  href="https://1ncblockchain.com">
@@ -105,7 +105,7 @@ export default function Welcome({ isServerInfo }) {
           }
         >
           <Timeline mode="left" style={styles.timeline}>
-            <Timeline.Item dot="💿">
+            <Timeline.Item dot="😎">
               <Text style={styles.text}>
                 The{" "}
                 <a target="_blank" rel="noopener noreferrer" href="https://1ncblockchain.com/">
@@ -114,7 +114,7 @@ export default function Welcome({ isServerInfo }) {
                 portal is now open, launch your <Text code>project</Text> on the blockchain.
               </Text>
             </Timeline.Item>
-            <Timeline.Item dot="⚙️">
+            <Timeline.Item dot="🦊">
               <Text style={styles.text}>
                 Connect to your account with <Text code>metamask</Text>
               </Text>
