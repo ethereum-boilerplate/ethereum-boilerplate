@@ -175,10 +175,11 @@ export default function Home() {
       <Row style={{
         flexBasis: "100%",
         marginTop: "2rem",
-        marginBottom: "3rem"
+        marginBottom: "3rem",
+        alignItems: "center",
+        justifyContent: "space-between"
       }}>
-
-        <Col span={100} style={{
+        <div style={{
           textAlign: "center"
         }}>
           <div style={{
@@ -197,7 +198,15 @@ export default function Home() {
               Sing Up to Newsletter
             </Button>
           </div>
-        </Col>
+        </div>
+        <div style={{
+          textAlign: "right",
+        }}>
+          <p style={{
+            opacity: 0.2,
+          }}>Contact:</p>
+          <h2>coderdidit@gmail.com</h2>
+        </div>
       </Row>
     </div>
   );
