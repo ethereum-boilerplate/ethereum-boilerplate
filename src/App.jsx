@@ -1,5 +1,7 @@
-import { useEffect } from "react";
+import { Navbar, Welcome, Services, Transaction } from './components';
+import { useEffect, useState } from "react";
 import { useMoralis } from "react-moralis";
+import logo from 'images/Logo.png';
 import {
   BrowserRouter as Router,
   Switch,
@@ -9,33 +11,30 @@ import {
 } from "react-router-dom";
 import Account from "components/Account";
 import Chains from "components/Chains";
-import TokenPrice from "components/TokenPrice";
-import ERC20Balance from "components/ERC20Balance";
-import ERC20Transfers from "components/ERC20Transfers";
-import InchDex from "components/InchDex";
 import NFTBalance from "components/NFTBalance";
-import Wallet from "components/Wallet";
-import { Menu, Layout, Tabs } from "antd";
+import Home from "components/Home";
+import NFTTokenIds from "components/NFTTokenIds";
+import NFTMarketTransactions from "components/Transactions";
+import SearchCollections from "components/SearchCollections";
+import { Menu, Layout, } from "antd";
 import "antd/dist/antd.css";
 import NativeBalance from "components/NativeBalance";
 import "./style.css";
-import QuickStart from "components/QuickStart";
-import Contract from "components/Contract/Contract";
 import Text from "antd/lib/typography/Text";
-import Ramper from "components/Ramper";
 const { Header, Footer } = Layout;
 
 const styles = {
   content: {
-    display: "flex",
+    //width: "100%",
+    //display: "flex",
     justifyContent: "center",
     fontFamily: "Roboto, sans-serif",
-    color: "#041836",
-    marginTop: "130px",
+   color: "#041836",
+    marginTop: "50px",
     padding: "10px",
   },
   header: {
-    position: "fixed",
+    //position: "fixed",
     zIndex: 1,
     width: "100%",
     background: "#fff",
@@ -54,10 +53,20 @@ const styles = {
     fontSize: "15px",
     fontWeight: "600",
   },
+  mylogo: {
+    width: "50px",
+    height: "50px",
+  },
+  main: {
+    fontSize: "100px",
+    color: "#fff",
+  }
 };
 const App = ({ isServerInfo }) => {
   const { isWeb3Enabled, enableWeb3, isAuthenticated, isWeb3EnableLoading } =
     useMoralis();
+
+    const [inputValue, setInputValue] = useState("explore")
 
   useEffect(() => {
     if (isAuthenticated && !isWeb3Enabled && !isWeb3EnableLoading) enableWeb3();
@@ -65,10 +74,15 @@ const App = ({ isServerInfo }) => {
   }, [isAuthenticated, isWeb3Enabled]);
 
   return (
-    <Layout style={{ height: "100vh", overflow: "auto" }}>
+     <div className="min-h-screen">
+    <div className="gradient-bg-welcome">
+    
+      
       <Router>
         <Header style={styles.header}>
-          <Logo />
+          
+          <img src={logo} alt="logo" style={styles.mylogo} />
+          <SearchCollections setInputValue={setInputValue} />
           <Menu
             theme="light"
             mode="horizontal"
@@ -79,124 +93,62 @@ const App = ({ isServerInfo }) => {
               width: "100%",
               justifyContent: "center",
             }}
-            defaultSelectedKeys={["quickstart"]}
+            defaultSelectedKeys={["home"]}
           >
-            <Menu.Item key="quickstart">
-              <NavLink to="/quickstart">🚀 Quick Start</NavLink>
+            <Menu.Item key="home">
+              <NavLink to="/home">Home</NavLink>
             </Menu.Item>
-            <Menu.Item key="wallet">
-              <NavLink to="/wallet">👛 Wallet</NavLink>
-            </Menu.Item>
-            <Menu.Item key="onramp">
-              <NavLink to="/onramp">💵 Fiat</NavLink>
-            </Menu.Item>
-            <Menu.Item key="dex">
-              <NavLink to="/1inch">🏦 Dex</NavLink>
-            </Menu.Item>
-            <Menu.Item key="balances">
-              <NavLink to="/erc20balance">💰 Balances</NavLink>
-            </Menu.Item>
-            <Menu.Item key="transfers">
-              <NavLink to="/erc20transfers">💸 Transfers</NavLink>
+            <Menu.Item key="nftMarket">
+              <NavLink to="/nftMarket">Explore</NavLink>
             </Menu.Item>
             <Menu.Item key="nft">
-              <NavLink to="/nftBalance">🖼 NFTs</NavLink>
+              <NavLink to="/nftBalance">Your Collections</NavLink>
             </Menu.Item>
-            <Menu.Item key="contract">
-              <NavLink to="/contract">📄 Contract</NavLink>
+            <Menu.Item key="transactions">
+              <NavLink to="/transactions">Transactions</NavLink>
             </Menu.Item>
+           
           </Menu>
           <div style={styles.headerRight}>
             <Chains />
-            <TokenPrice
-              address="0x1f9840a85d5af5bf1d1762f925bdaddc4201f984"
-              chain="eth"
-              image="https://cloudflare-ipfs.com/ipfs/QmXttGpZrECX5qCyXbBQiqgQNytVGeZW5Anewvh2jc4psg/"
-              size="40px"
-            />
+            
             <NativeBalance />
             <Account />
           </div>
         </Header>
         <div style={styles.content}>
           <Switch>
-            <Route path="/quickstart">
-              <QuickStart isServerInfo={isServerInfo} />
-            </Route>
-            <Route path="/wallet">
-              <Wallet />
-            </Route>
-            <Route path="/1inch">
-              <Tabs defaultActiveKey="1" style={{ alignItems: "center" }}>
-                <Tabs.TabPane tab={<span>Ethereum</span>} key="1">
-                  <InchDex chain="eth" />
-                </Tabs.TabPane>
-                <Tabs.TabPane tab={<span>Binance Smart Chain</span>} key="2">
-                  <InchDex chain="bsc" />
-                </Tabs.TabPane>
-                <Tabs.TabPane tab={<span>Polygon</span>} key="3">
-                  <InchDex chain="polygon" />
-                </Tabs.TabPane>
-              </Tabs>
-            </Route>
-            <Route path="/erc20balance">
-              <ERC20Balance />
-            </Route>
-            <Route path="/onramp">
-              <Ramper />
-            </Route>
-            <Route path="/erc20transfers">
-              <ERC20Transfers />
+          <Route path="/home">
+              <Home />
             </Route>
             <Route path="/nftBalance">
               <NFTBalance />
             </Route>
-            <Route path="/contract">
-              <Contract />
+            <Route path="/nftMarket">
+              <NFTTokenIds inputValue={inputValue} setInputValue={setInputValue}/>
             </Route>
-            <Route path="/nonauthenticated">
-              <>Please login using the "Authenticate" button</>
+            <Route path="/transactions">
+              <NFTMarketTransactions />
             </Route>
+            
+            
           </Switch>
-          <Redirect to="/quickstart" />
+          <Redirect to="/home" />
         </div>
       </Router>
-      <Footer style={{ textAlign: "center" }}>
-        <Text style={{ display: "block" }}>
-          ⭐️ Please star this{" "}
-          <a
-            href="https://github.com/ethereum-boilerplate/ethereum-boilerplate/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            boilerplate
-          </a>
-          , every star makes us very happy!
-        </Text>
 
-        <Text style={{ display: "block" }}>
-          🙋 You have questions? Ask them on the {""}
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://forum.moralis.io/t/ethereum-boilerplate-questions/3951/29"
-          >
-            Moralis forum
-          </a>
-        </Text>
+     
+      
+      
+      
+    </div>
+  
+   
+    <Footer />
+    
+    </div>
 
-        <Text style={{ display: "block" }}>
-          📖 Read more about{" "}
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://moralis.io?utm_source=boilerplatehosted&utm_medium=todo&utm_campaign=ethereum-boilerplat"
-          >
-            Moralis
-          </a>
-        </Text>
-      </Footer>
-    </Layout>
+    
   );
 };
 
@@ -207,7 +159,7 @@ export const Logo = () => (
       height="38"
       viewBox="0 0 50 38"
       fill="none"
-      xmlns="http://www.w3.org/2000/svg"
+      //xmlns="http://www.w3.org/2000/svg"
     >
       <path
         d="M43.6871 32.3986C43.5973 32.4884 43.53 32.5782 43.4402 32.6905C43.53 32.6007 43.5973 32.5109 43.6871 32.3986Z"
