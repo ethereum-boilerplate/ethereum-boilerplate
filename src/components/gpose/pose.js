@@ -4,3 +4,4 @@
  export const BA_UP = "baup"; // both arms up
  export const HTL = "htl"; // head tilted left
  export const HTR = "htr"; // head tilted right
+ export const NDWN = "ndwn"; // node down (for squats)

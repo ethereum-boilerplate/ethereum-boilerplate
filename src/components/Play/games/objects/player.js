@@ -31,7 +31,7 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
         this.scene.add.existing(this);
     }
 
-    update() {
+    update(allowSquats = false) {
         const curPose = gstate.getPose();
         // Every frame, we create a new velocity for the sprite based on what keys the player is holding down.
         const velocity = new Phaser.Math.Vector2(0, 0);
@@ -51,7 +51,8 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
 
         // Vertical movement
         switch (true) {
-            case this.cursorKeys?.down.isDown || curPose === gpose.LA_UP:
+            case this.cursorKeys?.down.isDown || curPose === gpose.LA_UP
+                || (allowSquats && curPose === gpose.NDWN):
                 velocity.y += 1;
                 // this.anims.play('idle', false);
                 break;

@@ -21,7 +21,7 @@ const roundedRect = (ctx, x, y, width, height) => {
     const radius = 35
     ctx.beginPath();
     ctx.lineWidth = ACTIVE_LINE_WIDTH;
-    ctx.strokeStyle = "#2450F7";
+    ctx.strokeStyle = ACTIVE_COLOR;
     ctx.lineJoin = "round";
     ctx.moveTo(x, y + radius);
     ctx.arcTo(x, y + height, x + radius, y + height, radius);
@@ -36,7 +36,9 @@ const drawLine = (p1, p2, color, ctx, width, height, lineWidth) => {
     ctx.strokeStyle = color;
     ctx.lineWidth = lineWidth;
     ctx.beginPath();
+    // p1 (x, y) is in mediapipe format that is scaled down
     ctx.moveTo(p1.x * width, p1.y * height)
+    // p2 y is in mediapipe format that is scaled down
     ctx.lineTo(p2.x, p2.y * height);
     ctx.stroke();
 };
@@ -60,10 +62,12 @@ export const drawPose = (canvasRef, results) => {
     canvasCtx.globalCompositeOperation = 'source-over';
     if (results.poseLandmarks) {
         const nose = results.poseLandmarks[0];
+
+        // path from nose to right end
         drawLine(nose, { x: 0, y: nose.y }, "#1990FF", canvasCtx,
             width, height, NOSE_LINE_WIDTH_IDLE);
         // path from nose to left end
-        drawLine(nose, { x: canvasRef?.current.width, y: nose.y },
+        drawLine(nose, { x: width, y: nose.y },
             "#20BF96", canvasCtx,
             width, height, NOSE_LINE_WIDTH_IDLE);
 
@@ -176,6 +180,13 @@ export const drawPose = (canvasRef, results) => {
         if (CurPose === gpose.HTR) {
             drawLine(nose, { x: canvasRef?.current.width, y: nose.y }, ACTIVE_COLOR,
                 canvasCtx, width, height, ACTIVE_LINE_WIDTH);
+        }
+
+        if (CurPose === gpose.NDWN) {
+            // draw line from nose to bottom
+            drawLine(nose, { x: nose.x * width, y: 1 },
+                ACTIVE_COLOR, canvasCtx,
+                width, height, ACTIVE_LINE_WIDTH);
         }
     }
     canvasCtx.restore();

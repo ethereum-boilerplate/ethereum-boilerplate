@@ -217,7 +217,7 @@ export class SpaceStretchScene extends Phaser.Scene {
 
         const youWonText = createTextBox(this,
             width / 2,
-            (height / 2) - height * .2,
+            height / 2,
             { wrapWidth: 280 },
             mainBgColorNum,
             highlightTextColorNum

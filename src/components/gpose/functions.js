@@ -69,6 +69,8 @@ const resToGPose = (results) => {
     const lEVissible = leftEye.score > scoreThreshold
     const REVissible = rightEye.score > scoreThreshold
 
+    const noseDown = nose.y > 0.8
+
     // console.log('leftElbow.y', leftElbow.y);
     // console.log('rightElbow.y', rightElbow.y);
     // console.log('noseToLeftEyeYdistance', noseToLeftEyeYdistance);
@@ -80,6 +82,8 @@ const resToGPose = (results) => {
     } else if (noseVissible && REVissible
         && noseToRightEyeYdistance < e2nYDistanceActivation) {
         return pose.HTR;
+    } else if (noseVissible && noseDown) {
+        return pose.NDWN;
     } else if (bothArmsUp) {
         return pose.BA_UP;
     } else if (moveUp) {

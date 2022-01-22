@@ -13,6 +13,7 @@ const SceneConfig = {
     visible: false,
     key: COSMIC_CARDIO_SCENE,
 };
+const allowSquats = true;
 
 export class CosmicCardioScene extends Phaser.Scene {
     constructor() {
@@ -91,6 +92,6 @@ export class CosmicCardioScene extends Phaser.Scene {
 
     update(time, delta) {
         // Every frame, we update the player
-        this.player?.update();
+        this.player?.update(allowSquats);
     }
 }
