@@ -121,45 +121,51 @@ const PoseDetWebcam = ({ sizeProps, styleProps }) => {
     }
 
     return (
-        <div style={{
-            display: "grid",
-            gridTemplateRows: "1fr",
-            gridTemplateColumns: "1fr",
-            gridTemplateAreas: "overlap",
-        }}>
-            <Webcam
-                audio={false}
-                videoConstraints={getVideoConstraints()}
-                mirrored={true}
-                id={"pose-det-webcam"}
-                ref={webcamRef}
-                muted={true}
+        <div
+            id={"pose-det-webcam-container"}
+        >
+            <div
+
                 style={{
-                    objectFit: "cover",
-                    zIndex: 8,
-                    // params
-                    ...sizeProps,
-                    ...styleProps,
-                    // grid props
-                    gridArea: "overlap",
-                    alignSelf: "center",
-                    justifySelf: "center",
-                }}
-            />
-            <canvas
-                ref={canvasRef}
-                id={"pose-det-webcam-canvas"}
-                style={{
-                    objectFit: "cover",
-                    zIndex: 9,
-                    // params
-                    ...sizeProps,
-                    // grid props
-                    gridArea: "overlap",
-                    alignSelf: "center",
-                    justifySelf: "center",
-                }}
-            />
+                    display: "grid",
+                    gridTemplateRows: "1fr",
+                    gridTemplateColumns: "1fr",
+                    gridTemplateAreas: "overlap",
+                }}>
+                <Webcam
+                    audio={false}
+                    videoConstraints={getVideoConstraints()}
+                    mirrored={true}
+                    id={"pose-det-webcam"}
+                    ref={webcamRef}
+                    muted={true}
+                    style={{
+                        objectFit: "cover",
+                        zIndex: 8,
+                        // params
+                        ...sizeProps,
+                        ...styleProps,
+                        // grid props
+                        gridArea: "overlap",
+                        alignSelf: "center",
+                        justifySelf: "center",
+                    }}
+                />
+                <canvas
+                    ref={canvasRef}
+                    id={"pose-det-webcam-canvas"}
+                    style={{
+                        objectFit: "cover",
+                        zIndex: 9,
+                        // params
+                        ...sizeProps,
+                        // grid props
+                        gridArea: "overlap",
+                        alignSelf: "center",
+                        justifySelf: "center",
+                    }}
+                />
+            </div>
         </div>
     );
 }

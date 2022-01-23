@@ -69,7 +69,7 @@ const resToGPose = (results) => {
     const lEVissible = leftEye.score > scoreThreshold
     const REVissible = rightEye.score > scoreThreshold
 
-    const noseDown = nose.y > 0.8
+    const noseDown = nose.y > 0.75;
 
     // console.log('leftElbow.y', leftElbow.y);
     // console.log('rightElbow.y', rightElbow.y);

@@ -4,7 +4,7 @@ import { IonPhaser } from "@ion-phaser/react";
 import { GymRoomScene } from "./GymRoomScene";
 import { SpaceStretchScene } from "./SpaceStretchScene";
 import { FlyFitScene } from "./FlyFitScene";
-import { CosmicCardioScene } from "./CosmicCardioScene";
+import { ChartSquats } from "./ChartSquats";
 import { BootScene } from "./BootScene";
 import { WebcamCtx } from "index";
 import PoseDetWebcam from "components/Webcam/PoseDetWebcam";
@@ -34,7 +34,7 @@ const getConfig = (mainScene) => {
         mainScene,
         SpaceStretchScene,
         FlyFitScene,
-        CosmicCardioScene
+        ChartSquats
     ];
 
     return {

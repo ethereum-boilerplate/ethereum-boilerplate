@@ -30,7 +30,7 @@ const tileMapSizing = 36;
 const miniGamesMapping = new Map([
   ['space_stretch', 'Space Mat'],
   ['fly_fit', 'Sky Mat'],
-  ['cosmic_cardio', 'Cardio Mat']
+  ['chart_squats', 'Chart Squats']
 ]);
 
 let sceneToGoOnXclick = null;
