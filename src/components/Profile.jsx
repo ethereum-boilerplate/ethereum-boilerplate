@@ -1,5 +1,10 @@
 import { React , useState} from 'react';
 import { 
+  CAccordion,
+  CAccordionBody,
+  CAccordionItem,
+  CAccordionHeader,
+  CAvatar,
   CBadge, 
   CButton,
   CButtonGroup, 
@@ -34,20 +39,14 @@ export default function Profile() {
             <div className="container">
               
               <div className="profile--container">
-        
                 <h1 className="header--main">MΞTA_face 👤</h1>
                 <h2 className="profile--text">Danny_One</h2>
-        
-                    <div className="profile--card">
-                      
+              <div className="profile--card">
+              </div>
+                    <div className="profile--text">
+                    <p className="sm">Sometimes I do stuff online</p>
                     </div>
-        
-                      <div className="profile--text">
-        
-                        
-                        <p className="sm">Sometimes I do stuff online</p>
-                    </div>
-        </div>
+            </div>
         
                   {/* collections 
                   - be able to highlight a specific number or set of collections
@@ -138,7 +137,29 @@ export default function Profile() {
                         <CDropdownMenu>
                           <CDropdownItem href="#">
                           
-                            <CDropdownItem onClick={() => setVisibleModal(!visibleModal)}>SellingGum Pandas</CDropdownItem>
+                            <CDropdownItem onClick={() => setVisibleModal(!visibleModal)}>
+                            <CAvatar src="https://ik.imagekit.io/bayc/assets/ape3.png" onClick={() => setVisibleModal(!visibleModal)} size="xl">
+                                <CModal visible={visibleModal} onClose={() => setVisibleModal(false)}>
+                                    <CModalHeader className="modal-background" onClose={() => setVisibleModal(false)}>
+                                    <CModalTitle>SellingGum Pandas</CModalTitle>
+                                    </CModalHeader>
+                                    <CModalBody className="modal-background">
+                                        <div className="collections--card--images"></div>
+                                        <div className="collections--card--images"></div>
+                                        <div className="collections--card--images"></div>
+                                        <div className="collections--card--images"></div>
+                                        <div className="collections--card--images"></div>
+                                        <div className="collections--card--images"></div>
+                                    </CModalBody>
+                                    <CModalFooter className="modal-background">
+                                    <CButton color="primary" onClick={() => setVisibleModal(false)}>
+                                        Close
+                                    </CButton>
+                                    </CModalFooter>
+                                </CModal>
+                            </CAvatar>
+                            </CDropdownItem>
+                            
                             <CModal visible={visibleModal} onClose={() => setVisibleModal(false)}>
                               <CModalHeader className="modal-background" onClose={() => setVisibleModal(false)}>
                                 <CModalTitle>SellingGum Pandas</CModalTitle>
@@ -165,9 +186,76 @@ export default function Profile() {
         
         
                    </CButtonGroup>
+
+                <div>
+                    <h1>Collecton</h1>
+                <CAvatar src="https://ik.imagekit.io/bayc/assets/ape3.png" onClick={() => setVisibleModal(!visibleModal)} size="xl">
+                    <CModal visible={visibleModal} onClose={() => setVisibleModal(false)}>
+                        <CModalHeader className="modal-background" onClose={() => setVisibleModal(false)}>
+                        <CModalTitle>SellingGum Pandas</CModalTitle>
+                        </CModalHeader>
+                        <CModalBody className="modal-background">
+                            <div className="collections--card--images"></div>
+                            <div className="collections--card--images"></div>
+                            <div className="collections--card--images"></div>
+                            <div className="collections--card--images"></div>
+                            <div className="collections--card--images"></div>
+                            <div className="collections--card--images"></div>
+                        </CModalBody>
+                        <CModalFooter className="modal-background">
+                        <CButton color="primary" onClick={() => setVisibleModal(false)}>
+                            Close
+                        </CButton>
+                        </CModalFooter>
+                    </CModal>
+                </CAvatar>
+
+                <CAvatar src="https://ik.imagekit.io/bayc/assets/ape3.png" size="xl"/>
+                <CAvatar src="https://ik.imagekit.io/bayc/assets/ape1.png" size="xl"/>
+                <CAvatar src="https://ik.imagekit.io/bayc/assets/ape2.png" size="xl"/>
+                </div>
+
+            <div>
+                <CAccordion alwaysOpen>
+                    <CAccordionItem>
+                        <CAccordionHeader>
+                        { window.innerWidth > 700 ? (
+                            <CButton color="primary">📰 Collections (20)</CButton>
+                            ) : (
+                            <CButton color="primary">📰</CButton>
+                            )
+                            }
+                        </CAccordionHeader>
+                        <CAccordionBody>
+                <CAvatar src="https://ik.imagekit.io/bayc/assets/ape3.png" onClick={() => setVisibleModal(!visibleModal)} size="xl">
+                    <CModal visible={visibleModal} onClose={() => setVisibleModal(false)}>
+                        <CModalHeader className="modal-background" onClose={() => setVisibleModal(false)}>
+                        <CModalTitle>SellingGum Pandas</CModalTitle>
+                        </CModalHeader>
+                        <CModalBody className="modal-background">
+                            <div className="collections--card--images"></div>
+                            <div className="collections--card--images"></div>
+                            <div className="collections--card--images"></div>
+                            <div className="collections--card--images"></div>
+                            <div className="collections--card--images"></div>
+                            <div className="collections--card--images"></div>
+                        </CModalBody>
+                        <CModalFooter className="modal-background">
+                        <CButton color="primary" onClick={() => setVisibleModal(false)}>
+                            Close
+                        </CButton>
+                        </CModalFooter>
+                    </CModal>
+                </CAvatar>
+                            <CAvatar src="https://ik.imagekit.io/bayc/assets/ape1.png" size="xl"/>
+                            <CAvatar src="https://ik.imagekit.io/bayc/assets/ape2.png" size="xl"/>
+                        </CAccordionBody>
+                    </CAccordionItem>
+                </CAccordion>
+            </div> 
+                   
+        </div>
         
-        
-                  </div>
               
           );
         }
