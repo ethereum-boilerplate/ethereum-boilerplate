@@ -8,7 +8,7 @@ const run = async () => {
       {
         shell: true,
         stdio: "inherit",
-      }
+      },
     );
   } catch (e) {
     console.log(e);

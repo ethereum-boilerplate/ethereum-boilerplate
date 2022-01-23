@@ -40,7 +40,7 @@ function AddressInput(props) {
           processPromise(
             resolveDomain({
               domain: value,
-            }).then((r) => r?.address)
+            }).then((r) => r?.address),
           );
         }
       } else if (value.length === 42) {
@@ -51,7 +51,7 @@ function AddressInput(props) {
         setIsDomain(false);
       }
     },
-    [resolveDomain, web3?.eth?.ens]
+    [resolveDomain, web3?.eth?.ens],
   );
 
   const Cross = () => (

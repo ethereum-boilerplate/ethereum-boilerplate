@@ -90,7 +90,7 @@ function NFTBalance() {
                             `${getExplorer(chainId)}address/${
                               nft.token_address
                             }`,
-                            "_blank"
+                            "_blank",
                           )
                         }
                       />

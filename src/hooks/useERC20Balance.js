@@ -16,7 +16,10 @@ export const useERC20Balance = (params) => {
 
   const fetchERC20Balance = async () => {
     return await account
-      .getTokenBalances({ address: walletAddress, chain: params?.chain || chainId })
+      .getTokenBalances({
+        address: walletAddress,
+        chain: params?.chain || chainId,
+      })
       .then((result) => result);
   };
 

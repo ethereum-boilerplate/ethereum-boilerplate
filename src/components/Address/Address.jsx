@@ -26,7 +26,10 @@ function Address(props) {
     setAddress(props?.address || (isAuthenticated && account));
   }, [account, isAuthenticated, props]);
 
-  if (!address) return <Skeleton paragraph={{ rows: 1, width: "100%" }} title={false} active />;
+  if (!address)
+    return (
+      <Skeleton paragraph={{ rows: 1, width: "100%" }} title={false} active />
+    );
 
   const Copy = () => (
     <svg

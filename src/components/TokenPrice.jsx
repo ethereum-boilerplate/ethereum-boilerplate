@@ -24,9 +24,20 @@ function TokenPrice(props) {
 
   return (
     <div style={styles.token}>
-      <img src={props.image || noLogoToken} alt="logo" style={{ height: props?.size || "35px" }} />
-      <span style={{ cursor: "pointer" }} onClick={toggleDisplayStyle} title={`Show in ${isUSDMode ? "ETH" : "USD"}`}>
-        {formattedData && (isUSDMode ? formattedData.formattedUsd : formattedData.formattedNative)}
+      <img
+        src={props.image || noLogoToken}
+        alt="logo"
+        style={{ height: props?.size || "35px" }}
+      />
+      <span
+        style={{ cursor: "pointer" }}
+        onClick={toggleDisplayStyle}
+        title={`Show in ${isUSDMode ? "ETH" : "USD"}`}
+      >
+        {formattedData &&
+          (isUSDMode
+            ? formattedData.formattedUsd
+            : formattedData.formattedNative)}
       </span>
     </div>
   );

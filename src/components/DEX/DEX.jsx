@@ -76,7 +76,7 @@ function DEX({ chain, customTokens = {} }) {
       tokenPricesUSD?.[fromToken?.["address"]]
         ? tokenPricesUSD[fromToken?.["address"]]
         : null,
-    [tokenPricesUSD, fromToken]
+    [tokenPricesUSD, fromToken],
   );
 
   const toTokenPriceUsd = useMemo(
@@ -84,7 +84,7 @@ function DEX({ chain, customTokens = {} }) {
       tokenPricesUSD?.[toToken?.["address"]]
         ? tokenPricesUSD[toToken?.["address"]]
         : null,
-    [tokenPricesUSD, toToken]
+    [tokenPricesUSD, toToken],
   );
 
   const fromTokenAmountUsd = useMemo(() => {
@@ -170,7 +170,7 @@ function DEX({ chain, customTokens = {} }) {
     const { symbol: toSymbol } = toToken;
     const pricePerToken = parseFloat(
       tokenValue(fromTokenAmount, fromToken["decimals"]) /
-        tokenValue(toTokenAmount, toToken["decimals"])
+        tokenValue(toTokenAmount, toToken["decimals"]),
     ).toFixed(6);
     return (
       <Text style={styles.priceSwap}>
@@ -277,8 +277,8 @@ function DEX({ chain, customTokens = {} }) {
                     ? parseFloat(
                         Moralis?.Units?.FromWei(
                           quote?.toTokenAmount,
-                          quote?.toToken?.decimals
-                        )
+                          quote?.toToken?.decimals,
+                        ),
                       ).toFixed(6)
                     : ""
                 }

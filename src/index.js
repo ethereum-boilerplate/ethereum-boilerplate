@@ -16,7 +16,7 @@ const Application = () => {
   //Validate
   if (!APP_ID || !SERVER_URL)
     throw new Error(
-      "Missing Moralis Application ID or Server URL. Make sure to set your .env file."
+      "Missing Moralis Application ID or Server URL. Make sure to set your .env file.",
     );
   if (isServerInfo)
     return (
@@ -37,7 +37,7 @@ ReactDOM.render(
   <StrictMode>
     <Application />,
   </StrictMode>,
-  document.getElementById("root")
+  document.getElementById("root"),
 );
 
 // If you want your app to work offline and load faster, you can change

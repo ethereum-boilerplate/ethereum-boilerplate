@@ -43,12 +43,31 @@ export default function Contract() {
   };
 
   return (
-    <div style={{ margin: "auto", display: "flex", gap: "20px", marginTop: "25", width: "70vw" }}>
+    <div
+      style={{
+        margin: "auto",
+        display: "flex",
+        gap: "20px",
+        marginTop: "25",
+        width: "70vw",
+      }}
+    >
       <Card
         title={
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
             Your contract: {contract?.contractName}
-            <Address avatar="left" copyable address={contractAddress} size={8} />
+            <Address
+              avatar="left"
+              copyable
+              address={contractAddress}
+              size={8}
+            />
           </div>
         }
         size="large"
@@ -82,9 +101,15 @@ export default function Contract() {
               };
 
               if (!isView) {
-                const tx = await Moralis.executeFunction({ awaitReceipt: false, ...options });
+                const tx = await Moralis.executeFunction({
+                  awaitReceipt: false,
+                  ...options,
+                });
                 tx.on("transactionHash", (hash) => {
-                  setResponses({ ...responses, [name]: { result: null, isLoading: true } });
+                  setResponses({
+                    ...responses,
+                    [name]: { result: null, isLoading: true },
+                  });
                   openNotification({
                     message: "🔊 New Transaction",
                     description: `${hash}`,
@@ -92,7 +117,10 @@ export default function Contract() {
                   console.log("🔊 New Transaction", hash);
                 })
                   .on("receipt", (receipt) => {
-                    setResponses({ ...responses, [name]: { result: null, isLoading: false } });
+                    setResponses({
+                      ...responses,
+                      [name]: { result: null, isLoading: false },
+                    });
                     openNotification({
                       message: "📃 New Receipt",
                       description: `${receipt.transactionHash}`,
@@ -105,12 +133,18 @@ export default function Contract() {
               } else {
                 console.log("options22", options);
                 Moralis.executeFunction(options).then((response) =>
-                  setResponses({ ...responses, [name]: { result: response, isLoading: false } })
+                  setResponses({
+                    ...responses,
+                    [name]: { result: response, isLoading: false },
+                  }),
                 );
               }
             }}
           >
-            <ContractMethods displayedContractFunctions={displayedContractFunctions} responses={responses} />
+            <ContractMethods
+              displayedContractFunctions={displayedContractFunctions}
+              responses={responses}
+            />
           </Form.Provider>
         )}
         {isDeployedToActiveChain === false && (
@@ -128,7 +162,12 @@ export default function Contract() {
         }}
       >
         {data.map((event, key) => (
-          <Card title={"Transfer event"} size="small" style={{ marginBottom: "20px" }} key={key}>
+          <Card
+            title={"Transfer event"}
+            size="small"
+            style={{ marginBottom: "20px" }}
+            key={key}
+          >
             {getEllipsisTxt(event.attributes.transaction_hash, 14)}
           </Card>
         ))}
