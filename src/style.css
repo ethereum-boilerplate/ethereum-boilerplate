@@ -18,3 +18,9 @@
   overflow: auto;
   border-radius: 1rem;
 }
+
+.profile--container {
+  display: grid;
+  grid-template-columns: 1fr repeat(6, minmax(auto 10em)) 1fr;
+  
+}

@@ -1,0 +1,186 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: linear-gradient(0deg, rgba(46,50,205,1) 45%, rgba(59,61,61,1) 100%) !important;
+    padding: 2em;
+    height: 100vh;
+  }
+
+  .ant-layout {
+    display: flex;
+    flex: auto;
+    flex-direction: column;
+    min-height: 0;
+    background: linear-gradient(0deg, rgba(46,50,205,1) 45%, rgba(59,61,61,1) 100%) !important;
+}
+  
+  
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
+  }
+  
+  .profile--container {
+    display: flex;
+    flex-direction: column;
+  }
+  /* 
+  @media (min-width: 768px) {
+    .profile--container {
+      display: block;
+    }
+  } */
+  
+  main {
+    
+  }
+  
+  
+  .header--main {
+    box-shadow: 7px -5px 10px 0px #4B0082, 11px -9px 10px 0px #0000FF, 16px -14px 10px 0px #00FF00, 20px -17px 10px 0px #FFFF00, 24px -19px 10px 0px #FF7F00, 27px -23px 10px 0px #FF0000, 5px 5px 15px 5px rgba(0,0,0,0);
+    background:linear-gradient(#9400D3, #0000FF);
+    border-radius: 7px;
+    margin: .7rem;
+    width: 100%;
+    text-align: center;
+    color:rgb(255, 215, 0);
+  
+  }
+
+  /* .btn-group {
+    background:linear-gradient(#9400D3, #0000FF);
+
+  } */
+  
+  
+  .modal-content {
+    background: rgb(46,50,205) !important;
+    background: linear-gradient(0deg, rgba(46,50,205,1) 45%, rgba(59,61,61,1) 100%) !important;
+    color: wheat !important;
+  }
+  
+  .modal-body {
+  
+  }
+  
+  /*various card Styles*/
+  .profile--card {
+  
+    background-image: url("https://img.welt.de/img/kultur/kunst/mobile234767266/4372507937-ci102l-w1024/Bored-Ape-Yacht-Club-by-Yuga-Labs-Kunst.jpg");
+    background-size: contain;
+    border: solid 4px lightskyblue;
+    border-radius: 4px;
+    height: 200px;
+    width: 200px;
+    margin-bottom: 20px;
+    float: left;
+  }
+  .profile--text {
+    color: linen;
+    letter-spacing: .5em;
+    width: auto;
+  }
+  
+  .profile--text .sm {
+    color: linen;
+    letter-spacing: .2em;
+    width: auto;
+  }
+  .profile--ball {
+    background-color: lightskyblue;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: -25px;
+    right: -25px;
+    align-items: center;
+    padding: 3px;
+  }
+  /* .profile--ball p {
+    margin: auto;
+    width: 75%;
+    height: 75%;
+    text-align: center;
+    font-size: 1.3em;
+    font-weight: 800;
+    background-color: gold;
+    border-radius: 50%;
+  } */
+  .flex {
+    display: flex;
+  }
+  .collections--card {
+    margin-top: 5rem;
+    display: flex;
+    justify-content: left;
+    position: relative;
+    color: linen;
+  
+  }
+  .collections--card--case {
+    display: grid;
+    grid-template: 1fr 1fr / 1fr 1fr 1fr;
+    row-gap: 12px;
+    column-gap: 20px;
+    background-color: lightskyblue;
+  }
+  
+  .collections--card--images {
+    background-image: url("https://miro.medium.com/max/980/1*3iesg_sr8kC6NYN2iiFHRQ.png");
+    background-size: contain;
+    border-radius: 4px;
+    height: 75px;
+    width: 75px;
+    float: left;
+    margin: 10px;
+  }
+  .trophy--card {
+    margin-top: 5rem;
+    display: flex;
+    justify-content: left;
+    position: relative;
+    color: linen;
+  }
+  .trophy--card--case {
+    display: grid;
+    grid-template: 1fr / 1fr 1fr;
+    gap: 15px;
+    padding-left: 7rem;
+  }
+  .trophy--card--images {
+    background-image: url("https://static01.nyt.com/images/2021/03/12/arts/11nft-auction-cryptopunks-print/11nft-auction-cryptopunks-print-articleLarge.jpg?quality=75&auto=webp&disable=upscale");
+    background-size: contain;
+    border: solid 0px lightskyblue;
+    border-radius: 4px;
+    height: 150px;
+    width: 150px;
+    position: relative;
+  }
+  
+  
+  .shop--card--case {
+    display: grid;
+    grid-template: 1fr / 1fr 1fr;
+    gap: 15px;
+    padding-left: 5.5rem;
+  }
+  /*various card Styles*/
+  
+  /*Badging Styles*/
+  /* .badge {
+    background-color: rgb(255, 215, 0);
+    color: black;
+    padding: 2px;
+    border-radius: 3px;
+    position:absolute;
+    top:-10px;
+    left: -10px;
+    font-weight: 800;
+  } */
+  
+  /*Badging Styles*/

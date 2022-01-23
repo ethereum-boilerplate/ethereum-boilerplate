@@ -11,6 +11,7 @@ import Account from "components/Account";
 import Chains from "components/Chains";
 import NFTBalance from "components/NFTBalance";
 import NFTTokenIds from "components/NFTTokenIds";
+import Profile from "components/Profile";
 import { Menu, Layout} from "antd";
 import SearchCollections from "components/SearchCollections";
 import "antd/dist/antd.css";
@@ -90,6 +91,9 @@ const App = ({ isServerInfo }) => {
             <Menu.Item key="transactions">
               <NavLink to="/Transactions">📑 Your Transactions</NavLink>
             </Menu.Item>
+            <Menu.Item key="Profile">
+              <NavLink to="/Profile">🤖 Your Profile</NavLink>
+            </Menu.Item>
           </Menu>
           <div style={styles.headerRight}>
             <Chains />
@@ -108,8 +112,11 @@ const App = ({ isServerInfo }) => {
             <Route path="/Transactions">
               <NFTMarketTransactions />
             </Route>
+            <Route path="/Profile">
+              <Profile />
+            </Route>
           </Switch>
-          <Redirect to="/NFTMarketPlace" />
+          <Redirect to="/Profile" />
         </div>
       </Router>
       <Footer style={{ textAlign: "center" }}>

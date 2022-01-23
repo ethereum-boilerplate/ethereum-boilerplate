@@ -4,6 +4,8 @@
   "homepage": "https://BlockheadDevs.github.io/ethereum-boilerplate",
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
+    "@coreui/coreui": "^4.1.0",
+    "@coreui/react": "^4.1.2",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -17,20 +19,20 @@
     "react-router": "^5.2.1",
     "react-router-dom": "^5.3.0",
     "react-scripts": "4.0.3",
+    "update": "^0.7.4",
     "web-vitals": "^1.0.1",
     "yarn": "^1.22.17"
   },
   "scripts": {
     "start": "react-scripts start",
     "predeploy": "yarn build",
-    "deploy": "gh-pages -d build",
+    "deploy": "node Truffle/scripts/deployContract.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "devchain": "node Truffle/scripts/devChain.js",
     "connect": "moralis-admin-cli connect-local-devchain",
     "watch:events": "moralis-admin-cli add-contract",
-    "deploy": "node Truffle/scripts/deployContract.js",
     "deploypage": "gh-pages -d build",
     "clean": "npx gh-pages-clean"
   },
