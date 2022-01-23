@@ -38,34 +38,34 @@ export default function QuickStart({ isServerInfo }) {
         }
       >
         <Timeline mode="left" style={styles.timeline}>
-          <Timeline.Item dot="📄">
+          <Timeline.Item dot="🔐">
             <Text delete style={styles.text}>
-              Clone or fork{" "}
+              Authenticate your{" "}
               <a
                 href="https://github.com/ethereum-boilerplate/ethereum-boilerplate#-quick-start"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                ethereum-boilerplate
+                wallet
               </a>{" "}
             </Text>
           </Timeline.Item>
 
-          <Timeline.Item dot="💿">
+          <Timeline.Item dot="💰">
             <Text delete style={styles.text}>
-              Install all dependencies: <Text code>npm install</Text>
+              Add Karma tokens to wallet
             </Text>
           </Timeline.Item>
 
           <Timeline.Item dot="🧰">
             <Text delete={isServerInfo} style={styles.text}>
-              Sign up for a free account on{" "}
+              Create a 
               <a
                 href="https://moralis.io?utm_source=boilerplatehosted&utm_medium=todo&utm_campaign=ethereum-boilerplate"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Moralis
+               task
               </a>
             </Text>
           </Timeline.Item>

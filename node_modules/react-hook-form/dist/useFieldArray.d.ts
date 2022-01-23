@@ -1,0 +1,3 @@
+import { FieldValues, UseFieldArrayProps, UseFieldArrayReturn } from './types';
+export declare const useFieldArray: <TFieldValues extends FieldValues = FieldValues, TFieldArrayName extends import("./types").ArrayPath<TFieldValues> = import("./types").ArrayPath<TFieldValues>, TKeyName extends string = "id">(props: UseFieldArrayProps<TFieldValues, TFieldArrayName, TKeyName>) => UseFieldArrayReturn<TFieldValues, TFieldArrayName, TKeyName>;
+//# sourceMappingURL=useFieldArray.d.ts.map

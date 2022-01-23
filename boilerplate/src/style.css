@@ -6,15 +6,112 @@
 .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-open::after,
 .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-selected::after,
 .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-selected::after {
-  border-bottom: 2px solid #21bf96 !important;
+  border-bottom: 3px solid #9A69A3 !important;
+  color:#777777;
+  line-height: 20px;
+  margin-bottom: 5px;
+}
+
+.ant-menu-horizontal:not(.ant-menu-dark) {
+  margin-bottom: 5px;
+  color: #777777;
 }
 
 .ant-menu-horizontal > .ant-menu-item-selected a,
 .ant-menu-horizontal > .ant-menu-item a:hover {
-  color: #21bf96 !important;
+  color: #9A69A3 !important;
+  margin-bottom: 5px;
 }
 
 .ant-modal-content {
   overflow: auto;
   border-radius: 1rem;
+  margin-bottom: 5px;
+}
+
+.ant-layout {
+  background-color: rgb(154,105,164);
+  background: linear-gradient(0deg, rgba(154,105,164,1) 0%, rgba(239,151,144,1) 100%);
+  margin-bottom: 5px;
+}
+
+.ant-menu-overflow-item {
+  margin-bottom: 5px;
+  color: #777777 !important;
+}
+
+.ant-menu-item {
+  margin-bottom: 5px;
+  color: #777777 !important;
+}
+
+.ant-menu-item-only-child {
+  margin-bottom: 5px;
+  color: #777777 !important;
+}
+
+.ant-menu-title-content {
+  margin-bottom: 5px;
+  color: #777777 !important;
+}
+
+.logo {
+  margin-top: 30px;
+  margin-left: 10px;
+  margin-bottom: 5px;
+}
+
+.task-item {
+  background-color: #EFF2F5;
+  padding: 20px;
+  padding-top: 10px;
+  border-radius: 15px;
+  border: 10px solid;
+  border-image-slice: 1;
+  border-width: 5px;
+  border-image-source: linear-gradient(to right, #9A69A3, #EF9790);
+}
+
+.task-completed {
+  opacity: 60%;
+}
+
+.task-headline {
+  font-weight: bold;
+}
+
+.task-detail-line {
+  font-weight: medium;
+}
+
+.task-card {
+  width: 100%;
+}
+
+.create-task-card {
+  width: 100%;
+}
+
+.task-create-btn {
+  font-weight: bold;
+  float: right;
+  background-color: #9567A7;
+  color: #fff;
+  padding: 10px;
+  border-style: solid;
+  border-radius: 10px;
+  border-color: #9567A7;
+}
+
+.task-create-btn:hover {
+  transition: color, height 4s;
+  transition-timing-function: ease-in;
+  background-color: #EFF2F5;
+  border-color: #EFF2F5;
+  color: #9567A7;
+  box-shadow: inherit;
+}
+
+Card.title {
+  font-size: 30px;
 }
