@@ -33,7 +33,8 @@
     "lint:check": "eslint .",
     "lint:fix": "eslint --fix",
     "format:check": "prettier --check .",
-    "format:fix": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json,html}' .prettierrc --config ./.prettierrc"
+    "format:fix": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json,html}' .prettierrc --config ./.prettierrc",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
@@ -60,6 +61,7 @@
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
     "gh-pages": "^3.2.3",
-    "prettier": "^2.5.1"
+    "prettier": "^2.5.1",
+    "husky": "^7.0.0"
   }
 }
