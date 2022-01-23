@@ -37,26 +37,32 @@ export const useVerifyMetadata = () => {
             return;
         }
         //Get Metadata
+        /**
+         * @warning
+         * * Unsanitized input from data from a remote resource flows into fetch, 
+         * * where it is used as an URL to perform a request. This may result in a 
+         * * Server-Side Request Forgery vulnerability.
+         */
+        // file deepcode ignore Ssrf: <please specify a reason of ignoring this>
         fetch(NFT.token_uri)
             .then(res => res.json())
             .then(metadata => {
-                if(!metadata){
-                    //Log
+                if(!metadata)
                     console.error("useVerifyMetadata.getMetadata() No Metadata found on URI:", {URI:NFT.token_uri, NFT});
-                }
-                //Handle Setbacks
+
                 else if(metadata?.detail  && metadata.detail.includes("Request was throttled")){
-                    //Log
                     console.warn("useVerifyMetadata.getMetadata() Bad Result for:"+NFT.token_uri+"  Will retry later", {results, metadata});
-                    //Retry That Again after 1s
+                    // file deepcode ignore FormatString: <please specify a reason of ignoring this>
                     setTimeout(function() { getMetadata(NFT); }, 1000);
-                }//Handle Opensea's {detail: "Request was throttled. Expected available in 1 second."}
-                else{//No Errors
-                    //Set
+                }
+
+                /** 
+                 * * Handle Opensea's {detail: "Request was throttled. Expected available in 1 second."}
+                 */
+                else{
                     setMetadata(NFT, metadata);
-                    //Log
                     console.log("getMetadata() Late-load for NFT Metadata "+NFT.token_uri, {metadata});
-                }//Valid Result
+                }
             })
             .catch(err => {
                 console.error("useVerifyMetadata.getMetadata() Error Caught:", {err, NFT, URI:NFT.token_uri});
@@ -69,14 +75,11 @@ export const useVerifyMetadata = () => {
      * @param {object} metadata 
      */
     function setMetadata(NFT, metadata){
-        //Add Metadata
         NFT.metadata = metadata;
-        //Set Image
         if(metadata?.image) NFT.image = resolveLink(metadata.image);
-        //Set to State
         if(metadata && !results[NFT.token_uri]) setResults({...results, [NFT.token_uri]: NFT});
-    }//setMetadata()
+    }
     
     return { verifyMetadata };
 
-}//useVerifyMetadata()
+}

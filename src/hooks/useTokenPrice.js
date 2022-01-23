@@ -15,9 +15,11 @@ const useTokenPrice = (options) => {
     fetchTokenPrice(options).then((price) => {
       price.usdPrice = c2.format(price.usdPrice);
       const { value, decimals, symbol } = price.nativePrice;
+
       price.nativePrice = tokenValueTxt(value, decimals, symbol);
+      
       setTokenPrice(price);
-    });
+    }).catch(err => console.log(err));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isInitialized, options]);
 

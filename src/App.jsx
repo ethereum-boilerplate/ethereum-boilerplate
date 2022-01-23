@@ -6,6 +6,15 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
+import { Layout, Tabs } from "antd";
+import Text from "antd/lib/typography/Text";
+
+import "./style.css";
+import "antd/dist/antd.css";
+
+/**
+ * @components Custom JSX Main Components
+ */
 import Account from "components/Account/Account";
 import Chains from "components/Chains";
 import TokenPrice from "components/TokenPrice";
@@ -14,17 +23,17 @@ import ERC20Transfers from "components/ERC20Transfers";
 import DEX from "components/DEX";
 import NFTBalance from "components/NFTBalance";
 import Wallet from "components/Wallet";
-import { Layout, Tabs } from "antd";
-import "antd/dist/antd.css";
 import NativeBalance from "components/NativeBalance";
-import "./style.css";
 import QuickStart from "components/QuickStart";
 import Contract from "components/Contract/Contract";
-import Text from "antd/lib/typography/Text";
 import Ramper from "components/Ramper";
 import MenuItems from "./components/MenuItems";
+
 const { Header, Footer } = Layout;
 
+/**
+ * @dev CSS in JS
+ */
 const styles = {
   content: {
     display: "flex",
@@ -55,12 +64,19 @@ const styles = {
     fontWeight: "600",
   },
 };
+
 const App = ({ isServerInfo }) => {
   const { isWeb3Enabled, enableWeb3, isAuthenticated, isWeb3EnableLoading } =
     useMoralis();
 
   useEffect(() => {
     const connectorId = window.localStorage.getItem("connectorId");
+
+    /**
+     * @dev 
+     * 1. Check if broweser is web3 compatible
+     * 2. Check if user is authenticated in wallet
+     */
     if (isAuthenticated && !isWeb3Enabled && !isWeb3EnableLoading)
       enableWeb3({ provider: connectorId });
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -133,6 +149,7 @@ const App = ({ isServerInfo }) => {
           </Switch>
         </div>
       </Router>
+      
       <Footer style={{ textAlign: "center" }}>
         <Text style={{ display: "block" }}>
           ⭐️ Please star this{" "}

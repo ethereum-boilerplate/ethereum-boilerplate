@@ -11,18 +11,24 @@ export default function Contract() {
   const [responses, setResponses] = useState({});
   const [contract, setContract] = useState();
 
-  /**Moralis Live query for displaying contract's events*/
+  /** 
+   * * Moralis Live query for displaying contract's events 
+   * */
   const { data } = useMoralisQuery("Events", (query) => query, [], {
     live: true,
   });
 
-  /** Automatically builds write and read components for interacting with contract*/
+  /** 
+   * * Automatically builds write and read components for interacting with contract
+   * */
   const displayedContractFunctions = useMemo(() => {
     if (!contract?.abi) return [];
     return contract.abi.filter((method) => method["type"] === "function");
   }, [contract]);
 
-  /** Returns true in case if contract is deployed to active chain in wallet */
+  /** 
+   * * Returns true in case if contract is deployed to active chain in wallet 
+   * */
   const isDeployedToActiveChain = useMemo(() => {
     if (!contract?.networks) return undefined;
     return [parseInt(chainId, 16)] in contract.networks;
@@ -33,7 +39,9 @@ export default function Contract() {
     return contract.networks[parseInt(chainId, 16)]?.["address"] || null;
   }, [chainId, contract, isDeployedToActiveChain]);
 
-  /** Default function for showing notifications*/
+  /** 
+   * * Default function for showing notifications
+   * */
   const openNotification = ({ message, description }) => {
     notification.open({
       placement: "bottomRight",
@@ -106,7 +114,7 @@ export default function Contract() {
                 console.log("options22", options);
                 Moralis.executeFunction(options).then((response) =>
                   setResponses({ ...responses, [name]: { result: response, isLoading: false } })
-                );
+                ).catch(err => console.log(err));
               }
             }}
           >

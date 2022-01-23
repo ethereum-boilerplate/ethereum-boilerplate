@@ -9,9 +9,11 @@ import styles from "./styles";
 function NativeTransactions() {
   const { nativeTransactions, chainId } = useNativeTransactions();
   const { Moralis } = useMoralis();
+
   useEffect(() => {
     console.log(nativeTransactions);
   }, [nativeTransactions]);
+
   const columns = [
     {
       title: "From",
@@ -30,7 +32,9 @@ function NativeTransactions() {
       dataIndex: "value",
       key: "value",
       render: (value) =>
-        // missing second argument in FromWei, decimals
+        /**
+         * @dev Missing second argument in FromWei, decimals
+         */
         parseFloat(Moralis.Units.FromWei(value)).toFixed(6),
     },
     {
@@ -58,6 +62,7 @@ function NativeTransactions() {
   ];
 
   let key = 0;
+  
   return (
     <div>
       <h1 style={styles.title}>💸Native Transactions</h1>

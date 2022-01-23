@@ -8,16 +8,21 @@ export const useERC20Balance = (params) => {
   const [assets, setAssets] = useState();
 
   useEffect(() => {
-    if (isInitialized) {
-      fetchERC20Balance().then((balance) => setAssets(balance));
-    }
+    if (isInitialized)
+      fetchERC20Balance()
+        .then((balance) => setAssets(balance))
+        .catch((err) => console.log(err));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isInitialized, chainId, walletAddress]);
 
   const fetchERC20Balance = async () => {
     return await account
-      .getTokenBalances({ address: walletAddress, chain: params?.chain || chainId })
-      .then((result) => result);
+      .getTokenBalances({
+        address: walletAddress,
+        chain: params?.chain || chainId,
+      })
+      .then((result) => result)
+      .catch((err) => console.log(err));
   };
 
   return { fetchERC20Balance, assets };

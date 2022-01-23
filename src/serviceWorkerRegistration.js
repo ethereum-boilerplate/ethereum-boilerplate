@@ -40,16 +40,17 @@ export function register(config) {
 
         // Add some additional logging to localhost, pointing developers to the
         // service worker/PWA documentation.
-        navigator.serviceWorker.ready.then(() => {
-          console.log(
-            "This web app is being served cache-first by a service " +
-              "worker. To learn more, visit https://cra.link/PWA"
-          );
-        });
-      } else {
-        // Is not localhost. Just register service worker
-        registerValidSW(swUrl, config);
+        navigator.serviceWorker.ready
+          .then(() => {
+            console.log(
+              "This web app is being served cache-first by a service " +
+                "worker. To learn more, visit https://cra.link/PWA"
+            );
+          })
+          .catch((err) => console.log(err));
       }
+      // Is not localhost. Just register service worker
+      else registerValidSW(swUrl, config);
     });
   }
 }
@@ -63,6 +64,7 @@ function registerValidSW(swUrl, config) {
         if (installingWorker == null) {
           return;
         }
+
         installingWorker.onstatechange = () => {
           if (installingWorker.state === "installed") {
             if (navigator.serviceWorker.controller) {
@@ -111,11 +113,16 @@ function checkValidServiceWorker(swUrl, config) {
         (contentType != null && contentType.indexOf("javascript") === -1)
       ) {
         // No service worker found. Probably a different app. Reload the page.
-        navigator.serviceWorker.ready.then((registration) => {
-          registration.unregister().then(() => {
-            window.location.reload();
-          });
-        });
+        navigator.serviceWorker.ready
+          .then((registration) => {
+            registration
+              .unregister()
+              .then(() => {
+                window.location.reload();
+              })
+              .catch((err) => console.log(err));
+          })
+          .catch((err) => console.log(err));
       } else {
         // Service worker found. Proceed as normal.
         registerValidSW(swUrl, config);

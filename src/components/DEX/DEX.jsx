@@ -8,7 +8,6 @@ import { ArrowDownOutlined } from "@ant-design/icons";
 import { useTokenPrice } from "react-moralis";
 import { tokenValue } from "helpers/formatters";
 import { getWrappedNative } from "helpers/networks";
-// import { useOneInchQuote } from "react-moralis";
 
 const styles = {
   card: {
@@ -101,13 +100,16 @@ function DEX({ chain, customTokens = {} }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [toTokenPriceUsd, quote]);
 
-  // tokenPrices
+  /**
+   * * Token Prices
+   */
   useEffect(() => {
     if (!isInitialized || !fromToken || !chain) return null;
     const validatedChain = chain ? getChainIdByName(chain) : chainId;
     const tokenAddress = IsNative(fromToken["address"])
       ? getWrappedNative(validatedChain)
       : fromToken["address"];
+
     fetchTokenPrice({
       params: { chain: validatedChain, address: tokenAddress },
       onSuccess: (price) =>
@@ -121,11 +123,14 @@ function DEX({ chain, customTokens = {} }) {
 
   useEffect(() => {
     if (!isInitialized || !toToken || !chain) return null;
+
     const validatedChain = chain ? getChainIdByName(chain) : chainId;
+    
     const tokenAddress = IsNative(toToken["address"])
       ? getWrappedNative(validatedChain)
       : toToken["address"];
-    fetchTokenPrice({
+    
+      fetchTokenPrice({
       params: { chain: validatedChain, address: tokenAddress },
       onSuccess: (price) =>
         setTokenPricesUSD({
@@ -156,7 +161,7 @@ function DEX({ chain, customTokens = {} }) {
   }, [toToken, fromToken, fromAmount, chain]);
 
   useEffect(() => {
-    if (currentTrade) getQuote(currentTrade).then((quote) => setQuote(quote));
+    if (currentTrade) getQuote(currentTrade).then((quote) => setQuote(quote)).catch(err => console.log(err));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentTrade]);
 
