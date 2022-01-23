@@ -32,8 +32,9 @@
     "clean": "npx gh-pages-clean",
     "lint:check": "eslint .",
     "lint:fix": "eslint --fix",
-    "format:check": "prettier --check .",
-    "format:fix": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json,html}' .prettierrc --config ./.prettierrc",
+    "prettier:check": "prettier --check .",
+    "prettier:fix": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json,html}' .prettierrc --config ./.prettierrc",
+    "format": "npm run lint:fix && npm run prettier:fix",
     "prepare": "husky install"
   },
   "eslintConfig": {
