@@ -47,7 +47,7 @@ const getConfig = (mainScene) => {
             },
         },
         scale: {
-            mode: Phaser.Scale.FIT,
+            mode: Phaser.Scale.NONE,
             width,
             height,
         },

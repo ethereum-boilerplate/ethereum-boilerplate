@@ -49,9 +49,6 @@ export class GymRoomScene extends Phaser.Scene {
     const width = getGameWidth(this);
     const height = getGameHeight(this);
 
-    const adjustedWidth = width / 5;
-    const adjustedHeight = height * 0.02;
-
     this.cameras.main.backgroundColor.setTo(179, 201, 217);
     // constrols
     this.input.keyboard.on(
@@ -87,8 +84,6 @@ export class GymRoomScene extends Phaser.Scene {
       [
         tileset_main_v2,
       ],
-      adjustedWidth,
-      adjustedHeight
     );
 
     const wallsLayer = map.createLayer(
@@ -96,8 +91,6 @@ export class GymRoomScene extends Phaser.Scene {
       [
         tileset_main_v2
       ],
-      adjustedWidth,
-      adjustedHeight
     );
     groundLayer.setScale(mapScale);
     wallsLayer.setScale(mapScale);
@@ -110,8 +103,6 @@ export class GymRoomScene extends Phaser.Scene {
       [
         tileset_main_v2,
       ],
-      adjustedWidth,
-      adjustedHeight
     );
     itemsLayer.setScale(mapScale);
     itemsLayer.setCollisionByProperty({
@@ -143,6 +134,12 @@ export class GymRoomScene extends Phaser.Scene {
       this.player.width * 0.25, this.player.height * 0.6
     )
     this.cameras.main.startFollow(this.player);
+    
+    // world bounds
+    this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+    this.physics.world.setBoundsCollision(true, true, false, true);
+    this.player.body.setCollideWorldBounds(true);
+
     const player = this.player;
 
     // colliders
@@ -180,8 +177,8 @@ export class GymRoomScene extends Phaser.Scene {
     const trainingMats = []
     const miniGamesLayer = map.getObjectLayer('mini_games');
     miniGamesLayer.objects.forEach(object => {
-      const x = object.x * mapScale + adjustedWidth;
-      const y = object.y * mapScale + adjustedHeight
+      const x = object.x * mapScale;
+      const y = object.y * mapScale;
       const objWidth = object.width * mapScale;
       const objHeight = object.height * mapScale;
       let trainingMatRect = this.add

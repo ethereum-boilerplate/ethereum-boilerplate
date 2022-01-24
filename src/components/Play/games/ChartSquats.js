@@ -78,6 +78,8 @@ export class ChartSquats extends Phaser.Scene {
         const width = getGameWidth(this);
         const height = getGameHeight(this);
 
+        this.cameras.main.setBackgroundColor("#202020");
+
         this.createTime = Date.now();
         this.frameTime = Date.now();
         this.wonState = nonState;

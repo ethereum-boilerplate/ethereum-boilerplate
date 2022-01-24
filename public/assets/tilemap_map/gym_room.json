@@ -60,8 +60,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":1517.38661022709,
-                 "y":2951.52044712677
+                 "x":1227.26297921478,
+                 "y":2863.47150115474
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -75,37 +75,37 @@
          "name":"mini_games",
          "objects":[
                 {
-                 "height":77.9448490347851,
+                 "height":77.9448,
                  "id":1,
                  "name":"fly_fit",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":175.235707078243,
-                 "x":1639.83115454278,
-                 "y":551.880642161264
+                 "width":175.236,
+                 "x":1639.83,
+                 "y":551.881
                 }, 
                 {
-                 "height":74.6978245173924,
+                 "height":74.6978,
                  "id":2,
                  "name":"chart_squats",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":172.24698256085,
-                 "x":2728.87522146223,
-                 "y":1066.48247121318
+                 "width":172.247,
+                 "x":2728.88,
+                 "y":1066.48
                 }, 
                 {
-                 "height":75.3110245173925,
+                 "height":75.311,
                  "id":3,
                  "name":"space_stretch",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":178.731006434766,
-                 "x":517.806010920621,
-                 "y":774.256916686852
+                 "width":178.731,
+                 "x":517.806,
+                 "y":774.257
                 }],
          "opacity":1,
          "type":"objectgroup",
