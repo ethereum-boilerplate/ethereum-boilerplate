@@ -95,7 +95,7 @@ export const AppFooter = ({ style }) => {
                         <a
                             target="_blank"
                             rel="noopener noreferrer"
-                            href="https://coderdidit.com"
+                            href="https://phaser.io"
                         >
                             <PhaserLogo
                                 width={"60"}
@@ -110,7 +110,7 @@ export const AppFooter = ({ style }) => {
                         <a
                             target="_blank"
                             rel="noopener noreferrer"
-                            href="https://phaser.io"
+                            href="https://coderdidit.com"
                         >
                             <CoderDitiLogo />
                         </a>
