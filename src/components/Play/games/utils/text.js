@@ -48,6 +48,7 @@ const getBBcodeText = function (scene, wrapWidth, fixedWidth, fixedHeight, align
         fixedHeight: fixedHeight,
         align: align,
         fontSize: '18px',
+        lineSpacing: 5,
         wrap: {
             mode: 'word',
             width: wrapWidth

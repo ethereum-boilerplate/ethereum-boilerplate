@@ -70,7 +70,10 @@ export class ChartSquats extends Phaser.Scene {
     }
 
     create(data) {
-        document.getElementById("pose-det-webcam-container").style.marginLeft = '40rem';
+        const webCamContainer = document.getElementById("pose-det-webcam-container");
+        if (webCamContainer) {
+            webCamContainer.style.marginLeft = '40rem';
+        }
         // basic props        
         const width = getGameWidth(this);
         const height = getGameHeight(this);
@@ -85,7 +88,9 @@ export class ChartSquats extends Phaser.Scene {
             intervals.forEach(i => {
                 clearInterval(i);
             })
-            document.getElementById("pose-det-webcam-container").style.marginLeft = '';
+            if (webCamContainer) {
+                webCamContainer.style.marginLeft = '';
+            }
             const code = event.keyCode;
             if (code == Phaser.Input.Keyboard.KeyCodes.ESC) {
                 this.scene.start(GYM_ROOM_SCENE);

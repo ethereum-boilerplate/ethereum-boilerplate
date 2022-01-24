@@ -4,7 +4,7 @@ import * as gpose from "../../../gpose/pose";
 
 export class Player extends Phaser.Physics.Arcade.Sprite {
     cursorKeys;
-    speed = 90;
+    speed = 150;
 
     constructor({ scene, x, y, key }) {
         super(scene, x, y, key);
