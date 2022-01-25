@@ -169,7 +169,7 @@ export default function Home() {
                 )
               }
             >
-              Sing Up to Newsletter
+              Sing up to newsletter
             </Button>
           </div>
         </div>
