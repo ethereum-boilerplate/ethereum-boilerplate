@@ -14,7 +14,9 @@ function Marketplace() {
   const NFTCollections = getCollectionsByChain(MainChainID);
 
   return (
-    <div>
+    <div style={{
+      marginBottom: "4rem",
+    }}>
       {isAuthenticated && (
         <div style={{
           ...BreakFlexDiv,

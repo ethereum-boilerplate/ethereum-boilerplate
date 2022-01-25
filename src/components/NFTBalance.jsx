@@ -102,6 +102,7 @@ function NFTBalance() {
         width: "100%",
         background: "none",
         color: brightFontCol,
+        marginBottom: "4rem",
       }}>
         <div style={pageTitleStyle}>
           Your Avatars and Wearables <SkinFilled /></div>

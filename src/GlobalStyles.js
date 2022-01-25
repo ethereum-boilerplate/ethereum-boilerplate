@@ -44,7 +44,7 @@ export const NFTImg = {
 
 const BtnSidesPadding = "12px";
 
-export const BtnPrimary = {
+const BtnBase = {
     fontWeight: "500",
     fontSize: "15px",
     fontFamily: "Roboto, sans-serif",
@@ -53,6 +53,15 @@ export const BtnPrimary = {
     paddingTop: "8px",
     paddingBottom: "31px",
     border: "none",
+}
+
+export const BtnInfo = {
+    ...BtnBase,
+}
+
+export const BtnPrimary = {
+    ...BtnBase,
+    backgroundColor: "#f96f0b",
 }
 
 export const BreakFlexDiv = {
@@ -75,6 +84,12 @@ export const descriptionStyle = {
 export const pageTitleStyle = {
     fontFamily: "Source Serif Pro",
     fontSize: "40px",
+    fontWeight: "bold",
+}
+
+export const pageTitle2Style = {
+    fontFamily: "Source Serif Pro",
+    fontSize: "30px",
     fontWeight: "bold",
 }
 

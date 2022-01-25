@@ -10,6 +10,7 @@ const ConnectWalletWarn = () => {
         <div>
             <div style={{
                 marginTop: "4rem",
+                marginBottom: "6rem",
             }}>
                 <h1 style={{
                     ...pageTitleStyle,
@@ -34,6 +35,7 @@ const UseCorrectNetworkWarn = () => {
             <div style={{
                 marginTop: "4rem",
                 textAlign: "center",
+                marginBottom: "6rem",
             }}>
                 <h1 style={{
                     ...pageTitleStyle,

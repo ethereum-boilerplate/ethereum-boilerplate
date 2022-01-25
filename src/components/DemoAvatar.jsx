@@ -3,7 +3,7 @@ import { Button, Card, Image, Tooltip, Alert, Badge } from "antd";
 import { FileSearchOutlined, SmileFilled } from "@ant-design/icons";
 import { getExplorer } from "helpers/networks";
 import { Link } from "react-router-dom";
-import { NFTCardStyle, NFTsDiv, NFTImg, BtnPrimary, NFTImgWrapperStyle } from "../GlobalStyles";
+import { NFTCardStyle, NFTsDiv, NFTImg, BtnPrimary, BtnInfo, NFTImgWrapperStyle } from "../GlobalStyles";
 import { DemoNFTContracts } from "../MglNftMetadata";
 import { AvatarCtx } from "index";
 import { useNFTTokenIds } from "hooks/useNFTTokenIds";
@@ -38,10 +38,11 @@ function DemoAvatar() {
     } else {
 
         return (
-            <div>
+            <div style={{
+                marginBottom: "6rem",
+            }}>
                 <div style={{
                     marginTop: "1rem",
-                    marginBottom: "2rem",
                 }}>
                     <div style={{
                         ...pageTitleStyle,
@@ -52,7 +53,7 @@ function DemoAvatar() {
                         padding: "1rem 0",
                     }}>
                         <Button
-                            style={BtnPrimary}
+                            style={BtnInfo}
                             onClick={() =>
                                 window.open(
                                     `${getExplorer(chainId)}address/${demoNFTContract}`,

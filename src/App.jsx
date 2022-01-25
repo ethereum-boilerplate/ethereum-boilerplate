@@ -41,11 +41,8 @@ const styles = {
     fontFamily: "Roboto, sans-serif",
     marginTop: "40px",
     marginBottom: "40px",
-    height: "100vh",
   },
   header: {
-    // position: "fixed",
-    // zIndex: 1,
     width: "100%",
     display: "flex",
     justifyContent: "space-between",
@@ -54,8 +51,6 @@ const styles = {
     padding: "0 35px",
     background: "none",
     height: "60px",
-    // borderBottom: "2px solid rgba(0, 0, 0, 0.06)",
-    // boxShadow: "0 1px 10px rgb(151 164 175 / 10%)",
   },
   headerRight: {
     display: "flex",
