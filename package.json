@@ -35,7 +35,7 @@
     "connect": "moralis-admin-cli connect-local-devchain",
     "watch:events": "moralis-admin-cli add-contract",
     "deploy": "node Truffle/scripts/deployContract.js",
-    "deploypage": "echo 'app.metagymland.com' > ./build/CNAME && gh-pages -d build",
+    "deploypage": "echo 'metagymland.com' > ./build/CNAME && gh-pages -d build",
     "clean": "npx gh-pages-clean"
   },
   "eslintConfig": {
