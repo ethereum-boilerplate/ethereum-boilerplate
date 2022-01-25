@@ -11,6 +11,7 @@ import PoseDetWebcam from "components/Webcam/PoseDetWebcam";
 import { MGLSmallLogo } from "Logos";
 import { SettingFilled } from "@ant-design/icons";
 import { Link } from "react-router-dom";
+import { mainBgColor } from "../../../GlobalStyles";
 
 const menuHeight = 60;
 
@@ -118,7 +119,7 @@ const GymRoom = ({ avatar, useWebcam = true }) => {
                 position: "fixed",
                 left: "0",
                 top: "0",
-                backgroundColor: "#003962",
+                backgroundColor: mainBgColor,
             }}
         >
             <div style={{

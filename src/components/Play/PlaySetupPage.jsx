@@ -5,7 +5,7 @@ import { Image, Card, Button } from "antd";
 import { RightOutlined, LeftOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { BtnPrimary } from "../../GlobalStyles";
-import { NFTImg, BreakFlexDiv, brightFontCol } from "../../GlobalStyles";
+import { NFTImg, BreakFlexDiv, brightFontCol, mainBgColorDarker } from "../../GlobalStyles";
 import SelectWebcam from "components/Webcam/SelectWebcam";
 import { WebcamCtx } from "index";
 import PoseDetWebcam from "components/Webcam/PoseDetWebcam";
@@ -45,7 +45,7 @@ const PlaySetupPage = () => {
         <div>
             <div style={{
                 boxShadow: "0 0 20px 2px #020811",
-                backgroundColor: "#042946",
+                backgroundColor: mainBgColorDarker,
                 borderRadius: "1rem",
                 padding: "3rem 0 3rem 0",
                 marginTop: "1.5rem",
