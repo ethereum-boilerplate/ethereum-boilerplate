@@ -50,7 +50,7 @@ const PlaySetupPage = () => {
                             borderRadius: "1rem",
                             backgroundColor: "#FFF",
                             paddingBottom: "1rem",
-                            width: "82%",
+                            maxWidth: "300px",
                         }}>
                             <Image
                                 preview={false}
