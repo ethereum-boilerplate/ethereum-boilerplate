@@ -85,7 +85,7 @@ export class FlyFitScene extends Phaser.Scene {
                 "try to catch them all\n" +
                 "by moving your body like a BIRD"
                 , 50);
-            roboTextTimeouts.push(setTimeout(() => hintTextBox.start("🤖", 50), 60000));
+            roboTextTimeouts.push(setTimeout(() => hintTextBox.start("🤖", 50), 10000));
         }, 500));
 
         this.score = 0;

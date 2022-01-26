@@ -129,7 +129,7 @@ export class SpaceStretchScene extends Phaser.Scene {
                 "Tilt your head to the sides\n" +
                 "Use the GRAVITY!",
                 50);
-            roboTextTimeouts.push(setTimeout(() => hintTextBox.start("🤖", 50), 60000));
+            roboTextTimeouts.push(setTimeout(() => hintTextBox.start("🤖", 50), 15000));
         }, 500));
 
         // Add the scoreboard in
