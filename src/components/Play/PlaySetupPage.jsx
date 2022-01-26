@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { AvatarCtx } from "index";
 import { Redirect } from "react-router";
-import { Image, Card, Button } from "antd";
+import { Image, Button } from "antd";
 import { RightOutlined, LeftOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { BtnPrimary, BtnInfo } from "../../GlobalStyles";
@@ -10,28 +10,6 @@ import SelectWebcam from "components/Webcam/SelectWebcam";
 import { WebcamCtx } from "index";
 import PoseDetWebcam from "components/Webcam/PoseDetWebcam";
 
-const styles = {
-    titleText: {
-        justifyContent: "center",
-        color: brightFontCol,
-        fontFamily: "Source Serif Pro",
-    },
-    card: {
-        border: "none",
-        borderBottom: "none",
-        background: "none",
-        color: brightFontCol,
-        lineHeight: "1.4",
-        justifyContent: "center",
-        width: "45%",
-        margin: "0",
-        padding: "0",
-    },
-    btnDiv: {
-        display: "flex",
-        marginTop: "0",
-    },
-};
 
 const PlaySetupPage = () => {
     const [avatar] = useContext(AvatarCtx);
@@ -49,15 +27,14 @@ const PlaySetupPage = () => {
                 boxShadow: "0 0 20px 2px #020811",
                 backgroundColor: mainBgColorDarker,
                 borderRadius: "1rem",
-                padding: "3rem 0 3rem 0",
+                padding: "3rem 3rem",
                 marginTop: "1.5rem",
             }}>
                 <div style={{
-                    display: "flex",
-                    justifyContent: "center",
+                    display: "grid",
+                    gridTemplateColumns: "1fr 1fr",
                 }}>
-                    <Card style={{
-                        ...styles.card
+                    <div style={{
                     }}>
                         <h1 style={{
                             fontFamily: "Source Serif Pro",
@@ -94,13 +71,12 @@ const PlaySetupPage = () => {
                                 <LeftOutlined />
                                 Back
                             </Button></div>
-                    </Card>
-                    <Card style={{
-                        ...styles.card
+                    </div>
+                    <div style={{
                     }}>
                         <PoseDetWebcam
                             sizeProps={{
-                                width: "92%",
+                                maxWidth: "380px",
                                 height: "auto",
                                 margin: "0",
                             }}
@@ -139,7 +115,7 @@ const PlaySetupPage = () => {
                             }}><u>Having trouble with your video?</u>
                             </p>
                         </div>
-                    </Card>
+                    </div>
                 </div>
 
                 <div style={{
