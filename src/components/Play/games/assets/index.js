@@ -9,7 +9,7 @@ export const AIRPLANE = 'airplane';
 export const BTC = 'bitcoin';
 export const PUMP_OPEN = 'pump_open';
 export const PUMP_CLOSED = 'pump_closed';
-export const SAD_WOJAK = 'sad_wojak';
+export const RED_WOJAK = 'red_wojak';
 export const GREEN_WOJAK = 'green_wojak';
 
 export const GYM_ROOM_BG = 'sky';
@@ -28,8 +28,8 @@ export const assets = [
     type: 'IMAGE',
   },
   {
-    key: SAD_WOJAK,
-    src: `assets/images/${SAD_WOJAK}.png`,
+    key: RED_WOJAK,
+    src: `assets/images/${RED_WOJAK}.png`,
     type: 'IMAGE',
   },
   {

@@ -6,7 +6,7 @@ import {
     PUMP_OPEN,
     PUMP_CLOSED,
     BTC,
-    SAD_WOJAK,
+    RED_WOJAK,
     GREEN_WOJAK,
 } from "./assets";
 import { createTextBox } from "./utils/text";
@@ -262,8 +262,7 @@ export class ChartSquats extends Phaser.Scene {
             // 0 is top, height (positive value) is bottom
             if (this.curPrice >= height) {
                 this.wonState = loseState;
-                this.add.image(width * .85, height * .3, SAD_WOJAK)
-                    .setScale(0.9);
+                this.add.image(width * .8, height * .5, RED_WOJAK);
                 this.cameras.main.setBackgroundColor("#4a0909");
                 this.btc.setTint(0x3d3d3d);
                 const msg = "🤖 You have been liquidated 😢\n\n" +
@@ -281,8 +280,7 @@ export class ChartSquats extends Phaser.Scene {
                 this.cameras.main.backgroundColor.setTo(32, 191, 150);
                 this.score += 1;
                 this.scoreBoard.setText(`SCORE: ${this.score}`);
-                this.add.image(width * .85, height * .35, GREEN_WOJAK)
-                    .setScale(0.9);
+                this.add.image(width * .8, height * .5, GREEN_WOJAK);
                 if (canvasParent) party.confetti(canvasParent);
                 intervals.push(setInterval(() => {
                     if (canvasParent) party.confetti(canvasParent);
