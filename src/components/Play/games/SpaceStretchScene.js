@@ -125,8 +125,8 @@ export class SpaceStretchScene extends Phaser.Scene {
             hintTextBox.start(
                 "🤖 Land 🚀 on asteroids\n" +
                 "and crush them 💥\n\n" +
-                "Move your hands up" +
-                "Tilt your head to the sides" +
+                "Move your hands up\n" +
+                "Tilt your head to the sides\n" +
                 "Use the GRAVITY!",
                 50);
             roboTextTimeouts.push(setTimeout(() => hintTextBox.start("🤖", 50), 60000));

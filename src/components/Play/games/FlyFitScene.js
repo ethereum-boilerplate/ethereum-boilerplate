@@ -81,9 +81,9 @@ export class FlyFitScene extends Phaser.Scene {
         hintTextBox.start("🤖", 50);
         roboTextTimeouts.push(setTimeout(() => {
             hintTextBox.start(
-                "🤖 Look! it's flying tokens airdrop\b" +
-                "try to catch them all\b" +
-                "by moving your body like a BIRD\b"
+                "🤖 Look! it's flying tokens airdrop\n" +
+                "try to catch them all\n" +
+                "by moving your body like a BIRD"
                 , 50);
             roboTextTimeouts.push(setTimeout(() => hintTextBox.start("🤖", 50), 60000));
         }, 500));
