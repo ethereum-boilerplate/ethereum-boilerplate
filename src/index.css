@@ -26,10 +26,18 @@ dd {
   margin: 0;
 }
 
+html {
+  height: 100%;
+}
+
 body {
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
+  background: linear-gradient(135deg, #040225, #132890 80%, #470d85);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100%;
 }
 
 ul[class],
@@ -46,7 +54,7 @@ img {
   display: block;
 }
 
-article > * + * {
+article>*+* {
   margin-top: 1em;
 }
 

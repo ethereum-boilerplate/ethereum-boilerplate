@@ -32,6 +32,7 @@ export const AppFooter = ({ style }) => {
                 style={{
                     alignItems: "center",
                     textAlign: "center",
+                    background: "none",
                 }}
             >
                 <Col span={secFooterSpan} style={{

@@ -22,7 +22,6 @@ import { AppFooter } from "AppFooter";
 import PlayPage from "components/Play";
 import GymRoomSandbox from "components/Play/games/GymRoomSandbox";
 import PlaySetupPage from "components/Play/PlaySetupPage";
-import { mainBackground } from "GlobalStyles";
 import { ConnectWalletWarn, UseCorrectNetworkWarn } from "./components/Warrnings";
 import { MainChainID } from "MglNftMetadata";
 
@@ -79,9 +78,7 @@ const App = ({ isServerInfo }) => {
   return (
     <Layout style={
       {
-        height: "100vh",
-        overflow: "auto",
-        background: mainBackground,
+        background: "none",
         fontFamily: "Roboto, sans-serif",
       }}>
       <Router>
