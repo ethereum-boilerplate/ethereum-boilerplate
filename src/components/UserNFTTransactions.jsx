@@ -132,7 +132,7 @@ function UserNFTTransactions() {
     } else {
         return (
             <div style={{
-                marginBottom: "4rem",
+                
             }}>
                 <div style={{
                     ...BreakFlexDiv,

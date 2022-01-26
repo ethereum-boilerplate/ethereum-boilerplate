@@ -39,7 +39,7 @@ function DemoAvatar() {
 
         return (
             <div style={{
-                marginBottom: "6rem",
+
             }}>
                 <div style={{
                     marginTop: "1rem",
@@ -106,7 +106,10 @@ function DemoAvatar() {
                         )}
                     </>
                 )}
-                <div style={NFTsDiv}>
+                <div style={{
+                    ...NFTsDiv,
+                    marginTop: "2rem",
+                }}>
                     {NFTTokenIds?.result
                         .map((nft, index) => {
                             //Verify Metadata

@@ -13,7 +13,7 @@ import { SettingFilled } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { mainBgColor } from "../../../GlobalStyles";
 
-const menuHeight = 60;
+const menuHeight = 0;
 
 const setWidthAndHeight = () => {
     let width = window.innerWidth;
@@ -148,6 +148,8 @@ const GymRoom = ({ avatar, useWebcam = true }) => {
             position: "fixed",
             top: "1%",
             left: "45%",
+            top: "300px",
+            bottom: "0px",
         }} >
             <PoseDetWebcam
                 sizeProps={{

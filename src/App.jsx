@@ -40,6 +40,7 @@ const styles = {
     fontFamily: "Roboto, sans-serif",
     marginTop: "40px",
     marginBottom: "40px",
+    minHeight: "80vh",
   },
   header: {
     width: "100%",
@@ -57,12 +58,6 @@ const styles = {
     alignItems: "center",
     fontSize: "17px",
     fontWeight: "500",
-  },
-  footer: {
-    width: "100%",
-    padding: "0 35px",
-    background: "none",
-    color: brightFontCol,
   },
 };
 
@@ -151,7 +146,7 @@ const App = ({ isServerInfo }) => {
           </Switch>
         </div>
       </Router>
-      <AppFooter style={styles.footer} />
+      <AppFooter />
     </Layout>
   );
 };

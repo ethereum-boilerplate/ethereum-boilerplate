@@ -15,7 +15,6 @@ function Marketplace() {
 
   return (
     <div style={{
-      marginBottom: "4rem",
     }}>
       {isAuthenticated && (
         <div style={{
