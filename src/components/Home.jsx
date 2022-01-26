@@ -106,10 +106,8 @@ export default function Home() {
               className="demo-video"
               style={{
                 width: "720px",
-                minHeight: "392px",
                 padding: "0px",
                 margin: "0px",
-                // imageRendering: "pixelated",
               }}
               onClick={() =>
                 window.open(
@@ -121,7 +119,6 @@ export default function Home() {
           </div>
         </Card>
       </div>
-      {/* </Row> */}
       <div style={{
         flexBasis: "100%",
       }} />
