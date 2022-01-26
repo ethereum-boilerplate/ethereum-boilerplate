@@ -48,7 +48,7 @@ const styles = {
     justifyContent: "space-between",
     alignItems: "center",
     fontFamily: "Roboto, sans-serif",
-    padding: "0 35px",
+    padding: 0,
     background: "none",
     height: "60px",
   },
@@ -63,6 +63,7 @@ const styles = {
 
 const App = ({ isServerInfo }) => {
   const { isWeb3Enabled, enableWeb3, isAuthenticated, isWeb3EnableLoading, chainId } = useMoralis();
+  const LRPadding = "2rem";
 
   useEffect(() => {
     const connectorId = window.localStorage.getItem("connectorId");
@@ -71,10 +72,13 @@ const App = ({ isServerInfo }) => {
   }, [isAuthenticated, isWeb3Enabled]);
 
   return (
-    <Layout style={
+    <div style={
       {
         background: "none",
         fontFamily: "Roboto, sans-serif",
+        color: brightFontCol,
+        paddingLeft: LRPadding,
+        paddingRight: LRPadding,
       }}>
       <Router>
         <Header style={styles.header}>
@@ -147,7 +151,7 @@ const App = ({ isServerInfo }) => {
         </div>
       </Router>
       <AppFooter />
-    </Layout>
+    </div>
   );
 };
 

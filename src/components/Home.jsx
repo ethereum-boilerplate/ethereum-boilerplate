@@ -34,14 +34,11 @@ const styles = {
   }
 };
 
-const LRPadding = "6rem";
-
 export default function Home() {
   return (
     <div
       style={{
-        paddingLeft: LRPadding,
-        paddingRight: LRPadding,
+
       }}
     >
       <section style={{
