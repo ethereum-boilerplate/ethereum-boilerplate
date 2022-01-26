@@ -7,6 +7,7 @@ function MenuItems() {
 
   return (
     <Menu
+      className="nav-bar"
       theme="light"
       mode="horizontal"
       style={{
@@ -19,19 +20,19 @@ function MenuItems() {
       defaultSelectedKeys={[pathname]}
     >
       <Menu.Item key="/quickstart">
-        <NavLink to="/quickstart">🚀 Quick Start</NavLink>
+        <NavLink className="nav-link" to="/quickstart">🚀 Quick Start</NavLink>
       </Menu.Item>
       <Menu.Item key="/createtasks">
-        <NavLink to="/createtasks">🎗 Create Tasks</NavLink>
+        <NavLink className="nav-link"  to="/createtasks">🎗 Create Tasks</NavLink>
       </Menu.Item>
       <Menu.Item key="/dotasks">
-        <NavLink to="/dotasks">🛠 Do Tasks</NavLink>
+        <NavLink className="nav-link"  to="/dotasks">🛠 Do Tasks</NavLink>
       </Menu.Item>
       <Menu.Item key="/wallet">
-        <NavLink to="/wallet">👛 Wallet</NavLink>
+        <NavLink className="nav-link"  to="/wallet">👛 Wallet</NavLink>
       </Menu.Item>
       <Menu.Item key="/1inch">
-        <NavLink to="/1inch">🏦 Bonds</NavLink>
+        <NavLink className="nav-link"  to="/1inch">🏦 Bonds</NavLink>
       </Menu.Item>
     </Menu>
   );

@@ -37,6 +37,7 @@ const styles = {
     padding: "10px",
   },
   header: {
+    color: "#2B2B2B",
     position: "fixed",
     zIndex: 1,
     width: "100%",
@@ -54,7 +55,7 @@ const styles = {
     gap: "20px",
     alignItems: "center",
     fontSize: "15px",
-    fontWeight: "600",
+    fontWeight: "bold",
   },
 };
 const App = ({ isServerInfo }) => {
@@ -74,7 +75,7 @@ const App = ({ isServerInfo }) => {
         <Header style={styles.header}>
           <Logo />
           <MenuItems />
-          <div style={styles.headerRight}>
+          <div className="nav-bar" style={styles.headerRight}>
             <Chains />
             <TokenPrice
               address="0x1f9840a85d5af5bf1d1762f925bdaddc4201f984"

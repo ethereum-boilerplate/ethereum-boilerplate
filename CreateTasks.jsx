@@ -1,4 +1,4 @@
-import { Card, Timeline, Typography } from "antd";
+import { Card, Timeline, Typography, Button } from "antd";
 import React from "react";
 import { NavLink } from "react-router-dom";
 
@@ -18,21 +18,9 @@ const styles = {
     borderRadius: "0.5rem",
   },
   timeline: {
-    marginBottom: "-45px",
+    marginTop: "10px",
   },
 };
-
-var button = document.createElement("button");
-button.innerHTML = "Do Something";
-
-// 2. Append somewhere
-var body = document.getElementsByTagName("body")[0];
-body.appendChild(button);
-
-// 3. Add event handler
-button.addEventListener("click", function () {
-  alert("did something");
-});
 
 export default function CreateTasks({ isServerInfo }) {
   return (
@@ -42,10 +30,10 @@ export default function CreateTasks({ isServerInfo }) {
         style={styles.card}
         title={
           <>
-            ⭐️ <Text strong>Your open tasks</Text>
-            <button key="/createnewtasks" className="task-create-btn">
-              <NavLink to="/createnewtasks">➕ Create new task</NavLink>
-            </button>
+            ⭐️ <Text className="card-title" strong>Your open tasks</Text>
+            <Button key="/createnewtasks" className="task-create-btn"><NavLink className="create-task-text" to="/createnewtasks">➕ Create new task</NavLink></Button>
+          
+              
           </>
         }
       >
@@ -132,7 +120,7 @@ export default function CreateTasks({ isServerInfo }) {
           style={{ marginTop: "10px", ...styles.card }}
           title={
             <>
-              ✅ <Text strong> Completed tasks</Text>
+              ✅ <Text className="card-title" strong> Completed tasks</Text>
             </>
           }
         >

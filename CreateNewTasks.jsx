@@ -1,7 +1,18 @@
 import { Card, Typography } from "antd";
-import React from "react";
+import React, { useState } from "react";
 import { useMoralis, useERC20Balances } from "react-moralis";
-import { Form, Input, Button, Radio } from "antd";
+import {
+  Form,
+  Input,
+  Button,
+  Radio,
+  Select,
+  Cascader,
+  DatePicker,
+  InputNumber,
+  TreeSelect,
+  Switch,
+} from "antd";
 
 const { Text } = Typography;
 
@@ -21,9 +32,12 @@ const styles = {
   timeline: {
     marginBottom: "-45px",
   },
+  Input: {
+    marginRight: "20px",
+  }
 };
 
-export default function CreateNewTasks({ isServerInfo }) {
+function CreateNewTasks({ isServerInfo }) {
   var id;
   const { isAuthenticated, account, Moralis } = useMoralis();
 
@@ -32,11 +46,44 @@ export default function CreateNewTasks({ isServerInfo }) {
   Moralis.start({ serverUrl, appId });
 
   return (
-    <div style={{ display: "flex", gap: "10px" }}>
-      <Card className="task-card" style={styles.card} title={<></>}>
-        <Text>Create new tasks</Text>
-        
+    <div style={{ display: "flex", gap: "20px" }}>
+      <Card className="form-card" style={styles.card} title={<><Text className="card-title">CREATE NEW TASK</Text></>}>
+        <Form className="task-form" labelAlign="left" size="large"
+          labelCol={{
+            span: 12,
+          }}
+          wrapperCol={{
+            span: 14,
+          }}
+          layout="horizontal"
+          // initialValues={{
+          //   size: componentSize,
+          // }}
+          // onValuesChange={onFormLayoutChange}
+          // size={componentSize}
+        >
+          <Form.Item  className="task-title" label="Task title">
+            <Input className="task-title" />
+          </Form.Item>
+          <Form.Item className="task-title" label="Task description">
+            <Input className="task-title" />
+          </Form.Item>
+          <Form.Item className="task-title" label="Deadline">
+            <DatePicker className="task-title"/>
+          </Form.Item>
+          <Form.Item className="task-title" label="Reward size">
+            <InputNumber className="task-title"/>
+          </Form.Item>
+          <Form.Item className="task-title" label="Multiple applicants" valuePropName="checked">
+            <Switch  />
+          </Form.Item>
+          <Form.Item className="task-title">
+            <Button>Add task</Button>
+          </Form.Item>
+        </Form>
       </Card>
     </div>
   );
 }
+
+export default CreateNewTasks;
