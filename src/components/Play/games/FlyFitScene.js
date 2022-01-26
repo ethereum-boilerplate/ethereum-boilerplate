@@ -80,7 +80,11 @@ export class FlyFitScene extends Phaser.Scene {
         hintTextBox.setScrollFactor(0, 0);
         hintTextBox.start("🤖", 50);
         roboTextTimeouts.push(setTimeout(() => {
-            hintTextBox.start(`🤖 BTC fly in the sky\b try to catch them`, 50);
+            hintTextBox.start(
+                "🤖 Look! it's flying tokens airdrop\b" +
+                "try to catch them all\b" +
+                "by moving your body like a BIRD\b"
+                , 50);
             roboTextTimeouts.push(setTimeout(() => hintTextBox.start("🤖", 50), 60000));
         }, 500));
 
@@ -147,7 +151,8 @@ export class FlyFitScene extends Phaser.Scene {
         const width = getGameWidth(this);
         const height = getGameHeight(this);
 
-        const msg = "You catched all flying BTCs 🎉\n" +
+        const msg = "You catched the whole\n" +
+            "flying tokens airdrop 🎉\n" +
             "\n\n" +
             "Press X to 🎮 restart\n" +
             "Press ESC to exit";

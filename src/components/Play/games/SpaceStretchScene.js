@@ -122,7 +122,13 @@ export class SpaceStretchScene extends Phaser.Scene {
         hintTextBox.setScrollFactor(0, 0);
         hintTextBox.start("🤖", 50);
         roboTextTimeouts.push(setTimeout(() => {
-            hintTextBox.start(`🤖 Land 🚀 on asteroids\nand crush them 💥`, 50);
+            hintTextBox.start(
+                "🤖 Land 🚀 on asteroids\n" +
+                "and crush them 💥\n\n" +
+                "Move your hands up" +
+                "Tilt your head to the sides" +
+                "Use the GRAVITY!",
+                50);
             roboTextTimeouts.push(setTimeout(() => hintTextBox.start("🤖", 50), 60000));
         }, 500));
 
