@@ -187,6 +187,10 @@ Card.title {
   color: #fff !important;
 }
 
+.create-task-text:hover {
+  color: #9567a7 !important;
+}
+
 .ant-timeline-left {
   color: #2B2B2B;
   background: #2B2B2B;
@@ -212,3 +216,33 @@ Card.title {
 .nav-link {
   color: #fff !important;
 }
+
+.job-board {
+  margin: 20px;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: auto;
+}
+
+.bounty-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height:100vh;  
+  background-color: #EFF2F5;
+  color: #9567a7 !important;
+  width: 90%;
+  height: 100%;
+  border-radius: 15px;
+  border: 10px solid;
+  border-image-slice: 1;
+  border-width: 5px;
+  border-image-source: linear-gradient(to right, #9A69A3, #EF9790);
+}
+
+.col-item {
+  padding: 10px;
+}
+

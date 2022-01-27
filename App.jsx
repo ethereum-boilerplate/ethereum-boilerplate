@@ -9,6 +9,8 @@ import {
 import Account from "components/Account/Account";
 import Chains from "components/Chains";
 import TokenPrice from "components/TokenPrice";
+import DoTasks from "components/DoTasks";
+import DoTheseTasks from "components/DoTheseTasks";
 import CreateTasks from "components/CreateTasks";
 import CreateNewTasks from "components/CreateNewTasks";
 import ERC20Balance from "components/ERC20Balance";
@@ -119,7 +121,10 @@ const App = ({ isServerInfo }) => {
               <CreateTasks />
             </Route>
             <Route path="/dotasks">
-              <ERC20Balance />
+              <DoTasks />
+            </Route>
+            <Route path="/dothesetasks">
+              <DoTheseTasks />
             </Route>
             <Route path="/onramp">
               <Ramper />
