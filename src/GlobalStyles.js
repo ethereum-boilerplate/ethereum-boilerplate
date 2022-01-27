@@ -70,9 +70,10 @@ export const BreakFlexDiv = {
 }
 
 export const HeaderRightBordersStyle = {
-    border: "1px solid #E7EAF3",
+    border: "1px solid #85878f",
     borderRadius: "2px",
     background: "none",
+    backgroundColor: mainBgColor,
 }
 
 export const descriptionStyle = {
