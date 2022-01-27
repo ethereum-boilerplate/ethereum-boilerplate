@@ -98,3 +98,6 @@ export const pageTitleMidStyle = {
     fontSize: "30px",
     fontWeight: "bold",
 }
+
+export const MBMT_TICKER = "$MBMT";
+

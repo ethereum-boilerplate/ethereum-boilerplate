@@ -17,7 +17,7 @@ import {
 } from "../../../GlobalStyles";
 import * as gstate from "../../gpose/state";
 import * as gpose from "../../gpose/pose";
-
+import { EarnableScene } from './EarnableScene';
 
 const SceneConfig = {
     active: false,
@@ -40,7 +40,7 @@ const shortColor = 0xaa0000;
 
 let intervals = [];
 
-export class ChartSquats extends Phaser.Scene {
+export class ChartSquats extends EarnableScene {
     constructor() {
         super(SceneConfig);
     }
@@ -86,10 +86,11 @@ export class ChartSquats extends Phaser.Scene {
         this.score = data.score || 0;
 
         // exit or restart
-        this.input.keyboard.on('keydown', (event) => {
+        this.input.keyboard.on('keydown', async (event) => {
             intervals.forEach(i => {
                 clearInterval(i);
             })
+            await this.updateXP();
             if (webCamContainer) {
                 webCamContainer.style.marginLeft = '';
             }

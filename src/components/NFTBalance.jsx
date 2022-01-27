@@ -25,7 +25,7 @@ function NFTBalance() {
   const [avatar, setAvatar] = useContext(AvatarCtx);
 
   const { data: NFTBalances, isLoading } = useNFTBalances();
-  const { chainId } = useMoralis();
+  const { chainId, user } = useMoralis();
   const { verifyMetadata } = useVerifyMetadata();
 
   const [visible, setVisibility] = useState(false);
@@ -184,6 +184,7 @@ function NFTBalance() {
                                   uri: avatarUri,
                                   tokenAddress: avatarTokenAddress,
                                   tokenId: avatarTokenId,
+                                  user: user,
                                 });
                               }}
                               type="primary"

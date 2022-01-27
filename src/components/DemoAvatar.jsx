@@ -172,6 +172,7 @@ function DemoAvatar() {
                                                     uri: avatarUri,
                                                     tokenAddress: avatarTokenAddress,
                                                     tokenId: avatarTokenId,
+                                                    user: null,
                                                 });
                                             }}
                                             type="primary"

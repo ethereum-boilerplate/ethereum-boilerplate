@@ -23,6 +23,7 @@ import PlayPage from "components/Play";
 import GymRoomSandbox from "components/Play/games/GymRoomSandbox";
 import PlaySetupPage from "components/Play/PlaySetupPage";
 import { ConnectWalletWarn, UseCorrectNetworkWarn } from "./components/Warrnings";
+import RewardsPage from "./components/Rewards";
 import { MainChainID } from "MglNftMetadata";
 
 const { Header } = Layout;
@@ -134,6 +135,9 @@ const App = ({ isServerInfo }) => {
             </Route>
             <Route path="/play-setup">
               <PlaySetupPage />
+            </Route>
+            <Route path="/rewards">
+              <RewardsPage />
             </Route>
             <Route path="/marketplace">
               <Marketplace />

@@ -13,6 +13,7 @@ import * as gpose from "../../gpose/pose";
 import {
     mainBgColor,
 } from "../../../GlobalStyles";
+import { EarnableScene } from './EarnableScene';
 
 
 const SceneConfig = {
@@ -27,7 +28,7 @@ const playerSpeed = 80;
 const btcScale = 0.11;
 const btcCnt = 12;
 
-export class FlyFitScene extends Phaser.Scene {
+export class FlyFitScene extends EarnableScene {
     constructor() {
         super(SceneConfig);
     }
@@ -50,8 +51,9 @@ export class FlyFitScene extends Phaser.Scene {
             .fillRectShape(rect);
 
         // constrols
-        this.input.keyboard.on('keydown', (event) => {
+        this.input.keyboard.on('keydown', async (event) => {
             const code = event.keyCode;
+            await this.updateXP();
             if (code == Phaser.Input.Keyboard.KeyCodes.ESC) {
                 roboTextTimeouts.forEach(t => clearTimeout(t));
                 this.scene.start(GYM_ROOM_SCENE);

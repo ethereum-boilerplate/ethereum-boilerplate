@@ -14,6 +14,13 @@ import {
   getMainRoomPlayerExitPos,
   playerHasExitPos
 } from "./Globals";
+import {
+  mainBgColorNum,
+  MBMT_TICKER,
+  highlightTextColorNum,
+} from "../../../GlobalStyles";
+import { EarnableScene } from './EarnableScene';
+
 
 const debugCollisons = false;
 
@@ -35,7 +42,7 @@ const miniGamesMapping = new Map([
 let sceneToGoOnXclick = null;
 const roboTextTimeouts = [];
 
-export class GymRoomScene extends Phaser.Scene {
+export class GymRoomScene extends EarnableScene {
   constructor() {
     super(SceneConfig);
   }
@@ -169,7 +176,6 @@ export class GymRoomScene extends Phaser.Scene {
             "🤖 Welcome 👋\n" +
             "go to the MetaGym\n" +
             "and do some stretches 💪\n" +
-            // "\n" +
             "hint...\n" +
             "look for the GLOWING MATS",
             30
@@ -221,6 +227,18 @@ export class GymRoomScene extends Phaser.Scene {
         );
       }
     });
+
+    // XP inventory
+    const xpEarnedOnventory = createTextBox(this,
+      width * 0.05, height * 0.015,
+      { wrapWidth: 280 },
+      mainBgColorNum,
+      0x4154e8,
+      "center", 
+      "#FFEB3A"
+    );
+    xpEarnedOnventory.setScrollFactor(0, 0);
+    xpEarnedOnventory.start(`${MBMT_TICKER}: ${this.currentXPBalance() || 0}`, 10);
     // debugging
     if (debugCollisons) {
       debugCollisonBounds(wallsLayer, this)

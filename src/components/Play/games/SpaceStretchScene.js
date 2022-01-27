@@ -17,6 +17,7 @@ import {
     highlightTextColor,
 } from "../../../GlobalStyles";
 import party from "party-js";
+import { EarnableScene } from './EarnableScene';
 
 
 const SceneConfig = {
@@ -41,7 +42,7 @@ const roboTextTimeouts = [];
 const playerSpeed = 100;
 
 
-export class SpaceStretchScene extends Phaser.Scene {
+export class SpaceStretchScene extends EarnableScene {
     constructor() {
         super(SceneConfig);
     }
@@ -97,8 +98,12 @@ export class SpaceStretchScene extends Phaser.Scene {
             ));
         this.draw();
         // constrols
-        this.input.keyboard.on('keydown', (event) => {
+        this.input.keyboard.on('keydown', async (event) => {
             const code = event.keyCode;
+            await this.updateXP();
+            if (code == Phaser.Input.Keyboard.KeyCodes.X) {
+                this.scene.start(SPACE_STRETCH_SCENE);
+            }
             if (code == Phaser.Input.Keyboard.KeyCodes.ESC) {
                 roboTextTimeouts.forEach(t => clearTimeout(t));
                 this.scene.start(GYM_ROOM_SCENE);
@@ -230,19 +235,6 @@ export class SpaceStretchScene extends Phaser.Scene {
         )
         youWonText.setOrigin(0.5).setDepth(1).setScrollFactor(0, 0);
         youWonText.start(msg, 50);
-
-        this.input.on("pointerdown", () => this.scene.start(SPACE_STRETCH_SCENE));
-
-        this.input.keyboard.on(
-            'keydown',
-            event => {
-                const code = event.keyCode
-                if (code == Phaser.Input.Keyboard.KeyCodes.X) {
-                    this.scene.start(SPACE_STRETCH_SCENE);
-                }
-            },
-            this
-        );
     }
 
     update(time, delta) {
