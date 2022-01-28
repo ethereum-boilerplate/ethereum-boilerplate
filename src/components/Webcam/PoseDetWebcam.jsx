@@ -180,8 +180,7 @@ const PoseDetWebcam = ({ sizeProps, styleProps }) => {
             drawPose(canvasRef, results);
             const { poseLandmarks } = results
             if (poseLandmarks) {
-                const curPose = updateGPoseState(results);
-                // console.log('curPose', curPose);
+                updateGPoseState(results);
             }
         }
     };

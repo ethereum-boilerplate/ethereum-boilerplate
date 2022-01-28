@@ -38,7 +38,6 @@ function Marketplace() {
       }}>
         {/* NFTs view */}
         {NFTCollections?.map((nft, index) => {
-          console.log('nft', nft)
           return (
             <NFTCollectionItems
               key={index}

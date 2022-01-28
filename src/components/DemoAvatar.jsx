@@ -28,9 +28,7 @@ function DemoAvatar() {
     const chainName = chainIdToNameAndLogo.get(chainId)[0];
     const chainLogo = chainIdToNameAndLogo.get(chainId)[1];
     const demoNFTContract = DemoNFTContracts.get(chainId);
-    console.log("demoNFTContract", demoNFTContract);
     const { data: NFTTokenIds, error: NFTsFetchError, isLoading } = useNFTTokenIds(demoNFTContract, 3, chainId);
-    console.log("NFTTokenIds", NFTTokenIds);
     const { verifyMetadata } = useVerifyMetadata();
 
     if (isLoading) {

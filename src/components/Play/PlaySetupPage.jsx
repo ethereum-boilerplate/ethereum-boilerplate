@@ -5,7 +5,7 @@ import { Image, Button } from "antd";
 import { RightOutlined, LeftOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { BtnPrimary, BtnInfo } from "../../GlobalStyles";
-import { NFTImg, BreakFlexDiv, brightFontCol, mainBgColorDarker } from "../../GlobalStyles";
+import { NFTImg, BreakFlexDiv, mainBgColorDarker } from "../../GlobalStyles";
 import SelectWebcam from "components/Webcam/SelectWebcam";
 import { WebcamCtx } from "index";
 import PoseDetWebcam from "components/Webcam/PoseDetWebcam";

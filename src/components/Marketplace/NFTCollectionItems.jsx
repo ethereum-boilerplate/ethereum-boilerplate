@@ -55,7 +55,6 @@ function NFTCollectionItems({ nftAddress, colName, colImg }) {
     const userChainId = chainId;
     const marketPlaceChainId = MainChainID;
     const { data: NFTTokenIds, error: NFTsFetchError, isLoading } = useNFTTokenIds(nftAddress, 3, marketPlaceChainId);
-    console.log("NFTTokenIds", NFTTokenIds);
 
     const [visible, setVisibility] = useState(false);
     const [nftToBuy, setNftToBuy] = useState(null);
@@ -117,7 +116,6 @@ function NFTCollectionItems({ nftAddress, colName, colImg }) {
         await contractProcessor.fetch({
             params: ops,
             onSuccess: async () => {
-                console.log("success");
                 setLoading(false);
                 setVisibility(false);
                 await updateSoldMarketItem(tokenDetails);
@@ -147,7 +145,6 @@ function NFTCollectionItems({ nftAddress, colName, colImg }) {
             return;
         }
         setNftToBuy(nft);
-        console.log(nft.image);
         setVisibility(true);
     };
 
@@ -178,7 +175,6 @@ function NFTCollectionItems({ nftAddress, colName, colImg }) {
 
     async function updateSoldMarketItem(tokenDetails) {
         const id = tokenDetails.objectId;
-        console.log('updateSoldMarketItem id', id);
         const marketList = Moralis.Object.extend(createdMarketItemsTable);
         const query = new Moralis.Query(marketList);
         await query.get(id).then((obj) => {
@@ -192,7 +188,6 @@ function NFTCollectionItems({ nftAddress, colName, colImg }) {
     // MGL nft drops will have same price
     const getMarketWithLowestPrice = (nft) => {
         const items = getMarketItems(nft);
-        console.log('getMarketWithLowestPrice', items)
         if (items.length === 1) return items[0];
         if (items.length > 1) {
             return items.sort((a, b) => a.price - b.price)[0]
@@ -201,7 +196,6 @@ function NFTCollectionItems({ nftAddress, colName, colImg }) {
     };
 
     const getMarketItems = (nft) => {
-        console.log('fetchMarketItems', fetchMarketItems)
         const result = fetchMarketItems.filter(
             (e) =>
                 e.nftContract === nft?.token_address &&
@@ -209,7 +203,6 @@ function NFTCollectionItems({ nftAddress, colName, colImg }) {
                 e.sold === false &&
                 e.confirmed === true
         );
-        console.log('getMarketItems nft, result', nft?.token_address, result)
         const key = `${nft?.token_address}:${nft?.token_id}`
         listings.set(key, result.length);
         return result;
@@ -224,8 +217,6 @@ function NFTCollectionItems({ nftAddress, colName, colImg }) {
         const key = `${nft?.token_address}:${nft?.token_id}`
         return listings.get(key)
     }
-
-    console.log('Marketplace NFTsFetchError', NFTsFetchError);
 
     if (isLoading) {
         return (<Loader />);

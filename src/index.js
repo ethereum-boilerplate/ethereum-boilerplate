@@ -61,7 +61,6 @@ const PoseDetectorCtxProvider = ({ children }) => {
   const poseDetector = new Pose({
     locateFile: (file) => {
       const path = `https://cdn.jsdelivr.net/npm/@mediapipe/pose@${mpPose.VERSION}/${file}`
-      console.log('mediapipe path', path);
       return path;
     }
   });
@@ -76,7 +75,6 @@ const PoseDetectorCtxProvider = ({ children }) => {
   });
 
   useEffect(() => {
-    console.log('poseDetector loaded', poseDetector);
     poseDetector.initialize();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])

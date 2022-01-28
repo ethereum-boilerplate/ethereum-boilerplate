@@ -12,7 +12,6 @@ export const useNFTTokenIds = (addr, limit = 3, forceToChainId) => {
         address: addr,
         limit: limit,
     };
-    console.log('getAllTokenIdsOpts', getAllTokenIdsOpts);
     const {
         fetch: getNFTTokenIds,
         data,
@@ -26,7 +25,6 @@ export const useNFTTokenIds = (addr, limit = 3, forceToChainId) => {
     );
 
     const NFTTokenIds = useMemo(() => {
-        console.log('fetching tokenIds data')
         if (!data?.result || !data?.result.length) {
             return data;
         }

@@ -64,7 +64,6 @@ const getConfig = (mainScene) => {
 
 
 const GymRoom = ({ avatar, useWebcam = true }) => {
-    console.log('GymRoom avatar', avatar);
     // run game
     const [initialised, setInitialised] = useState(true);
     const [config, setConfig] = useState();
@@ -77,7 +76,6 @@ const GymRoom = ({ avatar, useWebcam = true }) => {
                 preBoot: (game) => {
                     // Makes sure the game doesnt create another game on rerender
                     setInitialised(false);
-                    console.log('Updating game registry', avatar);
                     game.registry.merge({
                         avatar,
                         setMinigame,

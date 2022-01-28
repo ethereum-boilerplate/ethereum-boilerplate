@@ -1,5 +1,4 @@
 import { Divider } from "antd";
-import Text from "antd/lib/typography/Text";
 import packageJson from '../package.json';
 import { brightFontCol } from "GlobalStyles";
 import {
@@ -37,7 +36,7 @@ export const AppFooter = ({ style }) => {
                 <div style={{
                     textAlign: "center",
                 }}>
-                    <Text style={{ color: brightFontCol }}>
+                    <div style={{ color: brightFontCol }}>
                         <div>Built with</div>
                         <a
                             target="_blank"
@@ -46,12 +45,12 @@ export const AppFooter = ({ style }) => {
                         >
                             <MoralisLogo />
                         </a>
-                    </Text>
+                    </div>
                 </div>
                 <div style={{
                     textAlign: "center",
                 }}>
-                    <Text style={{ color: brightFontCol }}>
+                    <div style={{ color: brightFontCol }}>
                         <div>Powered by</div>
                         <a
                             target="_blank"
@@ -60,12 +59,12 @@ export const AppFooter = ({ style }) => {
                         >
                             <span style={{ display: "flex", justifyContent: "center" }}><AvaxLogo /></span>
                         </a>
-                    </Text>
+                    </div>
                 </div>
                 <div style={{
                     textAlign: "center",
                 }}>
-                    <Text style={{ color: brightFontCol }}>
+                    <div style={{ color: brightFontCol }}>
                         AI Powered by<div>
                             <a
                                 target="_blank"
@@ -81,12 +80,12 @@ export const AppFooter = ({ style }) => {
                             >
                                 <MediaPipeLogo textFill={"#FFF"} />
                             </a></div>
-                    </Text>
+                    </div>
                 </div>
                 <div style={{
                     textAlign: "center",
                 }}>
-                    <Text style={{ color: brightFontCol }}>
+                    <div style={{ color: brightFontCol }}>
                         <div>Game Engine</div>
                         <a
                             target="_blank"
@@ -98,12 +97,12 @@ export const AppFooter = ({ style }) => {
                                 height={"25"}
                             />
                         </a>
-                    </Text>
+                    </div>
                 </div>
                 <div style={{
                     textAlign: "center",
                 }}>
-                    <Text style={{ color: brightFontCol }}>
+                    <div style={{ color: brightFontCol }}>
                         <div>Coded by</div>
                         <a
                             target="_blank"
@@ -112,7 +111,7 @@ export const AppFooter = ({ style }) => {
                         >
                             <CoderDitiLogo />
                         </a>
-                    </Text>
+                    </div>
                 </div>
                 <div
                 >

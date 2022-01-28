@@ -103,22 +103,6 @@ function Account() {
 
   return (
     <>
-      {/* <button
-        onClick={async () => {
-          try {
-            console.log("change")
-            await web3._provider.request({
-              method: "wallet_switchEthereumChain",
-              params: [{ chainId: "0x38" }],
-            });
-            console.log("changed")
-          } catch (e) {
-            console.error(e);
-          }
-        }}
-      >
-        Hi
-      </button> */}
       <div style={styles.account} onClick={() => setIsModalVisible(true)}>
         <p style={{ marginRight: "1px", ...styles.text }}>{getEllipsisTxt(account, 5, 5)}</p>
         <Blockie currentWallet scale={3} />

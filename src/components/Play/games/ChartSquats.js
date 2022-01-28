@@ -47,7 +47,6 @@ export class ChartSquats extends EarnableScene {
 
     init = (data) => {
         this.selectedAvatar = data.selectedAvatar;
-        console.log('selectedAvatar', this.selectedAvatar);
     };
 
     drawGround(width, height) {

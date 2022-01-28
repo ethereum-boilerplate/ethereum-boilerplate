@@ -99,9 +99,6 @@ export class BootScene extends Phaser.Scene {
      */
     loadNextFile = (index) => {
         const file = assets[index];
-        console.log('assets', assets)
-        console.log('file', file)
-        console.log('index', index)
         this.loadIndex++;
 
         if (this.loadingText && this.progressBar && this.progressBarContainer) {
@@ -131,7 +128,6 @@ export class BootScene extends Phaser.Scene {
                 this.load.image(file.key, file.src);
                 break;
             case "TILEMAP_MAP":
-                console.log('TILEMAP_MAP', file.key, file.src);
                 this.load.tilemapTiledJSON(file.key, file.src);
                 break;
             default:

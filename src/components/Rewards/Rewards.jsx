@@ -5,7 +5,6 @@ import {
     descriptionStyle,
     MBMT_TICKER,
 } from "../../GlobalStyles";
-import { Divider } from "antd";
 import { useMoralis } from "react-moralis";
 
 const mbmt = <span style={{ color: highlightTextColor }}>{MBMT_TICKER}</span>;
@@ -18,7 +17,6 @@ const colName = 'mglXP';
 
 const RewardsPage = () => {
     const { user } = useMoralis();
-    console.log('RewardsPage user', user);
     const curXP = user && user.get && user.get(colName) ? user.get(colName) : 0;
     return (
         <div>

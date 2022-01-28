@@ -35,7 +35,6 @@ export class FlyFitScene extends EarnableScene {
 
     init = (data) => {
         this.selectedAvatar = data.selectedAvatar;
-        console.log('selectedAvatar', this.selectedAvatar);
     };
 
     create() {

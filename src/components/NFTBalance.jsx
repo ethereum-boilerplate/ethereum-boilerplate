@@ -40,7 +40,6 @@ function NFTBalance() {
 
   const handleListForSaleClick = (nft) => {
     setNftToList(nft);
-    console.log(nft.image);
     setVisibility(true);
   };
 
@@ -70,7 +69,6 @@ function NFTBalance() {
         price: String(p)
       }
     };
-    console.log('listNft', listingPrice, ops.params, ops.contractAddress);
     await contractProcessor.fetch({
       params: ops,
       onSuccess: () => {
@@ -82,16 +80,12 @@ function NFTBalance() {
     });
   };
 
-  console.log('NFTBalance chainId', NFTBalances?.result);
-  console.log('NFTBalance chainId', chainId);
-  console.log('AllowedNftContracts.get(chainId)', AllowedNftContracts.get(chainId));
   const filteredNFTBalances = NFTBalances?.result
     .filter(nft => {
       return nft.image &&
         nft.token_address?.toLowerCase() ===
         AllowedNftContracts.get(chainId)?.toLowerCase()
     });
-  console.log("Filtered NFTBalances", filteredNFTBalances);
 
   if (isLoading) {
     return (<Loader />);
