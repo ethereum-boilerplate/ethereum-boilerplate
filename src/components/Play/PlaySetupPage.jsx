@@ -13,7 +13,7 @@ import PoseDetWebcam from "components/Webcam/PoseDetWebcam";
 
 const PlaySetupPage = () => {
     const [avatar] = useContext(AvatarCtx);
-    const { webcamId, setWebcamId } = useContext(WebcamCtx);
+    const { webcamId } = useContext(WebcamCtx);
 
     if (!avatar) {
         return <Redirect to="/avatars" />;

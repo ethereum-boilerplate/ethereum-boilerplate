@@ -4,7 +4,10 @@ import Webcam from "react-webcam";
 import { drawPose } from "./pose-drawing";
 import { updateGPoseState } from "../gpose/functions";
 import { BgColorsOutlined } from "@ant-design/icons";
+import { setWebcamBG, getWebcamBG } from "./state";
 
+const blackBgClass = 'black-bg';
+const grennClass = 'green-color';
 
 class PoseDetWebcamInner extends Component {
 
@@ -62,6 +65,7 @@ class PoseDetWebcamInner extends Component {
                     <canvas
                         ref={canvasRef}
                         id={"pose-det-webcam-canvas"}
+                        className={getWebcamBG()}
                         style={{
                             objectFit: "cover",
                             zIndex: 9,
@@ -84,18 +88,18 @@ class PoseDetWebcamInner extends Component {
                     }}>
                     <BgColorsOutlined
                         id={"pose-det-webcam-canvas-cam-toggle-icon"}
+                        className={getWebcamBG() != "" ? grennClass : ""}
                         onClick={() => {
-                            const blackBgClass = 'black-bg';
                             const icon = document.getElementById("pose-det-webcam-canvas-cam-toggle-icon");
                             const webCamCanvas = document.getElementById("pose-det-webcam-canvas");
                             if (webCamCanvas.className !== blackBgClass) {
                                 webCamCanvas.className = blackBgClass;
-                                icon.className = 'green-color';
-                            }
-                            else {
+                                icon.className = grennClass;
+                            } else {
                                 webCamCanvas.className = "";
-                                icon.className = '';
+                                icon.className = "";
                             }
+                            setWebcamBG(webCamCanvas.className);
                         }}
                     />
                 </div>
@@ -124,13 +128,8 @@ const PoseDetWebcam = ({ sizeProps, styleProps }) => {
         const checkCurWebcamId = setInterval(() => {
             if (!webcamId) {
                 const deviceId = getDeviceId();
-                console.log(
-                    'webcamId is empty', webcamId);
-                console.log('inferring current webcamId', deviceId);
                 if (deviceId) {
                     setWebcamId(deviceId);
-                    window.webcamIdChangeTS = Date.now();
-                    console.log('clear checkCurWebcamId', checkCurWebcamId);
                     clearInterval(checkCurWebcamId);
                 }
             }

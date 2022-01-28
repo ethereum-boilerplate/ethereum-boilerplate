@@ -31,7 +31,6 @@ const SelectWebcam = ({ width = "auto" }) => {
 
     const handleChange = (selecteDeviceId) => {
         setWebcamId(selecteDeviceId);
-        window.webcamIdChangeTS = Date.now();
     };
 
     return videoDevices.length > 0 && (
