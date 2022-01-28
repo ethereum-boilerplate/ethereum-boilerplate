@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useEffect } from "react";
+import React, { useContext, useRef, useEffect, Component } from "react";
 import { WebcamCtx, PoseDetectorCtx } from "index";
 import Webcam from "react-webcam";
 import { drawPose } from "./pose-drawing";
@@ -6,15 +6,109 @@ import { updateGPoseState } from "../gpose/functions";
 import { BgColorsOutlined } from "@ant-design/icons";
 
 
+class PoseDetWebcamInner extends Component {
+
+    shouldComponentUpdate(nextProps, nextState) {
+        // fixing unnecessary webcam re-render
+        const curDeviceId = this.props.videoConstraints?.deviceId;
+        const nextDeviceId = nextProps.videoConstraints?.deviceId;
+        if (!nextDeviceId) return false;
+        if (curDeviceId === nextDeviceId) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    render() {
+
+        const { sizeProps, styleProps, videoConstraints, webcamRef, canvasRef } = this.props;
+        return (
+            <div
+                id={"pose-det-webcam-container"}
+                style={{
+                    display: "grid",
+                    gridTemplateRows: "1fr",
+                    gridTemplateColumns: "1fr",
+                    gridTemplateAreas: "overlap",
+                }} >
+                <div
+                    style={{
+                        display: "grid",
+                        gridTemplateRows: "1fr",
+                        gridTemplateColumns: "1fr",
+                        gridTemplateAreas: "overlap",
+                    }}>
+                    <Webcam
+                        audio={false}
+                        videoConstraints={videoConstraints}
+                        imageSmoothing={true}
+                        mirrored={true}
+                        id={"pose-det-webcam"}
+                        ref={webcamRef}
+                        muted={true}
+                        style={{
+                            objectFit: "cover",
+                            zIndex: 8,
+                            // params
+                            ...sizeProps,
+                            ...styleProps,
+                            // grid props
+                            gridArea: "overlap",
+                            alignSelf: "center",
+                            justifySelf: "center",
+                        }}
+                    />
+                    <canvas
+                        ref={canvasRef}
+                        id={"pose-det-webcam-canvas"}
+                        style={{
+                            objectFit: "cover",
+                            zIndex: 9,
+                            // params
+                            ...sizeProps,
+                            ...styleProps,
+                            // grid props
+                            gridArea: "overlap",
+                            alignSelf: "center",
+                            justifySelf: "center",
+                        }}
+                    />
+                </div>
+                <div
+                    style={{
+                        marginTop: "-25px",
+                        marginLeft: "6%",
+                        zIndex: 10,
+                        cursor: "pointer",
+                    }}>
+                    <BgColorsOutlined
+                        id={"pose-det-webcam-canvas-cam-toggle-icon"}
+                        onClick={() => {
+                            const blackBgClass = 'black-bg';
+                            const icon = document.getElementById("pose-det-webcam-canvas-cam-toggle-icon");
+                            const webCamCanvas = document.getElementById("pose-det-webcam-canvas");
+                            if (webCamCanvas.className !== blackBgClass) {
+                                webCamCanvas.className = blackBgClass;
+                                icon.className = 'green-color';
+                            }
+                            else {
+                                webCamCanvas.className = "";
+                                icon.className = '';
+                            }
+                        }}
+                    />
+                </div>
+            </div>
+        );
+    }
+};
+
 const PoseDetWebcam = ({ sizeProps, styleProps }) => {
     const { webcamId, setWebcamId } = useContext(WebcamCtx);
     const { poseDetector } = useContext(PoseDetectorCtx);
     const canvasRef = useRef(null);
     const webcamRef = useRef(null);
-
-    console.log('poseDetector PoseDetWebcam', poseDetector);
-    console.log('PoseDetWebcam webcamRef', webcamRef);
-    console.log('PoseDetWebcam webcamId', webcamId);
 
     useEffect(() => {
         poseDetector.onResults(onResults);
@@ -35,6 +129,7 @@ const PoseDetWebcam = ({ sizeProps, styleProps }) => {
                 console.log('inferring current webcamId', deviceId);
                 if (deviceId) {
                     setWebcamId(deviceId);
+                    window.webcamIdChangeTS = Date.now();
                     console.log('clear checkCurWebcamId', checkCurWebcamId);
                     clearInterval(checkCurWebcamId);
                 }
@@ -56,7 +151,8 @@ const PoseDetWebcam = ({ sizeProps, styleProps }) => {
             const videoElement = webcamRef.current.video;
             const now = Date.now();
             const delta = now - then;
-            if (delta > interval) {
+            const webcamSetupTime = now - window.webcamIdChangeTS;
+            if (delta > interval && webcamSetupTime > 1000) {
                 then = now - (delta % interval);
                 try {
                     if (noCamError) await poseDetector
@@ -121,83 +217,15 @@ const PoseDetWebcam = ({ sizeProps, styleProps }) => {
         }
         return {}
     }
+    const videoConstraints = getVideoConstraints();
     return (
-        <div
-            id={"pose-det-webcam-container"}
-            style={{
-                display: "grid",
-                gridTemplateRows: "1fr",
-                gridTemplateColumns: "1fr",
-                gridTemplateAreas: "overlap",
-            }} >
-            <div
-                style={{
-                    display: "grid",
-                    gridTemplateRows: "1fr",
-                    gridTemplateColumns: "1fr",
-                    gridTemplateAreas: "overlap",
-                }}>
-                <Webcam
-                    audio={false}
-                    videoConstraints={getVideoConstraints()}
-                    imageSmoothing={true}
-                    mirrored={true}
-                    id={"pose-det-webcam"}
-                    ref={webcamRef}
-                    muted={true}
-                    style={{
-                        objectFit: "cover",
-                        zIndex: 8,
-                        // params
-                        ...sizeProps,
-                        ...styleProps,
-                        // grid props
-                        gridArea: "overlap",
-                        alignSelf: "center",
-                        justifySelf: "center",
-                    }}
-                />
-                <canvas
-                    ref={canvasRef}
-                    id={"pose-det-webcam-canvas"}
-                    style={{
-                        objectFit: "cover",
-                        zIndex: 9,
-                        // params
-                        ...sizeProps,
-                        ...styleProps,
-                        // grid props
-                        gridArea: "overlap",
-                        alignSelf: "center",
-                        justifySelf: "center",
-                    }}
-                />
-            </div>
-            <div
-                style={{
-                    marginTop: "-25px",
-                    marginLeft: "6%",
-                    zIndex: 10,
-                    cursor: "pointer",
-                }}>
-                <BgColorsOutlined
-                    id={"pose-det-webcam-canvas-cam-toggle-icon"}
-                    onClick={() => {
-                        const blackBgClass = 'black-bg';
-                        const icon = document.getElementById("pose-det-webcam-canvas-cam-toggle-icon");
-                        const webCamCanvas = document.getElementById("pose-det-webcam-canvas");
-                        if (webCamCanvas.className !== blackBgClass) {
-                            webCamCanvas.className = blackBgClass;
-                            icon.className = 'green-color';
-                        }
-                        else {
-                            webCamCanvas.className = "";
-                            icon.className = '';
-                        }
-                    }}
-                />
-            </div>
-        </div>
+        <PoseDetWebcamInner
+            sizeProps={sizeProps}
+            styleProps={styleProps}
+            videoConstraints={videoConstraints}
+            webcamRef={webcamRef}
+            canvasRef={canvasRef}
+        />
     );
 }
 

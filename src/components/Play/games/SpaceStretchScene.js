@@ -49,7 +49,6 @@ export class SpaceStretchScene extends EarnableScene {
 
     init = (data) => {
         this.selectedAvatar = data.selectedAvatar;
-        console.log('selectedAvatar', this.selectedAvatar);
     };
 
     color(i) {
@@ -109,6 +108,7 @@ export class SpaceStretchScene extends EarnableScene {
                 this.scene.start(SPACE_STRETCH_SCENE);
             }
             if (code == Phaser.Input.Keyboard.KeyCodes.ESC) {
+                this.game.registry.values?.setMinigame(GYM_ROOM_SCENE);
                 this.scene.start(GYM_ROOM_SCENE);
             }
         }, this);
@@ -130,6 +130,7 @@ export class SpaceStretchScene extends EarnableScene {
         hintTextBox.setScrollFactor(0, 0);
         hintTextBox.start("🤖", 50);
         roboTextTimeouts.push(setTimeout(() => {
+            if (!hintTextBox) return;
             hintTextBox.start(
                 "🤖 Land 🚀 on asteroids\n" +
                 "and crush them 💥\n\n" +
@@ -137,7 +138,10 @@ export class SpaceStretchScene extends EarnableScene {
                 "Tilt your head to the sides\n" +
                 "Use the GRAVITY!",
                 50);
-            roboTextTimeouts.push(setTimeout(() => hintTextBox.start("🤖", 50), 15000));
+            roboTextTimeouts.push(setTimeout(() => {
+                if (!hintTextBox) return;
+                hintTextBox.start("🤖", 50)
+            }, 15000));
         }, 500));
 
         // Add the scoreboard in

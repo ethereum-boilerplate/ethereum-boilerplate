@@ -7,6 +7,7 @@ import Home from "components/Home";
 import { Pose } from '@mediapipe/pose';
 import * as mpPose from '@mediapipe/pose';
 import { ConfidenceScore } from "./AIConfig";
+import { GYM_ROOM_SCENE } from "./components/Play/games/shared";
 
 // Moralis vals
 const APP_ID = process.env.REACT_APP_MORALIS_APPLICATION_ID;
@@ -23,10 +24,28 @@ const AvatarCtxProvider = ({ children }) => {
   );
 };
 
+// MiniGame selected global state
+export const MiniGameCtx = React.createContext();
+const MiniGameCtxProvider = ({ children }) => {
+  const [minigame, setMinigame] = useState(GYM_ROOM_SCENE);
+  return (
+    <MiniGameCtx.Provider value={{ minigame, setMinigame }}>
+      {children}
+    </MiniGameCtx.Provider>
+  );
+};
+
 // Webcam global state
 export const WebcamCtx = React.createContext();
 const WebcamCtxProvider = ({ children }) => {
   const [webcamId, setWebcamId] = useState(null);
+  // TODO keep updates for webcamIdChangeTS in 1 place
+  // maybe wrap setWebcamId around
+  // with setWebcamSeettings and export that
+  // or some better imporvement
+  // for now it is not the best code
+  // but it is product improvement
+  window.webcamIdChangeTS = Date.now();
 
   return (
     <WebcamCtx.Provider value={{
@@ -81,7 +100,9 @@ const Application = () => {
         <PoseDetectorCtxProvider >
           <AvatarCtxProvider >
             <WebcamCtxProvider >
-              <App isServerInfo />
+              <MiniGameCtxProvider >
+                <App isServerInfo />
+              </MiniGameCtxProvider>
             </WebcamCtxProvider>
           </AvatarCtxProvider>
         </PoseDetectorCtxProvider>

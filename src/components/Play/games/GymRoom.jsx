@@ -6,12 +6,9 @@ import { SpaceStretchScene } from "./SpaceStretchScene";
 import { FlyFitScene } from "./FlyFitScene";
 import { ChartSquats } from "./ChartSquats";
 import { BootScene } from "./BootScene";
-import { WebcamCtx } from "index";
+import { MiniGameCtx } from "index";
 import PoseDetWebcam from "components/Webcam/PoseDetWebcam";
-import { MGLSmallLogo } from "Logos";
-import { SettingFilled } from "@ant-design/icons";
-import { Link } from "react-router-dom";
-import { mainBgColor } from "../../../GlobalStyles";
+import SideMenu from "./GymRoomSideMenu";
 
 const menuHeight = 0;
 
@@ -65,15 +62,13 @@ const getConfig = (mainScene) => {
     }
 }
 
+
 const GymRoom = ({ avatar, useWebcam = true }) => {
     console.log('GymRoom avatar', avatar);
     // run game
     const [initialised, setInitialised] = useState(true);
     const [config, setConfig] = useState();
-    const { webcamId, webcamRef } = useContext(WebcamCtx);
-
-    console.log('GymRoom webcamRef', webcamRef);
-    console.log('GymRoom webcamId', webcamId);
+    const { setMinigame } = useContext(MiniGameCtx);
 
     const startGame = () => {
         setConfig({
@@ -85,6 +80,7 @@ const GymRoom = ({ avatar, useWebcam = true }) => {
                     console.log('Updating game registry', avatar);
                     game.registry.merge({
                         avatar,
+                        setMinigame,
                     });
                 },
             },
@@ -108,42 +104,10 @@ const GymRoom = ({ avatar, useWebcam = true }) => {
             width: "100%",
             height: "100%",
             zIndex: "1",
-        }}
-    >
-        {/* side menu */}
-        <div
-            style={{
-                width: "60px",
-                padding: "1rem",
-                height: "100%",
-                position: "fixed",
-                left: "0",
-                top: "0",
-                backgroundColor: mainBgColor,
-            }}
-        >
-            <div style={{
-                width: "inherit",
-                marginLeft: "-5px",
-                marginBottom: "1rem",
-            }}>
-                <Link to="/">
-                    <MGLSmallLogo
-                        width={"35"}
-                        height={"35"}
-                        viewBox={"0 0 16 16"}
-                    />
-                </Link>
-            </div>
-            <div>
-                <Link to="/play-setup">
-                    <SettingFilled style={{
-                        fontSize: "22px",
-                        color: "#FFF",
-                    }} />
-                </Link>
-            </div>
-        </div>
+        }}>
+
+        <SideMenu />
+
         {useWebcam && (<div style={{
             position: "fixed",
             top: "1%",

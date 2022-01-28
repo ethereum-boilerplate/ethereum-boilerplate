@@ -99,6 +99,7 @@ export class ChartSquats extends EarnableScene {
                 await this.updateXP();
             }
             if (code == Phaser.Input.Keyboard.KeyCodes.ESC) {
+                this.game.registry.values?.setMinigame(GYM_ROOM_SCENE);
                 this.scene.start(GYM_ROOM_SCENE);
             }
             if (code == Phaser.Input.Keyboard.KeyCodes.X) {

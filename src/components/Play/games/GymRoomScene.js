@@ -17,7 +17,6 @@ import {
 import {
   mainBgColorNum,
   MBMT_TICKER,
-  highlightTextColorNum,
 } from "../../../GlobalStyles";
 import { EarnableScene } from './EarnableScene';
 
@@ -48,8 +47,7 @@ export class GymRoomScene extends EarnableScene {
   }
 
   init = data => {
-    this.selectedAvatar = data.selectedAvatar
-    console.log('selectedAvatar', this.selectedAvatar);
+    this.selectedAvatar = data.selectedAvatar;
   }
 
   create() {
@@ -69,6 +67,7 @@ export class GymRoomScene extends EarnableScene {
             this.player.x,
             this.player.y,
           )
+          this.game.registry.values?.setMinigame(sceneToGoOnXclick);
           this.scene.start(sceneToGoOnXclick);
         }
       },
@@ -172,6 +171,7 @@ export class GymRoomScene extends EarnableScene {
     if (!playerHasExitPos()) {
       roboTextTimeouts.push(
         setTimeout(() => {
+          if (!hintTextBox) return;
           hintTextBox.start(
             "🤖 Welcome 👋\n" +
             "go to the MetaGym\n" +
@@ -223,7 +223,10 @@ export class GymRoomScene extends EarnableScene {
         mat.setFillStyle(null, 0);
         player.collidingTrainingMat = null;
         roboTextTimeouts.push(
-          setTimeout(() => hintTextBox.start('🤖', 50), 1000)
+          setTimeout(() => {
+            if (!hintTextBox) return;
+            hintTextBox.start('🤖', 50)
+          }, 1000)
         );
       }
     });
@@ -234,7 +237,7 @@ export class GymRoomScene extends EarnableScene {
       { wrapWidth: 280 },
       mainBgColorNum,
       0x4154e8,
-      "center", 
+      "center",
       "#FFEB3A"
     );
     xpEarnedOnventory.setScrollFactor(0, 0);
