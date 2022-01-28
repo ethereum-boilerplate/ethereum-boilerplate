@@ -11,7 +11,7 @@ const getPose = () => {
 };
 
 const isNonIdle = () => {
-    return _currentPose != IDLE;
+    return _currentPose !== IDLE;
 };
 
 export { getPose, isNonIdle, setPose };

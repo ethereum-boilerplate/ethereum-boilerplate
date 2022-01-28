@@ -88,7 +88,7 @@ class PoseDetWebcamInner extends Component {
                     }}>
                     <BgColorsOutlined
                         id={"pose-det-webcam-canvas-cam-toggle-icon"}
-                        className={getWebcamBG() != "" ? grennClass : ""}
+                        className={getWebcamBG() !== "" ? grennClass : ""}
                         onClick={() => {
                             const icon = document.getElementById("pose-det-webcam-canvas-cam-toggle-icon");
                             const webCamCanvas = document.getElementById("pose-det-webcam-canvas");

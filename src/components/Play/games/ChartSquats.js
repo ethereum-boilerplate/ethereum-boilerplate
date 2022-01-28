@@ -87,8 +87,8 @@ export class ChartSquats extends EarnableScene {
         // exit or restart
         this.input.keyboard.on('keydown', async (event) => {
             const code = event.keyCode;
-            if (code == Phaser.Input.Keyboard.KeyCodes.ESC ||
-                code == Phaser.Input.Keyboard.KeyCodes.X) {
+            if (code === Phaser.Input.Keyboard.KeyCodes.ESC ||
+                code === Phaser.Input.Keyboard.KeyCodes.X) {
                 if (webCamContainer) {
                     webCamContainer.style.marginLeft = '';
                 }
@@ -97,11 +97,11 @@ export class ChartSquats extends EarnableScene {
                 });
                 await this.updateXP();
             }
-            if (code == Phaser.Input.Keyboard.KeyCodes.ESC) {
+            if (code === Phaser.Input.Keyboard.KeyCodes.ESC) {
                 this.game.registry.values?.setMinigame(GYM_ROOM_SCENE);
                 this.scene.start(GYM_ROOM_SCENE);
             }
-            if (code == Phaser.Input.Keyboard.KeyCodes.X) {
+            if (code === Phaser.Input.Keyboard.KeyCodes.X) {
                 this.scene.start(CHART_SQUATS, {
                     score: this.score
                 });
@@ -135,7 +135,7 @@ export class ChartSquats extends EarnableScene {
         graphics.beginPath();
         this.drawChart();
         graphics.strokePath();
-        const startingPath = graphics.closePath();
+        graphics.closePath();
 
         // all time law in chart line
         const atlline = new Phaser.Geom.Line(0, this.atl, width, this.atl);
@@ -256,7 +256,7 @@ export class ChartSquats extends EarnableScene {
             const width = getGameWidth(this);
             const height = getGameHeight(this);
 
-            if (this.wonState == wonState || this.wonState == loseState) {
+            if (this.wonState === wonState || this.wonState === loseState) {
                 this.player.y = this.playerInitialY;
                 this.pump.setTexture(PUMP_OPEN);
                 return;

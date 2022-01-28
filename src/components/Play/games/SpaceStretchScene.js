@@ -88,7 +88,7 @@ export class SpaceStretchScene extends EarnableScene {
         this.graphics.fillGradientStyle(0x023246, 0x1E0338, 0x300240, 0x370232, 1)
             .fillRectShape(rect);
 
-        const ground = this.drawGround(width, height);
+        this.drawGround(width, height);
         this.shapes = new Array(45).fill(null).map(
             () => new Phaser.Geom.Circle(
                 Phaser.Math.Between(0, width),
@@ -99,15 +99,15 @@ export class SpaceStretchScene extends EarnableScene {
         // constrols
         this.input.keyboard.on('keydown', async (event) => {
             const code = event.keyCode;
-            if (code == Phaser.Input.Keyboard.KeyCodes.ESC ||
-                code == Phaser.Input.Keyboard.KeyCodes.X) {
+            if (code === Phaser.Input.Keyboard.KeyCodes.ESC ||
+                code === Phaser.Input.Keyboard.KeyCodes.X) {
                 roboTextTimeouts.forEach(t => clearTimeout(t));
                 await this.updateXP();
             }
-            if (code == Phaser.Input.Keyboard.KeyCodes.X) {
+            if (code === Phaser.Input.Keyboard.KeyCodes.X) {
                 this.scene.start(SPACE_STRETCH_SCENE);
             }
-            if (code == Phaser.Input.Keyboard.KeyCodes.ESC) {
+            if (code === Phaser.Input.Keyboard.KeyCodes.ESC) {
                 this.game.registry.values?.setMinigame(GYM_ROOM_SCENE);
                 this.scene.start(GYM_ROOM_SCENE);
             }
@@ -173,7 +173,7 @@ export class SpaceStretchScene extends EarnableScene {
                 if (asteroidYPos < worldHeight - (yOffset + 10)) {
                     // add biased randomnes to keep some tiles on left some on right
                     let x = 0
-                    if (i % 2 == 0) {
+                    if (i % 2 === 0) {
                         // bias towards left
                         x = Phaser.Math.Between(xOffset, worldWidth / 2.3)
                     } else {
@@ -245,7 +245,7 @@ export class SpaceStretchScene extends EarnableScene {
     }
 
     update(time, delta) {
-        if (!this.won && this.score == this.placedAsteroidPlatforms) {
+        if (!this.won && this.score === this.placedAsteroidPlatforms) {
             this.won = true;
             this.youWonMsg();
             return

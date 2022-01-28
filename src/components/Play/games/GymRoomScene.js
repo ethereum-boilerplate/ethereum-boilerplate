@@ -61,7 +61,7 @@ export class GymRoomScene extends EarnableScene {
       'keydown',
       event => {
         const code = event.keyCode
-        if (sceneToGoOnXclick && code == Phaser.Input.Keyboard.KeyCodes.X) {
+        if (sceneToGoOnXclick && code === Phaser.Input.Keyboard.KeyCodes.X) {
           roboTextTimeouts.forEach(t => clearTimeout(t));
           setMainRoomPlayerExitPos(
             this.player.x,
@@ -202,7 +202,7 @@ export class GymRoomScene extends EarnableScene {
 
     const playerMatHandelOverlap = (player, matRectangle) => {
       const objName = matRectangle.name;
-      if (player.body.touching.none && player.collidingTrainingMat != matRectangle) {
+      if (player.body.touching.none && player.collidingTrainingMat !== matRectangle) {
         player.collidingTrainingMat = matRectangle;
         matRectangle.setFillStyle(0x33dd33, 0.3);
         roboTextTimeouts.forEach(t => clearTimeout(t))
