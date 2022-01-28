@@ -13,7 +13,7 @@ const mgl = <span style={{ color: "gold" }}>$MGL</span>;
 const mbmtlong = <span style={{ color: "goldenrod" }}>{"<"}Meta Body Movement Token{">"}</span>;
 
 const commingSoon = <span style={{ color: "chocolate" }}>Comming Soon 🚀</span>;
-const colName = 'mglXP';
+const colName = 'mbmtBalance';
 
 const RewardsPage = () => {
     const { user } = useMoralis();

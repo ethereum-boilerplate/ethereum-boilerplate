@@ -6,7 +6,7 @@ import {
 import { getGameWidth, getGameHeight } from "./helpers";
 import { createTextBox } from "./utils/text";
 
-const columnName = 'mglXP';
+const columnName = 'mbmtBalance';
 
 export class EarnableScene extends Phaser.Scene {
     gameUser() {
