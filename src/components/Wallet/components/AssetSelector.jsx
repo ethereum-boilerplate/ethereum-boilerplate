@@ -67,7 +67,7 @@ export default function AssetSelector({ setAsset, style }) {
                   <p style={{ alignSelf: "right" }}>
                     (
                     {parseFloat(
-                      Moralis?.Units?.FromWei(item.balance, item.decimals)
+                      Moralis?.Units?.FromWei(item.balance, item.decimals),
                     )?.toFixed(6)}
                     )
                   </p>

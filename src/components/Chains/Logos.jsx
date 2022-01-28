@@ -1,5 +1,11 @@
 export const AvaxLogo = () => (
-  <svg width="25" height="25" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg
+    width="25"
+    height="25"
+    viewBox="0 0 30 30"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
     <path
       d="M0 10C0 4.47715 4.47715 0 10 0H20C25.5228 0 30 4.47715 30 10V20C30 25.5228 25.5228 30 20 30H10C4.47715 30 0 25.5228 0 20V10Z"
       fill="#E84142"
@@ -12,7 +18,13 @@ export const AvaxLogo = () => (
 );
 
 export const BSCLogo = () => (
-  <svg width="25" height="25" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg
+    width="25"
+    height="25"
+    viewBox="0 0 30 30"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
     <path
       d="M0 10C0 4.47715 4.47715 0 10 0H20C25.5228 0 30 4.47715 30 10V20C30 25.5228 25.5228 30 20 30H10C4.47715 30 0 25.5228 0 20V10Z"
       fill="#F3BA2F"
@@ -25,7 +37,13 @@ export const BSCLogo = () => (
 );
 
 export const ETHLogo = () => (
-  <svg width="25" height="25" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg
+    width="25"
+    height="25"
+    viewBox="0 0 30 30"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
     <path
       d="M0 10C0 4.47715 4.47715 0 10 0H20C25.5228 0 30 4.47715 30 10V20C30 25.5228 25.5228 30 20 30H10C4.47715 30 0 25.5228 0 20V10Z"
       fill="#627EEA"
@@ -47,12 +65,22 @@ export const ETHLogo = () => (
       fill="white"
       fillOpacity="0.2"
     />
-    <path d="M8 15.2063L15.0294 19.2872V12.0675L8 15.2063Z" fill="white" fillOpacity="0.602" />
+    <path
+      d="M8 15.2063L15.0294 19.2872V12.0675L8 15.2063Z"
+      fill="white"
+      fillOpacity="0.602"
+    />
   </svg>
 );
 
 export const PolygonLogo = () => (
-  <svg width="25" height="25" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg
+    width="25"
+    height="25"
+    viewBox="0 0 30 30"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
     <path
       d="M0 10C0 4.47715 4.47715 0 10 0H20C25.5228 0 30 4.47715 30 10V20C30 25.5228 25.5228 30 20 30H10C4.47715 30 0 25.5228 0 20V10Z"
       fill="#8247E5"
