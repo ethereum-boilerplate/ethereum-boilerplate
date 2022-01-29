@@ -1,58 +1,92 @@
 import {
-    highlightTextColor,
     pageTitleStyle,
     pageTitle2Style,
+    pageTitle3Style,
     descriptionStyle,
     MBMT_TICKER,
+    activeColor,
 } from "../../GlobalStyles";
+import card from "./card.png";
+import dividerpng from "./divider.png";
 import { useMoralis } from "react-moralis";
 
-const mbmt = <span style={{ color: highlightTextColor }}>{MBMT_TICKER}</span>;
-const mgl = <span style={{ color: "gold" }}>$MGL</span>;
-
-const mbmtlong = <span style={{ color: "goldenrod" }}>{"<"}Meta Body Movement Token{">"}</span>;
-
-const commingSoon = <span style={{ color: "chocolate" }}>Comming Soon 🚀</span>;
 const colName = 'mbmtBalance';
+const honeyColor = "#F8B60A";
+
+const mbmt = <span style={{ color: activeColor }}>{MBMT_TICKER}</span>;
+const mbmtWhite = <span style={{ color: "#FFF" }}>{MBMT_TICKER}</span>;
+const mgl = <span style={{ color: activeColor }}>$MGL</span>;
+const mbmtlong = <span style={{ color: honeyColor }}>Meta Body Movement Token</span>;
+const commingSoon = <span style={{}}>Comming Soon 🚀</span>;
+
+const divider = (
+    <div style={{
+        display: "grid",
+        gridTemplateColumns: "1fr",
+        gridTemplateRows: "3rem",
+        alignItems: "center",
+        justifyItems: "center",
+    }}>
+        <img src={dividerpng} alt="divider" />
+    </div>);
+
+const activeBgStyle = {
+    backgroundColor: activeColor,
+    borderRadius: "30px",
+    padding: "5px",
+}
 
 const RewardsPage = () => {
     const { user } = useMoralis();
-    const curXP = user && user.get && user.get(colName) ? user.get(colName) : 0;
+    const mbmtBalance = user && user.get && user.get(colName) ? user.get(colName) : 0;
     return (
-        <div>
+        <div style={{
+            padding: "0rem 6rem",
+            marginTop: "1rem",
+        }}>
             <section
                 style={{
                     display: "grid",
                     gridTemplateColumns: "1fr 1fr",
-                    gridGap: "10rem",
-                    marginTop: "4rem",
+                    gridGap: "1rem",
                 }}>
                 <div>
-                    <h1 style={{
-                        ...pageTitleStyle,
-                    }}>Stretch To Earn {mbmt}</h1>
-                    <h2>Meta Body Movement Token</h2>
-                    <div style={{ marginBottom: "2rem", }} />
+                    <div>
+                        <h1 style={{
+                            ...pageTitleStyle,
+                        }}>Stretch To Earn&nbsp;
+                            <span style={{ color: honeyColor }}>
+                                {MBMT_TICKER}
+                            </span>
+                        </h1>
+                        <h2>Meta Body Movement Token</h2>
+                        <div style={{ marginBottom: "2rem", }} />
+                    </div>
                     <div style={{
-                        flexBasis: "100%",
-                    }} />
+                        ...pageTitle3Style,
+                    }}>
+                        With {mbmtlong} you will be able to:
+                    </div>
                     <div style={{
                         ...descriptionStyle,
                     }}>
-                        <p>With {mbmtlong} you will be able to:</p>
                         <ul style={{
-                            padding: "1.5rem",
+                            padding: "1rem",
                             listStyle: "square",
                         }}>
                             <li>Claim rewards like:
                                 <ul style={{
-                                    padding: "0.5rem 1.5rem",
+                                    padding: "1rem",
+                                    display: "grid",
+                                    gridTemplateColumns: "1fr 2fr 2fr",
+                                    gridGap: "1rem",
+                                    textAlign: "center",
                                     listStyle: "none",
                                 }}>
-
-                                    <li>NFTs</li>
-                                    <li>Avatar upgrades</li>
-                                    <li>More to come</li></ul>
+                                    <li style={activeBgStyle}>NFTs</li>
+                                    <li style={activeBgStyle}>Avatar upgrades</li>
+                                    <li style={activeBgStyle}>More to come</li>
+                                </ul>
                             </li>
                             <li>
                                 Claim token to your wallet
@@ -61,53 +95,78 @@ const RewardsPage = () => {
 
                         </ul>
                     </div>
+
                     <div style={{
-                        flexBasis: "100%",
-                    }} />
-                    <div
-                        style={{
-                            ...descriptionStyle,
-                            backgroundColor: "aliceblue",
-                            padding: "0.4rem 0rem",
-                            borderRadius: "3px",
-                            textAlign: "center",
-                            color: "black"
-                        }}>
-                        <p>You will not be able to earn <b>$MBMT</b> with demo avatar</p>
+                        ...descriptionStyle,
+                        backgroundColor: "aliceblue",
+                        padding: "0.4rem 0.1rem",
+                        borderRadius: "30px",
+                        textAlign: "center",
+                        color: "black",
+                        width: "80%",
+                    }}>
+                        You will not be able to earn <b>$MBMT</b> with demo avatar
                     </div>
                 </div>
-                <div>
-                    <h1 style={{
-                        ...pageTitleStyle,
-                        textAlign: "center",
-                    }}>Your current balance:
-                    </h1>
+                <div
+                    style={{
+                        display: "grid",
+                        gridTemplateRows: "1fr",
+                        gridTemplateColumns: "1fr",
+                        gridTemplateAreas: "overlap",
+                    }}
+                >
                     <div style={{
-                        ...pageTitleStyle,
+                        gridArea: "overlap",
+                        alignSelf: "center",
+                        justifySelf: "center",
+                        marginTop: "-3rem",
+                    }}>
+                        <img src={card} alt="" />
+
+                    </div>
+                    <div style={{
+                        gridArea: "overlap",
+                        alignSelf: "center",
+                        justifySelf: "center",
                         textAlign: "center",
-                    }}><span style={{
-                        color: "gold",
-                    }}>{curXP}</span>&nbsp;
-                        {mbmt}
+                        marginTop: "-11rem",
+                    }}>
+                        <h1 style={{
+                            ...pageTitle3Style,
+                            padding: "1rem",
+                        }}>Your current balance:
+                        </h1>
+                        <div style={{
+                            ...pageTitle2Style,
+                        }}><span style={{
+                            color: honeyColor,
+                        }}>
+                                {mbmtBalance.toFixed(4)}
+                            </span>
+                            &nbsp;
+                            {mbmtWhite}
+                        </div>
                     </div>
                 </div>
             </section>
-            <div style={{
-                flexBasis: "100%",
-            }} />
+            {/* desc */}
             <section style={{
-                marginTop: "6rem",
+                marginTop: "3rem",
                 marginBottom: "2rem",
+                color: "black",
+                backgroundColor: "white",
+                borderRadius: "30px",
+                padding: "3rem 0rem",
             }}>
-
                 <div style={{
-                    ...pageTitleStyle,
+                    ...pageTitle2Style,
                     textAlign: "center",
                 }}>
                     Meta Body Movement Token and MetaGymLand tokens economy
                 </div>
                 <div style={{
-                    ...pageTitle2Style,
+                    ...pageTitle3Style,
                     textAlign: "center",
                     marginBottom: "2rem",
                 }}>
@@ -115,31 +174,32 @@ const RewardsPage = () => {
                 </div>
                 <div style={{
                     ...descriptionStyle,
-                    wordWrap: "break-word",
+                    textAlign: "center",
                 }}>
                     The {mbmt} token will attempt to reflect the energy that you would feel after doing a workout
                     <br />
                     But in the virtual world
-                    <br /><br />
+                    {divider}
                     How does energy after a workout or stretching usually works?<br />
                     It feels good after the workout, but you need to do them regularly otherwise it will go away
-                    <br /><br />
+                    {divider}
                     {mbmt} will work in a similar way<br />
                     It will reflect the energy that you accumulated after the workout<br />
                     But not used and not maintained it will go away
-                    <br /><br />
+                    {divider}
                     If you would like to claim other MetaGymLand digital assets with your {mbmt}<br />
-                    they will be automatically burned<br />
-                    <br />
+                    they will be automatically burned
+                    {divider}
                     This way {mbmt} will behave as an <span style={{
-                        color: "chartreuse",
+                        fontWeight: 700,
                     }}>
-                        inflationary/deflationary algorithmic token</span>
-                    <br /><br />
+                        inflationary/deflationary algorithmic token
+                    </span>
+                    {divider}
                     Once claiming youre earned {mbmt} into your wallet<br />
                     or to using {mbmt} to claim other MetaGymLand digital assets<br />
                     you will need to pay a small fee with {mgl} token
-                    <br /><br />
+                    {divider}
                     {mgl} will be the MetaGymLand governance and platform token<br />
                 </div>
             </section>

@@ -2,6 +2,7 @@ export const mainBackground = "linear-gradient(135deg , #040225, #132890 80%, #4
 export const mainBgColor = "#0B1456";
 export const mainBgColorDarker = "#131b5e";
 export const mainBgColorNum = 0x0B1456;
+export const activeColor = "#F96F0A";
 
 export const brightFontCol = "#fff";
 export const highlightTextColor = "#01FFFE";
@@ -76,29 +77,38 @@ export const HeaderRightBordersStyle = {
     backgroundColor: mainBgColor,
 }
 
+const pageTitleStyleBase = {
+    fontFamily: "Source Serif Pro",
+    fontWeight: "bold",
+}
+
+export const pageTitleStyle = {
+    ...pageTitleStyleBase,
+    fontSize: "40px",
+}
+
+export const pageTitle2Style = {
+    ...pageTitleStyleBase,
+    fontSize: "30px",
+}
+
+export const pageTitleMidStyle = {
+    ...pageTitleStyleBase,
+    fontSize: "30px",
+}
+
+export const pageTitle3Style = {
+    ...pageTitleStyleBase,
+    fontSize: "25px",
+}
+
 export const descriptionStyle = {
     fontWeight: "400",
     fontSize: "18px",
     lineHeight: "28px",
 }
 
-export const pageTitleStyle = {
-    fontFamily: "Source Serif Pro",
-    fontSize: "40px",
-    fontWeight: "bold",
-}
 
-export const pageTitle2Style = {
-    fontFamily: "Source Serif Pro",
-    fontSize: "30px",
-    fontWeight: "bold",
-}
-
-export const pageTitleMidStyle = {
-    fontFamily: "Source Serif Pro",
-    fontSize: "30px",
-    fontWeight: "bold",
-}
 
 export const MBMT_TICKER = "$MBMT";
 
