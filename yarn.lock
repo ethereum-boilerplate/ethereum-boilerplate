@@ -12495,10 +12495,10 @@ react-is@^17.0.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
 
-react-moralis@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/react-moralis/-/react-moralis-1.2.0.tgz#8d75cd9a5e854a7ca9ed8364760c56e8e0fac401"
-  integrity sha512-Ap+eQ0mHO4WdiJz7mPEBUEFh7GG9bcwTho/wynm4PpcSLNaxAqpJpLrS9sUZDuDSjiRbuOssYaui/iAe3YmTrA==
+react-moralis@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/react-moralis/-/react-moralis-1.2.1.tgz#b5b8460078e8c8e4da791ab3831e711705089865"
+  integrity sha512-+35NOMVXsPrvNRyjLBZFmKYJ9HSS4Zqir/o0O8rsf+yUw7oZNHhkBI8mEu9sOJ2qDu86bvUGxlhq9czsUjb6iw==
   dependencies:
     fast-deep-equal "^3.1.3"
     immer "^9.0.7"
