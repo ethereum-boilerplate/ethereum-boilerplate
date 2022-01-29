@@ -92,6 +92,7 @@ const MiniGameInstructions = new Map([
                     {moveForwImg}
                     {turnLeftImg}
                     {turnRightImg}
+                    Try to move like a bird
                     {beCreative}
                 </>
             )

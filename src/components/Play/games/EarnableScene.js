@@ -20,7 +20,7 @@ export class EarnableScene extends Phaser.Scene {
     }
 
     async updateXP() {
-        if (this.score === 0) return;
+        if (!this.score || this.score === 0) return;
         const inMiniGameScore = this.score;
         const usr = this.gameUser();
         if (usr && usr.set && usr.get) {
