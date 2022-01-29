@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { MiniGameCtx } from "index";
 import { MGLSmallLogo } from "Logos";
 import { SettingFilled, InfoCircleFilled } from "@ant-design/icons";
@@ -12,120 +12,102 @@ import {
     CHART_SQUATS,
     MATRIX
 } from "./shared";
+import moveDownPng from "./assets/images/move_down.png";
+import moveUpPng from "./assets/images/move_up.png";
+import moveUp2Png from "./assets/images/move_up2.png";
+import moveLeftPng from "./assets/images/move_left.png";
+import moveRightPng from "./assets/images/move_right.png";
+import pumpThePricePng from "./assets/images/pump_the_price.png";
+import moveForwPng from "./assets/images/move_forward.png";
+import turnLeftPng from "./assets/images/turn_left.png";
+import turnRightPng from "./assets/images/turn_right.png";
+import gravityPng from "./assets/images/gravity.png";
+
+const imgInDiv = (png) => {
+    return (
+        <div style={{ padding: "0.3rem" }}>
+            <img src={png} alt="" />
+        </div>);
+}
+
+const gravityImg = imgInDiv(gravityPng);
+const moveUpImg = imgInDiv(moveUpPng);
+const moveUp2Img = imgInDiv(moveUp2Png);
+const moveDownImg = imgInDiv(moveDownPng);
+const moveLeftImg = imgInDiv(moveLeftPng);
+const moveRightImg = imgInDiv(moveRightPng);
+const pumpThePriceImg = imgInDiv(pumpThePricePng);
+
+const moveForwImg = imgInDiv(moveForwPng);
+const turnLeftImg = imgInDiv(turnLeftPng);
+const turnRightImg = imgInDiv(turnRightPng);
+
+const beCreative = <div style={{ padding: "0.3rem" }}>
+    <hr />
+    <div><b>Be creative!</b></div>
+    <div>Other simmilar moves</div>
+    <div>will workl as well</div>
+</div>;
+
 
 const MiniGameInstructions = new Map([
     [GYM_ROOM_SCENE, {
-        title: "Gym room", content: (
+        title: (
             <>
-                <div style={{ padding: "0.3rem" }}>
-                    <span style={{ backgroundColor: "aqua", padding: "0.2rem", borderRadius: "3px" }}>
-                        right arm up</span>
-                    &nbsp;|&nbsp;
-                    <span style={{ backgroundColor: "antiquewhite", padding: "0.2rem", borderRadius: "3px" }}>
-                        both arms up</span>&nbsp;
-                    <span style={{ color: "crimson" }}>MOVE UP</span>
-                </div>
-                <div style={{ padding: "0.3rem" }}>
-                    <span style={{ backgroundColor: "antiquewhite", padding: "0.2rem", borderRadius: "3px" }}>
-                        left arm up</span>
-                    &nbsp;
-                    <span style={{ color: "blue" }}>MOVE DOWN</span>
-                </div>
-                <div style={{ padding: "0.3rem" }}>
-                    <span style={{ backgroundColor: "aqua", padding: "0.2rem", borderRadius: "3px" }}>
-                        tilt your head to left</span>
-                    &nbsp;
-                    <span style={{ color: "crimson" }}>MOVE LEFT</span>
-                </div>
-                <div style={{ padding: "0.3rem" }}>
-                    <span style={{ backgroundColor: "antiquewhite", padding: "0.2rem", borderRadius: "3px" }}>
-                        tilt your head to right</span>
-                    &nbsp;
-                    <span style={{ color: "blue" }}>MOVE RIGHT</span>
-                </div>
-                <div style={{ padding: "0.3rem" }}>
-                    Be creative!<br />
-                    Other simmilar moves will workl as well
-                </div>
-            </>
-        )
+                <p>How to play</p>
+                <p><b>MetaGym room</b></p>
+            </>), content: (
+                <>
+                    {moveUp2Img}
+                    {moveDownImg}
+                    {moveLeftImg}
+                    {moveRightImg}
+                    {beCreative}
+                </>
+            )
     }],
     [SPACE_STRETCH_SCENE, {
-        title: "Space stretch", content: (
+        title: (
             <>
-                <div style={{ padding: "0.3rem" }}>
-                    <span style={{ backgroundColor: "antiquewhite", padding: "0.2rem", borderRadius: "3px" }}>
-                        both arms up</span>&nbsp;
-                    <span style={{ color: "crimson" }}>MOVE UP</span>
-                </div>
-                <div style={{ padding: "0.3rem" }}>
-                    <span style={{ backgroundColor: "antiquewhite", padding: "0.2rem", borderRadius: "3px" }}>
-                        gravity</span>
-                    &nbsp;
-                    <span style={{ color: "blue" }}>MOVE DOWN</span>
-                </div>
-                <div style={{ padding: "0.3rem" }}>
-                    <span style={{ backgroundColor: "aqua", padding: "0.2rem", borderRadius: "3px" }}>
-                        tilt your head to left</span>
-                    &nbsp;
-                    <span style={{ color: "crimson" }}>MOVE LEFT</span>
-                </div>
-                <div style={{ padding: "0.3rem" }}>
-                    <span style={{ backgroundColor: "antiquewhite", padding: "0.2rem", borderRadius: "3px" }}>
-                        tilt your head to right</span>
-                    &nbsp;
-                    <span style={{ color: "blue" }}>MOVE RIGHT</span>
-                </div>
-                <div style={{ padding: "0.3rem" }}>
-                    Be creative!<br />
-                    Other simmilar moves will workl as well
-                </div>
+                <p>How to play</p>
+                <p><b>Space stretch</b></p>
+            </>)
+        , content: (
+            <>
+                {moveUpImg}
+                {gravityImg}
+                {moveLeftImg}
+                {moveRightImg}
+                {beCreative}
             </>
         )
     }],
     [FLY_FIT_SCENE, {
-        title: "Fly fit", content: (
+        title: (
             <>
-                <div style={{ padding: "0.3rem" }}>
-                    <span style={{ backgroundColor: "antiquewhite", padding: "0.2rem", borderRadius: "3px" }}>
-                        both arms up</span>&nbsp;
-                    <span style={{ color: "crimson" }}>MOVE FORWOARD</span>
-                </div>
-                <div style={{ padding: "0.3rem" }}>
-                    <span style={{ backgroundColor: "aqua", padding: "0.2rem", borderRadius: "3px" }}>
-                        tilt your body and head to left</span>
-                    &nbsp;
-                    <span style={{ color: "crimson" }}>TURN LEFT</span>
-                </div>
-                <div style={{ padding: "0.3rem" }}>
-                    <span style={{ backgroundColor: "antiquewhite", padding: "0.2rem", borderRadius: "3px" }}>
-                        tilt your body and head to right</span>
-                    &nbsp;
-                    <span style={{ color: "blue" }}>TURN RIGHT</span>
-                </div>
-                <div style={{ padding: "0.3rem" }}>
-                    Be creative!<br />
-                    Other simmilar moves will workl as well
-                </div>
-            </>
-        )
+                <p>How to play</p>
+                <p><b>Fly fit</b></p>
+            </>), content: (
+                <>
+                    {moveForwImg}
+                    {turnLeftImg}
+                    {turnRightImg}
+                    {beCreative}
+                </>
+            )
     }],
     [CHART_SQUATS, {
-        title: "Chart squats", content: (
+        title: (
             <>
-                <div style={{ padding: "0.3rem" }}>
-                    <span style={{ backgroundColor: "antiquewhite", padding: "0.2rem", borderRadius: "3px" }}>
-                        do squat</span>&nbsp;
-                    <span style={{ color: "crimson" }}>PUMP THE PRICE UP</span>
-                    <div style={{ padding: "0.3rem" }}>
-                        <span style={{ backgroundColor: "aqua", padding: "0.2rem", borderRadius: "3px" }}>
-                            do nothing</span>
-                        &nbsp;
-                        <span style={{ color: "crimson" }}>PRICE WIL GO DOWN</span>
-                    </div>
-                </div>
-            </>
-        )
+                <p>How to play</p>
+                <p><b>Chart squats</b></p>
+            </>), content: (
+                <>
+                    {pumpThePriceImg}
+                    Do squats Or Both arms up 
+                    {beCreative}
+                </>
+            )
     }],
 ]);
 
@@ -134,17 +116,39 @@ MiniGameInstructions.set(MATRIX, MiniGameInstructions.get(GYM_ROOM_SCENE));
 const SideMenu = () => {
     const { minigame } = useContext(MiniGameCtx);
 
-    const miniGameInstroctions = () => {
+    useEffect(
+        () => {
+            const howToIco = document.getElementById("howto-menu-ico");
+            if (howToIco && howToIco.click) {
+                howToIco.click();
+            }
+        },
+        []
+    );
+
+    const miniGameInstructions = () => {
         const i = MiniGameInstructions.get(minigame);
         return (<>
-            <Popover placement="right"
+            <Popover
+                style={{
+                    textAlign: "center",
+                }}
+                placement="topRight"
                 title={i?.title}
                 content={i?.content}
                 trigger="click">
-                <InfoCircleFilled style={{
-                    fontSize: "20px",
-                    color: "#FFF",
-                }} />
+                <div
+                    id={"howto-menu-ico"}
+                    style={{
+                        textAlign: "center",
+                        cursor: "pointer",
+                    }}>
+                    <InfoCircleFilled style={{
+                        fontSize: "20px",
+                        color: "#FFF",
+                    }} />
+                    how to
+                </div>
             </Popover>
         </>);
     }
@@ -162,7 +166,7 @@ const SideMenu = () => {
     >
         <div style={{
             width: "inherit",
-            marginLeft: "-5px",
+            marginLeft: "-3px",
             marginBottom: "1rem",
         }}>
             <Link to="/">
@@ -173,7 +177,9 @@ const SideMenu = () => {
                 />
             </Link>
         </div>
-        <div>
+        <div style={{
+            textAlign: "center",
+        }}>
             <Link to="/play-setup">
                 <SettingFilled style={{
                     fontSize: "22px",
@@ -182,9 +188,9 @@ const SideMenu = () => {
             </Link>
         </div>
         <div style={{
-            marginTop: "7rem",
+            marginTop: "2rem",
         }}>
-            {miniGameInstroctions()}
+            {miniGameInstructions()}
         </div>
     </div>);
 }
