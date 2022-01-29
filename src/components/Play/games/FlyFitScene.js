@@ -82,7 +82,7 @@ export class FlyFitScene extends EarnableScene {
 
         // hint
         const hintTextBox = createTextBox(this,
-            (width / 2) + width / 4, height * 0.025,
+            (width / 2) + width / 4, height * 0.015,
             { wrapWidth: 280 })
         hintTextBox.setDepth(1);
         hintTextBox.setScrollFactor(0, 0);

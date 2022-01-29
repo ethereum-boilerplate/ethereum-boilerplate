@@ -121,7 +121,7 @@ export class SpaceStretchScene extends EarnableScene {
         // openingText
         // hint
         const hintTextBox = createTextBox(this,
-            (width / 2) + width / 4, height * 0.025,
+            (width / 2) + width / 4, height * 0.015,
             { wrapWidth: 280 },
             mainBgColorNum,
             highlightTextColorNum

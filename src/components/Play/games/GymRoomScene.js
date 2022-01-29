@@ -161,7 +161,7 @@ export class GymRoomScene extends EarnableScene {
     const hintTextBox = createTextBox(
       this,
       width / 2 + width / 4,
-      height * 0.025,
+      height * 0.015,
       { wrapWidth: 280 }
     );
 
