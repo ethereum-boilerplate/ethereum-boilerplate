@@ -11,8 +11,6 @@ import card from "./card.png";
 import dividerpng from "./divider.png";
 import { useMoralis } from "react-moralis";
 import { Button, Popover } from 'antd';
-import React, { useState } from "react";
-
 
 const colName = 'mbmtBalance';
 const honeyColor = "#F8B60A";
@@ -45,7 +43,6 @@ const activeBgStyle = {
 
 const RewardsPage = () => {
     const { user } = useMoralis();
-    const [visible, setVisibility] = useState(false);
     const mbmtBalance = user && user.get && user.get(colName) ? user.get(colName) : 0;
     return (
         <div style={{
@@ -187,9 +184,7 @@ const RewardsPage = () => {
                                     <Button style={{
                                         ...BtnInfo,
                                         width: "auto",
-                                    }}
-                                        onClick={() => setVisibility(true)}
-                                    >
+                                    }}>
                                         Claim
                                     </Button>
                                 </Popover>
