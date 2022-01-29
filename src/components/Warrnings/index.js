@@ -1,6 +1,7 @@
 import {
     highlightTextColor,
     pageTitleStyle,
+    pageTitle3Style,
     descriptionStyle
 } from "../../GlobalStyles";
 import { AvaxLogo } from "../Chains/Logos";
@@ -22,6 +23,13 @@ const ConnectWalletWarn = () => {
                     <span style={{ color: highlightTextColor }}>
                         MetaGymLAnd NFTs
                     </span>
+                </p>
+                <p style={{
+                    ...pageTitle3Style,
+                    fontWeight: 700,
+                    marginTop: "3rem",
+                }}>
+                    If it does not look right? Hit refresh
                 </p>
             </div>
         </div>
@@ -59,6 +67,13 @@ const UseCorrectNetworkWarn = () => {
                     <span style={{ color: highlightTextColor }}>
                         MetaGymLAnd NFTs
                     </span>
+                </p>
+                <p style={{
+                    ...pageTitle3Style,
+                    fontWeight: 700,
+                    marginTop: "3rem",
+                }}>
+                    If it does not look right? Hit refresh
                 </p>
             </div>
         </div>
