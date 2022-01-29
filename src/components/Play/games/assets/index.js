@@ -11,12 +11,24 @@ export const PUMP_OPEN = 'pump_open';
 export const PUMP_CLOSED = 'pump_closed';
 export const RED_WOJAK = 'red_wojak';
 export const GREEN_WOJAK = 'green_wojak';
-
 export const GYM_ROOM_BG = 'sky';
+export const FONT = 'font';
+export const PILL_BLUE = 'pill_blue';
+export const PILL_RED = 'pill_red';
 
 
 // Save all in game assets in the public folder
 export const assets = [
+  {
+    key: PILL_BLUE,
+    src: `assets/images/${PILL_BLUE}.png`,
+    type: 'IMAGE',
+  },
+  {
+    key: PILL_RED,
+    src: `assets/images/${PILL_RED}.png`,
+    type: 'IMAGE',
+  },
   {
     key: GYM_ROOM_BG,
     src: `assets/images/${GYM_ROOM_BG}.png`,
@@ -66,5 +78,11 @@ export const assets = [
     key: GYM_ROOM_TILESET_V2,
     src: `assets/tilemap_tiles/${GYM_ROOM_TILESET_V2}.png`,
     type: 'TILEMAP_TILES',
+  },
+  {
+    key: FONT,
+    src: `assets/fonts/${FONT}.png`,
+    type: 'SPRITESHEET',
+    data: { frameWidth: 32, frameHeight: 25 },
   },
 ];

@@ -35,7 +35,8 @@ const tileMapSizing = 32;
 const miniGamesMapping = new Map([
   ['space_stretch', 'Space Mat'],
   ['fly_fit', 'Sky Mat'],
-  ['chart_squats', 'Chart Squats Mat']
+  ['chart_squats', 'Chart Squats Mat'],
+  ['matrix', 'Mystery Mat']
 ]);
 
 let sceneToGoOnXclick = null;
@@ -231,8 +232,8 @@ export class GymRoomScene extends EarnableScene {
       }
     });
 
-    // XP inventory
-    const xpEarnedOnventory = createTextBox(this,
+    // MBMT inventory
+    const mbmtEarnedOnventory = createTextBox(this,
       width * 0.05, height * 0.015,
       { wrapWidth: 280 },
       mainBgColorNum,
@@ -240,8 +241,8 @@ export class GymRoomScene extends EarnableScene {
       "center",
       "#FFEB3A"
     );
-    xpEarnedOnventory.setScrollFactor(0, 0);
-    xpEarnedOnventory.start(`${MBMT_TICKER}: ${this.currentXPBalance() || 0}`, 10);
+    mbmtEarnedOnventory.setScrollFactor(0, 0);
+    mbmtEarnedOnventory.start(`${MBMT_TICKER}: ${this.currentXPBalance() || 0}`, 10);
     // debugging
     if (debugCollisons) {
       debugCollisonBounds(wallsLayer, this)

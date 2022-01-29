@@ -9,7 +9,8 @@ import {
     GYM_ROOM_SCENE,
     SPACE_STRETCH_SCENE,
     FLY_FIT_SCENE,
-    CHART_SQUATS
+    CHART_SQUATS,
+    MATRIX
 } from "./shared";
 
 const MiniGameInstructions = new Map([
@@ -128,6 +129,8 @@ const MiniGameInstructions = new Map([
     }],
 ]);
 
+MiniGameInstructions.set(MATRIX, MiniGameInstructions.get(GYM_ROOM_SCENE));
+
 const SideMenu = () => {
     const { minigame } = useContext(MiniGameCtx);
 
@@ -135,8 +138,8 @@ const SideMenu = () => {
         const i = MiniGameInstructions.get(minigame);
         return (<>
             <Popover placement="right"
-                title={i.title}
-                content={i.content}
+                title={i?.title}
+                content={i?.content}
                 trigger="click">
                 <InfoCircleFilled style={{
                     fontSize: "20px",
