@@ -18,6 +18,7 @@ const mbmtWhite = <span style={{ color: "#FFF" }}>{MBMT_TICKER}</span>;
 const mgl = <span style={{ color: activeColor }}>$MGL</span>;
 const mbmtlong = <span style={{ color: honeyColor }}>Meta Body Movement Token</span>;
 const commingSoon = <span style={{}}>Comming Soon 🚀</span>;
+const borderRadius = "3rem";
 
 const divider = (
     <div style={{
@@ -35,8 +36,6 @@ const activeBgStyle = {
     borderRadius: borderRadius,
     padding: "5px",
 }
-
-const borderRadius = "3rem";
 
 const RewardsPage = () => {
     const { user } = useMoralis();
