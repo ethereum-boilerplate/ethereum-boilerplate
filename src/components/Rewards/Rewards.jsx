@@ -13,9 +13,9 @@ import { useMoralis } from "react-moralis";
 const colName = 'mbmtBalance';
 const honeyColor = "#F8B60A";
 
-const mbmt = <span style={{ color: activeColor }}>{MBMT_TICKER}</span>;
+const mbmt = <span style={{ color: activeColor, fontWeight: 550, }}>{MBMT_TICKER}</span>;
 const mbmtWhite = <span style={{ color: "#FFF" }}>{MBMT_TICKER}</span>;
-const mgl = <span style={{ color: activeColor }}>$MGL</span>;
+const mgl = <span style={{ color: "blue", fontWeight: 550, }}>$MGL</span>;
 const mbmtlong = <span style={{ color: honeyColor }}>Meta Body Movement Token</span>;
 const commingSoon = <span style={{}}>Comming Soon 🚀</span>;
 const borderRadius = "3rem";
@@ -97,8 +97,7 @@ const RewardsPage = () => {
                                 </div>
                             </li>
                             <li>
-                                Claim token to your wallet
-                                &nbsp;{commingSoon}
+                                Claim <b>$MBMT</b> token to your wallet&nbsp;{commingSoon}
                             </li>
 
                         </ul>
@@ -176,7 +175,7 @@ const RewardsPage = () => {
                     ...pageTitle2Style,
                     textAlign: "center",
                 }}>
-                    Meta Body Movement Token and MetaGymLand tokens economy
+                    Meta Body Movement Token and MetaGymLand tokens ecosystem
                 </div>
                 <div style={{
                     ...pageTitle3Style,
@@ -200,8 +199,8 @@ const RewardsPage = () => {
                     It will reflect the energy that you accumulated after the workout<br />
                     But not used and not maintained it will go away
                     {divider}
-                    If you would like to claim other MetaGymLand digital assets with your {mbmt}<br />
-                    they will be automatically burned
+                    Once claiming other MetaGymLand digital assets with your {mbmt}<br />
+                    {mbmt} tokens used in claiming transaction will be automatically burned
                     {divider}
                     This way {mbmt} will behave as an <span style={{
                         fontWeight: 700,
@@ -210,7 +209,7 @@ const RewardsPage = () => {
                     </span>
                     {divider}
                     Once claiming youre earned {mbmt} into your wallet<br />
-                    or to using {mbmt} to claim other MetaGymLand digital assets<br />
+                    or using {mbmt} to claim other MetaGymLand digital assets<br />
                     you will need to pay a small fee with {mgl} token
                     {divider}
                     {mgl} will be the MetaGymLand governance and platform token<br />
