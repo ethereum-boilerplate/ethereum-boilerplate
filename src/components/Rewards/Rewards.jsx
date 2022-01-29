@@ -32,9 +32,11 @@ const divider = (
 
 const activeBgStyle = {
     backgroundColor: activeColor,
-    borderRadius: "30px",
+    borderRadius: borderRadius,
     padding: "5px",
 }
+
+const borderRadius = "3rem";
 
 const RewardsPage = () => {
     const { user } = useMoralis();
@@ -99,8 +101,8 @@ const RewardsPage = () => {
                     <div style={{
                         ...descriptionStyle,
                         backgroundColor: "aliceblue",
-                        padding: "0.4rem 0.1rem",
-                        borderRadius: "30px",
+                        padding: "0.4rem 0.2rem",
+                        borderRadius: borderRadius,
                         textAlign: "center",
                         color: "black",
                         width: "80%",
@@ -156,7 +158,7 @@ const RewardsPage = () => {
                 marginBottom: "2rem",
                 color: "black",
                 backgroundColor: "white",
-                borderRadius: "30px",
+                borderRadius: borderRadius,
                 padding: "3rem 0rem",
             }}>
                 <div style={{
