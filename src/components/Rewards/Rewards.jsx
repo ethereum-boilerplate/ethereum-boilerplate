@@ -34,12 +34,8 @@ const divider = (
 const activeBgStyle = {
     backgroundColor: activeColor,
     borderRadius: borderRadius,
-    padding: "0.2rem",
-    display: "flex",
-    alignItems: "center",
-    justifyItems: "center",
-    justifyContent: "center",
-    textAlign: "center",
+    padding: "0.4rem",
+    fontWeight: "450",
     whiteSpace: "nowrap",
 }
 
@@ -54,7 +50,7 @@ const RewardsPage = () => {
                 style={{
                     display: "grid",
                     gridTemplateColumns: "50% 50%",
-                    gridGap: "1rem",
+                    alignItems: "start",
                     padding: "0rem 1rem",
                 }}>
                 <div style={{
@@ -84,18 +80,21 @@ const RewardsPage = () => {
                             listStyle: "square",
                         }}>
                             <li>Claim rewards like:
-                                <ul style={{
-                                    padding: "1rem",
-                                    display: "grid",
-                                    gridTemplateColumns: "1fr 2fr 2fr",
-                                    gridGap: "1rem",
-                                    textAlign: "center",
-                                    listStyle: "none",
+                                <div style={{
+                                    padding: "1rem 0rem",
                                 }}>
-                                    <li style={activeBgStyle}>NFTs</li>
-                                    <li style={activeBgStyle}>Avatar upgrades</li>
-                                    <li style={activeBgStyle}>More to come</li>
-                                </ul>
+                                    <span style={{
+                                        ...activeBgStyle,
+                                        marginRight: "0.5rem",
+                                    }}>NFTs</span>
+                                    <span style={{
+                                        ...activeBgStyle,
+                                        marginRight: "0.5rem",
+                                    }}>Avatar upgrades</span>
+                                    <span style={{
+                                        ...activeBgStyle,
+                                    }}>More to come</span>
+                                </div>
                             </li>
                             <li>
                                 Claim token to your wallet
@@ -105,18 +104,17 @@ const RewardsPage = () => {
                         </ul>
                     </div>
                     <div>
-                        <p style={{
+                        <span style={{
                             ...descriptionStyle,
                             backgroundColor: "aliceblue",
                             padding: "0.4rem 1rem",
                             borderRadius: borderRadius,
                             textAlign: "center",
                             color: "black",
-                            display: "table-cell",
                             whiteSpace: "nowrap",
                         }}>
                             You will not be able to earn <b>$MBMT</b> with demo avatar
-                        </p>
+                        </span>
                     </div>
                 </div>
                 <div
