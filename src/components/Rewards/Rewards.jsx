@@ -55,6 +55,7 @@ const RewardsPage = () => {
                     display: "grid",
                     gridTemplateColumns: "50% 50%",
                     gridGap: "1rem",
+                    padding: "0rem 1rem",
                 }}>
                 <div style={{
                     padding: "1rem",
@@ -167,11 +168,11 @@ const RewardsPage = () => {
             {/* desc */}
             <section style={{
                 marginTop: "3rem",
-                marginBottom: "2rem",
+                // marginBottom: "2rem",
                 color: "black",
                 backgroundColor: "white",
-                borderRadius: borderRadius,
                 padding: "3rem 0rem",
+                width: "100vw",
             }}>
                 <div style={{
                     ...pageTitle2Style,
