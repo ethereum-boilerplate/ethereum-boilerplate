@@ -87,6 +87,11 @@ export const pageTitleStyle = {
     fontSize: "40px",
 }
 
+export const pageTitle35Style = {
+    ...pageTitleStyleBase,
+    fontSize: "35px",
+}
+
 export const pageTitle2Style = {
     ...pageTitleStyleBase,
     fontSize: "30px",
@@ -102,13 +107,26 @@ export const pageTitle3Style = {
     fontSize: "25px",
 }
 
+export const pageTitle4Style = {
+    ...pageTitleStyleBase,
+    fontSize: "20px",
+}
+
 export const descriptionStyle = {
     fontWeight: "400",
     fontSize: "18px",
     lineHeight: "28px",
 }
 
-
-
 export const MBMT_TICKER = "$MBMT";
 
+const paddingLRHeaderFooterV = "2rem";
+export const paddingLRHeaderFooter = {
+    paddingLeft: paddingLRHeaderFooterV,
+    paddingRight: paddingLRHeaderFooterV,
+}
+const paddingLRContentV = "4rem";
+export const paddingLRContent = {
+    paddingLeft: paddingLRContentV,
+    paddingRight: paddingLRContentV,
+};

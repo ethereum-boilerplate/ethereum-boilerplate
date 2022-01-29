@@ -13,7 +13,8 @@ import { chainIdToNameAndLogo } from "../components/Chains/Chains";
 import {
     pageTitleStyle,
     descriptionStyle,
-    highlightTextColor
+    highlightTextColor,
+    paddingLRContent,
 } from "GlobalStyles";
 import Loader from "./Loader";
 
@@ -37,7 +38,8 @@ function DemoAvatar() {
 
         return (
             <div style={{
-
+                ...paddingLRContent,
+                textAlign: "center",
             }}>
                 <div style={{
                     marginTop: "1rem",
@@ -64,6 +66,7 @@ function DemoAvatar() {
                         <div style={{
                             display: "flex",
                             alignItems: "center",
+                            justifyContent: "center",
                             marginBottom: "1rem",
                             marginTop: "0.5rem",
                         }}>

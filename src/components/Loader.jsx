@@ -12,14 +12,12 @@ const mglLogo = <div style={{
 </div>
 
 const Loader = ({ style = {
-    display: "flex",
-    marginTop: "10%",
-    justifyContent: "center",
-    width: "50rem",
+    display: "grid",
+    placeItems: "center",
+    minHeight: "80vh",
 } }) => {
     return (
         <div style={style}>
-
             <div>
                 <Spin size="large" tip={mglLogo} />
             </div>

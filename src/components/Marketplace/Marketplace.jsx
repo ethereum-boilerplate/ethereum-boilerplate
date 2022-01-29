@@ -6,7 +6,7 @@ import {
 import { Link } from "react-router-dom";
 import NFTCollectionItems from "./NFTCollectionItems";
 import { Button } from "antd";
-import { BtnPrimary, BreakFlexDiv } from "../../GlobalStyles";
+import { BtnPrimary, BreakFlexDiv, paddingLRContent, } from "../../GlobalStyles";
 import { MainChainID } from "../../MglNftMetadata";
 
 function Marketplace() {
@@ -15,11 +15,13 @@ function Marketplace() {
 
   return (
     <div style={{
+      ...paddingLRContent,
     }}>
       {isAuthenticated && (
         <div style={{
           ...BreakFlexDiv,
-          marginLeft: "95%",
+          float: "right",
+          // marginLeft: "95%",
         }}>
           <Button
             type="primary"

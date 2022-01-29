@@ -125,10 +125,10 @@ export class MatrixScene extends EarnableScene {
 
         // pills
         const redPill = this.physics.add
-            .sprite(width * .15, height * .3, PILL_RED)
+            .sprite(width * .16, height * .32, PILL_RED)
             .setName(PILL_RED);
         const bluePill = this.physics.add
-            .sprite(width * .85, height * .3, PILL_BLUE)
+            .sprite(width * .82, height * .32, PILL_BLUE)
             .setName(PILL_BLUE);
         const pillis = [redPill, bluePill];
 

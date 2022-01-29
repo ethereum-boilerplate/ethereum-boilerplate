@@ -15,11 +15,13 @@ export const AppFooter = ({ style }) => {
     return (
         <>
             <Divider style={{
+                ...style,
                 backgroundColor: brightFontCol,
-                margin: "0.5rem 0"
+                margin: "0.5rem 0rem"
             }} />
 
             <footer style={{
+                ...style,
                 display: "grid",
                 gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr 1fr 1fr",
             }}>

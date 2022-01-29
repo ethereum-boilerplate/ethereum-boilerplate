@@ -1,11 +1,12 @@
 import {
-    pageTitleStyle,
     pageTitle2Style,
     pageTitle3Style,
     descriptionStyle,
+    pageTitle4Style,
     MBMT_TICKER,
     activeColor,
     BtnInfo,
+    paddingLRContent,
 } from "../../GlobalStyles";
 import card from "./card.png";
 import dividerpng from "./divider.png";
@@ -48,147 +49,155 @@ const RewardsPage = () => {
         <div style={{
             marginTop: "1rem",
         }}>
-            <section
-                style={{
-                    display: "grid",
-                    gridTemplateColumns: "50% 50%",
-                    alignItems: "start",
-                    padding: "0rem 1rem",
-                }}>
-                <div style={{
-                    padding: "1rem",
-                }}>
-                    <div>
-                        <h1 style={{
-                            ...pageTitleStyle,
-                        }}>Stretch To Earn&nbsp;
-                            <span style={{ color: honeyColor }}>
-                                {MBMT_TICKER}
-                            </span>
-                        </h1>
-                        <h2>Meta Body Movement Token</h2>
-                        <div style={{ marginBottom: "2rem", }} />
-                    </div>
-                    <div style={{
-                        ...pageTitle3Style,
-                    }}>
-                        With {mbmtlong} you will be able to:
-                    </div>
-                    <div style={{
-                        ...descriptionStyle,
-                    }}>
-                        <ul style={{
-                            padding: "1rem",
-                            listStyle: "square",
-                        }}>
-                            <li>Claim rewards like:
-                                <div style={{
-                                    padding: "1rem 0rem",
-                                }}>
-                                    <span style={{
-                                        ...activeBgStyle,
-                                        marginRight: "0.5rem",
-                                    }}>NFTs</span>
-                                    <span style={{
-                                        ...activeBgStyle,
-                                        marginRight: "0.5rem",
-                                    }}>Avatar upgrades</span>
-                                    <span style={{
-                                        ...activeBgStyle,
-                                    }}>More to come</span>
-                                </div>
-                            </li>
-                            <li>
-                                Claim <b>$MBMT</b> token to your wallet&nbsp;{commingSoon}
-                            </li>
-
-                        </ul>
-                    </div>
-                    <div>
-                        <span style={{
-                            ...descriptionStyle,
-                            backgroundColor: "aliceblue",
-                            padding: "0.4rem 1rem",
-                            borderRadius: borderRadius,
-                            textAlign: "center",
-                            color: "black",
-                            whiteSpace: "nowrap",
-                        }}>
-                            You will not be able to earn <b>$MBMT</b> with demo avatar
-                        </span>
-                    </div>
-                </div>
+            <section style={{
+                ...paddingLRContent,
+            }}>
                 <div
                     style={{
                         display: "grid",
-                        gridTemplateRows: "1fr",
-                        gridTemplateColumns: "1fr",
-                        gridTemplateAreas: "overlap",
-                    }}
-                >
-                    <div style={{
-                        gridArea: "overlap",
-                        alignSelf: "center",
-                        justifySelf: "center",
-                        marginTop: "-3rem",
+                        gridTemplateColumns: "50% 50%",
+                        ...paddingLRContent,
                     }}>
-                        <img
-                            style={{
-
-                            }}
-                            src={card} alt="" />
-
-                    </div>
+                    {/* text */}
                     <div style={{
-                        gridArea: "overlap",
-                        alignSelf: "center",
-                        justifySelf: "center",
-                        textAlign: "center",
-                        marginTop: "-8rem",
+    
                     }}>
-                        <div style={{
-                            ...pageTitle3Style,
-                        }}>
-                            <div>Your current balance:</div>
-                            <div><span style={{
-                                color: honeyColor,
-                            }}>
-                                {mbmtBalance.toFixed(4)}
-                            </span>
-                                &nbsp;
-                                {mbmtWhite}
-                            </div>
+                        <div>
+                            <h1 style={{
+                                ...pageTitle2Style,
+                                padding: "0.5rem 0rem",
+                            }}>Stretch To Earn&nbsp;
+                                <span style={{ color: honeyColor }}>
+                                    {MBMT_TICKER}
+                                </span>
+                            </h1>
                             <div style={{
-                                padding: "1.5%",
+                                ...descriptionStyle,
+                            }}>Meta Body Movement Token</div>
+                            <div style={{ marginBottom: "2rem", }} />
+                        </div>
+                        <div style={{
+                            ...pageTitle4Style,
+                        }}>
+                            With {mbmtlong} you will be able to:
+                        </div>
+                        <div style={{
+                            ...descriptionStyle,
+                        }}>
+                            <ul style={{
+                                padding: "1rem",
+                                listStyle: "square",
                             }}>
-                                <Popover
-
-                                    placement="bottom"
-                                    title={
-                                        <div style={{
-                                            textAlign: "center",
-                                            padding: "2rem",
-                                            ...pageTitle3Style
-                                        }}>{commingSoon}</div>
-                                    } content={
-                                        <div style={{
-                                            textAlign: "center",
-                                            padding: "4rem",
-                                            ...descriptionStyle
-                                        }}>
-                                            <div>Join our social channels</div>
-                                            <div> to stay tuned:</div>
-                                            <div>...</div>
-                                        </div>
-                                    } trigger="click">
-                                    <Button style={{
-                                        ...BtnInfo,
-                                        width: "auto",
+                                <li>Claim rewards like:
+                                    <div style={{
+                                        padding: "1rem 0rem",
                                     }}>
-                                        Claim
-                                    </Button>
-                                </Popover>
+                                        <span style={{
+                                            ...activeBgStyle,
+                                            marginRight: "0.5rem",
+                                        }}>NFTs</span>
+                                        <span style={{
+                                            ...activeBgStyle,
+                                            marginRight: "0.5rem",
+                                        }}>Avatar upgrades</span>
+                                        <span style={{
+                                            ...activeBgStyle,
+                                        }}>More to come</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    Claim <b>$MBMT</b> token to your wallet&nbsp;{commingSoon}
+                                </li>
 
+                            </ul>
+                        </div>
+                        <div>
+                            <span style={{
+                                ...descriptionStyle,
+                                backgroundColor: "aliceblue",
+                                padding: "0.4rem 1rem",
+                                borderRadius: borderRadius,
+                                textAlign: "center",
+                                color: "black",
+                                whiteSpace: "nowrap",
+                            }}>
+                                You will not be able to earn <b>$MBMT</b> with demo avatar
+                            </span>
+                        </div>
+                    </div>
+                    {/* image */}
+                    <div
+                        style={{
+                            display: "grid",
+                            gridTemplateRows: "1fr",
+                            gridTemplateColumns: "1fr",
+                            gridTemplateAreas: "overlap",
+                            placeSelf: "start",
+                        }}
+                    >
+                        <div style={{
+                            gridArea: "overlap",
+                            alignSelf: "center",
+                            marginTop: "-2.4rem",
+                        }}>
+                            <img
+                                style={{
+
+                                }}
+                                src={card} alt="" />
+
+                        </div>
+                        <div style={{
+                            gridArea: "overlap",
+                            alignSelf: "center",
+                            justifySelf: "center",
+                            textAlign: "center",
+                            marginTop: "-6rem",
+                        }}>
+                            <div style={{
+                                ...pageTitle3Style,
+                            }}>
+                                <div>Your current balance:</div>
+                                <div><span style={{
+                                    color: honeyColor,
+                                }}>
+                                    {mbmtBalance.toFixed(4)}
+                                </span>
+                                    &nbsp;
+                                    {mbmtWhite}
+                                </div>
+                                <div style={{
+                                    padding: "1.5%",
+                                }}>
+                                    <Popover
+
+                                        placement="bottom"
+                                        title={
+                                            <div style={{
+                                                textAlign: "center",
+                                                padding: "2rem",
+                                                ...pageTitle3Style
+                                            }}>{commingSoon}</div>
+                                        } content={
+                                            <div style={{
+                                                textAlign: "center",
+                                                padding: "4rem",
+                                                ...descriptionStyle
+                                            }}>
+                                                <div>Join our social channels</div>
+                                                <div> to stay tuned:</div>
+                                                <div>...</div>
+                                            </div>
+                                        } trigger="click">
+                                        <Button style={{
+                                            ...BtnInfo,
+                                            width: "auto",
+                                        }}>
+                                            Claim
+                                        </Button>
+                                    </Popover>
+
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -201,7 +210,7 @@ const RewardsPage = () => {
                 color: "black",
                 backgroundColor: "white",
                 padding: "3rem 0rem",
-                width: "100vw",
+                // width: "100vw",
             }}>
                 <div style={{
                     ...pageTitle2Style,

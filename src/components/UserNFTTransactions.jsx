@@ -7,6 +7,7 @@ import {
     BreakFlexDiv,
     BtnPrimary,
     pageTitleMidStyle,
+    paddingLRContent,
 } from "../GlobalStyles";
 import { DatabaseFilled, LeftOutlined } from "@ant-design/icons";
 import Loader from "./Loader";
@@ -15,7 +16,7 @@ import Loader from "./Loader";
 const styles = {
     table: {
         margin: "0 auto",
-        width: "1000px",
+        width: "100%",
     },
 };
 
@@ -132,7 +133,7 @@ function UserNFTTransactions() {
     } else {
         return (
             <div style={{
-                
+                ...paddingLRContent,
             }}>
                 <div style={{
                     ...BreakFlexDiv,

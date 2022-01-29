@@ -10,6 +10,8 @@ const ConnectWalletWarn = () => {
     return (
         <div>
             <div style={{
+                display: "grid",
+                placeItems: "center",
                 marginTop: "4rem",
             }}>
                 <h1 style={{
@@ -40,6 +42,8 @@ const UseCorrectNetworkWarn = () => {
     return (
         <div>
             <div style={{
+                display: "grid",
+                placeItems: "center",
                 marginTop: "4rem",
                 textAlign: "center",
             }}>

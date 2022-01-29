@@ -25,33 +25,29 @@ import PlaySetupPage from "components/Play/PlaySetupPage";
 import { ConnectWalletWarn, UseCorrectNetworkWarn } from "./components/Warrnings";
 import RewardsPage from "./components/Rewards";
 import { MainChainID } from "MglNftMetadata";
+import { paddingLRHeaderFooter } from "./GlobalStyles";
 
 const { Header } = Layout;
 
 const styles = {
-  homeLink: {
-    color: "inherit",
-    fontSize: "17px",
-    fontWeight: "500",
-  },
-  content: {
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "center",
-    fontFamily: "Roboto, sans-serif",
-    marginTop: "40px",
-    marginBottom: "40px",
-    minHeight: "30vh",
-  },
   header: {
     width: "100%",
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
     fontFamily: "Roboto, sans-serif",
-    padding: 0,
+    ...paddingLRHeaderFooter,
     background: "none",
     height: "60px",
+  },
+  content: {
+    fontFamily: "Roboto, sans-serif",
+    marginTop: "40px",
+    marginBottom: "40px",
+    minHeight: "30vh",
+  },
+  footer: {
+    ...paddingLRHeaderFooter,
   },
   headerRight: {
     display: "flex",
@@ -60,12 +56,15 @@ const styles = {
     fontSize: "17px",
     fontWeight: "500",
   },
+  homeLink: {
+    color: "inherit",
+    fontSize: "17px",
+    fontWeight: "500",
+  },
 };
 
 const App = ({ isServerInfo }) => {
   const { isWeb3Enabled, enableWeb3, isAuthenticated, isWeb3EnableLoading, chainId } = useMoralis();
-  const LRPadding = "2rem";
-
   useEffect(() => {
     const connectorId = window.localStorage.getItem("connectorId");
     if (isAuthenticated && !isWeb3Enabled && !isWeb3EnableLoading) enableWeb3({ provider: connectorId });
@@ -78,8 +77,6 @@ const App = ({ isServerInfo }) => {
         background: "none",
         fontFamily: "Roboto, sans-serif",
         color: brightFontCol,
-        paddingLeft: LRPadding,
-        paddingRight: LRPadding,
       }}>
       <Router>
         <Header style={styles.header}>
@@ -154,7 +151,7 @@ const App = ({ isServerInfo }) => {
           </Switch>
         </div>
       </Router>
-      <AppFooter />
+      <AppFooter style={styles.footer} />
     </div>
   );
 };
