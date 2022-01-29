@@ -77,7 +77,7 @@ export const HeaderRightBordersStyle = {
     backgroundColor: mainBgColor,
 }
 
-const pageTitleStyleBase = {
+export const pageTitleStyleBase = {
     fontFamily: "Source Serif Pro",
     fontWeight: "bold",
 }

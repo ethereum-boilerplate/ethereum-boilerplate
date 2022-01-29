@@ -30,6 +30,11 @@ export class MatrixScene extends EarnableScene {
         this.selectedAvatar = data.selectedAvatar;
     };
 
+    exit() {
+        this.game.registry.values?.setMinigame(GYM_ROOM_SCENE);
+        this.scene.start(GYM_ROOM_SCENE);
+    }
+
     create() {
         // basic props
         const width = getGameWidth(this);
@@ -46,8 +51,7 @@ export class MatrixScene extends EarnableScene {
                 this.scene.start(MATRIX);
             }
             if (code === Phaser.Input.Keyboard.KeyCodes.ESC) {
-                this.game.registry.values?.setMinigame(GYM_ROOM_SCENE);
-                this.scene.start(GYM_ROOM_SCENE);
+                this.exit();
             }
         }, this);
 
@@ -103,25 +107,28 @@ export class MatrixScene extends EarnableScene {
         ).start("press ESC to go back", 10);
 
         const hintTextBox = createTextBox(this,
-            (width / 2) + width / 4, height * 0.025,
+            (width / 2) + width / 4, height * 0.015,
             { wrapWidth: 280 },
-            mainBgColorNum,
-            highlightTextColorNum
+            0xFFFEFE,
+            highlightTextColorNum,
+            "center", "#212125"
         );
         hintTextBox.setDepth(1);
         hintTextBox.setScrollFactor(0, 0);
         hintTextBox.start(
-            "🤖 Hi, welcome in MetaGymLand Matrix\n\n" +
-            "would you like a RED PILL or the BLUE PILL?"
+            "🤖 Welcome in MetaGymLand Matrix\n\n" +
+            "choose\n" +
+            "RED PILL or BLUE PILL?\n" +
+            "You can fly in this room"
             ,
             50);
 
         // pills
         const redPill = this.physics.add
-            .sprite(width * .15, height * .25, PILL_RED)
+            .sprite(width * .15, height * .3, PILL_RED)
             .setName(PILL_RED);
         const bluePill = this.physics.add
-            .sprite(width * .85, height * .25, PILL_BLUE)
+            .sprite(width * .85, height * .3, PILL_BLUE)
             .setName(PILL_BLUE);
         const pillis = [redPill, bluePill];
 
@@ -138,17 +145,46 @@ export class MatrixScene extends EarnableScene {
         this.player.body.setCollideWorldBounds(true);
         const onCollide = (avatar, item) => {
             if (item.name === PILL_RED) {
+                this.cameras.main.setBackgroundColor("#23BD32");
                 hintTextBox.start(
-                    "🤖 You choosed the RED PILL\n" +
-                    "Good choice!\n" +
-                    "RED PILL symbolizes Crypto"
-                    , 50);
+                    "🤖", 50);
+                createTextBox(this,
+                    width / 2, height / 2,
+                    { wrapWidth: 280 },
+                    0x010000,
+                    0x3B6A59,
+                    "center", "#63E778"
+                ).setOrigin(0.5)
+                    .setDepth(1).setScrollFactor(0, 0).start(
+                        "🤖 You have chosen the RED PILL\n" +
+                        "Good choice!\n\n" +
+                        "NOW, join our social channels\n" +
+                        "...\n" +
+                        "to see\n" +
+                        "how deep the rabbit hole goes"
+                        ,
+                        50);
             } else {
                 hintTextBox.start(
-                    "🤖 You choosed the BLUE PILL\n" +
-                    "fine...\n" +
-                    "BLUE PILL symbolizes fiat"
-                    , 50);
+                    "🤖", 50);
+                createTextBox(this,
+                    width / 2, height / 2,
+                    { wrapWidth: 280 },
+                    0xFFFEFE,
+                    highlightTextColorNum,
+                    "center", "#212125"
+                ).setOrigin(0.5)
+                    .setDepth(1).setScrollFactor(0, 0).start(
+                        "🤖 You have chosen\n" +
+                        "the BLUE PILL\n\n" +
+                        "taking you back..."
+                        ,
+                        10);
+                setTimeout(() => {
+                    if (this.exit && this.scene.key === MATRIX) {
+                        this.exit();
+                    }
+                }, 3500);
             }
             pillis.forEach(i => i.destroy());
         };
