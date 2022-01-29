@@ -34,7 +34,13 @@ const divider = (
 const activeBgStyle = {
     backgroundColor: activeColor,
     borderRadius: borderRadius,
-    padding: "5px",
+    padding: "0.2rem",
+    display: "flex",
+    alignItems: "center",
+    justifyItems: "center",
+    justifyContent: "center",
+    textAlign: "center",
+    whiteSpace: "nowrap",
 }
 
 const RewardsPage = () => {
@@ -42,16 +48,17 @@ const RewardsPage = () => {
     const mbmtBalance = user && user.get && user.get(colName) ? user.get(colName) : 0;
     return (
         <div style={{
-            padding: "0rem 6rem",
             marginTop: "1rem",
         }}>
             <section
                 style={{
                     display: "grid",
-                    gridTemplateColumns: "1fr 1fr",
+                    gridTemplateColumns: "50% 50%",
                     gridGap: "1rem",
                 }}>
-                <div>
+                <div style={{
+                    padding: "1rem",
+                }}>
                     <div>
                         <h1 style={{
                             ...pageTitleStyle,
@@ -96,17 +103,19 @@ const RewardsPage = () => {
 
                         </ul>
                     </div>
-
-                    <div style={{
-                        ...descriptionStyle,
-                        backgroundColor: "aliceblue",
-                        padding: "0.4rem 0.2rem",
-                        borderRadius: borderRadius,
-                        textAlign: "center",
-                        color: "black",
-                        width: "80%",
-                    }}>
-                        You will not be able to earn <b>$MBMT</b> with demo avatar
+                    <div>
+                        <p style={{
+                            ...descriptionStyle,
+                            backgroundColor: "aliceblue",
+                            padding: "0.4rem 1rem",
+                            borderRadius: borderRadius,
+                            textAlign: "center",
+                            color: "black",
+                            display: "table-cell",
+                            whiteSpace: "nowrap",
+                        }}>
+                            You will not be able to earn <b>$MBMT</b> with demo avatar
+                        </p>
                     </div>
                 </div>
                 <div
@@ -123,7 +132,11 @@ const RewardsPage = () => {
                         justifySelf: "center",
                         marginTop: "-3rem",
                     }}>
-                        <img src={card} alt="" />
+                        <img
+                            style={{
+
+                            }}
+                            src={card} alt="" />
 
                     </div>
                     <div style={{
