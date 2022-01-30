@@ -12,9 +12,10 @@ import { Link } from "react-router-dom";
 import { BtnPrimary, BtnInfo } from "../GlobalStyles";
 import mglVideoDemoImg from "./assets/mgl_video_demo.png";
 import howItWorksImg from "./assets/how_it_works.png";
+import { SocialsComponent } from "./SocialsPage";
 import {
-  Newsletter
-} from "../SocialLinks";
+  MGLSmallLogo
+} from "../Logos";
 
 const styles = {
   homeGlobal: {
@@ -141,39 +142,34 @@ export default function Home() {
           alignItems: "center",
           justifyContent: "center"
         }}>
+
           <div style={{
-            textAlign: "center"
+            display: "grid",
+            placeItems: "center",
           }}>
-            <div style={{
-              ...descriptionStyle,
-            }}>
-              Want to be notified about our progress and future plans?&nbsp;&nbsp;&nbsp;
-              <Button type="primary"
-                style={BtnPrimary}
-                onClick={() =>
-                  window.open(
-                    {Newsletter},
-                    "_blank"
-                  )
-                }
-              >
-                Sing up to newsletter
-              </Button>
-            </div>
+            <SocialsComponent />
           </div>
-          <div style={{
-            flexBasis: "100%",
-          }} />
+
           <div style={{
             marginTop: "2rem",
             textAlign: "center",
             fontSize: "18px",
           }}>
-            <span style={{
-              opacity: 0.2,
-            }}>contact:</span>
-            &nbsp;&nbsp;
-            <span>coderdidit@gmail.com</span>
+            <MGLSmallLogo
+              width={"25"}
+              height={"25"}
+              viewBox={"0 0 16 16"}
+            />
+            <div style={{
+              opacity: 0.8,
+            }}>
+              <a style={{
+                textDecoration: "none",
+                color: brightFontCol,
+              }}
+                href="mailto:coderdidit@gmail.com">coderdidit@gmail.com</a>
+            </div>
+
           </div>
         </div>
       </section>
