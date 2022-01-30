@@ -1,28 +1,28 @@
 # `MetaGymLand App`
 
-MetaGymLand is a Web 3 app to Gamify daily stretches with AI and blockchain
+MetaGymLand Wellness Metaverse Powered with AI and NFTs
 
 https://metagymland.com/
 
 
 ### This repo has the main frontend logic of MetaGymLand App for:
 
-- NFT marketplace and NFT avatars prtfolio page
+- NFT marketplace and NFT avatars portfolio page
 - AI for pose detection via Webcam
 - Metaverse and MiniGames code
-- Stretch to earn page teaser
+- Stretch to earn very basic logic powered with Moralis Objects and Stretch to earn page teaser
 
 ## Other MetaGymLand code repositories
 
 ### NFT and Marketpalce Smart Contracts
 
-Are moved into seperate repo:
+in separate repo:
 
 https://github.com/coderdidit/meta-gym-land-contracts
 
 ### MetaGymLand landing page
 
-is in speperate repo:
+in separate repo:
 
 https://github.com/coderdidit/meta-gym-land-landing-page
 
@@ -35,3 +35,12 @@ https://github.com/coderdidit/meta-gym-land-landing-page
 - Tensorflow and MediaPipe for pose detection
 - Phaser game engine
 - React
+
+## Running locally
+
+```
+yarn install
+yarn start
+```
+
+the project is based on: https://github.com/ethereum-boilerplate/ethereum-boilerplate
