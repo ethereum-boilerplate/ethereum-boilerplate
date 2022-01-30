@@ -8,11 +8,12 @@
     "@testing-library/user-event": "^12.1.10",
     "@walletconnect/web3-provider": "^1.6.6",
     "antd": "^4.16.13",
-    "moralis": "^1.0.0",
+    "magic-sdk": "7.0.0",
+    "moralis": "^1.2.3",
     "react": "^17.0.2",
     "react-blockies": "^1.4.1",
     "react-dom": "^17.0.2",
-    "react-moralis": "^1.0.0",
+    "react-moralis": "^1.2.1",
     "react-router": "^5.2.1",
     "react-router-dom": "^5.3.0",
     "react-scripts": "4.0.3",
@@ -33,7 +34,7 @@
     "lint:check": "eslint .",
     "lint:fix": "eslint --fix",
     "prettier:check": "prettier --check .",
-    "prettier:fix": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json,html}' .prettierrc --config ./.prettierrc",
+    "prettier:fix": "prettier --write \"**/*.{js,jsx,ts,tsx,css,md,json,html}\" .prettierrc --config ./.prettierrc",
     "format": "npm run lint:fix && npm run prettier:fix",
     "prepare": "husky install"
   },
@@ -56,13 +57,13 @@
     ]
   },
   "devDependencies": {
-    "eslint": "^8.7.0",
+    "eslint": "^7.11.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
     "gh-pages": "^3.2.3",
-    "prettier": "^2.5.1",
-    "husky": "^7.0.0"
+    "husky": "^7.0.0",
+    "prettier": "^2.5.1"
   }
 }
