@@ -7,9 +7,10 @@ https://metagymland.com/
 
 ### This repo has the main frontend logic of MetaGymLand App for:
 
-- nft marketplace
+- NFT marketplace and NFT avatars prtfolio page
 - AI for pose detection via Webcam
 - Metaverse and MiniGames code
+- Stretch to earn page teaser
 
 ## Other MetaGymLand code repositories
 
@@ -24,3 +25,12 @@ https://github.com/coderdidit/meta-gym-land-contracts
 is in speperate repo:
 
 https://github.com/coderdidit/meta-gym-land-landing-page
+
+### Technologies used:
+
+- Moralis
+- Avalanche
+- Solidity
+- Tensorflow and MediaPipe for pose detection
+- Phaser game engine
+- React
