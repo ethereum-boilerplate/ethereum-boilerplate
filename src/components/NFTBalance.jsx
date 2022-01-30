@@ -153,7 +153,7 @@ function NFTBalance() {
   const createUnlockableContent = (content) => {
     setIsPending(true);
 
-    // check if content is empty and if already exists??
+    // TODO: need to check whether content is empty and if already exists before adding to database
 
     try {
       const newCollection = Moralis.Object.extend("Collections");
@@ -194,13 +194,6 @@ function NFTBalance() {
       description: message,
     });
   };
-
-  const clearLocalStorage = () => {
-    window.localStorage.clear();
-  };
-
-  // console.log("NFTBalances: ", NFTBalances);
-  // console.log("account: ", account);
 
   return (
     <div style={styles.boundary}>
