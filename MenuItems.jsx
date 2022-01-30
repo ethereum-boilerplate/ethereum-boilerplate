@@ -7,7 +7,6 @@ function MenuItems() {
 
   return (
     <Menu
-      className="nav-bar"
       theme="light"
       mode="horizontal"
       style={{
@@ -20,19 +19,28 @@ function MenuItems() {
       defaultSelectedKeys={[pathname]}
     >
       <Menu.Item key="/quickstart">
-        <NavLink className="nav-link" to="/quickstart">🚀 Quick Start</NavLink>
-      </Menu.Item>
-      <Menu.Item key="/createtasks">
-        <NavLink className="nav-link"  to="/createtasks">🎗 Create Tasks</NavLink>
-      </Menu.Item>
-      <Menu.Item key="/dotasks">
-        <NavLink className="nav-link"  to="/dotasks">🛠 Do Tasks</NavLink>
+        <NavLink to="/quickstart">🚀 Quick Start</NavLink>
       </Menu.Item>
       <Menu.Item key="/wallet">
-        <NavLink className="nav-link"  to="/wallet">👛 Wallet</NavLink>
+        <NavLink to="/wallet">👛 Wallet</NavLink>
       </Menu.Item>
       <Menu.Item key="/1inch">
-        <NavLink className="nav-link" to="/1inch">🏦 Bonds</NavLink>
+        <NavLink to="/1inch">🏦 Dex</NavLink>
+      </Menu.Item>
+      <Menu.Item key="onramp">
+        <NavLink to="/onramp">💵 Fiat</NavLink>
+      </Menu.Item>
+      <Menu.Item key="/erc20balance">
+        <NavLink to="/erc20balance">💰 Balances</NavLink>
+      </Menu.Item>
+      <Menu.Item key="/erc20transfers">
+        <NavLink to="/erc20transfers">💸 Transfers</NavLink>
+      </Menu.Item>
+      <Menu.Item key="/nftBalance">
+        <NavLink to="/nftBalance">🖼 NFTs</NavLink>
+      </Menu.Item>
+      <Menu.Item key="/contract">
+        <NavLink to="/contract">📄 Contract</NavLink>
       </Menu.Item>
     </Menu>
   );
