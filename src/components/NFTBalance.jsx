@@ -88,31 +88,6 @@ function NFTBalance() {
   // const { isContractOwner } = useIfContractOwner();
   // let contractOwner = null;
 
-  async function transfer(nft, amount, receiver) {
-    // console.log(nft, amount, receiver);
-    const options = {
-      type: nft?.contract_type?.toLowerCase(),
-      tokenId: nft?.token_id,
-      receiver,
-      contractAddress: nft?.token_address,
-    };
-
-    if (options.type === "erc1155") {
-      options.amount = amount ?? nft.amount;
-    }
-
-    setIsPending(true);
-
-    try {
-      const tx = await Moralis.transfer(options);
-      console.log(tx);
-      setIsPending(false);
-    } catch (e) {
-      alert(e.message);
-      setIsPending(false);
-    }
-  }
-
   const checkContractOwnership = async (nft) => {
     setIsPending(true);
     const walletAddress = nft?.owner_of;
@@ -269,7 +244,7 @@ function NFTBalance() {
             <Text>
               <Button
                 type="primary"
-                icon={<LockTwoTone />}
+                icon={<LockOutlined />}
                 onClick={() => handleLockContentClick()}
               >
                 Enter Contract Address
