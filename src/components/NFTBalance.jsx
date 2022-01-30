@@ -139,11 +139,12 @@ function NFTBalance() {
                                 onClick={() => window.open(`${getExplorer(chainId)}address/${nft.token_address}`, "_blank")}
                               />
                             </Tooltip>,
-                            <Tooltip title="List for Sale">
-                              <ShoppingCartOutlined
-                                onClick={() => handleListForSaleClick(nft)}
-                              />
-                            </Tooltip>,
+                            // TODO enable listing of NFTs
+                            // <Tooltip title="List for Sale">
+                            //   <ShoppingCartOutlined
+                            //     onClick={() => handleListForSaleClick(nft)}
+                            //   />
+                            // </Tooltip>,
                           ]}
                           style={NFTCardStyle}
                           cover={
