@@ -110,7 +110,7 @@ export class MatrixScene extends EarnableScene {
             (width / 2) + width / 4, height * 0.015,
             { wrapWidth: 280 },
             0xFFFEFE,
-            highlightTextColorNum,
+            0x00FF00,
             "center", "#212125"
         );
         hintTextBox.setDepth(1);
@@ -148,7 +148,7 @@ export class MatrixScene extends EarnableScene {
                 this.cameras.main.setBackgroundColor("#23BD32");
                 hintTextBox.start(
                     "🤖", 50);
-                createTextBox(this,
+                const info = createTextBox(this,
                     width / 2, height / 2,
                     { wrapWidth: 280 },
                     0x010000,
@@ -159,11 +159,12 @@ export class MatrixScene extends EarnableScene {
                         "🤖 You have chosen the RED PILL\n" +
                         "Good choice!\n\n" +
                         "NOW, join our social channels\n" +
-                        "...\n" +
-                        "to see\n" +
-                        "how deep the rabbit hole goes"
+                        "if you would like to see\n" +
+                        "how deep the rabbit hole goes [CLICK THIS MESSAGE]"
                         ,
                         50);
+                info.setInteractive({ useHandCursor: true });
+                info.on('pointerdown', openExternalLink, this);
             } else {
                 hintTextBox.start(
                     "🤖", 50);
@@ -195,3 +196,15 @@ export class MatrixScene extends EarnableScene {
         this.player?.update();
     }
 }
+
+function openExternalLink() {
+    const url = 'https://app.metagymland.com/#/socials';
+    const s = window.open(url, '_blank');
+    if (s && s.focus) {
+        s.focus();
+    }
+    else if (!s) {
+        window.location.href = url;
+    }
+}
+

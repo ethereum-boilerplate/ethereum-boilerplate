@@ -10,6 +10,7 @@ import "antd/dist/antd.css";
 import NativeBalance from "components/NativeBalance";
 import "./style.css";
 import Home from "components/Home";
+import SocialsPage from "components/SocialsPage";
 import Marketplace from "components/Marketplace";
 import UserNFTTransactions from "components/UserNFTTransactions"
 import LoaderTest from "components/LoaderTest";
@@ -126,6 +127,9 @@ const App = ({ isServerInfo }) => {
             </Route>
             <Route path="/sandbox-play">
               <GymRoomSandbox />
+            </Route>
+            <Route path="/socials">
+              <SocialsPage />
             </Route>
             <Route path="/loader">
               <LoaderTest />

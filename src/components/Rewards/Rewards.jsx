@@ -6,12 +6,19 @@ import {
     MBMT_TICKER,
     activeColor,
     BtnInfo,
+    BtnPrimary,
     paddingLRContent,
 } from "../../GlobalStyles";
 import card from "./card.png";
 import dividerpng from "./divider.png";
 import { useMoralis } from "react-moralis";
 import { Button, Popover } from 'antd';
+import {
+    Discord,
+    Telegram,
+    Twitter,
+    Newsletter,
+} from "../../SocialLinks";
 
 const colName = 'mbmtBalance';
 const honeyColor = "#F8B60A";
@@ -60,7 +67,7 @@ const RewardsPage = () => {
                     }}>
                     {/* text */}
                     <div style={{
-    
+
                     }}>
                         <div>
                             <h1 style={{
@@ -184,9 +191,59 @@ const RewardsPage = () => {
                                                 padding: "4rem",
                                                 ...descriptionStyle
                                             }}>
-                                                <div>Join our social channels</div>
-                                                <div> to stay tuned:</div>
-                                                <div>...</div>
+                                                <h2>Join MetaGymLand community</h2>
+                                                <div> and stay tuned</div>
+                                                <div style={{
+                                                    paddingTop: "1rem",
+                                                }}>
+                                                    <div style={{
+                                                        padding: "0.2rem",
+                                                    }}>
+                                                        <Button style={{
+                                                            ...BtnInfo,
+                                                            backgroundColor: "#5562EA",
+                                                            color: "#FFF",
+                                                            width: "100%",
+                                                        }}>
+                                                            <a href={Discord} target="_blank" class="button contact w-button">Join us on Discord</a>
+                                                        </Button>
+                                                    </div>
+                                                    <div style={{
+                                                        padding: "0.2rem"
+                                                    }}>
+                                                        <Button style={{
+                                                            ...BtnInfo,
+                                                            backgroundColor: "#30A9DD",
+                                                            color: "#FFF",
+                                                            width: "100%",
+                                                        }}>
+                                                            <a href={Telegram} target="_blank" class="button contact w-button">Join us on Telegram</a>
+                                                        </Button>
+                                                    </div>
+                                                    <div style={{
+                                                        padding: "0.2rem"
+                                                    }}>
+                                                        <Button style={{
+                                                            ...BtnInfo,
+                                                            backgroundColor: "#1C9BF0",
+                                                            color: "#FFF",
+                                                            width: "100%",
+                                                        }}>
+                                                            <a href={Twitter} target="_blank" class="button contact w-button">Join us on Twitter</a>
+                                                        </Button>
+                                                    </div>
+                                                    <div style={{
+                                                        padding: "0.2rem"
+                                                    }}>
+                                                        <Button style={{
+                                                            ...BtnPrimary,
+                                                            color: "#FFF",
+                                                            width: "100%",
+                                                        }}>
+                                                            <a href={Newsletter} target="_blank" class="button contact w-button">Sing up to newsletter</a>
+                                                        </Button>
+                                                    </div>
+                                                </div>
                                             </div>
                                         } trigger="click">
                                         <Button style={{
@@ -201,10 +258,10 @@ const RewardsPage = () => {
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </div >
+            </section >
             {/* desc */}
-            <section style={{
+            < section style={{
                 marginTop: "3rem",
                 // marginBottom: "2rem",
                 color: "black",
@@ -255,8 +312,8 @@ const RewardsPage = () => {
                     {divider}
                     {mgl} will be the MetaGymLand governance and platform token<br />
                 </div>
-            </section>
-        </div>
+            </section >
+        </div >
     );
 }
 

@@ -12,7 +12,9 @@ import { Link } from "react-router-dom";
 import { BtnPrimary, BtnInfo } from "../GlobalStyles";
 import mglVideoDemoImg from "./assets/mgl_video_demo.png";
 import howItWorksImg from "./assets/how_it_works.png";
-
+import {
+  Newsletter
+} from "../SocialLinks";
 
 const styles = {
   homeGlobal: {
@@ -150,7 +152,7 @@ export default function Home() {
                 style={BtnPrimary}
                 onClick={() =>
                   window.open(
-                    `https://coderdidit.ck.page/666d446d94`,
+                    {Newsletter},
                     "_blank"
                   )
                 }

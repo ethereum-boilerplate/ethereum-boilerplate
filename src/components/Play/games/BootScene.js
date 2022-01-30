@@ -102,7 +102,8 @@ export class BootScene extends Phaser.Scene {
         this.loadIndex++;
 
         if (this.loadingText && this.progressBar && this.progressBarContainer) {
-            this.loadingText.setText(`Loading: ${file.key}`);
+            // this.loadingText.setText(`Loading: ${file.key}`);
+            this.loadingText.setText('Loading...');
             this.progressBar.width =
                 (this.progressBarContainer.width / assets.length) * index;
         }
