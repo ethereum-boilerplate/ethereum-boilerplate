@@ -4619,9 +4619,18 @@ fieldset:disabled .btn {
   opacity: .65
 }
 
+.btn-primary {
+  background-color:#9567a7;
+}
+
+.btn-primary:hover {
+  background-color:#fff;
+  color:#9567a7;
+}
+
 .btn-check:focus+.btn-primary,
 .btn-primary:focus {
-  color: #fff;
+  color: #9567a7;
   background-color: #e9e9e8;
   border-color: #e9e9e8;
   box-shadow: 0 0 0 .25rem #9567a7;
