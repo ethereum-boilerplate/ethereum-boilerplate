@@ -17,9 +17,9 @@ contract NFTContract is ERC1155, Ownable {
         // marketplace can oprate on token
         setApprovalForAll(marketplaceAddress, true);
         // autmoatically mint tokens to the sender
-        _mint(msg.sender, ERACH, 10, "");
-        _mint(msg.sender, ORLAI, 10, "");
-        _mint(msg.sender, ODIALT, 10, "");
+        _mint(msg.sender, ERACH, 200, "");
+        _mint(msg.sender, ORLAI, 200, "");
+        _mint(msg.sender, ODIALT, 200, "");
     }
 
     function mint(
@@ -40,21 +40,15 @@ contract NFTContract is ERC1155, Ownable {
     }
 }
 
-// last deployment on rinkeby testnet: 0x1904b52B2768E4DD72bf300202B4194E05dd0AFa
-
 // check https://github.com/ProjectOpenSea/opensea-creatures/blob/master/contracts/ERC721Tradable.sol
 // https://ethereum.stackexchange.com/questions/103625/how-to-approve-contract-to-transfer-tokens
 // https://programtheblockchain.com/posts/2018/02/27/writing-a-token-market-contract/
 // https://medium.com/coinmonks/developing-a-marketplace-contract-with-token-payment-d865323ea88c
 
 // last deployment on rinkeby testnet: 0x6d996636c3917d8D0B99Dc1D877Fbf7fC189c8f1
-
 // last deployment on rinkeby testnet: 0x7650D3448F8044d8732528148c2A2d6B1D17BA88
-
 // latest contract deployment on rinkeby 0x7ae9f5b997dacd922e2da3fd79207d01ee6f5300
-
 // latest contract deployment on rinkeby: 0x9ca6cf1671a384eccec958ea4ee27294e176b677
-
 // last deployment on Avalanche Fuji Testnet: 0x6C1836D8FCA899dA178851437C0d4179bD8B3678
-
 // last deployment on Avalanche Fuji Testnet: 0x1904b52B2768E4DD72bf300202B4194E05dd0AFa
+// last deployment on Avalanche Fuji Testnet: 0xbba97ea3912c598a39ce0802d5cd67dd3d873457

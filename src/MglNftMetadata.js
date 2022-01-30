@@ -1,6 +1,6 @@
 export const AllowedNftContracts = new Map([
     ["0xa869", // AVAX fuji testnet
-        "0x1904b52B2768E4DD72bf300202B4194E05dd0AFa"
+        "0xbba97ea3912c598a39ce0802d5cd67dd3d873457"
     ]
 ]);
 

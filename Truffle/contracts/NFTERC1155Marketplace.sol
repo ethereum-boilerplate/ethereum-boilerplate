@@ -14,7 +14,7 @@ contract MarketPlace is ERC1155Receiver, ReentrancyGuard, Ownable {
 
     address public _owner;
 
-    // fee
+    // TODO add fee
     // uint256 listingPrice = 0.025 ether;
 
     constructor() {
@@ -208,11 +208,7 @@ contract MarketPlace is ERC1155Receiver, ReentrancyGuard, Ownable {
 /// Thanks for inspiration: https://github.com/dabit3/polygon-ethereum-nextjs-marketplace/
 
 // last deployment on rinkeby testnet: 0x38132Af11613795d87343F87d6f43AA0d97fb8a2
-
 // last deployment on rinkeby testnet: 0xee8a8722ab74aaa445e26f9e220d10b92f895522
-
 // last deployment on rinkeby testnet: 0x2E73616DE3cfCE0bE102764C5D0b86117D95C4C4
-
 // last deployment on rinkeby testnet: 0x2e73616de3cfce0be102764c5d0b86117d95c4c4
-
 // last deployment on Avalanche Fuji Testnet: 0xe577B81994f23ba777a4057753Ad8adcF3d38E84
