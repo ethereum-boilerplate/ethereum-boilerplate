@@ -243,7 +243,10 @@ function NFTBalance() {
                 Simply get one of the awesome avatars from
                 &nbsp;&nbsp;
                 <Button
-                  style={BtnPrimary}
+                  style={{ 
+                    ...BtnPrimary,
+                    color: brightFontCol, 
+                  }}
                 >
                   <Link to="/marketplace">
                     Marketplace{" "}🚀
