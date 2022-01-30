@@ -169,6 +169,7 @@ function NFTBalance() {
     } catch (e) {
       openNotification("error", "An error occurred", e.message);
       setIsPending(false);
+    }
   };
 
   const handleUnlockContentClick = async (nft) => {
