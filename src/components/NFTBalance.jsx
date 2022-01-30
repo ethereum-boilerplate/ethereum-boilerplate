@@ -22,9 +22,7 @@ import {
   UnlockTwoTone,
 } from "@ant-design/icons";
 import { getExplorer } from "helpers/networks";
-// import AddressInput from "./AddressInput";
 import { useVerifyMetadata } from "hooks/useVerifyMetadata";
-import { useIfContractOwner } from "hooks/useIfContractOwner";
 
 const { Meta } = Card;
 
@@ -79,14 +77,10 @@ function NFTBalance() {
   const { Moralis, chainId, account } = useMoralis();
   const [lockVisibility, setLockVisibility] = useState(false);
   const [createContentVisibility, setCreateContentVisibility] = useState(false);
-  // const [receiverToSend, setReceiver] = useState(null);
-  // const [amountToSend, setAmount] = useState(null);
   const [lockContent, setLockContent] = useState(null);
   const [editorSummaryContent, setEditorSummaryContent] = useState(null);
   const [isPending, setIsPending] = useState(false);
   const { verifyMetadata } = useVerifyMetadata();
-  // const { isContractOwner } = useIfContractOwner();
-  // let contractOwner = null;
 
   const checkContractOwnership = async (nft) => {
     setIsPending(true);
@@ -257,18 +251,8 @@ function NFTBalance() {
         <Skeleton loading={!NFTBalances?.result}>
           {NFTBalances?.result &&
             NFTBalances.result.map((nft, index) => {
-              // verify Metadata
+              // TODO: verify Metadata (unsure if this actually works?)
               nft = verifyMetadata(nft);
-
-              // if (index === 0) {
-              //   contractOwner = isContractOwner(nft);
-              // } else {
-              //   console.log(
-              //     `Local Contract Owner: ${JSON.parse(
-              //       window.localStorage.getItem("contractOwner")
-              //     )}`
-              //   );
-              // }
 
               return (
                 <Card
