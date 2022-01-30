@@ -44,10 +44,16 @@ function NFTBalance() {
   };
 
   function succListing() {
-    let secondsToGo = 5;
+    let secondsToGo = 10;
     const modal = Modal.success({
       title: "Success!",
-      content: `You have listed your NFT`,
+      content: (
+        <>
+          <p>You have listed your NFT</p>
+          <p>It may take around <b>5 minutes</b></p>
+          <p>until it will appear in our Marketplace</p>
+        </>
+      ),
     });
     setTimeout(() => {
       modal.destroy();

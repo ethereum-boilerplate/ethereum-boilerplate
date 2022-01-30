@@ -149,10 +149,16 @@ function NFTCollectionItems({ nftAddress, colName, colImg }) {
     };
 
     function succPurchase() {
-        let secondsToGo = 5;
+        let secondsToGo = 10;
         const modal = Modal.success({
             title: "Success!",
-            content: `You have purchased this NFT`,
+            content: (
+                <>
+                    <p>You have purchased this NFT</p>
+                    <p>It may take around <b>5 minutes</b></p>
+                    <p>until it will appear at (your NFTs) section</p>
+                </>
+            ),
         });
         setTimeout(() => {
             modal.destroy();
