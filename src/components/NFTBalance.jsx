@@ -76,8 +76,10 @@ function NFTBalance() {
   const { data: NFTBalances } = useNFTBalances();
   const { Moralis, chainId, account } = useMoralis();
   const [lockVisibility, setLockVisibility] = useState(false);
+  const [unlockVisibility, setUnlockVisibility] = useState(false);
   const [createContentVisibility, setCreateContentVisibility] = useState(false);
   const [lockContent, setLockContent] = useState(null);
+  const [unlockContent, setUnlockContent] = useState(null);
   const [editorSummaryContent, setEditorSummaryContent] = useState(null);
   const [isPending, setIsPending] = useState(false);
   const { verifyMetadata } = useVerifyMetadata();
@@ -165,7 +167,28 @@ function NFTBalance() {
         "Your Unlockable content has been saved and connected to your contract"
       );
     } catch (e) {
-      alert(e.message);
+      openNotification("error", "An error occurred", e.message);
+      setIsPending(false);
+  };
+
+  const handleUnlockContentClick = async (nft) => {
+    setIsPending(true);
+
+    // TODO: need to additional check if token holder has permission to unlock content + add encryption/decryption to content
+
+    try {
+      const collection = Moralis.Object.extend("Collections");
+      const query = new Moralis.Query(collection);
+      query.equalTo("contractAddress", nft.token_address);
+      const results = await query.find();
+
+      setUnlockContent(results[0].get("content"));
+      setIsPending(false);
+      setUnlockVisibility(true);
+
+      // TODO: once content displayed, create a log of who viewed it (nft.walletAddress)
+    } catch (e) {
+      openNotification("error", "An error occurred", e.message);
       setIsPending(false);
     }
   };
@@ -261,7 +284,7 @@ function NFTBalance() {
                     <Tooltip title="View Unlockable Content">
                       <UnlockTwoTone
                         twoToneColor="#21bf96"
-                        onClick={() => handleLockContentClick(nft)}
+                        onClick={() => handleUnlockContentClick(nft)}
                       />
                     </Tooltip>,
                     <Tooltip title="Create Unlockable Content">
@@ -300,6 +323,7 @@ function NFTBalance() {
             })}
         </Skeleton>
       </div>
+
       <Modal
         title={"Create Unlockable content"}
         visible={lockVisibility}
@@ -325,6 +349,7 @@ function NFTBalance() {
           }
         />
       </Modal>
+
       <Modal
         title={"Success!! Start creating Unlockable content"}
         visible={createContentVisibility}
@@ -340,6 +365,23 @@ function NFTBalance() {
           placeholder={"Add a summary for your collection of NFTs.."}
           value={editorSummaryContent || ""}
         />
+      </Modal>
+
+      <Modal
+        title={"Unlockable content found!"}
+        visible={unlockVisibility}
+        onCancel={() => setUnlockVisibility(false)}
+        cancelText="Done"
+        okButtonProps={{ style: { display: "none" } }}
+        confirmLoading={isPending}
+      >
+        <Text style={{ display: "flex" }} strong>
+          Collection Summary
+        </Text>
+        <br />
+        <Card>
+          <div dangerouslySetInnerHTML={{ __html: unlockContent }} />
+        </Card>
       </Modal>
     </div>
   );
