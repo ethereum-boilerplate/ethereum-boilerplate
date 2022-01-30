@@ -31,6 +31,7 @@ https://github.com/coderdidit/meta-gym-land-landing-page
 - Moralis
 - Avalanche
 - Solidity
+- IPFS for NFT storage
 - Tensorflow and MediaPipe for pose detection
 - Phaser game engine
 - React
