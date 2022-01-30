@@ -242,7 +242,11 @@ export class GymRoomScene extends EarnableScene {
       "#FFEB3A"
     );
     mbmtEarnedOnventory.setScrollFactor(0, 0);
-    mbmtEarnedOnventory.start(`${MBMT_TICKER}: ${this.currentXPBalance().toFixed(4) || 0}`, 10);
+    const formattedBalance = () => {
+      if (this.currentXPBalance()) return this.currentXPBalance().toFixed(4);
+      return 0;
+    }
+    mbmtEarnedOnventory.start(`${MBMT_TICKER}: ${formattedBalance()}`, 10);
     // debugging
     if (debugCollisons) {
       debugCollisonBounds(wallsLayer, this)
