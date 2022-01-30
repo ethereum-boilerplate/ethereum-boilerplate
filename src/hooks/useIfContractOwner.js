@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useMoralis } from "react-moralis";
 
 export const useIfContractOwner = () => {
-  // const [results, setResults] = useState({});
   const [contractOwner, setContractOwner] = useState({});
   const { Moralis, chainId } = useMoralis();
 
@@ -12,13 +11,15 @@ export const useIfContractOwner = () => {
    * @returns NFT
    */
   function isContractOwner(NFT) {
-    //Get the Metadata to check Contract Owner
+    // get the Metadata to check Contract Owner
+    const walletAddress = nft?.owner_of;
     const contractAddress = NFT?.token_address;
-    let localStorageContractOwner = JSON.parse(
-      window.localStorage.getItem("contractOwner")
-    );
+    // let localStorageContractOwner = JSON.parse(
+    //   window.localStorage.getItem("contractOwner")
+    // );
 
     if (!contractOwner[contractAddress]) {
+      checkMatchingContractOwner(contractOwner, contractAddress, walletAddress);
       getContractOwners(NFT);
       console.log("loaded");
       // console.log(`contractOwner: ${JSON.stringify(contractOwner)}`);
