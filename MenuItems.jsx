@@ -32,7 +32,7 @@ function MenuItems() {
         <NavLink className="nav-link"  to="/wallet">👛 Wallet</NavLink>
       </Menu.Item>
       <Menu.Item key="/1inch">
-        <NavLink className="nav-link"  to="/1inch">🏦 Bonds</NavLink>
+        <NavLink className="nav-link" to="/1inch">🏦 Bonds</NavLink>
       </Menu.Item>
     </Menu>
   );

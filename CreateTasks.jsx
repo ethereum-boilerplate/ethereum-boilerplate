@@ -2,6 +2,7 @@ import { Card, Timeline, Typography, Button } from "antd";
 import React from "react";
 import { NavLink } from "react-router-dom";
 
+
 const { Text } = Typography;
 
 const styles = {
@@ -24,7 +25,8 @@ const styles = {
 
 export default function CreateTasks({ isServerInfo }) {
   return (
-    <div style={{ display: "flex", gap: "10px" }}>
+    <div style={{display: "flex", gap: "10px" }}>
+
       <Card
         className="task-card"
         style={styles.card}
@@ -37,83 +39,76 @@ export default function CreateTasks({ isServerInfo }) {
           </>
         }
       >
-        <Timeline mode="left" style={styles.timeline}>
-          <Timeline.Item dot="📌">
-            <div className="task-item">
-              <div className="task-headline">
-                <Text style={styles.text}>
-                  [CLAIMED] Build the best strategic marketing plan for Q1
-                </Text>
-              </div>
-              <div className="task-detail-line">
-                <Text style={{ fontWeight: "bold" }}> 💎 Reward:</Text>
-                <Text> 500 Karma</Text>
-                <Text style={{ fontWeight: "bold" }}>
-                  {" "}
-                  <br></br>👾 Claimed by:
-                </Text>
-                <Text> StormBrew</Text>
-              </div>
-            </div>
-          </Timeline.Item>
-
-          <Timeline.Item dot="🎨">
-            <div className="task-item">
-              <div className="task-headline">
-                <Text style={styles.text}>
-                  [CLAIMED] Create a beautiful website for our charity event
-                </Text>
-              </div>
-              <div className="task-detail-line">
-                <Text style={{ fontWeight: "bold" }}> 💎 Reward:</Text>
-                <Text> 1000 Karma</Text>
-                <Text style={{ fontWeight: "bold" }}>
-                  {" "}
-                  <br></br>👾 Claimed by:
-                </Text>
-                <Text> Meir</Text>
-              </div>
-            </div>
-          </Timeline.Item>
-
-          <Timeline.Item dot="✍️">
-            <div className="task-item">
-              <div className="task-headline">
-                <Text style={styles.text}>
-                  [OPEN] Write 5 high quality blog posts for our website
-                </Text>
-              </div>
-              <div className="task-detail-line">
-                <Text style={{ fontWeight: "bold" }}> 💎 Reward:</Text>
-                <Text> 1400 Karma</Text>
-                <Text style={{ fontWeight: "bold" }}>
-                  {" "}
-                  <br></br>👾 Task open till:
-                </Text>
-                <Text> 3/4/22</Text>
-              </div>
-            </div>
-          </Timeline.Item>
-
-          <Timeline.Item dot="📣">
-            <div className="task-item">
-              <div className="task-headline">
-                <Text style={styles.text}>
-                  [OPEN] Find 5 influencers interested in partnering
-                </Text>
-              </div>
-              <div className="task-detail-line border-gradient-purple">
-                <Text style={{ fontWeight: "bold" }}> 💎 Reward:</Text>
-                <Text> 300 Karma</Text>
-                <Text style={{ fontWeight: "bold" }}>
-                  {" "}
-                  <br></br>👾 Task open till:
-                </Text>
-                <Text> 2/1/22</Text>
-              </div>
-            </div>
-          </Timeline.Item>
-        </Timeline>
+  <div className="row">
+  <div className="card border-primary mb-3" style={{maxWidth: "20rem" }}>
+  <div className="card-header">🏥 Red Cross</div>
+  <div className="card-body">
+    <h4 className="card-title">Build the best strategic marketing plan for Q1</h4>
+    <p className="card-text">👾 Claimed by: StormBrew</p>
+    <br></br>
+    <div className="d-grid gap-2">
+  <button className="btn btn-lg btn-primary" type="button">💎 500 Karma</button>
+</div>
+  </div>
+</div>
+<div className="card border-primary mb-3" style={{maxWidth: "20rem" }}>
+  <div className="card-header">🏥 Red Cross</div>
+  <div className="card-body">
+    <h4 className="card-title">Build the best strategic marketing plan for Q1</h4>
+    <p className="card-text">👾 Claimed by: StormBrew</p>
+    <br></br>
+    <div className="d-grid gap-2">
+  <button className="btn btn-lg btn-primary" type="button">💎 500 Karma</button>
+</div>
+  </div>
+</div>
+<div className="card border-primary mb-3" style={{maxWidth: "20rem" }}>
+  <div className="card-header">🏥 Red Cross</div>
+  <div className="card-body">
+    <h4 className="card-title">Build the best strategic marketing plan for Q1</h4>
+    <p className="card-text">👾 Claimed by: StormBrew</p>
+    <br></br>
+    <div className="d-grid gap-2">
+  <button className="btn btn-lg btn-primary" type="button">💎 500 Karma</button>
+</div>
+  </div>
+</div>
+</div>
+<div className="row">
+<div className="card border-primary mb-3" style={{maxWidth: "20rem" }}>
+  <div className="card-header">🏥 Red Cross</div>
+  <div className="card-body">
+    <h4 className="card-title">Build the best strategic marketing plan for Q1</h4>
+    <p className="card-text">👾 Claimed by: StormBrew</p>
+    <br></br>
+    <div className="d-grid gap-2">
+  <button className="btn btn-lg btn-primary" type="button">💎 500 Karma</button>
+</div>
+  </div>
+</div>
+<div className="card border-primary mb-3" style={{maxWidth: "20rem" }}>
+  <div className="card-header">🏥 Red Cross</div>
+  <div className="card-body">
+    <h4 className="card-title">Build the best strategic marketing plan for Q1</h4>
+    <p className="card-text">👾 Claimed by: StormBrew</p>
+    <br></br>
+    <div className="d-grid gap-2">
+  <button className="btn btn-lg btn-primary" type="button">💎 500 Karma</button>
+</div>
+  </div>
+</div>
+<div className="card border-primary mb-3" style={{maxWidth: "20rem" }}>
+  <div className="card-header">🏥 Red Cross</div>
+  <div className="card-body">
+    <h4 className="card-title">Build the best strategic marketing plan for Q1</h4>
+    <p className="card-text">👾 Claimed by: StormBrew</p>
+    <br></br>
+    <div className="d-grid gap-2">
+  <button className="btn btn-lg btn-primary" type="button">💎 500 Karma</button>
+</div>
+  </div>
+</div>
+</div>
       </Card>
       <div>
         <Card
@@ -124,99 +119,29 @@ export default function CreateTasks({ isServerInfo }) {
             </>
           }
         >
-          <Timeline.Item dot="🔏">
-            <div className="task-item task-completed">
-              <div className="task-headline">
-                <Text style={styles.text}>
-                  [CLOSED] Find 5 influencers interested in partnering
-                </Text>
-              </div>
-              <div className="task-detail-line border-gradient-purple">
-                <Text style={{ fontWeight: "bold" }}> 💎 Reward:</Text>
-                <Text> 300 Karma</Text>
-                <Text style={{ fontWeight: "bold" }}>
-                  {" "}
-                  <br></br>👾 Claimed by:
-                </Text>
-                <Text> dmaka</Text>
-              </div>
-            </div>
-          </Timeline.Item>
-
-          <Timeline.Item dot="🔁">
-            <div className="task-item task-completed">
-              <div className="task-headline">
-                <Text style={styles.text}>
-                  [CLOSED] Find 5 influencers interested in partnering
-                </Text>
-              </div>
-              <div className="task-detail-line border-gradient-purple">
-                <Text style={{ fontWeight: "bold" }}> 💎 Reward:</Text>
-                <Text> 300 Karma</Text>
-                <Text style={{ fontWeight: "bold" }}>
-                  {" "}
-                  <br></br>👾 Claimed by:
-                </Text>
-                <Text> floyd_droid</Text>
-              </div>
-            </div>
-          </Timeline.Item>
-          <Timeline mode="left" style={styles.timeline}>
-            <Timeline.Item dot="🔁">
-              <div className="task-item task-completed">
-                <div className="task-headline">
-                  <Text style={styles.text}>
-                    [CLOSED] Find 5 influencers interested in partnering
-                  </Text>
-                </div>
-                <div className="task-detail-line border-gradient-purple">
-                  <Text style={{ fontWeight: "bold" }}> 💎 Reward:</Text>
-                  <Text> 300 Karma</Text>
-                  <Text style={{ fontWeight: "bold" }}>
-                    {" "}
-                    <br></br>👾 Claimed by:
-                  </Text>
-                  <Text> floyd_droid</Text>
-                </div>
-              </div>
-            </Timeline.Item>
-            <Timeline.Item dot="🔁">
-              <div className="task-item task-completed">
-                <div className="task-headline">
-                  <Text style={styles.text}>
-                    [CLOSED] Find 5 influencers interested in partnering
-                  </Text>
-                </div>
-                <div className="task-detail-line border-gradient-purple">
-                  <Text style={{ fontWeight: "bold" }}> 💎 Reward:</Text>
-                  <Text> 300 Karma</Text>
-                  <Text style={{ fontWeight: "bold" }}>
-                    {" "}
-                    <br></br>👾 Claimed by:
-                  </Text>
-                  <Text> floyd_droid</Text>
-                </div>
-              </div>
-            </Timeline.Item>
-            <Timeline.Item dot="🔁">
-              <div className="task-item task-completed">
-                <div className="task-headline">
-                  <Text style={styles.text}>
-                    [CLOSED] Find 5 influencers interested in partnering
-                  </Text>
-                </div>
-                <div className="task-detail-line border-gradient-purple">
-                  <Text style={{ fontWeight: "bold" }}> 💎 Reward:</Text>
-                  <Text> 300 Karma</Text>
-                  <Text style={{ fontWeight: "bold" }}>
-                    {" "}
-                    <br></br>👾 Claimed by:
-                  </Text>
-                  <Text> floyd_droid</Text>
-                </div>
-              </div>
-            </Timeline.Item>
-          </Timeline>
+          
+          <div className="card border-primary mb-3 task-completed" style={{maxWidth: "20rem" }}>
+  <div className="card-header">🏥 Red Cross</div>
+  <div className="card-body">
+    <h4 className="card-title">Build the best strategic marketing plan for Q1</h4>
+    <p className="card-text">👾 Claimed by: StormBrew</p>
+    <br></br>
+    <div className="d-grid gap-2">
+  <button className="btn btn-lg btn-primary" type="button">💎 500 Karma</button>
+</div>
+  </div>
+</div>
+<div className="card border-primary mb-3 task-completed" style={{maxWidth: "20rem" }}>
+  <div className="card-header">🏥 Red Cross</div>
+  <div className="card-body">
+    <h4 className="card-title">Build the best strategic marketing plan for Q1</h4>
+    <p className="card-text">👾 Claimed by: StormBrew</p>
+    <br></br>
+    <div className="d-grid gap-2">
+  <button className="btn btn-lg btn-primary" type="button">💎 500 Karma</button>
+</div>
+  </div>
+</div>
         </Card>
       </div>
     </div>

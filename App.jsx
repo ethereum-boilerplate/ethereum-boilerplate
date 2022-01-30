@@ -8,7 +8,6 @@ import {
 } from "react-router-dom";
 import Account from "components/Account/Account";
 import Chains from "components/Chains";
-import TokenPrice from "components/TokenPrice";
 import DoTasks from "components/DoTasks";
 import DoTheseTasks from "components/DoTheseTasks";
 import CreateTasks from "components/CreateTasks";
@@ -27,6 +26,8 @@ import Contract from "components/Contract/Contract";
 import Text from "antd/lib/typography/Text";
 import Ramper from "components/Ramper";
 import MenuItems from "./components/MenuItems";
+import "./bootstrap.min.css"
+
 const { Header, Footer } = Layout;
 
 const styles = {
@@ -43,7 +44,7 @@ const styles = {
     position: "fixed",
     zIndex: 1,
     width: "100%",
-    background: "#fff",
+    height: "10%",
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
@@ -54,7 +55,7 @@ const styles = {
   },
   headerRight: {
     display: "flex",
-    gap: "20px",
+    gap: "50px",
     alignItems: "center",
     fontSize: "15px",
     fontWeight: "bold",
@@ -76,15 +77,9 @@ const App = ({ isServerInfo }) => {
       <Router>
         <Header style={styles.header}>
           <Logo />
-          <MenuItems />
-          <div className="nav-bar" style={styles.headerRight}>
+          <MenuItems className="nav nav-tabs" />
+          <div style={styles.headerRight}>
             <Chains />
-            <TokenPrice
-              address="0x1f9840a85d5af5bf1d1762f925bdaddc4201f984"
-              chain="eth"
-              image="https://cloudflare-ipfs.com/ipfs/QmXttGpZrECX5qCyXbBQiqgQNytVGeZW5Anewvh2jc4psg/"
-              size="40px"
-            />
             <NativeBalance />
             <Account />
           </div>
@@ -180,7 +175,7 @@ const App = ({ isServerInfo }) => {
 };
 
 export const Logo = () => (
-  <div style={{ display: "flex" }}>
+  <div style={{ display: "flex" }} className="logo">
     <a
       href="https://karma-dao.finance"
       target="_blank"
@@ -193,7 +188,6 @@ export const Logo = () => (
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
-        className="logo"
       >
         <circle cx="250" cy="250" r="250" fill="#9A69A4" />
         <rect x="59" y="59" width="381" height="381" fill="url(#pattern0)" />

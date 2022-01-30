@@ -27,198 +27,86 @@ export default function DoTasks({ isServerInfo }) {
     <div style={{ display: "flex", gap: "10px" }}>
       <div className="row">
       <Card
-        className="job-board"
+        className="task-card"
         style={styles.card}
         title={
           <>
-            🏥 <Text className="card-title" strong>Red Cross</Text>
+            ⭐️ <Text className="card-title" strong>Available tasks</Text>
+          
+              
           </>
         }
       >
-        <Timeline mode="left" style={styles.timeline}>
-          <Timeline.Item dot="📌">
-            <div className="task-item">
-              <div className="task-headline">
-                <Text style={styles.text}>
-                  Build the best strategic marketing plan for Q1
-                </Text>
-              </div>
-              <div className="task-detail-line">
-                <Text style={{ fontWeight: "bold" }}> 💎 Reward:</Text>
-                <Text> 500 Karma</Text>
-                <Text style={{ fontWeight: "bold" }}>
-                  {" "}
-                  <br></br>🚨 Deadline:
-                </Text>
-                <Text> 2/2/22</Text>
-                <br></br>
-              </div>
-            </div>
-          </Timeline.Item>
-        </Timeline>
-        <Button key="/dothesetasks" className="task-accept-btn"><NavLink className="create-task-text" to="/dothesetasks">🔍 See more bounties</NavLink></Button>
-      </Card>
-      <Card
-        className="job-board"
-        style={styles.card}
-        title={
-          <>
-            ⭐️ <Text className="card-title" strong>Make a Wish</Text>
-          </>
-        }
-      >
-        <Timeline mode="left" style={styles.timeline}>
-          <Timeline.Item dot="📌">
-            <div className="task-item">
-              <div className="task-headline">
-                <Text style={styles.text}>
-                  Build the best strategic marketing plan for Q1
-                </Text>
-              </div>
-              <div className="task-detail-line">
-                <Text style={{ fontWeight: "bold" }}> 💎 Reward:</Text>
-                <Text> 500 Karma</Text>
-                <Text style={{ fontWeight: "bold" }}>
-                  {" "}
-                  <br></br>🚨 Deadline:
-                </Text>
-                <Text> 2/3/22</Text>
-                <br></br>
-              </div>
-            </div>
-          </Timeline.Item>
-        </Timeline>
-        <Button key="/createnewtasks" className="task-accept-btn"><NavLink className="create-task-text" to="/">🔍 See more bounties</NavLink></Button>
-      </Card>
-      <Card
-        className="job-board"
-        style={styles.card}
-        title={
-          <>
-            🎗 <Text className="card-title" strong>American Cancer Society</Text>
-          </>
-        }
-      >
-        <Timeline mode="left" style={styles.timeline}>
-          <Timeline.Item dot="📌">
-            <div className="task-item">
-              <div className="task-headline">
-                <Text style={styles.text}>
-                  Build the best strategic marketing plan for Q1
-                </Text>
-              </div>
-              <div className="task-detail-line">
-                <Text style={{ fontWeight: "bold" }}> 💎 Reward:</Text>
-                <Text> 500 Karma</Text>
-                <Text style={{ fontWeight: "bold" }}>
-                  {" "}
-                  <br></br>🚨 Deadline:
-                </Text>
-                <Text> 2/21/22</Text>
-                <br></br>
-              </div>
-            </div>
-          </Timeline.Item>
-        </Timeline>
-        <Button key="/createnewtasks" className="task-accept-btn"><NavLink className="create-task-text" to="/">🔍 See more bounties</NavLink></Button>
-      </Card>
-      </div>
-      <div>
-      <Card
-        className="job-board"
-        style={styles.card}
-        title={
-          <>
-            🎗 <Text className="card-title" strong>American Cancer Society</Text>
-          </>
-        }
-      >
-        <Timeline mode="left" style={styles.timeline}>
-          <Timeline.Item dot="📌">
-            <div className="task-item">
-              <div className="task-headline">
-                <Text style={styles.text}>
-                  Build the best strategic marketing plan for Q1
-                </Text>
-              </div>
-              <div className="task-detail-line">
-                <Text style={{ fontWeight: "bold" }}> 💎 Reward:</Text>
-                <Text> 500 Karma</Text>
-                <Text style={{ fontWeight: "bold" }}>
-                  {" "}
-                  <br></br>🚨 Deadline: 
-                </Text>
-                <Text> 2/17/22</Text>
-                <br></br>
-              </div>
-            </div>
-          </Timeline.Item>
-        </Timeline>
-        <Button key="/createnewtasks" className="task-accept-btn"><NavLink className="create-task-text" to="/">🔍 See more bounties</NavLink></Button>
-      </Card>
-      <Card
-        className="job-board"
-        style={styles.card}
-        title={
-          <>
-            🎗 <Text className="card-title" strong>American Cancer Society</Text>
-          </>
-        }
-      >
-        <Timeline mode="left" style={styles.timeline}>
-          <Timeline.Item dot="📌">
-            <div className="task-item">
-              <div className="task-headline">
-                <Text style={styles.text}>
-                  Build the best strategic marketing plan for Q1
-                </Text>
-              </div>
-              <div className="task-detail-line">
-                <Text style={{ fontWeight: "bold" }}> 💎 Reward:</Text>
-                <Text> 500 Karma</Text>
-                <Text style={{ fontWeight: "bold" }}>
-                  {" "}
-                  <br></br>🚨 Deadline:
-                </Text>
-                <Text> 3/4/22</Text>
-                <br></br>
-              </div>
-            </div>
-          </Timeline.Item>
-        </Timeline>
-        <Button key="/createnewtasks" className="task-accept-btn"><NavLink className="create-task-text" to="/">🔍 See more bounties</NavLink></Button>
-      </Card>
-      <Card
-        className="job-board"
-        style={styles.card}
-        title={
-          <>
-            🎗 <Text className="card-title" strong>American Cancer Society</Text>
-          </>
-        }
-      >
-        <Timeline mode="left" style={styles.timeline}>
-          <Timeline.Item dot="📌">
-            <div className="task-item">
-              <div className="task-headline">
-                <Text style={styles.text}>
-                  Build the best strategic marketing plan for Q1
-                </Text>
-              </div>
-              <div className="task-detail-line">
-                <Text style={{ fontWeight: "bold" }}> 💎 Reward:</Text>
-                <Text> 500 Karma</Text>
-                <Text style={{ fontWeight: "bold" }}>
-                  {" "}
-                  <br></br>🚨 Deadline:
-                </Text>
-                <Text> 3/17/22</Text>
-                <br></br>
-              </div>
-            </div>
-          </Timeline.Item>
-        </Timeline>
-        <Button key="/createnewtasks" className="task-accept-btn"><NavLink className="create-task-text" to="/">🔍 See more bounties</NavLink></Button>
+  <div className="row">
+  <div className="card border-primary mb-3" style={{maxWidth: "20rem" }}>
+  <div className="card-header">🏥 Red Cross</div>
+  <div className="card-body">
+    <h4 className="card-title">Build the best strategic marketing plan for Q1</h4>
+    <p className="card-text">⏰ Deadline 3/4/22</p>
+    <br></br>
+    <div className="d-grid gap-2">
+  <button className="btn btn-lg btn-primary" type="button">💎 500 Karma</button>
+</div>
+  </div>
+</div>
+<div className="card border-primary mb-3" style={{maxWidth: "20rem" }}>
+  <div className="card-header">🏥 Red Cross</div>
+  <div className="card-body">
+    <h4 className="card-title">Build the best strategic marketing plan for Q1</h4>
+    <p className="card-text">⏰ Deadline 3/4/22</p>
+    <br></br>
+    <div className="d-grid gap-2">
+  <button className="btn btn-lg btn-primary" type="button">💎 500 Karma</button>
+</div>
+  </div>
+</div>
+<div className="card border-primary mb-3" style={{maxWidth: "20rem" }}>
+  <div className="card-header">🏥 Red Cross</div>
+  <div className="card-body">
+    <h4 className="card-title">Build the best strategic marketing plan for Q1</h4>
+    <p className="card-text">⏰ Deadline 3/4/22</p>
+    <br></br>
+    <div className="d-grid gap-2">
+  <button className="btn btn-lg btn-primary" type="button">💎 500 Karma</button>
+</div>
+  </div>
+</div>
+</div>
+<div className="row">
+<div className="card border-primary mb-3" style={{maxWidth: "20rem" }}>
+  <div className="card-header">🏥 Red Cross</div>
+  <div className="card-body">
+    <h4 className="card-title">Build the best strategic marketing plan for Q1</h4>
+    <p className="card-text">⏰ Deadline 3/4/22</p>
+    <br></br>
+    <div className="d-grid gap-2">
+  <button className="btn btn-lg btn-primary" type="button">💎 500 Karma</button>
+</div>
+  </div>
+</div>
+<div className="card border-primary mb-3" style={{maxWidth: "20rem" }}>
+  <div className="card-header">🏥 Red Cross</div>
+  <div className="card-body">
+    <h4 className="card-title">Build the best strategic marketing plan for Q1</h4>
+    <p className="card-text">⏰ Deadline 3/4/22</p>
+    <br></br>
+    <div className="d-grid gap-2">
+  <button className="btn btn-lg btn-primary" type="button">💎 500 Karma</button>
+</div>
+  </div>
+</div>
+<div className="card border-primary mb-3" style={{maxWidth: "20rem" }}>
+  <div className="card-header">🏥 Red Cross</div>
+  <div className="card-body">
+    <h4 className="card-title">Build the best strategic marketing plan for Q1</h4>
+    <p className="card-text">⏰ Deadline 3/4/22</p>
+    <br></br>
+    <div className="d-grid gap-2">
+  <button className="btn btn-lg btn-primary" type="button">💎 500 Karma</button>
+</div>
+  </div>
+</div>
+</div>
       </Card>
       </div>
     </div>
