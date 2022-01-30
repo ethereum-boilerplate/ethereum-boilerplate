@@ -10,6 +10,7 @@ import {
   Typography,
   Button,
   Divider,
+  Badge,
   notification,
 } from "antd";
 import ReactQuill from "react-quill";
@@ -17,7 +18,8 @@ import "react-quill/dist/quill.snow.css";
 import {
   FileSearchOutlined,
   LockOutlined,
-  UnlockOutlined,
+  LockTwoTone,
+  UnlockTwoTone,
 } from "@ant-design/icons";
 import { getExplorer } from "helpers/networks";
 // import AddressInput from "./AddressInput";
@@ -237,46 +239,51 @@ function NFTBalance() {
           </>
         }
       >
-        <Card
-          style={styles.card}
-          title={
-            <>
-              <Text style={styles.subTitle}>Unlock content</Text>
-            </>
-          }
-        >
-          <Text>
-            {" "}
-            <UnlockOutlined style={styles.icon} /> Click the "Unlock" icon next
-            to each of your NFTs to reveal unlockable content
-          </Text>
-        </Card>
+        <Badge.Ribbon text="Free" color="#21bf96">
+          <Card
+            style={styles.card}
+            title={
+              <>
+                <Text style={styles.subTitle}>Unlock content</Text>
+              </>
+            }
+          >
+            <Text>
+              {" "}
+              <UnlockTwoTone twoToneColor="#21bf96" style={styles.icon} /> Click
+              the "Unlock" icon next to each of your NFTs to reveal unlockable
+              content
+            </Text>
+          </Card>
+        </Badge.Ribbon>
 
-        <Card
-          style={styles.card}
-          title={
-            <>
-              <Text style={styles.subTitle}>Lock content</Text>
-            </>
-          }
-        >
-          <Text>
-            <Button
-              type="primary"
-              icon={<LockOutlined />}
-              onClick={() => handleLockContentClick()}
-            >
-              Enter Contract Address
-            </Button>
-          </Text>
-          <Divider dashed />
-          <Text>
-            {" "}
-            <LockOutlined style={styles.icon} /> Or, click the "Lock" icon next
-            to each NFT to create unlockable content (will display if you own
-            it)
-          </Text>
-        </Card>
+        <Badge.Ribbon text="Premium">
+          <Card
+            style={styles.card}
+            title={
+              <>
+                <Text style={styles.subTitle}>Lock content</Text>
+              </>
+            }
+          >
+            <Text>
+              <Button
+                type="primary"
+                icon={<LockTwoTone />}
+                onClick={() => handleLockContentClick()}
+              >
+                Enter Contract Address
+              </Button>
+            </Text>
+            <Divider dashed />
+            <Text>
+              {" "}
+              <LockTwoTone style={styles.icon} /> Or, click the "Lock" icon next
+              to each NFT to create unlockable content (will display if you own
+              it)
+            </Text>
+          </Card>
+        </Badge.Ribbon>
       </Card>
       <div style={styles.NFTs}>
         <Skeleton loading={!NFTBalances?.result}>
@@ -300,12 +307,13 @@ function NFTBalance() {
                   hoverable
                   actions={[
                     <Tooltip title="View Unlockable Content">
-                      <UnlockOutlined
+                      <UnlockTwoTone
+                        twoToneColor="#21bf96"
                         onClick={() => handleLockContentClick(nft)}
                       />
                     </Tooltip>,
                     <Tooltip title="Create Unlockable Content">
-                      <LockOutlined
+                      <LockTwoTone
                         onClick={() => handleLockContentClick(nft)}
                       />
                     </Tooltip>,
