@@ -175,7 +175,7 @@ export class FlyFitScene extends EarnableScene {
 
         const youWonText = createTextBox(this,
             width / 2,
-            (height / 2) - height * .2,
+            height / 2,
             { wrapWidth: 280 },
         )
         youWonText.setOrigin(0.5).setDepth(1).setScrollFactor(0, 0);
