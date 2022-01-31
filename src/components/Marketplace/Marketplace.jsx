@@ -1,39 +1,16 @@
 import React from "react";
 import { getCollectionsByChain } from "./collections";
-import {
-  useMoralis,
-} from "react-moralis";
-import { Link } from "react-router-dom";
 import NFTCollectionItems from "./NFTCollectionItems";
-import { Button } from "antd";
-import { BtnPrimary, BreakFlexDiv, paddingLRContent, } from "../../GlobalStyles";
+import { paddingLRContent, } from "../../GlobalStyles";
 import { MainChainID } from "../../MglNftMetadata";
 
 function Marketplace() {
-  const { isAuthenticated } = useMoralis();
   const NFTCollections = getCollectionsByChain(MainChainID);
 
   return (
     <div style={{
       ...paddingLRContent,
     }}>
-      {isAuthenticated && (
-        <div style={{
-          ...BreakFlexDiv,
-          float: "right",
-          // marginLeft: "95%",
-        }}>
-          <Button
-            type="primary"
-            style={BtnPrimary}
-          >
-            <Link to="/your-transactions">
-              Your transactions
-            </Link>
-          </Button>
-        </div>
-      )}
-
       <div style={{
         padding: "0",
         margin: "0",
