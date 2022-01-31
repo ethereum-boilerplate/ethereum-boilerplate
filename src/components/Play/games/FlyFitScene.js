@@ -121,6 +121,18 @@ export class FlyFitScene extends EarnableScene {
             .setScale(PLAYER_SCALE * 0.8)
             .setDepth(1);
 
+        // player sprite inside player container
+        const playerInner = new Player({
+            scene: this,
+            x: 0,
+            y: 0,
+            key: PLAYER_KEY,
+        }).setOrigin(0.5, 0.5)
+            .setScale(PLAYER_SCALE)
+            .setDepth(2);
+
+        this.cursorKeys = playerInner.cursorKeys;
+
         // this made the plane to have body element    
         this.physics.world.enable(plane);
         this.add.existing(plane);
@@ -129,24 +141,15 @@ export class FlyFitScene extends EarnableScene {
             height / 2,
             [
                 plane,
-                new Player({
-                    scene: this,
-                    x: 0,
-                    y: 0,
-                    key: PLAYER_KEY,
-                }).setOrigin(0.5, 0.5)
-                    .setScale(PLAYER_SCALE)
-                    .setDepth(2),
+                playerInner,
             ]
         );
 
-        this.physics.world.enable(this.player);
-        this.add.existing(this.player);
-        this.player.body.setCollideWorldBounds(true);
-        this.player.list[0].body.setCollideWorldBounds(true);
-        this.player.list[1].body.setCollideWorldBounds(true);
+        this.physics.world.enableBody(this.player);
 
-        this.physics.add.overlap(this.player.list[1], btcGroup, collectBtc, null, this)
+        this.player.body.setCollideWorldBounds(true);
+
+        this.physics.add.overlap(plane, btcGroup, collectBtc, null, this)
         function collectBtc(avatar, btcItem) {
             btcItem.destroy()
             this.score += 1
@@ -190,30 +193,20 @@ export class FlyFitScene extends EarnableScene {
     }
 
     handlePlayerMoves() {
-        const player = this.player.list[1];
-        const plain = this.player.list[0];
-
+        const player = this.player;
         player.body.setAngularVelocity(0);
-        plain.body.setAngularVelocity(0);
         player.body.setVelocity(0, 0);
-        plain.body.setVelocity(0, 0);
         player.body.setAcceleration(0);
-        plain.body.setAcceleration(0);
 
         const curPose = gstate.getPose();
-        if (player.cursorKeys?.up.isDown || curPose === gpose.BA_UP) {
-            // -90 guaranties that the move will straight from head 
-            // otherwise it would look like moving left
+        if (this.cursorKeys?.up.isDown || curPose === gpose.BA_UP) {
             const ng = player.angle - 90;
             const vec = this.physics.velocityFromAngle(ng, playerSpeed)
             player.body.setVelocity(vec.x, vec.y);
-            plain.body.setVelocity(vec.x, vec.y);
-        } else if (player.cursorKeys?.left.isDown || curPose === gpose.HTL) {
+        } else if (this.cursorKeys?.left.isDown || curPose === gpose.HTL) {
             player.body.setAngularVelocity(playerNgSpeed * -1);
-            plain.body.setAngularVelocity(playerNgSpeed * -1);
-        } else if (player.cursorKeys?.right.isDown || curPose === gpose.HTR) {
+        } else if (this.cursorKeys?.right.isDown || curPose === gpose.HTR) {
             player.body.setAngularVelocity(playerNgSpeed);
-            plain.body.setAngularVelocity(playerNgSpeed);
         }
     }
 }
