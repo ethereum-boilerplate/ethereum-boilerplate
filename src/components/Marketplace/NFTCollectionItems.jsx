@@ -79,6 +79,7 @@ function NFTCollectionItems({ nftAddress, colName, colImg }) {
             // get not sold items
             return query
                 .equalTo("sold", false)
+                .equalTo("confirmed", true)
                 .equalTo("nftContract", AllowedNftContracts.get(marketPlaceChainId)?.toLowerCase());
         });
     const fetchMarketItems = JSON.parse(
@@ -205,9 +206,7 @@ function NFTCollectionItems({ nftAddress, colName, colImg }) {
         const result = fetchMarketItems.filter(
             (e) =>
                 e.nftContract === nft?.token_address &&
-                e.tokenId === nft?.token_id &&
-                e.sold === false &&
-                e.confirmed === true
+                e.tokenId === nft?.token_id
         );
         const key = `${nft?.token_address}:${nft?.token_id}`
         listings.set(key, result.length);
