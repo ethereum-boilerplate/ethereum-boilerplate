@@ -1,10 +1,10 @@
-import React, { StrictMode } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import { MoralisProvider } from "react-moralis";
 import "./index.css";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
-import QuickStart from "components/QuickStart";
+import NFTBalance from "components/NFTBalance";
 
 /** Get your free Moralis Account https://moralis.io/ */
 
@@ -27,18 +27,13 @@ const Application = () => {
   else {
     return (
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <QuickStart />
+        <NFTBalance />
       </div>
     );
   }
 };
 
-ReactDOM.render(
-  <StrictMode>
-    <Application />,
-  </StrictMode>,
-  document.getElementById("root")
-);
+ReactDOM.render(<Application />, document.getElementById("root"));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
