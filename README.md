@@ -26,6 +26,12 @@ in separate repo:
 
 https://github.com/coderdidit/meta-gym-land-landing-page
 
+### MetaGymLand NFT utils
+
+in separate repo:
+
+https://github.com/coderdidit/meta-gym-land-nft-utils
+
 ### Technologies used:
 
 - Moralis
