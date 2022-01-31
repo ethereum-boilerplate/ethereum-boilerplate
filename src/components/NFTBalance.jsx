@@ -11,6 +11,7 @@ import {
   Button,
   Divider,
   Badge,
+  Empty,
   notification,
 } from "antd";
 import ReactQuill from "react-quill";
@@ -75,6 +76,7 @@ const styles = {
 function NFTBalance() {
   const { data: NFTBalances } = useNFTBalances();
   const { Moralis, chainId, account } = useMoralis();
+  const authVisibility = !account ? "block" : "none";
   const [lockVisibility, setLockVisibility] = useState(false);
   const [unlockVisibility, setUnlockVisibility] = useState(false);
   const [createContentVisibility, setCreateContentVisibility] = useState(false);
@@ -213,6 +215,10 @@ function NFTBalance() {
     });
   };
 
+  // if (account) {
+  //   setAuthVisibility(false);
+  // }
+
   return (
     <div style={styles.boundary}>
       <Card
@@ -265,14 +271,32 @@ function NFTBalance() {
             <Text>
               {" "}
               <LockTwoTone style={styles.icon} /> Or, click the "Lock" icon next
-              to each NFT to create unlockable content (will display if you own
-              it)
+              to each NFT to create unlockable content (contract owner only)
             </Text>
           </Card>
         </Badge.Ribbon>
       </Card>
       <div style={styles.NFTs}>
+        <Card
+          style={{
+            display: authVisibility,
+            width: "100%",
+            gap: "10px",
+            margin: "0 10px 10px auto",
+            boxShadow: "0 0.5rem 1.2rem rgb(189 197 209 / 20%)",
+            border: "1px solid #e7eaf3",
+            borderRadius: "0.5rem",
+          }}
+        >
+          <Text mark>
+            You're not logged in yet. Please authenticate by connecting your
+            wallet.
+          </Text>
+        </Card>
         <Skeleton loading={!NFTBalances?.result}>
+          <Card style={{ display: NFTBalances?.result ? "none" : "block" }}>
+            <Empty description="We can't find any NFTs found in your wallet." />
+          </Card>
           {NFTBalances?.result &&
             NFTBalances.result.map((nft, index) => {
               // TODO: verify Metadata (unsure if this actually works?)
