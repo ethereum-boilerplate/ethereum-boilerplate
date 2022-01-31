@@ -306,7 +306,11 @@ function NFTBalance() {
                       />
                     </Tooltip>,
                   ]}
-                  style={{ width: "auto", border: "2px solid #e7eaf3" }}
+                  style={{
+                    height: "max-content",
+                    width: "auto",
+                    border: "2px solid #e7eaf3",
+                  }}
                   cover={
                     <Image
                       preview={false}
