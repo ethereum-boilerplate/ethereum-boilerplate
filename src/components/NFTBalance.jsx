@@ -1,7 +1,12 @@
 import React, { useState, useContext } from "react";
 import { useMoralis, useNFTBalances, useWeb3ExecuteFunction } from "react-moralis";
 import { Modal, Button, Card, Image, Tooltip, Skeleton } from "antd";
-import { FileSearchOutlined, ShoppingCartOutlined, SkinFilled } from "@ant-design/icons";
+import {
+  FileSearchOutlined,
+  // eslint-disable-next-line no-unused-vars
+  ShoppingCartOutlined,
+  SkinFilled
+} from "@ant-design/icons";
 import { getExplorer } from "helpers/networks";
 import { useVerifyMetadata } from "hooks/useVerifyMetadata";
 import {
@@ -38,6 +43,7 @@ function NFTBalance() {
   const contractABIJson = JSON.parse(contractABI)
   const contractProcessor = useWeb3ExecuteFunction();
 
+  // eslint-disable-next-line no-unused-vars
   const handleListForSaleClick = (nft) => {
     setNftToList(nft);
     setVisibility(true);
@@ -244,9 +250,9 @@ function NFTBalance() {
                 Simply get one of the awesome avatars from
                 &nbsp;&nbsp;
                 <Button
-                  style={{ 
+                  style={{
                     ...BtnPrimary,
-                    color: brightFontCol, 
+                    color: brightFontCol,
                   }}
                 >
                   <Link to="/marketplace">

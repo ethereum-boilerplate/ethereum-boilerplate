@@ -21,7 +21,7 @@ export const SocialsLinks = () => {
                     color: "#FFF",
                     width: "100%",
                 }}>
-                    <a href={Discord} target="_blank">Join us on Discord</a>
+                    <a href={Discord} target="_blank" rel="noreferrer">Join us on Discord</a>
                 </Button>
             </div>
             <div style={{
@@ -33,7 +33,7 @@ export const SocialsLinks = () => {
                     color: "#FFF",
                     width: "100%",
                 }}>
-                    <a href={Telegram} target="_blank">Join us on Telegram</a>
+                    <a href={Telegram} target="_blank" rel="noreferrer">Join us on Telegram</a>
                 </Button>
             </div>
             <div style={{
@@ -45,7 +45,7 @@ export const SocialsLinks = () => {
                     color: "#FFF",
                     width: "100%",
                 }}>
-                    <a href={Twitter} target="_blank">Join us on Twitter</a>
+                    <a href={Twitter} target="_blank" rel="noreferrer">Join us on Twitter</a>
                 </Button>
             </div>
             <div style={{
@@ -56,7 +56,7 @@ export const SocialsLinks = () => {
                     color: "#FFF",
                     width: "100%",
                 }}>
-                    <a href={Newsletter} target="_blank">Sing up to newsletter</a>
+                    <a href={Newsletter} target="_blank" rel="noreferrer">Sing up to newsletter</a>
                 </Button>
             </div>
         </>
