@@ -59,7 +59,7 @@ yarn start
   - [`<AddressInput />`](#addressinput-)
   - [`<Chains />`](#chains-)
   - [`<CoinPrice />`](#coinprice-)
-  - [`<ERC20Balance />`](#erc20balance-)
+  - [`<ERC20Balances />`](#ERC20Balances-)
   - [`<ERC20Transfers />`](#erc20transfers-)
   - [`<DEX />`](#dex-)
   - [`<Wallet />`](#wallet-)
@@ -172,18 +172,18 @@ const [address, setAddress] = useState();
 <CoinPrice address="0x1...3" chain="eth" image="https://img.png" size="40px" />
 ```
 
-### `<ERC20Balance />`
+### `<ERC20Balances />`
 
 ![image](https://user-images.githubusercontent.com/78314301/139561267-7a1be577-ad13-4158-a7ea-aa4e7db358a3.png)
 
-💰 `<ERC20Balance />` : displays the ERC20 balance of an address. Uses Moralis Web3API (does not require an active web3 provider).
+💰 `<ERC20Balances />` : displays the ERC20 balance of an address. Uses Moralis Web3API (does not require an active web3 provider).
 
 **Options**:
 
 - chain (optional): network for displaying balances on. Will use your wallet network if you do not specify `chain` yourself
 
 ```jsx
-<ERC20Balance chain="polygon" />
+<ERC20Balances chain="polygon" />
 ```
 
 ### `<ERC20Transfers />`

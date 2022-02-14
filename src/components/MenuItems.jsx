@@ -30,8 +30,8 @@ function MenuItems() {
       <Menu.Item key="onramp">
         <NavLink to="/onramp">💵 Fiat</NavLink>
       </Menu.Item>
-      <Menu.Item key="/erc20balance">
-        <NavLink to="/erc20balance">💰 Balances</NavLink>
+      <Menu.Item key="/ERC20Balances">
+        <NavLink to="/ERC20Balances">💰 Balances</NavLink>
       </Menu.Item>
       <Menu.Item key="/erc20transfers">
         <NavLink to="/erc20transfers">💸 Transfers</NavLink>

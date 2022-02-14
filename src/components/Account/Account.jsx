@@ -43,7 +43,7 @@ const styles = {
   },
 };
 
-function Account() {
+const Account = () => {
   const { authenticate, isAuthenticated, account, chainId, logout } =
     useMoralis();
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -185,6 +185,6 @@ function Account() {
       </Modal>
     </>
   );
-}
+};
 
 export default Account;

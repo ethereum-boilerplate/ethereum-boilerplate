@@ -1,23 +1,26 @@
 {
   "name": "ethereum-boilerplate",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "@types/react-router-dom": "^5.3.3",
     "@walletconnect/web3-provider": "^1.6.6",
     "antd": "^4.16.13",
     "magic-sdk": "7.0.0",
-    "moralis": "^1.2.3",
+    "moralis": "^1.3.1",
     "react": "^17.0.2",
     "react-blockies": "^1.4.1",
     "react-dom": "^17.0.2",
-    "react-moralis": "^1.2.1",
+    "react-moralis": "^1.3.1",
     "react-router": "^5.2.1",
     "react-router-dom": "^5.3.0",
     "react-scripts": "4.0.3",
+    "styled-components": "^5.3.3",
     "web-vitals": "^1.0.1",
+    "web3uikit": "0.1.40",
     "yarn": "^1.22.17"
   },
   "scripts": {
@@ -57,6 +60,13 @@
     ]
   },
   "devDependencies": {
+    "@types/blockies": "^0.0.2",
+    "@types/react": "^17.0.39",
+    "@types/react-blockies": "^1.4.1",
+    "@types/react-dom": "^17.0.11",
+    "@types/styled-components": "^5.1.22",
+    "@typescript-eslint/eslint-plugin": "^5.11.0",
+    "@typescript-eslint/parser": "^5.11.0",
     "eslint": "^7.11.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
@@ -64,6 +74,7 @@
     "eslint-plugin-react-hooks": "^4.3.0",
     "gh-pages": "^3.2.3",
     "husky": "^7.0.0",
-    "prettier": "^2.5.1"
+    "prettier": "^2.5.1",
+    "typescript": "^4.5.5"
   }
 }
