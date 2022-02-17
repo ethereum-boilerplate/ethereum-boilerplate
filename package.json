@@ -20,7 +20,7 @@
     "react-scripts": "4.0.3",
     "styled-components": "^5.3.3",
     "web-vitals": "^1.0.1",
-    "web3uikit": "0.1.40",
+    "web3uikit": "0.1.41",
     "yarn": "^1.22.17"
   },
   "scripts": {
