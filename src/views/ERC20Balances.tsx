@@ -5,9 +5,13 @@ import {
 } from "react-moralis";
 import { Skeleton, Table } from "antd";
 import { getEllipsisTxt } from "../helpers/formatters";
-import { ReactNode } from "react";
+import { FC } from "react";
 
-const ERC20Balances: ReactNode = (params?: UseERC20BalancesParams) => {
+interface ERC20BalancesProps {
+  params?: UseERC20BalancesParams;
+}
+
+const ERC20Balances: FC<ERC20BalancesProps> = ({ params }) => {
   const { data: assets } = useERC20Balances(params);
   const { Moralis } = useMoralis();
 
