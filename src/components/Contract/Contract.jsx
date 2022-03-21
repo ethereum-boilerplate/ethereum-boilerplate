@@ -85,20 +85,19 @@ export default function Contract() {
             onFormFinish={async (name, { forms }) => {
               const params = forms[name].getFieldsValue();
 
-              let isView = false;
-              /*eslint no-unsafe-optional-chaining: "error"*/
-              for (let method of contract?.abi) {
-                if (method.name !== name) continue;
-                console.log(method);
-                if (method.stateMutability === "view") isView = true;
-              }
-
               const options = {
                 contractAddress,
                 functionName: name,
                 abi: contract?.abi,
                 params,
               };
+
+              let isView = false;
+              for (let method of options.abi) {
+                if (method.name !== name) continue;
+                console.log(method);
+                if (method.stateMutability === "view") isView = true;
+              }
 
               if (!isView) {
                 const tx = await Moralis.executeFunction({
