@@ -23,6 +23,7 @@ import Contract from "components/Contract/Contract";
 import Text from "antd/lib/typography/Text";
 import Ramper from "components/Ramper";
 import MenuItems from "./components/MenuItems";
+import MintNFT from "components/MintNFT";
 const { Header, Footer } = Layout;
 
 const styles = {
@@ -105,6 +106,9 @@ const App = ({ isServerInfo }) => {
                   <DEX chain="polygon" />
                 </Tabs.TabPane>
               </Tabs>
+            </Route>
+            <Route path="/mintNFT">
+              <MintNFT />
             </Route>
             <Route path="/erc20balance">
               <ERC20Balance />
