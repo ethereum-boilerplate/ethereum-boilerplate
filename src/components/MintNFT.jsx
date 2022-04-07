@@ -41,11 +41,9 @@ export default function MintNFT() {
       await moralisFile.saveIPFS();
 
       const metadata = {
-        name: "hackathonNFT",
-        description: "This is a test",
         image: moralisFile.ipfs(),
-        startDate: startDate,
-        endDate: endDate,
+        start_date: startDate,
+        end_date: endDate,
         company: company,
         title: title,
       };
