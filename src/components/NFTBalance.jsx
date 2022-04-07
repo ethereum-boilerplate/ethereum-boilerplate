@@ -83,7 +83,7 @@ function NFTBalance() {
   console.log("NFTBalances", NFTBalances);
   return (
     <div style={{ padding: "15px", maxWidth: "1030px", width: "100%" }}>
-      <h1>🖼 NFT Balances</h1>
+      <h1>NFT Balances</h1>
       <div>
         <div>
           <Text strong>Address:</Text>
@@ -114,27 +114,26 @@ function NFTBalance() {
 
               const nftTitle = (
                 <Tooltip title={`Token Address: ${nft.token_address}`}>
-                  {nft.metadata.name} ({nft.name})
+                  {nft.name}
                 </Tooltip>
               );
 
               const nftDescription = (
                 <div>
-                  {nft.metadata.title && (
+                  {nft.metadata?.title && (
                     <p>
                       <strong>{nft.metadata.title}</strong>
                     </p>
                   )}
-                  {nft.metadata.description && (
+                  {nft.metadata?.description && (
                     <p>{nft.metadata.description}</p>
                   )}
-                  {nft.metadata.company && (
+                  {nft.metadata?.company && (
                     <p>
-                      <br />
                       <em>{nft.metadata.company}</em>
                     </p>
                   )}
-                  {nft.metadata.start_date && nft.metadata.end_date && (
+                  {nft.metadata?.start_date && nft.metadata?.end_date && (
                     <p>
                       Start: {nft.metadata.start_date}
                       <br />
