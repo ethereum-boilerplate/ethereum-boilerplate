@@ -1,6 +1,15 @@
 import React, { useState } from "react";
 import { useMoralis, useNFTBalances } from "react-moralis";
-import { Card, Image, Tooltip, Modal, Input, Skeleton } from "antd";
+import {
+  Card,
+  Image,
+  Tooltip,
+  Modal,
+  Input,
+  Skeleton,
+  Typography,
+  Button,
+} from "antd";
 import {
   FileSearchOutlined,
   SendOutlined,
@@ -11,6 +20,7 @@ import AddressInput from "./AddressInput";
 import { useVerifyMetadata } from "hooks/useVerifyMetadata";
 
 const { Meta } = Card;
+const { Text } = Typography;
 
 const styles = {
   NFTs: {
@@ -26,13 +36,14 @@ const styles = {
 };
 
 function NFTBalance() {
-  const { data: NFTBalances } = useNFTBalances();
+  const { getNFTBalances, data: NFTBalances } = useNFTBalances();
   const { Moralis, chainId } = useMoralis();
   const [visible, setVisibility] = useState(false);
   const [receiverToSend, setReceiver] = useState(null);
   const [amountToSend, setAmount] = useState(null);
   const [nftToSend, setNftToSend] = useState(null);
   const [isPending, setIsPending] = useState(false);
+  const [address, setAddress] = useState();
   const { verifyMetadata } = useVerifyMetadata();
 
   async function transfer(nft, amount, receiver) {
@@ -73,6 +84,26 @@ function NFTBalance() {
   return (
     <div style={{ padding: "15px", maxWidth: "1030px", width: "100%" }}>
       <h1>🖼 NFT Balances</h1>
+      <div>
+        <div>
+          <Text strong>Address:</Text>
+        </div>
+        <div>
+          <AddressInput autoFocus onChange={setAddress} />
+          <Button
+            onClick={() => {
+              getNFTBalances({
+                params: {
+                  chain: "0x4",
+                  address: address,
+                },
+              });
+            }}
+          >
+            Fetch NFTs
+          </Button>
+        </div>
+      </div>
       <div style={styles.NFTs}>
         <Skeleton loading={!NFTBalances?.result}>
           {NFTBalances?.result &&
