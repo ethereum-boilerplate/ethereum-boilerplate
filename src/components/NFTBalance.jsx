@@ -13,7 +13,7 @@ import {
 import {
   FileSearchOutlined,
   SendOutlined,
-  ShoppingCartOutlined,
+  CloudDownloadOutlined,
 } from "@ant-design/icons";
 import { getExplorer } from "helpers/networks";
 import AddressInput from "./AddressInput";
@@ -83,7 +83,7 @@ function NFTBalance() {
   console.log("NFTBalances", NFTBalances);
   return (
     <div style={{ padding: "15px", maxWidth: "1030px", width: "100%" }}>
-      <h1>🖼 NFT Balances</h1>
+      <h1>NFT Balances</h1>
       <div>
         <div>
           <Text strong>Address:</Text>
@@ -110,10 +110,48 @@ function NFTBalance() {
             NFTBalances.result.map((nft, index) => {
               //Verify Metadata
               nft = verifyMetadata(nft);
+              console.log(nft);
+
+              const nftTitle = (
+                <Tooltip title={`Token Address: ${nft.token_address}`}>
+                  {nft.name}
+                </Tooltip>
+              );
+
+              const nftDescription = (
+                <div>
+                  {nft.metadata?.title && (
+                    <p>
+                      <strong>{nft.metadata.title}</strong>
+                    </p>
+                  )}
+                  {nft.metadata?.description && (
+                    <p>{nft.metadata.description}</p>
+                  )}
+                  {nft.metadata?.company && (
+                    <p>
+                      <em>{nft.metadata.company}</em>
+                    </p>
+                  )}
+                  {nft.metadata?.start_date && nft.metadata?.end_date && (
+                    <p>
+                      Start: {nft.metadata.start_date}
+                      <br />
+                      End: {nft.metadata.end_date}
+                    </p>
+                  )}
+                </div>
+              );
+
               return (
                 <Card
                   hoverable
                   actions={[
+                    <Tooltip title="View/Download">
+                      <CloudDownloadOutlined
+                        onClick={() => window.open(nft.image, "_blank")}
+                      />
+                    </Tooltip>,
                     <Tooltip title="View On Blockexplorer">
                       <FileSearchOutlined
                         onClick={() =>
@@ -129,11 +167,6 @@ function NFTBalance() {
                     <Tooltip title="Transfer NFT">
                       <SendOutlined onClick={() => handleTransferClick(nft)} />
                     </Tooltip>,
-                    <Tooltip title="Sell On OpenSea">
-                      <ShoppingCartOutlined
-                        onClick={() => alert("OPENSEA INTEGRATION COMING!")}
-                      />
-                    </Tooltip>,
                   ]}
                   style={{ width: 240, border: "2px solid #e7eaf3" }}
                   cover={
@@ -147,7 +180,7 @@ function NFTBalance() {
                   }
                   key={index}
                 >
-                  <Meta title={nft.name} description={nft.token_address} />
+                  <Meta title={nftTitle} description={nftDescription} />
                 </Card>
               );
             })}
