@@ -13,7 +13,7 @@ export default function AssetSelector({ setAsset, style }) {
     return [
       ...assets,
       {
-        balance: nativeBalance.balance,
+        balance: nativeBalance.balance === undefined ? 0 : nativeBalance.balance,
         decimals: nativeToken.decimals,
         name: nativeToken.name,
         symbol: nativeToken.symbol,
