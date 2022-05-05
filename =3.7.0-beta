@@ -1,0 +1,16 @@
+yarn add v1.22.18
+[1/4] Resolving packages...
+[2/4] Fetching packages...
+[3/4] Linking dependencies...
+[4/4] Building fresh packages...
+success Saved lockfile.
+success Saved 2 new dependencies.
+info Direct dependencies
+├─ @babel/plugin-syntax-flow@7.16.7
+└─ typescript@4.6.4
+info All dependencies
+├─ @babel/plugin-syntax-flow@7.16.7
+└─ typescript@4.6.4
+$ husky install
+husky - Git hooks installed
+Done in 52.98s.
