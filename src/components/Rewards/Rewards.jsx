@@ -3,7 +3,7 @@ import {
     pageTitle3Style,
     descriptionStyle,
     pageTitle4Style,
-    MBMT_TICKER,
+    MMT_TICKER,
     activeColor,
     BtnInfo,
     paddingLRContent,
@@ -17,10 +17,10 @@ import { SocialsLinks } from "../SocialsPage";
 const colName = 'mbmtBalance';
 const honeyColor = "#F8B60A";
 
-const mbmt = <span style={{ color: activeColor, fontWeight: 550, }}>{MBMT_TICKER}</span>;
-const mbmtWhite = <span style={{ color: "#FFF" }}>{MBMT_TICKER}</span>;
+const mbmt = <span style={{ color: activeColor, fontWeight: 550, }}>{MMT_TICKER}</span>;
+const mbmtWhite = <span style={{ color: "#FFF" }}>{MMT_TICKER}</span>;
 const mgl = <span style={{ color: "blue", fontWeight: 550, }}>$MGL</span>;
-const mbmtlong = <span style={{ color: honeyColor }}>Meta Body Movement Token</span>;
+const mbmtlong = <span style={{ color: honeyColor }}>Meta Moves Token</span>;
 const commingSoon = <span style={{}}>Comming Soon 🚀</span>;
 const borderRadius = "3rem";
 
@@ -67,14 +67,14 @@ const RewardsPage = () => {
                             <h1 style={{
                                 ...pageTitle2Style,
                                 padding: "0.5rem 0rem",
-                            }}>Stretch To Earn&nbsp;
+                            }}>Stretch {"&"} Earn&nbsp;
                                 <span style={{ color: honeyColor }}>
-                                    {MBMT_TICKER}
+                                    {MMT_TICKER}
                                 </span>
                             </h1>
                             <div style={{
                                 ...descriptionStyle,
-                            }}>Meta Body Movement Token</div>
+                            }}>Meta Moves Token</div>
                             <div style={{ marginBottom: "2rem", }} />
                         </div>
                         <div style={{
@@ -107,7 +107,7 @@ const RewardsPage = () => {
                                     </div>
                                 </li>
                                 <li>
-                                    Claim <b>$MBMT</b> token to your wallet&nbsp;{commingSoon}
+                                    Claim <b>$MMT</b> token to your wallet&nbsp;{commingSoon}
                                 </li>
 
                             </ul>
@@ -122,7 +122,7 @@ const RewardsPage = () => {
                                 color: "black",
                                 whiteSpace: "nowrap",
                             }}>
-                                You will not be able to earn <b>$MBMT</b> with demo avatar
+                                You will not be able to earn <b>$MMT</b> with demo avatar
                             </span>
                         </div>
                     </div>
@@ -221,7 +221,7 @@ const RewardsPage = () => {
                     ...pageTitle2Style,
                     textAlign: "center",
                 }}>
-                    Meta Body Movement Token and MetaGymLand tokens ecosystem
+                    Meta Moves Token and MetaGymLand tokens ecosystem
                 </div>
                 <div style={{
                     ...pageTitle3Style,
@@ -234,31 +234,9 @@ const RewardsPage = () => {
                     ...descriptionStyle,
                     textAlign: "center",
                 }}>
-                    The {mbmt} token will attempt to reflect the energy that you would feel after doing a workout
+                    Checkout our Whitepaper 👇
                     <br />
-                    But in the virtual world
-                    {divider}
-                    How does energy after a workout or stretching usually works?<br />
-                    It feels good after the workout, but you need to do them regularly otherwise it will go away
-                    {divider}
-                    {mbmt} will work in a similar way<br />
-                    It will reflect the energy that you accumulated after the workout<br />
-                    But not used and not maintained it will go away
-                    {divider}
-                    Once claiming other MetaGymLand digital assets with your {mbmt}<br />
-                    {mbmt} tokens used in claiming transaction will be automatically burned
-                    {divider}
-                    This way {mbmt} will behave as an <span style={{
-                        fontWeight: 700,
-                    }}>
-                        inflationary/deflationary algorithmic token
-                    </span>
-                    {divider}
-                    Once claiming youre earned {mbmt} into your wallet<br />
-                    or using {mbmt} to claim other MetaGymLand digital assets<br />
-                    you will need to pay a small fee with {mgl} token
-                    {divider}
-                    {mgl} will be the MetaGymLand governance and platform token<br />
+                    <a target="_blank" href="https://docs.metagymland.com/game-fi/overview"><b>LINK</b></a>
                 </div>
             </section >
         </div >

@@ -110,7 +110,7 @@ function NFTBalance() {
         color: brightFontCol,
       }}>
         <div style={pageTitleStyle}>
-          Your Avatars and Wearables <SkinFilled /></div>
+          Your GymBuddies <SkinFilled /></div>
         {
           filteredNFTBalances
             && filteredNFTBalances.length > 0 ? (<>

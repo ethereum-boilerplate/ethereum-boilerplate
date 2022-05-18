@@ -46,7 +46,7 @@ function DemoAvatar() {
                 }}>
                     <div style={{
                         ...pageTitleStyle,
-                    }}>I am a Demo NFT Avatar <SmileFilled style={{ color: "#FFBE59" }} />
+                    }}>I am a Demo GymBuddy <SmileFilled style={{ color: "#FFBE59" }} />
                     </div>
                     <div style={{
                         ...descriptionStyle,
@@ -76,13 +76,13 @@ function DemoAvatar() {
                             {chainLogo}
                         </div>
                         <p>
-                            You can try me first before buying your own NFT Avatar,&nbsp;
+                            You can try me first before buying your own GymBuddy NFT,&nbsp;
                             <span style={{ color: highlightTextColor }}>but I will disappear soon</span>
                             &nbsp;&nbsp;😱
                         </p>
 
                         <p>
-                            If you dont have your awesome Avatar yet, get one in our&nbsp;&nbsp;
+                            If you dont have your awesome GymBuddy yet, get one in our&nbsp;&nbsp;
                             <Button
                                 type="primary"
                                 style={BtnPrimary}

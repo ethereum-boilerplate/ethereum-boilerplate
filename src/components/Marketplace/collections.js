@@ -7,7 +7,7 @@ export const networkCollections = new Map([
     [
       {
         image: "https://ipfs.moralis.io:2053/ipfs/QmVF53rCjFiFSXyJd64NgeGioQG93gegdsymyMWtJLG9Ev/cover.gif",
-        name: "Moralis Avalanche Hackaton 2022 Test Drop",
+        name: "GymBuddies 2022 Test Drop",
         addrs: AllowedNftContracts.get(AvaxTestnetChainID),
       },
     ]

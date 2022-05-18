@@ -81,7 +81,7 @@ export default function Home() {
               ...BtnInfo,
             }}>
               <Link to="/demo-avatar">
-                Try with Demo Avatar
+                Try with Demo GymBuddy
               </Link>
             </Button>
           </div>
@@ -167,7 +167,7 @@ export default function Home() {
                 textDecoration: "none",
                 color: brightFontCol,
               }}
-                href="mailto:coderdidit@gmail.com">coderdidit@gmail.com</a>
+                href="mailto:metagymland@gmail.com">metagymland@gmail.com</a>
             </div>
 
           </div>

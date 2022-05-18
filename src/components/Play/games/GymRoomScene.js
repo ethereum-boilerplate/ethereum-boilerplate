@@ -16,7 +16,7 @@ import {
 } from "./Globals";
 import {
   mainBgColorNum,
-  MBMT_TICKER,
+  MMT_TICKER,
 } from "../../../GlobalStyles";
 import { EarnableScene } from './EarnableScene';
 
@@ -246,7 +246,7 @@ export class GymRoomScene extends EarnableScene {
       if (this.currentXPBalance()) return this.currentXPBalance().toFixed(4);
       return 0;
     }
-    mbmtEarnedOnventory.start(`${MBMT_TICKER}: ${formattedBalance()}`, 10);
+    mbmtEarnedOnventory.start(`${MMT_TICKER}: ${formattedBalance()}`, 10);
     // debugging
     if (debugCollisons) {
       debugCollisonBounds(wallsLayer, this)
