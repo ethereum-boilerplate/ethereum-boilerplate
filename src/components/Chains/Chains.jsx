@@ -97,9 +97,10 @@ function Chains() {
     console.log("current chainId: ", chainId);
   }, [chainId]);
 
-  const handleMenuClick = (e) => {
+  const handleMenuClick = async (e) => {
     console.log("switch to: ", e.key);
-    switchNetwork(e.key);
+    await switchNetwork(e.key);
+    window.location.reload();
   };
 
   const menu = (
