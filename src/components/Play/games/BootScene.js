@@ -2,6 +2,7 @@ import Phaser from "phaser";
 import { assets } from "./assets";
 import { GYM_ROOM_SCENE, PLAYER_KEY } from "./shared";
 import { getGameWidth, getGameHeight } from "./helpers";
+import { fixIfOldMoralisIPFSGateway } from '../../../helpers/moralis-uitils';
 
 const sceneConfig = {
     active: false,
@@ -43,15 +44,8 @@ export class BootScene extends Phaser.Scene {
                     this.startGame();
                 }
                 if (this.loadIndex === assets.length && this.selectedAvatar) {
-                    const fixIfOldMoralisIPFSGateway = (uriStr) => {
-                        const oldMoralisGateway = 'https://ipfs.moralis.io:2053';
-                        const newMoralisGateway = 'https://gateway.moralisipfs.com';
-                        if (uriStr.includes(oldMoralisGateway)) {
-                            return uriStr.replace(oldMoralisGateway, newMoralisGateway);
-                        }
-                        return uriStr;
-                    };
                     const uri = fixIfOldMoralisIPFSGateway(this.selectedAvatar.uri);
+                    this.load.crossOrigin = 'anonymous';
                     this.load.image(PLAYER_KEY, uri);
                 } else {
                     this.loadNextFile(this.loadIndex);
