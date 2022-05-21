@@ -2,7 +2,7 @@ import Phaser from "phaser";
 import { assets } from "./assets";
 import { GYM_ROOM_SCENE, PLAYER_KEY } from "./shared";
 import { getGameWidth, getGameHeight } from "./helpers";
-import { fixIfOldMoralisIPFSGateway } from '../../../helpers/moralis-uitils';
+import { temporaryReplaceMoralisIPFSGateway } from '../../../helpers/moralis-uitils';
 
 const sceneConfig = {
     active: false,
@@ -44,8 +44,8 @@ export class BootScene extends Phaser.Scene {
                     this.startGame();
                 }
                 if (this.loadIndex === assets.length && this.selectedAvatar) {
-                    const uri = fixIfOldMoralisIPFSGateway(this.selectedAvatar.uri);
-                    this.load.crossOrigin = 'anonymous';
+                    const uri = temporaryReplaceMoralisIPFSGateway(this.selectedAvatar.uri);
+                    console.log('loading NFT avatar into game', uri);
                     this.load.image(PLAYER_KEY, uri);
                 } else {
                     this.loadNextFile(this.loadIndex);
