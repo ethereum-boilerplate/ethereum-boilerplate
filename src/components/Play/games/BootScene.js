@@ -43,7 +43,7 @@ export class BootScene extends Phaser.Scene {
                     this.startGame();
                 }
                 if (this.loadIndex === assets.length && this.selectedAvatar) {
-                    this.load.crossOrigin = "Anonymous";
+                    this.load.crossOrigin = "anonymous";
                     this.load.image(PLAYER_KEY, this.selectedAvatar.uri);
                 } else {
                     this.loadNextFile(this.loadIndex);
