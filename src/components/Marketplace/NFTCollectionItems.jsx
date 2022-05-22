@@ -23,11 +23,9 @@ import {
     brightFontCol,
     NFTImgWrapperStyle,
     pageTitleMidStyle,
-    descriptionStyle
 } from "../../GlobalStyles";
 import { AllowedNftContracts } from "../../MglNftMetadata";
 import { MainChainID } from "../../MglNftMetadata";
-import { chainIdToNameAndLogo } from "../Chains/Chains";
 import Loader from "../Loader";
 import { shuffle } from "../../helpers/nft-list-utils";
 
@@ -61,8 +59,6 @@ function NFTCollectionItems({ nftAddress, colName, colImg }) {
 
     const contractABI = deployedABI;
     const marketAddress = mainMarketAddress;
-    const chainName = chainIdToNameAndLogo.get(marketPlaceChainId)[0];
-    const chainLogo = chainIdToNameAndLogo.get(marketPlaceChainId)[1];
 
     const contractProcessor = useWeb3ExecuteFunction();
     const nativeName = getNativeByChain(marketPlaceChainId);
@@ -379,20 +375,6 @@ function NFTCollectionItems({ nftAddress, colName, colImg }) {
                                 </Card>
                             )
                         })}
-                    <div style={{
-                        flexBasis: "100%",
-                    }}></div>
-                    <div style={{
-                        display: "flex",
-                        alignItems: "center",
-                        ...descriptionStyle,
-                    }}>
-                        NFTs collection on&nbsp;
-                        <span style={{
-                        }}>{chainName}</span>
-                        &nbsp;
-                        {chainLogo}
-                    </div>
                     {/* TODO get the one with lowest price */}
                     {/* modal boxes to be able to buy */}
                     {hasMarketItems(nftToBuy) ? (
