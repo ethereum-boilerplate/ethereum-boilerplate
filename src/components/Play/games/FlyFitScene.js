@@ -118,7 +118,7 @@ export class FlyFitScene extends EarnableScene {
 
         // player elements
         const plane = this.add.sprite(0, 0, AIRPLANE)
-            .setScale(PLAYER_SCALE * 0.8)
+            .setScale(PLAYER_SCALE * 0.12)
             .setDepth(1);
 
         // player sprite inside player container

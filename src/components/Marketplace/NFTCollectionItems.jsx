@@ -29,7 +29,7 @@ import { AllowedNftContracts } from "../../MglNftMetadata";
 import { MainChainID } from "../../MglNftMetadata";
 import { chainIdToNameAndLogo } from "../Chains/Chains";
 import Loader from "../Loader";
-
+import { shuffle } from "../../helpers/nft-list-utils";
 
 const styles = {
     banner: {
@@ -40,7 +40,6 @@ const styles = {
         height: "100px",
         width: "100px",
         borderRadius: "50%",
-        border: "solid 4px white",
         margin: "0 1rem",
     },
 };
@@ -80,7 +79,9 @@ function NFTCollectionItems({ nftAddress, colName, colImg }) {
             return query
                 .equalTo("sold", false)
                 .equalTo("confirmed", true)
-                .equalTo("nftContract", AllowedNftContracts.get(marketPlaceChainId)?.toLowerCase());
+                .containedIn("nftContract",
+                    AllowedNftContracts.get(chainId)?.map(c => c.toLowerCase())
+                );
         });
     const fetchMarketItems = JSON.parse(
         JSON.stringify(queryMarketItems.data, [
@@ -271,7 +272,7 @@ function NFTCollectionItems({ nftAddress, colName, colImg }) {
                 </div>
                 <Divider style={{ backgroundColor: brightFontCol }} />
                 <div style={NFTsDiv}>
-                    {NFTTokenIds?.result
+                    {NFTTokenIds && shuffle(NFTTokenIds.result)
                         .map((nft, index) => {
                             //Verify Metadata
                             nft = verifyMetadata(nft);

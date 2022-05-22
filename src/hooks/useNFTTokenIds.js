@@ -2,15 +2,21 @@ import { useMemo } from "react";
 import { useMoralis } from "react-moralis";
 import { useMoralisWeb3Api, useMoralisWeb3ApiCall } from "react-moralis";
 import { useIPFS } from "./useIPFS";
+import { TestGymBuddiesContract } from "../MglNftMetadata";
 
 export const useNFTTokenIds = (addr, limit = 10, forceToChainId) => {
     const { token } = useMoralisWeb3Api();
     const { chainId } = useMoralis();
     const { resolveLink } = useIPFS();
+    // TODO fix GymBuddies deployment to start from id 0
+    const resovleOffset = (_addr) => {
+        return _addr.toLowerCase() == TestGymBuddiesContract.toLowerCase() ? 1 : 0;
+    }
     const getAllTokenIdsOpts = {
         chain: forceToChainId || chainId,
         address: addr,
         limit: limit,
+        offset: resovleOffset(addr),
     };
     const {
         fetch: getNFTTokenIds,

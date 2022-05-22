@@ -147,11 +147,12 @@ export class ChartSquats extends EarnableScene {
 
         const playerPumpX = width - (width * .2);
         // pump
+        const pumpScale = 0.5;
         this.pump = this.add.sprite(0, 0, PUMP_OPEN)
             .setOrigin(0.5, 0)
-            .setScale(playerScale);
+            .setScale(pumpScale);
         this.pump.x = playerPumpX;
-        this.pump.y = ground.y - this.pump.height * playerScale;
+        this.pump.y = ground.y - this.pump.height * pumpScale;
 
         // player
         this.player = new Player({ scene: this, x: 0, y: 0, key: PLAYER_KEY, })
@@ -304,7 +305,7 @@ export class ChartSquats extends EarnableScene {
             if (player.cursorKeys?.down.isDown || curPose === gpose.NDWN
                 || curPose === gpose.BA_UP) {
                 this.player.y = this.playerInitialY;
-                player.y += 40;
+                player.y += 80;
                 this.pump.setTexture(PUMP_CLOSED);
                 // price up
                 this.curPrice -= 4 * changeFactor

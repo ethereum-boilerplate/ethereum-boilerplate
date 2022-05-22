@@ -9,26 +9,16 @@ export const highlightTextColor = "#01FFFE";
 export const highlightTextColorNum = 0x01FFFE;
 
 
-const NFTCardStyleSidesPadding = "0.2rem";
-
 export const NFTCardStyle = {
     width: 240,
     border: "3px solid #d3d3d3",
-    borderRadius: "1rem",
+    borderRadius: "1rem 1rem 0 0",
     color: "black",
-    paddingLeft: NFTCardStyleSidesPadding,
-    paddingRight: NFTCardStyleSidesPadding,
-    paddingTop: NFTCardStyleSidesPadding,
-    paddingBottom: "0",
 }
 
-const NFTImgWrapperPadding = "1rem";
+const NFTImgPadding = "0.5rem";
 export const NFTImgWrapperStyle = {
-    paddingLeft: NFTImgWrapperPadding,
-    paddingRight: NFTImgWrapperPadding,
-    paddingTop: NFTImgWrapperPadding,
-    paddingBottom: NFTImgWrapperPadding,
-    borderRadius: "0.8rem 0.8rem 0 0",
+    borderRadius: "1rem 1rem 0 0",
 }
 
 export const NFTsDiv = {
@@ -40,7 +30,13 @@ export const NFTsDiv = {
 }
 
 export const NFTImg = {
-    height: "200px",
+    paddingLeft: NFTImgPadding,
+    paddingRight: NFTImgPadding,
+    paddingTop: NFTImgPadding,
+    paddingBottom: NFTImgPadding,
+    minHeight: "305px",
+    width: "auto",
+    borderRadius: "1rem 1rem 0 0",
 }
 
 const BtnSidesPadding = "12px";
