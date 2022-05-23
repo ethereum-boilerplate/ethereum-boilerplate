@@ -23,6 +23,9 @@ function MenuItems() {
       <Menu.Item key="/avatars">
         <NavLink to="/avatars">Your GymBuddies</NavLink>
       </Menu.Item>
+      <Menu.Item key="/mint">
+        <NavLink to="/mint">Mint</NavLink>
+      </Menu.Item>
       <Menu.Item key="/marketplace" id="marketplace-many-item">
         <NavLink to="/marketplace">Marketplace</NavLink>
       </Menu.Item>

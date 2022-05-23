@@ -12,6 +12,7 @@ import "./style.css";
 import Home from "components/Home";
 import SocialsPage from "components/SocialsPage";
 import Marketplace from "components/Marketplace";
+import MintGymBuddyPage from "components/MintGymBuddy"
 import LoaderTest from "components/LoaderTest";
 import Contract from "components/Contract/Contract";
 import MenuItems from "./components/MenuItems";
@@ -138,6 +139,9 @@ const App = ({ isServerInfo }) => {
             </Route>
             <Route path="/rewards">
               <RewardsPage />
+            </Route>
+            <Route path="/mint">
+              <MintGymBuddyPage />
             </Route>
             <Route path="/marketplace">
               <Marketplace />
