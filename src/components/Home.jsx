@@ -57,19 +57,20 @@ export default function Home() {
         }}>
           <div style={{
             ...styles.titleText,
-            paddingTop: "1rem",
+            paddingTop: "3rem",
             color: "#FFFFFF",
           }}>
             Ready to get started?
           </div>
           <div style={{
             ...styles.text,
+            fontSize: "20px",
           }}>
             Follow steps below, have fun and get fit!
           </div>
 
           <div style={{
-            paddingTop: "4.5rem",
+            paddingTop: "1.5rem",
           }}>
             <Button
               type="primary"
