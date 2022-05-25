@@ -18,7 +18,7 @@ import Contract from "components/Contract/Contract";
 import MenuItems from "./components/MenuItems";
 import { Link } from "react-router-dom";
 import { mainFontColor } from "GlobalStyles";
-import { MGLSmallLogo } from "Logos";
+import { MGLLogo } from "Logos";
 import { AppFooter } from "AppFooter";
 import PlayPage from "components/Play";
 import GymRoomSandbox from "components/Play/games/GymRoomSandbox";
@@ -82,7 +82,7 @@ const App = ({ isServerInfo }) => {
             marginTop: "2rem",
             background: "none",
           }}>
-            <Link to="/" style={styles.homeLink}><MGLSmallLogo /></Link>
+            <Link to="/" style={styles.homeLink}><MGLLogo /></Link>
           </div>
           <MenuItems />
           <div style={styles.headerRight}>

@@ -34,13 +34,13 @@ function Marketplace() {
           )
         })
         }
-        <br />
       </div>
       <div style={{
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
         ...descriptionStyle,
+        marginTop: "3rem",
       }}>
         NFTs collection on&nbsp;
         <span style={{

@@ -18,8 +18,6 @@ const honeyColor = "#535353";
 
 const mbmtWhite = <span style={{ color: "#FFF" }}>{MMT_TICKER}</span>;
 const mbmtlong = <span style={{
-    textDecoration: "underline",
-    textDecorationColor: "#14C3FB",
 }}>Meta Moves Token</span>;
 const commingSoon = <span style={{}}>Comming Soon 🚀</span>;
 const borderRadius = "3rem";
@@ -58,7 +56,7 @@ const RewardsPage = () => {
                                 ...pageTitle2Style,
                                 padding: "0.5rem 0rem",
                             }}>Stretch {"&"} Earn&nbsp;
-                                <span style={{ textDecoration: "underline", textDecorationColor: "#14C3FB", }}>
+                                <span style={{}}>
                                     {MMT_TICKER}
                                 </span>
                             </h1>
@@ -200,7 +198,7 @@ const RewardsPage = () => {
                 marginTop: "3rem",
                 color: "black",
                 backgroundColor: secondaryBgColor,
-                padding: "3rem 0rem",
+                padding: "4rem 0rem",
                 minHeight: "20vh",
             }}>
                 <div style={{

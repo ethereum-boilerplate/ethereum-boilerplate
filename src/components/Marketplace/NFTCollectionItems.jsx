@@ -266,7 +266,11 @@ function NFTCollectionItems({ nftAddress, colName, colImg }) {
                         {colName}
                     </div>
                 </div>
-                <Divider style={{ backgroundColor: mainFontColor }} />
+                <Divider style={{ 
+                    color: mainFontColor,
+                    marginTop: "0", 
+                    marginBottom: "3rem", 
+                }} />
                 <div style={NFTsDiv}>
                     {NFTTokenIds && shuffle(NFTTokenIds.result)
                         .map((nft, index) => {
@@ -338,14 +342,14 @@ function NFTCollectionItems({ nftAddress, colName, colImg }) {
                                                     textAlign: "center"
                                                 }}>
                                                     <h3>
-                                                        <b style={{ color: "darkblue" }}>Total</b>
-                                                        &nbsp;<b style={{ color: "cadetblue" }}>/</b>&nbsp;
-                                                        <b style={{ color: "crimson" }}>For Sale</b>
+                                                        <b style={{ color: "#5740C1" }}>Total</b>
+                                                        &nbsp;<b style={{ color: "#5740C1" }}>/</b>&nbsp;
+                                                        <b style={{ color: "#FF74A6" }}>For Sale</b>
                                                     </h3>
                                                     <h1>
-                                                        <b style={{ color: "darkblue" }}>{nft.amount}</b>
-                                                        &nbsp;<b style={{ color: "cadetblue" }}>/</b>&nbsp;
-                                                        <b style={{ color: "crimson" }}>{getAmountForSale(nft)}</b>
+                                                        <b style={{ color: "#5740C1" }}>{nft.amount}</b>
+                                                        &nbsp;<b style={{ color: "#5740C1" }}>/</b>&nbsp;
+                                                        <b style={{ color: "#FF74A6" }}>{getAmountForSale(nft)}</b>
                                                     </h1>
                                                     <div>
                                                         {hasMarketItems(nft) ? (
@@ -364,7 +368,6 @@ function NFTCollectionItems({ nftAddress, colName, colImg }) {
                                                             </h4>
                                                         ) : (
                                                             <>
-                                                                <br />
                                                             </>
                                                         )}
                                                     </div>

@@ -181,6 +181,7 @@ function NFTBalance() {
                               <section style={{
                                 padding: "0 0.5rem",
                                 marginBottom: "1rem",
+                                color: mainFontColor,
                               }}>
                                 <p><b>{nft.name}</b></p>
                                 <p><span>#{nft.token_id}</span></p>

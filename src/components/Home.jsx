@@ -46,9 +46,9 @@ export default function Home() {
     <div>
       <section style={{
         display: "grid",
-        gridTemplateColumns: "1fr 1fr",
-        paddingTop: "6rem",
-        paddingBottom: "6rem",
+        gridTemplateColumns: "1fr 1.5fr",
+        paddingTop: "4rem",
+        paddingBottom: "4rem",
         paddingLeft: "6rem",
         paddingRight: "6rem",
         background: gradientBg2,
@@ -220,7 +220,7 @@ export default function Home() {
         }}>
           <MGLSmallLogo />
           <div style={{
-            opacity: 0.8,
+            marginTop: "1rem",
           }}>
             <a style={{
               textDecoration: "none",

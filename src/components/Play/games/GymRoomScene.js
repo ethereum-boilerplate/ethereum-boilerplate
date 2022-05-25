@@ -162,7 +162,7 @@ export class GymRoomScene extends EarnableScene {
       this,
       width / 2 + width / 4,
       height * 0.015,
-      { wrapWidth: 280 }
+      { wrapWidth: 280 },
     );
 
     hintTextBox.setDepth(1);
@@ -233,20 +233,20 @@ export class GymRoomScene extends EarnableScene {
     });
 
     // MBMT inventory
-    const mbmtEarnedOnventory = createTextBox(this,
+    const mbmtEarnedInventory = createTextBox(this,
       width * 0.05, height * 0.015,
       { wrapWidth: 280 },
-      mainBgColorNum,
-      0x4154e8,
+      0xFFD7D7,
+      0xFFFFFF,
       "center",
-      "#FFEB3A"
+      "#FD377E"
     );
-    mbmtEarnedOnventory.setScrollFactor(0, 0);
+    mbmtEarnedInventory.setScrollFactor(0, 0);
     const formattedBalance = () => {
       if (this.currentXPBalance()) return this.currentXPBalance().toFixed(4);
       return 0;
     }
-    mbmtEarnedOnventory.start(`${MMT_TICKER}: ${formattedBalance()}`, 10);
+    mbmtEarnedInventory.start(`${MMT_TICKER}: ${formattedBalance()}`, 10);
     // debugging
     if (debugCollisons) {
       debugCollisonBounds(wallsLayer, this)
