@@ -199,7 +199,7 @@ export default function Home() {
 
       <section style={{
         marginTop: "3rem",
-        marginBottom: "3rem",
+        // marginBottom: "3rem",
         padding: "2.8rem",
         alignItems: "center",
         justifyContent: "center",

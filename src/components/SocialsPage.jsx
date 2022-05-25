@@ -14,8 +14,8 @@ const btnsPadding = "0.5rem";
 const DiscordIcon = (props) => (
     <svg
         xmlns="http://www.w3.org/2000/svg"
-        width={41.333}
-        height={41.333}
+        width={34.333}
+        height={34.333}
         viewBox="0 0 31 31"
         {...props}
     >
@@ -28,8 +28,8 @@ const DiscordIcon = (props) => (
 const TwitterIcon = (props) => (
     <svg
         xmlns="http://www.w3.org/2000/svg"
-        width={37.333}
-        height={37.333}
+        width={30.333}
+        height={30.333}
         viewBox="0 0 28 28"
         {...props}
     >
@@ -41,8 +41,8 @@ const TwitterIcon = (props) => (
 const TelegramIcon = (props) => (
     <svg
         xmlns="http://www.w3.org/2000/svg"
-        width={37.333}
-        height={37.333}
+        width={30.333}
+        height={30.333}
         viewBox="0 0 28 28"
         {...props}
     >
@@ -53,8 +53,8 @@ const TelegramIcon = (props) => (
 const TikTokIcon = (props) => (
     <svg
         xmlns="http://www.w3.org/2000/svg"
-        width={37.333}
-        height={37.333}
+        width={30.333}
+        height={30.333}
         viewBox="0 0 28 28"
         {...props}
     >
@@ -65,8 +65,8 @@ const TikTokIcon = (props) => (
 const InstagramIcon = (props) => (
     <svg
         xmlns="http://www.w3.org/2000/svg"
-        width={32}
-        height={32}
+        width={25}
+        height={25}
         viewBox="0 0 24 24"
         {...props}
     >

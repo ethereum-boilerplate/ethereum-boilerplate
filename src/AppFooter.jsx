@@ -17,7 +17,8 @@ export const AppFooter = ({ style }) => {
             <Divider style={{
                 ...style,
                 backgroundColor: mainFontColor,
-                margin: "0.5rem 0rem"
+                marginTop: "0",
+                marginBottom: "0.5rem",
             }} />
 
             <footer style={{

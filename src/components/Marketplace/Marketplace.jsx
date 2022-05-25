@@ -16,6 +16,7 @@ function Marketplace() {
     <div style={{
       ...paddingLRContent,
       marginTop: "3rem",
+      marginBottom: "4rem",
     }}>
       <div style={{
         padding: "0",

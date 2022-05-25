@@ -42,6 +42,7 @@ const UseCorrectNetworkWarn = () => {
                 display: "grid",
                 placeItems: "center",
                 marginTop: "4rem",
+                marginBottom: "4rem",
                 textAlign: "center",
             }}>
                 <h1 style={{

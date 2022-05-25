@@ -44,7 +44,6 @@ const styles = {
   content: {
     fontFamily: "Roboto, sans-serif",
     marginTop: "10px",
-    marginBottom: "40px",
     minHeight: "30vh",
   },
   footer: {
