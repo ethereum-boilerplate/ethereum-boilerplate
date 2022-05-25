@@ -58,9 +58,7 @@ const styles = {
     fontWeight: "500",
   },
   homeLink: {
-    color: "inherit",
-    fontSize: "17px",
-    fontWeight: "500",
+    height: 0,
   },
 };
 
@@ -82,8 +80,7 @@ const App = ({ isServerInfo }) => {
       <Router>
         <Header style={styles.header}>
           <div style={{
-            marginTop: "1rem",
-            display: "flex",
+            marginTop: "2rem",
             background: "none",
           }}>
             <Link to="/" style={styles.homeLink}><MGLSmallLogo /></Link>

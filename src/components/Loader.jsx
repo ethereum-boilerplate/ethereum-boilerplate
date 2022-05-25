@@ -4,11 +4,7 @@ import { MGLSmallLogo } from 'Logos';
 const mglLogo = <div style={{
     padding: "1rem",
 }}>
-    <MGLSmallLogo
-        width={"25"}
-        height={"25"}
-        viewBox={"0 0 16 16"}
-    />
+    <MGLSmallLogo />
 </div>
 
 const Loader = ({ style = {

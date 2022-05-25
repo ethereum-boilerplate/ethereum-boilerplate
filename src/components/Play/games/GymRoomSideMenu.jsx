@@ -105,7 +105,7 @@ const MiniGameInstructions = new Map([
             </>), content: (
                 <>
                     {pumpThePriceImg}
-                    Do squats Or Both arms up 
+                    Do squats Or Both arms up
                     {beCreative}
                 </>
             )
@@ -169,14 +169,14 @@ const SideMenu = () => {
     >
         <div style={{
             width: "inherit",
-            marginLeft: "-3px",
+            marginLeft: "-9px",
             marginBottom: "1rem",
         }}>
             <Link to="/">
                 <MGLSmallLogo
-                    width={"35"}
-                    height={"35"}
-                    viewBox={"0 0 16 16"}
+                    width={43}
+                    height={23}
+                    viewBox={"0 0 53 43"}
                 />
             </Link>
         </div>

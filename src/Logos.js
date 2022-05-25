@@ -22,40 +22,81 @@ export const MGLLogo = ({ width = "139", height = "43", viewBox = "0 0 139 43" }
     </svg>
 );
 
-// export const MGLSmallLogo = ({ width = "16", height = "16", viewBox = "0 0 16 16" }) => (
-//     <svg
-//         xmlns="http://www.w3.org/2000/svg"
-//         width={width}
-//         height={height}
-//         fill="none"
-//         viewBox={viewBox}
-//     >
-//         <path
-//             fill="#fff"
-//             d="M4.666 1.29l.178.792V9H3.176V1.29h1.49zm6.453-.083c.31 0 .602.064.875.191.274.119.51.292.711.52.21.228.37.501.479.82.118.31.177.647.177 1.012V9h-1.64V4.803c0-.31-.005-.602-.014-.875 0-.283-.027-.533-.082-.752a1.002 1.002 0 00-.273-.506c-.119-.128-.306-.191-.561-.191-.064 0-.2.013-.41.04-.21.028-.451.105-.725.233v-1.08c.246-.146.497-.26.752-.342.255-.082.492-.123.711-.123zM8.754 2.26c.11.164.187.342.232.533.055.182.087.374.096.574.018.2.023.41.014.63V9H7.44V4.803v-.875c0-.283-.027-.533-.082-.752a1.002 1.002 0 00-.273-.506c-.128-.128-.315-.191-.56-.191-.11 0-.274.022-.493.068-.21.036-.42.105-.629.205v-1.08c.22-.128.451-.233.698-.315.255-.082.505-.123.752-.123.419 0 .77.087 1.052.26.292.173.574.429.848.766z"
-//         ></path>
-//         <path
-//             stroke="#F96F0B"
-//             strokeLinecap="round"
-//             strokeWidth="4"
-//             d="M4 13h8"
-//         ></path>
-//     </svg>
-// );
-
-
-// footer logos
-
-export const MGLSmallLogo = ({ width = "64", height = "64", viewBox = "0 0 16 16" }) => {
-    return (<Image
-        preview={false}
-        src={mglLogo}
-        alt=""
-        style={{
-            width: `${width}px`,
-            height: "auto",
-        }}
-    />)
+export const MGLSmallLogo = (props) => {
+    return (
+        <svg
+            width={62}
+            height={46}
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            {...props}
+        >
+            <rect
+                y={13.661}
+                width={19.917}
+                height={44.218}
+                rx={9.959}
+                transform="rotate(-43 0 13.661)"
+                fill="url(#a)"
+            />
+            <rect
+                x={46.846}
+                width={19.917}
+                height={44.217}
+                rx={9.959}
+                transform="rotate(43 46.846 0)"
+                fill="url(#b)"
+            />
+            <circle cx={10.354} cy={35.911} r={6.036} fill="url(#c)" />
+            <circle cx={51.143} cy={35.911} r={6.036} fill="url(#d)" />
+            <defs>
+                <linearGradient
+                    id="a"
+                    x1={9.959}
+                    y1={13.661}
+                    x2={9.959}
+                    y2={57.879}
+                    gradientUnits="userSpaceOnUse"
+                >
+                    <stop stopColor="#FF74A6" />
+                    <stop offset={0.695} stopColor="#FFCC9C" />
+                </linearGradient>
+                <linearGradient
+                    id="b"
+                    x1={56.804}
+                    y1={0}
+                    x2={56.804}
+                    y2={44.217}
+                    gradientUnits="userSpaceOnUse"
+                >
+                    <stop offset={0.208} stopColor="#408CFD" />
+                    <stop offset={1} stopColor="#73F8F0" />
+                </linearGradient>
+                <linearGradient
+                    id="c"
+                    x1={10.354}
+                    y1={29.876}
+                    x2={10.354}
+                    y2={41.947}
+                    gradientUnits="userSpaceOnUse"
+                >
+                    <stop stopColor="#F2A4FF" />
+                    <stop offset={1} stopColor="#FFCC9C" />
+                </linearGradient>
+                <linearGradient
+                    id="d"
+                    x1={51.143}
+                    y1={29.876}
+                    x2={51.143}
+                    y2={41.947}
+                    gradientUnits="userSpaceOnUse"
+                >
+                    <stop stopColor="#1CC6FC" />
+                    <stop offset={1} stopColor="#C4FFFB" />
+                </linearGradient>
+            </defs>
+        </svg>
+    )
 }
 
 export const MoralisLogo = ({ width = "78", height = "25", viewBox = "0 0 241 45" }) => (

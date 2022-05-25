@@ -217,11 +217,7 @@ export default function Home() {
           textAlign: "center",
           fontSize: "18px",
         }}>
-          <MGLSmallLogo
-            width={"25"}
-            height={"25"}
-            viewBox={"0 0 16 16"}
-          />
+          <MGLSmallLogo />
           <div style={{
             opacity: 0.8,
           }}>
