@@ -1,10 +1,11 @@
 import { Divider } from "antd";
 import packageJson from '../package.json';
-import { mainFontColor } from "GlobalStyles";
+import { mainFontColor, descriptionStyle } from "GlobalStyles";
 import {
     MGLSmallLogo,
     MoralisLogo,
     AvaxLogo,
+    ChainLinkLogo,
     CoderDitiLogo,
     TfJSLogo,
     MediaPipeLogo,
@@ -17,14 +18,15 @@ export const AppFooter = ({ style }) => {
             <Divider style={{
                 ...style,
                 backgroundColor: mainFontColor,
-                marginTop: "0",
-                marginBottom: "0.5rem",
+                marginTop: 0
             }} />
 
             <footer style={{
                 ...style,
                 display: "grid",
-                gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr 1fr 1fr",
+                gap: "2rem",
+                gridTemplateColumns: "9fr 1fr 1fr 1fr 1fr",
+                lineHeight: 2
             }}>
                 <div style={{
                     textAlign: "left",
@@ -32,11 +34,57 @@ export const AppFooter = ({ style }) => {
                     <MGLSmallLogo />
                 </div>
 
+                <div>
+                    <div style={{
+                        fontSize: "18px",
+                        fontWeight: 700,
+                        marginBottom: "1rem",
+                    }}>
+                        MetaGymLand
+                    </div>
+                    <a style={{
+                        ...descriptionStyle,
+                        textDecoration: "none",
+                        color: mainFontColor,
+                    }}
+                        href="/#"
+                    >
+                        Home
+                    </a>
+                    <br />
+                    <a style={{
+                        ...descriptionStyle,
+                        textDecoration: "none",
+                        color: mainFontColor,
+                    }}
+                        href="https://metagymland.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >About</a>
+                    <br />
+                    <a style={{
+                        ...descriptionStyle,
+                        textDecoration: "none",
+                        color: mainFontColor,
+                    }}
+                        href="https://docs.metagymland.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Whitepaper</a>
+                </div>
+
                 <div style={{
                     textAlign: "center",
                 }}>
-                    <div style={{ color: mainFontColor }}>
-                        <div>Built with</div>
+                    <div style={{
+                        fontSize: "18px",
+                        fontWeight: 700,
+                        marginBottom: "1rem",
+                    }}>Build with
+                    </div>
+                    <div style={{
+                    }}>
                         <a
                             target="_blank"
                             rel="noopener noreferrer"
@@ -45,47 +93,48 @@ export const AppFooter = ({ style }) => {
                             <MoralisLogo />
                         </a>
                     </div>
-                </div>
-                <div style={{
-                    textAlign: "center",
-                }}>
-                    <div style={{ color: mainFontColor }}>
-                        <div>Powered by</div>
+                    <div style={{
+                    }}>
                         <a
                             target="_blank"
                             rel="noopener noreferrer"
                             href="https://www.avax.network"
                         >
-                            <span style={{ display: "flex", justifyContent: "center" }}><AvaxLogo /></span>
+                            <AvaxLogo />
                         </a>
                     </div>
-                </div>
-                <div style={{
-                    textAlign: "center",
-                }}>
-                    <div style={{ color: mainFontColor }}>
-                        AI Powered by<div>
-                            <a
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                href="https://www.tensorflow.org/js"
-                            >
-                                <TfJSLogo textFill={"#595959"} />
-                            </a>&nbsp;&nbsp;
-                            <a
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                href="https://mediapipe.dev"
-                            >
-                                <MediaPipeLogo textFill={"#595959"} />
-                            </a></div>
+                    <div style={{
+                    }}>
+                        <a
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            href="https://chain.link"
+                        >
+                            <ChainLinkLogo />
+                        </a>
                     </div>
-                </div>
-                <div style={{
-                    textAlign: "center",
-                }}>
-                    <div style={{ color: mainFontColor }}>
-                        <div>Game Engine</div>
+                    <div style={{
+                    }}>
+                        <a
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            href="https://www.tensorflow.org/js"
+                        >
+                            <TfJSLogo textFill={"#595959"} />
+                        </a>
+                    </div>
+                    <div style={{
+                    }}>
+                        <a
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            href="https://mediapipe.dev"
+                        >
+                            <MediaPipeLogo textFill={"#595959"} />
+                        </a>
+                    </div>
+                    <div style={{
+                    }}>
                         <a
                             target="_blank"
                             rel="noopener noreferrer"
@@ -95,10 +144,26 @@ export const AppFooter = ({ style }) => {
                                 width={"60"}
                                 height={"25"}
                             />
-                        </a>
-                    </div>
+                        </a></div>
                 </div>
-                <div style={{
+
+                <div style={{ color: mainFontColor }}>
+                    <div style={{
+                        fontSize: "18px",
+                        fontWeight: 700,
+                        marginBottom: "1rem",
+                    }}>
+                        Coded by
+                    </div>
+                    <a
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href="https://coderdidit.com"
+                    >
+                        <CoderDitiLogo />
+                    </a>
+                </div>
+                {/* <div style={{
                     textAlign: "center",
                 }}>
                     <div style={{ color: mainFontColor }}>
@@ -111,7 +176,8 @@ export const AppFooter = ({ style }) => {
                             <CoderDitiLogo />
                         </a>
                     </div>
-                </div>
+                </div> */}
+
                 <div
                 >
                     <div style={{

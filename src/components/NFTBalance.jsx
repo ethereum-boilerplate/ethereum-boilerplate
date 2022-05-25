@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { useMoralis, useNFTBalances, useWeb3ExecuteFunction } from "react-moralis";
-import { Modal, Button, Card, Image, Tooltip, Skeleton } from "antd";
+import { Modal, Button, Image, Skeleton } from "antd";
 import {
   FileSearchOutlined,
   // eslint-disable-next-line no-unused-vars
@@ -14,7 +14,6 @@ import {
   pageTitleStyle,
   descriptionStyle
 } from "GlobalStyles";
-import { Input } from "antd";
 import { Link } from "react-router-dom";
 import { mainMarketAddress, deployedABI, listItemFunction } from "../MarketplaceSCMetadata";
 import { NFTCardStyle, NFTsDiv, NFTImg, BtnPrimary, NFTImgWrapperStyle } from "../GlobalStyles";
@@ -24,7 +23,6 @@ import Loader from "./Loader";
 import { resolveNftSprite, resolveBGColor } from "../helpers/nft-props-resolvers";
 import { shuffle } from "../helpers/nft-list-utils";
 
-const { Meta } = Card;
 
 function NFTBalance() {
   // eslint-disable-next-line no-unused-vars
@@ -34,8 +32,10 @@ function NFTBalance() {
   const { chainId, user } = useMoralis();
   const { verifyMetadata } = useVerifyMetadata();
 
+  // eslint-disable-next-line no-unused-vars
   const [visible, setVisibility] = useState(false);
   const [nftToList, setNftToList] = useState(null);
+  // eslint-disable-next-line no-unused-vars
   const [listingPrice, setListingPrice] = useState(0);
 
   const contractABI = deployedABI;
@@ -67,6 +67,7 @@ function NFTBalance() {
     }, secondsToGo * 1000);
   }
 
+  // eslint-disable-next-line no-unused-vars
   const listNft = async () => {
     if (listingPrice <= 0) {
       alert("price must be greater then 0");
@@ -106,6 +107,7 @@ function NFTBalance() {
     return (
       <div style={{
         marginTop: "3rem",
+        marginBottom: "3rem",
         padding: "0 14%",
         width: "100%",
         background: "none",
