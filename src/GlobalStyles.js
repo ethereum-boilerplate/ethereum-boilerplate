@@ -10,7 +10,7 @@ export const highlightTextColor = "#01FFFE";
 export const highlightTextColorNum = 0x01FFFE;
 
 export const gradientBg1 = "linear-gradient(180deg, rgba(182, 220, 255, 0.32) 0%, rgba(255, 215, 215, 0.23) 100%)";
-export const gradientBg2 = "linear-gradient(180deg, #5740C1 0%, #988ACB 21.88%, #FFA3C4 63.54%, #74F8F0 100%)";
+export const gradientBg2 = "linear-gradient(135deg, rgb(78, 51, 175) 14%, rgb(255, 116, 166) 55%, rgb(27, 222, 210) 85%, rgb(27, 222, 210))";
 
 export const NFTCardStyle = {
     width: 240,

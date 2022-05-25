@@ -3,6 +3,7 @@ import {
     Telegram,
     Twitter,
     TikTok,
+    Instagram,
     Newsletter
 } from "../SocialLinksCfg";
 import { Button } from 'antd';
@@ -61,12 +62,26 @@ const TikTokIcon = (props) => (
     </svg>
 )
 
+const InstagramIcon = (props) => (
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={32}
+        height={32}
+        viewBox="0 0 24 24"
+        {...props}
+    >
+        <path d="M3.7.7C1.2 1.4 0 5.1 0 12c0 10.3 1.6 12 12.2 12 7.7 0 10.6-1.5 11.4-5.7.9-4.8 0-15.1-1.5-16.6-1.2-1.2-15-2-18.4-1zm17.1 2.5c1.6 1.6 1.6 16 0 17.6-1.6 1.6-16 1.6-17.6 0C2 19.6 1.5 6.5 2.6 3.6 3.1 2.3 4.9 2 11.4 2c5 0 8.7.5 9.4 1.2z" />
+        <path d="M17.6 4.9c-.4.5-.2 1.2.3 1.5.5.4 1.2.2 1.5-.3.4-.5.2-1.2-.3-1.5-.5-.4-1.2-.2-1.5.3zM9.7 6.7c-2.4.6-3.9 4.7-2.8 7.7 1.7 4.3 9.2 4 10.4-.4.6-2.5-.8-7-2.2-7-.5 0-1.5-.2-2.3-.4-.7-.2-2.1-.2-3.1.1zm5.7 3.5c2.3 3.7-3.6 7.7-6.3 4.4-.8-1-1.1-2.6-.7-4.2.5-2 1.2-2.5 3.3-2.2 1.4.2 3.1 1.1 3.7 2z" />
+    </svg>
+)
+
+
 export const SocialsLinks = () => {
     return (
         <>
             <div style={{
                 display: "grid",
-                gridTemplateColumns: "1fr 1fr 1fr 1fr",
+                gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr",
                 justifyContent: "center",
                 alignItems: "center"
             }}>
@@ -94,6 +109,15 @@ export const SocialsLinks = () => {
                         <TwitterIcon />
                     </a>
                 </div>
+                <div style={{
+                    display: "grid",
+                    justifyContent: "center",
+                }}>
+                    <a href={Instagram} target="_blank" rel="noreferrer">
+                        <InstagramIcon />
+                    </a>
+                </div>
+
                 <div style={{
                     display: "grid",
                     justifyContent: "center",
