@@ -39,8 +39,8 @@ yarn install
 Example:
 
 ```jsx
-REACT_APP_MORALIS_APPLICATION_ID = xxxxxxxxxxxx
-REACT_APP_MORALIS_SERVER_URL = https://xxxxxx.grandmoralis.com:2053/server
+REACT_APP_MORALIS_APPLICATION_ID = "xxxxxxxxxxxx"
+REACT_APP_MORALIS_SERVER_URL = "xxxxxxxxxx"
 ```
 
 🚴‍♂️ Run your App:
