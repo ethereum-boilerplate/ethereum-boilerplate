@@ -3,7 +3,10 @@ import { Button, Card, Image, Tooltip, Alert, Badge } from "antd";
 import { FileSearchOutlined, SmileFilled } from "@ant-design/icons";
 import { getExplorer } from "helpers/networks";
 import { Link } from "react-router-dom";
-import { NFTCardStyle, NFTsDiv, NFTImg, BtnPrimary, BtnInfo, NFTImgWrapperStyle } from "../GlobalStyles";
+import {
+    NFTCardStyle, NFTsDiv,
+    NFTImg, BtnPrimary, BtnInfo, NFTImgWrapperStyle
+} from "../GlobalStyles";
 import { DemoNFTContracts } from "../MglNftMetadata";
 import { AvatarCtx } from "index";
 import { useNFTTokenIds } from "hooks/useNFTTokenIds";
@@ -14,8 +17,6 @@ import { resolveNftSprite } from "../helpers/nft-props-resolvers";
 import {
     pageTitleStyle,
     descriptionStyle,
-    highlightTextColor,
-    paddingLRContent,
 } from "GlobalStyles";
 import Loader from "./Loader";
 
@@ -39,8 +40,8 @@ function DemoAvatar() {
 
         return (
             <div style={{
-                ...paddingLRContent,
                 textAlign: "center",
+                marginTop: "3rem",
             }}>
                 <div style={{
                     marginTop: "1rem",
@@ -78,36 +79,63 @@ function DemoAvatar() {
                         </div>
                         <p>
                             You can try me first before buying your own GymBuddy NFT,&nbsp;
-                            <span style={{ color: highlightTextColor }}>but I will disappear soon</span>
+                            <span style={{ fontWeight: 700 }}>but I will disappear soon</span>
                             &nbsp;&nbsp;😱
                         </p>
 
-                        <p>
-                            If you dont have your awesome GymBuddy yet, get one in our&nbsp;&nbsp;
-                            <Button
-                                type="primary"
-                                style={BtnPrimary}
-                            >
-                                <Link to="/marketplace">
-                                    Marketplace{" "}🚀
-                                </Link>
-                            </Button>
-                        </p>
+                        <br />
+                        <p> If you dont have your awesome GymBuddy yet</p>
+                        <p>Simply mint your first GymBuddy or visit Marketplace</p>
+                        <p> and start your MetaGymLand Metaverse adventure!</p>
+                        <section style={{
+                            display: "grid",
+                            justifyContent: "center",
+                            alignContent: "center",
+                        }}>
+                            <br />
+                            <div style={{
+                                display: "grid",
+                                gridTemplateColumns: "1fr 1fr",
+                                gap: "2rem",
+                            }}>
+                                <Button
+                                    type="primary"
+                                    style={{
+                                        ...BtnPrimary,
+                                    }}
+                                >
+                                    <Link to="/mint">
+                                        Mint
+                                    </Link>
+                                </Button>
+                                <Button
+                                    type="primary"
+                                    style={BtnInfo}
+                                >
+                                    <Link to="/marketplace">
+                                        Marketplace{" "}🚀
+                                    </Link>
+                                </Button>
+                            </div>
+
+                        </section>
                     </div>
                 </div>
-                {(
-                    <>
-                        {NFTsFetchError && (
-                            <>
-                                <Alert
-                                    message="Unable to fetch NFT. We are searching for a solution, please try again later!"
-                                    type="warning"
-                                />
-                                <div style={{ marginBottom: "10px" }}></div>
-                            </>
-                        )}
-                    </>
-                )}
+                {
+                    (
+                        <>
+                            {NFTsFetchError && (
+                                <>
+                                    <Alert
+                                        message="Unable to fetch NFT. We are searching for a solution, please try again later!"
+                                        type="warning"
+                                    />
+                                    <div style={{ marginBottom: "10px" }}></div>
+                                </>
+                            )}
+                        </>
+                    )
+                }
                 <div style={{
                     ...NFTsDiv,
                     marginTop: "1.5rem",
@@ -190,7 +218,7 @@ function DemoAvatar() {
                                 </Card>)
                         })}
                 </div>
-            </div>
+            </div >
         );
     }
 }

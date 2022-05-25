@@ -12,7 +12,7 @@ function MenuItems() {
       style={{
         display: "flex",
         fontSize: "17px",
-        fontWeight: "400",
+        fontWeight: "700",
         width: "100%",
         justifyContent: "right",
         background: "none",
@@ -31,6 +31,15 @@ function MenuItems() {
       </Menu.Item>
       <Menu.Item key="/rewards">
         <NavLink to="/rewards">Rewards</NavLink>
+      </Menu.Item>
+      <Menu.Item
+        onClick={() =>
+          window.open(
+            "https://docs.metagymland.com/",
+            "_blank"
+          )
+        }
+      >Whitepaper
       </Menu.Item>
     </Menu>
   );

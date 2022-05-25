@@ -1,6 +1,6 @@
 import { Divider } from "antd";
 import packageJson from '../package.json';
-import { brightFontCol } from "GlobalStyles";
+import { mainFontColor } from "GlobalStyles";
 import {
     MGLSmallLogo,
     MoralisLogo,
@@ -16,7 +16,7 @@ export const AppFooter = ({ style }) => {
         <>
             <Divider style={{
                 ...style,
-                backgroundColor: brightFontCol,
+                backgroundColor: mainFontColor,
                 margin: "0.5rem 0rem"
             }} />
 
@@ -38,7 +38,7 @@ export const AppFooter = ({ style }) => {
                 <div style={{
                     textAlign: "center",
                 }}>
-                    <div style={{ color: brightFontCol }}>
+                    <div style={{ color: mainFontColor }}>
                         <div>Built with</div>
                         <a
                             target="_blank"
@@ -52,7 +52,7 @@ export const AppFooter = ({ style }) => {
                 <div style={{
                     textAlign: "center",
                 }}>
-                    <div style={{ color: brightFontCol }}>
+                    <div style={{ color: mainFontColor }}>
                         <div>Powered by</div>
                         <a
                             target="_blank"
@@ -66,28 +66,28 @@ export const AppFooter = ({ style }) => {
                 <div style={{
                     textAlign: "center",
                 }}>
-                    <div style={{ color: brightFontCol }}>
+                    <div style={{ color: mainFontColor }}>
                         AI Powered by<div>
                             <a
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 href="https://www.tensorflow.org/js"
                             >
-                                <TfJSLogo textFill={"#FFF"} />
+                                <TfJSLogo textFill={"#595959"} />
                             </a>&nbsp;&nbsp;
                             <a
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 href="https://mediapipe.dev"
                             >
-                                <MediaPipeLogo textFill={"#FFF"} />
+                                <MediaPipeLogo textFill={"#595959"} />
                             </a></div>
                     </div>
                 </div>
                 <div style={{
                     textAlign: "center",
                 }}>
-                    <div style={{ color: brightFontCol }}>
+                    <div style={{ color: mainFontColor }}>
                         <div>Game Engine</div>
                         <a
                             target="_blank"
@@ -104,7 +104,7 @@ export const AppFooter = ({ style }) => {
                 <div style={{
                     textAlign: "center",
                 }}>
-                    <div style={{ color: brightFontCol }}>
+                    <div style={{ color: mainFontColor }}>
                         <div>Coded by</div>
                         <a
                             target="_blank"

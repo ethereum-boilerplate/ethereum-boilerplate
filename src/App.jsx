@@ -17,8 +17,8 @@ import LoaderTest from "components/LoaderTest";
 import Contract from "components/Contract/Contract";
 import MenuItems from "./components/MenuItems";
 import { Link } from "react-router-dom";
-import { brightFontCol } from "GlobalStyles";
-import { MGLLogo } from "Logos";
+import { mainFontColor } from "GlobalStyles";
+import { MGLSmallLogo } from "Logos";
 import { AppFooter } from "AppFooter";
 import PlayPage from "components/Play";
 import GymRoomSandbox from "components/Play/games/GymRoomSandbox";
@@ -43,7 +43,7 @@ const styles = {
   },
   content: {
     fontFamily: "Roboto, sans-serif",
-    marginTop: "40px",
+    marginTop: "10px",
     marginBottom: "40px",
     minHeight: "30vh",
   },
@@ -77,7 +77,7 @@ const App = ({ isServerInfo }) => {
       {
         background: "none",
         fontFamily: "Roboto, sans-serif",
-        color: brightFontCol,
+        color: mainFontColor,
       }}>
       <Router>
         <Header style={styles.header}>
@@ -86,7 +86,7 @@ const App = ({ isServerInfo }) => {
             display: "flex",
             background: "none",
           }}>
-            <Link to="/" style={styles.homeLink}><MGLLogo /></Link>
+            <Link to="/" style={styles.homeLink}><MGLSmallLogo /></Link>
           </div>
           <MenuItems />
           <div style={styles.headerRight}>
@@ -94,7 +94,7 @@ const App = ({ isServerInfo }) => {
               type="vertical"
               style={{
                 height: "1.8em",
-                backgroundColor: brightFontCol
+                backgroundColor: mainFontColor
               }}
             />
             <NativeBalance />

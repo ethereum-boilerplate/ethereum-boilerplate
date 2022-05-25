@@ -1,27 +1,29 @@
-export const mainBackground = "linear-gradient(135deg , #040225, #132890 80%, #470d85)";
-export const mainBgColor = "#0B1456";
-export const mainBgColorDarker = "#131b5e";
+// export const mainBackground = "linear-gradient(135deg , #040225, #132890 80%, #470d85)";
+export const mainBgColor = "#FFFFFF";
+export const secondaryBgColor = "#F8F8F8";
+export const mainBgColorDarker = "#FFFFFF";
 export const mainBgColorNum = 0x0B1456;
 export const activeColor = "#F96F0A";
 
-export const brightFontCol = "#fff";
+export const mainFontColor = "#595959";
 export const highlightTextColor = "#01FFFE";
 export const highlightTextColorNum = 0x01FFFE;
 
+export const gradientBg1 = "linear-gradient(180deg, rgba(182, 220, 255, 0.32) 0%, rgba(255, 215, 215, 0.23) 100%)";
+export const gradientBg2 = "linear-gradient(180deg, #5740C1 0%, #988ACB 21.88%, #FFA3C4 63.54%, #74F8F0 100%)";
 
 export const NFTCardStyle = {
     width: 240,
-    border: "3px solid #d3d3d3",
-    borderRadius: "1rem 1rem 0 0",
-    color: "black",
+    textAlign: "left",
+    boxShadow: "0 0 10px 2px #a19f9f",
+    borderRadius: "20px",
+    color: mainFontColor,
 }
 
-const NFTImgPadding = "0.5rem";
+// const NFTImgPadding = "0.5rem";
 export const NFTImgWrapperStyle = {
-    minHeight: "280px",
-    width: "auto",
-    borderRadius: "1rem 1rem 0 0",
-    padding: "0.5rem",
+    borderRadius: "20px 20px 0 0",
+    minHeight: 320,
 }
 
 export const NFTsDiv = {
@@ -29,15 +31,11 @@ export const NFTsDiv = {
     flexWrap: "wrap",
     WebkitBoxPack: "start",
     justifyContent: "center",
-    gap: "10px",
+    gap: "14px",
 }
 
 export const NFTImg = {
-    paddingLeft: NFTImgPadding,
-    paddingRight: NFTImgPadding,
-    paddingTop: NFTImgPadding,
-    paddingBottom: NFTImgPadding,
-    borderRadius: "1rem 1rem 0 0",
+    borderRadius: "20px 20px 0px 0px",
 }
 
 const BtnSidesPadding = "12px";
@@ -51,15 +49,23 @@ const BtnBase = {
     paddingTop: "8px",
     paddingBottom: "31px",
     border: "none",
+    color: "#FFFFFF",
+    borderRadius: "20px",
 }
 
 export const BtnInfo = {
     ...BtnBase,
+    backgroundColor: "#408CFD",
 }
 
 export const BtnPrimary = {
     ...BtnBase,
-    backgroundColor: "#f96f0b",
+    backgroundColor: "#FF74A6",
+}
+
+export const BtnSecondary = {
+    ...BtnBase,
+    backgroundColor: "#AD9BFF",
 }
 
 export const BreakFlexDiv = {
@@ -68,9 +74,10 @@ export const BreakFlexDiv = {
 }
 
 export const HeaderRightBordersStyle = {
-    border: "1px solid #85878f",
-    borderRadius: "2px",
+    border: "1px solid #595959",
+    borderRadius: "20px",
     background: "none",
+    fontWeight: "700",
     backgroundColor: mainBgColor,
 }
 

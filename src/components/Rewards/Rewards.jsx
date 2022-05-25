@@ -4,43 +4,33 @@ import {
     descriptionStyle,
     pageTitle4Style,
     MMT_TICKER,
-    activeColor,
+    secondaryBgColor,
     BtnInfo,
     paddingLRContent,
 } from "../../GlobalStyles";
 import card from "./card.png";
-import dividerpng from "./divider.png";
 import { useMoralis } from "react-moralis";
 import { Button, Popover } from 'antd';
 import { SocialsLinks } from "../SocialsPage";
 
 const colName = 'mbmtBalance';
-const honeyColor = "#F8B60A";
+const honeyColor = "#535353";
 
-const mbmt = <span style={{ color: activeColor, fontWeight: 550, }}>{MMT_TICKER}</span>;
 const mbmtWhite = <span style={{ color: "#FFF" }}>{MMT_TICKER}</span>;
-const mgl = <span style={{ color: "blue", fontWeight: 550, }}>$MGL</span>;
-const mbmtlong = <span style={{ color: honeyColor }}>Meta Moves Token</span>;
+const mbmtlong = <span style={{
+    textDecoration: "underline",
+    textDecorationColor: "#14C3FB",
+}}>Meta Moves Token</span>;
 const commingSoon = <span style={{}}>Comming Soon 🚀</span>;
 const borderRadius = "3rem";
 
-const divider = (
-    <div style={{
-        display: "grid",
-        gridTemplateColumns: "1fr",
-        gridTemplateRows: "3rem",
-        alignItems: "center",
-        justifyItems: "center",
-    }}>
-        <img src={dividerpng} alt="divider" />
-    </div>);
-
 const activeBgStyle = {
-    backgroundColor: activeColor,
+    background: "linear-gradient(90deg, #83B4FF 0%, #FFA2C4 96.53%)",
     borderRadius: borderRadius,
     padding: "0.4rem",
     fontWeight: "450",
     whiteSpace: "nowrap",
+    color: "#FFFFFF",
 }
 
 const RewardsPage = () => {
@@ -48,7 +38,7 @@ const RewardsPage = () => {
     const mbmtBalance = user && user.get && user.get(colName) ? user.get(colName) : 0;
     return (
         <div style={{
-            marginTop: "1rem",
+            marginTop: "4rem",
         }}>
             <section style={{
                 ...paddingLRContent,
@@ -68,7 +58,7 @@ const RewardsPage = () => {
                                 ...pageTitle2Style,
                                 padding: "0.5rem 0rem",
                             }}>Stretch {"&"} Earn&nbsp;
-                                <span style={{ color: honeyColor }}>
+                                <span style={{ textDecoration: "underline", textDecorationColor: "#14C3FB", }}>
                                     {MMT_TICKER}
                                 </span>
                             </h1>
@@ -115,11 +105,11 @@ const RewardsPage = () => {
                         <div>
                             <span style={{
                                 ...descriptionStyle,
-                                backgroundColor: "aliceblue",
+                                background: "linear-gradient(90deg, #AD9BFF 0%, #FFA2C4 96.53%)",
                                 padding: "0.4rem 1rem",
                                 borderRadius: borderRadius,
                                 textAlign: "center",
-                                color: "black",
+                                color: "#FFFFFF",
                                 whiteSpace: "nowrap",
                             }}>
                                 You will not be able to earn <b>$MMT</b> with demo avatar
@@ -157,13 +147,10 @@ const RewardsPage = () => {
                         }}>
                             <div style={{
                                 ...pageTitle3Style,
+                                color: "#FFFFFF",
                             }}>
                                 <div>Your current balance:</div>
-                                <div><span style={{
-                                    color: honeyColor,
-                                }}>
-                                    {mbmtBalance.toFixed(4)}
-                                </span>
+                                <div>{mbmtBalance.toFixed(4)}
                                     &nbsp;
                                     {mbmtWhite}
                                 </div>
@@ -211,11 +198,10 @@ const RewardsPage = () => {
             {/* desc */}
             < section style={{
                 marginTop: "3rem",
-                // marginBottom: "2rem",
                 color: "black",
-                backgroundColor: "white",
+                backgroundColor: secondaryBgColor,
                 padding: "3rem 0rem",
-                // width: "100vw",
+                minHeight: "20vh",
             }}>
                 <div style={{
                     ...pageTitle2Style,
@@ -234,9 +220,20 @@ const RewardsPage = () => {
                     ...descriptionStyle,
                     textAlign: "center",
                 }}>
-                    Checkout our Whitepaper 👇
-                    <br />
-                    <a target="_blank" href="https://docs.metagymland.com/game-fi/overview"><b>LINK</b></a>
+                    Checkout our <Button style={{
+                        ...BtnInfo,
+                        backgroundColor: "#408CFD",
+                        color: "#FFFFFF",
+                        width: "auto",
+                    }}
+                        onClick={() =>
+                            window.open(
+                                "https://docs.metagymland.com/game-fi/overview",
+                                "_blank"
+                            )
+                        } >
+                        Whitepaper
+                    </Button>
                 </div>
             </section >
         </div >

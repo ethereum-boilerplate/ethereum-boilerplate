@@ -42,7 +42,6 @@ const SelectWebcam = ({ width = "auto" }) => {
                 value={webcamId}
                 style={{
                     width: width,
-                    borderRadius: "1rem",
                     overflow: "hidden",
                     color: "black",
                 }}

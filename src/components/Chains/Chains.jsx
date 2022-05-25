@@ -3,7 +3,7 @@ import { Menu, Dropdown, Button } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import { AvaxLogo, PolygonLogo, BSCLogo, ETHLogo } from "./Logos";
 import { useChain, useMoralis } from "react-moralis";
-import { HeaderRightBordersStyle } from "../../GlobalStyles";
+import { HeaderRightBordersStyle, mainFontColor } from "../../GlobalStyles";
 
 const styles = {
   item: {
@@ -15,7 +15,7 @@ const styles = {
     fontSize: "14px",
     padding: "0 7px",
     background: "none",
-    color: "#E7EAF3",
+    color: mainFontColor,
   },
   button: HeaderRightBordersStyle,
 };

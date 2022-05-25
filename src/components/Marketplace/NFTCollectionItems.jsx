@@ -20,7 +20,7 @@ import {
     NFTCardStyle,
     NFTsDiv,
     NFTImg,
-    brightFontCol,
+    mainFontColor,
     NFTImgWrapperStyle,
     pageTitleMidStyle,
 } from "../../GlobalStyles";
@@ -51,7 +51,7 @@ function NFTCollectionItems({ nftAddress, colName, colImg }) {
     const { chainId, isAuthenticated, account, Moralis } = useMoralis();
     const userChainId = chainId;
     const marketPlaceChainId = MainChainID;
-    const { data: NFTTokenIds, error: NFTsFetchError, isLoading } = useNFTTokenIds(nftAddress, 3, marketPlaceChainId);
+    const { data: NFTTokenIds, error: NFTsFetchError, isLoading } = useNFTTokenIds(nftAddress, 5, marketPlaceChainId);
 
     const [visible, setVisibility] = useState(false);
     const [nftToBuy, setNftToBuy] = useState(null);
@@ -266,7 +266,7 @@ function NFTCollectionItems({ nftAddress, colName, colImg }) {
                         {colName}
                     </div>
                 </div>
-                <Divider style={{ backgroundColor: brightFontCol }} />
+                <Divider style={{ backgroundColor: mainFontColor }} />
                 <div style={NFTsDiv}>
                     {NFTTokenIds && shuffle(NFTTokenIds.result)
                         .map((nft, index) => {
@@ -350,17 +350,17 @@ function NFTCollectionItems({ nftAddress, colName, colImg }) {
                                                     <div>
                                                         {hasMarketItems(nft) ? (
                                                             <h4 style={{
-                                                                backgroundColor: "burlywood",
+                                                                background: "linear-gradient(90deg, #83B4FF 0%, #FFA2C4 96.53%)",
                                                                 borderRadius: "1rem",
                                                                 padding: "2px",
                                                             }}>
-                                                                Best Price: <b style={{ color: "darkblue" }}>
+                                                                <b style={{ color: "#fff" }}>Best Price&nbsp;
                                                                     {
                                                                         getMarketWithLowestPrice(nft).price / ("1e" + 18)
                                                                     }
                                                                 </b>
                                                                 &nbsp;
-                                                                <b style={{ color: "darkblue" }}>{nativeName}</b>
+                                                                <b style={{ color: "#fff" }}>{nativeName}</b>
                                                             </h4>
                                                         ) : (
                                                             <>

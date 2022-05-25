@@ -3,7 +3,7 @@ import { MiniGameCtx } from "index";
 import { MGLSmallLogo } from "Logos";
 import { SettingFilled, InfoCircleFilled } from "@ant-design/icons";
 import { Link } from "react-router-dom";
-import { mainBgColor } from "../../../GlobalStyles";
+import { mainBgColor, mainFontColor } from "../../../GlobalStyles";
 import { Popover } from 'antd';
 import {
     GYM_ROOM_SCENE,
@@ -133,6 +133,7 @@ const SideMenu = () => {
             <Popover
                 style={{
                     textAlign: "center",
+                    color: mainFontColor,
                 }}
                 placement="topRight"
                 title={i?.title}
@@ -143,10 +144,11 @@ const SideMenu = () => {
                     style={{
                         textAlign: "center",
                         cursor: "pointer",
+                        color: mainFontColor,
                     }}>
                     <InfoCircleFilled style={{
                         fontSize: "20px",
-                        color: "#FFF",
+                        color: mainFontColor,
                     }} />
                     how to
                 </div>
@@ -184,7 +186,7 @@ const SideMenu = () => {
             <Link to="/play-setup">
                 <SettingFilled style={{
                     fontSize: "22px",
-                    color: "#FFF",
+                    color: mainFontColor,
                 }} />
             </Link>
         </div>

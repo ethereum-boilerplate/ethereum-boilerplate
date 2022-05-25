@@ -21,10 +21,7 @@ const ConnectWalletWarn = () => {
                 </h1>
                 <p style={{
                     ...descriptionStyle,
-                }}>To see your&nbsp;
-                    <span style={{ color: highlightTextColor }}>
-                        MetaGymLAnd NFTs
-                    </span>
+                }}>To see your&nbsp;MetaGymLAnd NFTs
                 </p>
                 <p style={{
                     ...pageTitle3Style,
@@ -68,9 +65,8 @@ const UseCorrectNetworkWarn = () => {
                 <p style={{
                     ...descriptionStyle,
                 }}>To see your&nbsp;
-                    <span style={{ color: highlightTextColor }}>
-                        MetaGymLAnd NFTs
-                    </span>
+
+                    MetaGymLAnd NFTs
                 </p>
                 <p style={{
                     ...pageTitle3Style,

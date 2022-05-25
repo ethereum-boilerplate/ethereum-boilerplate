@@ -4,8 +4,14 @@ import { Redirect } from "react-router";
 import { Image, Button } from "antd";
 import { RightOutlined, LeftOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
-import { BtnPrimary, BtnInfo, paddingLRContent } from "../../GlobalStyles";
-import { NFTImg, BreakFlexDiv, mainBgColorDarker } from "../../GlobalStyles";
+import {
+    BtnPrimary,
+    BtnInfo,
+    secondaryBgColor,
+    NFTImg,
+    BreakFlexDiv,
+    mainBgColorDarker,
+} from "../../GlobalStyles";
 import SelectWebcam from "components/Webcam/SelectWebcam";
 import { WebcamCtx } from "index";
 import PoseDetWebcam from "components/Webcam/PoseDetWebcam";
@@ -24,7 +30,6 @@ const PlaySetupPage = () => {
             display: "grid",
             placeItems: "center",
             marginBottom: "6rem",
-            ...paddingLRContent,
         }}>
             <div style={{
                 boxShadow: "0 0 20px 2px #020811",
@@ -32,6 +37,7 @@ const PlaySetupPage = () => {
                 borderRadius: "1rem",
                 padding: "3rem 3rem",
                 marginTop: "1.5rem",
+                backgroundColor: secondaryBgColor,
             }}>
                 <div style={{
                     display: "grid",
@@ -46,13 +52,8 @@ const PlaySetupPage = () => {
                             <b>Welcome!</b>
                         </h1>
                         <div style={{
-                            padding: "1rem 0",
                             textAlign: "center",
                             margin: "1.5rem 0",
-                            border: "3px solid #d3d3d3",
-                            borderRadius: "1rem",
-                            backgroundColor: "#FFF",
-                            paddingBottom: "1rem",
                             maxWidth: "300px",
                         }}>
                             <Image

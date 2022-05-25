@@ -3,6 +3,7 @@ import {
     pageTitleStyle,
     descriptionStyle,
     BtnPrimary,
+    BtnInfo,
 } from "GlobalStyles";
 import { getExplorer } from "helpers/networks";
 import { TestGymBuddiesContract, MainChainID } from "../MglNftMetadata";
@@ -132,58 +133,67 @@ const MintGymBuddyPage = () => {
     } else {
         return (
             <div style={{
+                marginTop: "3rem",
                 textAlign: "center",
             }}>
-                <div style={{
-                    marginTop: "1rem",
+                <section style={{
+                    ...pageTitleStyle,
+                }}>
+                    Mint your GymBuddy
+                </section>
+                <section style={{
+                    ...descriptionStyle,
+                    padding: "1rem",
+                }}>
+                    <p style={{ padding: "1rem" }}>
+                        Mint price:&nbsp;<span style={{
+                            fontWeight: "500",
+                            fontSize: "1.5rem",
+                        }}>{mintPrice} AVAX</span> + network fee</p>
+                </section>
+                <section style={{
+                    display: "grid",
+                    justifyContent: "center",
+                    alignContent: "center",
                 }}>
                     <div style={{
-                        ...pageTitleStyle,
+                        display: "grid",
+                        gridTemplateColumns: "1fr 1fr",
+                        gap: "2rem",
                     }}>
-                        Mint your GymBuddy
+                        <Button
+                            style={BtnInfo}
+                            onClick={() =>
+                                window.open(
+                                    `${getExplorer(chainId)}address/${contractAddress}`,
+                                    "_blank"
+                                )
+                            }
+                        >
+                            <SelectOutlined style={{ marginRight: "5px" }} />
+                            View NFT Contract
+                        </Button>
+                        <Button
+                            type="primary"
+                            style={{
+                                ...BtnPrimary,
+                            }}
+                            onClick={handleMintClick}
+                        >
+                            Mint
+                        </Button>
                     </div>
-                    <div style={{
-                        ...descriptionStyle,
-                        padding: "1rem",
-                    }}>
-                        <div>
-                            <a
-                                style={{
-                                    color: "ivory",
-                                    cursor: "pointer",
-                                }}
-                                href={`${getExplorer(chainId)}/address/${contractAddress}`}
-                                target="_blank" rel="noreferrer"
-                            >
-                                <SelectOutlined style={{ marginRight: "5px" }} />
-                                View NFT Contract
-                            </a>
-                        </div>
-                        <div style={{
-                            paddingBottom: "1rem"
-                        }} >
-                            <p style={{ padding: "1rem" }}>Mint price: <b>{mintPrice} AVAX</b> + network fee</p>
-                            <Button
-                                type="primary"
-                                style={{
-                                    ...BtnPrimary,
-                                }}
-                                onClick={handleMintClick}
-                            >
-                                Mint
-                            </Button>
-                        </div>
-                    </div>
-                </div>
-                <div>
+                </section>
+                <section style={{
+                    marginTop: "4rem",
+                    marginBottom: "6rem"
+                }}>
                     <Image
                         preview={false}
                         src={gymBuddiesGif}
                         fallback={fallbackImg}
-                        alt=""
-                    // style={styles.logo}
-                    />
-                </div>
+                        alt="" />
+                </section>
             </div>
         )
     }

@@ -8,9 +8,9 @@
 }
 
 :root {
-  --main-bg-color: #012E51;
-  --main-text-color: #FFF;
-  --active-color: #F96F0B;
+  --main-bg-color: #FFFFFF;
+  --main-text-color: #595959;
+  --active-color: #FFA2C4;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -34,6 +34,11 @@ h1, h2, h3, h4, h5, h6 {
 
 .ant-menu-horizontal>.ant-menu-item-selected a {
   color: var(--main-text-color) !important;
+}
+
+.ant-card-body {
+  padding-top: 1rem;
+  margin-top: 0 !important;
 }
 
 .ant-card-actions {
