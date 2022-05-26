@@ -1,18 +1,20 @@
 import gymBuddiesCollectionGif from "../assets/marketplace/gym_buddies_collection.gif";
+import { TestGymBuddiesContract, AvaxMoralis2021HackatonNfts } from "../../MglNftMetadata";
 
 const AvaxTestnetChainID = "0xa869";
 
 const AvaxTestChainColelctions = [
-  {
-    image: gymBuddiesCollectionGif,
-    name: "GymBuddies May 2022",
-    addrs: "0x31c9a4d361fD82C291486B18715e8eAB26D2Bef9",
-  },
-  {
-    image: "https://ipfs.moralis.io:2053/ipfs/QmVF53rCjFiFSXyJd64NgeGioQG93gegdsymyMWtJLG9Ev/cover.gif",
-    name: "Moralis Avalanche Hackaton 2021 Avatars",
-    addrs: "0xbba97ea3912c598a39ce0802d5cd67dd3d873457",
-  },
+  // commenting collections previously avialable on our marketplace
+  // {
+  //   image: gymBuddiesCollectionGif,
+  //   name: "GymBuddies May 2022",
+  //   addrs: TestGymBuddiesContract,
+  // },
+  // {
+  //   image: "https://ipfs.moralis.io:2053/ipfs/QmVF53rCjFiFSXyJd64NgeGioQG93gegdsymyMWtJLG9Ev/cover.gif",
+  //   name: "Moralis Avalanche Hackaton 2021 Avatars",
+  //   addrs: AvaxMoralis2021HackatonNfts,
+  // },
 ];
 
 export const networkCollections = new Map([

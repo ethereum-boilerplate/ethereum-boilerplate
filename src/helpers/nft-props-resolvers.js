@@ -3,7 +3,9 @@
 export const resolveNftSprite = (nft) => {
     if (nft?.sprite) {
         if (nft?.sprite?.image) return nft?.sprite?.image;
-        return nft?.sprite;
+        // replace to ipfs gateway
+        // phaser will not work with ipfs
+        return nft?.sprite.replace("ipfs://", "https://nftstorage.link/ipfs/");
     }
     return nft?.image;
 }

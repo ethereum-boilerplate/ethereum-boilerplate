@@ -9,6 +9,8 @@ import {
     CoderDitiLogo,
     TfJSLogo,
     MediaPipeLogo,
+    FileCoinLogo,
+    IpfsLogo,
     PhaserLogo,
 } from "Logos";
 
@@ -145,6 +147,30 @@ export const AppFooter = ({ style }) => {
                                 height={"25"}
                             />
                         </a></div>
+                    <div style={{
+                    }}>
+                        <a
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            href="https://ipfs.io/"
+                        >
+                            <IpfsLogo
+                                width={"60"}
+                                height={"25"}
+                            />
+                        </a></div>
+                    <div style={{
+                    }}>
+                        <a
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            href="https://filecoin.io"
+                        >
+                            <FileCoinLogo
+                                width={"60"}
+                                height={"25"}
+                            />
+                        </a></div>
                 </div>
 
                 <div style={{ color: mainFontColor }}>
@@ -163,21 +189,6 @@ export const AppFooter = ({ style }) => {
                         <CoderDitiLogo />
                     </a>
                 </div>
-                {/* <div style={{
-                    textAlign: "center",
-                }}>
-                    <div style={{ color: mainFontColor }}>
-                        <div>Coded by</div>
-                        <a
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            href="https://coderdidit.com"
-                        >
-                            <CoderDitiLogo />
-                        </a>
-                    </div>
-                </div> */}
-
                 <div
                 >
                     <div style={{

@@ -218,7 +218,7 @@ const RewardsPage = () => {
                     ...descriptionStyle,
                     textAlign: "center",
                 }}>
-                    Checkout our <Button style={{
+                    Checkout our&nbsp;&nbsp;<Button style={{
                         ...BtnInfo,
                         backgroundColor: "#408CFD",
                         color: "#FFFFFF",
@@ -232,6 +232,20 @@ const RewardsPage = () => {
                         } >
                         Whitepaper
                     </Button>
+                    <br />
+                    <br />
+                    <p>And Learn about how we want to create</p>
+                    <p><b>Sustainable Play and Earn</b> System</p>
+                    <p>with <b>Play to Earn Pools</b> Concept 👇</p>
+                    <br />
+
+                    <a
+                        href="https://docs.metagymland.com/sustainable-play-and-earn"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        docs.metagymland.com/sustainable-play-and-earn
+                    </a>
                 </div>
             </section >
         </div >

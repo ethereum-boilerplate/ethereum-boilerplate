@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { useMoralis, useNFTBalances, useWeb3ExecuteFunction } from "react-moralis";
-import { Modal, Button, Image, Skeleton } from "antd";
+import { Modal, Input, Button, Image, Skeleton } from "antd";
 import {
   FileSearchOutlined,
   // eslint-disable-next-line no-unused-vars
@@ -89,7 +89,8 @@ function NFTBalance() {
         succListing();
       },
       onError: (err) => {
-        alert(err);
+        console.error(err);
+        alert(JSON.stringify(err));
       }
     });
   };
@@ -230,6 +231,38 @@ function NFTBalance() {
                                       Play with me
                                     </Link>
                                   </Button>
+                                  {/* <Button
+                                    onClick={() => handleListForSaleClick(nft)}
+                                  >
+                                    list
+                                  </Button> */}
+                                  <Modal
+                                    title={`List ${nftToList?.name} #${nftToList?.token_id}`}
+                                    visible={visible}
+                                    onCancel={() => setVisibility(false)}
+                                    onOk={() => {
+                                      listNft()
+                                      if (listingPrice > 0) setVisibility(false);
+                                    }}
+                                    okText="List for Sale"
+                                  >
+                                    <img
+                                      src={nftToList?.image}
+                                      alt=""
+                                      style={{
+                                        width: "250px",
+                                        margin: "auto",
+                                        borderRadius: "10px",
+                                        marginBottom: "15px",
+                                      }}
+                                    />
+                                    <Input
+                                      autoFocus
+                                      required
+                                      placeholder="set price"
+                                      onChange={e => setListingPrice(e.target.value)}
+                                    />
+                                  </Modal>
                                 </div>
                               </section>
                             </div>
