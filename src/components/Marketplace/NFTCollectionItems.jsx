@@ -51,7 +51,8 @@ function NFTCollectionItems({ nftAddress, colName, colImg }) {
     const { chainId, isAuthenticated, account, Moralis } = useMoralis();
     const userChainId = chainId;
     const marketPlaceChainId = MainChainID;
-    const { data: NFTTokenIds, error: NFTsFetchError, isLoading } = useNFTTokenIds(nftAddress, 5, marketPlaceChainId);
+    const maxItems = 3;
+    const { data: NFTTokenIds, error: NFTsFetchError, isLoading } = useNFTTokenIds(nftAddress, maxItems, marketPlaceChainId);
 
     const [visible, setVisibility] = useState(false);
     const [nftToBuy, setNftToBuy] = useState(null);
