@@ -311,7 +311,7 @@ function NFTBalance() {
                       style={BtnInfo}
                     >
                       <Link to="/marketplace">
-                        Marketplace{" "}🚀
+                        Marketplace
                       </Link>
                     </Button>
                   </div>
