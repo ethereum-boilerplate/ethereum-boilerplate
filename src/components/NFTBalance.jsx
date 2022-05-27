@@ -4,6 +4,7 @@ import { Modal, Input, Button, Image, Skeleton } from "antd";
 import {
   FileSearchOutlined,
   // eslint-disable-next-line no-unused-vars
+  InfoCircleTwoTone,
   SkinFilled
 } from "@ant-design/icons";
 import { getExplorer } from "helpers/networks";
@@ -145,6 +146,7 @@ function NFTBalance() {
                       .map((nft, index) => {
                         //Verify Metadata
                         nft = verifyMetadata(nft);
+                        const gymBuddyDetailsLink = `/gym-buddy-details/${nft.token_address}/${nft.token_id}`;
                         return (
                           <div
                             key={`card-${index}`}
@@ -164,7 +166,8 @@ function NFTBalance() {
                                   ...NFTImgWrapperStyle,
                                   backgroundColor: resolveBGColor(nft),
                                 }}
-                              />
+                              >
+                              </Image>
                               {/* hack to prefetch avatar sprite */}
                               <div style={{
                                 display: "none",
@@ -186,8 +189,22 @@ function NFTBalance() {
                                 marginBottom: "1rem",
                                 color: mainFontColor,
                               }}>
-                                <p><b>{nft.name}</b></p>
-                                <p><span>#{nft.token_id}</span></p>
+                                <div style={{
+                                  display: "grid",
+                                  gridTemplateColumns: "1fr 1fr",
+                                }}>
+                                  <div>
+                                    <p><b>{nft.name}</b></p>
+                                    <p><span>#{nft.token_id}</span></p>
+                                  </div>
+                                  <div style={{
+                                    textAlign: "right"
+                                  }}>
+                                    <Link to={gymBuddyDetailsLink}>
+                                      <InfoCircleTwoTone />
+                                    </Link>
+                                  </div>
+                                </div>
                                 <hr style={{
                                   border: "1px solid #CDCDCD",
                                 }} />

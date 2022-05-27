@@ -32,7 +32,7 @@ function MenuItems() {
       <Menu.Item key="/rewards">
         <NavLink to="/rewards">Rewards</NavLink>
       </Menu.Item>
-      <Menu.Item
+      <Menu.Item key="/whitepaper"
         onClick={() =>
           window.open(
             "https://docs.metagymland.com/",

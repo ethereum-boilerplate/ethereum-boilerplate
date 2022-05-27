@@ -77,7 +77,8 @@ const PlaySetupPage = () => {
                             >
                                 <LeftOutlined />
                                 Back
-                            </Button></div>
+                            </Button>
+                        </div>
                     </div>
                     <div style={{
                     }}>

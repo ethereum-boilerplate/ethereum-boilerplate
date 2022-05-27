@@ -5,6 +5,7 @@ import Account from "components/Account/Account";
 import Chains from "components/Chains";
 import NFTBalance from "components/NFTBalance";
 import DemoAvatar from "components/DemoAvatar";
+import GymBuddyDetails from "components/GymBuddyDetails";
 import { Layout, Divider } from "antd";
 import "antd/dist/antd.css";
 import NativeBalance from "components/NativeBalance";
@@ -117,6 +118,9 @@ const App = ({ isServerInfo }) => {
             </Route>
             <Route path="/demo-avatar">
               <DemoAvatar />
+            </Route>
+            <Route path="/gym-buddy-details/:address/:id">
+              <GymBuddyDetails />
             </Route>
             <Route path="/play">
               <PlayPage />

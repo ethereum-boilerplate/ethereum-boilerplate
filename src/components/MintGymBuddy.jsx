@@ -68,8 +68,7 @@ const MintGymBuddyPage = () => {
             params: ops,
             onSuccess: async () => {
                 setLoading(false);
-                const secondsToGo = 5;
-                const modal = Modal.success({
+                Modal.success({
                     title: "Success",
                     content: <div>
                         <p>You minted your GymBuddy&nbsp;🎉</p>
@@ -83,8 +82,7 @@ const MintGymBuddyPage = () => {
             onError: (error) => {
                 console.error(error);
                 setLoading(false);
-                const secondsToGo = 5;
-                const modal = Modal.error({
+                Modal.error({
                     title: "Oops, something went worng",
                     content: error,
                 })
