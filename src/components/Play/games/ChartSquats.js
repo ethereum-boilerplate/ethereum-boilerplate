@@ -71,7 +71,7 @@ export class ChartSquats extends EarnableScene {
     create(data) {
         const webCamContainer = document.getElementById("pose-det-webcam-container");
         if (webCamContainer) {
-            webCamContainer.style.marginLeft = '40rem';
+            webCamContainer.style.marginLeft = '30rem';
         }
         // basic props        
         const width = getGameWidth(this);
@@ -147,7 +147,7 @@ export class ChartSquats extends EarnableScene {
 
         const playerPumpX = width - (width * .2);
         // pump
-        const pumpScale = 0.5;
+        const pumpScale = 0.3;
         this.pump = this.add.sprite(0, 0, PUMP_OPEN)
             .setOrigin(0.5, 0)
             .setScale(pumpScale);
@@ -192,7 +192,7 @@ export class ChartSquats extends EarnableScene {
             bgcolor,
             highlightTextColorNum
         )
-        youWonText.setOrigin(0.5).setDepth(1).setScrollFactor(0, 0);
+        youWonText.setOrigin(0.5).setDepth(3).setScrollFactor(0, 0);
         youWonText.start(msg, 10);
     }
 
@@ -267,7 +267,7 @@ export class ChartSquats extends EarnableScene {
             // 0 is top, height (positive value) is bottom
             if (this.curPrice >= height) {
                 this.wonState = loseState;
-                this.add.image(width * .8, height * .5, RED_WOJAK);
+                this.add.image(width * .8, height * .5, RED_WOJAK).setDepth(5);
                 this.cameras.main.setBackgroundColor("#4a0909");
                 this.btc.setTint(0x3d3d3d);
                 const msg = "🤖 You have been liquidated 😢\n\n" +
@@ -285,7 +285,7 @@ export class ChartSquats extends EarnableScene {
                 this.cameras.main.backgroundColor.setTo(32, 191, 150);
                 this.score += 1;
                 this.scoreBoard.setText(`SCORE: ${this.score}`);
-                this.add.image(width * .8, height * .5, GREEN_WOJAK);
+                this.add.image(width * .8, height * .5, GREEN_WOJAK).setDepth(5);
                 if (canvasParent) party.confetti(canvasParent);
                 intervals.push(setInterval(() => {
                     if (canvasParent) party.confetti(canvasParent);
@@ -305,7 +305,7 @@ export class ChartSquats extends EarnableScene {
             if (player.cursorKeys?.down.isDown || curPose === gpose.NDWN
                 || curPose === gpose.BA_UP) {
                 this.player.y = this.playerInitialY;
-                player.y += 80;
+                player.y += 50;
                 this.pump.setTexture(PUMP_CLOSED);
                 // price up
                 this.curPrice -= 4 * changeFactor
