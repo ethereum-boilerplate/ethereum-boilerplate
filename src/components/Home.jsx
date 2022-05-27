@@ -142,6 +142,7 @@ export default function Home() {
               src={howItWorks1}
               alt=""
               style={{
+                width: "80%",
                 padding: "0px",
                 margin: "0px",
               }}
@@ -158,7 +159,7 @@ export default function Home() {
               src={howItWorks2}
               alt=""
               style={{
-
+                width: "80%",
                 padding: "0px",
                 margin: "0px",
               }}
@@ -178,6 +179,7 @@ export default function Home() {
               src={howItWorks3}
               alt=""
               style={{
+                width: "80%",
                 padding: "0px",
                 margin: "0px",
               }}

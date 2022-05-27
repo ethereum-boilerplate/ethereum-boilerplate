@@ -1,5 +1,5 @@
 import { Button, Image, List, Alert, } from "antd";
-import { SelectOutlined, HeartFilled } from "@ant-design/icons";
+import { SelectOutlined, HeartFilled, CopyOutlined } from "@ant-design/icons";
 import { getExplorer } from "helpers/networks";
 import {
     mainFontColor,
@@ -99,9 +99,19 @@ function GymBuddyDetails() {
         return (<>
             <section style={{
                 ...descriptionStyle,
-                marginBottom: "2rem",
+                marginBottom: "1rem",
             }}>
-                <p style={{ color: "#535353", marginBottom: "0.5rem" }}>{fixMoralisTokenUri(nft)}</p>
+                <p style={{
+                    color: "#535353",
+                    marginBottom: "1rem",
+                    textDecorationLine: "underline",
+                }}>
+                    {fixMoralisTokenUri(nft)}&nbsp;
+                    <CopyOutlined
+                        onClick={() => navigator.clipboard.writeText(fixMoralisTokenUri(nft))}
+                        style={{ cursor: "pointer", }}
+                    />
+                </p>
                 <Button
                     style={{
                         marginBottom: "0.5rem"
@@ -123,7 +133,7 @@ function GymBuddyDetails() {
                 gridTemplateColumns: "1fr 1fr",
             }}>
                 <div style={{
-                    marginTop: "2rem",
+                    marginTop: "1rem",
                 }}>
                     <Image
                         preview={false}
@@ -131,6 +141,7 @@ function GymBuddyDetails() {
                         fallback={fallbackImg}
                         alt=""
                         style={{
+                            width: "50%",
                             borderRadius: "20px",
                         }}
                     />
@@ -140,6 +151,10 @@ function GymBuddyDetails() {
                         src={resolveLink(nftMeta.sprite) || "error"}
                         fallback={fallbackImg}
                         alt=""
+                        style={{
+                            width: "15%",
+                            imageRendering: "pixelated",
+                        }}
                     />
                 </div>
                 <div>
@@ -214,7 +229,7 @@ function GymBuddyDetails() {
                     </div>
                 </section>
                 <section style={{
-                    marginTop: "3rem",
+                    marginTop: "1.2rem",
                 }}>
                     {displayNftMeta(NFTTokenMetadata)}
                 </section>

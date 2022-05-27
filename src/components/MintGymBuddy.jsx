@@ -154,6 +154,9 @@ const MintGymBuddyPage = () => {
                         preview={false}
                         src={gymBuddiesGif}
                         fallback={fallbackImg}
+                        style={{
+                            width: "70%",
+                        }}
                         alt="" />
                 </section>
             </div>
