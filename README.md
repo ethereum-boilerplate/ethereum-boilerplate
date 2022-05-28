@@ -13,6 +13,7 @@ https://metagymland.com/
 - AI for pose detection via Webcam
 - Metaverse and MiniGames code
 - Stretch to earn very basic logic powered with Moralis Objects and Stretch to earn page teaser
+
 `earning XP points is currently off chain`
 
 ## Other MetaGymLand code repositories
