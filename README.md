@@ -8,7 +8,8 @@ https://metagymland.com/
 ### This repo has the main frontend logic of MetaGymLand App for:
 
 - NFT minting
-- Getting NFT metadata that conencted user owns
+- Getting GymBuddy NFT for connected user
+- Getting NFT metadata
 - NFT marketplace `[temporary turned off]` and NFT avatars portfolio page
 - AI for pose detection via Webcam
 - Metaverse and MiniGames code
