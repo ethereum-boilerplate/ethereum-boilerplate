@@ -90,6 +90,8 @@ function Transfer() {
 
     setIsPending(true);
     const txStatus = await Moralis.transfer(options);
+    const result = await txStatus.wait();
+    setIsPending(!result);
 
     txStatus
       .on("transactionHash", (hash) => {
