@@ -1,0 +1,9 @@
+{
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json",
+  "version": 2,
+  "projects": {
+    "dex": "apps/dex",
+    "hooks": "libs/hooks",
+    "shared-ui": "libs/shared-ui"
+  }
+}

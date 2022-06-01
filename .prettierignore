@@ -1,5 +1,4 @@
-node_modules/
-build/
-yarn.lock
-package-lock.json
-Truffle/
+# Add files here to ignore them from prettier formatting
+
+/dist
+/coverage
