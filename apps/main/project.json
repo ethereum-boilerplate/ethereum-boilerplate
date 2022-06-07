@@ -1,6 +1,6 @@
 {
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/dex/src",
+  "sourceRoot": "apps/main/src",
   "projectType": "application",
   "targets": {
     "build": {
@@ -9,13 +9,13 @@
       "defaultConfiguration": "production",
       "options": {
         "compiler": "babel",
-        "outputPath": "dist/apps/dex",
-        "index": "apps/dex/src/index.html",
+        "outputPath": "dist/apps/main",
+        "index": "apps/main/src/index.html",
         "baseHref": "/",
-        "main": "apps/dex/src/main.tsx",
-        "polyfills": "apps/dex/src/polyfills.ts",
-        "tsConfig": "apps/dex/tsconfig.app.json",
-        "assets": ["apps/dex/src/favicon.ico", "apps/dex/src/assets"],
+        "main": "apps/main/src/main.tsx",
+        "polyfills": "apps/main/src/polyfills.ts",
+        "tsConfig": "apps/main/tsconfig.app.json",
+        "assets": ["apps/main/src/favicon.ico", "apps/main/src/assets"],
         "styles": [],
         "scripts": [],
         "webpackConfig": "@nrwl/react/plugins/webpack"
@@ -30,8 +30,8 @@
         "production": {
           "fileReplacements": [
             {
-              "replace": "apps/dex/src/environments/environment.ts",
-              "with": "apps/dex/src/environments/environment.prod.ts"
+              "replace": "apps/main/src/environments/environment.ts",
+              "with": "apps/main/src/environments/environment.prod.ts"
             }
           ],
           "optimization": true,
@@ -47,15 +47,15 @@
       "executor": "@nrwl/web:dev-server",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "dex:build",
+        "buildTarget": "main:build",
         "hmr": true
       },
       "configurations": {
         "development": {
-          "buildTarget": "dex:build:development"
+          "buildTarget": "main:build:development"
         },
         "production": {
-          "buildTarget": "dex:build:production",
+          "buildTarget": "main:build:production",
           "hmr": false
         }
       }
@@ -64,14 +64,14 @@
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/dex/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": ["apps/main/**/*.{ts,tsx,js,jsx}"]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/dex"],
+      "outputs": ["coverage/apps/main"],
       "options": {
-        "jestConfig": "apps/dex/jest.config.ts",
+        "jestConfig": "apps/main/jest.config.ts",
         "passWithNoTests": true
       }
     },
@@ -81,7 +81,7 @@
         "uiFramework": "@storybook/react",
         "port": 4400,
         "config": {
-          "configFolder": "apps/dex/.storybook"
+          "configFolder": "apps/main/.storybook"
         }
       },
       "configurations": {
@@ -95,9 +95,9 @@
       "outputs": ["{options.outputPath}"],
       "options": {
         "uiFramework": "@storybook/react",
-        "outputPath": "dist/storybook/dex",
+        "outputPath": "dist/storybook/main",
         "config": {
-          "configFolder": "apps/dex/.storybook"
+          "configFolder": "apps/main/.storybook"
         }
       },
       "configurations": {

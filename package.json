@@ -1,10 +1,10 @@
 {
-  "name": ".",
+  "name": "ethereum-boilerplate",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
     "clear:cache": "rm -rf ./node_modules/.cache/nx",
-    "storybook:dex": "nx run dex:storybook",
+    "main:storybook": "nx run main:storybook",
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test"

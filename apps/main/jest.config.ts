@@ -1,11 +1,11 @@
 /* eslint-disable */
 export default {
-  displayName: 'dex',
+  displayName: 'main',
   preset: '../../jest.preset.js',
   transform: {
     '^(?!.*\\.(js|jsx|ts|tsx|css|json)$)': '@nrwl/react/plugins/jest',
     '^.+\\.[tj]sx?$': 'babel-jest',
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../coverage/apps/dex',
+  coverageDirectory: '../../coverage/apps/main',
 };
