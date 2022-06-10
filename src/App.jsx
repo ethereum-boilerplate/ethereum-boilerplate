@@ -28,6 +28,7 @@ import { ConnectWalletWarn, UseCorrectNetworkWarn } from "./components/Warrnings
 import RewardsPage from "./components/Rewards";
 import { MainChainID } from "MglNftMetadata";
 import { paddingLRHeaderFooter } from "./GlobalStyles";
+import BitKeepConnector from "./components/Account/BitKeepConnector";
 
 const { Header } = Layout;
 
@@ -66,7 +67,13 @@ const App = ({ isServerInfo }) => {
   const { isWeb3Enabled, enableWeb3, isAuthenticated, isWeb3EnableLoading, chainId } = useMoralis();
   useEffect(() => {
     const connectorId = window.localStorage.getItem("connectorId");
-    if (isAuthenticated && !isWeb3Enabled && !isWeb3EnableLoading) enableWeb3({ provider: connectorId });
+    if (isAuthenticated && !isWeb3Enabled && !isWeb3EnableLoading) {
+      if (connectorId === 'bitkeep') {
+        enableWeb3({ provider: connectorId, connector: BitKeepConnector });
+      } else {
+        enableWeb3({ provider: connectorId });
+      }
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAuthenticated, isWeb3Enabled]);
 

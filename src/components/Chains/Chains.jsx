@@ -23,9 +23,9 @@ const styles = {
 const supportedChains = new Set(
   [
     "0x1", // Ethereum,
-    "0x4", // Rinkeby,
     "0x3", // Ropsten,
     "0xa869", // Avalanche Testnet
+    "0xa86a", // Avalanche
     "0x13881", // Mumbai
   ]);
 
