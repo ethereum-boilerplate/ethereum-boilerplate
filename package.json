@@ -5,7 +5,9 @@
   "scripts": {
     "start": "nx serve",
     "build": "nx build",
-    "test": "nx test"
+    "test": "nx test",
+    "storybook:core": "nx storybook core",
+    "storybook:ui": "nx storybook ui"
   },
   "private": true,
   "dependencies": {
@@ -15,9 +17,12 @@
     "react-is": "18.1.0",
     "regenerator-runtime": "0.13.7",
     "styled-components": "5.3.5",
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.0",
+    "web3uikit": "^0.1.159"
   },
   "devDependencies": {
+    "@babel/core": "7.12.13",
+    "@babel/preset-typescript": "7.12.13",
     "@nrwl/cli": "14.2.4",
     "@nrwl/cypress": "14.2.4",
     "@nrwl/eslint-plugin-nx": "14.2.4",
@@ -25,8 +30,15 @@
     "@nrwl/linter": "14.2.4",
     "@nrwl/nx-cloud": "latest",
     "@nrwl/react": "14.2.4",
+    "@nrwl/storybook": "^14.2.4",
     "@nrwl/web": "14.2.4",
     "@nrwl/workspace": "14.2.4",
+    "@storybook/addon-essentials": "~6.5.4",
+    "@storybook/builder-webpack5": "~6.5.4",
+    "@storybook/core-server": "~6.5.4",
+    "@storybook/manager-webpack5": "~6.5.4",
+    "@storybook/react": "~6.5.4",
+    "@svgr/webpack": "^5.4.0",
     "@testing-library/react": "13.3.0",
     "@types/jest": "27.4.1",
     "@types/node": "16.11.7",
@@ -37,6 +49,7 @@
     "@typescript-eslint/eslint-plugin": "~5.24.0",
     "@typescript-eslint/parser": "~5.24.0",
     "babel-jest": "27.5.1",
+    "babel-loader": "8.1.0",
     "babel-plugin-styled-components": "1.10.7",
     "cypress": "^9.1.0",
     "eslint": "~8.15.0",
@@ -48,10 +61,12 @@
     "eslint-plugin-react-hooks": "4.5.0",
     "jest": "27.5.1",
     "nx": "14.2.4",
+    "plop": "^3.1.0",
     "prettier": "^2.6.2",
     "react-test-renderer": "18.1.0",
     "ts-jest": "27.1.4",
     "ts-node": "~10.8.0",
-    "typescript": "~4.7.2"
+    "typescript": "~4.7.2",
+    "url-loader": "^3.0.0"
   }
 }

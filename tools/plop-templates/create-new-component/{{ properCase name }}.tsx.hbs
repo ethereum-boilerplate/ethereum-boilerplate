@@ -1,0 +1,30 @@
+import { {{ getInterface name }} } from "./{{ name }}.types"
+import { Input, Typography } from 'web3uikit';
+import styles from './{{ name }}.styles';
+
+const { DivStyled } = styles;
+
+export const {{ name }}: React.FC<{{ getInterface name }}> = ({ 
+  isDisabled = false,
+  value = '',
+  onChange,
+}) => {
+  return (
+    <DivStyled 
+      className="{{ name }}"
+      data-testid="test-{{ name }}"
+      isDisabled={isDisabled}
+    >
+      <Typography variant="h3">Wow here we are</Typography>
+      <Input
+        disabled={isDisabled}
+        onChange={(e) => onChange && onChange(e.target.value)}
+        placeholder={value}
+        type="text"
+      />
+    </DivStyled>
+  );
+
+};
+
+export default {{ name }};

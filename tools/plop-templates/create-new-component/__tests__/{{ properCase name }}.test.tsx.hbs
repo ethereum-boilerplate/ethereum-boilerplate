@@ -1,0 +1,11 @@
+import { render } from '@testing-library/react';
+
+import {{ name }} from '../{{ name }}';
+
+describe('{{ name }}', () => {
+  it('should render successfully', () => {
+    const { baseElement } = render(<{{ name }} />);
+
+    expect(baseElement).toBeTruthy();
+  });
+});
