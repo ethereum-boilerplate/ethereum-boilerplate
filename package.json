@@ -6,6 +6,7 @@
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test",
+    "new": "yarn plop",
     "storybook:core": "nx storybook core",
     "storybook:ui": "nx storybook ui"
   },
