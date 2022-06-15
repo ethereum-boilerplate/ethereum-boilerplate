@@ -24,6 +24,16 @@ module.exports = function (plop) {
         name: 'subDirectory',
         message: '🧙 : What subdirectory is the component in? (optional)',
       },
+      {
+        type: 'list',
+        name: 'isBlank',
+        message:
+          "🧙 : Do you want examples in the generated component's files?",
+        choices: [
+          'Yes, I want examples inside',
+          "No, I'm PRO, leave the files with min code needed for start",
+        ],
+      },
       // {
       //   type: 'input',
       //   name: 'props',
@@ -42,13 +52,17 @@ module.exports = function (plop) {
     actions: (data) => {
       data.name = plop.getHelper('properCase')(data.name);
       data.subDirectory = plop.getHelper('properCase')(data.subDirectory);
+      const isBlank = data.isBlank !== 'Yes, I want examples inside';
+      const basePath = `tools/plop-templates/create-new-component/${
+        isBlank ? 'with-no-code-examples' : 'with-code-examples'
+      }/`;
       return [
         {
           type: 'addMany',
           destination:
             '{{ dir }}/src/components/{{ getSubDirectoryPath subDirectory }}{{ name }}',
-          base: 'tools/plop-templates/create-new-component/',
-          templateFiles: 'tools/plop-templates/create-new-component/**',
+          base: basePath,
+          templateFiles: `${basePath}/**`,
         },
       ];
     },
