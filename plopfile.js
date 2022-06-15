@@ -11,12 +11,18 @@ module.exports = function (plop) {
         type: 'input',
         name: 'name',
         message: '🧙 : What is the component name?',
+        pattern: 'properCase',
       },
       {
         type: 'list',
         name: 'dir',
         message: '🧙 : Where to create the component?',
         choices: ['libs/ui', ...appsPaths],
+      },
+      {
+        type: 'input',
+        name: 'subDirectory',
+        message: '🧙 : What subdirectory is the component in? (optional)',
       },
       // {
       //   type: 'input',
@@ -33,14 +39,20 @@ module.exports = function (plop) {
       //   message: 'propsTypes',
       // },
     ],
-    actions: [
-      {
-        type: 'addMany',
-        destination: '{{ dir }}/src/components/{{name}}',
-        base: 'tools/plop-templates/create-new-component/',
-        templateFiles: 'tools/plop-templates/create-new-component/**',
-      },
-    ],
+    actions: (data) => {
+      data.name = plop.getHelper('properCase')(data.name);
+      data.subDirectory = plop.getHelper('properCase')(data.subDirectory);
+      return [
+        {
+          type: 'addMany',
+          destination:
+            '{{ dir }}/src/components/{{ getSubDirectoryPath subDirectory }}{{ name }}',
+          base: 'tools/plop-templates/create-new-component/',
+          templateFiles: 'tools/plop-templates/create-new-component/**',
+        },
+      ];
+    },
   });
   plop.setHelper('getInterface', (name) => `${name}Props`);
+  plop.setHelper('getSubDirectoryPath', (subDirectory) => `${subDirectory}/`);
 };
