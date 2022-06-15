@@ -62,7 +62,7 @@ module.exports = function (plop) {
         {
           type: 'addMany',
           destination:
-            '{{ dir }}/src/components/{{ getSubDirectoryPath subDirectory }}{{ name }}',
+            '{{ dir }}/src/components{{ getSubDirectoryPath subDirectory }}/{{ name }}',
           base: basePath,
           templateFiles: `${basePath}/**`,
         },
@@ -70,5 +70,5 @@ module.exports = function (plop) {
     },
   });
   plop.setHelper('getInterface', (name) => `${name}Props`);
-  plop.setHelper('getSubDirectoryPath', (subDirectory) => `${subDirectory}/`);
+  plop.setHelper('getSubDirectoryPath', (subDirectory) => `/${subDirectory}`);
 };
