@@ -30,8 +30,11 @@ module.exports = function (plop) {
         message:
           "🧙 : Do you want examples in the generated component's files?",
         choices: [
-          'Yes, I want examples inside',
-          "No, I'm PRO, leave the files with min code needed for start",
+          { name: 'Yes, I want examples inside', value: false },
+          {
+            name: "No, I'm PRO, leave the files with min code needed for start",
+            value: true,
+          },
         ],
       },
       // {
@@ -52,9 +55,8 @@ module.exports = function (plop) {
     actions: (data) => {
       data.name = plop.getHelper('properCase')(data.name);
       data.subDirectory = plop.getHelper('properCase')(data.subDirectory);
-      const isBlank = data.isBlank !== 'Yes, I want examples inside';
       const basePath = `tools/plop-templates/create-new-component/${
-        isBlank ? 'with-no-code-examples' : 'with-code-examples'
+        data.isBlank ? 'with-no-code-examples' : 'with-code-examples'
       }/`;
       return [
         {
