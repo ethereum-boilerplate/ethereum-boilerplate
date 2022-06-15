@@ -2,26 +2,8 @@ import styled, { css } from 'styled-components';
 import resetCSS from '../../styles/reset';
 import { StyledTabProps } from './Tab.types';
 import color from '../../styles/colors';
+import { Typography } from 'web3uikit';
 
-const StyledTab = styled.div<StyledTabProps>`
-  ${resetCSS};
-  color: ${(props) => (props.isActive ? color.blue : color.grey)};
-  cursor: pointer;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 550;
-  height: 24px;
-  line-height: 24px;
-  text-align: center;
-  display: inline-block;
-  ${(p) =>
-    !p.isActive &&
-    css`
-      &:hover {
-        color: ${color.blue};
-      }
-    `};
-`;
 const StyledTabParent = styled.div<StyledTabProps>`
   ${resetCSS};
   cursor: pointer;
@@ -30,6 +12,12 @@ const StyledTabParent = styled.div<StyledTabProps>`
   min-width: 46px;
   height: 48px;
   display: inline-block;
+  text-align: center;
+  &:hover {
+    ${Typography} {
+      color: ${color.blue};
+    }
+  }
   ${(p) =>
     !p.isActive &&
     css`
@@ -54,7 +42,6 @@ const StyledTabLine = styled.div<StyledTabProps>`
   }
 `;
 export default {
-  StyledTab,
   StyledTabParent,
   StyledTabLine,
 };

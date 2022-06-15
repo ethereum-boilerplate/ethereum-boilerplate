@@ -1,8 +1,10 @@
 import React from 'react';
 import { TabProps } from './Tab.types';
 import styles from './Tab.styles';
+import { Typography } from 'web3uikit';
+import color from '../../styles/colors';
 
-const { StyledTab, StyledTabLine, StyledTabParent } = styles;
+const { StyledTabLine, StyledTabParent } = styles;
 
 export const Tab: React.FC<TabProps> = ({
   activeState = true,
@@ -11,7 +13,13 @@ export const Tab: React.FC<TabProps> = ({
 }) => {
   return (
     <StyledTabParent isActive={activeState} onClick={onClick}>
-      <StyledTab isActive={activeState}>{tabName}</StyledTab>
+      <Typography
+        variant="body16"
+        weight="550"
+        color={activeState ? color.blue : color.grey}
+      >
+        {tabName}
+      </Typography>
       <StyledTabLine isActive={activeState} />
     </StyledTabParent>
   );
