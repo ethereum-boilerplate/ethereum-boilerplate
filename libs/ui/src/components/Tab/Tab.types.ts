@@ -2,12 +2,11 @@ export interface TabProps {
   /**
    * Name of the Tab
    */
-  tabName: string;
-
+  name: string;
   /**
-   * Is the tab active, used to override normal logic
+   * path
    */
-  activeState?: boolean;
+  href: string;
   /**
    * call back function
    */

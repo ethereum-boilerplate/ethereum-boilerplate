@@ -1,3 +1,5 @@
+import { TabProps } from '../Tab/Tab.types';
+
 export interface TabsProps {
-  tabs: string[];
+  tabs: TabProps[];
 }

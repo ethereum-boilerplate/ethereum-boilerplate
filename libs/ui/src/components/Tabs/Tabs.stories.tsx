@@ -10,5 +10,10 @@ const Template: ComponentStory<typeof Tabs> = (args) => <Tabs {...args} />;
 
 export const Demo = Template.bind({});
 Demo.args = {
-  tabs: ['Home', 'About', 'ContactUs'],
+  tabs: [
+    { name: 'Home', href: '#' },
+    { name: 'DEx', href: '#' },
+    { name: 'NFT', href: '#' },
+    { name: 'Contract', href: '#' },
+  ],
 };

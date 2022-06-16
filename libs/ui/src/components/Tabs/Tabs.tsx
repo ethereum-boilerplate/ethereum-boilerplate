@@ -4,18 +4,13 @@ import Tab from '../Tab/Tab';
 import React, { useEffect, useRef, useState } from 'react';
 import color from '../../styles/colors';
 import { PopoverDropdown, PopoverElement, Icon } from 'web3uikit';
+import { useNavigate } from 'react-router-dom';
 const { TabsStyled, DivIconStyled } = styles;
 
 export const Tabs: React.FC<TabsProps> = ({ tabs }) => {
-  const [selected, setSelected] = useState(tabs[0]);
   const [width, setWidth] = useState<number | null>();
   const ref = useRef<HTMLDivElement | null>(null);
-  const selectedHandler = (tab: string) => {
-    setSelected(tab);
-  };
-  const clickHandler = () => {
-    console.log('clicked');
-  };
+  const navigate = useNavigate();
 
   useEffect(() => {
     const width = ref.current && ref.current.offsetWidth;
@@ -25,18 +20,18 @@ export const Tabs: React.FC<TabsProps> = ({ tabs }) => {
   return (
     <div ref={ref}>
       <TabsStyled
-        className="Tabs"
         data-testid="test-Tabs"
         style={{ display: width && width > 800 ? 'flex' : 'none' }}
       >
         {tabs.map((tab, index) => {
-          const active = selected === tab;
+          // const active = selected === tab;
+          const { name, href } = tab;
           return (
             <Tab
               key={index}
-              tabName={tab}
-              activeState={active}
-              onClick={() => selectedHandler(tab)}
+              name={name}
+              href={href}
+              onClick={() => console.log('clicked')}
             />
           );
         })}
@@ -52,12 +47,13 @@ export const Tabs: React.FC<TabsProps> = ({ tabs }) => {
           move={-100}
         >
           {tabs.map((tab) => {
+            const { name, href } = tab;
             return (
               <PopoverElement
                 backgroundColor="transparent"
                 height={30}
-                onClick={clickHandler}
-                text={tab}
+                onClick={() => navigate(href)}
+                text={name}
                 textColor="white"
                 textSize={10}
                 width={100}
