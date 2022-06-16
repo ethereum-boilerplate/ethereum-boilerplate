@@ -7,18 +7,12 @@ const { StyledTabLine, StyledTabParent } = styles;
 
 export const Tab: React.FC<TabProps> = ({
   name = 'test',
-  href = '#',
+  to = '#',
   onClick,
+  isActive,
 }) => {
   return (
-    <StyledTabParent
-      to={href}
-      onClick={onClick}
-      style={({ isActive }) => ({
-        color: isActive ? '#fff' : '#545e6f',
-        background: isActive ? '#7600dc' : '#f0f0f0',
-      })}
-    >
+    <StyledTabParent {...{ to, onClick, isActive }}>
       <Typography variant="body16" weight="550">
         {name}
       </Typography>

@@ -3,6 +3,7 @@ import resetCSS from '../../styles/reset';
 import color from '../../styles/colors';
 import { Typography } from 'web3uikit';
 import { NavLink } from 'react-router-dom';
+import { TabProps } from './Tab.types';
 
 const StyledTabLine = styled.div`
   ${resetCSS};
@@ -12,10 +13,18 @@ const StyledTabLine = styled.div`
   width: 100%;
   display: none;
   margin-top: 5px;
+`;
 
+const activeStyle = css`
+  ${StyledTabLine} {
+    display: block;
+  }
+  ${Typography} {
+    color: ${color.blue};
   }
 `;
-const StyledTabParent = styled(NavLink)`
+
+const StyledTabParent = styled(NavLink)<Pick<TabProps, 'isActive'>>`
   cursor: pointer;
   gap: 20px;
   padding: 0px;
@@ -24,6 +33,7 @@ const StyledTabParent = styled(NavLink)`
   display: inline-block;
   text-align: center;
   text-decoration: none;
+
   &:hover {
     ${Typography} {
       color: ${color.blue};
@@ -33,13 +43,9 @@ const StyledTabParent = styled(NavLink)`
     }
   }
   &:active {
-    ${StyledTabLine} {
-      display: block;
-    }
-    ${Typography} {
-      color: ${color.blue};
-    }
+    ${activeStyle}
   }
+  ${(p) => p.isActive && activeStyle}
 `;
 
 export default {

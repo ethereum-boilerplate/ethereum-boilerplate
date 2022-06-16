@@ -6,13 +6,11 @@ export interface TabProps {
   /**
    * path
    */
-  href: string;
+  to: string;
   /**
    * call back function
    */
   onClick?: () => void;
-}
 
-export interface StyledTabProps {
-  isActive: boolean;
+  isActive?: boolean;
 }

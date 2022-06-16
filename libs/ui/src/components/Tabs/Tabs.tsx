@@ -4,13 +4,17 @@ import Tab from '../Tab/Tab';
 import React, { useEffect, useRef, useState } from 'react';
 import color from '../../styles/colors';
 import { PopoverDropdown, PopoverElement, Icon } from 'web3uikit';
-import { useNavigate } from 'react-router-dom';
+import { matchPath, useLocation, useNavigate } from 'react-router-dom';
 const { TabsStyled, DivIconStyled } = styles;
 
 export const Tabs: React.FC<TabsProps> = ({ tabs }) => {
   const [width, setWidth] = useState<number | null>();
   const ref = useRef<HTMLDivElement | null>(null);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const isTabActive = (href: string) =>
+    !!matchPath(`${href}/*`, location.pathname);
 
   useEffect(() => {
     const width = ref.current && ref.current.offsetWidth;
@@ -23,18 +27,14 @@ export const Tabs: React.FC<TabsProps> = ({ tabs }) => {
         data-testid="test-Tabs"
         style={{ display: width && width > 800 ? 'flex' : 'none' }}
       >
-        {tabs.map((tab, index) => {
-          // const active = selected === tab;
-          const { name, href } = tab;
-          return (
-            <Tab
-              key={index}
-              name={name}
-              href={href}
-              onClick={() => console.log('clicked')}
-            />
-          );
-        })}
+        {tabs.map((tab, index) => (
+          <Tab
+            isActive={isTabActive(tab.to)}
+            key={index}
+            name={tab.name}
+            to={tab.to}
+          />
+        ))}
       </TabsStyled>
 
       <DivIconStyled
@@ -46,21 +46,18 @@ export const Tabs: React.FC<TabsProps> = ({ tabs }) => {
           moveBody={-90}
           move={-100}
         >
-          {tabs.map((tab) => {
-            const { name, href } = tab;
-            return (
-              <PopoverElement
-                backgroundColor="transparent"
-                height={30}
-                onClick={() => navigate(href)}
-                text={name}
-                textColor="white"
-                textSize={10}
-                width={100}
-                icon={'link'}
-              />
-            );
-          })}
+          {tabs.map((tab) => (
+            <PopoverElement
+              backgroundColor="transparent"
+              height={30}
+              onClick={() => navigate(tab.to)}
+              text={tab.name}
+              textColor="white"
+              textSize={10}
+              width={100}
+              icon={'link'}
+            />
+          ))}
         </PopoverDropdown>
       </DivIconStyled>
     </div>

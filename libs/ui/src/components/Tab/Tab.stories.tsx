@@ -14,5 +14,5 @@ const Template: ComponentStory<typeof Tab> = (args) => <Tab {...args} />;
 export const Demo = Template.bind({});
 Demo.args = {
   name: 'Test',
-  href: '#',
+  to: '#',
 };
