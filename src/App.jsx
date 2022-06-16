@@ -15,7 +15,7 @@ import NativeBalance from "components/NativeBalance";
 import "./style.css";
 import QuickStart from "components/QuickStart";
 import Contract from "components/Contract/Contract";
-import Text from "antd/lib/typography/Text";
+// import Text from "antd/lib/typography/Text";
 import Ramper from "components/Ramper";
 import MenuItems from "./components/MenuItems";
 const { Header, Footer } = Layout;
@@ -88,15 +88,15 @@ const App = ({ isServerInfo }) => {
             </Route>
             <Route path="/1inch">
               <Tabs defaultActiveKey="1" style={{ alignItems: "center" }}>
-                <Tabs.TabPane tab={<span>Ethereum</span>} key="1">
-                  <DEX chain="eth" />
-                </Tabs.TabPane>
-                <Tabs.TabPane tab={<span>Binance Smart Chain</span>} key="2">
+                <Tabs.TabPane tab={<span>Binance Smart Chain</span>} key="1">
                   <DEX chain="bsc" />
+                </Tabs.TabPane>
+                {/* <Tabs.TabPane tab={<span>Ethereum</span>} key="2">
+                  <DEX chain="eth" />
                 </Tabs.TabPane>
                 <Tabs.TabPane tab={<span>Polygon</span>} key="3">
                   <DEX chain="polygon" />
-                </Tabs.TabPane>
+                </Tabs.TabPane> */}
               </Tabs>
             </Route>
             <Route path="/erc20balance">
@@ -115,10 +115,10 @@ const App = ({ isServerInfo }) => {
               <Contract />
             </Route>
             <Route path="/">
-              <Redirect to="/quickstart" />
+              <Redirect to="/1inch" />
             </Route>
             <Route path="/ethereum-boilerplate">
-              <Redirect to="/quickstart" />
+              <Redirect to="/1inch" />
             </Route>
             <Route path="/nonauthenticated">
               <>Please login using the "Authenticate" button</>
@@ -126,7 +126,7 @@ const App = ({ isServerInfo }) => {
           </Switch>
         </div>
       </Router>
-      <Footer style={{ textAlign: "center" }}>
+      {/* <Footer style={{ textAlign: "center" }}>
         <Text style={{ display: "block" }}>
           ⭐️ Please star this{" "}
           <a href="https://github.com/ethereum-boilerplate/ethereum-boilerplate/" target="_blank" rel="noopener noreferrer">
@@ -152,27 +152,49 @@ const App = ({ isServerInfo }) => {
             Moralis
           </a>
         </Text>
-      </Footer>
+      </Footer> */}
     </Layout>
   );
 };
 
 export const Logo = () => (
   <div style={{ display: "flex" }}>
-    <svg width="60" height="38" viewBox="0 0 50 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path
-        d="M43.6871 32.3986C43.5973 32.4884 43.53 32.5782 43.4402 32.6905C43.53 32.6007 43.5973 32.5109 43.6871 32.3986Z"
-        fill="black"
-      />
-      <path
-        d="M49.7037 14.3715C49.5241 6.2447 42.7891 -0.17592 34.6624 0.00367768C31.0031 0.0934765 27.4784 1.53026 24.8294 4.06708C22.113 1.46291 18.4986 0.00367768 14.727 0.00367768C6.71246 0.00367768 0.202047 6.49164 0 14.5511V14.6633C0 20.8146 2.24497 26.2698 4.26545 30.0189C5.11853 31.5904 6.08387 33.117 7.13901 34.5762C7.5431 35.115 7.8574 35.564 8.10435 35.8559L8.39619 36.2151L8.48599 36.3273L8.50844 36.3498L8.53089 36.3722C10.2146 38.3253 13.1555 38.5498 15.1087 36.8886C15.1311 36.8661 15.1536 36.8437 15.176 36.8212C17.1291 35.0701 17.3312 32.0843 15.625 30.1087L15.6026 30.0638L15.423 29.8618C15.2658 29.6597 15.0189 29.3455 14.727 28.9414C13.9188 27.8189 13.178 26.6515 12.5269 25.4392C10.8881 22.4309 9.42888 18.6145 9.42888 14.7531C9.49623 11.8347 11.9432 9.52236 14.8617 9.58971C17.7128 9.65705 19.9802 11.9694 20.0251 14.8205C20.0476 15.5389 20.2272 16.2348 20.5415 16.8859C21.4844 19.3104 24.2232 20.5227 26.6478 19.5798C28.4438 18.8839 29.6336 17.1553 29.6561 15.2246V14.596C29.7683 11.6775 32.2153 9.38766 35.1562 9.47746C37.94 9.56726 40.1625 11.8122 40.2748 14.596C40.2523 17.6941 39.2645 20.7472 38.1421 23.1718C37.6931 24.1371 37.1992 25.08 36.6379 25.978C36.4359 26.3147 36.2787 26.5617 36.1665 26.6964C36.1216 26.7862 36.0767 26.8311 36.0542 26.8535L36.0318 26.876L35.9869 26.9433C37.6033 24.9004 40.5442 24.5412 42.5871 26.1576C44.4953 27.6617 44.9443 30.3781 43.6198 32.4211L43.6422 32.4435V32.3986L43.6647 32.3762L43.732 32.2864C43.7769 32.1966 43.8667 32.1068 43.9565 31.9721C44.1361 31.7027 44.3606 31.3435 44.6525 30.8945C45.3933 29.6822 46.0668 28.4026 46.673 27.1229C48.1097 24.0249 49.6812 19.5349 49.6812 14.5286L49.7037 14.3715Z"
-        fill="#041836"
-      />
-      <path
-        d="M39.7135 25.1249C37.1094 25.1025 34.9991 27.2127 34.9766 29.8169C34.9542 32.4211 37.0645 34.5313 39.6686 34.5538C41.1503 34.5538 42.5647 33.8578 43.4626 32.6905C43.53 32.6007 43.5973 32.4884 43.6871 32.3986C45.1015 30.221 44.4729 27.3025 42.2953 25.9107C41.532 25.3943 40.634 25.1249 39.7135 25.1249Z"
-        fill="#B7E803"
-      />
-    </svg>
+    <svg width="60" height="38" viewBox="0 0 766 536" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path opacity="0.82" d="M403.008 421.394C513.465 421.394 603.008 331.851 603.008 221.394C603.008 110.937 513.465 21.3938 403.008 21.3938C292.551 21.3938 203.008 110.937 203.008 221.394C203.008 331.851 292.551 421.394 403.008 421.394Z" fill="url(#paint0_linear_4_406)"/>
+<path opacity="0.72" d="M736.507 378.642C736.507 414.858 722.12 449.591 696.511 475.2C670.902 500.809 636.169 515.196 599.953 515.196C575.259 515.26 551.022 508.538 529.89 495.764L303.419 498.495L471.486 334.314C482.383 304.266 503.475 278.993 531.089 262.896C558.702 246.8 591.087 240.899 622.603 246.223C654.119 251.546 682.77 267.756 703.564 292.03C724.358 316.303 735.979 347.102 736.402 379.062L736.507 378.642Z" fill="url(#paint1_linear_4_406)"/>
+<path opacity="0.84" d="M211.614 522.549C314.529 522.549 397.959 439.12 397.959 336.205C397.959 233.289 314.529 149.86 211.614 149.86C108.699 149.86 25.2695 233.289 25.2695 336.205C25.2695 439.12 108.699 522.549 211.614 522.549Z" fill="url(#paint2_linear_4_406)"/>
+<path d="M582.203 510.889C598.493 513.83 615.178 513.83 631.468 510.889C665.328 504.89 695.766 486.56 716.904 459.436C738.042 432.312 748.381 398.319 745.927 364.019C743.472 329.719 728.397 297.544 703.612 273.707C678.827 249.87 646.09 236.06 611.72 234.944H606.783C578.431 234.879 550.744 243.533 527.476 259.734V259.734C515.163 268.436 504.343 279.079 495.438 291.246" stroke="white" stroke-width="38" stroke-miterlimit="10"/>
+<path d="M611.719 234.944C611.719 230.953 611.719 226.961 611.719 222.969C611.716 209.068 610.308 195.202 607.518 181.583C598.422 137.616 575.068 97.8808 541.08 68.544C507.092 39.2073 464.372 21.9096 419.548 19.3356C374.724 16.7616 330.303 29.0551 293.181 54.3083C256.058 79.5616 228.309 116.362 214.24 158.999" stroke="white" stroke-width="38" stroke-miterlimit="10"/>
+<path d="M360.98 421.393C359.614 421.393 358.249 420.763 356.988 420.448" stroke="white" stroke-width="52.521" stroke-miterlimit="10"/>
+<path d="M332.624 218.873C308.301 191.284 276.08 171.848 240.332 163.201C204.584 154.555 167.041 157.117 132.799 170.54C98.5575 183.963 69.275 207.596 48.9264 238.233C28.5778 268.87 18.1486 305.026 19.0544 341.793C19.9601 378.561 32.157 414.16 53.9895 443.757C75.822 473.355 106.233 495.518 141.094 507.239C175.955 518.959 213.579 519.67 248.857 509.273C284.136 498.877 315.362 477.877 338.296 449.125" stroke="white" stroke-width="38" stroke-miterlimit="10"/>
+<path d="M243.545 512.045H238.503H264.344H577.684H595.436" stroke="white" stroke-width="38" stroke-miterlimit="10"/>
+<path d="M276.21 510.889L307.513 479.272L341.021 445.448L392.282 393.663L424.005 361.415L424.32 361.205L503.206 281.583" stroke="white" stroke-width="38" stroke-miterlimit="10"/>
+<defs>
+<linearGradient id="paint0_linear_4_406" x1="203.008" y1="221.394" x2="603.008" y2="221.394" gradientUnits="userSpaceOnUse">
+<stop stop-color="#002FD4"/>
+<stop offset="1" stop-color="#00E0FF"/>
+</linearGradient>
+<linearGradient id="paint1_linear_4_406" x1="303.734" y1="378.537" x2="736.507" y2="378.537" gradientUnits="userSpaceOnUse">
+<stop stop-color="#61DDFA"/>
+<stop offset="1" stop-color="#AD23C0"/>
+</linearGradient>
+<linearGradient id="paint2_linear_4_406" x1="25.2695" y1="336.205" x2="397.959" y2="336.205" gradientUnits="userSpaceOnUse">
+<stop offset="0.04" stop-color="#3B23C0"/>
+<stop offset="0.17" stop-color="#251A9D"/>
+<stop offset="0.31" stop-color="#10107B"/>
+<stop offset="0.39" stop-color="#080D6E"/>
+<stop offset="0.48" stop-color="#0A1171"/>
+<stop offset="0.56" stop-color="#0F1D79"/>
+<stop offset="0.65" stop-color="#173186"/>
+<stop offset="0.73" stop-color="#234D99"/>
+<stop offset="0.81" stop-color="#3370B1"/>
+<stop offset="0.9" stop-color="#459CCF"/>
+<stop offset="0.98" stop-color="#5BCFF1"/>
+<stop offset="1" stop-color="#61DDFA"/>
+</linearGradient>
+</defs>
+</svg>
+
   </div>
 );
 

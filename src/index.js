@@ -5,6 +5,7 @@ import { MoralisProvider } from "react-moralis";
 import "./index.css";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import QuickStart from "components/QuickStart";
+//import DEX from "components/DEX/DEX";
 
 /** Get your free Moralis Account https://moralis.io/ */
 
@@ -28,6 +29,7 @@ const Application = () => {
     return (
       <div style={{ display: "flex", justifyContent: "center" }}>
         <QuickStart />
+        {/* <DEX/> */}
       </div>
     );
   }
