@@ -4,6 +4,7 @@ import resetCSS from '../../styles/reset';
 const TabsStyled = styled.div`
   ${resetCSS};
   align-items: flex-start;
+  display: flex;
   flex-direction: row;
   gap: 32px;
   justify-content: 'center';

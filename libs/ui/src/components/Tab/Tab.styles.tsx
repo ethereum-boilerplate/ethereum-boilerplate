@@ -26,11 +26,11 @@ const activeStyle = css`
 
 const StyledTabParent = styled(NavLink)<Pick<TabProps, 'isActive'>>`
   cursor: pointer;
-  gap: 20px;
-  padding: 0px;
-  min-width: 46px;
-  height: 48px;
   display: inline-block;
+  gap: 20px;
+  height: 48px;
+  min-width: 46px;
+  padding: 0px;
   text-align: center;
   text-decoration: none;
 
