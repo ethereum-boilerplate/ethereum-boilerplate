@@ -9,10 +9,9 @@ const StyledTabLine = styled.div`
   ${resetCSS};
   background: ${color.blue};
   border-radius: 6px 6px 0px 0px;
+  display: none;
   height: 4px;
   width: 100%;
-  display: none;
-  margin-top: 5px;
 `;
 
 const activeStyle = css`
@@ -27,13 +26,11 @@ const activeStyle = css`
 const StyledTabParent = styled(NavLink)<Pick<TabProps, 'isActive'>>`
   cursor: pointer;
   display: inline-block;
-  gap: 20px;
   height: 48px;
   min-width: 46px;
   padding: 0px;
   text-align: center;
   text-decoration: none;
-
   &:hover {
     ${Typography} {
       color: ${color.blue};

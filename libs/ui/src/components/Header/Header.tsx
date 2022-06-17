@@ -1,8 +1,7 @@
 import { HeaderProps } from './Header.types';
 import styles from './Header.styles';
 import { Tabs } from '../Tabs';
-import { ConnectButton } from 'web3uikit';
-
+import { Logo } from 'web3uikit';
 const { DivStyled } = styles;
 
 export const Header: React.FC<HeaderProps> = () => {
@@ -12,9 +11,9 @@ export const Header: React.FC<HeaderProps> = () => {
     { name: 'NFT', to: '/NFT' },
   ];
   return (
-    <DivStyled className="Header" data-testid="test-Header">
+    <DivStyled data-testid="test-Header">
+      <Logo size="regular" theme="icon" />
       <Tabs tabs={tabs} />
-      <ConnectButton />
     </DivStyled>
   );
 };
