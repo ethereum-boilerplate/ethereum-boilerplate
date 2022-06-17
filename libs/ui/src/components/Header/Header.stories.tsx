@@ -9,4 +9,11 @@ export default {
 const Template: ComponentStory<typeof Header> = (args) => <Header {...args} />;
 
 export const Demo = Template.bind({});
-Demo.args = {};
+Demo.args = {
+  tabs: [
+    { name: 'Home', to: '/home' },
+    { name: 'DEx', to: '/dex' },
+    { name: 'NFT', to: '/nft' },
+    { name: 'Contract', to: '/contract' },
+  ],
+};

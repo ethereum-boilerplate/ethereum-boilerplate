@@ -35,6 +35,7 @@ specifiers:
   core-js: ^3.6.5
   crypto-browserify: ^3.12.0
   cypress: ^9.1.0
+  dotenv: ^16.0.1
   eslint: ~8.15.0
   eslint-config-prettier: 8.1.0
   eslint-plugin-cypress: ^2.10.3
@@ -67,6 +68,7 @@ specifiers:
 
 dependencies:
   core-js: 3.22.8
+  dotenv: 16.0.1
   react: 18.1.0
   react-dom: 18.1.0_react@18.1.0
   react-is: 18.1.0
@@ -84,7 +86,7 @@ devDependencies:
   '@nrwl/eslint-plugin-nx': 14.2.4_e2wb4xr2p4i4nwv7wbzoodmsuu
   '@nrwl/jest': 14.2.4_w24bxlozc2rypkpueaqhbhr5mu
   '@nrwl/linter': 14.2.4_et4n5nxmavrltp3n6jltor2lrm
-  '@nrwl/nx-cloud': 14.1.1
+  '@nrwl/nx-cloud': 14.1.2
   '@nrwl/react': 14.2.4_p422gsop2e2lz6o26k7vdj5h5i
   '@nrwl/storybook': 14.2.4_vuphijxnwzcdzrnasit3tyflke
   '@nrwl/web': 14.2.4_p5qkwibpievi2fvwalelt7zcrq
@@ -3862,8 +3864,8 @@ packages:
       - utf-8-validate
     dev: true
 
-  /@nrwl/nx-cloud/14.1.1:
-    resolution: {integrity: sha512-sUArQhTMcK/2ZsFWmZ3ZOd2REq+EKZ8LnGB9hAo9BAIQVQStmj2ovixknSRnIniR8c9oCauXbEEKepw0bP4dgQ==}
+  /@nrwl/nx-cloud/14.1.2:
+    resolution: {integrity: sha512-ZMxxx+NNp06IDPJ8cbQDPNMNRuH+pM/RoC7ZsCriotDG3kpzour41OGf0UpnXSXcTJPlDyHG6Xi0XuPdjmpNSw==}
     hasBin: true
     dependencies:
       axios: 0.21.4
@@ -10660,6 +10662,11 @@ packages:
     resolution: {integrity: sha512-rlBi9d8jpv9Sf1klPjNfFAuWDjKLwTIJJ/VxtoTwIR6hnZxcEOQCZg2oIL3MWBYw5GpUDKOEnND7LXTbIpQ03Q==}
     engines: {node: '>=10'}
     dev: true
+
+  /dotenv/16.0.1:
+    resolution: {integrity: sha512-1K6hR6wtk2FviQ4kEiSjFiH5rpzEVi8WW0x96aztHVMhEspNpc4DVOUTEHtEva5VThQ8IaBX1Pe4gSzpVVUsKQ==}
+    engines: {node: '>=12'}
+    dev: false
 
   /dotenv/8.6.0:
     resolution: {integrity: sha512-IrPdXQsk2BbzvCBGBOTmmSH5SodmqZNt4ERAZDmW4CT+tL8VtvinqywuANaFu4bOMWki16nqf0e4oC0QIaDr/g==}

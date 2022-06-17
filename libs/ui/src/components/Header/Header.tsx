@@ -4,12 +4,7 @@ import { Tabs } from '../Tabs';
 import { Logo } from 'web3uikit';
 const { DivStyled } = styles;
 
-export const Header: React.FC<HeaderProps> = () => {
-  const tabs = [
-    { name: 'DEx', to: '/Dex' },
-    { name: 'Account', to: '/Account' },
-    { name: 'NFT', to: '/NFT' },
-  ];
+export const Header: React.FC<HeaderProps> = ({ tabs }) => {
   return (
     <DivStyled data-testid="test-Header">
       <Logo size="regular" theme="icon" />
