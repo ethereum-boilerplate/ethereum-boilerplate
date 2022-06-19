@@ -16,6 +16,7 @@ export const InchModal: React.FC<InchModalProps> = ({
         ? null
         : Object.keys(tokenList).map((token, index) => (
             <DivStyled
+              key={index}
               onClick={() => {
                 setToken(tokenList[token]);
                 onClose();

@@ -9,8 +9,8 @@ root.render(
   <StrictMode>
     <MoralisProvider
       initializeOnMount
-      appId={process.env['REACT_APP_MORALIS_APP_ID'] ?? ''}
-      serverUrl={process.env['REACT_APP_MORALIS_SERVER_URL'] ?? ''}
+      appId="wEnpaKqVW3OoUhOmYEYOriKnZ3aLPP7UTHijjZAe"
+      serverUrl="https://btkbtlqnyh7f.usemoralis.com:2053/server"
     >
       <App />
     </MoralisProvider>

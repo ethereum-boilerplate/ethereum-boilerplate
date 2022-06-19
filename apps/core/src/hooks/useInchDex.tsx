@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useMoralis } from 'react-moralis';
 const useInchDex = (chain: any) => {
   const { Moralis, account } = useMoralis();
@@ -10,7 +10,10 @@ const useInchDex = (chain: any) => {
     }
     Moralis.Plugins['oneInch']
       .getSupportedTokens({ chain })
-      .then((tokens: { tokens: object }) => setTokenlist(tokens.tokens));
+      .then((tokens: { tokens: object }) => {
+        console.log(tokens.tokens);
+        setTokenlist(tokens.tokens);
+      });
   }, [Moralis, Moralis.Plugins, chain]);
 
   const getQuote = async (params: any) =>
