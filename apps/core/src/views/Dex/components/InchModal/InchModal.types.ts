@@ -1,8 +1,9 @@
 export interface InchModalProps {
   open: boolean;
   onClose: () => void;
-  setToken: (token: Token) => void;
+  setToken: (token: any) => void;
   tokenList: any;
+  type: string;
 }
 
 export interface Token {

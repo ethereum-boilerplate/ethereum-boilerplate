@@ -1,10 +1,11 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect, useReducer } from 'react';
 import { useMoralis, useTokenPrice } from 'react-moralis';
 import { DexProps, Token } from './Dex.types';
 import styles from './Dex.styles';
 import { Button, Input, Typography, Icon, Modal, Avatar } from 'web3uikit';
 import { PriceSwap } from './components/PriceSwap';
 import { InchModal } from './components/InchModal';
+import { reducer, initialState } from './Dex.reducer';
 import useInchDex from '../../hooks/useInchDex';
 import {
   getWrappedNative,
@@ -27,19 +28,30 @@ const nativeAddress = '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee';
 export const Dex: React.FC<DexProps> = ({ chain, customTokens = {} }) => {
   const { trySwap, tokenList, getQuote } = useInchDex(chain);
   const { Moralis, isInitialized, chainId } = useMoralis();
-  const [isFromModalActive, setFromModalActive] = useState(false);
-  const [isToModalActive, setToModalActive] = useState(false);
-  const [fromToken, setFromToken] = useState<Token>();
-  const [toToken, setToToken] = useState<Token>();
-  const [fromAmount, setFromAmount] = useState<number>();
-  const [quote, setQuote] = useState<any>();
-  const [currentTrade, setCurrentTrade] = useState<object>();
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const {
+    isFromModalActive,
+    isToModalActive,
+    fromToken,
+    toToken,
+    fromAmount,
+    quote,
+    currentTrade,
+    tokenPricesUSD,
+  } = state;
+  // const [isFromModalActive, setFromModalActive] = useState(false);
+  // const [isToModalActive, setToModalActive] = useState(false);
+  // const [fromToken, setFromToken] = useState<Token>();
+  // const [toToken, setToToken] = useState<Token>();
+  // const [fromAmount, setFromAmount] = useState<number>();
+  // const [quote, setQuote] = useState<any>();
+  // const [currentTrade, setCurrentTrade] = useState<object>();
   const { fetchTokenPrice } = useTokenPrice({
-    address: '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
+    address: '',
   });
-  const [tokenPricesUSD, setTokenPricesUSD] = useState<{
-    [key: string]: number;
-  }>({});
+  // const [tokenPricesUSD, setTokenPricesUSD] = useState<{
+  //   [key: string]: number;
+  // }>({});
 
   console.log('isToModalActive', isToModalActive);
   console.log('isFromModalActive', isFromModalActive);
@@ -54,6 +66,7 @@ export const Dex: React.FC<DexProps> = ({ chain, customTokens = {} }) => {
     return { ...customTokens, ...tokenList };
   }, [customTokens, tokenList]);
   console.log('tokens', tokens);
+
   const fromTokenPriceUsd = useMemo(() => {
     if (tokenPricesUSD && fromToken) {
       return tokenPricesUSD[fromToken['address']];
@@ -97,9 +110,12 @@ export const Dex: React.FC<DexProps> = ({ chain, customTokens = {} }) => {
           params: { chain: validatedChain, address: tokenAddress },
           onSuccess: (price) =>
             price &&
-            setTokenPricesUSD({
-              ...tokenPricesUSD,
-              [fromToken['address']]: price['usdPrice'],
+            dispatch({
+              type: 'set-tokenPriceUSD',
+              payload: {
+                ...tokenPricesUSD,
+                [fromToken['address']]: price['usdPrice'],
+              },
             }),
         });
     }
@@ -119,9 +135,12 @@ export const Dex: React.FC<DexProps> = ({ chain, customTokens = {} }) => {
           params: { chain: validatedChain, address: tokenAddress },
           onSuccess: (price) =>
             price &&
-            setTokenPricesUSD({
-              ...tokenPricesUSD,
-              [toToken['address']]: price['usdPrice'],
+            dispatch({
+              type: 'set-tokenPriceUSD',
+              payload: {
+                ...tokenPricesUSD,
+                [toToken['address']]: price['usdPrice'],
+              },
             }),
         });
     }
@@ -130,8 +149,12 @@ export const Dex: React.FC<DexProps> = ({ chain, customTokens = {} }) => {
   }, [chain, isInitialized, toToken]);
 
   useEffect(() => {
-    if (!tokens || fromToken) return;
-    setFromToken(tokens[nativeAddress]);
+    if (!tokens || fromToken) {
+      return;
+    } else {
+      // setFromToken(tokens[nativeAddress]);
+      dispatch({ type: 'set-token-from', payload: tokens[nativeAddress] });
+    }
   }, [tokens, fromToken]);
 
   const ButtonState = useMemo(() => {
@@ -147,11 +170,17 @@ export const Dex: React.FC<DexProps> = ({ chain, customTokens = {} }) => {
 
   useEffect(() => {
     if (fromToken && toToken && fromAmount)
-      setCurrentTrade({ fromToken, toToken, fromAmount, chain });
+      dispatch({
+        type: 'set-currentTrade',
+        payload: { fromToken, toToken, fromAmount, chain },
+      });
   }, [toToken, fromToken, fromAmount, chain]);
 
   useEffect(() => {
-    if (currentTrade) getQuote(currentTrade).then((quote) => setQuote(quote));
+    if (currentTrade)
+      getQuote(currentTrade).then((quote) =>
+        dispatch({ type: 'set-quote', payload: quote })
+      );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentTrade]);
 
@@ -165,13 +194,22 @@ export const Dex: React.FC<DexProps> = ({ chain, customTokens = {} }) => {
               <Input
                 type="number"
                 placeholder="0.00"
-                onChange={(e) => setFromAmount(parseFloat(e.target.value))}
+                onChange={(e) =>
+                  dispatch({
+                    type: 'set-amount-from',
+                    payload: parseFloat(e.target.value),
+                  })
+                }
                 value={fromAmount}
               />
               <Typography variant="body16">{fromTokenAmountUsd}</Typography>
             </div>
             {fromToken ? (
-              <ButtonStyled onClick={() => setFromModalActive(true)}>
+              <ButtonStyled
+                onClick={() =>
+                  dispatch({ type: 'set-modal-from', payload: true })
+                }
+              >
                 <Avatar
                   isRounded
                   size={25}
@@ -190,7 +228,9 @@ export const Dex: React.FC<DexProps> = ({ chain, customTokens = {} }) => {
             ) : (
               <Button
                 text="select a token"
-                onClick={() => setFromModalActive(true)}
+                onClick={() =>
+                  dispatch({ type: 'set-modal-from', payload: true })
+                }
               />
             )}
           </ButtonInputDivStyled>
@@ -220,7 +260,11 @@ export const Dex: React.FC<DexProps> = ({ chain, customTokens = {} }) => {
               <Typography variant="body16"> {toTokenAmountUsd}</Typography>
             </div>
             {toToken ? (
-              <ButtonStyled onClick={() => setToModalActive(true)}>
+              <ButtonStyled
+                onClick={() =>
+                  dispatch({ type: 'set-modal-to', payload: true })
+                }
+              >
                 <Avatar
                   isRounded
                   size={25}
@@ -239,7 +283,9 @@ export const Dex: React.FC<DexProps> = ({ chain, customTokens = {} }) => {
             ) : (
               <Button
                 text="select a token"
-                onClick={() => setToModalActive(true)}
+                onClick={() =>
+                  dispatch({ type: 'set-modal-to', payload: true })
+                }
               />
             )}
           </ButtonInputDivStyled>
@@ -269,9 +315,11 @@ export const Dex: React.FC<DexProps> = ({ chain, customTokens = {} }) => {
 
       <Modal
         isVisible={isFromModalActive}
-        onCancel={() => setFromModalActive(false)}
-        onCloseButtonPressed={() => setFromModalActive(false)}
-        onOk={() => setFromModalActive(false)}
+        onCancel={() => dispatch({ type: 'set-modal-from', payload: false })}
+        onCloseButtonPressed={() =>
+          dispatch({ type: 'set-modal-from', payload: false })
+        }
+        onOk={() => dispatch({ type: 'set-modal-from', payload: false })}
         title="Select a token"
         width="430px"
         canOverflow={true}
@@ -286,17 +334,20 @@ export const Dex: React.FC<DexProps> = ({ chain, customTokens = {} }) => {
         >
           <InchModal
             open={isFromModalActive}
-            onClose={() => setFromModalActive(false)}
-            setToken={setFromToken}
+            onClose={() => dispatch({ type: 'set-modal-from', payload: false })}
+            setToken={dispatch}
             tokenList={tokens}
+            type="from"
           />
         </div>
       </Modal>
       <Modal
         isVisible={isToModalActive}
-        onCancel={() => setToModalActive(false)}
-        onCloseButtonPressed={() => setToModalActive(false)}
-        onOk={() => setToModalActive(false)}
+        onCancel={() => dispatch({ type: 'set-modal-to', payload: false })}
+        onCloseButtonPressed={() =>
+          dispatch({ type: 'set-modal-to', payload: false })
+        }
+        onOk={() => dispatch({ type: 'set-modal-to', payload: false })}
         title="Select a token"
         width="430px"
         canOverflow={true}
@@ -311,8 +362,9 @@ export const Dex: React.FC<DexProps> = ({ chain, customTokens = {} }) => {
         >
           <InchModal
             open={isToModalActive}
-            onClose={() => setToModalActive(false)}
-            setToken={setToToken}
+            onClose={() => dispatch({ type: 'set-modal-to', payload: false })}
+            setToken={dispatch}
+            type="to"
             tokenList={tokens}
           />
         </div>

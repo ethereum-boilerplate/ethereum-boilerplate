@@ -8,8 +8,19 @@ export const InchModal: React.FC<InchModalProps> = ({
   onClose,
   setToken,
   tokenList,
+  type,
 }) => {
   if (!open) return null;
+  const dispatchType = (type: string) => {
+    switch (type) {
+      case 'from':
+        return 'set-token-from';
+      case 'to':
+        return 'set-token-to';
+      default:
+        return;
+    }
+  };
   return (
     <DivContainerStyled>
       {!tokenList
@@ -18,7 +29,11 @@ export const InchModal: React.FC<InchModalProps> = ({
             <DivStyled
               key={index}
               onClick={() => {
-                setToken(tokenList[token]);
+                // setToken(tokenList[token]);
+                setToken({
+                  type: dispatchType(type),
+                  payload: tokenList[token],
+                });
                 onClose();
               }}
             >
