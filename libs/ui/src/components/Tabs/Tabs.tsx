@@ -2,7 +2,7 @@ import { TabsProps } from './Tabs.types';
 import styles from './Tabs.styles';
 import Tab from '../Tab/Tab';
 import React, { useEffect, useState } from 'react';
-import color from '../../styles/colors';
+import { color } from '../../styles/colors';
 import { PopoverDropdown, PopoverElement, Icon } from 'web3uikit';
 import { matchPath, useLocation, useNavigate } from 'react-router-dom';
 const { TabsStyled, DivIconStyled } = styles;

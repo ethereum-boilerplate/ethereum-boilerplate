@@ -1,17 +1,22 @@
 import { useEffect, useState } from 'react';
 import { useMoralis } from 'react-moralis';
 const useInchDex = (chain: any) => {
-  const { Moralis, account } = useMoralis();
+  const { Moralis, account, isInitialized } = useMoralis();
   const [tokenList, setTokenlist] = useState<object>();
-
+  console.log('token list inside the hook', tokenList);
+  console.log('chain inside hook', chain);
+  console.log('isInitialized', isInitialized);
+  console.log('moralis plugin', Moralis.Plugins['oneInch']);
   useEffect(() => {
     if (!Moralis.Plugins['oneInch']) {
+      console.log(Moralis.Plugins['oneInch']);
+      console.log('what is wrong');
       return;
     }
     Moralis.Plugins['oneInch']
       .getSupportedTokens({ chain })
       .then((tokens: { tokens: object }) => {
-        console.log(tokens.tokens);
+        console.log('Tokens from plugin', tokens.tokens);
         setTokenlist(tokens.tokens);
       });
   }, [Moralis, Moralis.Plugins, chain]);

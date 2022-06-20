@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import resetCSS from '../../styles/reset';
+import { resetCSS } from 'libs/ui/src/styles/reset';
 
 const DivContainerStyled = styled.div`
   ${resetCSS};

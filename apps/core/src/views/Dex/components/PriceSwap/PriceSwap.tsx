@@ -1,10 +1,9 @@
 import { PriceSwapProps } from './PriceSwap.types';
 import styles from './PriceSwap.styles';
 import { Typography } from 'web3uikit';
-// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
-import { tokenValue } from '../../../../../apps/core/src/helpers/formatters';
-const { TypographyStyled } = styles;
+import { tokenValue } from '@ethereum-boilerplate-v2/ui';
 
+const { TypographyStyled } = styles;
 export const PriceSwap: React.FC<PriceSwapProps> = ({
   quote,
   tokenPricesUSD,

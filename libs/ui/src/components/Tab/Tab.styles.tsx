@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
-import resetCSS from '../../styles/reset';
-import color from '../../styles/colors';
+import { resetCSS } from '../../styles/reset';
+import { color } from '../../styles/colors';
 import { Typography } from 'web3uikit';
 import { NavLink } from 'react-router-dom';
 import { TabProps } from './Tab.types';

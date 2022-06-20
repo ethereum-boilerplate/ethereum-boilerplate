@@ -1,5 +1,5 @@
 import { Header } from '@ethereum-boilerplate-v2/ui';
-import { Dex } from '../Dex/Dex';
+import { Dex } from '../../views/Dex';
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 export const App: React.FC = () => {

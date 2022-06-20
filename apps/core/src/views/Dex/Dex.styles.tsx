@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import resetCSS from '../../../../../libs/ui/src/styles/reset';
+import { resetCSS } from '@ethereum-boilerplate-v2/ui';
 
 const DivStyled = styled.div`
   ${resetCSS};

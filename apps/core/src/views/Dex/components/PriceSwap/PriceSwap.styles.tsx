@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { Typography } from 'web3uikit';
-import resetCSS from '../../styles/reset';
 
 const TypographyStyled = styled(Typography)`
   display: flex;

@@ -1,4 +1,4 @@
-const color = {
+export const color = {
   black: '#000000',
   blue: '#2E7DAF',
   blueCloud: '#EEF6FB',
@@ -66,5 +66,3 @@ export const colorPercentage = (color: string, percentage: string | number) => {
 
   return `rgba(${r},${g},${b},${Number(percentage) / 100})`;
 };
-
-export default color;

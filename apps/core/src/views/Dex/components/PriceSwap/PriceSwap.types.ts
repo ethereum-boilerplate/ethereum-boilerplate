@@ -1,4 +1,4 @@
-import { Token } from '../InchModal/InchModal.types';
+// import { Token } from '../InchModal/InchModal.types';
 
 export interface PriceSwapProps {
   quote: {
@@ -10,4 +10,13 @@ export interface PriceSwapProps {
   tokenPricesUSD: { [key: string]: number };
   fromToken: Token | undefined;
   toToken: Token | undefined;
+}
+
+interface Token {
+  address: string;
+  decimals: number;
+  logoURI: string;
+  name: string;
+  symbol: string;
+  tags: string[];
 }

@@ -3,29 +3,21 @@ import { useMoralis, useTokenPrice } from 'react-moralis';
 import { DexProps, Token } from './Dex.types';
 import styles from './Dex.styles';
 import { Button, Input, Typography, Icon, Modal, Avatar } from 'web3uikit';
-import { InchModal, PriceSwap } from '@ethereum-boilerplate-v2/ui';
+import { PriceSwap } from './components/PriceSwap';
+import { InchModal } from './components/InchModal';
 import useInchDex from '../../hooks/useInchDex';
-import { getWrappedNative } from '../../helpers/networks';
-import { tokenValue } from '../../helpers/formatters';
-import color from '../../../../../libs/ui/src/styles/colors';
+import {
+  getWrappedNative,
+  color,
+  getChainIdByName,
+  IsNative,
+  chainIds,
+} from '@ethereum-boilerplate-v2/ui';
 
 const { DivStyled, CardStyled, ButtonInputDivStyled, ButtonStyled } = styles;
 
 const nativeAddress = '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee';
 
-const chainIds = {
-  '0x1': 'eth',
-  '0x38': 'bsc',
-  '0x89': 'polygon',
-};
-const getChainIdByName = (chainName: string) => {
-  return (Object.keys(chainIds) as Array<keyof typeof chainIds>).find(
-    (key) => chainIds[key] === chainName
-  );
-};
-
-const IsNative = (address: string) =>
-  address === '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee';
 export const Dex: React.FC<DexProps> = ({ chain, customTokens = {} }) => {
   const { trySwap, tokenList, getQuote } = useInchDex(chain);
   const { Moralis, isInitialized, chainId } = useMoralis();
@@ -37,7 +29,7 @@ export const Dex: React.FC<DexProps> = ({ chain, customTokens = {} }) => {
   const [quote, setQuote] = useState<any>();
   const [currentTrade, setCurrentTrade] = useState<object>();
   const { fetchTokenPrice } = useTokenPrice({
-    address: '',
+    address: '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
   });
   const [tokenPricesUSD, setTokenPricesUSD] = useState<{
     [key: string]: number;
@@ -49,10 +41,13 @@ export const Dex: React.FC<DexProps> = ({ chain, customTokens = {} }) => {
   console.log('toToken', toToken);
   console.log('chainId', chainId, 'chain', chain);
 
+  console.log('fetchToken', fetchTokenPrice);
+  console.log('token list inside Dex', tokenList);
+
   const tokens = useMemo(() => {
     return { ...customTokens, ...tokenList };
   }, [customTokens, tokenList]);
-
+  console.log('tokens', tokens);
   const fromTokenPriceUsd = useMemo(() => {
     if (tokenPricesUSD && fromToken) {
       return tokenPricesUSD[fromToken['address']];
@@ -134,10 +129,11 @@ export const Dex: React.FC<DexProps> = ({ chain, customTokens = {} }) => {
   }, [tokens, fromToken]);
 
   const ButtonState = useMemo(() => {
-    // if(chainId){
-    //    if (chainIds?.[chainId] !== chain)
-    //      return { isActive: false, text: `Switch to ${chain}` };
-    // }
+    if (chainId) {
+      // @ts-ignore
+      if (chainIds[chainId] !== chain)
+        return { isActive: false, text: `Switch to ${chain}` };
+    }
     if (!fromAmount) return { isActive: false, text: 'Enter an amount' };
     if (fromAmount && currentTrade) return { isActive: true, text: 'Swap' };
     return { isActive: false, text: 'Select tokens' };

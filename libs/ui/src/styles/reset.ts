@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 
-const resetCSS = css`
+export const resetCSS = css`
   border: none;
   box-sizing: border-box;
   line-height: 1;
@@ -8,5 +8,3 @@ const resetCSS = css`
   outline: none;
   padding: 0;
 `;
-
-export default resetCSS;
