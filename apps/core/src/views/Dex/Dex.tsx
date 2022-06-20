@@ -41,19 +41,10 @@ export const Dex: React.FC<DexProps> = ({ chain, customTokens = {} }) => {
     [key: string]: number;
   }>({});
 
-  console.log('isToModalActive', isToModalActive);
-  console.log('isFromModalActive', isFromModalActive);
-  console.log('fromToken', fromToken);
-  console.log('toToken', toToken);
-  console.log('chainId', chainId, 'chain', chain);
-
-  console.log('fetchToken', fetchTokenPrice);
-  console.log('token list inside Dex', tokenList);
-
   const tokens = useMemo(() => {
     return { ...customTokens, ...tokenList };
   }, [customTokens, tokenList]);
-  console.log('tokens', tokens);
+
   const fromTokenPriceUsd = useMemo(() => {
     if (tokenPricesUSD && fromToken) {
       return tokenPricesUSD[fromToken['address']];
