@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { resetCSS } from '@ethereum-boilerplate-v2/ui';
+import { Typography } from 'web3uikit';
 
 const DivStyled = styled.div`
   ${resetCSS};
@@ -54,9 +55,19 @@ const ButtonStyled = styled.button`
   cursor: pointer;
 `;
 
+const TypographyStyled = styled(Typography)`
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  color: #434343;
+  margin-top: 8px;
+  padding: 0 10px;
+`;
+
 export default {
   DivStyled,
   CardStyled,
   ButtonInputDivStyled,
   ButtonStyled,
+  TypographyStyled,
 };

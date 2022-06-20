@@ -24,9 +24,9 @@ export const PriceSwap: React.FC<PriceSwapProps> = ({
     ).toFixed(6);
 
     return (
-      <TypographyStyled variant="body16">
+      <TypographyStyled variant="subtitle2">
         Price:{' '}
-        <Typography variant="body16">{`1 ${toSymbol} = ${pricePerToken} ${fromSymbol} ($${tokenPricesUSD[
+        <Typography variant="subtitle2">{`1 ${toSymbol} = ${pricePerToken} ${fromSymbol} ($${tokenPricesUSD[
           toToken.address
         ].toFixed(6)})`}</Typography>
       </TypographyStyled>

@@ -14,7 +14,13 @@ import {
   chainIds,
 } from '@ethereum-boilerplate-v2/ui';
 
-const { DivStyled, CardStyled, ButtonInputDivStyled, ButtonStyled } = styles;
+const {
+  DivStyled,
+  CardStyled,
+  ButtonInputDivStyled,
+  ButtonStyled,
+  TypographyStyled,
+} = styles;
 
 const nativeAddress = '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee';
 
@@ -240,9 +246,10 @@ export const Dex: React.FC<DexProps> = ({ chain, customTokens = {} }) => {
         </CardStyled>
         {quote && (
           <div>
-            <Typography>
-              Estimated Gas: <Typography>{quote?.estimatedGas}</Typography>
-            </Typography>
+            <TypographyStyled variant="subtitle2">
+              Estimated Gas:{' '}
+              <Typography variant="subtitle2">{quote?.estimatedGas}</Typography>
+            </TypographyStyled>
             <PriceSwap
               quote={quote}
               tokenPricesUSD={tokenPricesUSD}
@@ -253,9 +260,9 @@ export const Dex: React.FC<DexProps> = ({ chain, customTokens = {} }) => {
         )}
         <Button
           size="large"
-          text="Swap"
-          onClick={() => console.log('hii')}
-          disabled={true}
+          text={ButtonState.text}
+          onClick={() => trySwap(currentTrade)}
+          disabled={!ButtonState.isActive}
           theme="colored"
         />
       </DivStyled>
