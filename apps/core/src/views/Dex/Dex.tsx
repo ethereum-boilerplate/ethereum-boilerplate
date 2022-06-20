@@ -47,7 +47,7 @@ export const Dex: React.FC<DexProps> = ({ chain, customTokens = {} }) => {
   // const [quote, setQuote] = useState<any>();
   // const [currentTrade, setCurrentTrade] = useState<object>();
   const { fetchTokenPrice } = useTokenPrice({
-    address: '',
+    address: nativeAddress,
   });
   // const [tokenPricesUSD, setTokenPricesUSD] = useState<{
   //   [key: string]: number;
@@ -148,14 +148,12 @@ export const Dex: React.FC<DexProps> = ({ chain, customTokens = {} }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [chain, isInitialized, toToken]);
 
+  console.log('fromToken', fromToken);
   useEffect(() => {
-    if (!tokens || fromToken) {
-      return;
-    } else {
-      // setFromToken(tokens[nativeAddress]);
+    if (tokens && !fromToken) {
       dispatch({ type: 'set-token-from', payload: tokens[nativeAddress] });
     }
-  }, [tokens, fromToken]);
+  }, [tokens]);
 
   const ButtonState = useMemo(() => {
     if (chainId) {
