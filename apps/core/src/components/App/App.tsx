@@ -8,11 +8,11 @@ export const App: React.FC = () => {
   const { isInitialized, isAuthenticated, isWeb3Enabled, enableWeb3 } =
     useMoralis();
 
-  // useEffect(() => {
-  //   if (isInitialized && isAuthenticated && !isWeb3Enabled) {
-  //     enableWeb3();
-  //   }
-  // }, [isInitialized, isAuthenticated, isWeb3Enabled, enableWeb3]);
+  useEffect(() => {
+    if (isInitialized && isAuthenticated && !isWeb3Enabled) {
+      enableWeb3();
+    }
+  }, [isInitialized, isAuthenticated, isWeb3Enabled, enableWeb3]);
   const tabs = [
     { name: 'Home', to: '/' },
     { name: 'Dex', to: '/dex' },

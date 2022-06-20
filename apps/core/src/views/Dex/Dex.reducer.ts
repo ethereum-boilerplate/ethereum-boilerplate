@@ -1,4 +1,24 @@
-export const initialState = {
+export interface Token {
+  address: string;
+  decimals: number;
+  logoURI: string;
+  name: string;
+  symbol: string;
+  tags: string[];
+}
+
+interface initialState {
+  isFromModalActive: boolean;
+  isToModalActive: boolean;
+  fromToken: Token | null;
+  toToken: Token | null;
+  fromAmount: number | null;
+  quote: any | null;
+  currentTrade: any;
+  tokenPricesUSD: { [key: string]: number } | null;
+}
+
+export const initialState: initialState = {
   isFromModalActive: false,
   isToModalActive: false,
   fromToken: null,
@@ -9,7 +29,7 @@ export const initialState = {
   tokenPricesUSD: null,
 };
 
-export const reducer = (state: any, action: any) => {
+export const reducer = (state: initialState, action: any) => {
   switch (action.type) {
     case 'set-modal-from':
       return { ...state, isFromModalActive: action.payload };
@@ -27,7 +47,7 @@ export const reducer = (state: any, action: any) => {
       return { ...state, currentTrade: action.payload };
     case 'set-tokenPriceUSD': {
       console.log('action', action.payload);
-      return { ...state, tokenPriceUSD: action.payload };
+      return { ...state, tokenPricesUSD: action.payload };
     }
 
     default:

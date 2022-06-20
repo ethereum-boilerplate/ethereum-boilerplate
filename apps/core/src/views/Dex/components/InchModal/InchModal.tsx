@@ -29,7 +29,6 @@ export const InchModal: React.FC<InchModalProps> = ({
             <DivStyled
               key={index}
               onClick={() => {
-                // setToken(tokenList[token]);
                 setToken({
                   type: dispatchType(type),
                   payload: tokenList[token],

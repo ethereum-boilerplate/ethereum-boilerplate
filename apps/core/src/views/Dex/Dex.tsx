@@ -1,6 +1,6 @@
-import React, { useState, useMemo, useEffect, useReducer } from 'react';
+import React, { useMemo, useEffect, useReducer } from 'react';
 import { useMoralis, useTokenPrice } from 'react-moralis';
-import { DexProps, Token } from './Dex.types';
+import { DexProps } from './Dex.types';
 import styles from './Dex.styles';
 import { Button, Input, Typography, Icon, Modal, Avatar } from 'web3uikit';
 import { PriceSwap } from './components/PriceSwap';
@@ -29,6 +29,9 @@ export const Dex: React.FC<DexProps> = ({ chain, customTokens = {} }) => {
   const { trySwap, tokenList, getQuote } = useInchDex(chain);
   const { Moralis, isInitialized, chainId } = useMoralis();
   const [state, dispatch] = useReducer(reducer, initialState);
+  const { fetchTokenPrice } = useTokenPrice({
+    address: nativeAddress,
+  });
   const {
     isFromModalActive,
     isToModalActive,
@@ -39,33 +42,10 @@ export const Dex: React.FC<DexProps> = ({ chain, customTokens = {} }) => {
     currentTrade,
     tokenPricesUSD,
   } = state;
-  // const [isFromModalActive, setFromModalActive] = useState(false);
-  // const [isToModalActive, setToModalActive] = useState(false);
-  // const [fromToken, setFromToken] = useState<Token>();
-  // const [toToken, setToToken] = useState<Token>();
-  // const [fromAmount, setFromAmount] = useState<number>();
-  // const [quote, setQuote] = useState<any>();
-  // const [currentTrade, setCurrentTrade] = useState<object>();
-  const { fetchTokenPrice } = useTokenPrice({
-    address: nativeAddress,
-  });
-  // const [tokenPricesUSD, setTokenPricesUSD] = useState<{
-  //   [key: string]: number;
-  // }>({});
-
-  console.log('isToModalActive', isToModalActive);
-  console.log('isFromModalActive', isFromModalActive);
-  console.log('fromToken', fromToken);
-  console.log('toToken', toToken);
-  console.log('chainId', chainId, 'chain', chain);
-
-  console.log('fetchToken', fetchTokenPrice);
-  console.log('token list inside Dex', tokenList);
 
   const tokens = useMemo(() => {
     return { ...customTokens, ...tokenList };
   }, [customTokens, tokenList]);
-  console.log('tokens', tokens);
 
   const fromTokenPriceUsd = useMemo(() => {
     if (tokenPricesUSD && fromToken) {
@@ -148,12 +128,11 @@ export const Dex: React.FC<DexProps> = ({ chain, customTokens = {} }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [chain, isInitialized, toToken]);
 
-  console.log('fromToken', fromToken);
   useEffect(() => {
     if (tokens && !fromToken) {
       dispatch({ type: 'set-token-from', payload: tokens[nativeAddress] });
     }
-  }, [tokens]);
+  }, []);
 
   const ButtonState = useMemo(() => {
     if (chainId) {
