@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { resetCSS } from '@ethereum-boilerplate-v2/ui';
-import { Typography } from 'web3uikit';
+import { Input, Typography } from 'web3uikit';
 
 const DivStyled = styled.div`
   ${resetCSS};

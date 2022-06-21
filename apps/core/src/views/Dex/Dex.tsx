@@ -74,10 +74,10 @@ export const Dex: React.FC<DexProps> = ({ chain, customTokens = {} }) => {
       ) * toTokenPriceUsd
     ).toFixed(4)}`;
   }, [toTokenPriceUsd, quote]);
+
   // tokenPrices
   useEffect(() => {
     if (!isInitialized || !fromToken || !chain) return;
-    // const validatedChain = chain ? getChainIdByName(chain) : chainId;
     const validatedChain = getChainIdByName(chain);
     if (validatedChain) {
       const tokenAddress = IsNative(fromToken['address'])
@@ -94,12 +94,9 @@ export const Dex: React.FC<DexProps> = ({ chain, customTokens = {} }) => {
             }),
         });
     }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [chain, isInitialized, fromToken]);
   useEffect(() => {
     if (!isInitialized || !toToken || !chain) return;
-    //  const validatedChain = chain ? getChainIdByName(chain) : chainId;
     const validatedChain = getChainIdByName(chain);
     if (validatedChain) {
       const tokenAddress = IsNative(toToken['address'])
@@ -116,14 +113,12 @@ export const Dex: React.FC<DexProps> = ({ chain, customTokens = {} }) => {
             }),
         });
     }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [chain, isInitialized, toToken]);
 
   useEffect(() => {
     if (!tokens || fromToken) return;
     setFromToken(tokens[nativeAddress]);
-  }, [tokens, fromToken]);
+  }, [tokens]);
 
   const ButtonState = useMemo(() => {
     if (chainId) {
@@ -143,7 +138,6 @@ export const Dex: React.FC<DexProps> = ({ chain, customTokens = {} }) => {
 
   useEffect(() => {
     if (currentTrade) getQuote(currentTrade).then((quote) => setQuote(quote));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentTrade]);
 
   return (
@@ -156,8 +150,10 @@ export const Dex: React.FC<DexProps> = ({ chain, customTokens = {} }) => {
               <Input
                 type="number"
                 placeholder="0.00"
+                autoFocus={true}
                 onChange={(e) => setFromAmount(parseFloat(e.target.value))}
                 value={fromAmount}
+                style={{ outline: 'none' }}
               />
               <Typography variant="body16">{fromTokenAmountUsd}</Typography>
             </div>
@@ -169,11 +165,7 @@ export const Dex: React.FC<DexProps> = ({ chain, customTokens = {} }) => {
                   theme="image"
                   image={fromToken.logoURI}
                 />
-                <Typography
-                  variant="body18"
-                  font-weight={500}
-                  color={color.blue}
-                >
+                <Typography variant="body18" weight="500" color={color.blue}>
                   {fromToken.symbol}
                 </Typography>
                 <Icon fill="#000000" size={24} svg="triangleDown" />
@@ -197,6 +189,7 @@ export const Dex: React.FC<DexProps> = ({ chain, customTokens = {} }) => {
             <div style={{ width: '49.5%', float: 'left' }}>
               <Input
                 placeholder="0.00"
+                style={{ outline: 'none' }}
                 value={
                   quote
                     ? parseFloat(
@@ -218,11 +211,7 @@ export const Dex: React.FC<DexProps> = ({ chain, customTokens = {} }) => {
                   theme="image"
                   image={toToken.logoURI}
                 />
-                <Typography
-                  variant="body18"
-                  font-weight={500}
-                  color={color.blue}
-                >
+                <Typography variant="body18" weight="500" color={color.blue}>
                   {toToken.symbol}
                 </Typography>
                 <Icon fill="#000000" size={24} svg="triangleDown" />
@@ -237,9 +226,11 @@ export const Dex: React.FC<DexProps> = ({ chain, customTokens = {} }) => {
         </CardStyled>
         {quote && (
           <div>
-            <TypographyStyled variant="subtitle2">
+            <TypographyStyled variant="body16" weight="500">
               Estimated Gas:{' '}
-              <Typography variant="subtitle2">{quote?.estimatedGas}</Typography>
+              <Typography variant="body16" weight="500">
+                {quote?.estimatedGas}
+              </Typography>
             </TypographyStyled>
             <PriceSwap
               quote={quote}

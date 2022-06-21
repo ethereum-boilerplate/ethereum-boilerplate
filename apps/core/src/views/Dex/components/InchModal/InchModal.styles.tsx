@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { resetCSS } from 'libs/ui/src/styles/reset';
+import { resetCSS } from '@ethereum-boilerplate-v2/ui';
 
 const DivContainerStyled = styled.div`
   ${resetCSS};
@@ -14,13 +14,6 @@ const DivStyled = styled.div`
   cursor: pointer;
 `;
 
-const ImgStyled = styled.img`
-  ${resetCSS};
-  height: 32px;
-  width: 32px;
-  margin-right: 20px;
-`;
-
 const SpanStyled = styled.span`
   ${resetCSS};
   font-weight: 600;
@@ -31,6 +24,5 @@ const SpanStyled = styled.span`
 export default {
   DivContainerStyled,
   DivStyled,
-  ImgStyled,
   SpanStyled,
 };

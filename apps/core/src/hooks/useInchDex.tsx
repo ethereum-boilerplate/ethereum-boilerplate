@@ -12,7 +12,7 @@ const useInchDex = (chain: string) => {
       .then((tokens: { tokens: object }) => {
         setTokenList(tokens.tokens);
       });
-  }, [Moralis, Moralis.Plugins, chain]);
+  }, [Moralis, Moralis.Plugins, chain, Moralis.Plugins['oneInch']]);
 
   const getQuote = async (params: any) =>
     await Moralis.Plugins['oneInch'].quote({
@@ -40,7 +40,6 @@ const useInchDex = (chain: string) => {
           amount,
         })
         .then(async (allowance: any) => {
-          console.log(allowance);
           if (!allowance) {
             await Moralis.Plugins['oneInch'].approve({
               chain, // The blockchain you want to use (eth/bsc/polygon)
@@ -57,7 +56,6 @@ const useInchDex = (chain: string) => {
         if (receipt.statusCode !== 400) {
           alert('Swap Complete');
         }
-        console.log(receipt);
       })
       .catch((e) => alert(e.message));
   }
