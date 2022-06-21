@@ -68,6 +68,14 @@ export const networkConfigs = {
     rpcUrl: "https://rpc-mumbai.matic.today/",
     blockExplorerUrl: "https://mumbai.polygonscan.com/",
   },
+  "0x19": {
+    chainId: 25,
+    chainName: "Cronos",
+    currencyName: "CRO",
+    currencySymbol: "CRO",
+    rpcUrl: "https://evm-cronos.crypto.org",
+    blockExplorerUrl: "https://cronos.crypto.org/explorer/",
+  },
 };
 
 export const getNativeByChain = (chain) =>
