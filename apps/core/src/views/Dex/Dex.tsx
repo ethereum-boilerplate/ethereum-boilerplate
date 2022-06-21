@@ -193,11 +193,7 @@ export const Dex: React.FC<DexProps> = ({ chain, customTokens = {} }) => {
                   theme="image"
                   image={fromToken.logoURI}
                 />
-                <Typography
-                  variant="body18"
-                  font-weight={500}
-                  color={color.blue}
-                >
+                <Typography variant="body18" weight="500" color={color.blue}>
                   {fromToken.symbol}
                 </Typography>
                 <Icon fill="#000000" size={24} svg="triangleDown" />
@@ -248,11 +244,7 @@ export const Dex: React.FC<DexProps> = ({ chain, customTokens = {} }) => {
                   theme="image"
                   image={toToken.logoURI}
                 />
-                <Typography
-                  variant="body18"
-                  font-weight={500}
-                  color={color.blue}
-                >
+                <Typography variant="body18" weight="500" color={color.blue}>
                   {toToken.symbol}
                 </Typography>
                 <Icon fill="#000000" size={24} svg="triangleDown" />

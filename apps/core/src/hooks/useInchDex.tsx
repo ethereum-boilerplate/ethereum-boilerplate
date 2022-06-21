@@ -1,25 +1,18 @@
 import { useEffect, useState } from 'react';
 import { useMoralis } from 'react-moralis';
 const useInchDex = (chain: any) => {
-  const { Moralis, account, isInitialized } = useMoralis();
+  const { Moralis, account } = useMoralis();
   const [tokenList, setTokenlist] = useState<object>();
-  console.log('token list inside the hook', tokenList);
-  console.log('chain inside hook', chain);
-  console.log('isInitialized', isInitialized);
-  console.log('moralis plugin', Moralis.Plugins['oneInch']);
   useEffect(() => {
     if (!Moralis.Plugins['oneInch']) {
-      console.log(Moralis.Plugins['oneInch']);
-      console.log('what is wrong');
       return;
     }
     Moralis.Plugins['oneInch']
       .getSupportedTokens({ chain })
       .then((tokens: { tokens: object }) => {
-        console.log('Tokens from plugin', tokens.tokens);
         setTokenlist(tokens.tokens);
       });
-  }, [Moralis, Moralis.Plugins, chain]);
+  }, [Moralis, Moralis.Plugins, chain, Moralis.Plugins['oneInch']]);
 
   const getQuote = async (params: any) =>
     await Moralis.Plugins['oneInch'].quote({
@@ -47,7 +40,6 @@ const useInchDex = (chain: any) => {
           amount,
         })
         .then(async (allowance: any) => {
-          console.log(allowance);
           if (!allowance) {
             await Moralis.Plugins['oneInch'].approve({
               chain, // The blockchain you want to use (eth/bsc/polygon)
@@ -64,7 +56,6 @@ const useInchDex = (chain: any) => {
         if (receipt.statusCode !== 400) {
           alert('Swap Complete');
         }
-        console.log(receipt);
       })
       .catch((e) => alert(e.message));
   }

@@ -46,7 +46,6 @@ export const reducer = (state: initialState, action: any) => {
     case 'set-currentTrade':
       return { ...state, currentTrade: action.payload };
     case 'set-tokenPriceUSD': {
-      console.log('action', action.payload);
       return { ...state, tokenPricesUSD: action.payload };
     }
 
