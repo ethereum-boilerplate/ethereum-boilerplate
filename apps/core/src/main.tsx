@@ -7,11 +7,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <StrictMode>
-    <MoralisProvider
-      initializeOnMount
-      appId="wEnpaKqVW3OoUhOmYEYOriKnZ3aLPP7UTHijjZAe"
-      serverUrl="https://btkbtlqnyh7f.usemoralis.com:2053/server"
-    >
+    <MoralisProvider initializeOnMount appId="" serverUrl="">
       <App />
     </MoralisProvider>
   </StrictMode>
