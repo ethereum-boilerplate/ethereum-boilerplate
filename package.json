@@ -1,6 +1,6 @@
 {
   "name": "meta-gym-land",
-  "version": "0.0.1.5.11",
+  "version": "0.0.1.5.12",
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
     "@ion-phaser/react": "^1.3.0",
@@ -16,6 +16,7 @@
     "party-js": "^2.1.2",
     "phaser": "^3.55.2",
     "phaser3-rex-plugins": "^1.1.65",
+    "qrcode": "^1.5.0",
     "react": "^17.0.2",
     "react-blockies": "^1.4.1",
     "react-dom": "^17.0.2",
