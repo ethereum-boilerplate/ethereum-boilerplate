@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, StrictMode } from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import { MoralisProvider } from "react-moralis";
@@ -8,6 +8,8 @@ import { Pose } from '@mediapipe/pose';
 import * as mpPose from '@mediapipe/pose';
 import { ConfidenceScore } from "./AIConfig";
 import { GYM_ROOM_SCENE } from "./components/Play/games/shared";
+import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
+
 
 // Moralis vals
 const APP_ID = process.env.REACT_APP_MORALIS_APPLICATION_ID;
@@ -89,7 +91,10 @@ const PoseDetectorCtxProvider = ({ children }) => {
 const Application = () => {
   const isServerInfo = APP_ID && SERVER_URL ? true : false;
   //Validate
-  if (!APP_ID || !SERVER_URL) throw new Error("Missing Moralis Application ID or Server URL. Make sure to set your .env file.");
+  if (!APP_ID || !SERVER_URL)
+    throw new Error(
+      "Missing Moralis Application ID or Server URL. Make sure to set your .env file.",
+    );
   if (isServerInfo)
     return (
       <MoralisProvider appId={APP_ID} serverUrl={SERVER_URL}>
@@ -114,8 +119,13 @@ const Application = () => {
 };
 
 ReactDOM.render(
-  // <React.StrictMode>
-  <Application />,
-  // </React.StrictMode>,
-  document.getElementById("root")
+  <StrictMode>
+    <Application />
+  </StrictMode>,
+  document.getElementById("root"),
 );
+
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://cra.link/PWA
+serviceWorkerRegistration.register();

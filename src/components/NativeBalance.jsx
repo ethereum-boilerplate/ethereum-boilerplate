@@ -5,7 +5,6 @@ function NativeBalance(props) {
   const { account, isAuthenticated } = useMoralis();
 
   if (!account || !isAuthenticated) return null;
-
   return <div style={{
     textAlign: "center",
     whiteSpace: "nowrap",
