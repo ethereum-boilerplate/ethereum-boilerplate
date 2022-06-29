@@ -12,7 +12,7 @@
     "@walletconnect/web3-provider": "^1.7.1",
     "antd": "^4.16.13",
     "magic-sdk": "^8.0.1",
-    "moralis": "^1.8.0",
+    "moralis": "^1.8.1",
     "party-js": "^2.1.2",
     "phaser": "^3.55.2",
     "phaser3-rex-plugins": "^1.1.65",

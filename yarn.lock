@@ -8591,7 +8591,7 @@ moment@^2.24.0, moment@^2.29.2:
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.3.tgz#edd47411c322413999f7a5940d526de183c031f3"
   integrity sha512-c6YRvhEo//6T2Jz/vVtYzqBzwvPT95JBQ+smCytzf7c50oMZRsR/a4w88aD34I+/QVSfnoAnSBFPJHItlOMJVw==
 
-moralis@^1.8.0:
+moralis@^1.8.1:
   version "1.8.1"
   resolved "https://registry.yarnpkg.com/moralis/-/moralis-1.8.1.tgz#4f39772d983f4c0a5727469d603f288e24cb5b76"
   integrity sha512-qjkVhe3/EBgGiSrf6hIJ5epvcP5ds1ZIHGR8TbfS58npCNEMBtd+u+Z99WVyRyWxmMXI6pETKEmufTj/lG7a9w==
