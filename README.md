@@ -4,7 +4,6 @@ MetaGymLand Wellness Metaverse Powered with AI and NFTs
 
 https://metagymland.com/
 
-
 ### This repo has the main frontend logic of MetaGymLand App for:
 
 - NFT minting

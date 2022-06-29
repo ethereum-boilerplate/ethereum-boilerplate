@@ -13,7 +13,7 @@ import "./style.css";
 import Home from "components/Home";
 import SocialsPage from "components/SocialsPage";
 import Marketplace from "components/Marketplace";
-import MintGymBuddyPage from "components/MintGymBuddy"
+import MintGymBuddyPage from "components/MintGymBuddy";
 import LoaderTest from "components/LoaderTest";
 import Contract from "components/Contract/Contract";
 import MenuItems from "./components/MenuItems";
@@ -24,7 +24,10 @@ import { AppFooter } from "AppFooter";
 import PlayPage from "components/Play";
 import GymRoomSandbox from "components/Play/games/GymRoomSandbox";
 import PlaySetupPage from "components/Play/PlaySetupPage";
-import { ConnectWalletWarn, UseCorrectNetworkWarn } from "./components/Warrnings";
+import {
+  ConnectWalletWarn,
+  UseCorrectNetworkWarn,
+} from "./components/Warrnings";
 import RewardsPage from "./components/Rewards";
 import { MainChainID } from "MglNftMetadata";
 import { paddingLRHeaderFooter } from "./GlobalStyles";
@@ -64,11 +67,17 @@ const styles = {
 };
 
 const App = ({ isServerInfo }) => {
-  const { isWeb3Enabled, enableWeb3, isAuthenticated, isWeb3EnableLoading, chainId } = useMoralis();
+  const {
+    isWeb3Enabled,
+    enableWeb3,
+    isAuthenticated,
+    isWeb3EnableLoading,
+    chainId,
+  } = useMoralis();
   useEffect(() => {
     const connectorId = window.localStorage.getItem("connectorId");
     if (isAuthenticated && !isWeb3Enabled && !isWeb3EnableLoading) {
-      if (connectorId === 'bitkeep') {
+      if (connectorId === "bitkeep") {
         enableWeb3({ provider: connectorId, connector: BitKeepConnector });
       } else {
         enableWeb3({ provider: connectorId });
@@ -78,19 +87,24 @@ const App = ({ isServerInfo }) => {
   }, [isAuthenticated, isWeb3Enabled]);
 
   return (
-    <div style={
-      {
+    <div
+      style={{
         background: "none",
         fontFamily: "Roboto, sans-serif",
         color: mainFontColor,
-      }}>
+      }}
+    >
       <Router>
         <Header style={styles.header}>
-          <div style={{
-            marginTop: "2rem",
-            background: "none",
-          }}>
-            <Link to="/" style={styles.homeLink}><MGLLogo /></Link>
+          <div
+            style={{
+              marginTop: "2rem",
+              background: "none",
+            }}
+          >
+            <Link to="/" style={styles.homeLink}>
+              <MGLLogo />
+            </Link>
           </div>
           <MenuItems />
           <div style={styles.headerRight}>
@@ -98,7 +112,7 @@ const App = ({ isServerInfo }) => {
               type="vertical"
               style={{
                 height: "1.8em",
-                backgroundColor: mainFontColor
+                backgroundColor: mainFontColor,
               }}
             />
             <NativeBalance />
@@ -109,17 +123,17 @@ const App = ({ isServerInfo }) => {
 
         <div style={styles.content}>
           <Switch>
-            <Route exact path="/" >
+            <Route exact path="/">
               <Home />
             </Route>
             <Route path="/avatars">
               {(() => {
                 if (isAuthenticated && chainId === MainChainID) {
-                  return <NFTBalance />
+                  return <NFTBalance />;
                 } else if (isAuthenticated && chainId !== MainChainID) {
-                  return <UseCorrectNetworkWarn />
+                  return <UseCorrectNetworkWarn />;
                 } else {
-                  return <ConnectWalletWarn />
+                  return <ConnectWalletWarn />;
                 }
               })()}
             </Route>

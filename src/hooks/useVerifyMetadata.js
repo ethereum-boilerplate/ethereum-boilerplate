@@ -12,27 +12,27 @@ export const useVerifyMetadata = () => {
 
   /**
    * Fet Metadata  from NFT and Cache Results
-   * @param {object} NFT 
+   * @param {object} NFT
    * @returns NFT
    */
   function verifyMetadata(NFT) {
     //Pass Through if Metadata already present
     if (NFT.metadata) {
       //Set Image
-      const metadata = NFT.metadata
+      const metadata = NFT.metadata;
       resolveCommonMetadata(NFT, metadata);
-      return NFT
-    };
+      return NFT;
+    }
     //Get the Metadata
     getMetadata(NFT);
     //Return Hooked NFT Object
     return results?.[NFT.token_uri] ? results?.[NFT.token_uri] : NFT;
-  }//verifyMetadata()
+  } //verifyMetadata()
 
   /**
-   * Extract Metadata from NFT, 
+   * Extract Metadata from NFT,
    *  Fallback: Fetch from URI
-   * @param {object} NFT 
+   * @param {object} NFT
    * @returns void
    */
   async function getMetadata(NFT) {
@@ -60,8 +60,8 @@ export const useVerifyMetadata = () => {
           //Log
           console.warn(
             "useVerifyMetadata.getMetadata() Bad Result for:" +
-            NFT.token_uri +
-            "  Will retry later",
+              NFT.token_uri +
+              "  Will retry later",
             { results, metadata },
           );
           //Retry That Again after 1s
@@ -91,8 +91,8 @@ export const useVerifyMetadata = () => {
 
   /**
    * Update NFT Object
-   * @param {object} NFT 
-   * @param {object} metadata 
+   * @param {object} NFT
+   * @param {object} metadata
    */
   function setMetadata(NFT, metadata) {
     //Add Metadata
@@ -101,18 +101,21 @@ export const useVerifyMetadata = () => {
     //Set to State
     if (metadata && !results[NFT.token_uri])
       setResults({ ...results, [NFT.token_uri]: NFT });
-  }//setMetadata()
+  } //setMetadata()
 
   function resolveCommonMetadata(NFT, metadata) {
     if (metadata?.image) NFT.image = resolveLink(metadata.image);
     if (metadata?.name) NFT.name = metadata.name;
     if (metadata?.cover_image) NFT.cover_image = metadata.cover_image;
-    if (metadata?.collection_cover_image) NFT.collection_cover_image = metadata.collection_cover_image;
-    if (metadata?.background_color) NFT.background_color = metadata.background_color;
+    if (metadata?.collection_cover_image)
+      NFT.collection_cover_image = metadata.collection_cover_image;
+    if (metadata?.background_color)
+      NFT.background_color = metadata.background_color;
     if (metadata?.sprite) NFT.sprite = metadata.sprite;
     if (metadata?.attributes) NFT.attributes = metadata.attributes;
-    if (metadata?.collection_name) NFT.collection_name = metadata.collection_name;
+    if (metadata?.collection_name)
+      NFT.collection_name = metadata.collection_name;
   }
 
   return { verifyMetadata };
-}
+};

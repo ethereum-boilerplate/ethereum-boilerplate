@@ -1,9 +1,7 @@
 import Loader from "./Loader";
 
 const LoaderTest = () => {
-    return (
-        <Loader />
-    );
-}
+  return <Loader />;
+};
 
 export default LoaderTest;

@@ -83,28 +83,33 @@ function Account() {
             Connect Wallet
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
-            {connectors.map(({ title, icon, connectorId, customConnector }, key) => (
-              <div
-                style={styles.connector}
-                key={key}
-                onClick={async () => {
-                  try {
-                    if (customConnector) {
-                      await authenticate({ connector: customConnector, provider: connectorId });
-                    } else {
-                      await authenticate({ provider: connectorId });
+            {connectors.map(
+              ({ title, icon, connectorId, customConnector }, key) => (
+                <div
+                  style={styles.connector}
+                  key={key}
+                  onClick={async () => {
+                    try {
+                      if (customConnector) {
+                        await authenticate({
+                          connector: customConnector,
+                          provider: connectorId,
+                        });
+                      } else {
+                        await authenticate({ provider: connectorId });
+                      }
+                      window.localStorage.setItem("connectorId", connectorId);
+                      setIsAuthModalVisible(false);
+                    } catch (e) {
+                      console.error(e);
                     }
-                    window.localStorage.setItem("connectorId", connectorId);
-                    setIsAuthModalVisible(false);
-                  } catch (e) {
-                    console.error(e);
-                  }
-                }}
-              >
-                <img src={icon} alt={title} style={styles.icon} />
-                <Text style={{ fontSize: "14px" }}>{title}</Text>
-              </div>
-            ))}
+                  }}
+                >
+                  <img src={icon} alt={title} style={styles.icon} />
+                  <Text style={{ fontSize: "14px" }}>{title}</Text>
+                </div>
+              ),
+            )}
           </div>
         </Modal>
       </>
@@ -130,7 +135,9 @@ function Account() {
         Hi
       </button> */}
       <div style={styles.account} onClick={() => setIsModalVisible(true)}>
-        <p style={{ marginRight: "1px", ...styles.text }}>{getEllipsisTxt(account, 5, 5)}</p>
+        <p style={{ marginRight: "1px", ...styles.text }}>
+          {getEllipsisTxt(account, 5, 5)}
+        </p>
         <Blockie currentWallet scale={3} />
       </div>
       <Modal

@@ -3,3 +3,4 @@ build/
 yarn.lock
 package-lock.json
 Truffle/
+public/assets

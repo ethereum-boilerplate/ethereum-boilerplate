@@ -1,5 +1,8 @@
 import gymBuddiesCollectionGif from "../assets/marketplace/gym_buddies_collection.gif";
-import { TestGymBuddiesContract, AvaxMoralis2021HackatonNfts } from "../../MglNftMetadata";
+import {
+  TestGymBuddiesContract,
+  AvaxMoralis2021HackatonNfts,
+} from "../../MglNftMetadata";
 
 const AvaxTestnetChainID = "0xa869";
 
@@ -15,7 +18,7 @@ const AvaxTestChainColelctions = [
 ];
 
 export const networkCollections = new Map([
-  [AvaxTestnetChainID, AvaxTestChainColelctions]
+  [AvaxTestnetChainID, AvaxTestChainColelctions],
 ]);
 
 export const getCollectionsByChain = (chain) => networkCollections.get(chain);

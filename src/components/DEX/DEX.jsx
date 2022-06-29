@@ -170,7 +170,7 @@ function DEX({ chain, customTokens = {} }) {
     const { symbol: toSymbol } = toToken;
     const pricePerToken = parseFloat(
       tokenValue(fromTokenAmount, fromToken["decimals"]) /
-      tokenValue(toTokenAmount, toToken["decimals"]),
+        tokenValue(toTokenAmount, toToken["decimals"]),
     ).toFixed(6);
     return (
       <Text style={styles.priceSwap}>
@@ -275,11 +275,11 @@ function DEX({ chain, customTokens = {} }) {
                 value={
                   quote
                     ? parseFloat(
-                      Moralis?.Units?.FromWei(
-                        quote?.toTokenAmount,
-                        quote?.toToken?.decimals,
-                      ),
-                    ).toFixed(6)
+                        Moralis?.Units?.FromWei(
+                          quote?.toTokenAmount,
+                          quote?.toToken?.decimals,
+                        ),
+                      ).toFixed(6)
                     : ""
                 }
               />

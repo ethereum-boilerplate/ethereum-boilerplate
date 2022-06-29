@@ -133,7 +133,6 @@ export default function Contract() {
               } else {
                 console.log("options22", options);
                 Moralis.executeFunction(options).then((response) =>
-
                   setResponses({
                     ...responses,
                     [name]: { result: response, isLoading: false },
@@ -142,7 +141,6 @@ export default function Contract() {
               }
             }}
           >
-
             <ContractMethods
               displayedContractFunctions={displayedContractFunctions}
               responses={responses}
