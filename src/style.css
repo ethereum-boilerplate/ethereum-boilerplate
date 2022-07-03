@@ -87,6 +87,11 @@ h6 {
   cursor: pointer;
 }
 
+.snap-btn:hover {
+  filter: brightness(135%);
+  cursor: pointer;
+}
+
 .black-bg {
   background-color: black;
 }
