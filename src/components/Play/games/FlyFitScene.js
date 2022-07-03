@@ -194,6 +194,7 @@ export class FlyFitScene extends EarnableScene {
     youWonText.start(msg, 50);
   }
 
+  // eslint-disable-next-line no-unused-vars
   update(time, delta) {
     if (!this.won && this.score === btcCnt) {
       this.won = true;

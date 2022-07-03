@@ -66,6 +66,7 @@ const styles = {
   },
 };
 
+// eslint-disable-next-line no-unused-vars
 const App = ({ isServerInfo }) => {
   const {
     isWeb3Enabled,

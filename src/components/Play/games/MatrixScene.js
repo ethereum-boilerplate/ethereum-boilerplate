@@ -202,6 +202,7 @@ export class MatrixScene extends EarnableScene {
     this.physics.add.collider(this.player, pillis, onCollide, null, this);
   }
 
+  // eslint-disable-next-line no-unused-vars
   update(time, delta) {
     this.player?.update();
   }

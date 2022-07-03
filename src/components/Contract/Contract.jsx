@@ -87,7 +87,7 @@ export default function Contract() {
 
               let isView = false;
               /*eslint no-unsafe-optional-chaining: "error"*/
-              for (let method of contract?.abi) {
+              for (let method of contract.abi) {
                 if (method.name !== name) continue;
                 console.log(method);
                 if (method.stateMutability === "view") isView = true;

@@ -49,6 +49,7 @@ export class SpaceStretchScene extends EarnableScene {
     this.selectedAvatar = data.selectedAvatar;
   };
 
+  // eslint-disable-next-line no-unused-vars
   color(i) {
     return 0xffffff;
     // keeping for reference
@@ -263,6 +264,7 @@ export class SpaceStretchScene extends EarnableScene {
     youWonText.start(msg, 50);
   }
 
+  // eslint-disable-next-line no-unused-vars
   update(time, delta) {
     if (!this.won && this.score === this.placedAsteroidPlatforms) {
       this.won = true;

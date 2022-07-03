@@ -254,6 +254,7 @@ export class ChartSquats extends EarnableScene {
     }
   }
 
+  // eslint-disable-next-line no-unused-vars
   update(time, delta) {
     const initilaHintDealy = 4000;
     const timeFromCreation = Date.now() - this.createTime;

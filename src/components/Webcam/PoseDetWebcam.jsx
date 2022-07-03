@@ -10,6 +10,7 @@ const blackBgClass = "black-bg";
 const grennClass = "green-color";
 
 class PoseDetWebcamInner extends Component {
+  // eslint-disable-next-line no-unused-vars
   shouldComponentUpdate(nextProps, nextState) {
     // fixing unnecessary webcam re-render
     const curDeviceId = this.props.videoConstraints?.deviceId;

@@ -5,7 +5,7 @@ import {
   useMoralisQuery,
   useWeb3ExecuteFunction,
 } from "react-moralis";
-import { Divider, Card, Image, Tooltip, Modal, Badge, Alert, Spin } from "antd";
+import { Card, Image, Tooltip, Modal, Badge, Alert, Spin } from "antd";
 import { FileSearchOutlined, ShoppingCartOutlined } from "@ant-design/icons";
 import { useVerifyMetadata } from "hooks/useVerifyMetadata";
 import { useNFTTokenIds } from "hooks/useNFTTokenIds";
@@ -153,7 +153,7 @@ function NFTCollectionItems({ nftAddress, colName }) {
     }, secondsToGo * 1000);
   }
 
-  function failPurchase(err) {
+  function failPurchase() {
     Modal.error({
       title: "Error!",
       content: `There was a problem when purchasing this NFT\n

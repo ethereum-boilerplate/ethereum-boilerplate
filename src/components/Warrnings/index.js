@@ -1,5 +1,4 @@
 import {
-  highlightTextColor,
   pageTitleStyle,
   pageTitle3Style,
   descriptionStyle,
