@@ -10,7 +10,6 @@ import {
   secondaryBgColor,
   NFTImg,
   BreakFlexDiv,
-  mainBgColorDarker,
 } from "../../GlobalStyles";
 import SelectWebcam from "components/Webcam/SelectWebcam";
 import { WebcamCtx } from "index";

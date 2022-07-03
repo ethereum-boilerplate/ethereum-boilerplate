@@ -58,6 +58,7 @@ function GymBuddyDetails() {
   };
 
   const displayAttributes = (attr) => {
+    // eslint-disable-next-line no-unused-vars
     const attrSorted = attr.sort((a, _) => {
       if (a.trait_type === "name" || a.trait_type === "level") {
         return -1;

@@ -14,7 +14,6 @@ import { Button, Popover } from "antd";
 import { SocialsLinks } from "../SocialsPage";
 
 const colName = "mbmtBalance";
-const honeyColor = "#535353";
 
 const mbmtWhite = <span style={{ color: "#FFF" }}>{MMT_TICKER}</span>;
 const mbmtlong = <span style={{}}>Meta Moves Token</span>;

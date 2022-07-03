@@ -7,7 +7,7 @@ import {
   Newsletter,
 } from "../SocialLinksCfg";
 import { Button } from "antd";
-import { BtnPrimary, BtnInfo, pageTitleStyle } from "../GlobalStyles";
+import { BtnPrimary, pageTitleStyle } from "../GlobalStyles";
 
 const btnsPadding = "0.5rem";
 

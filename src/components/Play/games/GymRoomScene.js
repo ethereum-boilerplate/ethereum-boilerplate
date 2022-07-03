@@ -10,7 +10,7 @@ import {
   getMainRoomPlayerExitPos,
   playerHasExitPos,
 } from "./Globals";
-import { mainBgColorNum, MMT_TICKER } from "../../../GlobalStyles";
+import { MMT_TICKER } from "../../../GlobalStyles";
 import { EarnableScene } from "./EarnableScene";
 
 const debugCollisons = false;
@@ -241,6 +241,7 @@ export class GymRoomScene extends EarnableScene {
     }
   }
 
+  // eslint-disable-next-line no-unused-vars
   update(time, delta) {
     // overlapend event
     const touching = !this.player.body.touching.none;
