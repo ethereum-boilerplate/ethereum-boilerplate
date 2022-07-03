@@ -20,20 +20,19 @@ const styles = {
   button: HeaderRightBordersStyle,
 };
 
-const supportedChains = new Set(
-  [
-    "0x1", // Ethereum,
-    "0x3", // Ropsten,
-    "0xa869", // Avalanche Testnet
-    "0xa86a", // Avalanche
-    "0x13881", // Mumbai
-  ]);
+const supportedChains = new Set([
+  "0x1", // Ethereum,
+  "0x3", // Ropsten,
+  "0xa869", // Avalanche Testnet
+  "0xa86a", // Avalanche
+  "0x13881", // Mumbai
+]);
 
 export const chainIdToNameAndLogo = new Map([
   ["0x4", ["Rinkeby Testnet", <ETHLogo />]],
   ["0xa86a", ["Avalanche", <AvaxLogo />]],
   ["0xa869", ["Avalanche Fuji Testnet", <AvaxLogo />]],
-])
+]);
 
 const menuItems = [
   {
@@ -114,12 +113,9 @@ function Chains() {
   };
 
   const menu = (
-    <Menu
-      onClick={handleMenuClick}
-      style={HeaderRightBordersStyle}
-    >
+    <Menu onClick={handleMenuClick} style={HeaderRightBordersStyle}>
       {menuItems
-        .filter(item => supportedChains.has(item.key))
+        .filter((item) => supportedChains.has(item.key))
         .map((item) => (
           <Menu.Item key={item.key} icon={item.icon} style={styles.item}>
             <span style={{ marginLeft: "5px" }}>{item.value}</span>
@@ -132,7 +128,11 @@ function Chains() {
   return (
     <div>
       <Dropdown overlay={menu} trigger={["click"]}>
-        <Button key={selected?.key} icon={selected?.icon} style={{ ...styles.button, ...styles.item }}>
+        <Button
+          key={selected?.key}
+          icon={selected?.icon}
+          style={{ ...styles.button, ...styles.item }}
+        >
           <span style={{ marginLeft: "5px" }}>{selected?.value}</span>
           <DownOutlined />
         </Button>

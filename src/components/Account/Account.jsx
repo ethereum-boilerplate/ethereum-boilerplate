@@ -48,17 +48,15 @@ const styles = {
 };
 
 function Account() {
-  const { authenticate, isAuthenticated, account, chainId, logout } = useMoralis();
+  const { authenticate, isAuthenticated, account, chainId, logout } =
+    useMoralis();
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isAuthModalVisible, setIsAuthModalVisible] = useState(false);
+
   if (!isAuthenticated || !account) {
     return (
       <>
-        <div
-          style={styles.account}
-          // onClick={() => authenticate({ signingMessage: "Hello World!" })}
-          onClick={() => setIsAuthModalVisible(true)}
-        >
+        <div style={styles.account} onClick={() => setIsAuthModalVisible(true)}>
           <p style={styles.text}>Connect Wallet</p>
         </div>
         <Modal
@@ -73,32 +71,45 @@ function Account() {
           style={{ fontSize: "16px", fontWeight: "500" }}
           width="340px"
         >
-          <div style={{ padding: "10px", display: "flex", justifyContent: "center", fontWeight: "700", fontSize: "20px" }}>
+          <div
+            style={{
+              padding: "10px",
+              display: "flex",
+              justifyContent: "center",
+              fontWeight: "700",
+              fontSize: "20px",
+            }}
+          >
             Connect Wallet
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
-            {connectors.map(({ title, icon, connectorId, customConnector }, key) => (
-              <div
-                style={styles.connector}
-                key={key}
-                onClick={async () => {
-                  try {
-                    if (customConnector) {
-                      await authenticate({ connector: customConnector, provider: connectorId });
-                    } else {
-                      await authenticate({ provider: connectorId });
+            {connectors.map(
+              ({ title, icon, connectorId, customConnector }, key) => (
+                <div
+                  style={styles.connector}
+                  key={key}
+                  onClick={async () => {
+                    try {
+                      if (customConnector) {
+                        await authenticate({
+                          connector: customConnector,
+                          provider: connectorId,
+                        });
+                      } else {
+                        await authenticate({ provider: connectorId });
+                      }
+                      window.localStorage.setItem("connectorId", connectorId);
+                      setIsAuthModalVisible(false);
+                    } catch (e) {
+                      console.error(e);
                     }
-                    window.localStorage.setItem("connectorId", connectorId);
-                    setIsAuthModalVisible(false);
-                  } catch (e) {
-                    console.error(e);
-                  }
-                }}
-              >
-                <img src={icon} alt={title} style={styles.icon} />
-                <Text style={{ fontSize: "14px" }}>{title}</Text>
-              </div>
-            ))}
+                  }}
+                >
+                  <img src={icon} alt={title} style={styles.icon} />
+                  <Text style={{ fontSize: "14px" }}>{title}</Text>
+                </div>
+              ),
+            )}
           </div>
         </Modal>
       </>
@@ -107,8 +118,26 @@ function Account() {
 
   return (
     <>
+      {/* <button
+        onClick={async () => {
+          try {
+            console.log("change")
+            await web3._provider.request({
+              method: "wallet_switchEthereumChain",
+              params: [{ chainId: "0x38" }],
+            });
+            console.log("changed")
+          } catch (e) {
+            console.error(e);
+          }
+        }}
+      >
+        Hi
+      </button> */}
       <div style={styles.account} onClick={() => setIsModalVisible(true)}>
-        <p style={{ marginRight: "1px", ...styles.text }}>{getEllipsisTxt(account, 5, 5)}</p>
+        <p style={{ marginRight: "1px", ...styles.text }}>
+          {getEllipsisTxt(account, 5, 5)}
+        </p>
         <Blockie currentWallet scale={3} />
       </div>
       <Modal
@@ -131,9 +160,18 @@ function Account() {
           }}
           bodyStyle={{ padding: "15px" }}
         >
-          <Address avatar="left" size={6} copyable style={{ fontSize: "20px" }} />
+          <Address
+            avatar="left"
+            size={6}
+            copyable
+            style={{ fontSize: "20px" }}
+          />
           <div style={{ marginTop: "10px", padding: "0 10px" }}>
-            <a href={`${getExplorer(chainId)}/address/${account}`} target="_blank" rel="noreferrer">
+            <a
+              href={`${getExplorer(chainId)}/address/${account}`}
+              target="_blank"
+              rel="noreferrer"
+            >
               <SelectOutlined style={{ marginRight: "5px" }} />
               View on Explorer
             </a>

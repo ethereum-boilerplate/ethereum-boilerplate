@@ -34,7 +34,7 @@ body {
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   color: #595959;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -55,7 +55,7 @@ img {
   display: block;
 }
 
-article>*+* {
+article > * + * {
   margin-top: 1em;
 }
 

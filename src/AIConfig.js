@@ -1,1 +1,1 @@
-export const ConfidenceScore = 0.4
+export const ConfidenceScore = 0.4;

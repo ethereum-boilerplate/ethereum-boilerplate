@@ -4,11 +4,15 @@ import { Redirect } from "react-router";
 import GymRoom from "./games/GymRoom";
 
 const PlayPage = () => {
-    const [avatar] = useContext(AvatarCtx);
-    if (!avatar) {
-        return <Redirect to="/avatars" />;
-    }
-    return (<><GymRoom avatar={avatar} /></>);
-}
+  const [avatar] = useContext(AvatarCtx);
+  if (!avatar) {
+    return <Redirect to="/avatars" />;
+  }
+  return (
+    <>
+      <GymRoom avatar={avatar} />
+    </>
+  );
+};
 
 export default PlayPage;

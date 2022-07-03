@@ -3,7 +3,8 @@ import { useEffect, useState } from "react";
 import { useMoralis, useMoralisWeb3Api } from "react-moralis";
 import { c2, tokenValueTxt } from "../helpers/formatters";
 
-const IsNative = (address) => address === "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
+const IsNative = (address) =>
+  address === "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
 
 const useTokenPrice = (options) => {
   const { token } = useMoralisWeb3Api();
@@ -24,7 +25,9 @@ const useTokenPrice = (options) => {
   const fetchTokenPrice = async (options) => {
     const { chain, address } = options;
     const tokenAddress = IsNative(address) ? getWrappedNative(chain) : address;
-    return token.getTokenPrice({ chain, address: tokenAddress }).then((result) => result);
+    return token
+      .getTokenPrice({ chain, address: tokenAddress })
+      .then((result) => result);
   };
   return { fetchTokenPrice, tokenPrice };
 };
