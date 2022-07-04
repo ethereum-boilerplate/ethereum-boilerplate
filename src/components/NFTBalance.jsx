@@ -289,6 +289,7 @@ function NFTBalance() {
                                   const avatarTokenId = nft?.token_id;
                                   setAvatar({
                                     uri: avatarUri,
+                                    snapARLink: nft?.snap_ar_link ?? "",
                                     coverUri: coverUri,
                                     tokenAddress: avatarTokenAddress,
                                     tokenId: avatarTokenId,

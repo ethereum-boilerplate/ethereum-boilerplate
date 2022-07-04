@@ -115,6 +115,11 @@ export const useVerifyMetadata = () => {
     if (metadata?.attributes) NFT.attributes = metadata.attributes;
     if (metadata?.collection_name)
       NFT.collection_name = metadata.collection_name;
+    // TODO get from blockchain later
+    NFT.snap_ar_link =
+      "https://www.snapchat.com/unlock/?type=SNAPCODE&uuid=9e06d0b5e63c43379dd549a6b0f625c1&metadata=01";
+    NFT.snap_ar_miniature_link =
+      "https://www.snapchat.com/unlock/?type=SNAPCODE&uuid=8c5841788ffc4c45bca2a77360834218&metadata=01";
   }
 
   return { verifyMetadata };

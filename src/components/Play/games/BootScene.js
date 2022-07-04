@@ -44,7 +44,7 @@ export class BootScene extends Phaser.Scene {
         }
         if (this.loadIndex === assets.length && this.selectedAvatar) {
           const uri = this.selectedAvatar.uri;
-          console.log("loading NFT avatar into game", uri);
+          console.log("loading NFT avatar into game", this.selectedAvatar);
           this.load.image(PLAYER_KEY, uri);
         } else {
           this.loadNextFile(this.loadIndex);

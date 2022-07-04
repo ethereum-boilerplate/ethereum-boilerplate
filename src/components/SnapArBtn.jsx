@@ -1,16 +1,8 @@
-import React, { useState, useEffect } from "react";
 import { Modal } from "antd";
 import { SnapChatLogo } from "../Logos";
 import QRCode from "qrcode";
 
 const SnapArBtn = ({ snapARLink }) => {
-  const [snapQRCodeDataURI, setSnapQRCodeDataURI] = useState(null);
-
-  useEffect(() => {
-    QRCode.toDataURL(snapARLink).then((data) => {
-      setSnapQRCodeDataURI(data);
-    });
-  });
   return (
     <div
       className="snap-btn"
@@ -29,7 +21,8 @@ const SnapArBtn = ({ snapARLink }) => {
         alignSelf: "start",
         justifySelf: "end",
       }}
-      onClick={() => {
+      onClick={async () => {
+        const qrCodeData = await QRCode.toDataURL(snapARLink);
         Modal.info({
           title: "Try me in Snapchat",
           centered: true,
@@ -54,7 +47,7 @@ const SnapArBtn = ({ snapARLink }) => {
                   justifyContent: "center",
                 }}
               >
-                <img src={snapQRCodeDataURI} />
+                <img src={qrCodeData} />
               </div>
             </div>
           ),

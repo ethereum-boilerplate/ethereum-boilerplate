@@ -12,6 +12,9 @@ import {
 } from "./Globals";
 import { MMT_TICKER } from "../../../GlobalStyles";
 import { EarnableScene } from "./EarnableScene";
+import { Modal } from "antd";
+import { SnapChatLogo } from "../../../Logos";
+import QRCode from "qrcode";
 
 const debugCollisons = false;
 
@@ -27,12 +30,70 @@ const tileMapSizing = 32;
 const miniGamesMapping = new Map([
   ["space_stretch", "Space Mat"],
   ["fly_fit", "Sky Mat"],
+  ["snap", "Snapchat"],
   ["chart_squats", "Chart Squats Mat"],
   ["matrix", "Mystery Mat"],
 ]);
 
 let sceneToGoOnXclick = null;
 const roboTextTimeouts = [];
+
+const showSnapchatModal = async (snapARLink) => {
+  if (snapARLink === "") {
+    Modal.info({
+      title: "Mint GymBuddy with Snap",
+      centered: true,
+      bodyStyle: {
+        textAlign: "center",
+      },
+      okText: "close",
+      icon: <SnapChatLogo />,
+      content: (
+        <div
+          style={{
+            textAlign: "center",
+          }}
+        >
+          <div>
+            <p>Your GymBuddy does not have a Snap Lens :(</p>
+            <p>Go mint one in our mint Page :)</p>
+          </div>
+        </div>
+      ),
+    });
+  } else {
+    const qrCodeData = await QRCode.toDataURL(snapARLink);
+    Modal.info({
+      title: "Try me in Snapchat",
+      centered: true,
+      bodyStyle: {
+        textAlign: "center",
+      },
+      okText: "close",
+      icon: <SnapChatLogo />,
+      content: (
+        <div
+          style={{
+            textAlign: "center",
+          }}
+        >
+          <div>
+            <p>Grab your phone</p>
+            <p>and scan the QR code</p>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            <img src={qrCodeData} />
+          </div>
+        </div>
+      ),
+    });
+  }
+};
 
 export class GymRoomScene extends EarnableScene {
   constructor() {
@@ -57,8 +118,12 @@ export class GymRoomScene extends EarnableScene {
         if (sceneToGoOnXclick && code === Phaser.Input.Keyboard.KeyCodes.X) {
           roboTextTimeouts.forEach((t) => clearTimeout(t));
           setMainRoomPlayerExitPos(this.player.x, this.player.y);
-          this.game.registry.values?.setMinigame(sceneToGoOnXclick);
-          this.scene.start(sceneToGoOnXclick);
+          if (sceneToGoOnXclick === "snap") {
+            showSnapchatModal(this.selectedAvatar.snapARLink);
+          } else {
+            this.game.registry.values?.setMinigame(sceneToGoOnXclick);
+            this.scene.start(sceneToGoOnXclick);
+          }
         }
       },
       this,
@@ -190,10 +255,17 @@ export class GymRoomScene extends EarnableScene {
         matRectangle.setFillStyle(0x33dd33, 0.3);
         roboTextTimeouts.forEach((t) => clearTimeout(t));
         sceneToGoOnXclick = objName;
-        hintTextBox.start(
-          `🤖 press X to train on\n${miniGamesMapping.get(objName)} 🚀`,
-          50,
-        );
+        if (objName === "snap") {
+          hintTextBox.start(
+            `🤖 press X to let your GymBuddy enter Snapchat 🚀`,
+            50,
+          );
+        } else {
+          hintTextBox.start(
+            `🤖 press X to train on\n${miniGamesMapping.get(objName)} 🚀`,
+            50,
+          );
+        }
       }
     };
 
