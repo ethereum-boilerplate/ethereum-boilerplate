@@ -239,7 +239,9 @@ const MintGymBuddyPage = () => {
               }}
               onClick={() =>
                 window.open(
-                  `${getExplorer(chainId)}address/${baseContractAddress}`,
+                  `${getExplorer(
+                    chainId,
+                  )}address/${nftWithSnapContractAddress}`,
                   "_blank",
                 )
               }
