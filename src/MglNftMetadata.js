@@ -1,10 +1,10 @@
 export const TestGymBuddiesContract =
   "0xaf442b8249278126cc04038079a43f1721f48e1e";
 export const TestGymBuddiesWithSnapLensContract =
-  "0xd51D169cBF0Fac91F90606508cC2bc62CdaC6ADC";
+  "0x63fDE70f34e23dC272d53dcB2aCd34B9A8DD0526";
 export const AvaxMoralis2021HackatonNfts =
   "0xbba97ea3912c598a39ce0802d5cd67dd3d873457";
-export const DemoNFT = "0x23689b225A012d5205F0Cf6Ce6C31cb7BA8cFdA7";
+export const DemoNFT = "0xC5879FCFB810db94C6018Bb5BED41e64E10c016c";
 export const AllowedNftContracts = new Map([
   [
     "0xa869", // AVAX fuji testnet
