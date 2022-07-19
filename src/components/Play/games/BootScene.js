@@ -1,6 +1,6 @@
 import Phaser from "phaser";
 import { assets } from "./assets";
-import { GYM_ROOM_SCENE, PLAYER_KEY } from "./shared";
+import { GYM_ROOM_SCENE, PLAYER_KEY, MINI_GAMES } from "./shared";
 import { getGameWidth, getGameHeight } from "./helpers";
 
 const sceneConfig = {
@@ -31,6 +31,7 @@ export class BootScene extends Phaser.Scene {
 
     // Construct avatar game object from registry
     this.selectedAvatar = this.game.registry.values.avatar;
+    this.pickedMiniGame = this.game.registry.values.pickedMiniGame;
 
     // Listener that triggers when an asset has loaded
     this.load.on(
@@ -40,7 +41,8 @@ export class BootScene extends Phaser.Scene {
         if (key === PLAYER_KEY) {
           this.assetsLoaded = true;
           this.loadingText?.setText(`Loading Player Avatar...`);
-          this.startGame();
+          console.log("pickedMiniGame", this.pickedMiniGame);
+          this.startGame(this.pickedMiniGame);
         }
         if (this.loadIndex === assets.length && this.selectedAvatar) {
           const uri = this.selectedAvatar.uri;
@@ -58,9 +60,16 @@ export class BootScene extends Phaser.Scene {
   /**
    * If all the assets are loaded in, start game
    */
-  startGame = () => {
+  startGame = (miniGameId) => {
     if (this.assetsLoaded) {
-      this.scene.start(GYM_ROOM_SCENE, { selectedAvatar: this.selectedAvatar });
+      const resolveMiniGame = () => {
+        if (MINI_GAMES.includes(miniGameId)) {
+          return miniGameId;
+        }
+        return GYM_ROOM_SCENE;
+      };
+      const miniGame = resolveMiniGame();
+      this.scene.start(miniGame, { selectedAvatar: this.selectedAvatar });
     }
   };
 

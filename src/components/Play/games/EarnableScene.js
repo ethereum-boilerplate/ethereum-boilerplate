@@ -9,7 +9,12 @@ export class EarnableScene extends Phaser.Scene {
   gameUser() {
     // add refresh data logic
     // same in rewards page
-    return this.game.registry.values?.avatar?.user;
+    const avatarUserProp = this.game.registry.values?.avatar?.user;
+    const avatarHasUser = Boolean(avatarUserProp);
+    const moralisUserPassedToRegistry = this.game.registry.values?.user;
+    // if avatar.user is null
+    // it means we are using Demo GymBuddy
+    return avatarHasUser ? moralisUserPassedToRegistry : null;
   }
 
   currentXPBalance() {

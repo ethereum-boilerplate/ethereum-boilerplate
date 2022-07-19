@@ -6,3 +6,10 @@ export const SPACE_STRETCH_SCENE = "space_stretch";
 export const FLY_FIT_SCENE = "fly_fit";
 export const CHART_SQUATS = "chart_squats";
 export const MATRIX = "matrix";
+
+export const MINI_GAMES = [
+  SPACE_STRETCH_SCENE,
+  FLY_FIT_SCENE,
+  CHART_SQUATS,
+  MATRIX,
+];

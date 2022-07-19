@@ -317,6 +317,14 @@ function NFTBalance() {
                                   const coverUri = nft?.image;
                                   const avatarTokenAddress = nft?.token_address;
                                   const avatarTokenId = nft?.token_id;
+                                  const curAvatar = {
+                                    uri: avatarUri,
+                                    snapARLink: nft?.snap_ar_link ?? "",
+                                    coverUri: coverUri,
+                                    tokenAddress: avatarTokenAddress,
+                                    tokenId: avatarTokenId,
+                                    user: user,
+                                  };
                                   setAvatar({
                                     uri: avatarUri,
                                     snapARLink: nft?.snap_ar_link ?? "",
@@ -325,6 +333,10 @@ function NFTBalance() {
                                     tokenId: avatarTokenId,
                                     user: user,
                                   });
+                                  window.localStorage.setItem(
+                                    "avatar",
+                                    JSON.stringify(curAvatar),
+                                  );
                                 }}
                                 type="primary"
                                 style={BtnPrimary}

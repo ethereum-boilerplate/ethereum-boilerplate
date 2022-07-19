@@ -4,11 +4,9 @@ import App from "./App";
 import { MoralisProvider } from "react-moralis";
 import "./index.css";
 import Home from "components/Home";
-import { Pose } from "@mediapipe/pose";
-import * as mpPose from "@mediapipe/pose";
-import { ConfidenceScore } from "./AIConfig";
 import { GYM_ROOM_SCENE } from "./components/Play/games/shared";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
+import { MglPoseDetector } from "./ai/MglPoseDetector";
 
 // Moralis vals
 const APP_ID = process.env.REACT_APP_MORALIS_APPLICATION_ID;
@@ -17,7 +15,11 @@ const SERVER_URL = process.env.REACT_APP_MORALIS_SERVER_URL;
 // Avatar global state
 export const AvatarCtx = React.createContext();
 const AvatarCtxProvider = ({ children }) => {
-  const [avatar, setAvatar] = useState(null);
+  const lastUsedAvatarRaw = window.localStorage.getItem("avatar");
+  const lastUsedAvatar = lastUsedAvatarRaw
+    ? JSON.parse(lastUsedAvatarRaw)
+    : null;
+  const [avatar, setAvatar] = useState(lastUsedAvatar);
   return (
     <AvatarCtx.Provider value={[avatar, setAvatar]}>
       {children}
@@ -61,21 +63,7 @@ const WebcamCtxProvider = ({ children }) => {
 // PoseDetector global var
 export const PoseDetectorCtx = React.createContext();
 const PoseDetectorCtxProvider = ({ children }) => {
-  const poseDetector = new Pose({
-    locateFile: (file) => {
-      const path = `https://cdn.jsdelivr.net/npm/@mediapipe/pose@${mpPose.VERSION}/${file}`;
-      return path;
-    },
-  });
-  poseDetector.setOptions({
-    modelComplexity: 1,
-    smoothLandmarks: true,
-    selfieMode: true,
-    //   enableSegmentation: true,
-    // smoothSegmentation: true,
-    minDetectionConfidence: ConfidenceScore,
-    minTrackingConfidence: ConfidenceScore,
-  });
+  const poseDetector = new MglPoseDetector();
 
   useEffect(() => {
     poseDetector.initialize();

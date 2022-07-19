@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import { useMoralis } from "react-moralis";
 import Phaser from "phaser";
 import { IonPhaser } from "@ion-phaser/react";
 import { GymRoomScene } from "./GymRoomScene";
@@ -64,13 +65,17 @@ const getConfig = (mainScene) => {
   };
 };
 
-const GymRoom = ({ avatar, useWebcam = true }) => {
+const GymRoom = ({ avatar, useWebcam = true, miniGameId = null }) => {
   // run game
   const [initialised, setInitialised] = useState(true);
   const [config, setConfig] = useState();
   const { setMinigame } = useContext(MiniGameCtx);
+  const { user } = useMoralis();
 
   const startGame = () => {
+    if (miniGameId) {
+      setMinigame(miniGameId);
+    }
     setConfig({
       ...getConfig(GymRoomScene),
       callbacks: {
@@ -80,6 +85,8 @@ const GymRoom = ({ avatar, useWebcam = true }) => {
           game.registry.merge({
             avatar,
             setMinigame,
+            pickedMiniGame: miniGameId,
+            user,
           });
         },
       },
@@ -88,9 +95,8 @@ const GymRoom = ({ avatar, useWebcam = true }) => {
 
   useEffect(() => {
     startGame();
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [user]);
 
   return (
     <IonPhaser
