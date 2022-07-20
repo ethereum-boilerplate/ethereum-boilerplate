@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { useParams } from "react-router";
 import { AvatarCtx } from "index";
 import { Redirect } from "react-router";
 import { Image, Button } from "antd";
@@ -16,12 +17,20 @@ import { WebcamCtx } from "index";
 import PoseDetWebcam from "components/Webcam/PoseDetWebcam";
 
 const PlaySetupPage = () => {
+  const { miniGameId } = useParams();
   const [avatar] = useContext(AvatarCtx);
   const { webcamId } = useContext(WebcamCtx);
 
   if (!avatar) {
     return <Redirect to="/avatars" />;
   }
+
+  const linkToJoinMetaGymLand = () => {
+    if (miniGameId) {
+      return `/play/${miniGameId}`;
+    }
+    return "/play";
+  };
 
   return (
     <div
@@ -162,7 +171,7 @@ const PlaySetupPage = () => {
               ...BtnInfo,
             }}
           >
-            <Link to="/play">
+            <Link to={linkToJoinMetaGymLand()}>
               Join MetaGymLand <RightOutlined />
             </Link>
           </Button>

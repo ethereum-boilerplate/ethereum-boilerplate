@@ -156,7 +156,7 @@ const App = ({ isServerInfo }) => {
             <Route path="/loader">
               <LoaderTest />
             </Route>
-            <Route path="/play-setup">
+            <Route path="/play-setup/:miniGameId?">
               <PlaySetupPage />
             </Route>
             <Route path="/rewards">
