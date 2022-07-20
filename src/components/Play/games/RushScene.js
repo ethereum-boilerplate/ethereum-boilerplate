@@ -87,24 +87,52 @@ export class RushScene extends EarnableScene {
     this.player.setScale(PLAYER_SCALE);
     this.player.setDepth(1);
     this.player.body.setCollideWorldBounds(true);
+
+    // set initial values
+    this.currentSpeed = 0;
+    this.flipFlop = false;
+
+    this.last5Ups = new Queue();
   }
 
   // eslint-disable-next-line no-unused-vars
   update(time, delta) {
-    this.player?.update();
+    this.handlePlayerMoves(time, delta);
   }
 
-  handlePlayerMoves() {
+  // eslint-disable-next-line no-unused-vars
+  handlePlayerMoves(time, delta) {
+    // time, delta example output
+    // {time: 23744.10000000149, delta: 16.65000000074506}
+
+    // calc speed here
+    if (!this.last5Ups.isEmpty) {
+      const curTime = time;
+      const secAgo = (curTime - this.last5Ups.peek()) / 1000;
+      console.log("last up move was seconds ago", secAgo);
+      console.log("cur size", this.last5Ups.length);
+    }
+
+    // if (this.last5Ups.peek()) {
+    // }
+
+    // maintain queue
+    if (this.last5Ups.length >= 5) {
+      this.last5Ups.dequeue();
+    }
+
+    const player = this.player;
+    const speed = 150;
     const curPose = gstate.getPose();
     // Every frame, we create a new velocity for the sprite based on what keys the player is holding down.
     const velocity = new Phaser.Math.Vector2(0, 0);
     // Horizontal movement
     switch (true) {
-      case this.cursorKeys?.left.isDown || curPose === gpose.HTL:
+      case player.cursorKeys?.left.isDown || curPose === gpose.HTL:
         velocity.x -= 1;
         // this.anims.play('left', true);
         break;
-      case this.cursorKeys?.right.isDown || curPose === gpose.HTR:
+      case player.cursorKeys?.right.isDown || curPose === gpose.HTR:
         velocity.x += 1;
         // this.anims.play('right', true);
         break;
@@ -114,27 +142,59 @@ export class RushScene extends EarnableScene {
 
     // Vertical movement
     switch (true) {
-      case this.cursorKeys?.down.isDown ||
+      case player.cursorKeys?.down.isDown ||
         curPose === gpose.LA_UP ||
         curPose === gpose.NDWN:
         velocity.y += 1;
         // this.anims.play('idle', false);
         break;
-      case this.cursorKeys?.up.isDown ||
+      case player.cursorKeys?.up.isDown ||
         curPose === gpose.RA_UP ||
         curPose === gpose.BA_UP:
-        velocity.y -= 1;
-        // this.anims.play('up', true);
+        if (!this.flipFlop) {
+          velocity.y -= 1;
+          this.flipFlop = true;
+          this.last5Ups.enqueue(time);
+        }
         break;
       default:
+        this.flipFlop = false;
       // do nothing
     }
 
     // We normalize the velocity so that the player is always moving at the same speed, regardless of direction.
     const normalizedVelocity = velocity.normalize();
-    this.body.setVelocity(
-      normalizedVelocity.x * this.speed,
-      normalizedVelocity.y * this.speed,
+    player.body.setVelocity(
+      normalizedVelocity.x * speed,
+      normalizedVelocity.y * speed,
     );
+  }
+}
+
+class Queue {
+  constructor() {
+    this.elements = {};
+    this.head = 0;
+    this.tail = 0;
+  }
+  enqueue(element) {
+    this.elements[this.tail] = element;
+    this.tail++;
+  }
+  dequeue() {
+    console.log("dequeue");
+    const item = this.elements[this.head];
+    delete this.elements[this.head];
+    this.head++;
+    return item;
+  }
+  peek() {
+    return this.elements[this.head];
+  }
+  get length() {
+    return this.tail - this.head;
+  }
+  get isEmpty() {
+    return this.length === 0;
   }
 }
