@@ -8,6 +8,7 @@ import { FlyFitScene } from "./FlyFitScene";
 import { ChartSquats } from "./ChartSquats";
 import { BootScene } from "./BootScene";
 import { MatrixScene } from "./MatrixScene";
+import { RushScene } from "./RushScene";
 import { MiniGameCtx } from "index";
 import PoseDetWebcam from "components/Webcam/PoseDetWebcam";
 import SideMenu from "./GymRoomSideMenu";
@@ -36,6 +37,7 @@ const getConfig = (mainScene) => {
     FlyFitScene,
     ChartSquats,
     MatrixScene,
+    RushScene,
   ];
 
   return {
