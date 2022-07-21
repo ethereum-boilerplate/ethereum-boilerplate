@@ -91,12 +91,27 @@ export class RushScene extends EarnableScene {
     // set initial values
     this.currentSpeed = 0;
     this.flipFlop = false;
-
     this.last5Ups = new Deque();
+    this.distanceTraveled = 0;
+    this.startTime = Date.now();
+    this.curVel = 0;
+    // velocity gauge
+    this.scoreBoard = this.add.text(width * 0.5, height * 0.15, "SPEED: 0", {
+      fill: "#ba3a3a",
+      font: "900 20px Orbitron",
+    });
   }
 
   // eslint-disable-next-line no-unused-vars
   update(time, delta) {
+    const vel = this.curVel.toFixed(4);
+    this.scoreBoard.setText(`SPEED: ${vel}`);
+    if ((Date.now() - this.startTime) / 1000 > 2.5) {
+      this.curVel =
+        this.distanceTraveled / ((Date.now() - this.startTime) / 1000);
+      this.startTime = Date.now();
+      this.distanceTraveled = 0;
+    }
     this.handlePlayerMoves(time, delta);
   }
 
@@ -108,6 +123,7 @@ export class RushScene extends EarnableScene {
     // calc speed here
     if (!this.last5Ups.isEmpty) {
       const curTime = time;
+      // eslint-disable-next-line no-unused-vars
       const lastMoveTimeAgo = (curTime - this.last5Ups.front()) / 1000;
       //   if (lastMoveSecAgo < 0.2) {
       //     console.log("FAST", lastMoveSecAgo);
@@ -122,12 +138,13 @@ export class RushScene extends EarnableScene {
       //   console.log("cur size", this.last5Ups.length);
       // fast
       if (this.last5Ups.length === 3) {
+        // eslint-disable-next-line no-unused-vars
         const avgOfDeltasBetweenLast5Moves = this.last5Ups.average() / 100;
-        console.log(
-          "average of deltas between last 5 moves",
-          avgOfDeltasBetweenLast5Moves,
-        );
-        console.log("-----lastMoveTimeAgo---------", lastMoveTimeAgo);
+        // console.log(
+        //   "average of deltas between last 5 moves",
+        //   avgOfDeltasBetweenLast5Moves,
+        // );
+        // console.log("-----lastMoveTimeAgo---------", lastMoveTimeAgo);
         // if (diffBetweenFrontAndRearMoveTime < 1) {
         //     console.log("you are moving fast!");
         // }
@@ -169,7 +186,12 @@ export class RushScene extends EarnableScene {
       case player.cursorKeys?.down.isDown ||
         curPose === gpose.LA_UP ||
         curPose === gpose.NDWN:
-        velocity.y += 1;
+        if (!this.flipFlop) {
+          velocity.y -= 1;
+          this.flipFlop = true;
+          this.distanceTraveled += 335;
+          this.last5Ups.addFront(time);
+        }
         // this.anims.play('idle', false);
         break;
       case player.cursorKeys?.up.isDown ||
@@ -178,6 +200,7 @@ export class RushScene extends EarnableScene {
         if (!this.flipFlop) {
           velocity.y -= 1;
           this.flipFlop = true;
+          this.distanceTraveled += 335;
           this.last5Ups.addFront(time);
         }
         break;
@@ -187,10 +210,11 @@ export class RushScene extends EarnableScene {
     }
 
     // We normalize the velocity so that the player is always moving at the same speed, regardless of direction.
+    // eslint-disable-next-line no-unused-vars
     const normalizedVelocity = velocity.normalize();
     player.body.setVelocity(
-      normalizedVelocity.x * speed,
-      normalizedVelocity.y * speed,
+      velocity.x * (speed + this.curVel),
+      velocity.y * (speed + this.curVel),
     );
   }
 }
