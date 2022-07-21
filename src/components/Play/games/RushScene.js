@@ -92,7 +92,7 @@ export class RushScene extends EarnableScene {
     this.currentSpeed = 0;
     this.flipFlop = false;
 
-    this.last5Ups = new Queue();
+    this.last5Ups = new Deque();
   }
 
   // eslint-disable-next-line no-unused-vars
@@ -108,17 +108,41 @@ export class RushScene extends EarnableScene {
     // calc speed here
     if (!this.last5Ups.isEmpty) {
       const curTime = time;
-      const secAgo = (curTime - this.last5Ups.peek()) / 1000;
-      console.log("last up move was seconds ago", secAgo);
-      console.log("cur size", this.last5Ups.length);
+      const lastMoveTimeAgo = (curTime - this.last5Ups.front()) / 1000;
+      //   if (lastMoveSecAgo < 0.2) {
+      //     console.log("FAST", lastMoveSecAgo);
+      //   } else if (lastMoveSecAgo < 0.5) {
+      //     console.log("MEDIUM", lastMoveSecAgo);
+      //   } else if (lastMoveSecAgo < 2) {
+      //     console.log("SLOW", lastMoveSecAgo);
+      //   } else {
+      //     console.log("IDLE", lastMoveSecAgo);
+      //   }
+      //   console.log("last up move was seconds ago", secAgo);
+      //   console.log("cur size", this.last5Ups.length);
+      // fast
+      if (this.last5Ups.length === 3) {
+        const avgOfDeltasBetweenLast5Moves = this.last5Ups.average() / 100;
+        console.log(
+          "average of deltas between last 5 moves",
+          avgOfDeltasBetweenLast5Moves,
+        );
+        console.log("-----lastMoveTimeAgo---------", lastMoveTimeAgo);
+        // if (diffBetweenFrontAndRearMoveTime < 1) {
+        //     console.log("you are moving fast!");
+        // }
+        // if (diffBetweenFrontAndRearMoveTime < 2) {
+        //     console.log("you are moving medium!");
+        // }
+        // if (diffBetweenFrontAndRearMoveTime < 3) {
+        //     console.log("you are moving slow!");
+        // }
+      }
     }
 
-    // if (this.last5Ups.peek()) {
-    // }
-
     // maintain queue
-    if (this.last5Ups.length >= 5) {
-      this.last5Ups.dequeue();
+    if (this.last5Ups.length >= 4) {
+      this.last5Ups.removeRear();
     }
 
     const player = this.player;
@@ -154,7 +178,7 @@ export class RushScene extends EarnableScene {
         if (!this.flipFlop) {
           velocity.y -= 1;
           this.flipFlop = true;
-          this.last5Ups.enqueue(time);
+          this.last5Ups.addFront(time);
         }
         break;
       default:
@@ -171,30 +195,61 @@ export class RushScene extends EarnableScene {
   }
 }
 
-class Queue {
+class Deque {
   constructor() {
-    this.elements = {};
-    this.head = 0;
-    this.tail = 0;
+    this.items = [];
   }
-  enqueue(element) {
-    this.elements[this.tail] = element;
-    this.tail++;
-  }
-  dequeue() {
-    console.log("dequeue");
-    const item = this.elements[this.head];
-    delete this.elements[this.head];
-    this.head++;
-    return item;
-  }
-  peek() {
-    return this.elements[this.head];
-  }
-  get length() {
-    return this.tail - this.head;
-  }
+
   get isEmpty() {
-    return this.length === 0;
+    return !this.items.length;
+  }
+
+  front() {
+    return this.items[0];
+  }
+
+  diff() {
+    const elems = this.items;
+    return elems.slice(1).map((n, i) => {
+      return elems[i] - n;
+    });
+  }
+
+  sumOfDeltas() {
+    return this.diff().reduce((sum, a) => {
+      return sum + Number(a);
+    }, 0);
+  }
+
+  average() {
+    return this.sumOfDeltas() / this.length;
+  }
+
+  deltaBetweenCurrTimeAndPAssedTimes(curTime) {
+    return curTime - this.average();
+  }
+
+  rear() {
+    return this.items[this.items.length - 1];
+  }
+
+  addFront(item) {
+    this.items.unshift(item);
+  }
+
+  addRear(item) {
+    this.items.push(item);
+  }
+
+  removeFront() {
+    return this.items.shift();
+  }
+
+  removeRear() {
+    return this.items.pop();
+  }
+
+  get length() {
+    return this.items.length;
   }
 }
