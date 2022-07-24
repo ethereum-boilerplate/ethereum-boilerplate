@@ -96,27 +96,69 @@ export class RushScene extends EarnableScene {
     this.startTime = Date.now();
     this.curVel = 0;
     // velocity gauge
-    this.scoreBoard = this.add.text(width * 0.5, height * 0.15, "SPEED: 0", {
-      fill: "#ba3a3a",
+    this.scoreBoard = this.add.text(
+      width * 0.05,
+      height * 0.1,
+      "Moves Per Second: 0",
+      {
+        fill: "#ba3a3a",
+        font: "900 20px Orbitron",
+      },
+    );
+
+    this.scoreBoard2 = this.add.text(width * 0.05, height * 0.15, "Stats", {
+      fill: "#48A869",
       font: "900 20px Orbitron",
     });
+
+    this.lastSpeeds = new Map();
+    this.curMove = Date.now();
+    this.lastMoveTs = new Date("12-12-2020").getTime();
   }
 
   // eslint-disable-next-line no-unused-vars
   update(time, delta) {
-    const vel = this.curVel.toFixed(4);
-    this.scoreBoard.setText(`SPEED: ${vel}`);
-    if ((Date.now() - this.startTime) / 1000 > 2.5) {
-      this.curVel =
+    if ((Date.now() - this.startTime) / 1000 > 3) {
+      const vel =
         this.distanceTraveled / ((Date.now() - this.startTime) / 1000);
+      this.lastSpeeds.set(Date.now(), vel);
       this.startTime = Date.now();
       this.distanceTraveled = 0;
     }
+
+    const medianVel = this.lastSpeeds.size
+      ? median(Array.from(this.lastSpeeds.values()))
+      : 0.0;
+    let speedLabel = "IDLE";
+    if (medianVel > 0 && medianVel < 0.8) {
+      speedLabel = "SLOWLY";
+    } else if (medianVel > 0.8 && medianVel < 1.8) {
+      speedLabel = "MEDIUM";
+    } else if (medianVel > 1.8) {
+      speedLabel = "FAST";
+    }
+
+    this.scoreBoard.setText(
+      `Avg Moves Per 3 Second: ${medianVel.toFixed(2)} (${speedLabel})`,
+    );
+
+    for (const ts of this.lastSpeeds.keys()) {
+      const secondsAgo = (Date.now() - ts) / 1000;
+      if (secondsAgo > 3) {
+        this.lastSpeeds.delete(ts);
+      }
+    }
+
     this.handlePlayerMoves(time, delta);
   }
 
   // eslint-disable-next-line no-unused-vars
   handlePlayerMoves(time, delta) {
+    const player = this.player;
+    const height = getGameHeight(this);
+    if (player.y < height * 0.15) {
+      player.y = this.physics.world.bounds.height;
+    }
     // time, delta example output
     // {time: 23744.10000000149, delta: 16.65000000074506}
 
@@ -125,44 +167,21 @@ export class RushScene extends EarnableScene {
       const curTime = time;
       // eslint-disable-next-line no-unused-vars
       const lastMoveTimeAgo = (curTime - this.last5Ups.front()) / 1000;
-      //   if (lastMoveSecAgo < 0.2) {
-      //     console.log("FAST", lastMoveSecAgo);
-      //   } else if (lastMoveSecAgo < 0.5) {
-      //     console.log("MEDIUM", lastMoveSecAgo);
-      //   } else if (lastMoveSecAgo < 2) {
-      //     console.log("SLOW", lastMoveSecAgo);
-      //   } else {
-      //     console.log("IDLE", lastMoveSecAgo);
-      //   }
-      //   console.log("last up move was seconds ago", secAgo);
-      //   console.log("cur size", this.last5Ups.length);
-      // fast
-      if (this.last5Ups.length === 3) {
-        // eslint-disable-next-line no-unused-vars
-        const avgOfDeltasBetweenLast5Moves = this.last5Ups.average() / 100;
-        // console.log(
-        //   "average of deltas between last 5 moves",
-        //   avgOfDeltasBetweenLast5Moves,
-        // );
-        // console.log("-----lastMoveTimeAgo---------", lastMoveTimeAgo);
-        // if (diffBetweenFrontAndRearMoveTime < 1) {
-        //     console.log("you are moving fast!");
-        // }
-        // if (diffBetweenFrontAndRearMoveTime < 2) {
-        //     console.log("you are moving medium!");
-        // }
-        // if (diffBetweenFrontAndRearMoveTime < 3) {
-        //     console.log("you are moving slow!");
-        // }
-      }
+      const medianDeltasBetweenLast5Moves = this.last5Ups.medianDeltas() / 1000;
+      this.scoreBoard2.setText(
+        `last move seconds ago: ${lastMoveTimeAgo.toFixed(2)}` +
+          "\n" +
+          `median gap between last 5 moves ${medianDeltasBetweenLast5Moves.toFixed(
+            2,
+          )}`,
+      );
     }
 
     // maintain queue
-    if (this.last5Ups.length >= 4) {
+    if (this.last5Ups.length >= 5) {
       this.last5Ups.removeRear();
     }
 
-    const player = this.player;
     const speed = 150;
     const curPose = gstate.getPose();
     // Every frame, we create a new velocity for the sprite based on what keys the player is holding down.
@@ -187,10 +206,11 @@ export class RushScene extends EarnableScene {
         curPose === gpose.LA_UP ||
         curPose === gpose.NDWN:
         if (!this.flipFlop) {
-          velocity.y -= 1;
+          velocity.y -= 3;
           this.flipFlop = true;
-          this.distanceTraveled += 335;
+          this.distanceTraveled += 1;
           this.last5Ups.addFront(time);
+          this.lastMoveTs = Date.now();
         }
         // this.anims.play('idle', false);
         break;
@@ -198,10 +218,11 @@ export class RushScene extends EarnableScene {
         curPose === gpose.RA_UP ||
         curPose === gpose.BA_UP:
         if (!this.flipFlop) {
-          velocity.y -= 1;
+          velocity.y -= 3;
           this.flipFlop = true;
-          this.distanceTraveled += 335;
+          this.distanceTraveled += 1;
           this.last5Ups.addFront(time);
+          this.lastMoveTs = Date.now();
         }
         break;
       default:
@@ -211,11 +232,8 @@ export class RushScene extends EarnableScene {
 
     // We normalize the velocity so that the player is always moving at the same speed, regardless of direction.
     // eslint-disable-next-line no-unused-vars
-    const normalizedVelocity = velocity.normalize();
-    player.body.setVelocity(
-      velocity.x * (speed + this.curVel),
-      velocity.y * (speed + this.curVel),
-    );
+    // const normalizedVelocity = velocity.normalize();
+    player.body.setVelocity(velocity.x * speed, velocity.y * speed);
   }
 }
 
@@ -239,14 +257,8 @@ class Deque {
     });
   }
 
-  sumOfDeltas() {
-    return this.diff().reduce((sum, a) => {
-      return sum + Number(a);
-    }, 0);
-  }
-
-  average() {
-    return this.sumOfDeltas() / this.length;
+  medianDeltas() {
+    return median(this.diff());
   }
 
   deltaBetweenCurrTimeAndPAssedTimes(curTime) {
@@ -277,3 +289,12 @@ class Deque {
     return this.items.length;
   }
 }
+
+const median = (vals) => {
+  const sorted = vals.sort((a, b) => a - b);
+  const half = Math.floor(sorted.length / 2);
+
+  if (sorted.length % 2) return sorted[half];
+
+  return (sorted[half - 1] + sorted[half]) / 2.0;
+};
