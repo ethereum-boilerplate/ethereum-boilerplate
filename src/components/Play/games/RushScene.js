@@ -144,11 +144,6 @@ export class RushScene extends EarnableScene {
       ? median(Array.from(this.lastSpeeds.values()))
       : 0.0;
 
-    //  Scroll the background
-
-    const factor = medianVel ? medianVel * 2 : 0;
-    this.rushBg.tilePositionY -= factor;
-
     let speedLabel = "IDLE";
     if (medianVel > 0 && medianVel < 0.8) {
       speedLabel = "SLOWLY";
@@ -156,7 +151,19 @@ export class RushScene extends EarnableScene {
       speedLabel = "MEDIUM";
     } else if (medianVel > 1.8) {
       speedLabel = "FAST";
+    } else if (medianVel > 2.8) {
+      speedLabel = "VERY FAST";
     }
+
+    //  Scroll the background
+    const factor = medianVel ? medianVel * 2 : 0;
+    let boost = 1;
+    if (speedLabel === "MEDIUM") {
+      boost = 2;
+    } else if (speedLabel === "FAST") {
+      boost = 3;
+    }
+    this.rushBg.tilePositionY -= factor * boost;
 
     this.scoreBoard.setText(
       `Avg Moves Per 3 Second: ${medianVel.toFixed(2)} (${speedLabel})`,
@@ -202,7 +209,6 @@ export class RushScene extends EarnableScene {
       this.last5Ups.removeRear();
     }
 
-    const speed = 150;
     const curPose = gstate.getPose();
     // Every frame, we create a new velocity for the sprite based on what keys the player is holding down.
     const velocity = new Phaser.Math.Vector2(0, 0);
@@ -246,6 +252,12 @@ export class RushScene extends EarnableScene {
         this.flipFlop = false;
       // do nothing
     }
+
+    const normalizedVelocity = velocity.normalize();
+    player.body.setVelocity(
+      normalizedVelocity.x * 150,
+      normalizedVelocity.y * 150,
+    );
   }
 }
 
