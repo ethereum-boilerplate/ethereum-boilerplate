@@ -43,6 +43,23 @@ export class RushScene extends EarnableScene {
       RUSH_BG,
     );
 
+    // graphics
+    this.graphics = this.add.graphics();
+
+    this.graphics.fillStyle(0xff0000, 0.8);
+    this.rightCircle = this.graphics.fillCircle(
+      width - width * 0.2,
+      height - height * 0.08,
+      30,
+    );
+    this.leftCircle = this.graphics.fillCircle(
+      width - width * 0.8,
+      height - height * 0.08,
+      30,
+    );
+
+    this.centerCircle = this.graphics.fillCircle(width / 2, height / 2, 40);
+
     // constrols
     this.input.keyboard.on(
       "keydown",
@@ -138,6 +155,14 @@ export class RushScene extends EarnableScene {
       this.lastSpeeds.set(Date.now(), vel);
       this.startTime = Date.now();
       this.distanceTraveled = 0;
+    }
+
+    this.leftCircle.setAlpha(0.2);
+    this.rightCircle.setAlpha(0.2);
+
+    this.centerCircle.setAlpha(0.2);
+    if (Math.round((Date.now() - this.startTime) / 1000) === 1) {
+      this.centerCircle.setAlpha(0.8);
     }
 
     const medianVel = this.lastSpeeds.size
@@ -237,6 +262,7 @@ export class RushScene extends EarnableScene {
           this.last5Ups.addFront(time);
           this.lastMoveTs = Date.now();
         }
+        this.leftCircle.setAlpha(0.8);
         break;
       case player.cursorKeys?.up.isDown ||
         curPose === gpose.RA_UP ||
@@ -247,6 +273,7 @@ export class RushScene extends EarnableScene {
           this.last5Ups.addFront(time);
           this.lastMoveTs = Date.now();
         }
+        this.rightCircle.setAlpha(0.8);
         break;
       default:
         this.flipFlop = false;
