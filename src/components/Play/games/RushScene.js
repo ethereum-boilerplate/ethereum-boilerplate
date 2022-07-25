@@ -44,21 +44,27 @@ export class RushScene extends EarnableScene {
     );
 
     // graphics
-    this.graphics = this.add.graphics();
+    const mainGraphics = this.add.graphics();
 
-    this.graphics.fillStyle(0xff0000, 0.8);
-    this.rightCircle = this.graphics.fillCircle(
-      width - width * 0.2,
+    mainGraphics.fillStyle(0xff0000, 0.8);
+    this.rightCircle = mainGraphics.fillCircle(
+      width - width * 0.4,
       height - height * 0.08,
       30,
     );
-    this.leftCircle = this.graphics.fillCircle(
-      width - width * 0.8,
+    this.leftCircle = mainGraphics.fillCircle(
+      width - width * 0.6,
       height - height * 0.08,
       30,
     );
 
-    this.centerCircle = this.graphics.fillCircle(width / 2, height / 2, 40);
+    const centerCircleGraphics = this.add.graphics();
+    centerCircleGraphics.fillStyle(0x06ff00, 0.8);
+    this.centerCircle = centerCircleGraphics.fillCircle(
+      width / 2,
+      height / 1.4,
+      35,
+    );
 
     // constrols
     this.input.keyboard.on(
@@ -108,11 +114,10 @@ export class RushScene extends EarnableScene {
     this.player = new Player({
       scene: this,
       x: width / 2,
-      y:
-        this.physics.world.bounds.height -
-        this.physics.world.bounds.height * 0.1,
+      y: height - height * 0.08,
       key: PLAYER_KEY,
     });
+    this.player.setOrigin(0.5, 0.5);
     this.player.setScale(PLAYER_SCALE);
     this.player.setDepth(1);
     this.player.body.setCollideWorldBounds(true);
@@ -138,6 +143,11 @@ export class RushScene extends EarnableScene {
     );
 
     this.scoreBoard2 = this.add.text(width * 0.05, height * 0.15, "Stats", {
+      fill: "#48A869",
+      font: "900 20px Orbitron",
+    });
+
+    this.matchText = this.add.text(width * 0.08, height / 2, "", {
       fill: "#48A869",
       font: "900 20px Orbitron",
     });
@@ -202,6 +212,16 @@ export class RushScene extends EarnableScene {
     }
 
     this.handlePlayerMoves(time, delta);
+
+    if (
+      this.centerCircle.alpha === 0.8 &&
+      this.leftCircle.alpha === 0.8 &&
+      medianVel
+    ) {
+      this.matchText.setText("MATCH!");
+    } else {
+      this.matchText.setText("");
+    }
   }
 
   // eslint-disable-next-line no-unused-vars
@@ -253,9 +273,7 @@ export class RushScene extends EarnableScene {
 
     // Vertical movement
     switch (true) {
-      case player.cursorKeys?.down.isDown ||
-        curPose === gpose.LA_UP ||
-        curPose === gpose.NDWN:
+      case player.cursorKeys?.down.isDown || curPose === gpose.LA_UP:
         if (!this.flipFlop) {
           this.flipFlop = true;
           this.distanceTraveled += 1;
