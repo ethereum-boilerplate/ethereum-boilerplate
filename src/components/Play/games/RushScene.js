@@ -226,27 +226,16 @@ export class RushScene extends EarnableScene {
         curPose === gpose.LA_UP ||
         curPose === gpose.NDWN:
         if (!this.flipFlop) {
-          // velocity.y -= 3;
-
-          //  Scroll the background
-          // this.rushBg.tilePositionY += 0.5;
-
           this.flipFlop = true;
           this.distanceTraveled += 1;
           this.last5Ups.addFront(time);
           this.lastMoveTs = Date.now();
         }
-        // this.anims.play('idle', false);
         break;
       case player.cursorKeys?.up.isDown ||
         curPose === gpose.RA_UP ||
         curPose === gpose.BA_UP:
         if (!this.flipFlop) {
-          // velocity.y -= 3;
-
-          //  Scroll the background
-          // this.rushBg.tilePositionY += 0.5;
-
           this.flipFlop = true;
           this.distanceTraveled += 1;
           this.last5Ups.addFront(time);
@@ -257,11 +246,6 @@ export class RushScene extends EarnableScene {
         this.flipFlop = false;
       // do nothing
     }
-
-    // We normalize the velocity so that the player is always moving at the same speed, regardless of direction.
-    // eslint-disable-next-line no-unused-vars
-    // const normalizedVelocity = velocity.normalize();
-    player.body.setVelocity(velocity.x * speed, velocity.y * speed);
   }
 }
 
