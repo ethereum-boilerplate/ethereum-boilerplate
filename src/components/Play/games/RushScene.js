@@ -7,6 +7,7 @@ import { mainBgColorNum, highlightTextColorNum } from "../../../GlobalStyles";
 import { EarnableScene } from "./EarnableScene";
 import * as gstate from "../../gpose/state";
 import * as gpose from "../../gpose/pose";
+import { RUSH_BG } from "./assets";
 
 const SceneConfig = {
   active: false,
@@ -32,6 +33,15 @@ export class RushScene extends EarnableScene {
     // basic props
     const width = getGameWidth(this);
     const height = getGameHeight(this);
+
+    // bg
+    this.rushBg = this.add.tileSprite(
+      width / 2,
+      height / 2,
+      width,
+      height,
+      RUSH_BG,
+    );
 
     // constrols
     this.input.keyboard.on(
@@ -80,13 +90,17 @@ export class RushScene extends EarnableScene {
     // player
     this.player = new Player({
       scene: this,
-      x: Phaser.Math.Between(width * 0.1, this.physics.world.bounds.width - 80),
-      y: this.physics.world.bounds.height,
+      x: width / 2,
+      y:
+        this.physics.world.bounds.height -
+        this.physics.world.bounds.height * 0.1,
       key: PLAYER_KEY,
     });
     this.player.setScale(PLAYER_SCALE);
     this.player.setDepth(1);
     this.player.body.setCollideWorldBounds(true);
+
+    // this.cameras.main.startFollow(this.player);
 
     // set initial values
     this.currentSpeed = 0;
@@ -129,6 +143,12 @@ export class RushScene extends EarnableScene {
     const medianVel = this.lastSpeeds.size
       ? median(Array.from(this.lastSpeeds.values()))
       : 0.0;
+
+    //  Scroll the background
+
+    const factor = medianVel ? medianVel * 2 : 0;
+    this.rushBg.tilePositionY -= factor;
+
     let speedLabel = "IDLE";
     if (medianVel > 0 && medianVel < 0.8) {
       speedLabel = "SLOWLY";
@@ -206,7 +226,11 @@ export class RushScene extends EarnableScene {
         curPose === gpose.LA_UP ||
         curPose === gpose.NDWN:
         if (!this.flipFlop) {
-          velocity.y -= 3;
+          // velocity.y -= 3;
+
+          //  Scroll the background
+          // this.rushBg.tilePositionY += 0.5;
+
           this.flipFlop = true;
           this.distanceTraveled += 1;
           this.last5Ups.addFront(time);
@@ -218,7 +242,11 @@ export class RushScene extends EarnableScene {
         curPose === gpose.RA_UP ||
         curPose === gpose.BA_UP:
         if (!this.flipFlop) {
-          velocity.y -= 3;
+          // velocity.y -= 3;
+
+          //  Scroll the background
+          // this.rushBg.tilePositionY += 0.5;
+
           this.flipFlop = true;
           this.distanceTraveled += 1;
           this.last5Ups.addFront(time);
