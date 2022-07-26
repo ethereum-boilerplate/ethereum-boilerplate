@@ -111,16 +111,39 @@ export class RushScene extends EarnableScene {
     hintTextBox.start("🤖 Welcome in MetaGymLand RUSH minigame", 50);
 
     // player
-    this.player = new Player({
+    const playerSprite = new Player({
       scene: this,
-      x: width / 2,
-      y: height - height * 0.08,
+      x: 0,
+      y: 0,
       key: PLAYER_KEY,
     });
-    this.player.setOrigin(0.5, 0.5);
-    this.player.setScale(PLAYER_SCALE);
-    this.player.setDepth(1);
-    this.player.body.setCollideWorldBounds(true);
+    playerSprite.setOrigin(0.5, 0.5);
+    playerSprite.setScale(PLAYER_SCALE);
+    playerSprite.setDepth(1);
+
+    this.cursorKeys = playerSprite.cursorKeys;
+
+    const playerUsername = this.add
+      .text(0, 0, "GymBuddy", {
+        fontFamily: "Arial",
+        color: "#FFFEFE",
+        stroke: "#030303",
+        strokeThickness: 3,
+      })
+      .setFontSize(18)
+      .setOrigin(0.5, 3);
+
+    const playerContainer = this.add.container(
+      width / 2,
+      height - height * 0.08,
+      [playerSprite, playerUsername],
+    );
+
+    console.log(playerContainer);
+
+    this.player = playerContainer;
+    this.physics.world.enableBody(this.player);
+    this.physics.world.enable(this.player);
 
     // this.cameras.main.startFollow(this.player);
 
@@ -291,13 +314,13 @@ export class RushScene extends EarnableScene {
     // const velocity = new Phaser.Math.Vector2(0, 0);
     // Horizontal movement
     switch (true) {
-      case player.cursorKeys?.left.isDown || curPose === gpose.HTL:
+      case this.cursorKeys?.left.isDown || curPose === gpose.HTL:
         player.x -= 3;
         this.centerCircle.x -= 3;
         this.leftCircle.x -= 3;
         // this.anims.play('left', true);
         break;
-      case player.cursorKeys?.right.isDown || curPose === gpose.HTR:
+      case this.cursorKeys?.right.isDown || curPose === gpose.HTR:
         player.x += 3;
         this.centerCircle.x += 3;
         this.leftCircle.x += 3;
@@ -309,7 +332,7 @@ export class RushScene extends EarnableScene {
 
     // Vertical movement
     switch (true) {
-      case player.cursorKeys?.down.isDown || curPose === gpose.LA_UP:
+      case this.cursorKeys?.down.isDown || curPose === gpose.LA_UP:
         if (!this.flipFlop) {
           this.flipFlop = true;
           this.distanceTraveled += 1;
@@ -318,7 +341,7 @@ export class RushScene extends EarnableScene {
         }
         this.leftCircle.setAlpha(0.8);
         break;
-      case player.cursorKeys?.up.isDown ||
+      case this.cursorKeys?.up.isDown ||
         curPose === gpose.RA_UP ||
         curPose === gpose.BA_UP:
         if (!this.flipFlop) {
