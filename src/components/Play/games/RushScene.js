@@ -22,6 +22,7 @@ export class RushScene extends EarnableScene {
 
   init = (data) => {
     this.selectedAvatar = data.selectedAvatar;
+    console.log("this.selectedAvatar", this.selectedAvatar);
   };
 
   exit() {
@@ -124,7 +125,7 @@ export class RushScene extends EarnableScene {
     this.cursorKeys = playerSprite.cursorKeys;
 
     const playerUsername = this.add
-      .text(0, 0, "GymBuddy", {
+      .text(0, 0, this.selectedAvatar?.name, {
         fontFamily: "Arial",
         color: "#FFFEFE",
         stroke: "#030303",
