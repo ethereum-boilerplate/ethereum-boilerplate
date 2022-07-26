@@ -63,7 +63,7 @@ export class RushScene extends EarnableScene {
     this.centerCircle = centerCircleGraphics.fillCircle(
       width / 2,
       height / 1.4,
-      35,
+      25,
     );
 
     // constrols
@@ -155,6 +155,12 @@ export class RushScene extends EarnableScene {
     this.lastSpeeds = new Map();
     this.curMove = Date.now();
     this.lastMoveTs = new Date("12-12-2020").getTime();
+
+    this.matched = 0;
+
+    this.cycleStart = Date.now();
+
+    this.blinkStartTime = Date.now();
   }
 
   // eslint-disable-next-line no-unused-vars
@@ -171,8 +177,10 @@ export class RushScene extends EarnableScene {
     this.rightCircle.setAlpha(0.2);
 
     this.centerCircle.setAlpha(0.2);
-    if (Math.round((Date.now() - this.startTime) / 1000) === 1) {
+    const timeNow = Date.now();
+    if (Math.round((timeNow - this.startTime) / 1000) === 1) {
       this.centerCircle.setAlpha(0.8);
+      this.blinkStartTime = Date.now();
     }
 
     const medianVel = this.lastSpeeds.size
@@ -218,10 +226,34 @@ export class RushScene extends EarnableScene {
       this.leftCircle.alpha === 0.8 &&
       medianVel
     ) {
-      this.matchText.setText("MATCH!");
-    } else {
-      this.matchText.setText("");
+      this.matched += 1;
     }
+
+    // match text logic to consider
+    // if (
+    //   this.centerCircle.alpha === 0.8 &&
+    //   this.leftCircle.alpha === 0.8 &&
+    //   medianVel
+    // ) {
+    //   this.matchText.setText("MATCH!");
+    // } else {
+    //   this.matchText.setText("");
+    // }
+  }
+
+  resolveBlinkInterval() {
+    const elaspedTiemInSec = (Date.now() - this.cycleStart) / 1000;
+    if (elaspedTiemInSec < 10) {
+      return 1000;
+    } else if (elaspedTiemInSec > 10 && elaspedTiemInSec < 20) {
+      return 500;
+    } else if (elaspedTiemInSec > 20 && elaspedTiemInSec < 50) {
+      return 250;
+    }
+    if (elaspedTiemInSec > 50) {
+      this.cycleStart = Date.now();
+    }
+    return 1000;
   }
 
   // eslint-disable-next-line no-unused-vars
@@ -256,15 +288,19 @@ export class RushScene extends EarnableScene {
 
     const curPose = gstate.getPose();
     // Every frame, we create a new velocity for the sprite based on what keys the player is holding down.
-    const velocity = new Phaser.Math.Vector2(0, 0);
+    // const velocity = new Phaser.Math.Vector2(0, 0);
     // Horizontal movement
     switch (true) {
       case player.cursorKeys?.left.isDown || curPose === gpose.HTL:
-        velocity.x -= 1;
+        player.x -= 3;
+        this.centerCircle.x -= 3;
+        this.leftCircle.x -= 3;
         // this.anims.play('left', true);
         break;
       case player.cursorKeys?.right.isDown || curPose === gpose.HTR:
-        velocity.x += 1;
+        player.x += 3;
+        this.centerCircle.x += 3;
+        this.leftCircle.x += 3;
         // this.anims.play('right', true);
         break;
       default:
@@ -298,11 +334,11 @@ export class RushScene extends EarnableScene {
       // do nothing
     }
 
-    const normalizedVelocity = velocity.normalize();
-    player.body.setVelocity(
-      normalizedVelocity.x * 150,
-      normalizedVelocity.y * 150,
-    );
+    // const normalizedVelocity = velocity.normalize();
+    // player.body.setVelocity(
+    //   normalizedVelocity.x * 150,
+    //   normalizedVelocity.y * 150,
+    // );
   }
 }
 
