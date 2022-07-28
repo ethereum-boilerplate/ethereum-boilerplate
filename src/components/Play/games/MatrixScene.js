@@ -1,6 +1,6 @@
 import Phaser from "phaser";
 import { getGameWidth, getGameHeight } from "./helpers";
-import { Player } from "./objects";
+import { Player, RectObstacle } from "./objects";
 import { PLAYER_KEY, PLAYER_SCALE, GYM_ROOM_SCENE, MATRIX } from "./shared";
 import { FONT, PILL_BLUE, PILL_RED } from "./assets";
 import { createTextBox } from "./utils/text";
@@ -120,9 +120,9 @@ export class MatrixScene extends EarnableScene {
     hintTextBox.setScrollFactor(0, 0);
     hintTextBox.start(
       "🤖 Welcome in MetaGymLand Matrix\n\n" +
-        "choose\n" +
-        "RED PILL or BLUE PILL?\n" +
-        "You can fly in this room",
+      "choose\n" +
+      "RED PILL or BLUE PILL?\n" +
+      "You can fly in this room",
       50,
     );
 
@@ -145,6 +145,14 @@ export class MatrixScene extends EarnableScene {
     this.player.setScale(PLAYER_SCALE);
     this.player.setDepth(1);
     this.player.body.setCollideWorldBounds(true);
+
+    this.obstacleGraphics = new RectObstacle({
+      scene: this,
+      x: width / 2,
+      y: height / 2,
+    });
+    this.obstacleGraphics.collideWith(this.player);
+
     const onCollide = (avatar, item) => {
       if (item.name === PILL_RED) {
         this.cameras.main.setBackgroundColor("#23BD32");
@@ -164,10 +172,10 @@ export class MatrixScene extends EarnableScene {
           .setScrollFactor(0, 0)
           .start(
             "🤖 You have chosen the RED PILL\n" +
-              "Good choice!\n\n" +
-              "NOW, join our social channels\n" +
-              "if you would like to see\n" +
-              "how deep the rabbit hole goes [CLICK THIS MESSAGE]",
+            "Good choice!\n\n" +
+            "NOW, join our social channels\n" +
+            "if you would like to see\n" +
+            "how deep the rabbit hole goes [CLICK THIS MESSAGE]",
             50,
           );
         info.setInteractive({ useHandCursor: true });
@@ -204,6 +212,9 @@ export class MatrixScene extends EarnableScene {
 
   // eslint-disable-next-line no-unused-vars
   update(time, delta) {
+    // test this.obstacleGraphics
+    this.obstacleGraphics.setVelocityY(50)
+    // test
     this.player?.update();
   }
 }

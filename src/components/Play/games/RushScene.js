@@ -1,6 +1,6 @@
 import Phaser from "phaser";
 import { getGameWidth, getGameHeight } from "./helpers";
-import { Player } from "./objects";
+import { Player, RectObstacle } from "./objects";
 import { PLAYER_KEY, PLAYER_SCALE, GYM_ROOM_SCENE, RUSH } from "./shared";
 import { createTextBox } from "./utils/text";
 import { mainBgColorNum, highlightTextColorNum } from "../../../GlobalStyles";
@@ -57,17 +57,6 @@ export class RushScene extends EarnableScene {
       height - height * 0.08,
       30,
     );
-
-    this.obstacleGraphics = this.add.rectangle(width / 2,
-      height / 2,
-      120, 30, 0x898988)
-    // this.obstacleGraphics.fillStyle(0x898988);
-    // this.obstacleGraphics.fillRect(
-    //   width/2,
-    //   height/2,
-    //   120,30,
-    // );
-
 
     const centerCircleGraphics = this.add.graphics();
     centerCircleGraphics.fillStyle(0x06ff00, 0.8);
@@ -146,32 +135,20 @@ export class RushScene extends EarnableScene {
       .setOrigin(0, 1);
 
     const playerContainer = this.add.container(
-      (width / 2) - playerSprite.width / 2,
-      (height - height * 0.08) - playerSprite.height / 2,
+      width / 2 - playerSprite.width / 2,
+      height - height * 0.08 - playerSprite.height / 2,
       [playerSprite, playerUsername],
     );
 
-    console.log(playerContainer);
 
     this.player = playerContainer;
-    this.physics.world.enable([this.player, this.obstacleGraphics]);
-    // this.physics.add.existing(this.player)
-    // this.player.setSize(128, 128);
-    // this.physics.world.enable(this.player);
-    this.obstacleGraphics.body.bounce.set(1)
-    this.player.body.bounce.set(1)
 
-    // colliders
-    
-    // this.physics.world.enable(this.obstacleGraphics)
-    // this.obstacleGraphics.body.setSize(width/2,height/2);
-    // this.obstacleGraphics.body.setBounce(1, 1);
-
-    // this.obstacleGraphics.body.collideWorldBounds = true;
-    this.physics.add.collider(this.obstacleGraphics, this.player, (a, b) => {
-      console.log('------COLLIDING----', a, b);
-      // a.destroy();
+    this.obstacleGraphics = new RectObstacle({
+      scene: this,
+      x: width / 2,
+      y: height / 2,
     });
+    this.obstacleGraphics.collideWith(this.player);
 
     // this.cameras.main.startFollow(this.player);
 
@@ -216,6 +193,7 @@ export class RushScene extends EarnableScene {
 
   // eslint-disable-next-line no-unused-vars
   update(time, delta) {
+    this.obstacleGraphics.setVelocityY(50);
     if ((Date.now() - this.startTime) / 1000 > 3) {
       const vel =
         this.distanceTraveled / ((Date.now() - this.startTime) / 1000);
@@ -258,7 +236,6 @@ export class RushScene extends EarnableScene {
       boost = 3;
     }
     this.rushBg.tilePositionY -= factor * boost;
-    this.obstacleGraphics.y += factor;
 
     this.scoreBoard.setText(
       `Avg Moves Per 3 Second: ${medianVel.toFixed(2)} (${speedLabel})`,
@@ -326,10 +303,10 @@ export class RushScene extends EarnableScene {
       const medianDeltasBetweenLast5Moves = this.last5Ups.medianDeltas() / 1000;
       this.scoreBoard2.setText(
         `last move seconds ago: ${lastMoveTimeAgo.toFixed(2)}` +
-        "\n" +
-        `median gap between last 5 moves ${medianDeltasBetweenLast5Moves.toFixed(
-          2,
-        )}`,
+          "\n" +
+          `median gap between last 5 moves ${medianDeltasBetweenLast5Moves.toFixed(
+            2,
+          )}`,
       );
     }
 
