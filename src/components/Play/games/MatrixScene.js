@@ -1,7 +1,7 @@
 import Phaser from "phaser";
 import { getGameWidth, getGameHeight } from "./helpers";
-import { Player, RectObstacle } from "./objects";
-import { PLAYER_KEY, PLAYER_SCALE, GYM_ROOM_SCENE, MATRIX } from "./shared";
+import { RectObstacle, PlayerWithName } from "./objects";
+import { GYM_ROOM_SCENE, MATRIX } from "./shared";
 import { FONT, PILL_BLUE, PILL_RED } from "./assets";
 import { createTextBox } from "./utils/text";
 import { mainBgColorNum, highlightTextColorNum } from "../../../GlobalStyles";
@@ -120,9 +120,9 @@ export class MatrixScene extends EarnableScene {
     hintTextBox.setScrollFactor(0, 0);
     hintTextBox.start(
       "🤖 Welcome in MetaGymLand Matrix\n\n" +
-      "choose\n" +
-      "RED PILL or BLUE PILL?\n" +
-      "You can fly in this room",
+        "choose\n" +
+        "RED PILL or BLUE PILL?\n" +
+        "You can fly in this room",
       50,
     );
 
@@ -136,13 +136,13 @@ export class MatrixScene extends EarnableScene {
     const pillis = [redPill, bluePill];
 
     // player
-    this.player = new Player({
+    this.player = new PlayerWithName({
       scene: this,
       x: Phaser.Math.Between(width * 0.1, this.physics.world.bounds.width - 80),
       y: this.physics.world.bounds.height,
-      key: PLAYER_KEY,
+      name: this.selectedAvatar?.name,
     });
-    this.player.setScale(PLAYER_SCALE);
+
     this.player.setDepth(1);
     this.player.body.setCollideWorldBounds(true);
 
@@ -172,10 +172,10 @@ export class MatrixScene extends EarnableScene {
           .setScrollFactor(0, 0)
           .start(
             "🤖 You have chosen the RED PILL\n" +
-            "Good choice!\n\n" +
-            "NOW, join our social channels\n" +
-            "if you would like to see\n" +
-            "how deep the rabbit hole goes [CLICK THIS MESSAGE]",
+              "Good choice!\n\n" +
+              "NOW, join our social channels\n" +
+              "if you would like to see\n" +
+              "how deep the rabbit hole goes [CLICK THIS MESSAGE]",
             50,
           );
         info.setInteractive({ useHandCursor: true });
@@ -213,7 +213,7 @@ export class MatrixScene extends EarnableScene {
   // eslint-disable-next-line no-unused-vars
   update(time, delta) {
     // test this.obstacleGraphics
-    this.obstacleGraphics.setVelocityY(50)
+    this.obstacleGraphics.setVelocityY(50);
     // test
     this.player?.update();
   }

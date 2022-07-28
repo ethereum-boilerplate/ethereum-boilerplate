@@ -140,7 +140,6 @@ export class RushScene extends EarnableScene {
       [playerSprite, playerUsername],
     );
 
-
     this.player = playerContainer;
 
     this.obstacleGraphics = new RectObstacle({
