@@ -3,7 +3,7 @@ import { MiniGameCtx } from "index";
 import { MGLSmallLogo } from "Logos";
 import { SettingFilled, InfoCircleFilled } from "@ant-design/icons";
 import { Link } from "react-router-dom";
-import { mainBgColor, mainFontColor } from "../../../GlobalStyles";
+import { mainBgColor, mainFontColor } from "../../GlobalStyles";
 import { Popover } from "antd";
 import {
   GYM_ROOM_SCENE,
@@ -11,17 +11,17 @@ import {
   FLY_FIT_SCENE,
   CHART_SQUATS,
   MATRIX,
-} from "./shared";
-import moveDownPng from "./assets/images/move_down.png";
-import moveUpPng from "./assets/images/move_up.png";
-import moveUp2Png from "./assets/images/move_up2.png";
-import moveLeftPng from "./assets/images/move_left.png";
-import moveRightPng from "./assets/images/move_right.png";
-import pumpThePricePng from "./assets/images/pump_the_price.png";
-import moveForwPng from "./assets/images/move_forward.png";
-import turnLeftPng from "./assets/images/turn_left.png";
-import turnRightPng from "./assets/images/turn_right.png";
-import gravityPng from "./assets/images/gravity.png";
+} from "../../games/shared";
+import moveDownPng from "./images/move_down.png";
+import moveUpPng from "./images/move_up.png";
+import moveUp2Png from "./images/move_up2.png";
+import moveLeftPng from "./images/move_left.png";
+import moveRightPng from "./images/move_right.png";
+import pumpThePricePng from "./images/pump_the_price.png";
+import moveForwPng from "./images/move_forward.png";
+import turnLeftPng from "./images/turn_left.png";
+import turnRightPng from "./images/turn_right.png";
+import gravityPng from "./images/gravity.png";
 
 const imgInDiv = (png) => {
   return (

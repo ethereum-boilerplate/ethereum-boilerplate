@@ -1,19 +1,23 @@
 import Phaser from "phaser";
-import { getGameWidth, getGameHeight } from "./helpers";
-import { Player } from "./objects";
-import { PLAYER_KEY, PLAYER_SCALE, GYM_ROOM_SCENE } from "./shared";
-import { GYM_ROOM_MAP, GYM_ROOM_TILESET_V2, GYM_ROOM_BG } from "./assets";
-import { createTextBox } from "./utils/text";
-import { debugCollisonBounds } from "./utils/collision_debugger";
+import { getGameWidth, getGameHeight } from "../helpers";
+import { Player } from "../objects";
+import { PLAYER_KEY, PLAYER_SCALE, GYM_ROOM_SCENE } from "../shared";
+import {
+  GYM_ROOM_MAP,
+  GYM_ROOM_TILESET_V2,
+  GYM_ROOM_BG,
+} from "../gym-room-boot/assets";
+import { createTextBox } from "../utils/text";
+import { debugCollisonBounds } from "../utils/collision_debugger";
 import {
   setMainRoomPlayerExitPos,
   getMainRoomPlayerExitPos,
   playerHasExitPos,
-} from "./Globals";
-import { MMT_TICKER } from "../../../GlobalStyles";
-import { EarnableScene } from "./EarnableScene";
+} from "../utils/Globals";
+import { MMT_TICKER } from "../../GlobalStyles";
+import { EarnableScene } from "../base-scenes/EarnableScene";
 import { Modal } from "antd";
-import { SnapChatLogo } from "../../../Logos";
+import { SnapChatLogo } from "../../Logos";
 import QRCode from "qrcode";
 
 const debugCollisons = false;

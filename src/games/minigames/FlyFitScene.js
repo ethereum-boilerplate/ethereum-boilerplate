@@ -1,14 +1,14 @@
 import Phaser from "phaser";
-import { getGameWidth, getGameHeight } from "./helpers";
-import { Player } from "./objects";
-import { PLAYER_KEY, PLAYER_SCALE, FLY_FIT_SCENE } from "./shared";
-import { BTC, AIRPLANE } from "./assets";
-import { createTextBox } from "./utils/text";
+import { getGameWidth, getGameHeight } from "../helpers";
+import { Player } from "../objects";
+import { PLAYER_KEY, PLAYER_SCALE, FLY_FIT_SCENE } from "../shared";
+import { BTC, AIRPLANE } from "../gym-room-boot/assets";
+import { createTextBox } from "../utils/text";
 import party from "party-js";
-import * as gstate from "../../gpose/state";
-import * as gpose from "../../gpose/pose";
-import { mainBgColor } from "../../../GlobalStyles";
-import { SceneInMetaGymRoom } from "./scene-in-metagym-room";
+import * as gstate from "../../components/gpose/state";
+import * as gpose from "../../components/gpose/pose";
+import { mainBgColor } from "../../GlobalStyles";
+import { SceneInMetaGymRoom } from "../base-scenes/scene-in-metagym-room";
 
 const SceneConfig = {
   active: false,

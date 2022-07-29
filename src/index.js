@@ -4,7 +4,7 @@ import App from "./App";
 import { MoralisProvider } from "react-moralis";
 import "./index.css";
 import Home from "components/Home";
-import { GYM_ROOM_SCENE } from "./components/Play/games/shared";
+import { GYM_ROOM_SCENE } from "./games/shared";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import { MglPoseDetector } from "./ai/MglPoseDetector";
 

@@ -1,8 +1,8 @@
 import Phaser from "phaser";
 import { Player } from "./player";
 import { PLAYER_KEY, PLAYER_SCALE } from "../shared";
-import * as gstate from "../../../gpose/state";
-import * as gpose from "../../../gpose/pose";
+import * as gstate from "../../components/gpose/state";
+import * as gpose from "../../components/gpose/pose";
 
 export class PlayerWithName extends Phaser.GameObjects.Container {
   cursorKeys;

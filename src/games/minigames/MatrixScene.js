@@ -1,11 +1,11 @@
 import Phaser from "phaser";
-import { getGameWidth, getGameHeight } from "./helpers";
-import { PlayerWithName } from "./objects";
-import { MATRIX } from "./shared";
-import { FONT, PILL_BLUE, PILL_RED } from "./assets";
-import { createTextBox } from "./utils/text";
-import { mainBgColorNum, highlightTextColorNum } from "../../../GlobalStyles";
-import { SceneInMetaGymRoom } from "./scene-in-metagym-room";
+import { getGameWidth, getGameHeight } from "../helpers";
+import { PlayerWithName } from "../objects";
+import { MATRIX } from "../shared";
+import { FONT, PILL_BLUE, PILL_RED } from "../gym-room-boot/assets";
+import { createTextBox } from "../utils/text";
+import { mainBgColorNum, highlightTextColorNum } from "../../GlobalStyles";
+import { SceneInMetaGymRoom } from "../base-scenes/scene-in-metagym-room";
 
 const SceneConfig = {
   active: false,

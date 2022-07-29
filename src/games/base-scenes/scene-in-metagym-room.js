@@ -1,6 +1,6 @@
 import { EarnableScene } from "./EarnableScene";
 import Phaser from "phaser";
-import { GYM_ROOM_SCENE } from "./shared";
+import { GYM_ROOM_SCENE } from "../shared";
 
 export class SceneInMetaGymRoom extends EarnableScene {
   init = (data) => {

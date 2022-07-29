@@ -1,14 +1,14 @@
 import Phaser from "phaser";
-import { getGameWidth, getGameHeight } from "./helpers";
-import { PlayerWithName } from "./objects";
-import { RUSH } from "./shared";
-import { createTextBox } from "./utils/text";
-import { mainBgColorNum, highlightTextColorNum } from "../../../GlobalStyles";
-import { SceneInMetaGymRoom } from "./scene-in-metagym-room";
-import * as gstate from "../../gpose/state";
-import * as gpose from "../../gpose/pose";
-import { RUSH_BG } from "./assets";
-import { MovesSpeedCaluclator } from "./moves-speed-caluclator";
+import { getGameWidth, getGameHeight } from "../helpers";
+import { PlayerWithName } from "../objects";
+import { RUSH } from "../shared";
+import { createTextBox } from "../utils/text";
+import { mainBgColorNum, highlightTextColorNum } from "../../GlobalStyles";
+import { SceneInMetaGymRoom } from "../base-scenes/scene-in-metagym-room";
+import * as gstate from "../../components/gpose/state";
+import * as gpose from "../../components/gpose/pose";
+import { RUSH_BG } from "../gym-room-boot/assets";
+import { MovesSpeedCaluclator } from "../mechanics/moves-speed-caluclator";
 
 const SceneConfig = {
   active: false,

@@ -22,7 +22,7 @@ import { mainFontColor } from "GlobalStyles";
 import { MGLLogo } from "Logos";
 import { AppFooter } from "AppFooter";
 import PlayPage from "components/Play";
-import GymRoomSandbox from "components/Play/games/GymRoomSandbox";
+import GymRoomSandbox from "components/Play/GymRoomSandbox";
 import PlaySetupPage from "components/Play/PlaySetupPage";
 import {
   ConnectWalletWarn,

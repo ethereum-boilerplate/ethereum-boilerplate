@@ -1,14 +1,20 @@
 import Phaser from "phaser";
-import { getGameWidth, getGameHeight } from "./helpers";
-import { Player } from "./objects";
-import { PLAYER_KEY, PLAYER_SCALE, CHART_SQUATS } from "./shared";
-import { PUMP_OPEN, PUMP_CLOSED, BTC, RED_WOJAK, GREEN_WOJAK } from "./assets";
-import { createTextBox } from "./utils/text";
+import { getGameWidth, getGameHeight } from "../helpers";
+import { Player } from "../objects";
+import { PLAYER_KEY, PLAYER_SCALE, CHART_SQUATS } from "../shared";
+import {
+  PUMP_OPEN,
+  PUMP_CLOSED,
+  BTC,
+  RED_WOJAK,
+  GREEN_WOJAK,
+} from "../gym-room-boot/assets";
+import { createTextBox } from "../utils/text";
 import party from "party-js";
-import { highlightTextColorNum, mainBgColorNum } from "../../../GlobalStyles";
-import * as gstate from "../../gpose/state";
-import * as gpose from "../../gpose/pose";
-import { SceneInMetaGymRoom } from "./scene-in-metagym-room";
+import { highlightTextColorNum, mainBgColorNum } from "../../GlobalStyles";
+import * as gstate from "../../components/gpose/state";
+import * as gpose from "../../components/gpose/pose";
+import { SceneInMetaGymRoom } from "../base-scenes/scene-in-metagym-room";
 
 const SceneConfig = {
   active: false,

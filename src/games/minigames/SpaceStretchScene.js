@@ -1,18 +1,18 @@
 import Phaser from "phaser";
-import { getGameWidth, getGameHeight } from "./helpers";
-import { Player } from "./objects";
-import { PLAYER_KEY, PLAYER_SCALE, SPACE_STRETCH_SCENE } from "./shared";
-import { createTextBox } from "./utils/text";
-import { ASTEROIDS } from "./assets";
-import * as gstate from "../../gpose/state";
-import * as gpose from "../../gpose/pose";
+import { getGameWidth, getGameHeight } from "../helpers";
+import { Player } from "../objects";
+import { PLAYER_KEY, PLAYER_SCALE, SPACE_STRETCH_SCENE } from "../shared";
+import { createTextBox } from "../utils/text";
+import { ASTEROIDS } from "../gym-room-boot/assets";
+import * as gstate from "../../components/gpose/state";
+import * as gpose from "../../components/gpose/pose";
 import {
   highlightTextColorNum,
   mainBgColorNum,
   highlightTextColor,
-} from "../../../GlobalStyles";
+} from "../../GlobalStyles";
 import party from "party-js";
-import { SceneInMetaGymRoom } from "./scene-in-metagym-room";
+import { SceneInMetaGymRoom } from "../base-scenes/scene-in-metagym-room";
 
 const SceneConfig = {
   active: false,

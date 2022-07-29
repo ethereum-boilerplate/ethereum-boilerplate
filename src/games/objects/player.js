@@ -1,6 +1,6 @@
 import Phaser from "phaser";
-import * as gstate from "../../../gpose/state";
-import * as gpose from "../../../gpose/pose";
+import * as gstate from "../../components/gpose/state";
+import * as gpose from "../../components/gpose/pose";
 
 export class Player extends Phaser.Physics.Arcade.Sprite {
   cursorKeys;

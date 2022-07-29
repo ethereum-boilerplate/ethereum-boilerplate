@@ -1,7 +1,7 @@
 import Phaser from "phaser";
-import { highlightTextColorNum, mainBgColorNum } from "../../../GlobalStyles";
-import { getGameWidth, getGameHeight } from "./helpers";
-import { createTextBox } from "./utils/text";
+import { highlightTextColorNum, mainBgColorNum } from "../../GlobalStyles";
+import { getGameWidth, getGameHeight } from "../helpers";
+import { createTextBox } from "../utils/text";
 
 const columnName = "mbmtBalance";
 

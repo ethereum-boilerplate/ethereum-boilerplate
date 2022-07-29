@@ -1,7 +1,7 @@
 import Phaser from "phaser";
 import { assets } from "./assets";
-import { GYM_ROOM_SCENE, PLAYER_KEY, MINI_GAMES } from "./shared";
-import { getGameWidth, getGameHeight } from "./helpers";
+import { GYM_ROOM_SCENE, PLAYER_KEY, MINI_GAMES } from "../shared";
+import { getGameWidth, getGameHeight } from "../helpers";
 
 const sceneConfig = {
   active: false,
