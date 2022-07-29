@@ -1,11 +1,11 @@
 import Phaser from "phaser";
 import { getGameWidth, getGameHeight } from "./helpers";
-import { Player } from "./objects";
-import { PLAYER_KEY, PLAYER_SCALE, GYM_ROOM_SCENE, MATRIX } from "./shared";
+import { PlayerWithName } from "./objects";
+import { MATRIX } from "./shared";
 import { FONT, PILL_BLUE, PILL_RED } from "./assets";
 import { createTextBox } from "./utils/text";
 import { mainBgColorNum, highlightTextColorNum } from "../../../GlobalStyles";
-import { EarnableScene } from "./EarnableScene";
+import { SceneInMetaGymRoom } from "./scene-in-metagym-room";
 
 const SceneConfig = {
   active: false,
@@ -13,18 +13,9 @@ const SceneConfig = {
   key: MATRIX,
 };
 
-export class MatrixScene extends EarnableScene {
+export class MatrixScene extends SceneInMetaGymRoom {
   constructor() {
     super(SceneConfig);
-  }
-
-  init = (data) => {
-    this.selectedAvatar = data.selectedAvatar;
-  };
-
-  exit() {
-    this.game.registry.values?.setMinigame(GYM_ROOM_SCENE);
-    this.scene.start(GYM_ROOM_SCENE);
   }
 
   create() {
@@ -32,26 +23,10 @@ export class MatrixScene extends EarnableScene {
     const width = getGameWidth(this);
     const height = getGameHeight(this);
 
-    // constrols
-    this.input.keyboard.on(
-      "keydown",
-      async (event) => {
-        const code = event.keyCode;
-        if (
-          code === Phaser.Input.Keyboard.KeyCodes.ESC ||
-          code === Phaser.Input.Keyboard.KeyCodes.X
-        ) {
-          await this.updateXP();
-        }
-        if (code === Phaser.Input.Keyboard.KeyCodes.X) {
-          this.scene.start(MATRIX);
-        }
-        if (code === Phaser.Input.Keyboard.KeyCodes.ESC) {
-          this.exit();
-        }
-      },
-      this,
-    );
+    // basics
+    this.handleExit({
+      thisSceneKey: MATRIX,
+    });
 
     // matrix
     const codeRain = {
@@ -136,15 +111,16 @@ export class MatrixScene extends EarnableScene {
     const pillis = [redPill, bluePill];
 
     // player
-    this.player = new Player({
+    this.player = new PlayerWithName({
       scene: this,
       x: Phaser.Math.Between(width * 0.1, this.physics.world.bounds.width - 80),
       y: this.physics.world.bounds.height,
-      key: PLAYER_KEY,
+      name: this.selectedAvatar?.name,
     });
-    this.player.setScale(PLAYER_SCALE);
+
     this.player.setDepth(1);
     this.player.body.setCollideWorldBounds(true);
+
     const onCollide = (avatar, item) => {
       if (item.name === PILL_RED) {
         this.cameras.main.setBackgroundColor("#23BD32");

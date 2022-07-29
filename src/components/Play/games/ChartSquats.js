@@ -1,19 +1,14 @@
 import Phaser from "phaser";
 import { getGameWidth, getGameHeight } from "./helpers";
 import { Player } from "./objects";
-import {
-  PLAYER_KEY,
-  PLAYER_SCALE,
-  GYM_ROOM_SCENE,
-  CHART_SQUATS,
-} from "./shared";
+import { PLAYER_KEY, PLAYER_SCALE, CHART_SQUATS } from "./shared";
 import { PUMP_OPEN, PUMP_CLOSED, BTC, RED_WOJAK, GREEN_WOJAK } from "./assets";
 import { createTextBox } from "./utils/text";
 import party from "party-js";
 import { highlightTextColorNum, mainBgColorNum } from "../../../GlobalStyles";
 import * as gstate from "../../gpose/state";
 import * as gpose from "../../gpose/pose";
-import { EarnableScene } from "./EarnableScene";
+import { SceneInMetaGymRoom } from "./scene-in-metagym-room";
 
 const SceneConfig = {
   active: false,
@@ -36,7 +31,7 @@ const shortColor = 0xaa0000;
 
 let intervals = [];
 
-export class ChartSquats extends EarnableScene {
+export class ChartSquats extends SceneInMetaGymRoom {
   constructor() {
     super(SceneConfig);
   }
@@ -84,34 +79,18 @@ export class ChartSquats extends EarnableScene {
     this.score = data.score || 0;
 
     // exit or restart
-    this.input.keyboard.on(
-      "keydown",
-      async (event) => {
-        const code = event.keyCode;
-        if (
-          code === Phaser.Input.Keyboard.KeyCodes.ESC ||
-          code === Phaser.Input.Keyboard.KeyCodes.X
-        ) {
-          if (webCamContainer) {
-            webCamContainer.style.marginLeft = "";
-          }
-          intervals.forEach((i) => {
-            clearInterval(i);
-          });
-          await this.updateXP();
+    // basics
+    this.handleExit({
+      thisSceneKey: CHART_SQUATS,
+      callbackOnExit: () => {
+        if (webCamContainer) {
+          webCamContainer.style.marginLeft = "";
         }
-        if (code === Phaser.Input.Keyboard.KeyCodes.ESC) {
-          this.game.registry.values?.setMinigame(GYM_ROOM_SCENE);
-          this.scene.start(GYM_ROOM_SCENE);
-        }
-        if (code === Phaser.Input.Keyboard.KeyCodes.X) {
-          this.scene.start(CHART_SQUATS, {
-            score: this.score,
-          });
-        }
+        intervals.forEach((i) => {
+          clearInterval(i);
+        });
       },
-      this,
-    );
+    });
 
     this.graphics = this.add.graphics();
     const graphics = this.graphics;

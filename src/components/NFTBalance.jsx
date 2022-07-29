@@ -319,20 +319,14 @@ function NFTBalance() {
                                   const avatarTokenId = nft?.token_id;
                                   const curAvatar = {
                                     uri: avatarUri,
+                                    name: nft?.name,
                                     snapARLink: nft?.snap_ar_link ?? "",
                                     coverUri: coverUri,
                                     tokenAddress: avatarTokenAddress,
                                     tokenId: avatarTokenId,
                                     user: user,
                                   };
-                                  setAvatar({
-                                    uri: avatarUri,
-                                    snapARLink: nft?.snap_ar_link ?? "",
-                                    coverUri: coverUri,
-                                    tokenAddress: avatarTokenAddress,
-                                    tokenId: avatarTokenId,
-                                    user: user,
-                                  });
+                                  setAvatar(curAvatar);
                                   window.localStorage.setItem(
                                     "avatar",
                                     JSON.stringify(curAvatar),

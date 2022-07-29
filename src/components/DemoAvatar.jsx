@@ -1,6 +1,10 @@
 import React, { useContext } from "react";
 import { Button, Card, Image, Tooltip, Alert, Badge } from "antd";
-import { FileSearchOutlined, SmileFilled } from "@ant-design/icons";
+import {
+  FileSearchOutlined,
+  SmileFilled,
+  CopyOutlined,
+} from "@ant-design/icons";
 import { getExplorer } from "helpers/networks";
 import { Link } from "react-router-dom";
 import {
@@ -50,229 +54,252 @@ function DemoAvatar() {
           marginBottom: "3rem",
         }}
       >
-        <div
-          style={{
-            marginTop: "1rem",
-          }}
-        >
-          <div
-            style={{
-              ...pageTitleStyle,
-            }}
-          >
-            I am a Demo GymBuddy <SmileFilled style={{ color: "#FFBE59" }} />
-          </div>
-          <div
-            style={{
-              ...descriptionStyle,
-              padding: "1rem 0",
-            }}
-          >
-            <Button
-              style={BtnInfo}
-              onClick={() =>
-                window.open(
-                  `${getExplorer(chainId)}address/${demoNFTContract}`,
-                  "_blank",
-                )
-              }
-            >
-              {demoNFTContract}
-            </Button>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                marginBottom: "1rem",
-                marginTop: "0.5rem",
-              }}
-            >
-              ON&nbsp;
-              {chainName}
-              &nbsp;&nbsp;
-              {chainLogo}
-            </div>
-            <p>
-              You can try me first before buying your own GymBuddy NFT,&nbsp;
-              <span style={{ fontWeight: 700 }}>but I will disappear soon</span>
-              &nbsp;&nbsp;😱
-            </p>
-
-            <br />
-            <p> If you dont have your awesome GymBuddy yet,</p>
-            <p>simply mint your first GymBuddy or visit Marketplace</p>
-            <p> and start your MetaGymLand Metaverse adventure!</p>
-            <section
-              style={{
-                display: "grid",
-                justifyContent: "center",
-                alignContent: "center",
-              }}
-            >
-              <br />
+        {NFTTokenIds?.result.map((nft, index) => {
+          //Verify Metadata
+          nft = verifyMetadata(nft);
+          const snapArMinatureLink = nft?.snap_ar_miniature_link ?? "";
+          return (
+            <>
               <div
                 style={{
-                  display: "grid",
-                  gridTemplateColumns: "1fr 1fr",
-                  gap: "2rem",
+                  marginTop: "1rem",
                 }}
               >
-                <Button
-                  type="primary"
+                <div
                   style={{
-                    ...BtnPrimary,
+                    ...pageTitleStyle,
                   }}
                 >
-                  <Link to="/mint">Mint</Link>
-                </Button>
-                <Button type="primary" style={BtnInfo}>
-                  <Link to="/marketplace">Marketplace</Link>
-                </Button>
-              </div>
-            </section>
-          </div>
-        </div>
-        {
-          <>
-            {NFTsFetchError && (
-              <>
-                <Alert
-                  message="Unable to fetch NFT. We are searching for a solution, please try again later!"
-                  type="warning"
-                />
-                <div style={{ marginBottom: "10px" }}></div>
-              </>
-            )}
-          </>
-        }
-        <div
-          style={{
-            ...NFTsDiv,
-            marginTop: "1.5rem",
-          }}
-        >
-          {NFTTokenIds?.result.map((nft, index) => {
-            //Verify Metadata
-            nft = verifyMetadata(nft);
-            const snapArMinatureLink = nft?.snap_ar_miniature_link ?? "";
-            return (
-              <Card
-                key={index}
-                actions={[
-                  <Tooltip title="View On Blockexplorer">
-                    <FileSearchOutlined
+                  I am a Demo GymBuddy{" "}
+                  <SmileFilled style={{ color: "#FFBE59" }} />
+                </div>
+                <div
+                  style={{
+                    ...descriptionStyle,
+                    padding: "1rem 0",
+                  }}
+                >
+                  <Button
+                    style={BtnInfo}
+                    onClick={() =>
+                      window.open(
+                        `${getExplorer(chainId)}address/${demoNFTContract}`,
+                        "_blank",
+                      )
+                    }
+                  >
+                    {demoNFTContract}
+                  </Button>
+                  <p
+                    style={{
+                      color: "#535353",
+                      marginBottom: "1rem",
+                      marginTop: "1rem",
+                      textDecorationLine: "underline",
+                    }}
+                  >
+                    {fixMoralisTokenUri(nft)}&nbsp;
+                    <CopyOutlined
                       onClick={() =>
-                        window.open(
-                          `${getExplorer(chainId)}address/${nft.token_address}`,
-                          "_blank",
-                        )
+                        navigator.clipboard.writeText(fixMoralisTokenUri(nft))
                       }
+                      style={{ cursor: "pointer" }}
                     />
-                  </Tooltip>,
-                ]}
-                style={NFTCardStyle}
-                cover={
-                  <>
+                  </p>
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      marginBottom: "1rem",
+                      marginTop: "0.5rem",
+                    }}
+                  >
+                    ON&nbsp;
+                    {chainName}
+                    &nbsp;&nbsp;
+                    {chainLogo}
+                  </div>
+                  <p>
+                    You can try me first before buying your own GymBuddy
+                    NFT,&nbsp;
+                    <span style={{ fontWeight: 700 }}>
+                      but I will disappear soon
+                    </span>
+                    &nbsp;&nbsp;😱
+                  </p>
+
+                  <br />
+                  <p> If you dont have your awesome GymBuddy yet,</p>
+                  <p>simply mint your first GymBuddy or visit Marketplace</p>
+                  <p> and start your MetaGymLand Metaverse adventure!</p>
+                  <section
+                    style={{
+                      display: "grid",
+                      justifyContent: "center",
+                      alignContent: "center",
+                    }}
+                  >
+                    <br />
                     <div
                       style={{
                         display: "grid",
-                        gridTemplateRows: "1fr",
-                        gridTemplateColumns: "1fr",
-                        gridTemplateAreas: "overlap",
+                        gridTemplateColumns: "1fr 1fr",
+                        gap: "2rem",
                       }}
                     >
-                      <div
+                      <Button
+                        type="primary"
                         style={{
-                          // grid props
-                          gridArea: "overlap",
-                          alignSelf: "center",
-                          justifySelf: "center",
+                          ...BtnPrimary,
                         }}
                       >
-                        <Image
-                          preview={false}
-                          src={nft.image || "error"}
-                          fallback={fallbackImg}
-                          alt=""
+                        <Link to="/mint">Mint</Link>
+                      </Button>
+                      <Button type="primary" style={BtnInfo}>
+                        <Link to="/marketplace">Marketplace</Link>
+                      </Button>
+                    </div>
+                  </section>
+                </div>
+              </div>
+              {
+                <>
+                  {NFTsFetchError && (
+                    <>
+                      <Alert
+                        message="Unable to fetch NFT. We are searching for a solution, please try again later!"
+                        type="warning"
+                      />
+                      <div style={{ marginBottom: "10px" }}></div>
+                    </>
+                  )}
+                </>
+              }
+              <div
+                style={{
+                  ...NFTsDiv,
+                  marginTop: "1.5rem",
+                }}
+              >
+                <Card
+                  key={index}
+                  actions={[
+                    <Tooltip title="View On Blockexplorer">
+                      <FileSearchOutlined
+                        onClick={() =>
+                          window.open(
+                            `${getExplorer(chainId)}address/${
+                              nft.token_address
+                            }`,
+                            "_blank",
+                          )
+                        }
+                      />
+                    </Tooltip>,
+                  ]}
+                  style={NFTCardStyle}
+                  cover={
+                    <>
+                      <div
+                        style={{
+                          display: "grid",
+                          gridTemplateRows: "1fr",
+                          gridTemplateColumns: "1fr",
+                          gridTemplateAreas: "overlap",
+                        }}
+                      >
+                        <div
                           style={{
-                            ...NFTImg,
                             // grid props
                             gridArea: "overlap",
                             alignSelf: "center",
                             justifySelf: "center",
                           }}
-                          wrapperStyle={{
-                            backgroundColor: "#" + nft?.background_color,
-                            ...NFTImgWrapperStyle,
-                          }}
-                        />
+                        >
+                          <Image
+                            preview={false}
+                            src={nft.image || "error"}
+                            fallback={fallbackImg}
+                            alt=""
+                            style={{
+                              ...NFTImg,
+                              // grid props
+                              gridArea: "overlap",
+                              alignSelf: "center",
+                              justifySelf: "center",
+                            }}
+                            wrapperStyle={{
+                              backgroundColor: "#" + nft?.background_color,
+                              ...NFTImgWrapperStyle,
+                            }}
+                          />
+                        </div>
+                        {snapArMinatureLink && (
+                          <SnapArBtn snapARLink={snapArMinatureLink} />
+                        )}
                       </div>
-                      {snapArMinatureLink && (
-                        <SnapArBtn snapARLink={snapArMinatureLink} />
-                      )}
-                    </div>
-                    <Badge.Ribbon
-                      text="I will disappear soon"
-                      color="#5740C1"
-                      style={{
-                        paddingRight: "5px",
-                        paddingLeft: "5px",
-                        marginRight: "1rem",
-                        marginTop: "-1rem",
-                      }}
-                    />
-                  </>
-                }
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    marginTop: "1rem",
-                  }}
+                      <Badge.Ribbon
+                        text="I will disappear soon"
+                        color="#5740C1"
+                        style={{
+                          paddingRight: "5px",
+                          paddingLeft: "5px",
+                          marginRight: "1rem",
+                          marginTop: "-1rem",
+                        }}
+                      />
+                    </>
+                  }
                 >
-                  <Button
-                    onClick={() => {
-                      const avatarUri = resolveNftSprite(nft);
-                      const coverUri = nft?.image;
-                      const avatarTokenAddress = nft?.token_address;
-                      const avatarTokenId = nft?.token_id;
-                      const curAvatar = {
-                        uri: avatarUri,
-                        snapARLink: nft?.snap_ar_link ?? "",
-                        coverUri: coverUri,
-                        tokenAddress: avatarTokenAddress,
-                        tokenId: avatarTokenId,
-                        user: null,
-                      };
-                      setAvatar({
-                        uri: avatarUri,
-                        snapARLink: nft?.snap_ar_link ?? "",
-                        coverUri: coverUri,
-                        tokenAddress: avatarTokenAddress,
-                        tokenId: avatarTokenId,
-                        user: null,
-                      });
-                      window.localStorage.setItem(
-                        "avatar",
-                        JSON.stringify(curAvatar),
-                      );
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      marginTop: "1rem",
                     }}
-                    type="primary"
-                    style={BtnPrimary}
                   >
-                    <Link to="/play-setup">Play with me</Link>
-                  </Button>
-                </div>
-              </Card>
-            );
-          })}
-        </div>
+                    <Button
+                      onClick={() => {
+                        const avatarUri = resolveNftSprite(nft);
+                        const coverUri = nft?.image;
+                        const avatarTokenAddress = nft?.token_address;
+                        const avatarTokenId = nft?.token_id;
+                        const curAvatar = {
+                          uri: avatarUri,
+                          name: nft?.name,
+                          snapARLink: nft?.snap_ar_link ?? "",
+                          coverUri: coverUri,
+                          tokenAddress: avatarTokenAddress,
+                          tokenId: avatarTokenId,
+                          user: null,
+                        };
+                        setAvatar(curAvatar);
+                        window.localStorage.setItem(
+                          "avatar",
+                          JSON.stringify(curAvatar),
+                        );
+                      }}
+                      type="primary"
+                      style={BtnPrimary}
+                    >
+                      <Link to="/play-setup">Play with me</Link>
+                    </Button>
+                  </div>
+                </Card>
+              </div>
+            </>
+          );
+        })}
       </div>
     );
   }
 }
 
 export default DemoAvatar;
+
+const fixMoralisTokenUri = (nft) => {
+  if (!nft.token_uri) return "";
+  return nft.token_uri.replace("https://ipfs.moralis.io:2053/ipfs/", "ipfs://");
+};

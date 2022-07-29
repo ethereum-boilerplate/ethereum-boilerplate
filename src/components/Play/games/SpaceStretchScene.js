@@ -1,12 +1,7 @@
 import Phaser from "phaser";
 import { getGameWidth, getGameHeight } from "./helpers";
 import { Player } from "./objects";
-import {
-  PLAYER_KEY,
-  PLAYER_SCALE,
-  GYM_ROOM_SCENE,
-  SPACE_STRETCH_SCENE,
-} from "./shared";
+import { PLAYER_KEY, PLAYER_SCALE, SPACE_STRETCH_SCENE } from "./shared";
 import { createTextBox } from "./utils/text";
 import { ASTEROIDS } from "./assets";
 import * as gstate from "../../gpose/state";
@@ -17,7 +12,7 @@ import {
   highlightTextColor,
 } from "../../../GlobalStyles";
 import party from "party-js";
-import { EarnableScene } from "./EarnableScene";
+import { SceneInMetaGymRoom } from "./scene-in-metagym-room";
 
 const SceneConfig = {
   active: false,
@@ -40,14 +35,10 @@ const scoreBoardTextStyle = {
 const roboTextTimeouts = [];
 const playerSpeed = 100;
 
-export class SpaceStretchScene extends EarnableScene {
+export class SpaceStretchScene extends SceneInMetaGymRoom {
   constructor() {
     super(SceneConfig);
   }
-
-  init = (data) => {
-    this.selectedAvatar = data.selectedAvatar;
-  };
 
   // eslint-disable-next-line no-unused-vars
   color(i) {
@@ -79,6 +70,11 @@ export class SpaceStretchScene extends EarnableScene {
     // basic props
     const width = getGameWidth(this);
     const height = getGameHeight(this);
+    // basics
+    this.handleExit({
+      thisSceneKey: SPACE_STRETCH_SCENE,
+    });
+
     // background
     // this.game.graphics
     // this.cameras.main.backgroundColor = "linear-gradient(180deg, #000207 0%, #003963 100%)";
@@ -101,28 +97,14 @@ export class SpaceStretchScene extends EarnableScene {
           ),
       );
     this.draw();
-    // constrols
-    this.input.keyboard.on(
-      "keydown",
-      async (event) => {
-        const code = event.keyCode;
-        if (
-          code === Phaser.Input.Keyboard.KeyCodes.ESC ||
-          code === Phaser.Input.Keyboard.KeyCodes.X
-        ) {
-          roboTextTimeouts.forEach((t) => clearTimeout(t));
-          await this.updateXP();
-        }
-        if (code === Phaser.Input.Keyboard.KeyCodes.X) {
-          this.scene.start(SPACE_STRETCH_SCENE);
-        }
-        if (code === Phaser.Input.Keyboard.KeyCodes.ESC) {
-          this.game.registry.values?.setMinigame(GYM_ROOM_SCENE);
-          this.scene.start(GYM_ROOM_SCENE);
-        }
+
+    // basics
+    this.handleExit({
+      thisSceneKey: SPACE_STRETCH_SCENE,
+      callbackOnExit: () => {
+        roboTextTimeouts.forEach((t) => clearTimeout(t));
       },
-      this,
-    );
+    });
 
     this.lastMovetime = Date.now();
     this.score = 0;

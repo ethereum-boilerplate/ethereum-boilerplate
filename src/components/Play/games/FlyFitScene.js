@@ -1,19 +1,14 @@
 import Phaser from "phaser";
 import { getGameWidth, getGameHeight } from "./helpers";
 import { Player } from "./objects";
-import {
-  PLAYER_KEY,
-  PLAYER_SCALE,
-  GYM_ROOM_SCENE,
-  FLY_FIT_SCENE,
-} from "./shared";
+import { PLAYER_KEY, PLAYER_SCALE, FLY_FIT_SCENE } from "./shared";
 import { BTC, AIRPLANE } from "./assets";
 import { createTextBox } from "./utils/text";
 import party from "party-js";
 import * as gstate from "../../gpose/state";
 import * as gpose from "../../gpose/pose";
 import { mainBgColor } from "../../../GlobalStyles";
-import { EarnableScene } from "./EarnableScene";
+import { SceneInMetaGymRoom } from "./scene-in-metagym-room";
 
 const SceneConfig = {
   active: false,
@@ -27,14 +22,10 @@ const playerSpeed = 80;
 const btcScale = 0.11;
 const btcCnt = 12;
 
-export class FlyFitScene extends EarnableScene {
+export class FlyFitScene extends SceneInMetaGymRoom {
   constructor() {
     super(SceneConfig);
   }
-
-  init = (data) => {
-    this.selectedAvatar = data.selectedAvatar;
-  };
 
   create() {
     // basic props
@@ -49,28 +40,13 @@ export class FlyFitScene extends EarnableScene {
       .fillGradientStyle(0xdce7fc, 0x82b1ff, 0x4281ff, 0x4287f5, 1)
       .fillRectShape(rect);
 
-    // constrols
-    this.input.keyboard.on(
-      "keydown",
-      async (event) => {
-        const code = event.keyCode;
-        if (
-          code === Phaser.Input.Keyboard.KeyCodes.ESC ||
-          code === Phaser.Input.Keyboard.KeyCodes.X
-        ) {
-          roboTextTimeouts.forEach((t) => clearTimeout(t));
-          await this.updateXP();
-        }
-        if (code === Phaser.Input.Keyboard.KeyCodes.X) {
-          this.scene.start(FLY_FIT_SCENE);
-        }
-        if (code === Phaser.Input.Keyboard.KeyCodes.ESC) {
-          this.game.registry.values?.setMinigame(GYM_ROOM_SCENE);
-          this.scene.start(GYM_ROOM_SCENE);
-        }
+    // basics
+    this.handleExit({
+      thisSceneKey: FLY_FIT_SCENE,
+      callbackOnExit: () => {
+        roboTextTimeouts.forEach((t) => clearTimeout(t));
       },
-      this,
-    );
+    });
 
     // text
     this.scoreBoard = this.add.text(width * 0.05, height * 0.015, "SCORE: 0", {

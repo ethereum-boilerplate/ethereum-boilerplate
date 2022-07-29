@@ -15,6 +15,7 @@ export const GYM_ROOM_BG = "sky";
 export const FONT = "font";
 export const PILL_BLUE = "pill_blue";
 export const PILL_RED = "pill_red";
+export const RUSH_BG = "rush_bg";
 
 // Save all in game assets in the public folder
 export const assets = [
