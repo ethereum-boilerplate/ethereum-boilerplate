@@ -22,7 +22,7 @@ describe(MovesSpeedCaluclator.name, () => {
   };
   describe("calculateCurrentSpeedAndBoost", () => {
     it("should init default values correctly", () => {
-      const timeNow = new Date("2022-01-01 10:00:00");
+      const timeNow = new Date("2022-01-01 10:00:00").getTime();
       const movesSpeedCaluclator = new MovesSpeedCaluclator({
         timeNow: timeNow,
         maxAgeOnSecondsInLastSpeeds: 3,
@@ -44,12 +44,12 @@ describe(MovesSpeedCaluclator.name, () => {
       );
     });
     it("should update speed stats given no moves happened", () => {
-      const timeNow = new Date("2022-01-01 10:00:00");
+      const timeNow = new Date("2022-01-01 10:00:00").getTime();
       const movesSpeedCaluclator = new MovesSpeedCaluclator({
         timeNow,
         maxAgeOnSecondsInLastSpeeds: 3,
       });
-      const time2SecondsLater = new Date("2022-01-01 10:00:02");
+      const time2SecondsLater = new Date("2022-01-01 10:00:02").getTime();
       movesSpeedCaluclator.calculateCurrentSpeedAndBoost({
         timeNow: time2SecondsLater,
       });
@@ -65,13 +65,13 @@ describe(MovesSpeedCaluclator.name, () => {
     });
 
     it("should update speed stats given 1 move in 2 seconds interval happened", () => {
-      const timeNow = new Date("2022-01-01 10:00:00");
+      const timeNow = new Date("2022-01-01 10:00:00").getTime();
       const movesSpeedCaluclator = new MovesSpeedCaluclator({
         timeNow,
         maxAgeOnSecondsInLastSpeeds: 3,
       });
       movesSpeedCaluclator.incrementDistanceTraveled();
-      const time2SecondsLater = new Date("2022-01-01 10:00:02");
+      const time2SecondsLater = new Date("2022-01-01 10:00:02").getTime();
       movesSpeedCaluclator.calculateCurrentSpeedAndBoost({
         timeNow: time2SecondsLater,
       });
@@ -87,7 +87,7 @@ describe(MovesSpeedCaluclator.name, () => {
     });
 
     it("should update speed stats given 2 moves in 2 seconds interval happened", () => {
-      const timeNow = new Date("2022-01-01 10:00:00");
+      const timeNow = new Date("2022-01-01 10:00:00").getTime();
       const movesSpeedCaluclator = new MovesSpeedCaluclator({
         timeNow,
         maxAgeOnSecondsInLastSpeeds: 3,
@@ -95,7 +95,7 @@ describe(MovesSpeedCaluclator.name, () => {
       movesSpeedCaluclator.incrementDistanceTraveled();
       movesSpeedCaluclator.incrementDistanceTraveled();
 
-      const time2SecondsLater = new Date("2022-01-01 10:00:02");
+      const time2SecondsLater = new Date("2022-01-01 10:00:02").getTime();
       movesSpeedCaluclator.calculateCurrentSpeedAndBoost({
         timeNow: time2SecondsLater,
       });
@@ -111,7 +111,7 @@ describe(MovesSpeedCaluclator.name, () => {
     });
 
     it("should update speed stats given 3 moves in 2 seconds interval happened", () => {
-      const timeNow = new Date("2022-01-01 10:00:00");
+      const timeNow = new Date("2022-01-01 10:00:00").getTime();
       const movesSpeedCaluclator = new MovesSpeedCaluclator({
         timeNow,
         maxAgeOnSecondsInLastSpeeds: 3,
@@ -120,7 +120,7 @@ describe(MovesSpeedCaluclator.name, () => {
       movesSpeedCaluclator.incrementDistanceTraveled();
       movesSpeedCaluclator.incrementDistanceTraveled();
 
-      const time2SecondsLater = new Date("2022-01-01 10:00:02");
+      const time2SecondsLater = new Date("2022-01-01 10:00:02").getTime();
       movesSpeedCaluclator.calculateCurrentSpeedAndBoost({
         timeNow: time2SecondsLater,
       });
@@ -136,7 +136,7 @@ describe(MovesSpeedCaluclator.name, () => {
     });
 
     it("should update speed stats given 4 moves in 2 seconds interval happened", () => {
-      const timeNow = new Date("2022-01-01 10:00:00");
+      const timeNow = new Date("2022-01-01 10:00:00").getTime();
       const movesSpeedCaluclator = new MovesSpeedCaluclator({
         timeNow,
         maxAgeOnSecondsInLastSpeeds: 3,
@@ -146,7 +146,7 @@ describe(MovesSpeedCaluclator.name, () => {
       movesSpeedCaluclator.incrementDistanceTraveled();
       movesSpeedCaluclator.incrementDistanceTraveled();
 
-      const time2SecondsLater = new Date("2022-01-01 10:00:02");
+      const time2SecondsLater = new Date("2022-01-01 10:00:02").getTime();
       movesSpeedCaluclator.calculateCurrentSpeedAndBoost({
         timeNow: time2SecondsLater,
       });
@@ -162,7 +162,7 @@ describe(MovesSpeedCaluclator.name, () => {
     });
 
     it("should update speed stats given 6 moves in 2 seconds interval happened", () => {
-      const timeNow = new Date("2022-01-01 10:00:00");
+      const timeNow = new Date("2022-01-01 10:00:00").getTime();
       const movesSpeedCaluclator = new MovesSpeedCaluclator({
         timeNow,
         maxAgeOnSecondsInLastSpeeds: 3,
@@ -174,7 +174,7 @@ describe(MovesSpeedCaluclator.name, () => {
       movesSpeedCaluclator.incrementDistanceTraveled();
       movesSpeedCaluclator.incrementDistanceTraveled();
 
-      const time2SecondsLater = new Date("2022-01-01 10:00:02");
+      const time2SecondsLater = new Date("2022-01-01 10:00:02").getTime();
       movesSpeedCaluclator.calculateCurrentSpeedAndBoost({
         timeNow: time2SecondsLater,
       });
@@ -191,12 +191,12 @@ describe(MovesSpeedCaluclator.name, () => {
   });
 
   describe("secondsPassed", () => {
-    const timeNow = new Date("2022-01-01 10:00:00");
+    const timeNow = new Date("2022-01-01 10:00:00").getTime();
     const movesSpeedCaluclator = new MovesSpeedCaluclator({
       timeNow,
       maxAgeOnSecondsInLastSpeeds: 3,
     });
-    const time2SecondsLater = new Date("2022-01-01 10:00:02");
+    const time2SecondsLater = new Date("2022-01-01 10:00:02").getTime();
     expect(
       movesSpeedCaluclator.secondsPassed({
         timeNow: time2SecondsLater,
@@ -215,7 +215,7 @@ describe(MovesSpeedCaluclator.name, () => {
       }),
     ).toBeFalsy();
 
-    const time4SecondsLater = new Date("2022-01-01 10:00:04");
+    const time4SecondsLater = new Date("2022-01-01 10:00:04").getTime();
     expect(
       movesSpeedCaluclator.secondsPassed({
         timeNow: time4SecondsLater,
@@ -226,7 +226,7 @@ describe(MovesSpeedCaluclator.name, () => {
 
   describe("lastSpeeds", () => {
     it("should handle lastSpeeds list correctly", () => {
-      const timeNow = new Date("2022-01-01 10:00:00");
+      const timeNow = new Date("2022-01-01 10:00:00").getTime();
       const movesSpeedCaluclator = new MovesSpeedCaluclator({
         timeNow,
         maxAgeOnSecondsInLastSpeeds: 3,
@@ -235,11 +235,11 @@ describe(MovesSpeedCaluclator.name, () => {
       expect(movesSpeedCaluclator.lastSpeeds.size).toEqual(0);
 
       // assuming the update happense every 1 second
-      const time1SecondsLater = new Date("2022-01-01 10:00:01");
-      const time2SecondsLater = new Date("2022-01-01 10:00:02");
-      const time3SecondsLater = new Date("2022-01-01 10:00:03");
-      const time4SecondsLater = new Date("2022-01-01 10:00:04");
-      const time5SecondsLater = new Date("2022-01-01 10:00:04");
+      const time1SecondsLater = new Date("2022-01-01 10:00:01").getTime();
+      const time2SecondsLater = new Date("2022-01-01 10:00:02").getTime();
+      const time3SecondsLater = new Date("2022-01-01 10:00:03").getTime();
+      const time4SecondsLater = new Date("2022-01-01 10:00:04").getTime();
+      const time5SecondsLater = new Date("2022-01-01 10:00:04").getTime();
 
       // no diff in time, no new speed was recorded
       // to avoid division by 0

@@ -1,71 +1,11 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useMoralis } from "react-moralis";
-import Phaser from "phaser";
 import { IonPhaser } from "@ion-phaser/react";
 import { GymRoomScene } from "../../games/gym-room/GymRoomScene";
-import { SpaceStretchScene } from "../../games/minigames/SpaceStretchScene";
-import { FlyFitScene } from "../../games/minigames/FlyFitScene";
-import { ChartSquats } from "../../games/minigames/ChartSquats";
-import { BootScene } from "../../games/gym-room-boot/BootScene";
-import { MatrixScene } from "../../games/minigames/MatrixScene";
-import { RushScene } from "../../games/minigames/RushScene";
 import { MiniGameCtx } from "index";
 import PoseDetWebcam from "components/Webcam/PoseDetWebcam";
 import SideMenu from "./GymRoomSideMenu";
-
-const menuHeight = 0;
-
-const setWidthAndHeight = () => {
-  let width = window.innerWidth;
-  // let height = width / 1.778;
-  let height = window.innerHeight;
-
-  if (height > window.innerHeight) {
-    height = window.innerHeight;
-    // keeping for reference
-    // width = height * 1.778;
-  }
-  return [width, height - menuHeight];
-};
-
-const getConfig = (mainScene) => {
-  const [width, height] = setWidthAndHeight();
-  const Scenes = [
-    BootScene,
-    mainScene,
-    SpaceStretchScene,
-    FlyFitScene,
-    ChartSquats,
-    MatrixScene,
-    RushScene,
-  ];
-
-  return {
-    type: Phaser.AUTO,
-    physics: {
-      default: "arcade",
-      arcade: {
-        gravity: { y: 0 },
-        // debug: "debug",
-      },
-    },
-    scale: {
-      mode: Phaser.Scale.NONE,
-      width,
-      height,
-    },
-    scene: Scenes,
-    // audio: {
-    //     noAudio: true
-    // },
-    render: {
-      pixelArt: true,
-    },
-    fps: {
-      target: 60,
-    },
-  };
-};
+import { getGameConfig, preBoot } from "games/game";
 
 const GymRoom = ({ avatar, useWebcam = true, miniGameId = null }) => {
   // run game
@@ -79,12 +19,13 @@ const GymRoom = ({ avatar, useWebcam = true, miniGameId = null }) => {
       setMinigame(miniGameId);
     }
     setConfig({
-      ...getConfig(GymRoomScene),
+      ...getGameConfig({ mainScene: GymRoomScene }),
       callbacks: {
         preBoot: (game) => {
           // Makes sure the game doesnt create another game on rerender
           setInitialised(false);
-          game.registry.merge({
+          preBoot({
+            game,
             avatar,
             setMinigame,
             pickedMiniGame: miniGameId,
