@@ -2,6 +2,7 @@ import Phaser from "phaser";
 import { assets } from "./assets";
 import { GYM_ROOM_SCENE, PLAYER_KEY, MINI_GAMES } from "../shared";
 import { getGameWidth, getGameHeight } from "../helpers";
+import { InGameFont } from "../../GlobalStyles";
 
 const sceneConfig = {
   active: false,
@@ -100,7 +101,12 @@ export class BootScene extends Phaser.Scene {
       .setOrigin(0, 0.5);
 
     this.loadingText = this.add
-      .text(getGameWidth(this) / 2, getGameHeight(this) / 2 - 32, "Loading...")
+      .text(
+        getGameWidth(this) / 2,
+        getGameHeight(this) / 2 - 32,
+        "Loading...",
+        { fontFamily: InGameFont },
+      )
       .setFontSize(24)
       .setOrigin(0.5);
   };

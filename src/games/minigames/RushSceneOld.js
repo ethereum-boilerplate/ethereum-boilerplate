@@ -127,7 +127,7 @@ export class RushSceneOld extends EarnableScene {
 
     const playerUsername = this.add
       .text(0, 0, this.selectedAvatar?.name, {
-        fontFamily: "Arial",
+        fontFamily: InGameFont,
         color: "#FFFEFE",
         stroke: "#030303",
         strokeThickness: 3,
@@ -166,18 +166,18 @@ export class RushSceneOld extends EarnableScene {
       "Moves Per Second: 0",
       {
         fill: "#ba3a3a",
-        font: "900 20px Orbitron",
+        font: "900 20px InGameFont",
       },
     );
 
     this.scoreBoard2 = this.add.text(width * 0.05, height * 0.15, "Stats", {
       fill: "#48A869",
-      font: "900 20px Orbitron",
+      font: "900 20px InGameFont",
     });
 
     this.matchText = this.add.text(width * 0.08, height / 2, "", {
       fill: "#48A869",
-      font: "900 20px Orbitron",
+      font: "900 20px InGameFont",
     });
 
     this.lastSpeeds = new Map();

@@ -4,13 +4,16 @@ import {
   BBCodeText,
   RoundRectangle,
 } from "phaser3-rex-plugins/templates/ui/ui-components";
+import { InGameFont } from "../../GlobalStyles";
+
+export { createTextBox };
 
 const COLOR_PRIMARY = 0x4e342e;
 const COLOR_LIGHT = 0x7b5e57;
 
 const GetValue = Phaser.Utils.Objects.GetValue;
 
-export const createTextBox = function (
+const createTextBox = function (
   scene,
   x,
   y,
@@ -70,6 +73,7 @@ const getBBcodeText = function (
   const bbTextCfg = {
     fixedWidth: fixedWidth,
     fixedHeight: fixedHeight,
+    fontFamily: InGameFont,
     align: align,
     fontSize: "18px",
     lineSpacing: 5,

@@ -10,6 +10,7 @@ import {
   highlightTextColorNum,
   mainBgColorNum,
   highlightTextColor,
+  InGameFont,
 } from "../../GlobalStyles";
 import party from "party-js";
 import { SceneInMetaGymRoom } from "../base-scenes/scene-in-metagym-room";
@@ -30,7 +31,7 @@ const asteroidScale = 1;
 const maxAsteroidPlatformsCnt = 7;
 const scoreBoardTextStyle = {
   fill: highlightTextColor,
-  font: "900 20px Orbitron",
+  font: `900 20px ${InGameFont}`,
 };
 const roboTextTimeouts = [];
 const playerSpeed = 100;
@@ -153,7 +154,7 @@ export class SpaceStretchScene extends SceneInMetaGymRoom {
     );
     this.add.text(width * 0.05, height * 0.04, "press ESC to go back", {
       fill: "#FFBE59",
-      font: "900 17px Orbitron",
+      font: `900 17px ${InGameFont}`,
     });
 
     const asteroidGroupProps = {

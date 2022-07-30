@@ -79,6 +79,7 @@ export const assets = [
     src: `assets/tilemap_tiles/${GYM_ROOM_TILESET_V2}.png`,
     type: "TILEMAP_TILES",
   },
+  // for particle emmiter
   {
     key: FONT,
     src: `assets/fonts/${FONT}.png`,

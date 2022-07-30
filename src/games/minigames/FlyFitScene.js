@@ -7,7 +7,7 @@ import { createTextBox } from "../utils/text";
 import party from "party-js";
 import * as gstate from "../../components/gpose/state";
 import * as gpose from "../../components/gpose/pose";
-import { mainBgColor } from "../../GlobalStyles";
+import { mainBgColor, InGameFont } from "../../GlobalStyles";
 import { SceneInMetaGymRoom } from "../base-scenes/scene-in-metagym-room";
 
 const SceneConfig = {
@@ -51,11 +51,11 @@ export class FlyFitScene extends SceneInMetaGymRoom {
     // text
     this.scoreBoard = this.add.text(width * 0.05, height * 0.015, "SCORE: 0", {
       fill: "#ba3a3a",
-      font: "900 20px Orbitron",
+      font: `900 20px ${InGameFont}`,
     });
     this.add.text(width * 0.05, height * 0.04, "press ESC to go back", {
       fill: mainBgColor,
-      font: "900 17px Orbitron",
+      font: `900 17px ${InGameFont}`,
     });
 
     // hint

@@ -11,7 +11,11 @@ import {
 } from "../gym-room-boot/assets";
 import { createTextBox } from "../utils/text";
 import party from "party-js";
-import { highlightTextColorNum, mainBgColorNum } from "../../GlobalStyles";
+import {
+  highlightTextColorNum,
+  mainBgColorNum,
+  InGameFont,
+} from "../../GlobalStyles";
 import * as gstate from "../../components/gpose/state";
 import * as gpose from "../../components/gpose/pose";
 import { SceneInMetaGymRoom } from "../base-scenes/scene-in-metagym-room";
@@ -111,12 +115,12 @@ export class ChartSquats extends SceneInMetaGymRoom {
       `SCORE: ${this.score}`,
       {
         fill: "#FFF",
-        font: "900 20px Orbitron",
+        font: `900 20px ${InGameFont}`,
       },
     );
     this.add.text(width * 0.05, height * 0.04, "press ESC to go back", {
       fill: "#FFF",
-      font: "900 17px Orbitron",
+      font: `900 17px ${InGameFont}`,
     });
 
     // generate stock data

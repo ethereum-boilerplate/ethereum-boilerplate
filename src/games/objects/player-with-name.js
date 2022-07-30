@@ -3,6 +3,7 @@ import { Player } from "./player";
 import { PLAYER_KEY, PLAYER_SCALE } from "../shared";
 import * as gstate from "../../components/gpose/state";
 import * as gpose from "../../components/gpose/pose";
+import { InGameFont } from "../../GlobalStyles";
 
 export class PlayerWithName extends Phaser.GameObjects.Container {
   cursorKeys;
@@ -11,7 +12,7 @@ export class PlayerWithName extends Phaser.GameObjects.Container {
   constructor({ scene, x, y, name }) {
     const playerUsername = scene.add
       .text(0, 0, name ?? "", {
-        fontFamily: "Arial",
+        fontFamily: InGameFont,
         color: "#FFFEFE",
         stroke: "#030303",
         strokeThickness: 3,
