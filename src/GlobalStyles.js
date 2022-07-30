@@ -9,7 +9,7 @@ export const mainFontColor = "#595959";
 export const highlightTextColor = "#01FFFE";
 export const highlightTextColorNum = 0x01fffe;
 
-export const InGameFont = "InGameFont";
+export const InGameFont = "Roboto";
 
 export const gradientBg1 =
   "linear-gradient(180deg, rgba(182, 220, 255, 0.32) 0%, rgba(255, 215, 215, 0.23) 100%)";
