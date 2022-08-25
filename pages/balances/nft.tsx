@@ -27,9 +27,11 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     chain: process.env.APP_CHAIN_ID,
   });
 
+  // (balances.result).filter((balance)=> balance.result.)
+
   return {
     props: {
-      balances: JSON.parse(JSON.stringify(balances)),
+      balances: JSON.parse(JSON.stringify(balances.result)),
     },
   };
 };

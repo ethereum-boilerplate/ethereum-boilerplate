@@ -1,8 +1,13 @@
 import { Default } from 'components/layouts/Default';
+import { Home } from 'components/templates/home';
 import type { NextPage } from 'next';
 
-const Home: NextPage = () => {
-  return <Default>Hi</Default>;
+const HomePage: NextPage = () => {
+  return (
+    <Default>
+      <Home />
+    </Default>
+  );
 };
 
-export default Home;
+export default HomePage;

@@ -51,7 +51,9 @@ export default NextAuth({
     }),
   ],
   callbacks: {
-    async jwt({ token }) {
+    async jwt({ token, user }) {
+      // eslint-disable-next-line no-unused-expressions
+      user && (token.user = user);
       return token;
     },
     async session({ session, token }) {

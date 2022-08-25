@@ -1,6 +1,7 @@
 import { Box, HStack, Image, SimpleGrid, useColorModeValue } from '@chakra-ui/react';
 import { Eth } from '@web3uikit/icons';
 import { FC } from 'react';
+import { resolveIPFS } from 'utils/resolveIpfs';
 import { INFTCard } from './types';
 
 const NFTCard: FC<INFTCard> = ({ amount, contractType, name, symbol, metadata }) => {
@@ -10,14 +11,14 @@ const NFTCard: FC<INFTCard> = ({ amount, contractType, name, symbol, metadata })
 
   return (
     <Box bgColor={bgColor} padding={3} borderRadius="xl" borderWidth="1px" borderColor={borderColor}>
-      <Box maxHeight="260px" overflow={'hidden'}>
+      <Box maxHeight="260px" overflow={'hidden'} borderRadius="xl">
         <Image
-          src={metadata?.image as string}
+          src={resolveIPFS(metadata?.image as string)}
           alt={'nft'}
           minH="260px"
+          minW="260px"
           boxSize="100%"
           objectFit="fill"
-          borderRadius="xl"
         />
       </Box>
       <Box mt="1" fontWeight="semibold" as="h4" noOfLines={1} marginTop={2}>

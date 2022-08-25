@@ -1,6 +1,6 @@
 import { ISubNav } from '../SubNav/SubNav';
 
-export const NAV_LINKS: ISubNav[] = [
+const NAV_LINKS: ISubNav[] = [
   { label: 'Home', href: '' },
   {
     label: 'Transactions',
@@ -43,3 +43,5 @@ export const NAV_LINKS: ISubNav[] = [
     ],
   },
 ];
+
+export default NAV_LINKS;

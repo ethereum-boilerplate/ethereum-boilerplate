@@ -12,7 +12,7 @@ const NFTBalances: FC<INFTBalances> = ({ balances }) => {
         NFT Balances
       </Heading>
       {balances?.length ? (
-        <Grid templateColumns="repeat(auto-fit, minmax(260px, 1fr))" gap={6}>
+        <Grid templateColumns="repeat(auto-fit, minmax(280px, 1fr))" gap={6}>
           {balances.map((balance, key) => (
             <NFTCard {...balance} key={key} />
           ))}
