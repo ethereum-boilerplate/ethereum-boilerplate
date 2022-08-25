@@ -6,40 +6,53 @@ import { SubNav } from '../SubNav';
 import NextLink from 'next/link';
 
 const NavItem: FC<ISubNav> = ({ label, children, href }) => {
-    const linkColor = useColorModeValue('gray.600', 'gray.400');
-    const linkActiveColor = useColorModeValue('gray.800', 'white');
+  const linkColor = useColorModeValue('gray.600', 'gray.400');
+  const linkActiveColor = useColorModeValue('gray.800', 'white');
 
-    return (
-        <Popover trigger={'hover'} placement={'bottom-start'}>
-            <PopoverTrigger>
-                <Box>
-                    <NextLink href={href || '#'}>
-                        <Link
-                            fontSize={15}
-                            fontWeight={500}
-                            color={linkColor}
-                            _hover={{
-                                textDecoration: 'none',
-                                color: linkActiveColor,
-                            }}
-                        >
-                            {label} {children && <ChevronDownIcon />}
-                        </Link>
-                    </NextLink>
-                </Box>
-            </PopoverTrigger>
-
-            {children && (
-                <PopoverContent border={0} boxShadow={'xl'} p={4} rounded={'xl'} minW={'sm'}>
-                    <Stack>
-                        {children.map((child) => (
-                            <SubNav key={child.label} {...child} />
-                        ))}
-                    </Stack>
-                </PopoverContent>
+  return (
+    <Popover trigger={'hover'} placement={'bottom-start'}>
+      <PopoverTrigger>
+        <Box>
+          <Box
+            fontSize={15}
+            fontWeight={500}
+            color={linkColor}
+            _hover={{
+              textDecoration: 'none',
+              color: linkActiveColor,
+            }}
+            cursor="pointer"
+          >
+            {children ? (
+              <>
+                {label} <ChevronDownIcon />
+              </>
+            ) : (
+              <NextLink href={href || '/'}>
+                <Link
+                  _hover={{
+                    textDecoration: 'none',
+                  }}
+                >
+                  {label}
+                </Link>
+              </NextLink>
             )}
-        </Popover>
-    );
+          </Box>
+        </Box>
+      </PopoverTrigger>
+
+      {children && (
+        <PopoverContent border={0} boxShadow={'xl'} p={4} rounded={'xl'} minW={'sm'}>
+          <Stack>
+            {children.map((child) => (
+              <SubNav key={child.label} {...child} />
+            ))}
+          </Stack>
+        </PopoverContent>
+      )}
+    </Popover>
+  );
 };
 
 export default NavItem;

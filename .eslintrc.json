@@ -1,3 +1,6 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": "@moralisweb3",
+  "rules": {
+    "no-console": "off"
+  }
 }
