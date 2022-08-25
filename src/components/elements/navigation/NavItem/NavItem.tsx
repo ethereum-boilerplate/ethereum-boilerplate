@@ -4,10 +4,13 @@ import { FC } from 'react';
 import { ISubNav } from '../SubNav/SubNav';
 import { SubNav } from '../SubNav';
 import NextLink from 'next/link';
+import { useRouter } from 'next/router';
 
 const NavItem: FC<ISubNav> = ({ label, children, href }) => {
   const linkColor = useColorModeValue('gray.600', 'gray.400');
   const linkActiveColor = useColorModeValue('gray.800', 'white');
+  const router = useRouter();
+  const isCurrentPath = router.asPath === href || (href !== '/' && router.pathname.startsWith(href || ''));
 
   return (
     <Popover trigger={'hover'} placement={'bottom-start'}>
@@ -16,7 +19,7 @@ const NavItem: FC<ISubNav> = ({ label, children, href }) => {
           <Box
             fontSize={15}
             fontWeight={500}
-            color={linkColor}
+            color={isCurrentPath ? linkActiveColor : linkColor}
             _hover={{
               textDecoration: 'none',
               color: linkActiveColor,

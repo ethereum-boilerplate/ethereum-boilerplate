@@ -26,7 +26,7 @@ const ConnectButton = () => {
 
       const signature = await signMessageAsync({ message });
 
-      await signIn('credentials', { message, signature, redirect: false });
+      await signIn('credentials', { message, signature, callbackUrl: '/' });
     } catch (e) {
       toast({
         title: 'Oops, something is wrong...',
@@ -40,7 +40,7 @@ const ConnectButton = () => {
 
   const handleDisconnect = async () => {
     await disconnectAsync();
-    signOut({ redirect: false });
+    signOut({ callbackUrl: '/' });
   };
 
   if (data?.user) {

@@ -8,7 +8,7 @@ import { ERC20Balances, IERC20Balances } from 'components/templates/balances/ERC
 
 const ERC20: NextPage<IERC20Balances> = (props) => {
   return (
-    <Default>
+    <Default pageName="ERC20 Balances">
       <ERC20Balances {...props} />
     </Default>
   );

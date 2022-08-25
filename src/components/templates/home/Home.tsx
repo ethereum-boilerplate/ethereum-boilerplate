@@ -3,8 +3,8 @@ import { Heading, VStack, List, ListIcon, ListItem } from '@chakra-ui/react';
 
 const Home = () => {
   return (
-    <VStack alignSelf={'center'} w={'full'} justifyContent={'center'}>
-      <Heading size="lg" marginBottom={6}>
+    <VStack w={'full'}>
+      <Heading size="md" marginBottom={6}>
         Ethereum Boilerplate
       </Heading>
       <List spacing={3}>

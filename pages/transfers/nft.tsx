@@ -6,7 +6,7 @@ import Moralis from 'moralis';
 
 const NFTTransfersPage: NextPage<INFTTransfers> = (props) => {
   return (
-    <Default>
+    <Default pageName="NFT Transfers">
       <NFTTransfers {...props} />
     </Default>
   );

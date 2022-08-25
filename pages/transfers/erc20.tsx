@@ -7,7 +7,7 @@ import Moralis from 'moralis';
 
 const ERC20: NextPage<IERC20Transfers> = (props) => {
   return (
-    <Default>
+    <Default pageName="ERC20 Transfers">
       <ERC20Transfers {...props} />
     </Default>
   );

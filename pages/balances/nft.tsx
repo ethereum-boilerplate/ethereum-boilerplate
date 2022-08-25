@@ -7,7 +7,7 @@ import Moralis from 'moralis';
 
 const ERC20: NextPage<INFTBalances> = (props) => {
   return (
-    <Default>
+    <Default pageName="NFT Balances">
       <NFTBalances {...props} />
     </Default>
   );

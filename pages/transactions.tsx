@@ -5,9 +5,8 @@ import { ITransactions, Transactions } from 'components/templates/transactions';
 import Moralis from 'moralis';
 
 const TransactionsPage: NextPage<ITransactions> = (props) => {
-  console.log(props);
   return (
-    <Default>
+    <Default pageName="Transactions">
       <Transactions {...props} />
     </Default>
   );
