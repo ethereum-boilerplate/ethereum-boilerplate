@@ -1,5 +1,5 @@
 import { Box, Grid, Heading } from '@chakra-ui/react';
-import { NFTCard } from 'components/modules/NFTCard';
+import { NFTCard } from 'components/modules';
 import { FC, useEffect } from 'react';
 import { INFTBalances } from './types';
 
