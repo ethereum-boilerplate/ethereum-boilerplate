@@ -6,7 +6,7 @@
 
 This boilerplate is built with [Moralis](https://moralis.io?utm_source=github&utm_medium=readme&utm_campaign=ethereum-boilerplate)
 
-All pages in this boilerplate do not require an active web3 provider, they use Moralis Web3 API. Moralis supports the most popular blockchains and their test networks. You can find a list of all available networks in [Moralis Supported Chains](https://docs.moralis.io/reference/supported-chains-nft)
+You need active web3 provider/wallet only for authnetication. All pages in this boilerplate do not require an active web3 provider, they use Moralis Web3 API. Moralis supports the most popular blockchains and their test networks. You can find a list of all available networks in [Moralis Supported Chains](https://docs.moralis.io/reference/supported-chains-nft)
 
 Please check the [official documentation of Moralis](https://docs.moralis.io/) for all the functionalities of Moralis.
 
@@ -51,14 +51,13 @@ yarn start
 - [🧭 Table of contents](#-table-of-contents)
 - [🧰 Functionality](#-functionality)
 - [🏗 Ethereum Components](#-ethereum-components)
+  - [`<NFTBalances />`](#nftbalances-)
+  - [`<ERC20Balances />`](#erc20balances-)
+  - [`<ERC20Transfers />`](#erc20transfers-)
+  - [`<NFTTransfers />`](#nfttransfers-)
+  - [`<Transactions />`](#transactions-)
 
 # 🏗 Ethereum Components
-- Secure Server-Side Moralis authnetication. `wagmi` is used as a web3 library
-- Display Transactions
-- Display ERC20 transfers
-- Display ERC20 balances
-- Display NFT balances
-- Display NFT transfers
 
 ### `<NFTBalances />`
 
@@ -68,13 +67,13 @@ location: `src/component/templates/balances/NFT/NFTBalances.tsx`
 
 🎨 `<NFTBalances />` : displays the the user's balances. Uses Moralis Evm API (does not require an active web3 provider).
 
-### `<ERC20Balance />`
+### `<ERC20Balances />`
 
 ![image](https://user-images.githubusercontent.com/78314301/186813448-a0b63106-bcba-46d2-be80-3a7d962e2302.png)
 
 location: `src/component/templates/balances/ERC20/ERC20Balances.tsx`
 
-💰 `<ERC20Balance />` : displays the user's ERC20 balances. Uses Moralis Evm API (does not require an active web3 provider).
+💰 `<ERC20Balances />` : displays the user's ERC20 balances. Uses Moralis Evm API (does not require an active web3 provider).
 
 ### `<ERC20Transfers />`
 
