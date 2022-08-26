@@ -2,7 +2,7 @@
 
 > Fully Typescript ready NextJS components for fast building dApps without running own backend
 
-🚀DEMO: xxx
+🚀DEMO: https://ethereum-boilerplate.github.io/ethereum-boilerplate
 
 This boilerplate is built with [Moralis](https://moralis.io?utm_source=github&utm_medium=readme&utm_campaign=ethereum-boilerplate)
 
