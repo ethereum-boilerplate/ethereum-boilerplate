@@ -2,7 +2,7 @@
   "name": "ethereum-boilerplate",
   "version": "2.0.0",
   "private": true,
-  "homepage": "https://ethereum-boilerplate.github.io/ethereum-boilerplate/",
+  "homepage": "https://ethereum-boilerplate.github.io/ethereum-boilerplate",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
