@@ -1,7 +1,7 @@
 import { Box, HStack, Image, SimpleGrid, useColorModeValue } from '@chakra-ui/react';
 import { Eth } from '@web3uikit/icons';
 import { FC } from 'react';
-import { resolveIPFS } from 'utils/resolveIpfs';
+import { resolveIPFS } from 'utils/resolveIPFS';
 import { INFTCard } from './types';
 
 const NFTCard: FC<INFTCard> = ({ amount, contractType, name, symbol, metadata }) => {
