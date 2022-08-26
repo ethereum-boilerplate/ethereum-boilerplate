@@ -49,7 +49,6 @@ yarn start
 - [`ethereum-boilerplate`](#ethereum-boilerplate)
 - [🚀 Quick Start](#-quick-start)
 - [🧭 Table of contents](#-table-of-contents)
-- [🧰 Functionality](#-functionality)
 - [🏗 Ethereum Components](#-ethereum-components)
   - [`<NFTBalances />`](#nftbalances-)
   - [`<ERC20Balances />`](#erc20balances-)
