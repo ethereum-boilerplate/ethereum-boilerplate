@@ -1,34 +1,100 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# `ethereum-boilerplate`
 
-## Getting Started
+> Fully Typescript ready NextJS components for fast building dApps without running own backend
 
-First, run the development server:
+🚀DEMO: xxx
 
-```bash
-npm run dev
-# or
-yarn dev
+This boilerplate is built with [Moralis](https://moralis.io?utm_source=github&utm_medium=readme&utm_campaign=ethereum-boilerplate)
+
+You need active web3 provider/wallet only for authnetication. All pages in this boilerplate do not require an active web3 provider, they use Moralis Web3 API. Moralis supports the most popular blockchains and their test networks. You can find a list of all available networks in [Moralis Supported Chains](https://docs.moralis.io/reference/supported-chains-nft)
+
+Please check the [official documentation of Moralis](https://docs.moralis.io/) for all the functionalities of Moralis.
+
+![eth-boilerplate](https://user-images.githubusercontent.com/78314301/186810447-fa66cd80-5bbb-4e41-b29f-862c8cc67d43.gif)
+
+# ⭐️ `Star us`
+
+If this boilerplate helps you build Ethereum dapps faster - please star this project, every star makes us very happy!
+
+# 🤝 `Need help?`
+
+If you need help with setting up the boilerplate or have other questions - don't hesitate to write in our community forum and we will check asap. [Forum link](https://forum.moralis.io/t/ethereum-boilerplate-questions/3951/86). The best thing about this boilerplate is the super active community ready to help at any time! We help each other.
+
+# 🚀 `Quick Start`
+
+📄 Clone or fork `ethereum-boilerplate`:
+
+```sh
+git clone https://github.com/ethereum-boilerplate/ethereum-boilerplate.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+💿 Install all dependencies:
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```sh
+cd ethereum-boilerplate
+yarn install
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+✏ Rename `.env.local.example` to `.env` and provide required data. Get your Web3 Api Key from the [Moralis dashboard](https://admin.moralis.io/):
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+![image](https://user-images.githubusercontent.com/78314301/186810270-7c365d43-ebb8-4546-a383-32983fbacef9.png)
 
-## Learn More
+🚴‍♂️ Run your App:
 
-To learn more about Next.js, take a look at the following resources:
+```sh
+yarn start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# 🧭 `Table of contents`
+- [`ethereum-boilerplate`](#ethereum-boilerplate)
+- [🚀 Quick Start](#-quick-start)
+- [🧭 Table of contents](#-table-of-contents)
+- [🏗 Ethereum Components](#-ethereum-components)
+  - [`<NFTBalances />`](#nftbalances-)
+  - [`<ERC20Balances />`](#erc20balances-)
+  - [`<ERC20Transfers />`](#erc20transfers-)
+  - [`<NFTTransfers />`](#nfttransfers-)
+  - [`<Transactions />`](#transactions-)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+# 🏗 Ethereum Components
 
-## Deploy on Vercel
+### `<NFTBalances />`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+![image](https://user-images.githubusercontent.com/78314301/186813114-2b2265a5-5177-4ab8-9076-588107d450f1.png)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+location: `src/component/templates/balances/NFT/NFTBalances.tsx`
+
+🎨 `<NFTBalances />` : displays the the user's balances. Uses Moralis Evm API (does not require an active web3 provider).
+
+### `<ERC20Balances />`
+
+![image](https://user-images.githubusercontent.com/78314301/186813448-a0b63106-bcba-46d2-be80-3a7d962e2302.png)
+
+location: `src/component/templates/balances/ERC20/ERC20Balances.tsx`
+
+💰 `<ERC20Balances />` : displays the user's ERC20 balances. Uses Moralis Evm API (does not require an active web3 provider).
+
+### `<ERC20Transfers />`
+
+![image](https://user-images.githubusercontent.com/78314301/186813957-69badb89-bf93-44e6-90e7-c35801c24d9a.png)
+
+location: `src/component/templates/transfers/ERC20/ERC20Transfers.tsx`
+
+💰 `<ERC20Transfers />` : displays the user's ERC20 transfers. Uses Moralis Evm API (does not require an active web3 provider).
+
+### `<NFTTransfers />`
+
+![image](https://user-images.githubusercontent.com/78314301/186814187-916851d7-703d-4e30-9b28-b66b0bea90b1.png)
+
+location: `src/component/templates/transfers/NFT/NFTTransfers.tsx`
+
+🎨 `<NFTTransfers />` : displays the user's NFT transfers. Uses Moralis Evm API (does not require an active web3 provider).
+
+### `<Transactions />`
+
+![image](https://user-images.githubusercontent.com/78314301/186812987-74d8e534-5171-4a53-83f9-3b470bc97e63.png)
+
+location: `src/component/templates/transactions/Transactions.tsx`
+
+💰 `<Transactions />` : displays the user's transactions. Uses Moralis Evm API (does not require an active web3 provider).
+
