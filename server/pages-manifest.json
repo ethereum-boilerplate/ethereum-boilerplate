@@ -2,13 +2,13 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/api/auth/[...nextauth]": "pages/api/auth/[...nextauth].js",
-  "/api/auth/request-message": "pages/api/auth/request-message.js",
   "/": "pages/index.html",
-  "/_document": "pages/_document.js",
-  "/transfers/erc20": "pages/transfers/erc20.js",
-  "/transfers/nft": "pages/transfers/nft.js",
-  "/balances/erc20": "pages/balances/erc20.js",
+  "/api/auth/request-message": "pages/api/auth/request-message.js",
   "/transactions": "pages/transactions.js",
+  "/transfers/nft": "pages/transfers/nft.js",
   "/balances/nft": "pages/balances/nft.js",
+  "/transfers/erc20": "pages/transfers/erc20.js",
+  "/balances/erc20": "pages/balances/erc20.js",
+  "/_document": "pages/_document.js",
   "/404": "pages/404.html"
 }

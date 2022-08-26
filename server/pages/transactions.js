@@ -298,7 +298,7 @@ module.exports = require("next/dist/shared/lib/router-context.js");
 
 /***/ }),
 
-/***/ 5786:
+/***/ 1751:
 /***/ ((module) => {
 
 module.exports = require("next/dist/shared/lib/router/utils/add-path-prefix.js");
