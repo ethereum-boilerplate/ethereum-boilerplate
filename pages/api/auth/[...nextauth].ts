@@ -62,7 +62,4 @@ export default NextAuth({
       return session;
     },
   },
-  session: {
-    strategy: 'jwt',
-  },
 });
