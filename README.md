@@ -44,3 +44,59 @@ yarn install
 ```sh
 yarn start
 ```
+
+# 🧭 `Table of contents`
+- [`ethereum-boilerplate`](#ethereum-boilerplate)
+- [🚀 Quick Start](#-quick-start)
+- [🧭 Table of contents](#-table-of-contents)
+- [🧰 Functionality](#-functionality)
+- [🏗 Ethereum Components](#-ethereum-components)
+
+# 🏗 Ethereum Components
+- Secure Server-Side Moralis authnetication. `wagmi` is used as a web3 library
+- Display Transactions
+- Display ERC20 transfers
+- Display ERC20 balances
+- Display NFT balances
+- Display NFT transfers
+
+### `<NFTBalances />`
+
+![image](https://user-images.githubusercontent.com/78314301/186813114-2b2265a5-5177-4ab8-9076-588107d450f1.png)
+
+location: `src/component/templates/balances/NFT/NFTBalances.tsx`
+
+🎨 `<NFTBalances />` : displays the the user's balances. Uses Moralis Evm API (does not require an active web3 provider).
+
+### `<ERC20Balance />`
+
+![image](https://user-images.githubusercontent.com/78314301/186813448-a0b63106-bcba-46d2-be80-3a7d962e2302.png)
+
+location: `src/component/templates/balances/ERC20/ERC20Balances.tsx`
+
+💰 `<ERC20Balance />` : displays the user's ERC20 balances. Uses Moralis Evm API (does not require an active web3 provider).
+
+### `<ERC20Transfers />`
+
+![image](https://user-images.githubusercontent.com/78314301/186813957-69badb89-bf93-44e6-90e7-c35801c24d9a.png)
+
+location: `src/component/templates/transfers/ERC20/ERC20Transfers.tsx`
+
+💰 `<ERC20Transfers />` : displays the user's ERC20 transfers. Uses Moralis Evm API (does not require an active web3 provider).
+
+### `<NFTTransfers />`
+
+![image](https://user-images.githubusercontent.com/78314301/186814187-916851d7-703d-4e30-9b28-b66b0bea90b1.png)
+
+location: `src/component/templates/transfers/NFT/NFTTransfers.tsx`
+
+🎨 `<NFTTransfers />` : displays the user's NFT transfers. Uses Moralis Evm API (does not require an active web3 provider).
+
+### `<Transactions />`
+
+![image](https://user-images.githubusercontent.com/78314301/186812987-74d8e534-5171-4a53-83f9-3b470bc97e63.png)
+
+location: `src/component/templates/transactions/Transactions.tsx`
+
+💰 `<Transactions />` : displays the user's transactions. Uses Moralis Evm API (does not require an active web3 provider).
+
