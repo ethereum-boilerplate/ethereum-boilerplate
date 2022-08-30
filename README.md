@@ -35,7 +35,7 @@ cd ethereum-boilerplate
 yarn install
 ```
 
-✏ Rename `.env.local.example` to `.env` and provide required data. Get your Web3 Api Key from the [Moralis dashboard](https://admin.moralis.io/):
+✏ Rename `.env.local.example` to `.env.local` and provide required data. Get your Web3 Api Key from the [Moralis dashboard](https://admin.moralis.io/):
 
 ![image](https://user-images.githubusercontent.com/78314301/186810270-7c365d43-ebb8-4546-a383-32983fbacef9.png)
 
