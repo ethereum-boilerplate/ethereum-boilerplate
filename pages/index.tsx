@@ -1,11 +1,11 @@
 import { Default } from 'components/layouts/Default';
-import { Home } from 'components/templates/home';
+import { Featured } from 'components/templates/featured';
 import type { NextPage } from 'next';
 
 const HomePage: NextPage = () => {
   return (
-    <Default pageName="Home">
-      <Home />
+    <Default pageName="Featured">
+      <Featured />
     </Default>
   );
 };
