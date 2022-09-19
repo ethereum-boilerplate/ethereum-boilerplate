@@ -9,7 +9,13 @@
     "start": "next start",
     "lint": "next lint",
     "prepare": "husky install",
-    "deploypage": "gh-pages -d .next"
+    "deploypage": "gh-pages -d .next",
+    "compile": "npm run compile -w hardhat",
+    "chain": "npm run chain -w hardhat",
+    "fork": "npm run fork -w hardhat",
+    "testsc": "npm run test -w hardhat",
+    "deploy": "npm run deploy -w hardhat"
+        
   },
   "dependencies": {
     "@chakra-ui/icons": "^2.0.8",
@@ -45,5 +51,8 @@
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
-  }
+  },
+  "workspaces": [
+      "hardhat"
+  ]
 }
