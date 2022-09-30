@@ -10,7 +10,7 @@ const NFTCard: FC<INFTCard> = ({ amount, contractType, name, symbol, metadata })
   const descBgColor = useColorModeValue('gray.100', 'gray.600');
 
   return (
-    <Box bgColor={bgColor} padding={3} borderRadius="xl" borderWidth="1px" borderColor={borderColor}>
+    <Box maxWidth="315px" bgColor={bgColor} padding={3} borderRadius="xl" borderWidth="1px" borderColor={borderColor}>
       <Box maxHeight="260px" overflow={'hidden'} borderRadius="xl">
         <Image
           src={resolveIPFS(metadata?.image as string)}
