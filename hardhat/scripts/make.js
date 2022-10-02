@@ -7,25 +7,19 @@
 const hre = require('hardhat');
 
 async function main() {
-  const currentTimestampInSeconds = Math.round(Date.now() / 1000);
-  const ONE_YEAR_IN_SECS = 365 * 24 * 60 * 60;
-  const unlockTime = currentTimestampInSeconds + ONE_YEAR_IN_SECS;
-
-  const lockedAmount = hre.ethers.utils.parseEther('1');
-
-  const Lock = await hre.ethers.getContractFactory('Lock');
-  const lock = await Lock.deploy(unlockTime, { value: lockedAmount });
-
-  await lock.deployed();
-
   const MageToken = await hre.ethers.getContractFactory('MageToken');
   const MT = await MageToken.deploy();
 
   await MT.deployed();
 
-  console.log(`Lock with 1 ETH and unlock timestamp ${unlockTime} deployed to ${lock.address}`);
-
   console.log(`Deployed Mage Token ${MT.address}`);
+
+  const MageNFT = await hre.ethers.getContractFactory('MageNFT');
+  const MNFT = await MageNFT.deploy();
+
+  await MNFT.deployed();
+
+  console.log(`Deployed Mage Token ${MNFT.address}`);
 }
 
 // We recommend this pattern to be able to use async/await everywhere

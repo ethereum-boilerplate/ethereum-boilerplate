@@ -2,5 +2,8 @@
   "extends": "@moralisweb3",
   "rules": {
     "no-console": "off"
+  },
+  "env": {
+    "browser": true
   }
 }
