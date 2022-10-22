@@ -24,7 +24,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   const transfers = await Moralis.EvmApi.account.getTokenTransfers({
     address: session?.user.address,
-    chain: process.env.APP_CHAIN_ID,
+    chain: session?.user.chainId,
   });
 
   return {

@@ -23,7 +23,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   const transactions = await Moralis.EvmApi.account.getTransactions({
     address: session?.user.address,
-    chain: process.env.APP_CHAIN_ID,
+    chain: session?.user.chainId,
   });
 
   return {

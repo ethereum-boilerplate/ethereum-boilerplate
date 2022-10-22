@@ -25,7 +25,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   const balances = await Moralis.EvmApi.account.getTokenBalances({
     address: session?.user.address,
-    chain: process.env.APP_CHAIN_ID,
+    chain: session?.user.chainId,
   });
 
   const tokensWithLogosAdded = balances.toJSON().map((balance) => ({

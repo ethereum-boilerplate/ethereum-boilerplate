@@ -7,6 +7,7 @@ export type TUserData = {
   signature: string;
   profileId: string;
   expirationTime: string;
+  chainId: number;
 };
 
 export interface ISession {
@@ -35,11 +36,11 @@ export default NextAuth({
 
           await Moralis.start({ apiKey: process.env.MORALIS_API_KEY });
 
-          const { address, profileId, expirationTime } = (
+          const { address, profileId, expirationTime, chainId } = (
             await Moralis.Auth.verify({ message, signature, network: 'evm' })
           ).raw;
 
-          const user = { address, profileId, expirationTime, signature };
+          const user = { address, profileId, expirationTime, signature, chainId };
 
           return user;
         } catch (e) {
