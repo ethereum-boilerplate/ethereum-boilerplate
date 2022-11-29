@@ -1,6 +1,6 @@
 import { Default } from 'components/layouts/Default';
 import { GetServerSideProps, NextPage } from 'next';
-import { getSession } from 'next-auth/react';
+import { getSession } from '';
 import { ITransactions, Transactions } from 'components/templates/transactions';
 import Moralis from 'moralis';
 
