@@ -31,7 +31,7 @@ const NavItem: FC<ISubNav> = ({ label, children, href }) => {
                 {label} <ChevronDownIcon />
               </>
             ) : (
-              <NextLink href={href || '/'}>
+              <NextLink href={href || '/'} legacyBehavior>
                 <Link
                   _hover={{
                     textDecoration: 'none',

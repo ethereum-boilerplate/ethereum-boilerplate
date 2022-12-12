@@ -14,7 +14,7 @@ export interface ISubNav {
 
 const SubNav = ({ label, href, subLabel, logo }: ISubNav) => {
   return (
-    <NextLink href={href || '#'}>
+    <NextLink href={href || '#'} legacyBehavior>
       <Link
         role={'group'}
         display={'block'}
