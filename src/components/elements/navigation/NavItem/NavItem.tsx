@@ -1,4 +1,4 @@
-import { Box, Link, Popover, PopoverContent, PopoverTrigger, Stack, useColorModeValue } from '@chakra-ui/react';
+import { Box, Popover, PopoverContent, PopoverTrigger, Stack, useColorModeValue } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 import { FC } from 'react';
 import { ISubNav } from '../SubNav/SubNav';
@@ -31,15 +31,7 @@ const NavItem: FC<ISubNav> = ({ label, children, href }) => {
                 {label} <ChevronDownIcon />
               </>
             ) : (
-              <NextLink href={href || '/'} legacyBehavior>
-                <Link
-                  _hover={{
-                    textDecoration: 'none',
-                  }}
-                >
-                  {label}
-                </Link>
-              </NextLink>
+              <NextLink href={href || '/'}>{label}</NextLink>
             )}
           </Box>
         </Box>

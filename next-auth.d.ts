@@ -1,11 +1,8 @@
-import NextAuth from 'next-auth';
-import { TUserData } from './pages/api/auth/[...nextauth]';
+import 'next-auth';
+import { VerifyChallengeSolanaJSONResponse, VerifyChallengeEvmJSONResponse } from '@moralisweb3/auth';
 
 declare module 'next-auth' {
-  /**
-   * Returned by `useSession`, `getSession` and received as a prop on the `SessionProvider` React Context
-   */
   interface Session {
-    user: TUserData;
+    user: VerifyChallengeSolanaJSONResponse | VerifyChallengeEvmJSONResponse;
   }
 }

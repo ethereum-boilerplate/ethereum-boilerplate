@@ -1,9 +1,9 @@
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { signIn, signOut, useSession } from 'next-auth/react';
 import { useAccount, useConnect, useDisconnect, useSignMessage } from 'wagmi';
-import apiPost from 'utils/apiPost';
 import { Button, Text, HStack, Avatar, useToast } from '@chakra-ui/react';
 import { getEllipsisTxt } from 'utils/format';
+import { useAuthRequestChallengeEvm } from '@moralisweb3/next';
 
 const ConnectButton = () => {
   const { connectAsync } = useConnect({ connector: new InjectedConnector() });
@@ -12,6 +12,7 @@ const ConnectButton = () => {
   const { signMessageAsync } = useSignMessage();
   const toast = useToast();
   const { data } = useSession();
+  const { requestChallengeAsync } = useAuthRequestChallengeEvm();
 
   const handleAuth = async () => {
     if (isConnected) {
@@ -20,16 +21,18 @@ const ConnectButton = () => {
     try {
       const { account, chain } = await connectAsync();
 
-      const userData = { address: account, chain: chain.id, network: 'evm' };
+      const challenge = await requestChallengeAsync({ address: account, chainId: chain.id });
 
-      const { message } = await apiPost('/auth/request-message', userData);
+      if (!challenge) {
+        throw new Error('No challenge received');
+      }
 
-      const signature = await signMessageAsync({ message });
+      const signature = await signMessageAsync({ message: challenge.message });
 
-      await signIn('credentials', { message, signature, callbackUrl: '/' });
+      await signIn('moralis-auth', { message: challenge.message, signature, network: 'Evm', redirect: false });
     } catch (e) {
       toast({
-        title: 'Oops, something is wrong...',
+        title: 'Oops, something went wrong...',
         description: (e as { message: string })?.message,
         status: 'error',
         position: 'top-right',

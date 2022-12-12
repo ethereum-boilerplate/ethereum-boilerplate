@@ -15,21 +15,29 @@ import {
   HStack,
   useColorModeValue,
 } from '@chakra-ui/react';
-import { FC, useEffect } from 'react';
+import { useEvmWalletTokenBalances } from '@moralisweb3/next';
+import { useSession } from 'next-auth/react';
+import { useEffect } from 'react';
 import { getEllipsisTxt } from 'utils/format';
-import { IERC20Balances } from './types';
+import { useNetwork } from 'wagmi';
 
-const ERC20Balances: FC<IERC20Balances> = ({ balances }) => {
+const ERC20Balances = () => {
   const hoverTrColor = useColorModeValue('gray.100', 'gray.700');
+  const { data } = useSession();
+  const { chain } = useNetwork();
+  const { data: tokenBalances } = useEvmWalletTokenBalances({
+    address: data?.user?.address,
+    chain: chain?.id,
+  });
 
-  useEffect(() => console.log('balances: ', balances), [balances]);
+  useEffect(() => console.log('tokenBalances: ', tokenBalances), [tokenBalances]);
 
   return (
     <>
       <Heading size="lg" marginBottom={6}>
         ERC20 Balances
       </Heading>
-      {balances?.length ? (
+      {tokenBalances?.length ? (
         <Box border="2px" borderColor={hoverTrColor} borderRadius="xl" padding="24px 18px">
           <TableContainer w={'full'}>
             <Table>
@@ -41,7 +49,7 @@ const ERC20Balances: FC<IERC20Balances> = ({ balances }) => {
                 </Tr>
               </Thead>
               <Tbody>
-                {balances?.map(({ token, value }, key) => (
+                {tokenBalances?.map(({ token, value }, key) => (
                   <Tr key={`${token?.symbol}-${key}-tr`} _hover={{ bgColor: hoverTrColor }} cursor="pointer">
                     <Td>
                       <HStack>
@@ -55,7 +63,7 @@ const ERC20Balances: FC<IERC20Balances> = ({ balances }) => {
                       </HStack>
                     </Td>
                     <Td>{value}</Td>
-                    <Td isNumeric>{getEllipsisTxt(token?.contractAddress || '')}</Td>
+                    <Td isNumeric>{getEllipsisTxt(token?.contractAddress.checksum)}</Td>
                   </Tr>
                 ))}
               </Tbody>

@@ -11,12 +11,20 @@ import {
   Box,
   useColorModeValue,
 } from '@chakra-ui/react';
-import { FC, useEffect } from 'react';
+import { useEvmWalletTransactions } from '@moralisweb3/next';
+import { useSession } from 'next-auth/react';
+import { useEffect } from 'react';
 import { getEllipsisTxt } from 'utils/format';
-import { ITransactions } from './types';
+import { useNetwork } from 'wagmi';
 
-const Transactions: FC<ITransactions> = ({ transactions }) => {
+const Transactions = () => {
   const hoverTrColor = useColorModeValue('gray.100', 'gray.700');
+  const { data } = useSession();
+  const { chain } = useNetwork();
+  const { data: transactions } = useEvmWalletTransactions({
+    address: data?.user?.address,
+    chain: chain?.id,
+  });
 
   useEffect(() => console.log('transactions: ', transactions), [transactions]);
 
@@ -42,10 +50,10 @@ const Transactions: FC<ITransactions> = ({ transactions }) => {
               <Tbody>
                 {transactions?.map((tx, key) => (
                   <Tr key={key} _hover={{ bgColor: hoverTrColor }} cursor="pointer">
-                    <Td>{getEllipsisTxt(tx?.hash || '')}</Td>
-                    <Td>{getEllipsisTxt(tx?.from || '')}</Td>
-                    <Td>{getEllipsisTxt(tx?.to || '')}</Td>
-                    <Td>{tx.gasUsed}</Td>
+                    <Td>{getEllipsisTxt(tx?.hash)}</Td>
+                    <Td>{getEllipsisTxt(tx?.from.checksum)}</Td>
+                    <Td>{getEllipsisTxt(tx?.to?.checksum)}</Td>
+                    <Td>{tx.gasUsed.toString()}</Td>
                     <Td>{new Date(tx.blockTimestamp).toLocaleDateString()}</Td>
                     <Td isNumeric>{tx.receiptStatus}</Td>
                   </Tr>
