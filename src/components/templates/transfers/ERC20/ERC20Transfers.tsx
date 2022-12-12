@@ -11,12 +11,20 @@ import {
   Box,
   useColorModeValue,
 } from '@chakra-ui/react';
-import { FC, useEffect } from 'react';
+import { useEvmWalletTokenTransfers } from '@moralisweb3/next';
+import { useSession } from 'next-auth/react';
+import { useEffect } from 'react';
 import { getEllipsisTxt } from 'utils/format';
-import { IERC20Transfers } from './types';
+import { useNetwork } from 'wagmi';
 
-const ERC20Transfers: FC<IERC20Transfers> = ({ transfers }) => {
+const ERC20Transfers = () => {
   const hoverTrColor = useColorModeValue('gray.100', 'gray.700');
+  const { data } = useSession();
+  const { chain } = useNetwork();
+  const { data: transfers } = useEvmWalletTokenTransfers({
+    address: data?.user?.address,
+    chain: chain?.id,
+  });
 
   useEffect(() => console.log('transfers: ', transfers), [transfers]);
 
@@ -41,11 +49,11 @@ const ERC20Transfers: FC<IERC20Transfers> = ({ transfers }) => {
               <Tbody>
                 {transfers?.map((transfer, key) => (
                   <Tr key={key} _hover={{ bgColor: hoverTrColor }} cursor="pointer">
-                    <Td>{getEllipsisTxt(transfer?.address || '')}</Td>
-                    <Td>{getEllipsisTxt(transfer?.fromAddress || '')}</Td>
-                    <Td>{getEllipsisTxt(transfer?.toAddress || '')}</Td>
+                    <Td>{getEllipsisTxt(transfer?.address.checksum)}</Td>
+                    <Td>{getEllipsisTxt(transfer?.fromAddress.checksum)}</Td>
+                    <Td>{getEllipsisTxt(transfer?.toAddress.checksum)}</Td>
                     <Td>{new Date(transfer.blockTimestamp).toLocaleDateString()}</Td>
-                    <Td isNumeric>{transfer.value}</Td>
+                    <Td isNumeric>{transfer.value.toString()}</Td>
                   </Tr>
                 ))}
               </Tbody>

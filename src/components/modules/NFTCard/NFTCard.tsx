@@ -1,10 +1,15 @@
 import { Box, HStack, Image, SimpleGrid, useColorModeValue } from '@chakra-ui/react';
+import { EvmNft } from '@moralisweb3/common-evm-utils';
 import { Eth } from '@web3uikit/icons';
 import { FC } from 'react';
 import { resolveIPFS } from 'utils/resolveIPFS';
-import { INFTCard } from './types';
 
-const NFTCard: FC<INFTCard> = ({ amount, contractType, name, symbol, metadata }) => {
+export interface NFTCardParams {
+  key: number;
+  nft: EvmNft;
+}
+
+const NFTCard: FC<NFTCardParams> = ({ nft: { amount, contractType, name, symbol, metadata } }) => {
   const bgColor = useColorModeValue('none', 'gray.700');
   const borderColor = useColorModeValue('gray.200', 'gray.700');
   const descBgColor = useColorModeValue('gray.100', 'gray.600');
@@ -13,7 +18,7 @@ const NFTCard: FC<INFTCard> = ({ amount, contractType, name, symbol, metadata })
     <Box maxWidth="315px" bgColor={bgColor} padding={3} borderRadius="xl" borderWidth="1px" borderColor={borderColor}>
       <Box maxHeight="260px" overflow={'hidden'} borderRadius="xl">
         <Image
-          src={resolveIPFS(metadata?.image as string)}
+          src={resolveIPFS((metadata as { image?: string })?.image)}
           alt={'nft'}
           minH="260px"
           minW="260px"

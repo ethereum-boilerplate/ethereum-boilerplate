@@ -33,8 +33,12 @@ const Home = () => {
           Display NFT transfers
         </ListItem>
         <ListItem>
-          <ListIcon as={SettingsIcon} color="green.500" />
+          <ListIcon as={CheckCircleIcon} color="green.500" />
           Multichain Support
+        </ListItem>
+        <ListItem>
+          <ListIcon as={CheckCircleIcon} color="green.500" />
+          Using Moralis from client-side
         </ListItem>
         <ListItem>
           <ListIcon as={SettingsIcon} color="green.500" />
@@ -47,10 +51,6 @@ const Home = () => {
         <ListItem>
           <ListIcon as={SettingsIcon} color="green.500" />
           Rainbowkit integration
-        </ListItem>
-        <ListItem>
-          <ListIcon as={SettingsIcon} color="green.500" />
-          Using Moralis from client-side
         </ListItem>
         <ListItem>
           <ListIcon as={SettingsIcon} color="green.500" />
