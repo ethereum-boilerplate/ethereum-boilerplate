@@ -24,7 +24,7 @@
     "framer-motion": "^6",
     "moralis": "^2.9.0",
     "next": "^13.0.6",
-    "next-auth": "^4.10.3",
+    "next-auth": "^4.18.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "wagmi": "^0.9.2"
