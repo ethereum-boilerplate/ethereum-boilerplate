@@ -1,0 +1,50 @@
+{
+  "name": "ethereum-boilerplate",
+  "version": "2.0.0",
+  "private": true,
+  "homepage": "https://eth-boilerplate.vercel.app/",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "prepare": "husky install",
+    "deploypage": "gh-pages -d .next"
+  },
+  "dependencies": {
+    "@chakra-ui/icons": "^2.0.8",
+    "@chakra-ui/react": "^2.4.3",
+    "@emotion/react": "^11",
+    "@emotion/styled": "^11",
+    "@moralisweb3/next": "^2.9.0",
+    "@web3uikit/core": "^0.1.5",
+    "@web3uikit/icons": "^0.1.5",
+    "eslint-config-next": "^13.0.6",
+    "ethers": "^5.6.9",
+    "framer-motion": "^6",
+    "moralis": "^2.9.0",
+    "next": "^13.0.6",
+    "next-auth": "^4.10.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "wagmi": "^0.9.2"
+  },
+  "devDependencies": {
+    "@moralisweb3/eslint-config": "^1.0.1",
+    "@types/node": "18.7.6",
+    "@types/react": "18.0.17",
+    "@types/react-dom": "18.0.6",
+    "@typescript-eslint/eslint-plugin": "^5.33.1",
+    "@typescript-eslint/parser": "^5.33.1",
+    "eslint": "8.22.0",
+    "eslint-plugin-etc": "^2.0.2",
+    "gh-pages": "^4.0.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "2.7.1",
+    "typescript": "4.7.4"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
+  }
+}
