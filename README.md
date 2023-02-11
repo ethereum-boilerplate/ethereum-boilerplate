@@ -39,6 +39,19 @@ yarn install
 
 ![image](https://user-images.githubusercontent.com/78314301/186810270-7c365d43-ebb8-4546-a383-32983fbacef9.png)
 
+🖊️ Fill the environment variables in your .env.local file in the app root:
+
+- `MORALIS_API_KEY`: You can get it here.
+- `NEXTAUTH_URL`: Your app address. In the development stage, use http://localhost:3000.
+- `NEXTAUTH_SECRET`: Used for encrypting JWT tokens of users. You can put any value here or generate it on https://generate-secret.now.sh/32. Here's an .env.local 
+
+Example:
+```
+MORALIS_API_KEY=xxxx
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=7197b3e8dbee5ea6274cab37245eec212
+```
+
 🚴‍♂️ Run your App:
 
 ```sh
