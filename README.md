@@ -43,7 +43,7 @@ yarn install
 
 - `MORALIS_API_KEY`: You can get it [here](https://admin.moralis.io/account/profile).
 - `NEXTAUTH_URL`: Your app address. In the development stage, use http://localhost:3000.
-- `NEXTAUTH_SECRET`: Used for encrypting JWT tokens of users. You can put any value here or generate it on https://generate-secret.now.sh/32. Here's an .env.local 
+- `NEXTAUTH_SECRET`: Used for encrypting JWT tokens of users. You can put any value here or generate it on https://generate-secret.now.sh/32.
 
 Example:
 ```
