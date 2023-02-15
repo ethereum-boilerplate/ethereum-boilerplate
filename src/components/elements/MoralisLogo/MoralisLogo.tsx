@@ -5,12 +5,7 @@ const MoralisLogo = () => {
   const { colorMode } = useColorMode();
 
   return (
-    <Image
-      src={colorMode === 'dark' ? '/Moralis-DarkBG.svg' : '/Moralis-LightBG.svg'}
-      height={45}
-      width={150}
-      alt="Moralis"
-    />
+    <Image src={colorMode === 'dark' ? '/logo-dark.svg' : '/logo-dark.svg'} height={45} width={150} alt="Moralis" />
   );
 };
 
