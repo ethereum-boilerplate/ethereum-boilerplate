@@ -21,6 +21,12 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '16'
+      - name: Use cache dependencies
+        uses: actions/cache@v2
+        id: cache
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/package-lock.json') }}s
       - name: Install packages
         run: npm install
 
@@ -37,6 +43,12 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '16'
+      - name: Use cache dependencies
+        uses: actions/cache@v2
+        id: cache
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/package-lock.json') }}s
       - name: ESLint
         run: npm run lint:ci
         continue-on-error: true
@@ -61,5 +73,11 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '16'
+      - name: Use cache dependencies
+        uses: actions/cache@v2
+        id: cache
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/package-lock.json') }}s
       - name: Prettier
         run: npm run format:check
