@@ -27,7 +27,6 @@ If you need help with setting up the boilerplate or have other questions - don't
 <a href="https://app.netlify.com/start/deploy?repository=https://github.com/ethereum-boilerplate/ethereum-boilerplate"><img src="https://www.netlify.com/img/deploy/button.svg"></a>
 </div>
 
-
 📄 Clone or fork `ethereum-boilerplate`:
 
 ```sh
@@ -52,6 +51,7 @@ yarn install
 - `NEXTAUTH_SECRET`: Used for encrypting JWT tokens of users. You can put any value here or generate it on https://generate-secret.now.sh/32.
 
 Example:
+
 ```
 MORALIS_API_KEY=xxxx
 NEXTAUTH_URL=http://localhost:3000
@@ -65,6 +65,7 @@ yarn start
 ```
 
 # 🧭 `Table of contents`
+
 - [`ethereum-boilerplate`](#ethereum-boilerplate)
 - [🚀 Quick Start](#-quick-start)
 - [🧭 Table of contents](#-table-of-contents)
@@ -116,4 +117,3 @@ location: `src/component/templates/transfers/NFT/NFTTransfers.tsx`
 location: `src/component/templates/transactions/Transactions.tsx`
 
 💰 `<Transactions />` : displays the user's transactions. Uses Moralis Evm API (does not require an active web3 provider).
-

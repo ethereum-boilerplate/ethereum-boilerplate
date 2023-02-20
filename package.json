@@ -4,6 +4,8 @@
   "private": true,
   "homepage": "https://eth-boilerplate.vercel.app/",
   "scripts": {
+    "format": "prettier . \"**/*.+(js|ts|json)\" --write",
+    "format:check": "prettier . \"**/*.+(js|ts|json)\" --check",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -45,7 +47,7 @@
     "typescript": "4.7.4"
   },
   "lint-staged": {
-    "**/*": "prettier --write --ignore-unknown"
+    "**/*": "prettier . \"**/*.+(js|ts|json)\" --write"
   },
   "engines": {
     "node": "^12.19.0 || ^14.15.0 || ^16.13.0"
