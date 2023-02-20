@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://eth-boilerplate.vercel.app/",
   "scripts": {
+    "install:clean": "npm ci",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
