@@ -4,8 +4,8 @@
   "private": true,
   "homepage": "https://eth-boilerplate.vercel.app/",
   "scripts": {
-    "format": "prettier . \"**/*.+(js|ts|json)\" --write",
-    "format:check": "prettier . \"**/*.+(js|ts|json)\" --check",
+    "format": "prettier . \"**/*.+(js|ts|json)\" --write --ignore-path .gitignore .",
+    "format:check": "prettier . \"**/*.+(js|ts|json)\" --check --ignore-path .gitignore .",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
