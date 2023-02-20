@@ -1,7 +1,7 @@
 import { Default } from 'components/layouts/Default';
 import { NFTBalances } from 'components/templates/balances/NFT';
 
-const ERC20 = () => {
+const NFT = () => {
   return (
     <Default pageName="NFT Balances">
       <NFTBalances />
@@ -9,4 +9,4 @@ const ERC20 = () => {
   );
 };
 
-export default ERC20;
+export default NFT;

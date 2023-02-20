@@ -22,6 +22,12 @@ If you need help with setting up the boilerplate or have other questions - don't
 
 # 🚀 `Quick Start`
 
+<div justify="center">
+<a href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fethereum-boilerplate%2Fethereum-boilerplate&env=MORALIS_API_KEY,NEXTAUTH_SECRET,NEXTAUTH_URL&envDescription=1.%20MORALIS_API_KEY%3A%20Visit%20admin.moralis.io.%202.%20NEXTAUTH_URL%3A%20Your%20app%20address.%20In%20the%20development%20stage%2C%20use%20http%3A%2F%2Flocalhost%3A3000.%203.%20NEXTAUTH_SECRET%3A%20Used%20for%20encrypting%20JWT%20tokens.%20You%20can%20put%20any%20or%20generate%20it%20on%20https%3A%2F%2Fgenerate-secret.now.sh%2F32&envLink=https%3A%2F%2Fgithub.com%2Fethereum-boilerplate%2Fethereum-boilerplate%23-quick-start"><img src="https://vercel.com/button" alt="Deploy with Vercel"/></a>
+<a href="https://app.netlify.com/start/deploy?repository=https://github.com/ethereum-boilerplate/ethereum-boilerplate"><img src="https://www.netlify.com/img/deploy/button.svg"></a>
+</div>
+
+
 📄 Clone or fork `ethereum-boilerplate`:
 
 ```sh
@@ -38,6 +44,19 @@ yarn install
 ✏ Rename `.env.local.example` to `.env.local` and provide required data. Get your Web3 Api Key from the [Moralis dashboard](https://admin.moralis.io/):
 
 ![image](https://user-images.githubusercontent.com/78314301/186810270-7c365d43-ebb8-4546-a383-32983fbacef9.png)
+
+🖊️ Fill the environment variables in your .env.local file in the app root:
+
+- `MORALIS_API_KEY`: You can get it [here](https://admin.moralis.io/account/profile).
+- `NEXTAUTH_URL`: Your app address. In the development stage, use http://localhost:3000.
+- `NEXTAUTH_SECRET`: Used for encrypting JWT tokens of users. You can put any value here or generate it on https://generate-secret.now.sh/32.
+
+Example:
+```
+MORALIS_API_KEY=xxxx
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=7197b3e8dbee5ea6274cab37245eec212
+```
 
 🚴‍♂️ Run your App:
 
