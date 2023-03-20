@@ -1,4 +1,4 @@
 [template.environment]
-  MORALIS_API_KEY = "MORALIS_API_KEY"
+  MORALIS_API_KEY = "Get your KEY https://admin.moralis.io/account/profile"
   NEXTAUTH_SECRET = "NEXTAUTH_SECRET"
-  NEXTAUTH_URL = "NEXTAUTH_URL"
+  NEXTAUTH_URL = "Set your app URL"
