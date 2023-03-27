@@ -20,7 +20,7 @@
     "@web3uikit/core": "^0.1.5",
     "@web3uikit/icons": "^0.1.5",
     "eslint-config-next": "^13.0.6",
-    "ethers": "^5.6.9",
+    "ethers": "^6.2.2",
     "framer-motion": "^6",
     "moralis": "^2.14.1",
     "next": "^13.0.6",
