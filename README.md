@@ -6,7 +6,7 @@
 
 This boilerplate is built with [Moralis](https://moralis.io?utm_source=github&utm_medium=readme&utm_campaign=ethereum-boilerplate)
 
-You need active web3 provider/wallet only for authnetication. All pages in this boilerplate do not require an active web3 provider, they use Moralis Web3 API. Moralis supports the most popular blockchains and their test networks. You can find a list of all available networks in [Moralis Supported Chains](https://docs.moralis.io/reference/supported-chains-nft)
+You need active web3 provider/wallet only for authentication. All pages in this boilerplate do not require an active web3 provider, they use Moralis Web3 API. Moralis supports the most popular blockchains and their test networks. You can find a list of all available networks in [Moralis Supported Chains](https://docs.moralis.io/reference/supported-chains-nft)
 
 Please check the [official documentation of Moralis](https://docs.moralis.io/) for all the functionalities of Moralis.
 
@@ -84,7 +84,7 @@ yarn start
 
 location: `src/component/templates/balances/NFT/NFTBalances.tsx`
 
-🎨 `<NFTBalances />` : displays the the user's balances. Uses Moralis Evm API (does not require an active web3 provider).
+🎨 `<NFTBalances />` : displays the user's balances. Uses Moralis Evm API (does not require an active web3 provider).
 
 ### `<ERC20Balances />`
 
