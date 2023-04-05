@@ -35,7 +35,7 @@
     "@types/react": "18.0.17",
     "@types/react-dom": "18.0.6",
     "@typescript-eslint/eslint-plugin": "^5.33.1",
-    "@typescript-eslint/parser": "^5.33.1",
+    "@typescript-eslint/parser": "^5.57.0",
     "eslint": "8.22.0",
     "eslint-plugin-etc": "^2.0.2",
     "prettier": "2.7.1",
