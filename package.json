@@ -9,7 +9,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test:e2e": "start-server-and-test dev http://localhost:3000 test:cypress",
+    "test:cypress": "cypress run --browser chrome --headless"
   },
   "dependencies": {
     "@chakra-ui/icons": "^2.0.8",
@@ -36,9 +38,12 @@
     "@types/react-dom": "18.0.6",
     "@typescript-eslint/eslint-plugin": "^5.33.1",
     "@typescript-eslint/parser": "^5.57.0",
+    "cypress": "^12.9.0",
     "eslint": "8.22.0",
+    "eslint-plugin-cypress": "^2.13.2",
     "eslint-plugin-etc": "^2.0.2",
     "prettier": "2.7.1",
+    "start-server-and-test": "^2.0.0",
     "typescript": "4.7.4"
   },
   "engines": {
