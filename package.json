@@ -1,8 +1,8 @@
 {
-  "name": "ethereum-boilerplate",
+  "name": "einpunk-boilerplate",
   "version": "2.0.0",
   "private": true,
-  "homepage": "https://eth-boilerplate.vercel.app/",
+  "homepage": "https://einpunk-boilerplate.vercel.app/",
   "scripts": {
     "format": "prettier . \"**/*.+(js|ts|json)\" --write --ignore-path .gitignore",
     "format:check": "prettier . \"**/*.+(js|ts|json)\" --check --ignore-path .gitignore",
