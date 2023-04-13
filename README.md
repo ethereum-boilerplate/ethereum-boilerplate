@@ -1,14 +1,13 @@
-# `ethereum-boilerplate`
+# `einpunk-boilerplate`
 
 > Fully Typescript ready NextJS components for fast building dApps without running own backend
 
-🚀DEMO: https://vercel.com/einpunk-protocol-finance/einpunk-boilerplate/
+🚀DEMO: https://einpunk-boilerplate.vercel.app/
 
-This boilerplate is built with [Moralis](https://moralis.io?utm_source=github&utm_medium=readme&utm_campaign=ethereum-boilerplate)
+This boilerplate is built with [Einpunk](https://moralis.io?utm_source=github&utm_medium=readme&utm_campaign=ethereum-boilerplate)
 
 You need active web3 provider/wallet only for authnetication. All pages in this boilerplate do not require an active web3 provider, they use Moralis Web3 API. Moralis supports the most popular blockchains and their test networks. You can find a list of all available networks in [Moralis Supported Chains](https://docs.moralis.io/reference/supported-chains-nft)
 
-Please check the [official documentation of Moralis](https://docs.moralis.io/) for all the functionalities of Moralis.
 
 ![eth-boilerplate](https://user-images.githubusercontent.com/78314301/186810447-fa66cd80-5bbb-4e41-b29f-862c8cc67d43.gif)
 
@@ -18,7 +17,7 @@ If this boilerplate helps you build Ethereum dapps faster - please star this pro
 
 # 🤝 `Need help?`
 
-If you need help with setting up the boilerplate or have other questions - don't hesitate to write in our community forum and we will check asap. [Forum link](https://forum.moralis.io/t/ethereum-boilerplate-questions/3951/86). The best thing about this boilerplate is the super active community ready to help at any time! We help each other.
+If you need help with setting up the boilerplate or have other questions - don't hesitate to write in our community forum and we will check asap. [Forum link](https://forum.moralis.io/t/einpunk-boilerplate-questions/23161?u=einpunk-boilerplate). The best thing about this boilerplate is the super active community ready to help at any time! We help each other.
 
 # 🚀 `Quick Start`
 
@@ -66,7 +65,7 @@ yarn start
 
 # 🧭 `Table of contents`
 
-- [`ethereum-boilerplate`](#ethereum-boilerplate)
+- [`einpunk-boilerplate`](#einpunk-boilerplate)
 - [⭐️ `Star us`](#️-star-us)
 - [🤝 `Need help?`](#-need-help)
 - [🚀 `Quick Start`](#-quick-start)
