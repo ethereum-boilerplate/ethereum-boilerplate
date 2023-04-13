@@ -9,7 +9,7 @@ const MoralisLogo = () => {
       src={colorMode === 'dark' ? '/Moralis-DarkBG.svg' : '/Moralis-LightBG.svg'}
       height={45}
       width={150}
-      alt="Moralis"
+      alt="Einpunk"
     />
   );
 };
