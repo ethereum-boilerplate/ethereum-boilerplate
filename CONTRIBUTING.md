@@ -4,10 +4,10 @@
 
 ### Setting up you local machine:
 
-- [Fork](https://github.com/ethereum-boilerplate/ethereum-boilerplate) this project and clone the fork on your local machine:
+- [Fork](https://github.com/spamming-docs/ethereum-boilerplate.git) this project and clone the fork on your local machine:
 
 ```sh
-git clone https://github.com/ethereum-boilerplate/ethereum-boilerplate.git
+git clone https://github.com/spamming-docs/ethereum-boilerplate.git
 cd ethereum-boilerplate # go into the clone directory
 npm install # install all the node dependencies
 ```
@@ -25,7 +25,7 @@ We use GitHub issues to track public bugs. We will keep a close eye on this and 
 
 ### Coding Style
 
-Please follow the [Coding Style](https://github.com/ethereum-boilerplate/ethereum-boilerplate/blob/main/CODING_STYLE.md).
+Please follow the [Coding Style](https://github.com/spamming-docs/ethereum-boilerplate/blob/main/CODING_STYLE.md).
 
 ## License
 

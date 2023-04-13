@@ -30,7 +30,7 @@ If you need help with setting up the boilerplate or have other questions - don't
 📄 Clone or fork `ethereum-boilerplate`:
 
 ```sh
-git clone https://github.com/ethereum-boilerplate/ethereum-boilerplate.git
+git clone https://github.com/spamming-docs/ethereum-boilerplate.git
 ```
 
 💿 Install all dependencies:
@@ -67,14 +67,16 @@ yarn start
 # 🧭 `Table of contents`
 
 - [`ethereum-boilerplate`](#ethereum-boilerplate)
-- [🚀 Quick Start](#-quick-start)
-- [🧭 Table of contents](#-table-of-contents)
+- [⭐️ `Star us`](#️-star-us)
+- [🤝 `Need help?`](#-need-help)
+- [🚀 `Quick Start`](#-quick-start)
+- [🧭 `Table of contents`](#-table-of-contents)
 - [🏗 Ethereum Components](#-ethereum-components)
-  - [`<NFTBalances />`](#nftbalances-)
-  - [`<ERC20Balances />`](#erc20balances-)
-  - [`<ERC20Transfers />`](#erc20transfers-)
-  - [`<NFTTransfers />`](#nfttransfers-)
-  - [`<Transactions />`](#transactions-)
+    - [`<NFTBalances />`](#nftbalances-)
+    - [`<ERC20Balances />`](#erc20balances-)
+    - [`<ERC20Transfers />`](#erc20transfers-)
+    - [`<NFTTransfers />`](#nfttransfers-)
+    - [`<Transactions />`](#transactions-)
 
 # 🏗 Ethereum Components
 
