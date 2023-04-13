@@ -5,12 +5,12 @@ const Home = () => {
   return (
     <VStack w={'full'}>
       <Heading size="md" marginBottom={6}>
-        Ethereum Boilerplate
+        Einpunk Boilerplate
       </Heading>
       <List spacing={3}>
         <ListItem>
           <ListIcon as={CheckCircleIcon} color="green.500" />
-          Moralis authentication
+          Einpunk authentication
         </ListItem>
         <ListItem>
           <ListIcon as={CheckCircleIcon} color="green.500" />
