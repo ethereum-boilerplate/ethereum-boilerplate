@@ -14,6 +14,15 @@
       "contributions": [
         "maintenance"
       ]
+    },
+    {
+      "login": "ivan-liljeqvist",
+      "name": "Ivan Liljeqvist",
+      "avatar_url": "https://avatars.githubusercontent.com/u/11097108?v=4",
+      "profile": "https://github.com/ivan-liljeqvist",
+      "contributions": [
+        "projectManagement"
+      ]
     }
   ],
   "contributorsPerLine": 7,
