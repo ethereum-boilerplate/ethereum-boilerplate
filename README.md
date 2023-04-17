@@ -78,6 +78,7 @@ yarn start
   - [`<ERC20Transfers />`](#erc20transfers-)
   - [`<NFTTransfers />`](#nfttransfers-)
   - [`<Transactions />`](#transactions-)
+- [✨ Contributors](#contributors-)
 
 # 🏗 Ethereum Components
 
@@ -121,7 +122,7 @@ location: `src/component/templates/transactions/Transactions.tsx`
 
 💰 `<Transactions />` : displays the user's transactions. Uses Moralis Evm API (does not require an active web3 provider).
 
-## Contributors
+# ✨ Contributors
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
