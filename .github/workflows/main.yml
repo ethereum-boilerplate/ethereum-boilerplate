@@ -26,11 +26,11 @@ jobs:
         id: cache
         with:
           path: '**/node_modules'
-          key: ${{ runner.os }}-modules-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/package-lock.json') }}s
+          key: ${{ runner.os }}-modules-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/yarn.lock') }}s
       - name: Install packages
-        run: npm ci
+        run: yarn install --frozen-lockfile
       - name: ESLint
-        run: npm run lint:ci
+        run: yarn lint:ci
         continue-on-error: true
       - name: Annotate Code Linting Results
         uses: ataylorme/eslint-annotate-action@1.2.0
@@ -40,7 +40,7 @@ jobs:
           repo-token: '${{ secrets.GITHUB_TOKEN }}'
           report-json: 'eslint_report.json'
       - name: Prettier
-        run: npm run format:check
+        run: yarn format:check
 
   build_and_test:
     name: Build and Test
@@ -60,11 +60,11 @@ jobs:
         id: cache
         with:
           path: '**/node_modules'
-          key: ${{ runner.os }}-modules-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/package-lock.json') }}s
+          key: ${{ runner.os }}-modules-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/yarn.lock') }}s
       - name: Build
-        run: npm run build
+        run: yarn build
       - name: Run Tests
-        run: npm run test
+        run: yarn test
 
   cypress_tests:
     name: Cypress E2E Tests
@@ -84,10 +84,10 @@ jobs:
         id: cache
         with:
           path: '**/node_modules'
-          key: ${{ runner.os }}-modules-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/package-lock.json') }}s
+          key: ${{ runner.os }}-modules-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/yarn.lock') }}s
       - name: Run Cypress Tests
         uses: cypress-io/github-action@v2
         with:
-          start: npm run dev
+          start: yarn start
           wait-on: 'http://localhost:3000'
-          cache-key: ${{ runner.os }}-modules-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/package-lock.json') }}s
+          cache-key: ${{ runner.os }}-modules-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/yarn.lock') }}s
