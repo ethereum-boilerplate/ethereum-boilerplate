@@ -83,16 +83,17 @@ jobs:
 
   cypress_tests:
     name: Cypress E2E Tests
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macOS-latest]
+        browser: [chrome, firefox, edge]
         node: [16]
-    needs: build
+    needs: build_and_test
     steps:
       - name: Common Steps
         id: common
-        run: echo "common_step=yes" >> $GITHUB_ENV
+        run: |
+          echo "common_step=yes" >> $GITHUB_ENV
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
@@ -115,3 +116,4 @@ jobs:
           wait-on: 'http://localhost:3000'
           cache-key: ${{ runner.os }}-modules-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/yarn.lock') }}s
           config-file: cypress.config.ts
+          browser: ${{ matrix.browser }}
