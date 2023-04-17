@@ -71,7 +71,7 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest, macOS-latest]
         node: [16]
-    needs: build_and_test
+    needs: build
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
