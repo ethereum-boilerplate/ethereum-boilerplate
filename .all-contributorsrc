@@ -23,6 +23,15 @@
       "contributions": [
         "projectManagement"
       ]
+    },
+    {
+      "login": "benjaminrosenberg",
+      "name": "Ben Rosenberg",
+      "avatar_url": "https://avatars.githubusercontent.com/u/41136344?v=4",
+      "profile": "https://github.com/benjaminrosenberg",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
