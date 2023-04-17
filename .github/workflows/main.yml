@@ -9,9 +9,9 @@ on:
       - main
       - beta
 jobs:
-  setup:
-    name: Build dependencies
-    runs-on: ${{matrix.os}}
+  setup_and_checks:
+    name: Setup dependencies and checks
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os: [ubuntu-latest]
@@ -28,27 +28,7 @@ jobs:
           path: '**/node_modules'
           key: ${{ runner.os }}-modules-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/package-lock.json') }}s
       - name: Install packages
-        run: npm install
-
-  lint:
-    name: Eslint
-    runs-on: ${{matrix.os}}
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        node: [16]
-    needs: setup
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '16'
-      - name: Use cache dependencies
-        uses: actions/cache@v3
-        id: cache
-        with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-modules-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/package-lock.json') }}s
+        run: npm ci
       - name: ESLint
         run: npm run lint:ci
         continue-on-error: true
@@ -59,15 +39,17 @@ jobs:
         with:
           repo-token: '${{ secrets.GITHUB_TOKEN }}'
           report-json: 'eslint_report.json'
+      - name: Prettier
+        run: npm run format:check
 
-  format:
-    name: Prettier
-    runs-on: ${{matrix.os}}
+  build_and_test:
+    name: Build and Test
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os: [ubuntu-latest]
         node: [16]
-    needs: setup
+    needs: setup_and_checks
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -79,5 +61,33 @@ jobs:
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-modules-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/package-lock.json') }}s
-      - name: Prettier
-        run: npm run format:check
+      - name: Build
+        run: npm run build
+      - name: Run Tests
+        run: npm run test
+
+  cypress_tests:
+    name: Cypress E2E Tests
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macOS-latest]
+        node: [16]
+    needs: build_and_test
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      - name: Use cache dependencies
+        uses: actions/cache@v3
+        id: cache
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/package-lock.json') }}s
+      - name: Run Cypress Tests
+        uses: cypress-io/github-action@v2
+        with:
+          start: npm run dev
+          wait-on: 'http://localhost:3000'
+          cache-key: ${{ runner.os }}-modules-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/package-lock.json') }}s
