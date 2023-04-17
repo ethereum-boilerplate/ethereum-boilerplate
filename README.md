@@ -131,7 +131,7 @@ location: `src/component/templates/transactions/Transactions.tsx`
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Y0moo"><img src="https://avatars.githubusercontent.com/u/78314301?v=4?s=100" width="100px;" alt="Dmitrii Kapeliushnyi"/><br /><sub><b>Dmitrii Kapeliushnyi</b></sub></a><br /><a href="#maintenance-Y0moo" title="Maintenance">🚧</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/KoenRijpstra"><img src="https://avatars.githubusercontent.com/u/579455?v=4?s=100" width="100px;" alt="Koen Rijpstra"/><br /><sub><b>Koen Rijpstra</b></sub></a><br /><a href="#projectManagement-KoenRijpstra" title="Project Management">📆</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/omahs"><img src="https://avatars.githubusercontent.com/u/73983677?v=4?s=100" width="100px;" alt="omahs"/><br /><sub><b>omahs</b></sub></a><br /><a href="#content-omahs" title="Content">🖋</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://www.johnversus.dev"><img src="https://avatars.githubusercontent.com/u/15834299?v=4?s=100" width="100px;" alt="JohnVersus"/><br /><sub><b>JohnVersus</b></sub></a><br /><a href="https://github.com/ethereum-boilerplate/ethereum-boilerplate/commits?author=JohnVersus" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
