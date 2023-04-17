@@ -88,7 +88,7 @@ jobs:
       matrix:
         browser: [chrome, firefox, edge]
         node: [16]
-    needs: build_and_test
+    needs: build
     steps:
       - name: Common Steps
         id: common
