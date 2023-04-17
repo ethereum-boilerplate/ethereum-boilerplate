@@ -125,28 +125,10 @@ location: `src/component/templates/transactions/Transactions.tsx`
 
 # ✨ Contributors
 
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
-<table>
-  <tbody>
-    <tr>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Y0moo"><img src="https://avatars.githubusercontent.com/u/78314301?v=4?s=100" width="100px;" alt="Dmitrii Kapeliushnyi"/><br /><sub><b>Dmitrii Kapeliushnyi</b></sub></a><br /><a href="#maintenance-Y0moo" title="Maintenance">🚧</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/KoenRijpstra"><img src="https://avatars.githubusercontent.com/u/579455?v=4?s=100" width="100px;" alt="Koen Rijpstra"/><br /><sub><b>Koen Rijpstra</b></sub></a><br /><a href="#projectManagement-KoenRijpstra" title="Project Management">📆</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/omahs"><img src="https://avatars.githubusercontent.com/u/73983677?v=4?s=100" width="100px;" alt="omahs"/><br /><sub><b>omahs</b></sub></a><br /><a href="#content-omahs" title="Content">🖋</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/locothedev"><img src="https://avatars.githubusercontent.com/u/89942527?v=4?s=100" width="100px;" alt="Loco The Dev"/><br /><sub><b>Loco The Dev</b></sub></a><br /><a href="https://github.com/ethereum-boilerplate/ethereum-boilerplate/commits?author=locothedev" title="Code">💻</a></td>
-    </tr>
-  </tbody>
-</table>
+Feel free to contribute 🧙 to `ethereum-boilerplate` project. But first, **please read the [Contributing Guidelines](CONTRIBUTING.md) before opening an issue or PR** so you understand the branching strategy and local development environment.
 
-<!-- markdownlint-restore -->
-<!-- prettier-ignore-end -->
+<a href="https://github.com/ethereum-boilerplate/ethereum-boilerplate/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=ethereum-boilerplate/ethereum-boilerplate" />
+</a>
 
-<!-- ALL-CONTRIBUTORS-LIST:END -->
-<!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
-
-<!-- markdownlint-restore -->
-<!-- prettier-ignore-end -->
-
-<!-- ALL-CONTRIBUTORS-LIST:END -->
+Made with [contrib.rocks](https://contrib.rocks).
