@@ -114,3 +114,4 @@ jobs:
           start: yarn dev
           wait-on: 'http://localhost:3000'
           cache-key: ${{ runner.os }}-modules-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/yarn.lock') }}s
+          config-file: cypress.config.ts
