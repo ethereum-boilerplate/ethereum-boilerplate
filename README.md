@@ -79,7 +79,7 @@ yarn start
   - [`<ERC20Transfers />`](#erc20transfers-)
   - [`<NFTTransfers />`](#nfttransfers-)
   - [`<Transactions />`](#transactions-)
-- [✨ Contributors](#contributors-)
+- [✨ Contributors](#-contributors)
 
 # 🏗 Ethereum Components
 
