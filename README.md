@@ -117,3 +117,14 @@ location: `src/component/templates/transfers/NFT/NFTTransfers.tsx`
 location: `src/component/templates/transactions/Transactions.tsx`
 
 💰 `<Transactions />` : displays the user's transactions. Uses Moralis Evm API (does not require an active web3 provider).
+
+## Contributors
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
