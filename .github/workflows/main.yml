@@ -9,9 +9,9 @@ on:
       - main
       - beta
 jobs:
-  setup:
-    name: Build dependencies
-    runs-on: ${{matrix.os}}
+  setup_and_checks:
+    name: Setup dependencies and checks
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os: [ubuntu-latest]
@@ -26,31 +26,11 @@ jobs:
         id: cache
         with:
           path: '**/node_modules'
-          key: ${{ runner.os }}-modules-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/package-lock.json') }}s
+          key: ${{ runner.os }}-modules-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/yarn.lock') }}s
       - name: Install packages
-        run: npm install
-
-  lint:
-    name: Eslint
-    runs-on: ${{matrix.os}}
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        node: [16]
-    needs: setup
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '16'
-      - name: Use cache dependencies
-        uses: actions/cache@v3
-        id: cache
-        with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-modules-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/package-lock.json') }}s
+        run: yarn install --frozen-lockfile
       - name: ESLint
-        run: npm run lint:ci
+        run: yarn lint
         continue-on-error: true
       - name: Annotate Code Linting Results
         uses: ataylorme/eslint-annotate-action@1.2.0
@@ -59,15 +39,17 @@ jobs:
         with:
           repo-token: '${{ secrets.GITHUB_TOKEN }}'
           report-json: 'eslint_report.json'
+      - name: Prettier
+        run: yarn format:check
 
-  format:
-    name: Prettier
-    runs-on: ${{matrix.os}}
+  build:
+    name: Build
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os: [ubuntu-latest]
         node: [16]
-    needs: setup
+    needs: setup_and_checks
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -78,6 +60,32 @@ jobs:
         id: cache
         with:
           path: '**/node_modules'
-          key: ${{ runner.os }}-modules-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/package-lock.json') }}s
-      - name: Prettier
-        run: npm run format:check
+          key: ${{ runner.os }}-modules-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/yarn.lock') }}s
+      - name: Build
+        run: yarn build
+
+  cypress_tests:
+    name: Cypress E2E Tests
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macOS-latest]
+        node: [16]
+    needs: build_and_test
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      - name: Use cache dependencies
+        uses: actions/cache@v3
+        id: cache
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/yarn.lock') }}s
+      - name: Run Cypress Tests
+        uses: cypress-io/github-action@v2
+        with:
+          start: yarn start
+          wait-on: 'http://localhost:3000'
+          cache-key: ${{ runner.os }}-modules-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/yarn.lock') }}s
