@@ -20,7 +20,7 @@
     "@emotion/styled": "^11",
     "@moralisweb3/next": "^2.14.1",
     "@web3uikit/core": "^0.1.5",
-    "@web3uikit/icons": "^0.1.5",
+    "@web3uikit/icons": "^0.4.1",
     "eslint-config-next": "^13.0.6",
     "ethers": "^5.6.9",
     "framer-motion": "^10",

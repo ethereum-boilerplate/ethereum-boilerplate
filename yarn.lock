@@ -2581,10 +2581,10 @@
     "@web3uikit/icons" "*"
     "@web3uikit/styles" "*"
 
-"@web3uikit/icons@*", "@web3uikit/icons@^0.1.5":
-  version "0.1.5"
-  resolved "https://registry.yarnpkg.com/@web3uikit/icons/-/icons-0.1.5.tgz#6a1c1699b00640188b49a85346f3d8b2a4a43353"
-  integrity sha512-1FcaZaw3SljvWNA5V2PKMfGbfhiVG6rT/u1TV7PHqMTaYlAbbTeeq5rHNrWx3MkCWBITgU6jYl2w62wGSn0WCg==
+"@web3uikit/icons@*", "@web3uikit/icons@^0.4.1":
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/@web3uikit/icons/-/icons-0.4.1.tgz#ce86a6200d6bb200c59494fe76cca3e6701f758a"
+  integrity sha512-ZvOgmTx8dB+ft75Gdb+2fkSAZ0yfyXAsot767i0T4NJ2gEiuFTJM5sXLyRzCMR82hhawEsGtktAGrsojFEs8mg==
   dependencies:
     "@web3uikit/config" "*"
 
