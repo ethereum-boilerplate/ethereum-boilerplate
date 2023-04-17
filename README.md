@@ -1,6 +1,6 @@
 # `ethereum-boilerplate`
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 > Fully Typescript ready NextJS components for fast building dApps without running own backend
@@ -130,6 +130,7 @@ location: `src/component/templates/transactions/Transactions.tsx`
   <tbody>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Y0moo"><img src="https://avatars.githubusercontent.com/u/78314301?v=4?s=100" width="100px;" alt="Dmitrii Kapeliushnyi"/><br /><sub><b>Dmitrii Kapeliushnyi</b></sub></a><br /><a href="#maintenance-Y0moo" title="Maintenance">🚧</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/ivan-liljeqvist"><img src="https://avatars.githubusercontent.com/u/11097108?v=4?s=100" width="100px;" alt="Ivan Liljeqvist"/><br /><sub><b>Ivan Liljeqvist</b></sub></a><br /><a href="#projectManagement-ivan-liljeqvist" title="Project Management">📆</a></td>
     </tr>
   </tbody>
 </table>
