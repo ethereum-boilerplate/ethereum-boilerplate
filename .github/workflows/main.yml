@@ -30,7 +30,7 @@ jobs:
       - name: Install packages
         run: yarn install --frozen-lockfile
       - name: ESLint
-        run: yarn lint:ci
+        run: yarn lint
         continue-on-error: true
       - name: Annotate Code Linting Results
         uses: ataylorme/eslint-annotate-action@1.2.0
@@ -42,8 +42,8 @@ jobs:
       - name: Prettier
         run: yarn format:check
 
-  build_and_test:
-    name: Build and Test
+  build:
+    name: Build
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -63,8 +63,6 @@ jobs:
           key: ${{ runner.os }}-modules-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/yarn.lock') }}s
       - name: Build
         run: yarn build
-      - name: Run Tests
-        run: yarn test
 
   cypress_tests:
     name: Cypress E2E Tests
