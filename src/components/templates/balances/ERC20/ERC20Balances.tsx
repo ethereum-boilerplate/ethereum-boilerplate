@@ -10,6 +10,7 @@ import {
   VStack,
   Heading,
   Box,
+  Link,
   Text,
   Avatar,
   HStack,
@@ -63,7 +64,18 @@ const ERC20Balances = () => {
                       </HStack>
                     </Td>
                     <Td>{value}</Td>
-                    <Td isNumeric>{getEllipsisTxt(token?.contractAddress.checksum)}</Td>
+                    <Td isNumeric>
+                      {chain?.blockExplorers?.default.url ? (
+                        <Link
+                          href={`${chain.blockExplorers.default.url}/address/${token?.contractAddress.checksum}`}
+                          isExternal
+                        >
+                          {getEllipsisTxt(token?.contractAddress.checksum)}
+                        </Link>
+                      ) : (
+                        getEllipsisTxt(token?.contractAddress.checksum)
+                      )}
+                    </Td>
                   </Tr>
                 ))}
               </Tbody>

@@ -9,6 +9,7 @@ import {
   Tfoot,
   Heading,
   Box,
+  Link,
   useColorModeValue,
 } from '@chakra-ui/react';
 import { useEvmWalletTokenTransfers } from '@moralisweb3/next';
@@ -49,9 +50,40 @@ const ERC20Transfers = () => {
               <Tbody>
                 {transfers?.map((transfer, key) => (
                   <Tr key={key} _hover={{ bgColor: hoverTrColor }} cursor="pointer">
-                    <Td>{getEllipsisTxt(transfer?.address.checksum)}</Td>
-                    <Td>{getEllipsisTxt(transfer?.fromAddress.checksum)}</Td>
-                    <Td>{getEllipsisTxt(transfer?.toAddress.checksum)}</Td>
+                    {chain?.blockExplorers?.default.url && transfer ? (
+                      <>
+                        <Td>
+                          <Link
+                            href={`${chain.blockExplorers.default.url}/address/${transfer.address.checksum}`}
+                            isExternal
+                          >
+                            {getEllipsisTxt(transfer.address.checksum)}
+                          </Link>
+                        </Td>
+                        <Td>
+                          <Link
+                            href={`${chain.blockExplorers.default.url}/address/${transfer.fromAddress.checksum}`}
+                            isExternal
+                          >
+                            {getEllipsisTxt(transfer.fromAddress.checksum)}
+                          </Link>
+                        </Td>
+                        <Td>
+                          <Link
+                            href={`${chain.blockExplorers.default.url}/address/${transfer.toAddress.checksum}`}
+                            isExternal
+                          >
+                            {getEllipsisTxt(transfer.toAddress.checksum)}
+                          </Link>
+                        </Td>
+                      </>
+                    ) : (
+                      <>
+                        <Td>{getEllipsisTxt(transfer?.address.checksum)}</Td>
+                        <Td>{getEllipsisTxt(transfer?.fromAddress.checksum)}</Td>
+                        <Td>{getEllipsisTxt(transfer?.toAddress.checksum)}</Td>
+                      </>
+                    )}
                     <Td>{new Date(transfer.blockTimestamp).toLocaleDateString()}</Td>
                     <Td isNumeric>{transfer.value.toString()}</Td>
                   </Tr>

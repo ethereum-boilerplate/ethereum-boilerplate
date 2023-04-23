@@ -41,7 +41,7 @@ const Home = () => {
           Using Moralis from client-side
         </ListItem>
         <ListItem>
-          <ListIcon as={SettingsIcon} color="green.500" />
+          <ListIcon as={CheckCircleIcon} color="green.500" />
           Adding explorer links to balances, transactions ...
         </ListItem>
         <ListItem>

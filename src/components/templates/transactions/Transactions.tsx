@@ -9,6 +9,7 @@ import {
   Tfoot,
   Heading,
   Box,
+  Link,
   useColorModeValue,
 } from '@chakra-ui/react';
 import { useEvmWalletTransactions } from '@moralisweb3/next';
@@ -50,9 +51,31 @@ const Transactions = () => {
               <Tbody>
                 {transactions?.map((tx, key) => (
                   <Tr key={key} _hover={{ bgColor: hoverTrColor }} cursor="pointer">
-                    <Td>{getEllipsisTxt(tx?.hash)}</Td>
-                    <Td>{getEllipsisTxt(tx?.from.checksum)}</Td>
-                    <Td>{getEllipsisTxt(tx?.to?.checksum)}</Td>
+                    {chain?.blockExplorers?.default.url && tx.to ? (
+                      <>
+                        <Td>
+                          <Link href={`${chain.blockExplorers.default.url}/tx/${tx.hash}`} isExternal>
+                            {getEllipsisTxt(tx.hash)}
+                          </Link>
+                        </Td>
+                        <Td>
+                          <Link href={`${chain.blockExplorers.default.url}/address/${tx.from.checksum}`} isExternal>
+                            {getEllipsisTxt(tx.from.checksum)}
+                          </Link>
+                        </Td>
+                        <Td>
+                          <Link href={`${chain.blockExplorers.default.url}/address/${tx.to.checksum}`} isExternal>
+                            {getEllipsisTxt(tx.to.checksum)}
+                          </Link>
+                        </Td>
+                      </>
+                    ) : (
+                      <>
+                        <Td>{getEllipsisTxt(tx.hash)}</Td>
+                        <Td>{getEllipsisTxt(tx.from.checksum)}</Td>
+                        <Td>{getEllipsisTxt(tx.to?.checksum)}</Td>
+                      </>
+                    )}
                     <Td>{tx.gasUsed.toString()}</Td>
                     <Td>{new Date(tx.blockTimestamp).toLocaleDateString()}</Td>
                     <Td isNumeric>{tx.receiptStatus}</Td>

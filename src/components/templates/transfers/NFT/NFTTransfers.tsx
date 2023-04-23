@@ -9,6 +9,7 @@ import {
   Tfoot,
   Heading,
   Box,
+  Link,
   useColorModeValue,
 } from '@chakra-ui/react';
 import { useEvmWalletNFTTransfers } from '@moralisweb3/next';
@@ -51,13 +52,52 @@ const NFTTransfers = () => {
               <Tbody>
                 {transfers?.map((transfer, key) => (
                   <Tr key={key} _hover={{ bgColor: hoverTrColor }} cursor="pointer">
-                    <Td>{getEllipsisTxt(transfer?.tokenAddress.checksum)}</Td>
-                    <Td>{transfer?.tokenId}</Td>
-                    <Td>{getEllipsisTxt(transfer?.fromAddress?.checksum)}</Td>
-                    <Td>{getEllipsisTxt(transfer?.toAddress.checksum)}</Td>
-                    <Td>{transfer.contractType}</Td>
-                    <Td>{new Date(transfer.blockTimestamp).toLocaleDateString()}</Td>
-                    <Td isNumeric>{getEllipsisTxt(transfer.transactionHash, 2)}</Td>
+                    {chain?.blockExplorers?.default.url && transfer ? (
+                      <>
+                        <Td>
+                          <Link
+                            href={`${chain.blockExplorers.default.url}/address/${transfer.tokenAddress.checksum}`}
+                            isExternal
+                          >
+                            {getEllipsisTxt(transfer.tokenAddress.checksum)}
+                          </Link>
+                        </Td>
+                        <Td>{transfer.tokenId}</Td>
+                        <Td>
+                          <Link
+                            href={`${chain.blockExplorers.default.url}/address/${transfer.fromAddress?.checksum}`}
+                            isExternal
+                          >
+                            {getEllipsisTxt(transfer.fromAddress?.checksum)}
+                          </Link>
+                        </Td>
+                        <Td>
+                          <Link
+                            href={`${chain.blockExplorers.default.url}/address/${transfer?.toAddress.checksum}`}
+                            isExternal
+                          >
+                            {getEllipsisTxt(transfer?.toAddress.checksum)}
+                          </Link>
+                        </Td>
+                        <Td>{transfer.contractType}</Td>
+                        <Td>{new Date(transfer.blockTimestamp).toLocaleDateString()}</Td>
+                        <Td isNumeric>
+                          <Link href={`${chain.blockExplorers.default.url}/tx/${transfer?.transactionHash}`} isExternal>
+                            {getEllipsisTxt(transfer.transactionHash, 2)}
+                          </Link>
+                        </Td>
+                      </>
+                    ) : (
+                      <>
+                        <Td>{getEllipsisTxt(transfer.tokenAddress.checksum)}</Td>
+                        <Td>{transfer.tokenId}</Td>
+                        <Td>{getEllipsisTxt(transfer.fromAddress?.checksum)}</Td>
+                        <Td>{getEllipsisTxt(transfer.toAddress.checksum)}</Td>
+                        <Td>{transfer.contractType}</Td>
+                        <Td>{new Date(transfer.blockTimestamp).toLocaleDateString()}</Td>
+                        <Td isNumeric>{getEllipsisTxt(transfer.transactionHash, 2)}</Td>
+                      </>
+                    )}
                   </Tr>
                 ))}
               </Tbody>
