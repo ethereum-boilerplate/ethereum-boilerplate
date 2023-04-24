@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "@moralisweb3/eslint-config": "^1.0.1",
-    "@types/node": "18.7.6",
+    "@types/node": "18.16.0",
     "@types/react": "18.0.17",
     "@types/react-dom": "18.0.6",
     "@typescript-eslint/eslint-plugin": "^5.33.1",
