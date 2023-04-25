@@ -9,7 +9,7 @@ const Home = () => {
       </Heading>
       <List spacing={3}>
         <ListItem>
-          <ListIcon as={CheckCircleIcon} color="green.500" />
+          <ListIcon className="" as={CheckCircleIcon} color="green.500" />
           Moralis authentication
         </ListItem>
         <ListItem>
