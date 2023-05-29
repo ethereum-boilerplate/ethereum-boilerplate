@@ -36,7 +36,7 @@
     "@types/node": "18.16.0",
     "@types/react": "18.0.17",
     "@types/react-dom": "18.0.6",
-    "@typescript-eslint/eslint-plugin": "^5.33.1",
+    "@typescript-eslint/eslint-plugin": "^5.59.7",
     "@typescript-eslint/parser": "^5.59.0",
     "cypress": "^12.9.0",
     "eslint": "8.22.0",
