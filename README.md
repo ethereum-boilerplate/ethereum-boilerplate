@@ -61,7 +61,7 @@ NEXTAUTH_SECRET=7197b3e8dbee5ea6274cab37245eec212
 🚴‍♂️ Run your App:
 
 ```sh
-yarn start
+yarn dev
 ```
 
 # 🧭 `Table of contents`
