@@ -128,3 +128,9 @@ Feel free to contribute 🧙 to `ethereum-boilerplate` project. But first, **ple
 </a>
 
 Made with [contrib.rocks](https://contrib.rocks).
+<<<<<<< HEAD
+Hello, I'm requesting permission to make contribution to this project.
+My name is Thomas Jesus.
+=======
+This is an amazing project, and I will like to make my own contribution to it.
+e1048ac9bda2b3e82fc26c1d5ec357e9448e34b2
