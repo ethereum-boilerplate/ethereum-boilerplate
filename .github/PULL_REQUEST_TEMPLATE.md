@@ -13,7 +13,7 @@ about: A new pull request
     Thanks for contributing to Moralis!
 -->
 
-- [ ] My code is conform the [code style](https://github.com/ethereum-boilerplate/ethereum-boilerplate/blob/main/CODING_STYLE.md)
+- [ ] My code conforms to the [code style](https://github.com/ethereum-boilerplate/ethereum-boilerplate/blob/main/CODING_STYLE.md)
 - [ ] I have made corresponding changes to the documentation
 - [ ] I have updated Typescript definitions when needed
 
