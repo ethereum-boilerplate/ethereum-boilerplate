@@ -2,7 +2,7 @@
 
 ## Setting up the project for debugging and contributing
 
-### Setting up you local machine:
+### Setting up your local machine:
 
 - [Fork](https://github.com/ethereum-boilerplate/ethereum-boilerplate) this project and clone the fork on your local machine:
 
