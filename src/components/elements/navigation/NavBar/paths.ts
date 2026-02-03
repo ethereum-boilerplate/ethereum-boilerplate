@@ -18,7 +18,7 @@ const NAV_LINKS: ISubNav[] = [
       },
       {
         label: 'NFT',
-        subLabel: 'Get your ERC721 an ERC1155 transfers',
+        subLabel: 'Get your ERC721 and ERC1155 transfers',
         href: '/transfers/nft',
         logo: 'lazyNft',
       },
@@ -36,7 +36,7 @@ const NAV_LINKS: ISubNav[] = [
       },
       {
         label: 'NFT',
-        subLabel: 'Get your ERC721 an ERC1155 balances',
+        subLabel: 'Get your ERC721 and ERC1155 balances',
         href: '/balances/nft',
         logo: 'pack',
       },
