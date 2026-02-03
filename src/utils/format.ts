@@ -1,6 +1,6 @@
 /**
  * Returns a string of form "abc...xyz"
- * @param {string} str string to string
+ * @param {string} str string to shorten
  * @param {number} n number of chars to keep at front/end
  * @returns {string}
  */
