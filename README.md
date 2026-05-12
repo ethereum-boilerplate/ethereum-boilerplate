@@ -24,6 +24,8 @@ If you need help with setting up the boilerplate or have other questions - don't
 
 <div justify="center">
 <a href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fethereum-boilerplate%2Fethereum-boilerplate&env=MORALIS_API_KEY,NEXTAUTH_SECRET&envDescription=1.%20MORALIS_API_KEY%3A%20Visit%20admin.moralis.io.%202.%20NEXTAUTH_SECRET%3A%20Used%20for%20encrypting%20JWT%20tokens.%20You%20can%20put%20any%20or%20generate%20it%20on%20https%3A%2F%2Fgenerate-secret.now.sh%2F32&envLink=https%3A%2F%2Fgithub.com%2Fethereum-boilerplate%2Fethereum-boilerplate%23-quick-start"><img src="https://vercel.com/button" alt="Deploy with Vercel"/></a>
+[![Deploy to PandaStack](https://dashboard.pandastack.io/deploy-button.svg)](https://dashboard.pandastack.io/deploy?repo=ethereum-boilerplate/ethereum-boilerplate&type=static&buildCmd=npm+run+build&outputDir=dist)
+[![Deploy to PandaStack](https://dashboard.pandastack.io/deploy-button.svg)](https://dashboard.pandastack.io/deploy?repo=ethereum-boilerplate/ethereum-boilerplate&type=static&buildCmd=npm+run+build&outputDir=dist)
 <a href="https://app.netlify.com/start/deploy?repository=https://github.com/ethereum-boilerplate/ethereum-boilerplate"><img src="https://www.netlify.com/img/deploy/button.svg"></a>
 </div>
 
